@@ -16,7 +16,7 @@ namespace GUI_Test2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProjectHub());
+            Application.Run(new ProjectHomeForm());
         }
     }
 }
