@@ -85,8 +85,8 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 
 	setTextOrigin(sf::Vector2f(dialoguePane.getPosition().x + 50,  dialoguePane.getPosition().y + 10));
 
-	sf::Clock clock;
-	clock.restart();
+	sf::Clock enterSymbolClock;
+	sf::Clock dialogueClock;
 	while (window.isOpen()) {
 		sf::Event evnt;
 		while (window.pollEvent(evnt)) {
@@ -100,7 +100,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 						if ((*it).isDone()) { // if the current line is finished printing
 							(*it).setDone(false);
 							it++;
-							clock.restart();
+							dialogueClock.restart();
 							if (it == this->dialogue.end() && this->destination != nullptr) {
 								(*this->destination).display(window, view);
 								return;
@@ -129,17 +129,17 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 				
 				if (increasing) {
 					
-					 enterSymbolOpacity = (255 * ((clock.getElapsedTime().asMilliseconds() % 1000) / 1000.0));
+					 enterSymbolOpacity = (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds() % 1000) / 1000.0));
 					 if (enterSymbolOpacity >= 254) {
-						 clock.restart();
+						 enterSymbolClock.restart();
 						 enterSymbolOpacity = 254;
 						 increasing = false;
 					 }
 				}
 				else {
-					enterSymbolOpacity = 255- (255 * ((clock.getElapsedTime().asMilliseconds() % 1000) / 1000.0));
+					enterSymbolOpacity = 255- (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds() % 1000) / 1000.0));
 					if (enterSymbolOpacity <= 1) {
-						clock.restart();
+						enterSymbolClock.restart();
 						enterSymbolOpacity = 1;
 						increasing = true;
 					}
@@ -150,7 +150,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 				window.draw(enterSymbolRect);
 			}
 		
-				(*it).draw(window, this->textOrigin, font, 200, 40, 1300, clock.getElapsedTime().asMilliseconds());
+				(*it).draw(window, this->textOrigin, font, 10, 40, 1300, dialogueClock.getElapsedTime().asMilliseconds());
 		
 		}
 		window.display();

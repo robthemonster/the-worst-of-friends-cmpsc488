@@ -52,13 +52,14 @@ void ButtonScreen::addButton(FButton * button) {
 }
 
 
-void ButtonScreen::display(sf::RenderWindow & window, sf::View & view) {
+void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 	sf::Texture  backgroundTexture;
 	sf::RectangleShape  background;
 	std::vector<FButton* >::iterator it;
 	backgroundTexture.loadFromFile("img/bg.jpg");
 
 //	imageRect.setPosition(-958, -550);
+	
 	imageRect.setPosition(window.getView().getSize().x * -0.5, window.getView().getSize().y * -0.5);
 
 	imageRect.setSize(window.getView().getSize());

@@ -51,7 +51,7 @@ int main() {
 	song.openFromFile("mp3/song.ogg");
 	song.play();
 	
-	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize );
+	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize | sf::Style::Fullscreen );
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
 	gameWindow.setView(view);
 	
@@ -129,9 +129,8 @@ int main() {
 
 	}
 	
-	ds[rand() % ARRAYSIZE(imageFiles)].display(gameWindow, view);
-
-
+	Navigable * n = &ds[rand() % ARRAYSIZE(imageFiles)];
+	(*n).display(gameWindow, view);
 	/*DialogueLine d(sf::String("You better off voting for doernlkd trumpfndf"));
 
 

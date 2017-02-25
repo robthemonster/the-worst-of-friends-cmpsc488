@@ -2,9 +2,7 @@
 
 
 
-Navigable::Navigable()
-{
-}
+
 
 
 Navigable::~Navigable()

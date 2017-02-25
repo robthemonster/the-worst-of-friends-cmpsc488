@@ -50,7 +50,6 @@ FButton::FButton(sf::Vector2f & size,  DialogueScreen * ds, sf::Vector2f &positi
 	this->highlightRect = sf::RectangleShape(size);
 	this->highlightRect.setPosition(position);
 	this->highlightRect.setFillColor(sf::Color::Transparent);
-	
 
 	this->buttonText = buttonText;		
 	this->buttonText.setOutlineThickness(3);

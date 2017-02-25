@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-
+#include "Navigable.h"
 
 class FButton;
 class DialogueScreen;
-class ButtonScreen
+class ButtonScreen:public Navigable
 {
 
 public:
@@ -26,7 +26,10 @@ public:
 	ButtonScreen(const ButtonScreen&);
 	~ButtonScreen();
 	void addButton(FButton * button);
-	void display(sf::RenderWindow & window, sf::View & view);
+
+	virtual void display(sf::RenderWindow & window, sf::View & view) ;
+	
+
 	void resizeView(sf::RenderWindow &, sf::View&, sf::RectangleShape&);
 
 };
