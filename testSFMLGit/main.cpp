@@ -9,11 +9,13 @@
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
+#include <Windows.h>
 
 static float VIEW_HEIGHT = 1080.0f;
 static float VIEW_WIDTH = 1920.0f;
-sf::Texture buttonTexture1, buttonTexture2;
+sf::Vector2f dialoguePanePos(-750, 200);
 
+static FButton *  getFButton(DialogueScreen * ds, std::string word, int x, int y);
 
 void resizeView(sf::RenderWindow& window, sf::View& view) {
 	float aspectRatio = float(window.getSize().y) / float(window.getSize().x);
@@ -25,14 +27,11 @@ void resizeView(sf::RenderWindow& window, sf::View& view) {
 static sf::Vector2f Vector2iTo2f(sf::Vector2i& in) {
 	return sf::Vector2f((float)in.x, (float)in.y);
 }
-static FButton *  getFButton1( ButtonScreen * bs, DialogueScreen * ds) {
-	return new FButton(sf::Vector2f(buttonTexture1.getSize().x, buttonTexture1.getSize().y), buttonTexture1, bs, ds, sf::Vector2f(-500, 300));
-}
-static FButton *getFButton2( ButtonScreen * bs, DialogueScreen*  ds) {
-	return new FButton(sf::Vector2f(buttonTexture2.getSize().x, buttonTexture2.getSize().y), buttonTexture2, bs, ds, sf::Vector2f(400, 300));
 
-}
-	
+
+
+sf::Font font;
+sf::Texture buttonTexture;
 
 int main() {
 	
@@ -43,137 +42,94 @@ int main() {
 	while (englishIn>>word) {
 		english.push_back(word);
 	}
-	sf::Music song;
-	sf::Texture background, imageTextureCold,imageTextureBastion, imageTextureSatellites, imageTextureSniffer;
+	sf::Music song; 
+	sf::Texture background, imageTexture1,imageTexture2, imageTexture3, imageTexture4;
+	sf::Texture dialoguePaneTexture;
+	
+	font.loadFromFile("fonts/8bit.ttf");
+	dialoguePaneTexture.loadFromFile("img/dialoguePane.png");
 	song.openFromFile("mp3/song.ogg");
 	song.play();
 	
-	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize);
+	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize );
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
 	gameWindow.setView(view);
 	
 //	gameWindow.setJoystickThreshold(0);
 	
 
+	//buttonTexture.loadFromFile("img/orangebutton.png");
 	background.loadFromFile("img/bg.jpg");
-	imageTextureCold.loadFromFile("img/cold.jpg");
-	imageTextureBastion.loadFromFile("img/bastion.jpg");
-	imageTextureSatellites.loadFromFile("img/satellites.jpg");
-	imageTextureSniffer.loadFromFile("img/sniffer.jpg");
-
-	buttonTexture1.loadFromFile("img/option0.png");
-	buttonTexture2.loadFromFile("img/option1.png");
-
-
-	DialogueScreen ds1(imageTextureBastion);
-	DialogueScreen ds2(imageTextureCold);
-	DialogueScreen ds3(imageTextureSatellites);
-	DialogueScreen ds4(imageTextureSniffer);
-	std::string* dialogues = new std::string[8];
-
-	std::srand(time(NULL));
-	for (int i = 0; i < 30; i++) {
-		for (int j = 0; j < 8; j++)
-			dialogues[j] += english.at(rand() % english.size()) + " ";
-			
-			
+	std::string imageFiles[] = { "evil.jpg",
+		"giant.jpg",
+		"cold.jpg",
+		"bastion.jpg",
+		"satellites.jpg",
+		"titan.jpg",
+		"thumbsup.jpg",
+		"sentry.jpg",
+		"absolver.jpg",
+		"scout.jpg",
+		"jaguar.jpg",
+		"sands.jpg",
+		"shenfei.jpg",
+		"church.jpg",
+		"deer.jpg",
+		"tower.jpg",
+		"deserttemple.jpg",
+		"bridge.jpg",
+		"link.jpg",
+		"wrath.jpg" };
 	
+	sf::Texture * imageTextures = new sf::Texture[ARRAYSIZE(imageFiles)];
+
+	for (int i = 0; i < ARRAYSIZE(imageFiles); i++) {
+		if (!imageTextures[i].loadFromFile("img/" + imageFiles[i]))
+			std::cout << imageFiles[i] << " failed to load" << std::endl;
 	}
 
-	
-		ds1.addDialogueLine(DialogueLine(dialogues[0]));
-		ds1.addDialogueLine(DialogueLine(dialogues[1]));
+	DialogueScreen * ds= new DialogueScreen[ARRAYSIZE(imageFiles)];
+	ButtonScreen * bs = new ButtonScreen[ARRAYSIZE(imageFiles)];
 
-		ds2.addDialogueLine(DialogueLine(dialogues[2]));
-		ds2.addDialogueLine(DialogueLine(dialogues[3]));
-
-		ds3.addDialogueLine(DialogueLine(dialogues[4]));
-		ds3.addDialogueLine(DialogueLine(dialogues[5]));
-
-		ds4.addDialogueLine(DialogueLine(dialogues[6]));
-		ds4.addDialogueLine(DialogueLine(dialogues[7]));
-	
-	
-
-
-	ButtonScreen bs1(imageTextureBastion);
-	ButtonScreen bs2(imageTextureCold);
-	ButtonScreen bs3(imageTextureSatellites);
-	ButtonScreen bs4(imageTextureSniffer);
-	
-	ButtonScreen ** bs = new ButtonScreen*[4];
-	bs[0] = &bs1;
-	bs[1] = &bs2;
-	bs[2] = &bs3;
-	bs[3] = &bs4;
-	
-
-	
-		int *x1 = new int[4]; 
-		int *x2 = new int[4]; 
-		for (int i = 0; i < 4; i++) {
-			x1[i] = rand() % 4;
-			x2[i] = rand() % 4;
-		}
-		DialogueScreen * tar1,* tar2;
-		for (int i = 0; i < 4; i++) {
-			int xA = x1[i], xB = x2[i];
-
-			switch (xA) {
-			case 0:
-				tar1 = &ds1;
-				break;
-			case 1:
-				tar1 = &ds2;
-				break;
-			case 2:
-				tar1 = &ds3;
-				break;
-			case 3:
-				tar1 = &ds4;
-				break;
-			default:
-				tar1 = NULL;
-				break;
-
-			}
-			switch (xA) {
-			case 0:
-				tar2 = &ds1;
-				break;
-			case 1:
-				tar2 = &ds2;
-				break;
-			case 2:
-				tar2 = &ds3;
-				break;
-			case 3:
-				tar2 = &ds4;
-				break;
-			default:
-				tar2 = NULL;
-				break;
-			}
-			if (tar1 != nullptr)
-				(*bs[i]).addButton(getFButton1(bs[i], tar1));
-			if (tar2 != nullptr)
-				(*bs[i]).addButton(getFButton2(bs[i], tar2));
-		}
-	
+	for (int i = 0; i < ARRAYSIZE(imageFiles); i++) {
+		ds[i].setImageTexture(imageTextures[i]);
+		bs[i].setImageTexture(imageTextures[i]);
+		ds[i].setDestination(&bs[i]);
 		
-	
+		DialogueScreen * d1, *d2;
+		d1 = &ds[std::rand() % ARRAYSIZE(imageFiles)];
+		
+		d2 = &(ds[std::rand() % ARRAYSIZE(imageFiles)]);
+		
 
-	ds1.setDestination(bs[0]);
-	ds2.setDestination(bs[1]);
+		bs[i].addButton(getFButton(d1, english[rand() % english.size()], -400, 300));
+		bs[i].addButton(getFButton(d2, english[rand() % english.size()], 200, 300));
+		bs[i].setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
+		std::string prompt;
+		for (int j = 0; j < 6; j++) {
+			prompt += english[rand() % english.size()] + " ";
+		}
+		prompt += "?";
+		bs[i].setPrompt(sf::Text(sf::String(prompt), font, 40));
+		
+		std::string * dialogue = new std::string[2];
+		for (int j = 0; j < 30; j++) {
+			dialogue[0] += " "+ english[rand() % english.size()] ;
+			
+			dialogue[1] += " " + english[rand() % english.size()] ;
 
-	ds3.setDestination(bs[2]);
-	ds4.setDestination(bs[3]);
-	
-	
-	
-	(*tar1).display(gameWindow, view);
+			if (j % 6 == 0)
+				dialogue[0] += ".";
+			if (j % 8 == 0)
+				dialogue[1] += ".";
+			
+		}
+		ds[i].addDialogueLine(DialogueLine(dialogue[0]));
+		ds[i].addDialogueLine(DialogueLine(dialogue[1]));
 
-	delete bs;
+	}
+	
+	ds[rand() % ARRAYSIZE(imageFiles)].display(gameWindow, view);
 
 
 	/*DialogueLine d(sf::String("You better off voting for doernlkd trumpfndf"));
@@ -260,4 +216,9 @@ int main() {
 	}*/
 
 	
+}
+
+
+static FButton *getFButton(DialogueScreen*  ds, std::string word, int x, int y) {
+	return new FButton(sf::Vector2f(300, 100), ds, sf::Vector2f(x, y), sf::Text(sf::String(word), font, 50), NULL);
 }

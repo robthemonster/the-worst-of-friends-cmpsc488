@@ -25,7 +25,7 @@ DialogueLine::DialogueLine(sf::String words) {
 }
 
 
-void DialogueLine::display(sf::RenderWindow & window,  sf::Vector2f origin, sf::Font &font, int wordDelayMs, int charSize, float width, int millisecElapsed ) {
+void DialogueLine::draw(sf::RenderWindow & window,  sf::Vector2f origin, sf::Font &font, int wordDelayMs, int charSize, float width, int millisecElapsed ) {
 	
 	sf::Text space(sf::String(" "), font, charSize);
 	sf::Text capital(sf::String("T"), font, charSize);
@@ -37,6 +37,8 @@ void DialogueLine::display(sf::RenderWindow & window,  sf::Vector2f origin, sf::
 	if (wordDelayMs <= 0 || done) {
 		while (it != this->words.end()) {
 			sf::Text word(*it, font, charSize);
+			word.setOutlineColor(sf::Color::Black);
+			word.setOutlineThickness(2);
 			word.setPosition(sf::Vector2f(cursorX, cursorY));
 			window.draw(word);
 			cursorX = cursorX + word.getLocalBounds().width + space.getLocalBounds().width;
@@ -55,6 +57,7 @@ void DialogueLine::display(sf::RenderWindow & window,  sf::Vector2f origin, sf::
 
 
 			sf::Text word(*it, font, charSize);
+			word.setOutlineThickness(2);
 			word.setPosition(sf::Vector2f(cursorX, cursorY));
 			window.draw(word);
 			cursorX = cursorX + word.getLocalBounds().width + space.getLocalBounds().width;

@@ -6,9 +6,11 @@ class FButton;
 class DialogueScreen;
 class ButtonScreen
 {
+
 public:
 	sf::RectangleShape imageRect;
-	sf::Texture imageTexture;
+	sf::RectangleShape dialoguePane;
+	sf::Text promptText;
 
 	std::vector<FButton * >  buttons;
 	 DialogueScreen * destination;
@@ -16,11 +18,16 @@ public:
 	const float SCREEN_HEIGHT = 1080.0;
 
 
-	ButtonScreen(sf::Texture & texture);
+	ButtonScreen(sf::Texture & imageTexture, sf::Texture & textPaneTexture, sf::Vector2f dialoguePanePos, sf::Text prompt);
+	ButtonScreen();
+	void setImageTexture(sf::Texture & texture);
+	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f dialoguePanePos);
+	void setPrompt(sf::Text text);
 	ButtonScreen(const ButtonScreen&);
 	~ButtonScreen();
 	void addButton(FButton * button);
 	void display(sf::RenderWindow & window, sf::View & view);
 	void resizeView(sf::RenderWindow &, sf::View&, sf::RectangleShape&);
+
 };
 

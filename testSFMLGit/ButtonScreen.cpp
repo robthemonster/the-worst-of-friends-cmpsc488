@@ -6,15 +6,41 @@
 #include "DialogueScreen.h"
 
 
-ButtonScreen::ButtonScreen(sf::Texture & texture)
+ButtonScreen::ButtonScreen(sf::Texture & imageTexture, sf::Texture &dialoguePaneTexture, sf::Vector2f dialoguePanePos, sf::Text prompt)
 {
-	this->imageTexture = texture;
+	
+	this->imageRect.setTexture(&imageTexture);
+	this->dialoguePane.setTexture(&dialoguePaneTexture);
+	this->dialoguePane.setPosition(dialoguePanePos);
+	this->dialoguePane.setSize(sf::Vector2f(dialoguePaneTexture.getSize().x, dialoguePaneTexture.getSize().y));
+	this->promptText = prompt;
+	this->promptText.setOrigin(sf::Vector2f(prompt.getLocalBounds().width/ 2, 10));
+	this->promptText.setPosition(dialoguePanePos.x + (this->dialoguePane.getSize().x/2) , dialoguePanePos.y + 10);
 }
 
+ButtonScreen::ButtonScreen() {
+
+}
+
+void ButtonScreen::setImageTexture(sf::Texture & texture) {
+	this->imageRect.setTexture(&texture);
+}
+
+void ButtonScreen:: setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f dialoguePanePos) {
+	this->dialoguePane.setTexture(&texture);
+	this->dialoguePane.setPosition(dialoguePanePos);
+	this->dialoguePane.setSize(sf::Vector2f(texture.getSize().x, texture.getSize().y));
+}
+void ButtonScreen::setPrompt(sf::Text text) {
+	this->promptText = text;
+	this->promptText.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, 10));
+	this->promptText.setPosition(this->dialoguePane.getPosition().x + (this->dialoguePane.getSize().x / 2), this->dialoguePane.getPosition().y + 10);
+}
 ButtonScreen::ButtonScreen(const ButtonScreen & copy)
 {
 	buttons = copy.buttons;
 	destination = (copy.destination);
+	
 }
 
 
@@ -29,28 +55,23 @@ void ButtonScreen::addButton(FButton * button) {
 void ButtonScreen::display(sf::RenderWindow & window, sf::View & view) {
 	sf::Texture  backgroundTexture;
 	sf::RectangleShape  background;
-
 	std::vector<FButton* >::iterator it;
-	
-	
 	backgroundTexture.loadFromFile("img/bg.jpg");
-	imageRect.setTexture(&imageTexture);
 
+//	imageRect.setPosition(-958, -550);
+	imageRect.setPosition(window.getView().getSize().x * -0.5, window.getView().getSize().y * -0.5);
 
-
-	imageRect.setPosition(-958, -550);
-	imageRect.setSize(sf::Vector2f(1920, 700));
-
-//	imageRect.setPosition(window.getPosition().x - window.getSize().x * 0.60, window.getPosition().y - window.getSize().y*0.6);
-
+	imageRect.setSize(window.getView().getSize());
 	background.setTexture(&backgroundTexture);
-
-	background.setPosition(window.getView().getCenter().x - (window.getView().getSize().x / 2), window.getView().getCenter().y - (window.getView().getSize().y / 2));
-
-
+	
+	background.setPosition(window.getView().getCenter().x - (window.getView().getSize().x / 2),
+	window.getView().getCenter().y - (window.getView().getSize().y / 2));
 	background.setSize(sf::Vector2f(window.getView().getSize().x, window.getView().getSize().y));
 
 	bool optionSelected = false;
+
+	promptText.setOutlineColor(sf::Color::Black);
+	promptText.setOutlineThickness(3);
 
 	while (window.isOpen()) {
 
@@ -101,7 +122,8 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view) {
 		window.clear();
 		window.draw(background);
 		window.draw(imageRect);
-
+		window.draw(dialoguePane);
+		window.draw(promptText);
 		 it = this->buttons.begin();
 		while (it != this->buttons.end()) {
 			(**it).draw(window, view);
@@ -125,7 +147,7 @@ void ButtonScreen::resizeView(sf::RenderWindow& window, sf::View& view, sf::Rect
 	view.setSize(this->SCREEN_WIDTH, this->SCREEN_WIDTH * aspectRatio);
 }
 
+
 ButtonScreen::~ButtonScreen() {
-//	delete &buttons;
-	//delete destination;
+		
 }

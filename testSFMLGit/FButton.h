@@ -1,20 +1,20 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 
-class ButtonScreen;
 class DialogueScreen;
 class FButton
 {
 private:
-	sf::Texture buttonTexture;
-	sf::RectangleShape buttonRect;
-	 ButtonScreen  * buttonScreen;
 	 DialogueScreen * dialogueScreen;
+	 sf::RectangleShape buttonRect;
+	 sf::RectangleShape highlightRect;
+	 sf::Text buttonText;
 	
-	
+
 public:
 	~FButton();
-	FButton(sf::Vector2f & size, sf::Texture & texture, ButtonScreen *bs, DialogueScreen *ds, sf::Vector2f &position);
+	FButton(sf::Vector2f & size,  DialogueScreen *ds,  sf::Vector2f &position, sf::Text& buttonText ,
+		sf::Texture * buttonTexture);
 	void draw(sf::RenderWindow&, sf::View&);
 	bool mouseOver(sf::Vector2f mouseLocation);
 	void setHighlighted(bool highlighted);

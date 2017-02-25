@@ -16,11 +16,14 @@ private:
 public:
 	void setTextOrigin(sf::Vector2f & origin);
 	void setDestination(ButtonScreen * b);
+	void setImageTexture(sf::Texture & texture);
 	void display(sf::RenderWindow& window, sf::View & view);
 	void addDialogueLine(DialogueLine line);
 	void resizeView(sf::RenderWindow& window, sf::View& view);
 	DialogueScreen(sf::Texture & texture);
-	//DialogueScreen();
+
+	DialogueScreen();
+	
 	DialogueScreen(const DialogueScreen&);
 	~DialogueScreen();
 };
