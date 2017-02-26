@@ -7,17 +7,19 @@ class DialogueScreen:public Navigable
 {
 private:
 	std::vector<DialogueLine > dialogue;
-	
 	sf::Vector2f textOrigin;
-	sf::Texture image;
-	sf::RectangleShape bg;
+	sf::Font font;
+	sf::RectangleShape imageRect, dialoguePaneRect;
 	ButtonScreen * destination;
+
 	const float SCREEN_WIDTH = 1920.0;
 	const float SCREEN_HEIGHT = 1080.0;
 public:
 	void setTextOrigin(sf::Vector2f & origin);
 	void setDestination(ButtonScreen * b);
 	void setImageTexture(sf::Texture & texture);
+	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position);
+	void setFont(sf::Font font);
 
 	virtual void display(sf::RenderWindow& window, sf::View & view);
 

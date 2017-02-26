@@ -3,7 +3,6 @@
 #include "Navigable.h"
 
 class FButton;
-class DialogueScreen;
 class ButtonScreen:public Navigable
 {
 
@@ -13,7 +12,6 @@ public:
 	sf::Text promptText;
 
 	std::vector<FButton * >  buttons;
-	 DialogueScreen * destination;
 	const float SCREEN_WIDTH = 1920.0;
 	const float SCREEN_HEIGHT = 1080.0;
 

@@ -4,15 +4,24 @@
 #include <iostream>
 #include "ButtonScreen.h"
 
-DialogueScreen::DialogueScreen(sf::Texture & texture)
-{
-	this->image = texture;
-}
+
 DialogueScreen::DialogueScreen() {
 
 };
 void DialogueScreen::setImageTexture(sf::Texture & texture) {
-	this->image = texture;
+	imageRect.setTexture(&texture);
+}
+
+void DialogueScreen::setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position)
+{
+	this->dialoguePaneRect.setTexture(&texture);
+	this->dialoguePaneRect.setPosition(position);
+	this->dialoguePaneRect.setSize(sf::Vector2f(texture.getSize().x, texture.getSize().y));
+}
+
+void DialogueScreen::setFont(sf::Font font)
+{
+	this->font = font;
 }
 
 void DialogueScreen::setTextOrigin(sf::Vector2f & origin) {
@@ -33,47 +42,23 @@ void DialogueScreen::setDestination(ButtonScreen * b)
 
 void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 	
-	sf::Font font;
+	
 	
 	std::vector<DialogueLine>::iterator it = this->dialogue.begin();
-	sf::Texture dialoguePaneTexture;
-	sf::Texture background;
+	
 	sf::Texture enterSymbol;
-
-	if (!enterSymbol.loadFromFile("img/enter.png")
-		||!font.loadFromFile("fonts/8bit.ttf")
-		|| !background.loadFromFile("img/bg.jpg")
-		|| !dialoguePaneTexture.loadFromFile("img/dialoguePane.png")) {
-		std::cout << "Cannot load from file" << std::endl;
-	};
-
-	
-	
-	sf::RectangleShape dialoguePane;
-	sf::RectangleShape imageRect;
 	sf::RectangleShape enterSymbolRect;
-	
 	int enterSymbolOpacity;
 	bool increasing = true;
-	
 
-	bg.setFillColor(sf::Color::White);
-	bg.setTexture(&background);
-	bg.setSize(sf::Vector2f(window.getView().getSize().x, window.getView().getSize().y));
-	
-	bg.setPosition(window.getView().getCenter().x - (window.getView().getSize().x / 2), window.getView().getCenter().y - (window.getView().getSize().y / 2));
-
-	
-	
-
-	imageRect.setTexture(&this->image);
-	dialoguePane.setTexture(&dialoguePaneTexture);
+	if (!enterSymbol.loadFromFile("img/enter.png")) {
+		std::cout << "Cannot load from file" << std::endl;
+	};
 	enterSymbolRect.setTexture(&enterSymbol);
 
 
 
-	dialoguePane.setSize(sf::Vector2f(dialoguePaneTexture.getSize().x, dialoguePaneTexture.getSize().y));
-	dialoguePane.setPosition(-750, 200);
+	
 
 	enterSymbolRect.setSize(sf::Vector2f(enterSymbolRect.getTextureRect().width * 0.40, enterSymbolRect.getTextureRect().height * 0.40));
 	enterSymbolRect.setPosition(500, 420);
@@ -81,9 +66,8 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 	imageRect.setPosition(window.getView().getSize().x * -0.5, window.getView().getSize().y * -0.5);
 	imageRect.setSize(window.getView().getSize());
 
-	imageRect.setSize(window.getView().getSize());
 
-	setTextOrigin(sf::Vector2f(dialoguePane.getPosition().x + 50,  dialoguePane.getPosition().y + 10));
+	setTextOrigin(sf::Vector2f(dialoguePaneRect.getPosition().x + 50,  dialoguePaneRect.getPosition().y + 50));
 
 	sf::Clock enterSymbolClock;
 	sf::Clock dialogueClock;
@@ -120,16 +104,15 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 	
 		window.clear();
 
-		window.draw(bg);
 		window.draw(imageRect);
-		window.draw(dialoguePane);
+		window.draw(dialoguePaneRect);
 
 		if (it != this->dialogue.end()) {
 			if ((*it).isDone()) {
 				
 				if (increasing) {
 					
-					 enterSymbolOpacity = (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds() % 1000) / 1000.0));
+					 enterSymbolOpacity = (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds()/* % 1000*/) / 1000.0));
 					 if (enterSymbolOpacity >= 254) {
 						 enterSymbolClock.restart();
 						 enterSymbolOpacity = 254;
@@ -137,7 +120,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 					 }
 				}
 				else {
-					enterSymbolOpacity = 255- (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds() % 1000) / 1000.0));
+					enterSymbolOpacity = 255- (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds() /*% 1000*/) / 1000.0));
 					if (enterSymbolOpacity <= 1) {
 						enterSymbolClock.restart();
 						enterSymbolOpacity = 1;
@@ -150,7 +133,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 				window.draw(enterSymbolRect);
 			}
 		
-				(*it).draw(window, this->textOrigin, font, 10, 40, 1300, dialogueClock.getElapsedTime().asMilliseconds());
+				(*it).draw(window, this->textOrigin, font, 25, 40, 1300, dialogueClock.getElapsedTime().asMilliseconds());
 		
 		}
 		window.display();
@@ -163,11 +146,14 @@ void DialogueScreen::addDialogueLine(DialogueLine line) {
 }
 
 DialogueScreen::DialogueScreen(const DialogueScreen& copy) {
-	this->bg = copy.bg;
+	
 	this->dialogue = copy.dialogue;
-	this->image = copy.image;
 	this->textOrigin = copy.textOrigin;
-	this->image = copy.image;
+	this->destination = copy.destination;
+	this->dialoguePaneRect = copy.dialoguePaneRect;
+
+	this->imageRect = copy.imageRect;
+
 }
 
 DialogueScreen::~DialogueScreen() {

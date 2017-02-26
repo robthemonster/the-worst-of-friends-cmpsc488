@@ -39,7 +39,6 @@ void ButtonScreen::setPrompt(sf::Text text) {
 ButtonScreen::ButtonScreen(const ButtonScreen & copy)
 {
 	buttons = copy.buttons;
-	destination = (copy.destination);
 	
 }
 
@@ -82,10 +81,12 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 				case sf::Event::MouseMoved :
 					it = this->buttons.begin();
 					while (it != this->buttons.end()) {
-						if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
+						if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && !(**it).isHighlighted()) {
+							std::cout << "Highlighted button" << std::endl;
 							(**it).setHighlighted(true);
 						}
-						else { 
+						else if (!(**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && (**it).isHighlighted()) {
+							std::cout << "Unhighlighted button" << std::endl;
 							(**it).setHighlighted(false);
 						}
 						it++;
@@ -98,7 +99,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 						while (it != this->buttons.end()) {
 							if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
 								(**it).setHighlighted(false);
-								(*(**it).getDialogueScreen()).display(window, view);
+								(*(**it).getTarget()).display(window, view);
 								return;
 
 							}
@@ -131,9 +132,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 			it++;
 		}
 		window.display();
-		if (optionSelected) {
-			(*this->destination).display(window, view);
-		}
+		
 		
 
 	}
