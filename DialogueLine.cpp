@@ -30,6 +30,11 @@ void DialogueLine::drawCharacter(sf::RenderWindow& window) {
 void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, int width, sf::RenderWindow & window, int charDelayMs, int millisecElapsed)
 {
 	sf::Text curr;
+
+	sf::Text currWord;
+
+	
+
 	sf::Text space(" ", font, charSize);
 	sf::Text capital("T", font, charSize);
 	int cursorX = origin.x, cursorY= origin.y;
@@ -38,7 +43,15 @@ void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, i
 		{
 			done = true;
 		}
-
+		if ((&this->words[i]) != " ") {
+			int lastPos = this->words.find_first_of(" ", i);
+			
+			currWord = sf::Text(this->words.substr(i, lastPos - i + 1), font, charSize);
+		}
+		if (cursorX + currWord.getLocalBounds().width > origin.x + width) {
+			cursorY = cursorY + (capital.getLocalBounds().height * 1.5);
+			cursorX = origin.x;
+		}
 		
 		curr = sf::Text(this->words[i], font, charSize);
 		curr.setOutlineColor(sf::Color::Black);
