@@ -16,6 +16,8 @@ namespace GUI_Test2
         private List <String> dialogueEntryList;
         private ProjectHomeForm parentForm;
         private String name;
+        private String[] ops;
+        
 
         public EditPathForm( ProjectHomeForm par, String n)
         {
@@ -26,7 +28,8 @@ namespace GUI_Test2
             this.AcceptButton = createNewDialogueButton;
             dialogueEntryList = new List<String>();
             dialogueNameList = new List<String>();
-            dialogueList.DataSource = dialogueEntryList;
+            ops = new String[] { "+", "-", "/", "*", "=" };
+            updateListBoxes();
         }
         public EditPathForm(ProjectHomeForm par, Path p)
         {
@@ -37,8 +40,7 @@ namespace GUI_Test2
             this.AcceptButton = createNewDialogueButton;
             dialogueEntryList = p.dialogueContents;
             dialogueNameList = p.dialogueNames;
-            dialogueList.DataSource = dialogueEntryList;
-            dialogueList.SelectedIndex = -1;
+            updateListBoxes();
 
         }
             
@@ -60,9 +62,7 @@ namespace GUI_Test2
                 dialogueEntryList.Add(selectedDialogueTextBox.Text);
                 selectedDialogueTextBox.Text = null;
                 DialogueNameTextBox.Text = null;
-                dialogueList.DataSource = null;
-                dialogueList.DataSource = dialogueNameList;
-                dialogueList.SelectedIndex = -1;
+                updateListBoxes();
             }
         }
         private void selectDefaultPathImageButton_Click(object sender, EventArgs e)
@@ -113,11 +113,7 @@ namespace GUI_Test2
 
             }
         }
-
-        private void DialogueName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void ShiftDialogueUpButton_Click(object sender, EventArgs e)
         {
@@ -125,8 +121,7 @@ namespace GUI_Test2
             if (index != -1&& index!=0)
             {
                 swap(dialogueList.SelectedIndex, dialogueList.SelectedIndex - 1);
-                dialogueList.DataSource = null;
-                dialogueList.DataSource = dialogueNameList;
+                updateListBoxes();
                 dialogueList.SelectedIndex = index - 1;
 
             }
@@ -139,8 +134,7 @@ namespace GUI_Test2
             if (index != -1 && index < dialogueNameList.Count-1 )
             {
                 swap(dialogueList.SelectedIndex, dialogueList.SelectedIndex + 1);
-                dialogueList.DataSource = null;
-                dialogueList.DataSource = dialogueNameList;
+                updateListBoxes();
                 dialogueList.SelectedIndex = index + 1;
 
             }
@@ -193,12 +187,19 @@ namespace GUI_Test2
                         dialogueNameList [index] =DialogueNameTextBox.Text;
                         dialogueEntryList[index] = selectedDialogueTextBox.Text;
                     }
-                    dialogueList.DataSource = null;
-                    dialogueList.DataSource = dialogueNameList;
-                    dialogueList.SelectedIndex = -1;
+                    updateListBoxes();
                 }
                 catch { }
             }
+        }
+        private void updateListBoxes() {
+            dialogueList.DataSource = null;
+            dialogueList.DataSource = dialogueNameList;
+            dialogueList.SelectedIndex = -1;
+
+            pathListBoxTab2.DataSource = null;
+            pathListBoxTab2.DataSource = dialogueNameList;
+            pathListBoxTab2.SelectedIndex = -1;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
