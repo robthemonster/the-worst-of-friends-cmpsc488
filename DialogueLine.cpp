@@ -37,32 +37,55 @@ void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, i
 
 	sf::Text space(" ", font, charSize);
 	sf::Text capital("T", font, charSize);
-	int cursorX = origin.x, cursorY= origin.y;
+	float cursorX = origin.x, cursorY= origin.y;
 	for (int i = 0; (done || i < millisecElapsed / charDelayMs) && i < words.length(); i++) {
 		if (millisecElapsed / charDelayMs >= words.length())
 		{
 			done = true;
 		}
-		if ((&this->words[i]) != " ") {
+		if (this->words[i] != ' ') {
 			int lastPos = this->words.find_first_of(" ", i);
+
+			std::string wordRem = this->words.substr(i, lastPos - i);
+			if (wordRem.at(wordRem.length() - 1) == '.' && wordRem.length() > 0)
+				wordRem = wordRem.substr(0, wordRem.length() - 1);
+				
 			
-			currWord = sf::Text(this->words.substr(i, lastPos - i + 1), font, charSize);
+			if (wordRem == "their")
+				std::cout << std::endl;
+			
+			
+			
+
+			currWord = sf::Text(sf::String(wordRem), font, charSize);
+			
+		//	currWord.setPosition(sf::Vector2f(cursorX, cursorY));
+	
+
+			currWord.getLocalBounds().width;
+			
+			
+			if (cursorX + currWord.getLocalBounds().width > origin.x + width ) {
+				wordRem;
+				cursorY = cursorY + font.getLineSpacing(charSize);
+				cursorX = origin.x;
+				
+			}
 		}
-		if (cursorX + currWord.getLocalBounds().width > origin.x + width) {
-			cursorY = cursorY + (capital.getLocalBounds().height * 1.5);
-			cursorX = origin.x;
+		else {
+			std::cout << std::endl;
 		}
 		
-		curr = sf::Text(this->words[i], font, charSize);
+		curr = sf::Text(sf::String(this->words[i]), font, charSize);
 		curr.setOutlineColor(sf::Color::Black);
 		curr.setOutlineThickness(2);
 		curr.setPosition(sf::Vector2f(cursorX, cursorY));
 		window.draw(curr);
 		cursorX = cursorX + curr.getLocalBounds().width;
-		if (cursorX > origin.x + width) {
+		/*if (cursorX > origin.x + width) {
 			cursorY = cursorY + (capital.getLocalBounds().height * 1.5);
 			cursorX = origin.x;
-		}
+		}*/
 	}
 	if (words.length() == 0)
 		done = true;
