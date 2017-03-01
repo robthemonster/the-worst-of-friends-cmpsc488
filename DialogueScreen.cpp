@@ -82,6 +82,15 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 
 	sf::Clock enterSymbolClock;
 	sf::Clock dialogueClock;
+
+
+	sf::SoundBuffer buffer;
+	buffer.loadFromFile("music/text.ogg");
+	sf::Sound textSound;
+	textSound.setBuffer(buffer);
+	textSound.setLoop(true);
+	textSound.play();
+
 	while (window.isOpen()) {
 		sf::Event evnt;
 		while (window.pollEvent(evnt)) {
@@ -129,7 +138,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 
 		if (it != this->dialogue.end()) {
 			if ((*it).isDone()) {
-				
+				textSound.stop();
 				if (increasing) {
 					
 					 enterSymbolOpacity = (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds()/* % 1000*/) / 1000.0));
@@ -151,6 +160,9 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 				
 				enterSymbolRect.setFillColor(sf::Color(255, 255, 255,enterSymbolOpacity));
 				window.draw(enterSymbolRect);
+			}
+			else {
+				textSound.play();
 			}
 		
 				(*it).drawWords(font, charSize, textOrigin, width, window, charDelay, dialogueClock.getElapsedTime().asMilliseconds());
