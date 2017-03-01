@@ -12,9 +12,10 @@ namespace GUI_Test2
 {
     public partial class EditHubForm : Form
     {
-        public EditHubForm()
+        public EditHubForm(String name)
         {
             InitializeComponent();
+            this.Text = "Edit Hub: " + name;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
