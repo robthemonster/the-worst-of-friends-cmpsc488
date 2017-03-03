@@ -40,6 +40,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.charactersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.attributesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +53,7 @@
             this.hubLabel = new System.Windows.Forms.Label();
             this.pathGroupLabel = new System.Windows.Forms.Label();
             this.pathLabel = new System.Windows.Forms.Label();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.attributesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -90,46 +90,46 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New...";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeWindow);
             // 
             // editToolStripMenuItem
             // 
@@ -143,9 +143,15 @@
             // charactersToolStripMenuItem
             // 
             this.charactersToolStripMenuItem.Name = "charactersToolStripMenuItem";
-            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.charactersToolStripMenuItem.Text = "Characters";
             this.charactersToolStripMenuItem.Click += new System.EventHandler(this.charactersToolStripMenuItem_Click);
+            // 
+            // attributesToolStripMenuItem
+            // 
+            this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
+            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.attributesToolStripMenuItem.Text = "Attributes";
             // 
             // createToolStripMenuItem
             // 
@@ -160,21 +166,21 @@
             // hubToolStripMenuItem
             // 
             this.hubToolStripMenuItem.Name = "hubToolStripMenuItem";
-            this.hubToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hubToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.hubToolStripMenuItem.Text = "Hub";
             this.hubToolStripMenuItem.Click += new System.EventHandler(this.hubToolStripMenuItem_Click);
             // 
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.pathToolStripMenuItem.Text = "Path";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
             // pathGroupToolStripMenuItem
             // 
             this.pathGroupToolStripMenuItem.Name = "pathGroupToolStripMenuItem";
-            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.pathGroupToolStripMenuItem.Text = "PathGroup";
             this.pathGroupToolStripMenuItem.Click += new System.EventHandler(this.pathGroupToolStripMenuItem_Click);
             // 
@@ -197,7 +203,7 @@
             this.tableLayoutPanel1.Controls.Add(this.hubLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathLabel, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.updateButton, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.closeButton, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -259,21 +265,17 @@
             this.pathLabel.TabIndex = 3;
             this.pathLabel.Text = "Paths";
             // 
-            // updateButton
+            // closeButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(453, 36);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(74, 35);
-            this.updateButton.TabIndex = 6;
-            this.updateButton.Text = "Update";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateListBoxes);
-            // 
-            // attributesToolStripMenuItem
-            // 
-            this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
-            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.attributesToolStripMenuItem.Text = "Attributes";
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.Location = new System.Drawing.Point(785, 349);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(74, 35);
+            this.closeButton.TabIndex = 6;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeWindow);
             // 
             // ProjectHomeForm
             // 
@@ -324,7 +326,7 @@
         private System.Windows.Forms.Label hubLabel;
         private System.Windows.Forms.Label pathGroupLabel;
         private System.Windows.Forms.Label pathLabel;
-        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.ToolStripMenuItem attributesToolStripMenuItem;
     }
 }

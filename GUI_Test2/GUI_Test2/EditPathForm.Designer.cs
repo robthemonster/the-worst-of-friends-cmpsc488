@@ -48,16 +48,22 @@
             this.ShiftDialogueUpButton = new System.Windows.Forms.Button();
             this.selectDefaultPathImageButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.Buttons = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.pathLabelT2 = new System.Windows.Forms.Label();
-            this.pathListBoxTab2 = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.editCreateImpactButton = new System.Windows.Forms.Button();
+            this.deleteImpactButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.attributeAlterValueTextBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.attributeComboBox = new System.Windows.Forms.ComboBox();
+            this.opComboBox = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.pathListBoxTab2 = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.impactAttributeListBox = new System.Windows.Forms.ListBox();
+            this.Buttons = new System.Windows.Forms.TabPage();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).BeginInit();
@@ -278,12 +284,16 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.closeButton);
+            this.tabPage2.Controls.Add(this.editCreateImpactButton);
+            this.tabPage2.Controls.Add(this.deleteImpactButton);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.attributeAlterValueTextBox1);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.attributeComboBox);
+            this.tabPage2.Controls.Add(this.opComboBox);
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -293,82 +303,50 @@
             this.tabPage2.Text = "Impacts";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // Buttons
+            // closeButton
             // 
-            this.Buttons.Location = new System.Drawing.Point(4, 22);
-            this.Buttons.Name = "Buttons";
-            this.Buttons.Padding = new System.Windows.Forms.Padding(3);
-            this.Buttons.Size = new System.Drawing.Size(655, 372);
-            this.Buttons.TabIndex = 2;
-            this.Buttons.Text = "Buttons";
-            this.Buttons.UseVisualStyleBackColor = true;
+            this.closeButton.Location = new System.Drawing.Point(543, 306);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 10;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // tableLayoutPanel3
+            // editCreateImpactButton
             // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.pathLabelT2, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.pathListBoxTab2, 0, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 15);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.928572F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.07143F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(113, 336);
-            this.tableLayoutPanel3.TabIndex = 0;
+            this.editCreateImpactButton.Location = new System.Drawing.Point(381, 306);
+            this.editCreateImpactButton.Name = "editCreateImpactButton";
+            this.editCreateImpactButton.Size = new System.Drawing.Size(75, 23);
+            this.editCreateImpactButton.TabIndex = 9;
+            this.editCreateImpactButton.Text = "Edit/Create Impact";
+            this.editCreateImpactButton.UseVisualStyleBackColor = true;
             // 
-            // pathLabelT2
+            // deleteImpactButton
             // 
-            this.pathLabelT2.AutoSize = true;
-            this.pathLabelT2.Location = new System.Drawing.Point(3, 0);
-            this.pathLabelT2.Name = "pathLabelT2";
-            this.pathLabelT2.Size = new System.Drawing.Size(34, 13);
-            this.pathLabelT2.TabIndex = 0;
-            this.pathLabelT2.Text = "Paths";
+            this.deleteImpactButton.Location = new System.Drawing.Point(462, 306);
+            this.deleteImpactButton.Name = "deleteImpactButton";
+            this.deleteImpactButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteImpactButton.TabIndex = 8;
+            this.deleteImpactButton.Text = "Delete Impact";
+            this.deleteImpactButton.UseVisualStyleBackColor = true;
             // 
-            // pathListBoxTab2
+            // label7
             // 
-            this.pathListBoxTab2.FormattingEnabled = true;
-            this.pathListBoxTab2.Location = new System.Drawing.Point(3, 33);
-            this.pathListBoxTab2.Name = "pathListBoxTab2";
-            this.pathListBoxTab2.Size = new System.Drawing.Size(107, 290);
-            this.pathListBoxTab2.TabIndex = 1;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(229, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Add an Impact";
             // 
-            // comboBox1
+            // attributeAlterValueTextBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(381, 146);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(53, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.Text = "Op";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(212, 146);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(135, 21);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.Text = "Select an Attribute";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(236, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Attribute";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(378, 73);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Operator";
+            this.attributeAlterValueTextBox1.Location = new System.Drawing.Point(469, 147);
+            this.attributeAlterValueTextBox1.MaxLength = 10;
+            this.attributeAlterValueTextBox1.Name = "attributeAlterValueTextBox1";
+            this.attributeAlterValueTextBox1.Size = new System.Drawing.Size(94, 20);
+            this.attributeAlterValueTextBox1.TabIndex = 6;
             // 
             // label5
             // 
@@ -379,13 +357,102 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Value";
             // 
-            // textBox1
+            // label4
             // 
-            this.textBox1.Location = new System.Drawing.Point(469, 147);
-            this.textBox1.MaxLength = 10;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(94, 20);
-            this.textBox1.TabIndex = 6;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(378, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Operator";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(236, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Attribute";
+            // 
+            // attributeComboBox
+            // 
+            this.attributeComboBox.FormattingEnabled = true;
+            this.attributeComboBox.Location = new System.Drawing.Point(212, 146);
+            this.attributeComboBox.Name = "attributeComboBox";
+            this.attributeComboBox.Size = new System.Drawing.Size(135, 21);
+            this.attributeComboBox.TabIndex = 2;
+            this.attributeComboBox.Text = "Select an Attribute";
+            // 
+            // opComboBox
+            // 
+            this.opComboBox.FormattingEnabled = true;
+            this.opComboBox.Location = new System.Drawing.Point(381, 146);
+            this.opComboBox.Name = "opComboBox";
+            this.opComboBox.Size = new System.Drawing.Size(53, 21);
+            this.opComboBox.TabIndex = 1;
+            this.opComboBox.Text = "Op";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tableLayoutPanel3.Controls.Add(this.pathListBoxTab2, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.impactAttributeListBox, 1, 1);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 21);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.79762F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 313F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(195, 336);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // pathListBoxTab2
+            // 
+            this.pathListBoxTab2.FormattingEnabled = true;
+            this.pathListBoxTab2.Location = new System.Drawing.Point(3, 26);
+            this.pathListBoxTab2.Name = "pathListBoxTab2";
+            this.pathListBoxTab2.Size = new System.Drawing.Size(92, 303);
+            this.pathListBoxTab2.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Paths";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(101, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Path Impacts";
+            // 
+            // impactAttributeListBox
+            // 
+            this.impactAttributeListBox.FormattingEnabled = true;
+            this.impactAttributeListBox.Location = new System.Drawing.Point(101, 26);
+            this.impactAttributeListBox.Name = "impactAttributeListBox";
+            this.impactAttributeListBox.Size = new System.Drawing.Size(91, 303);
+            this.impactAttributeListBox.TabIndex = 4;
+            // 
+            // Buttons
+            // 
+            this.Buttons.Location = new System.Drawing.Point(4, 22);
+            this.Buttons.Name = "Buttons";
+            this.Buttons.Padding = new System.Windows.Forms.Padding(3);
+            this.Buttons.Size = new System.Drawing.Size(655, 372);
+            this.Buttons.TabIndex = 2;
+            this.Buttons.Text = "Buttons";
+            this.Buttons.UseVisualStyleBackColor = true;
             // 
             // EditPathForm
             // 
@@ -438,13 +505,19 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label pathLabelT2;
         private System.Windows.Forms.ListBox pathListBoxTab2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox attributeAlterValueTextBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox attributeComboBox;
+        private System.Windows.Forms.ComboBox opComboBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox impactAttributeListBox;
+        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Button editCreateImpactButton;
+        private System.Windows.Forms.Button deleteImpactButton;
     }
 }

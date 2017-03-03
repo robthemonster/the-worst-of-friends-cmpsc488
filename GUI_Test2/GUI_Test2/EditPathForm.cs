@@ -18,6 +18,7 @@ namespace GUI_Test2
         private String name;
         private String[] ops;
         
+        
 
         public EditPathForm( ProjectHomeForm par, String n)
         {
@@ -47,7 +48,7 @@ namespace GUI_Test2
 
         private void EditPath_Load(object sender, EventArgs e)
         {
-
+            opComboBox.DataSource = this.ops;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -86,17 +87,8 @@ namespace GUI_Test2
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
         
         
-
-        private void selectedDialogueText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void dialogueList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -200,8 +192,27 @@ namespace GUI_Test2
             pathListBoxTab2.DataSource = null;
             pathListBoxTab2.DataSource = dialogueNameList;
             pathListBoxTab2.SelectedIndex = -1;
-        }
 
+            attributeComboBox.DataSource = null;
+            attributeComboBox.DataSource = parentForm.attributes.names;
+            attributeComboBox.SelectedIndex = -1;
+
+
+
+
+
+        }
+        private void EditCreateImpact(object sender, EventArgs e) {
+            if (attributeComboBox.SelectedIndex != -1 &&
+                opComboBox.SelectedIndex != -1 &&
+                attributeAlterValueTextBox1.Text != "")
+            {
+                string name = (string)attributeComboBox.SelectedValue;
+                string op = (string)opComboBox.SelectedValue;
+                string val = attributeAlterValueTextBox1.Text;
+            }
+
+        }
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
@@ -216,6 +227,8 @@ namespace GUI_Test2
             parentForm.updateListBoxes();
             Close();
         }
+           
+        
     }
     
 }

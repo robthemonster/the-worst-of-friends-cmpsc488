@@ -8,22 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace GUI_Test2
 {
     public partial class ProjectHomeForm : Form
     {
 
-        public List<Attrib> attributes;
+        public Attribs attributes;
         //public List<NPC> characters;
         //public Dictionary<String,Path> paths;
         public List<Hub> hubs;
-        public List<PathGroup> pathGroups;
-        public List<P2PG> p2PG;
+        //public List<PathGroup> pathGroups;
+        //public List<P2PG> p2PG;
         public Dictionary<String, Navigable> navIndex;
         public String pathName;
         public String hubName;
         public String pathGroupName;
+        
+
         public ProjectHomeForm()
         {
             
@@ -31,6 +36,10 @@ namespace GUI_Test2
 
             //paths = new Dictionary<string, Path>();
             navIndex = new Dictionary<string, Navigable>();
+            attributes = new Attribs();
+            attributes.names = new List<string> {"Health","Strength","Agility","Charisma","Evil","Unrest"};
+            attributes.scopes = new List<int> { 0,0,0,0,2,2};
+
 
             updateListBoxes();
         }
@@ -104,11 +113,10 @@ namespace GUI_Test2
             EditHubForm editHub = new EditHubForm(hubName);
 
         }
-
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void closeWindow(object sender, EventArgs e) {
             Close();
         }
+        
         private void updateListBoxes(object sender, EventArgs e)
         {
             updateListBoxes();
@@ -133,6 +141,14 @@ namespace GUI_Test2
                 EditPathForm editPath = new EditPathForm(this,(Path)navIndex[sampString]);
                 editPath.ShowDialog();
             }
+        }
+        public void saveToFile()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("MyFile.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, attributes);
+            stream.Close();
+
         }
     }
 }
