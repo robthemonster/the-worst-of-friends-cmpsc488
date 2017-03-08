@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace GUI_Test2
 {
+
+    
     public interface Navigable
     {
     }
-
+    [Serializable]
     public class Path : Navigable {
         public string name;
         public List <String> dialogueNames;
@@ -23,26 +25,33 @@ namespace GUI_Test2
             name = n;
             dialogueNames = names;
             dialogueContents = contents;
+            //List<int, int> appl;
             //buttons = btons;
         }
     }
+
+    [Serializable]
     public class Dialogue {
         public string name;
         public string content;
         public List<Impact> impacts;
     }
+
+    [Serializable]
     public class Impact {
         public string attribute;
         public char sym;
         public string val;
     }
 
+    [Serializable]
     public class Hub : Navigable {
         public string name;
         public List<Button> buttons;
         //img, sound
     }
 
+    [Serializable]
     public class Button {
         //text,X,Y, NavRef ,Picname
         public string text;
@@ -51,12 +60,16 @@ namespace GUI_Test2
         public Navigable next;
         //img,sound
     }
+
+    [Serializable]
     public class PathGroup : Navigable {
         public string name;
         public Navigable nextDefault;
 
         //public Navigable getNext();
     }
+
+    [Serializable]
     public class P2PG{
         public Path path;
         public PathGroup pathGroup;
@@ -64,20 +77,26 @@ namespace GUI_Test2
         public byte weight;
         public PathCondition condition;
     }
+
+    [Serializable]
     public class PathCondition {
         public List<Path> prereqs;
         public List<Comparison> comparison;
     }
+
+    [Serializable]
     public class Comparison {
         public string stat;
         public string suffix;
         public dynamic val;
         public string stat2;
     }
-    public class Attrib
+
+    [Serializable]
+    public class Attribs
     {
-        public string name;
-        public int scope;
+        public List<string> names;
+        public List<int> scopes;
     }
 
 }
