@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_Test2", "GUI_Test2\GUI_Test2.csproj", "{BB56DA13-A9BF-4C7F-8228-91B9815A829E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A10ED29B-74C5-4AF7-9D3B-C56DBD900682}"
+	ProjectSection(SolutionItems) = preProject
+		Fix this shit.txt = Fix this shit.txt
+		GUI_Test2\ProjectHomeForm.cs = GUI_Test2\ProjectHomeForm.cs
+		GUI_Test2\ProjectHomeForm.Designer.cs = GUI_Test2\ProjectHomeForm.Designer.cs
+		GUI_Test2\ProjectHomeForm.resx = GUI_Test2\ProjectHomeForm.resx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -12,9 +12,13 @@ namespace GUI_Test2
 {
     public partial class CreatePathForm : Form
     {
-        public CreatePathForm()
+        private ProjectHomeForm parent;
+        public CreatePathForm(object sender)
         {
             InitializeComponent();
+            parent = (ProjectHomeForm)sender;
+            this.AcceptButton = OKButton;
+
         }
 
         private void CreatePath_Load(object sender, EventArgs e)
@@ -24,18 +28,23 @@ namespace GUI_Test2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (pathNameTextBox.Text == "") {
 
+                MessageBox.Show("You Must Enter A Name For The Path.");
+            }
+            else
+            {
+                parent.pathName = pathNameTextBox.Text;
+              
+                Close();
+            }
 
-            EditPathForm editHub = new EditPathForm();
-            Close();
-            editHub.ShowDialog();
-
-            
         }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void pathNameTextBox_TextChanged(object sender, EventArgs e)

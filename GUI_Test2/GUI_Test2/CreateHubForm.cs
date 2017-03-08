@@ -12,16 +12,34 @@ namespace GUI_Test2
 {
     public partial class CreateHubForm : Form
     {
-        public CreateHubForm()
+        public ProjectHomeForm parent;
+        public CreateHubForm(ProjectHomeForm sender)
         {
             InitializeComponent();
+            this.AcceptButton = OKButton;
+            parent = sender;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            EditHubForm editHub = new EditHubForm();
+            if (hubNameTextBox.Text == "") {
+                MessageBox.Show("You Must Enter A Name For The Hub");
+            }
+            else
+            {
+                parent.hubName = hubNameTextBox.Text;
+                Close();
+            }
+        }
+
+        private void hubNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
             Close();
-            editHub.ShowDialog();
         }
     }
 }
