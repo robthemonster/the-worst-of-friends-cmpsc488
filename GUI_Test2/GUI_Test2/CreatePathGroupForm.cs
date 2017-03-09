@@ -58,7 +58,7 @@ namespace GUI_Test2
                     }
                     else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
                     {
-                        MessageBox.Show("Path Name Already Exists.");
+                        MessageBox.Show("Name Already Exists.");
                     }
                     else
                     {
@@ -76,7 +76,7 @@ namespace GUI_Test2
                     }
                     else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
                     {
-                        MessageBox.Show("PathGroup Name Already Exists.");
+                        MessageBox.Show("Name Already Exists.");
                     }
                     else
                     {
@@ -94,7 +94,7 @@ namespace GUI_Test2
                     }
                     else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
                     {
-                        MessageBox.Show("Hub Name Already Exists.");
+                        MessageBox.Show("Name Already Exists.");
                     }
                     else
                     {
