@@ -17,15 +17,17 @@ namespace GUI_Test2
         public string name;
         public List <String> dialogueNames;
         public List<String> dialogueContents;
+        public List<Button> buttons;
         //public List<Button> buttons;
 
         public Path() {
         }
-        public Path(String n, List<String> names, List<String> contents) {
+        public Path(String n, List<String> names, List<String> contents,List<Button> btns) {
             name = n;
             dialogueNames = names;
             dialogueContents = contents;
             //List<int, int> appl;
+            buttons = btns;
             //buttons = btons;
         }
     }
