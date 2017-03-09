@@ -45,3 +45,19 @@ C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Tes
 C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.ProjectHomeForm.resources
 C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.Properties.Resources.resources
 C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe.config
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.exe
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.pdb
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.pdb
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreateHubForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathGroupForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditCharactersForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditHubForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathGroupForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.ProjectHomeForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.Properties.Resources.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csproj.GenerateResource.Cache

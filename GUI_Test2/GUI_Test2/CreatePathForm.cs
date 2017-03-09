@@ -34,7 +34,7 @@ namespace GUI_Test2
             }
             else
             {
-                parent.pathName = pathNameTextBox.Text;
+                parent.navigableName = pathNameTextBox.Text;
               
                 Close();
             }
