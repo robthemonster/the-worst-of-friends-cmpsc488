@@ -14,6 +14,7 @@ namespace GUI_Test2
     {
         private List<String> dialogueNameList;
         private List <String> dialogueEntryList;
+        private List <Button> buttonList;
         private ProjectHomeForm parentForm;
         private String name;
         private String[] ops;
@@ -26,11 +27,8 @@ namespace GUI_Test2
             parentForm = par;
             name = n;
             this.Text = "Edit Path: "+name;
-            this.AcceptButton = createNewDialogueButton;
             dialogueEntryList = new List<String>();
             dialogueNameList = new List<String>();
-            ops = new String[] { "+", "-", "/", "*", "=" };
-            updateListBoxes();
         }
         public EditPathForm(ProjectHomeForm par, Path p)
         {
@@ -38,17 +36,20 @@ namespace GUI_Test2
             parentForm = par;
             name = p.name;
             this.Text = "Edit Path: " + name;
-            this.AcceptButton = createNewDialogueButton;
             dialogueEntryList = p.dialogueContents;
             dialogueNameList = p.dialogueNames;
-            updateListBoxes();
 
         }
             
 
         private void EditPath_Load(object sender, EventArgs e)
         {
+            this.AcceptButton = createNewDialogueButton;
+            ops = new String[] { "+", "-", "/", "*", "=" };
             opComboBox.DataSource = this.ops;
+
+
+            updateListBoxes();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -221,14 +222,120 @@ namespace GUI_Test2
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (parentForm.navIndex.ContainsKey(name))
-                parentForm.navIndex[name] = new Path(name, dialogueNameList, dialogueEntryList);
+                parentForm.navIndex[name] = new Path(name, dialogueNameList, dialogueEntryList, buttonList);
             else
-                parentForm.navIndex.Add(name, new Path(name, dialogueNameList, dialogueEntryList));
+                parentForm.navIndex.Add(name, new Path(name, dialogueNameList, dialogueEntryList, buttonList));
             parentForm.updateListBoxes();
             Close();
         }
-           
         
+        private void useButtonLocationDefaults_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useButtonLocationDefaults.Checked)
+            {
+                label9.Enabled = true;
+                label10.Enabled = true;
+                label11.Enabled = true;
+                buttonXLocTextBox.Enabled = true;
+                buttonYLocTextBox.Enabled = true;
+            }
+            else
+            {
+                label9.Enabled = false;
+                label10.Enabled = false;
+                label11.Enabled = false;
+                buttonXLocTextBox.Enabled = false;
+                buttonYLocTextBox.Enabled = false;
+            }
+        }
+
+        private void useButtonSizeDefaults_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useButtonSizeDefaults.Checked) {
+                label12.Enabled = false;
+                label13.Enabled = false;
+                label14.Enabled = false;
+                buttonHeightTextBox.Enabled = false;
+                buttonWidthTextBox.Enabled = false;
+            }
+            else
+            {
+                label12.Enabled = true;
+                label13.Enabled = true;
+                label14.Enabled = true;
+                buttonHeightTextBox.Enabled = true;
+                buttonWidthTextBox.Enabled = true;
+
+            }
+        }
+
+        private void Buttons_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonListUpButton_Click(object sender, EventArgs e)
+        {
+
+            int index = buttonListBox.SelectedIndex;
+            if (index != -1 && index != 0)
+            {
+                swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex - 1);
+                updateListBoxes();
+                buttonListBox.SelectedIndex = index - 1;
+
+            }
+        }
+
+        private void buttonListDownButton_Click(object sender, EventArgs e)
+        {
+
+            int index = buttonListBox.SelectedIndex;
+            if (index != -1 && index < dialogueNameList.Count - 1)
+            {
+                swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex + 1);
+                updateListBoxes();
+                buttonListBox.SelectedIndex = index + 1;
+
+            }
+        }
+
+        private void deleteButtonButton_Click(object sender, EventArgs e)
+        {
+
+            int index = buttonListBox.SelectedIndex;
+            try
+            {
+                buttonList.RemoveAt(index);
+                if (index == buttonList.Count)
+                    index = index - 1;
+
+                buttonListBox.SelectedIndex = index;
+
+            }
+            catch { }
+        }
+
+        private void isHubSpecific_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isHubSpecific.Checked)
+                hubImpactList.Enabled = true;
+            else
+                hubImpactList.Enabled = false;
+        }
+
+        private void useButtonImage_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useButtonImage.Checked)
+            {
+                buttonPictureBox.Enabled = true;
+                setButtonImageButton.Enabled = true;
+            }
+            else{
+                buttonPictureBox.Enabled = false;
+                setButtonImageButton.Enabled = false;
+            }
+        }
     }
     
 }
