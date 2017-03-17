@@ -4,6 +4,7 @@ class DialogueLine;
 class FButton;
 class DialogueScreen;
 class ButtonScreen;
+class Interface;
 class Path : public Navigable 
 {
 private:
@@ -13,6 +14,10 @@ private:
 	sf::Vector2f buttonSize;
 	sf::Font font;
 	sf::Vector2f dialoguePanePosition;
+	std::string musicFile = "";
+	bool hasMusic = false;
+	sf::Music * music = NULL;
+	Interface * interfacePointer;
 public:
 	void display(sf::RenderWindow & window, sf::View & view);
 	void setImageTexture(sf::Texture &);
@@ -23,7 +28,9 @@ public:
 	void addButton(std::string buttonText, Navigable * target, sf::Vector2f position, sf::Texture * buttonTexture = NULL);
 	void setPrompt(std::string prompt);
 	void setFont(sf::Font font);
-	Path();
+	void setMusic(sf::Music & music, std::string fileName);
+	void setInterfacePointer(Interface * interfacePointer);
+	Path(Interface * interfacePointer);
 	~Path();
 };
 

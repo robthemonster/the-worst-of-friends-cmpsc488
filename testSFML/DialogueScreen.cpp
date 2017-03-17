@@ -3,9 +3,11 @@
 #include "DialogueLine.h"
 #include <iostream>
 #include "ButtonScreen.h"
+#include "Interface.h"
 
 #include "DialogueScreen.h"
-DialogueScreen::DialogueScreen() {
+DialogueScreen::DialogueScreen(Interface * interfacePointer) {
+	this->interfacePointer = interfacePointer;
 };
 void DialogueScreen::setImageTexture(sf::Texture & texture) {
 	imageRect.setTexture(&texture);
@@ -80,7 +82,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 			case sf::Event::Closed:
 				window.close();
 			case sf::Event::KeyPressed:
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !(*this->interfacePointer).getPaused()) {
 					//enter pressed
 					if (it != this->dialogue.end()) {// if this is the not the last dialogue line
 						if ((*it).isDone()) { // if the current line is finished printing
@@ -98,9 +100,26 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 						}
 					}
 				}
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+					(*this->interfacePointer).setPaused(!(*this->interfacePointer).getPaused());
+				}
 				break;
 			case sf::Event::Resized:
 				resizeView(window, view);
+				break;
+			case sf::Event::MouseButtonReleased:
+				switch (evnt.mouseButton.button) {
+				case sf::Mouse::Left:
+					if ((*this->interfacePointer).getPaused()) {
+						if ((*this->interfacePointer).continueHighlighted()) {
+							(*this->interfacePointer).setPaused(false);
+						}
+						if ((*this->interfacePointer).quitHighlighted()) {
+							window.close();
+						}
+					}
+					break;
+				}
 				break;
 			}
 		}
@@ -152,6 +171,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 			(*it).drawWords(font, charSize, textOrigin, width, window, charDelay, dialogueClock.getElapsedTime().asMilliseconds());
 
 		}
+		(*this->interfacePointer).drawPauseMenu(window, view);
 		window.display();
 
 	}

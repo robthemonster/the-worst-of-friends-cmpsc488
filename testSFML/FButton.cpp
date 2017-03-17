@@ -5,6 +5,8 @@
 
 
 void FButton::draw(sf::RenderWindow& window, sf::View& view) {
+	setHighlighted(this->mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))));
+
 		window.draw(this->buttonRect);
 		window.draw(this->buttonText);
 		window.draw(this->highlightRect);
@@ -69,7 +71,7 @@ FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &positio
 	this->highlightRect.setPosition(position);
 	this->highlightRect.setFillColor(sf::Color::Transparent);
 
-	this->buttonText = buttonText;		
+	this->buttonText = sf::Text(buttonText);		
 	this->buttonText.setOutlineThickness(3);
 	this->buttonText.setOutlineColor(sf::Color::Black);
 	

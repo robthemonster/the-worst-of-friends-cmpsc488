@@ -3,22 +3,13 @@
 #include <iterator>
 #include "FButton.h"
 #include "DialogueScreen.h"
+#include "Interface.h"
 #include "ButtonScreen.h"
 
-ButtonScreen::ButtonScreen(sf::Texture & imageTexture, sf::Texture &dialoguePaneTexture, sf::Vector2f dialoguePanePos, sf::Text prompt)
-{
-	
-	this->imageRect.setTexture(&imageTexture);
-	this->dialoguePane.setTexture(&dialoguePaneTexture);
-	this->dialoguePane.setPosition(dialoguePanePos);
-	this->dialoguePane.setSize(sf::Vector2f(dialoguePaneTexture.getSize().x, dialoguePaneTexture.getSize().y));
-	this->promptText = prompt;
-	this->promptText.setOrigin(sf::Vector2f(prompt.getLocalBounds().width/ 2, 10));
-	this->promptText.setPosition(dialoguePanePos.x + (this->dialoguePane.getSize().x/2) , dialoguePanePos.y + 10);
-}
 
-ButtonScreen::ButtonScreen() {
 
+ButtonScreen::ButtonScreen(Interface * interfacePointer) {
+	this->interfacePointer = interfacePointer;
 }
 
 void ButtonScreen::setImageTexture(sf::Texture & texture) {
@@ -76,33 +67,36 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 		sf::Event evnt;
 		while (window.pollEvent(evnt)) {
 			switch (evnt.type) {
-				case sf::Event::MouseMoved :
-					it = this->buttons.begin();
-					while (it != this->buttons.end()) {
-						if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && !(**it).isHighlighted()) {
-							std::cout << "Highlighted button" << std::endl;
-							(**it).setHighlighted(true);
-						}
-						else if (!(**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && (**it).isHighlighted()) {
-							std::cout << "Unhighlighted button" << std::endl;
-							(**it).setHighlighted(false);
-						}
-						it++;
-					}
-				break;
 				case sf::Event::MouseButtonReleased:
 					switch (evnt.mouseButton.button) {
 					case sf::Mouse::Left: //left mouse released.
-						it = this->buttons.begin();
-						while (it != this->buttons.end()) {
-							if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
-								(**it).setHighlighted(false);
-								(*(**it).getTarget()).display(window, view);
-								return;
+						if (!(*this->interfacePointer).getPaused()) {
+							it = this->buttons.begin();
+							while (it != this->buttons.end()) {
+								if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
+									(**it).setHighlighted(false);
+									(*(**it).getTarget()).display(window, view);
+									return;
 
+								}
+								it++;
 							}
-							it++;
 						}
+						else {
+							if ((*this->interfacePointer).continueHighlighted()) {
+								(*this->interfacePointer).setPaused(false);
+							}
+							if ((*this->interfacePointer).quitHighlighted()) {
+								window.close();
+							}
+						}
+						break;
+					}
+					break;
+				case sf::Event::KeyPressed:
+					switch (evnt.key.code) {
+					case sf::Keyboard::Escape:
+						(*this->interfacePointer).setPaused(!(*this->interfacePointer).getPaused());
 						break;
 					}
 					break;
@@ -128,6 +122,8 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 			(**it).draw(window, view);
 			it++;
 		}
+
+		(*this->interfacePointer).drawPauseMenu(window, view);
 		window.display();
 		
 		

@@ -17,6 +17,7 @@
 #include "Player.h"
 #include "AttributeMap.h"
 #include "Hub.h"
+#include "Interface.h"
 
 static float VIEW_HEIGHT = 1080.0f;
 static float VIEW_WIDTH = 1920.0f;
@@ -193,23 +194,21 @@ int main() {
 	}
 
 
+	Interface i;
+
+	
 
 
-
-	sf::Music song;
-	sf::Texture background, imageTexture1, imageTexture2, imageTexture3, imageTexture4;
+	sf::Music songStream;
 	sf::Texture dialoguePaneTexture;
 
 	font.loadFromFile("fonts/8bit.ttf");
 	dialoguePaneTexture.loadFromFile("img/dialoguePane.png");
-	song.openFromFile("music/lttpRain.ogg");
-	song.setVolume(30);
-	song.setLoop(true);
+	
 
 
 
 
-	background.loadFromFile("img/bg.jpg");
 	std::string imageFiles[] = { "evil.jpg",
 		"giant.jpg",
 		"cold.jpg",
@@ -238,15 +237,18 @@ int main() {
 			std::cout << imageFiles[i] << " failed to load" << std::endl;
 	}
 
-	Hub hub;
-	Path left, right;
+	Hub hub(&i);
+	Path left(&i), right(&i);
 	PathGroup leftPg, rightPg;
-	Path leftSucceed, leftFail;
-	Path rightSucceed, rightFail;
+	Path leftSucceed(&i), leftFail(&i);
+	Path rightSucceed(&i), rightFail(&i);
 	AttributeMap attributeMap;
 	leftPg.setTiers(1);
 	rightPg.setTiers(1);
 	
+	hub.setMusic(songStream, "music/lttpRain.ogg");
+	left.setMusic(songStream, "music/undertale.ogg");
+	right.setMusic(songStream, "music/witcher.ogg");
 
 
 	leftSucceed.setButtonCharSize(40);
@@ -325,10 +327,16 @@ int main() {
 
 
 
-	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize);
+	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize | sf::Style::Fullscreen);
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
 	gameWindow.setView(view);
 	gameWindow.setFramerateLimit(60);
+
+
+
+
+
+
 	game.play(gameWindow, view);
 
 /*	

@@ -7,6 +7,11 @@
 
 void Path::display(sf::RenderWindow & window, sf::View & view)
 {
+	if (this->hasMusic) {
+		(*this->music).openFromFile(this->musicFile);
+		(*this->music).setLoop(true);
+		(*this->music).play();
+	}
 	if (this->dialogueScreen != NULL) {
 		(*this->dialogueScreen).display(window, view);
 	}
@@ -70,21 +75,21 @@ void Path::addDialogueLine(std::string dialogueLine)
 void Path::setButtonSize(sf::Vector2f size) {
 
 	if (this->buttonScreen == NULL)
-		this->buttonScreen = new ButtonScreen;
+		this->buttonScreen = new ButtonScreen(interfacePointer);
 	this->buttonSize = size;
 }
 
 void Path::setButtonCharSize(int size) {
 
 	if (this->buttonScreen == NULL)
-		this->buttonScreen = new ButtonScreen;
+		this->buttonScreen = new ButtonScreen(interfacePointer);
 	this->buttonCharSize = size;
 }
 
 void Path::addButton(std::string buttonText, Navigable * target, sf::Vector2f position, sf::Texture * buttonTexture)
 {
 	if (this->buttonScreen == NULL)
-		this->buttonScreen = new ButtonScreen;
+		this->buttonScreen = new ButtonScreen(interfacePointer);
 	if (this->buttonScreen != NULL) {
 		FButton * button = new FButton(this->buttonSize, target, position, sf::Text(sf::String(buttonText), this->font, this->buttonCharSize), buttonTexture);
 		
@@ -114,10 +119,23 @@ void Path::setFont(sf::Font font)
 	}
 }
 
-Path::Path()
+void Path::setMusic(sf::Music & music, std::string fileName)
 {
+	this->music = &music;
+	this->musicFile = fileName;
+	this->hasMusic = true;
+}
+
+void Path::setInterfacePointer(Interface * interfacePointer)
+{
+	this->interfacePointer = interfacePointer;
+}
+
+Path::Path(Interface * interfacePointer)
+{
+	this->interfacePointer = interfacePointer;
 	this->buttonScreen = NULL;
-	this->dialogueScreen = new DialogueScreen;
+	this->dialogueScreen = new DialogueScreen(this->interfacePointer);
 	(*this->dialogueScreen).setDestination(&this->buttonScreen);
 }
 

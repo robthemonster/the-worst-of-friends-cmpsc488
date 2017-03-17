@@ -3,6 +3,7 @@
 #include "Navigable.h"
 class DialogueLine;
 class ButtonScreen;
+class Interface;
 class DialogueScreen:public Navigable
 {
 private:
@@ -11,6 +12,7 @@ private:
 	sf::Font font;
 	sf::RectangleShape imageRect, dialoguePaneRect;
 	ButtonScreen ** destination;
+	Interface * interfacePointer;
 
 	const float SCREEN_WIDTH = 1920.0;
 	const float SCREEN_HEIGHT = 1080.0;
@@ -26,7 +28,7 @@ public:
 	void addDialogueLine(DialogueLine line);
 	void resizeView(sf::RenderWindow& window, sf::View& view);
 
-	DialogueScreen();
+	DialogueScreen(Interface * interfacePointer);
 	
 	DialogueScreen(const DialogueScreen&);
 	~DialogueScreen();

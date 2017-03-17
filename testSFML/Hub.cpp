@@ -15,12 +15,25 @@ void Hub::setImageTexture(sf::Texture & texture)
 
 void Hub::display(sf::RenderWindow & window, sf::View & view)
 {
+	if (this->hasMusic) {
+		(*this->music).openFromFile(this->musicFile);
+		(*this->music).setLoop(true);
+		(*this->music).play();
+	}
 	(*this->buttonScreen).display(window, view);
 }
 
-Hub::Hub()
+void Hub::setMusic(sf::Music & music, std::string fileName)
 {
-	this->buttonScreen = new ButtonScreen;
+	this->music = &music;
+	this->musicFile = fileName;
+	this->hasMusic = true;
+}
+
+Hub::Hub(Interface * interfacePointer)
+{
+	this->interfacePointer = interfacePointer;
+	this->buttonScreen = new ButtonScreen(interfacePointer);
 }
 
 
