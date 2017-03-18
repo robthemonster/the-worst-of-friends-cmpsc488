@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include "Character.h"
-
+#include "Impact.h"
 
 
 #include "DialogueLine.h"
@@ -39,7 +39,7 @@ void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, i
 	for (int i = 0; (done || i < millisecElapsed / charDelayMs) && i < words.length(); i++) {
 		if (millisecElapsed / charDelayMs >= words.length())
 		{
-			done = true;
+			setDone(true);
 		}
 		if (this->words[i] != ' ') {
 			if (this->words.substr(0, i).find_last_of(' ') == i - 1) { //if this is the first letter of a word
@@ -71,17 +71,33 @@ void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, i
 }
 
 
+
 bool DialogueLine::isDone() {
 	return done;
 }
 void DialogueLine::setDone(bool set) {
+	if (set && !this->done)
+		processImpact();
 	this->done = set;
 	if (textDoneSoundPlayed && !set) //text-done sound played, but dialogue is being reset, so reset text-done sound played flag
 		textDoneSoundPlayed = set;
+	
 		
 }
 bool DialogueLine::hasCharacter() {
 	return this->character != NULL;
+}
+
+void DialogueLine::setImpact(Impact * impact)
+{
+	this->impact = impact;
+}
+
+void DialogueLine::processImpact()
+{
+	if (this->impact != NULL) {
+		(*this->impact).processImpact();
+	}
 }
 
 DialogueLine::~DialogueLine()

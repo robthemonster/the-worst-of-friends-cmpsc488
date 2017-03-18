@@ -4,6 +4,7 @@
 class DialogueLine;
 class ButtonScreen;
 class Interface;
+class Game;
 class DialogueScreen:public Navigable
 {
 private:
@@ -12,7 +13,7 @@ private:
 	sf::Font font;
 	sf::RectangleShape imageRect, dialoguePaneRect;
 	ButtonScreen ** destination;
-	Interface * interfacePointer;
+	Game * game;
 
 	const float SCREEN_WIDTH = 1920.0;
 	const float SCREEN_HEIGHT = 1080.0;
@@ -28,7 +29,7 @@ public:
 	void addDialogueLine(DialogueLine line);
 	void resizeView(sf::RenderWindow& window, sf::View& view);
 
-	DialogueScreen(Interface * interfacePointer);
+	DialogueScreen(Game * game);
 	
 	DialogueScreen(const DialogueScreen&);
 	~DialogueScreen();

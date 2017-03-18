@@ -1,9 +1,13 @@
 #include <iostream>
-#include "Path.h"
 #include "ButtonScreen.h"
 #include "DialogueScreen.h"
 #include "DialogueLine.h"
 #include "FButton.h"
+#include "Interface.h"
+#include "Impact.h"
+#include "Game.h"
+
+#include "Path.h"
 
 void Path::display(sf::RenderWindow & window, sf::View & view)
 {
@@ -12,6 +16,8 @@ void Path::display(sf::RenderWindow & window, sf::View & view)
 		(*this->music).setLoop(true);
 		(*this->music).play();
 	}
+	
+
 	if (this->dialogueScreen != NULL) {
 		(*this->dialogueScreen).display(window, view);
 	}
@@ -72,24 +78,36 @@ void Path::addDialogueLine(std::string dialogueLine)
 	}
 }
 
+void Path::addDialogueLine(std::string dialogueLine, Attributable ** target, std::string key, int op, int val)
+{
+	if (this->dialogueScreen != NULL) {
+		DialogueLine line(dialogueLine);
+		line.setImpact(new Impact((*this->game).getAttributeMapPointer(), target, key, op, val));
+		(*this->dialogueScreen).addDialogueLine(line);
+	}
+	else {
+		std::cout << "Path has no dialogue screen! Cannot add dialogue" << std::endl;
+	}
+}
+
 void Path::setButtonSize(sf::Vector2f size) {
 
 	if (this->buttonScreen == NULL)
-		this->buttonScreen = new ButtonScreen(interfacePointer);
+		this->buttonScreen = new ButtonScreen(this->game);
 	this->buttonSize = size;
 }
 
 void Path::setButtonCharSize(int size) {
 
 	if (this->buttonScreen == NULL)
-		this->buttonScreen = new ButtonScreen(interfacePointer);
+		this->buttonScreen = new ButtonScreen(this->game);
 	this->buttonCharSize = size;
 }
 
 void Path::addButton(std::string buttonText, Navigable * target, sf::Vector2f position, sf::Texture * buttonTexture)
 {
 	if (this->buttonScreen == NULL)
-		this->buttonScreen = new ButtonScreen(interfacePointer);
+		this->buttonScreen = new ButtonScreen(this->game);
 	if (this->buttonScreen != NULL) {
 		FButton * button = new FButton(this->buttonSize, target, position, sf::Text(sf::String(buttonText), this->font, this->buttonCharSize), buttonTexture);
 		
@@ -126,16 +144,13 @@ void Path::setMusic(sf::Music & music, std::string fileName)
 	this->hasMusic = true;
 }
 
-void Path::setInterfacePointer(Interface * interfacePointer)
-{
-	this->interfacePointer = interfacePointer;
-}
 
-Path::Path(Interface * interfacePointer)
+
+Path::Path(Game * game)
 {
-	this->interfacePointer = interfacePointer;
+	this->game = game;
 	this->buttonScreen = NULL;
-	this->dialogueScreen = new DialogueScreen(this->interfacePointer);
+	this->dialogueScreen = new DialogueScreen(this->game);
 	(*this->dialogueScreen).setDestination(&this->buttonScreen);
 }
 

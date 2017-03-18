@@ -10,14 +10,16 @@ class Interface
 	AttributeMap * attributeMap;
 	sf::RectangleShape pauseMenuRect;
 	bool paused = false;
+	std::vector<std::string> visiblePlayerAttributes;
 public:
 	bool getPaused();
 	void setPaused(bool paused);
 	bool quitHighlighted();
 	bool continueHighlighted();
+	void addVisiblePlayerAttribute(std::string key);
 	void drawPauseMenu(sf::RenderWindow & window, sf::View & view);
 	void drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player);
-	Interface();
+	Interface(AttributeMap * attributeMap);
 	~Interface();
 };
 

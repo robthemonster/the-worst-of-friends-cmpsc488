@@ -30,10 +30,10 @@ void Hub::setMusic(sf::Music & music, std::string fileName)
 	this->hasMusic = true;
 }
 
-Hub::Hub(Interface * interfacePointer)
+Hub::Hub(Game * game)
 {
-	this->interfacePointer = interfacePointer;
-	this->buttonScreen = new ButtonScreen(interfacePointer);
+	this->game = game;
+	this->buttonScreen = new ButtonScreen(game);
 }
 
 

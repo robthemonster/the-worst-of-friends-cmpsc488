@@ -18,6 +18,7 @@
 #include "AttributeMap.h"
 #include "Hub.h"
 #include "Interface.h"
+#include "Impact.h"
 
 static float VIEW_HEIGHT = 1080.0f;
 static float VIEW_WIDTH = 1920.0f;
@@ -194,7 +195,7 @@ int main() {
 	}
 
 
-	Interface i;
+	
 
 	
 
@@ -237,14 +238,26 @@ int main() {
 			std::cout << imageFiles[i] << " failed to load" << std::endl;
 	}
 
-	Hub hub(&i);
-	Path left(&i), right(&i);
+
+	Game game(2, NULL);
+
+
+	Hub hub(&game);
+	Path left(&game), right(&game);
 	PathGroup leftPg, rightPg;
-	Path leftSucceed(&i), leftFail(&i);
-	Path rightSucceed(&i), rightFail(&i);
-	AttributeMap attributeMap;
-	leftPg.setTiers(1);
-	rightPg.setTiers(1);
+	Path leftSucceed(&game), leftFail(&game);
+	Path rightSucceed(&game), rightFail(&game);
+	
+	game.addPlayerAttribute("strength", 5);
+	game.addPlayerAttribute("wisdom", 5);
+	game.addVisiblePlayerAttribute("pnum");
+	game.addVisiblePlayerAttribute("strength");
+	game.addVisiblePlayerAttribute("wisdom");
+	game.setStart(&hub);
+
+
+	leftPg.setTiers(2);
+	rightPg.setTiers(2);
 	
 	hub.setMusic(songStream, "music/lttpRain.ogg");
 	left.setMusic(songStream, "music/undertale.ogg");
@@ -273,26 +286,30 @@ int main() {
 
 	left.setButtonCharSize(40);
 	left.setFont(font);
-	left.addDialogueLine("hi welcome to the  left place u went to");
+	left.addDialogueLine("hi welcome to the  left place u went to, u need 10 wisdom to succeed");
 	left.addButton("attack", &leftPg, button1Pos);
 
 	right.setButtonCharSize(40);
 	right.setFont(font);
-	right.addDialogueLine("hi welcome to the right place u went to");
+	right.addDialogueLine("hi welcome to the right place u went to, u need 10 strength to succeed");
 	right.addButton("run away!!", &rightPg, button2Pos);
 
-	Requirements noReq(attributeMap);
-	leftPg.addPath(0, &leftSucceed, 1, &noReq);
+	Requirements noReq(*game.getAttributeMapPointer()), tenStrength(*game.getAttributeMapPointer()), tenWisdom(*game.getAttributeMapPointer());
+	tenStrength.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "strength", Requirements::GEQ, 10);
+	tenWisdom.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "wisdom", Requirements::GEQ, 10);
+
+
+	leftPg.addPath(1, &leftSucceed, 1, &tenWisdom);
 	leftPg.addPath(0, &leftFail, 1, &noReq);
 
-	rightPg.addPath(0, &rightSucceed, 1,&noReq);
+	rightPg.addPath(1, &rightSucceed, 1,&tenStrength);
 	rightPg.addPath(0, &rightFail, 1, &noReq);
 	
 
 	leftSucceed.addDialogueLine("u went left and succeeded!");
 	rightSucceed.addDialogueLine("u went right and succeeded!");
-	leftFail.addDialogueLine("u went left and failed :(");
-	rightFail.addDialogueLine("u went right and failed :(");
+	leftFail.addDialogueLine("u went left and failed :( u got +1 strength tho",  (Attributable**)game.getCurrentPlayerPointer(), "strength", Impact::INCREASE, 1);
+	rightFail.addDialogueLine("u went right and failed :( u got +1 wisdom tho", (Attributable**)game.getCurrentPlayerPointer(), "wisdom", Impact::INCREASE, 1);
 
 	
 
@@ -314,7 +331,6 @@ int main() {
 
 	
 	
-	Game game(2, &attributeMap, &hub, NULL);
 
 	
 	hub.setImageTexture(imageTextures[5]);
@@ -327,7 +343,7 @@ int main() {
 
 
 
-	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize | sf::Style::Fullscreen);
+	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize );
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
 	gameWindow.setView(view);
 	gameWindow.setFramerateLimit(60);

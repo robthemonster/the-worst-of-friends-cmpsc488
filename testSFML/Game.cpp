@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "Navigable.h"
 #include "AttributeMap.h"
-
+#include "Interface.h"
 
 void Game::play(sf::RenderWindow & window, sf::View & view)
 {
@@ -26,17 +26,38 @@ void Game::addPlayerAttribute(std::string key, int defaultValue)
 	}
 }
 
-Game::Game(int numberOfPlayers, AttributeMap * attributeMap, Navigable * start, Requirements * gameOverRequirements)
+Game::Game(int numberOfPlayers, Requirements * gameOverRequirements)
 {
+	this->attributeMap = new AttributeMap;
+	this->interfacePointer = new Interface(attributeMap);
+
 	this->numPlayers = numberOfPlayers;
 	this->players = new Player[numberOfPlayers];
-	this->attributeMap = attributeMap;
-	this->start = start;
 	this->gameOverRequirements = gameOverRequirements;
 
 	for (int i = 0; i < numberOfPlayers; i++) {
 		(*this->attributeMap).addAttribute(&players[i], "pnum", i+1);
 	}
+}
+
+Interface * Game::getInterfacePointer()
+{
+	return this->interfacePointer;
+}
+
+AttributeMap * Game::getAttributeMapPointer()
+{
+	return this->attributeMap;
+}
+
+void Game::setStart(Navigable * start)
+{
+	this->start = start;
+}
+
+void Game::addVisiblePlayerAttribute(std::string key)
+{
+	(*this->interfacePointer).addVisiblePlayerAttribute(key);
 }
 
 

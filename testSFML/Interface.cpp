@@ -1,5 +1,6 @@
 #include "Interface.h"
 #include "FButton.h"
+#include "AttributeMap.h"
 
 
 bool Interface::getPaused()
@@ -22,6 +23,11 @@ bool Interface::continueHighlighted()
 	return (*this->continueGame).isHighlighted();
 }
 
+void Interface::addVisiblePlayerAttribute(std::string key)
+{
+	this->visiblePlayerAttributes.push_back(key);
+}
+
 void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
 {
 	if (paused) {
@@ -35,8 +41,47 @@ void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
 	}
 }
 
-Interface::Interface()
+void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player)
 {
+	
+	sf::Font font;
+	font.loadFromFile("fonts/8bit.ttf");
+
+	sf::Vector2f startPos(800, -300);
+	sf::Vector2f currPos(startPos);
+
+	sf::RectangleShape statPane;
+	std::vector<sf::Text> stats;
+
+	float maxSizeX = 0;
+	for (int i = 0; i < this->visiblePlayerAttributes.size(); i++) {
+		std::string attribute = this->visiblePlayerAttributes[i] + ": " + std::to_string((*this->attributeMap).getAttribute((Attributable *)player, this->visiblePlayerAttributes[i]));
+		sf::Text currText(sf::String(attribute), font, 30);
+		currText.setOutlineColor(sf::Color::Black);
+		currText.setOutlineThickness(1);
+		currText.setPosition(currPos);
+		stats.push_back(currText);
+		currPos.y += font.getLineSpacing(20);
+		
+		if (currText.getLocalBounds().width > maxSizeX)
+			maxSizeX = currText.getLocalBounds().width;
+	}
+
+	statPane.setPosition(startPos);
+	statPane.setSize(sf::Vector2f(maxSizeX, currPos.y - startPos.y + font.getLineSpacing(30)));
+	statPane.setFillColor(sf::Color(0, 0, 0, 150));
+	window.draw(statPane);
+	for (int i = 0; i < stats.size(); i++) {
+		window.draw(stats[i]);
+	}
+
+	
+
+}
+
+Interface::Interface(AttributeMap * attributeMap)
+{
+	this->attributeMap = attributeMap;
 	this->pauseMenuRect = sf::RectangleShape(sf::Vector2f(600, 500));
 	this->pauseMenuRect.setFillColor(sf::Color(255, 255, 255, 150));
 	this->pauseMenuRect.setOutlineColor(sf::Color::White);

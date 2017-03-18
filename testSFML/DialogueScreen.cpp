@@ -4,10 +4,11 @@
 #include <iostream>
 #include "ButtonScreen.h"
 #include "Interface.h"
+#include "Game.h"
 
 #include "DialogueScreen.h"
-DialogueScreen::DialogueScreen(Interface * interfacePointer) {
-	this->interfacePointer = interfacePointer;
+DialogueScreen::DialogueScreen(Game * game) {
+	this->game = game;
 };
 void DialogueScreen::setImageTexture(sf::Texture & texture) {
 	imageRect.setTexture(&texture);
@@ -82,7 +83,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 			case sf::Event::Closed:
 				window.close();
 			case sf::Event::KeyPressed:
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !(*this->interfacePointer).getPaused()) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !(*(*this->game).getInterfacePointer()).getPaused()) {
 					//enter pressed
 					if (it != this->dialogue.end()) {// if this is the not the last dialogue line
 						if ((*it).isDone()) { // if the current line is finished printing
@@ -101,7 +102,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 					}
 				}
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-					(*this->interfacePointer).setPaused(!(*this->interfacePointer).getPaused());
+					(*(*this->game).getInterfacePointer()).setPaused(!(*(*this->game).getInterfacePointer()).getPaused());
 				}
 				break;
 			case sf::Event::Resized:
@@ -110,11 +111,11 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 			case sf::Event::MouseButtonReleased:
 				switch (evnt.mouseButton.button) {
 				case sf::Mouse::Left:
-					if ((*this->interfacePointer).getPaused()) {
-						if ((*this->interfacePointer).continueHighlighted()) {
-							(*this->interfacePointer).setPaused(false);
+					if ((*(*this->game).getInterfacePointer()).getPaused()) {
+						if ((*(*this->game).getInterfacePointer()).continueHighlighted()) {
+							(*(*this->game).getInterfacePointer()).setPaused(false);
 						}
-						if ((*this->interfacePointer).quitHighlighted()) {
+						if ((*(*this->game).getInterfacePointer()).quitHighlighted()) {
 							window.close();
 						}
 					}
@@ -171,7 +172,8 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 			(*it).drawWords(font, charSize, textOrigin, width, window, charDelay, dialogueClock.getElapsedTime().asMilliseconds());
 
 		}
-		(*this->interfacePointer).drawPauseMenu(window, view);
+		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, *(*this->game).getCurrentPlayerPointer());
+		(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
 		window.display();
 
 	}

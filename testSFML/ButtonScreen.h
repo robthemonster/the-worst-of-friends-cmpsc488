@@ -3,7 +3,7 @@
 #include "Navigable.h"
 
 class FButton;
-class Interface;
+class Game;
 class ButtonScreen:public Navigable
 {
 
@@ -15,10 +15,9 @@ private:
 	std::vector<FButton * >  buttons;
 	const float SCREEN_WIDTH = 1920.0;
 	const float SCREEN_HEIGHT = 1080.0;
-	Interface * interfacePointer;
-
+	Game * game;
 public:
-	ButtonScreen(Interface * interfacePointer);
+	ButtonScreen(Game * game);
 	void setImageTexture(sf::Texture & texture);
 	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f dialoguePanePos);
 	void setPrompt(sf::Text text);

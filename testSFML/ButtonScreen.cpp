@@ -4,12 +4,13 @@
 #include "FButton.h"
 #include "DialogueScreen.h"
 #include "Interface.h"
+#include "Game.h"
 #include "ButtonScreen.h"
 
 
 
-ButtonScreen::ButtonScreen(Interface * interfacePointer) {
-	this->interfacePointer = interfacePointer;
+ButtonScreen::ButtonScreen(Game * game) {
+	this->game = game;
 }
 
 void ButtonScreen::setImageTexture(sf::Texture & texture) {
@@ -70,7 +71,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 				case sf::Event::MouseButtonReleased:
 					switch (evnt.mouseButton.button) {
 					case sf::Mouse::Left: //left mouse released.
-						if (!(*this->interfacePointer).getPaused()) {
+						if (!(*(*this->game).getInterfacePointer()).getPaused()) {
 							it = this->buttons.begin();
 							while (it != this->buttons.end()) {
 								if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
@@ -83,10 +84,10 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 							}
 						}
 						else {
-							if ((*this->interfacePointer).continueHighlighted()) {
-								(*this->interfacePointer).setPaused(false);
+							if ((*(*this->game).getInterfacePointer()).continueHighlighted()) {
+								(*(*this->game).getInterfacePointer()).setPaused(false);
 							}
-							if ((*this->interfacePointer).quitHighlighted()) {
+							if ((*(*this->game).getInterfacePointer()).quitHighlighted()) {
 								window.close();
 							}
 						}
@@ -96,7 +97,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 				case sf::Event::KeyPressed:
 					switch (evnt.key.code) {
 					case sf::Keyboard::Escape:
-						(*this->interfacePointer).setPaused(!(*this->interfacePointer).getPaused());
+						(*(*this->game).getInterfacePointer()).setPaused(!(*(*this->game).getInterfacePointer()).getPaused());
 						break;
 					}
 					break;
@@ -123,7 +124,8 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 			it++;
 		}
 
-		(*this->interfacePointer).drawPauseMenu(window, view);
+		(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
+		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, *(*this->game).getCurrentPlayerPointer());
 		window.display();
 		
 		
