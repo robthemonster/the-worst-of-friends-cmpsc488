@@ -5,6 +5,7 @@
 #include "DialogueScreen.h"
 #include "Interface.h"
 #include "Game.h"
+#include "Player.h"
 #include "ButtonScreen.h"
 
 
@@ -45,6 +46,8 @@ void ButtonScreen::addButton(FButton * button) {
 void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 	
 	std::vector<FButton* >::iterator it;
+
+	Player * currPlayer = *(*this->game).getCurrentPlayerPointer();
 
 //	imageRect.setPosition(-958, -550);
 	if (this->buttons.begin() == this->buttons.end()) {
@@ -125,7 +128,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 		}
 
 		(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
-		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, *(*this->game).getCurrentPlayerPointer());
+		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
 		window.display();
 		
 		

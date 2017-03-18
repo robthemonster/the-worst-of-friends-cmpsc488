@@ -17,8 +17,9 @@ private:
 	Interface * interfacePointer;
 	Navigable * start;
 	Requirements * gameOverRequirements;
+	
 
-public:
+	public:
 	void play(sf::RenderWindow & window, sf::View & view); 
 	Player ** getCurrentPlayerPointer();
 	void addPlayerAttribute(std::string key, int defaultValue);

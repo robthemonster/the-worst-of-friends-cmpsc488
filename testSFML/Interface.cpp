@@ -41,7 +41,7 @@ void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
 	}
 }
 
-void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player)
+void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player, sf::Color playerColor)
 {
 	
 	sf::Font font;
@@ -69,7 +69,7 @@ void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view,
 
 	statPane.setPosition(startPos);
 	statPane.setSize(sf::Vector2f(maxSizeX, currPos.y - startPos.y + font.getLineSpacing(30)));
-	statPane.setFillColor(sf::Color(0, 0, 0, 150));
+	statPane.setFillColor(playerColor);
 	window.draw(statPane);
 	for (int i = 0; i < stats.size(); i++) {
 		window.draw(stats[i]);

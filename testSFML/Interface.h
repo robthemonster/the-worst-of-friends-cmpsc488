@@ -18,7 +18,7 @@ public:
 	bool continueHighlighted();
 	void addVisiblePlayerAttribute(std::string key);
 	void drawPauseMenu(sf::RenderWindow & window, sf::View & view);
-	void drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player);
+	void drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player, sf::Color playerColor);
 	Interface(AttributeMap * attributeMap);
 	~Interface();
 };

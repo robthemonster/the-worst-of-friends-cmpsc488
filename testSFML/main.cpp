@@ -168,6 +168,10 @@ int main() {
 	*/
 	srand(time(NULL));
 
+
+
+
+
 	sf::Font font;
 	sf::Texture dialoguePane;
 	sf::Vector2f dialoguePanePos(-750, 200);
@@ -179,6 +183,10 @@ int main() {
 
 
 	dialoguePane.loadFromFile("img/dialoguePane.png");
+
+
+
+
 
 
 	std::vector<std::string> english, sentences;
@@ -239,7 +247,7 @@ int main() {
 	}
 
 
-	Game game(2, NULL);
+	Game game(4, NULL);
 
 
 	Hub hub(&game);

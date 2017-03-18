@@ -5,6 +5,7 @@
 #include "ButtonScreen.h"
 #include "Interface.h"
 #include "Game.h"
+#include "Player.h"
 
 #include "DialogueScreen.h"
 DialogueScreen::DialogueScreen(Game * game) {
@@ -48,6 +49,8 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 	int charSize = 40;
 	int charDelay = 20;
 	int width = 1300;
+
+	Player * currPlayer = *(*this->game).getCurrentPlayerPointer();
 
 	std::vector<DialogueLine>::iterator it = this->dialogue.begin();
 
@@ -172,7 +175,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 			(*it).drawWords(font, charSize, textOrigin, width, window, charDelay, dialogueClock.getElapsedTime().asMilliseconds());
 
 		}
-		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, *(*this->game).getCurrentPlayerPointer());
+		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
 		(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
 		window.display();
 

@@ -28,16 +28,24 @@ void Game::addPlayerAttribute(std::string key, int defaultValue)
 
 Game::Game(int numberOfPlayers, Requirements * gameOverRequirements)
 {
+	sf::Color colors[4];
+	colors[0] = sf::Color::Red;
+	colors[1] = sf::Color::Blue;
+	colors[2] = sf::Color::Green;
+	colors[3] = sf::Color::Yellow;
+
 	this->attributeMap = new AttributeMap;
 	this->interfacePointer = new Interface(attributeMap);
-
+	this->players = new Player[numPlayers];
 	this->numPlayers = numberOfPlayers;
-	this->players = new Player[numberOfPlayers];
 	this->gameOverRequirements = gameOverRequirements;
 
 	for (int i = 0; i < numberOfPlayers; i++) {
-		(*this->attributeMap).addAttribute(&players[i], "pnum", i+1);
+		(*this->attributeMap).addAttribute((Attributable*)&this->players[i], "pnum", i + 1);
+		this->players[i] =  Player(colors[i]);
 	}
+
+	
 }
 
 Interface * Game::getInterfacePointer()

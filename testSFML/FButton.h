@@ -14,7 +14,7 @@ private:
 
 public:
 	~FButton();
-	FButton(sf::Vector2f & size,  Navigable * target,  sf::Vector2f &position, sf::Text& buttonText = sf::Text(),
+	FButton(sf::Vector2f & size,  Navigable * target,  sf::Vector2f &position, sf::Text buttonText = sf::Text(),
 		sf::Texture * buttonTexture = NULL);
 	void draw(sf::RenderWindow&, sf::View&);
 	bool mouseOver(sf::Vector2f mouseLocation);
