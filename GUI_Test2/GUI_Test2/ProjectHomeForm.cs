@@ -20,11 +20,12 @@ namespace GUI_Test2
         public Attribs attributes;
         //public List<NPC> characters;
         //public Dictionary<String,Path> paths;
-        public List<Hub> hubs;
-        //public List<PathGroup> pathGroups;
+        public List<String> hubs;
+        public List<String> pathGroups;
         //public List<P2PG> p2PG;
         public Dictionary<String, Navigable> navIndex;
         public String navigableName;
+        public List<String> paths;
 
         public int screenID;
         //1 = Path, 2 = Path Group, 3 = Hub
@@ -38,8 +39,13 @@ namespace GUI_Test2
             //paths = new Dictionary<string, Path>();
             navIndex = new Dictionary<string, Navigable>();
             attributes = new Attribs();
+            paths = new List<String>();
+            pathGroups = new List<String>();
+            hubs = new List<String>();
+
             attributes.names = new List<string> {"Health","Strength","Agility","Charisma","Evil","Unrest"};
             attributes.scopes = new List<int> { 0,0,0,0,2,2};
+            attributes.values = new List<int> { 20, 4, 2, 19, 0, 69 };
 
 
             updateListBoxes();
@@ -162,7 +168,7 @@ namespace GUI_Test2
                     editPath.ShowDialog();
                     break;
                 case 2:
-                    EditPathGroupForm editPathGroup = new EditPathGroupForm(navigableName);
+                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, navigableName);
                     editPathGroup.ShowDialog();
                     break;
                 case 3:
@@ -171,6 +177,15 @@ namespace GUI_Test2
                     break;
             }
 
+
+        }
+        public void makeSamplePaths(object sender, EventArgs e) {
+            String[] sillyString = { "asdf", "asdf2", "asdf3", "asdf4", "asdf5", "asdf6", "asdf7", "asdf8", "asdf9", "asdf10", "asdf11" };
+            foreach (String p in sillyString) {
+                paths.Add(p);
+                navIndex.Add(p, new Path());
+            }
+            updateListBoxes();
 
         }
     }

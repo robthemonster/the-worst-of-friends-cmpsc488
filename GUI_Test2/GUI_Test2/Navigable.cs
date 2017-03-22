@@ -20,8 +20,8 @@ namespace GUI_Test2
         public List<Button> buttons;
         //public List<Button> buttons;
 
-        public Path() {
-        }
+        public Path() {}
+
         public Path(String n, List<String> names, List<String> contents,List<Button> btns) {
             name = n;
             dialogueNames = names;
@@ -50,7 +50,8 @@ namespace GUI_Test2
     public class Hub : Navigable {
         public string name;
         public List<Button> buttons;
-        //img, sound
+        //public something image;
+        //public something sound;
     }
 
     [Serializable]
@@ -65,10 +66,30 @@ namespace GUI_Test2
 
     [Serializable]
     public class PathGroup : Navigable {
-        public string name;
-        public Navigable nextDefault;
-
+        public String name;
+        public List<List<PathCondition>> pathConds;
+        public List<String> pathsInGroup;
+        public List<int> weights;
+        public List<int> tiers;
+        //public Navigable nextDefault;
         //public Navigable getNext();
+
+        public PathGroup() { }
+        public PathGroup(String n, List<String> pIG, List<int>w, List<int> t)
+        {
+            name = n;
+            pathsInGroup = pIG;
+            weights = w;
+            tiers = t;
+        } 
+    }
+
+    [Serializable]
+    public class Attribs
+    {
+        public List<String> names;
+        public List<int> scopes;
+        public List<int> values;
     }
 
     [Serializable]
@@ -89,16 +110,11 @@ namespace GUI_Test2
     [Serializable]
     public class Comparison {
         public string stat;
-        public string suffix;
-        public dynamic val;
-        public string stat2;
-    }
-
-    [Serializable]
-    public class Attribs
-    {
         public List<string> names;
         public List<int> scopes;
     }
 
 }
+
+
+

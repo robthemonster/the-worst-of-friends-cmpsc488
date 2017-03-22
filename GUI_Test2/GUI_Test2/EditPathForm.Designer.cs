@@ -67,6 +67,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.impactAttributeListBox = new System.Windows.Forms.ListBox();
             this.Buttons = new System.Windows.Forms.TabPage();
+            this.useButtonImage = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.hubFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -97,7 +98,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
-            this.useButtonImage = new System.Windows.Forms.CheckBox();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).BeginInit();
@@ -553,6 +553,17 @@
             this.Buttons.UseVisualStyleBackColor = true;
             this.Buttons.Click += new System.EventHandler(this.Buttons_Click);
             // 
+            // useButtonImage
+            // 
+            this.useButtonImage.AutoSize = true;
+            this.useButtonImage.Location = new System.Drawing.Point(418, 225);
+            this.useButtonImage.Name = "useButtonImage";
+            this.useButtonImage.Size = new System.Drawing.Size(80, 17);
+            this.useButtonImage.TabIndex = 12;
+            this.useButtonImage.Text = "Use Image ";
+            this.useButtonImage.UseVisualStyleBackColor = true;
+            this.useButtonImage.CheckedChanged += new System.EventHandler(this.useButtonImage_CheckedChanged);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.hubFromButtonRadio);
@@ -853,17 +864,6 @@
             this.buttonListBox.Name = "buttonListBox";
             this.buttonListBox.Size = new System.Drawing.Size(91, 303);
             this.buttonListBox.TabIndex = 1;
-            // 
-            // useButtonImage
-            // 
-            this.useButtonImage.AutoSize = true;
-            this.useButtonImage.Location = new System.Drawing.Point(418, 225);
-            this.useButtonImage.Name = "useButtonImage";
-            this.useButtonImage.Size = new System.Drawing.Size(80, 17);
-            this.useButtonImage.TabIndex = 12;
-            this.useButtonImage.Text = "Use Image ";
-            this.useButtonImage.UseVisualStyleBackColor = true;
-            this.useButtonImage.CheckedChanged += new System.EventHandler(this.useButtonImage_CheckedChanged);
             // 
             // EditPathForm
             // 

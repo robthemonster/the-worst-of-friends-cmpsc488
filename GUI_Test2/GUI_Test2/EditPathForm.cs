@@ -224,6 +224,7 @@ namespace GUI_Test2
             if (parentForm.navIndex.ContainsKey(name))
                 parentForm.navIndex[name] = new Path(name, dialogueNameList, dialogueEntryList, buttonList);
             else
+                parentForm.paths.Add(name);
                 parentForm.navIndex.Add(name, new Path(name, dialogueNameList, dialogueEntryList, buttonList));
             parentForm.updateListBoxes();
             Close();
