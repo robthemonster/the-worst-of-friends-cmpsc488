@@ -27,7 +27,7 @@ namespace GUI_Test2
             }
             else
             {
-                parent.hubName = hubNameTextBox.Text;
+                parent.navigableName = hubNameTextBox.Text;
                 Close();
             }
         }

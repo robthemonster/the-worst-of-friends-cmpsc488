@@ -24,9 +24,10 @@ namespace GUI_Test2
         //public List<PathGroup> pathGroups;
         //public List<P2PG> p2PG;
         public Dictionary<String, Navigable> navIndex;
-        public String pathName;
-        public String hubName;
-        public String pathGroupName;
+        public String navigableName;
+
+        public int screenID;
+        //1 = Path, 2 = Path Group, 3 = Hub
         
 
         public ProjectHomeForm()
@@ -91,27 +92,24 @@ namespace GUI_Test2
 
         private void pathToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreatePathForm dialog = new CreatePathForm(this);
-            dialog.ShowDialog();
-            EditPathForm editPath = new EditPathForm(this, pathName);
-            editPath.ShowDialog();
+            screenID = 1;
+
+            createNavigable();
         }
         
 
         private void pathGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreatePathGroupForm PathGroup = new CreatePathGroupForm(this);
-            PathGroup.ShowDialog();
-            EditPathGroupForm editPathGroup = new EditPathGroupForm(pathGroupName);
-            editPathGroup.ShowDialog();
+            screenID = 2;
+
+            createNavigable();
         }
 
         private void hubToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateHubForm createHub = new CreateHubForm(this);
-            createHub.ShowDialog();
-            EditHubForm editHub = new EditHubForm(hubName);
+            screenID = 3;
 
+            createNavigable();
         }
         private void closeWindow(object sender, EventArgs e) {
             Close();
@@ -148,6 +146,31 @@ namespace GUI_Test2
             Stream stream = new FileStream("MyFile.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, attributes);
             stream.Close();
+
+        }
+
+        public void createNavigable()
+        {
+            CreatePathGroupForm PathGroup = new CreatePathGroupForm(this);
+            PathGroup.ShowDialog();
+
+            switch (screenID)
+            {
+
+                case 1:
+                    EditPathForm editPath = new EditPathForm(this, navigableName);
+                    editPath.ShowDialog();
+                    break;
+                case 2:
+                    EditPathGroupForm editPathGroup = new EditPathGroupForm(navigableName);
+                    editPathGroup.ShowDialog();
+                    break;
+                case 3:
+                    EditHubForm editHub = new EditHubForm(navigableName);
+                    editHub.ShowDialog();
+                    break;
+            }
+
 
         }
     }

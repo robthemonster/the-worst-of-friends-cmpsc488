@@ -38,7 +38,7 @@
             // pathNameTextBox
             // 
             this.pathNameTextBox.Location = new System.Drawing.Point(61, 10);
-            this.pathNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pathNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathNameTextBox.Name = "pathNameTextBox";
             this.pathNameTextBox.Size = new System.Drawing.Size(143, 20);
             this.pathNameTextBox.TabIndex = 0;
@@ -58,7 +58,7 @@
             // OKButton
             // 
             this.OKButton.Location = new System.Drawing.Point(86, 32);
-            this.OKButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(2);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(56, 19);
             this.OKButton.TabIndex = 2;
@@ -69,7 +69,7 @@
             // CancelButton
             // 
             this.CancelButton.Location = new System.Drawing.Point(146, 32);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(56, 19);
             this.CancelButton.TabIndex = 3;
@@ -88,7 +88,7 @@
             this.Controls.Add(this.pathNameTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreatePathForm";
