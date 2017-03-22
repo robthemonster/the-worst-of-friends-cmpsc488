@@ -58,7 +58,7 @@ FButton::~FButton() {
 }
 
 FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &position, 
-	sf::Text buttonText, sf::Texture * buttonTexture) {
+	std::string buttonText, sf::Font font, int charSize, sf::Texture * buttonTexture) {
 
 	this->target = target;
 	this->buttonRect = sf::RectangleShape(size);
@@ -71,14 +71,14 @@ FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &positio
 	this->highlightRect.setPosition(position);
 	this->highlightRect.setFillColor(sf::Color::Transparent);
 
-	this->buttonText = buttonText;
-	this->buttonText.setOutlineThickness(3);
-	this->buttonText.setOutlineColor(sf::Color::Black);
-	
-
-	this->buttonText.setOrigin(sf::Vector2f(buttonText.getLocalBounds().width / 2, buttonText.getLocalBounds().height / 2));
-	this->buttonText.setPosition(position);
-	
+	if (buttonText.size() > 0) {
+		this->font = font;
+		this->buttonText = sf::Text(buttonText, this->font, charSize);
+		this->buttonText.setOutlineThickness(3);
+		this->buttonText.setOutlineColor(sf::Color::Black);
+//		this->buttonText.setOrigin(sf::Vector2f(this->buttonText.getLocalBounds().width / 2, this->buttonText.getLocalBounds().height / 2));
+		this->buttonText.setPosition(position);
+	}
 	if (buttonTexture == NULL) {
 		
 		this->buttonRect.setFillColor(sf::Color::Transparent);

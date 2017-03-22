@@ -8,6 +8,7 @@ class Interface
 	FButton * quit;
 	FButton * continueGame;
 	AttributeMap * attributeMap;
+	sf::Font font;
 	sf::RectangleShape pauseMenuRect;
 	bool paused = false;
 	std::vector<std::string> visiblePlayerAttributes;

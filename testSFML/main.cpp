@@ -247,7 +247,7 @@ int main() {
 	}
 
 
-	Game game(4, NULL);
+	Game game(2, NULL);
 
 
 	Hub hub(&game);
@@ -255,80 +255,48 @@ int main() {
 	PathGroup leftPg, rightPg;
 	Path leftSucceed(&game), leftFail(&game);
 	Path rightSucceed(&game), rightFail(&game);
-	
+
+
+
 	game.addPlayerAttribute("strength", 5);
 	game.addPlayerAttribute("wisdom", 5);
-	game.addVisiblePlayerAttribute("pnum");
+	game.addPlayerAttribute("score", 0);
 	game.addVisiblePlayerAttribute("strength");
 	game.addVisiblePlayerAttribute("wisdom");
+	game.addVisiblePlayerAttribute("score");
 	game.setStart(&hub);
 
 
 	leftPg.setTiers(2);
 	rightPg.setTiers(2);
 	
-	hub.setMusic(songStream, "music/lttpRain.ogg");
-	left.setMusic(songStream, "music/undertale.ogg");
-	right.setMusic(songStream, "music/witcher.ogg");
+	hub.setMusic(songStream, "music/quiet.ogg");
+	left.setMusic(songStream, "music/waterfall.ogg");
+	right.setMusic(songStream, "music/premonition.ogg");
 
 
 	leftSucceed.setButtonCharSize(40);
 	leftSucceed.setButtonSize(buttonSize);
-	leftSucceed.setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
 	leftSucceed.setFont(font);
 	
 	leftFail.setButtonCharSize(40);
 	leftFail.setButtonSize(buttonSize);
-	leftFail.setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
 	leftFail.setFont(font);
 	
 	rightSucceed.setButtonCharSize(40);
 	rightSucceed.setButtonSize(buttonSize);
-	rightSucceed.setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
 	rightSucceed.setFont(font);
 	
 	rightFail.setButtonCharSize(40);
 	rightFail.setButtonSize(buttonSize);
-	rightFail.setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
 	rightFail.setFont(font);
 
 	left.setButtonCharSize(40);
 	left.setFont(font);
-	left.addDialogueLine("hi welcome to the  left place u went to, u need 10 wisdom to succeed");
-	left.addButton("attack", &leftPg, button1Pos);
+
 
 	right.setButtonCharSize(40);
 	right.setFont(font);
-	right.addDialogueLine("hi welcome to the right place u went to, u need 10 strength to succeed");
-	right.addButton("run away!!", &rightPg, button2Pos);
-
-	Requirements noReq(*game.getAttributeMapPointer()), tenStrength(*game.getAttributeMapPointer()), tenWisdom(*game.getAttributeMapPointer());
-	tenStrength.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "strength", Requirements::GEQ, 10);
-	tenWisdom.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "wisdom", Requirements::GEQ, 10);
-
-
-	leftPg.addPath(1, &leftSucceed, 1, &tenWisdom);
-	leftPg.addPath(0, &leftFail, 1, &noReq);
-
-	rightPg.addPath(1, &rightSucceed, 1,&tenStrength);
-	rightPg.addPath(0, &rightFail, 1, &noReq);
-	
-
-	leftSucceed.addDialogueLine("u went left and succeeded!");
-	rightSucceed.addDialogueLine("u went right and succeeded!");
-	leftFail.addDialogueLine("u went left and failed :( u got +1 strength tho",  (Attributable**)game.getCurrentPlayerPointer(), "strength", Impact::INCREASE, 1);
-	rightFail.addDialogueLine("u went right and failed :( u got +1 wisdom tho", (Attributable**)game.getCurrentPlayerPointer(), "wisdom", Impact::INCREASE, 1);
-
-	
-
-	leftSucceed.setImageTexture(imageTextures[1]);
-	leftFail.setImageTexture(imageTextures[2]);
-	rightSucceed.setImageTexture(imageTextures[3]);
-	rightFail.setImageTexture(imageTextures[4]);
-
-	left.setImageTexture(imageTextures[5]);
-
-	right.setImageTexture(imageTextures[6]);
 
 	left.setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
 	right.setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
@@ -338,12 +306,50 @@ int main() {
 	rightFail.setDialoguePaneTexture(dialoguePaneTexture, dialoguePanePos);
 
 	
+	left.setPrompt("What do you do?");
+	left.addDialogueLine("You will need 7 strength to proceed");
+	left.addButton("Test your strength", &leftPg, button1Pos);
+
+	right.addDialogueLine("You will need 7 wisdom to proceed.");
+	right.setPrompt("What do you do?");
+	right.addButton("Test your widsom", &rightPg, button2Pos);
+
+	Requirements noReq(*game.getAttributeMapPointer()), tenStrength(*game.getAttributeMapPointer()), tenWisdom(*game.getAttributeMapPointer());
+	tenStrength.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "strength", Requirements::GEQ, 7);
+	tenWisdom.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "wisdom", Requirements::GEQ, 7);
+
+
+	leftPg.addPath(1, &leftSucceed, 1, &tenStrength);
+	leftPg.addPath(0, &leftFail, 1, &noReq);
+
+	rightPg.addPath(1, &rightSucceed, 1,&tenWisdom);
+	rightPg.addPath(0, &rightFail, 1, &noReq);
 	
 
+	leftSucceed.addDialogueLine("You succeeded by having 7 strength! +10 Points", (Attributable**)game.getCurrentPlayerPointer(), "score", Impact::INCREASE, 10);
+	rightSucceed.addDialogueLine("You  succeeded by having 7 wisdom! +10 Points", (Attributable**)game.getCurrentPlayerPointer(), "score", Impact::INCREASE, 10);
+	leftFail.addDialogueLine("You failed, but gained 1 strength in your efforts",  (Attributable**)game.getCurrentPlayerPointer(), "strength", Impact::INCREASE, 1);
+	rightFail.addDialogueLine("You failed, but gained 1 wisdom in your efforts", (Attributable**)game.getCurrentPlayerPointer(), "wisdom", Impact::INCREASE, 1);
+
 	
-	hub.setImageTexture(imageTextures[5]);
-	hub.addButton(button1Pos, buttonSize, &left);
-	hub.addButton(button2Pos, buttonSize, &right);
+
+	leftSucceed.setImageTexture(imageTextures[8]);
+	leftFail.setImageTexture(imageTextures[11]);
+	rightSucceed.setImageTexture(imageTextures[10]);
+	rightFail.setImageTexture(imageTextures[14]);
+	left.setImageTexture(imageTextures[11]);
+	right.setImageTexture(imageTextures[14]);
+
+	
+	
+
+	sf::Vector2f leftPath(-650, -100), rightPath(200, -250);
+	sf::Vector2f leftSize(250, 300), rightSize(700, 400);
+
+
+	hub.setImageTexture(imageTextures[13]);
+	hub.addButton(leftPath, leftSize, &left);
+	hub.addButton(rightPath, rightSize, &right);
 
 
 	
@@ -351,7 +357,7 @@ int main() {
 
 
 
-	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize );
+	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize | sf::Style::Fullscreen );
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
 	gameWindow.setView(view);
 	gameWindow.setFramerateLimit(60);

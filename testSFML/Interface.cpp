@@ -66,9 +66,9 @@ void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view,
 		if (currText.getLocalBounds().width > maxSizeX)
 			maxSizeX = currText.getLocalBounds().width;
 	}
-
+	statPane.setOrigin(sf::Vector2f(5, 0));
 	statPane.setPosition(startPos);
-	statPane.setSize(sf::Vector2f(maxSizeX, currPos.y - startPos.y + font.getLineSpacing(30)));
+	statPane.setSize(sf::Vector2f(maxSizeX*1.1, currPos.y - startPos.y + font.getLineSpacing(30)));
 	statPane.setFillColor(playerColor);
 	window.draw(statPane);
 	for (int i = 0; i < stats.size(); i++) {
@@ -91,11 +91,11 @@ Interface::Interface(AttributeMap * attributeMap)
 	sf::Vector2f buttonSize(300, 200);
 	sf::Vector2f continueButtonPosition(pauseMenuRect.getPosition().x - 40, pauseMenuRect.getPosition().y - 150);
 	sf::Vector2f quitButtonPosition(pauseMenuRect.getPosition().x - 40, pauseMenuRect.getPosition().y + 150);
-	sf::Font * font = new sf::Font;
-	(*font).loadFromFile("fonts/8bit.ttf");
-	this->continueGame = new FButton(buttonSize, NULL, continueButtonPosition, sf::Text(sf::String("continue"), *font, 40));
 	
-	this->quit = new FButton(buttonSize, NULL, quitButtonPosition, sf::Text(sf::String("quit"), *font, 40));
+	this->font.loadFromFile("fonts/8bit.ttf");
+	this->continueGame = new FButton(buttonSize, NULL, continueButtonPosition,"continue", font, 40);
+	
+	this->quit = new FButton(buttonSize, NULL, quitButtonPosition,"quit", font, 40);
 }
 
 

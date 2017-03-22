@@ -109,7 +109,7 @@ void Path::addButton(std::string buttonText, Navigable * target, sf::Vector2f po
 	if (this->buttonScreen == NULL)
 		this->buttonScreen = new ButtonScreen(this->game);
 	if (this->buttonScreen != NULL) {
-		FButton * button = new FButton(this->buttonSize, target, position, sf::Text(sf::String(buttonText), this->font, this->buttonCharSize), buttonTexture);
+		FButton * button = new FButton(this->buttonSize, target, position, buttonText, this->font, this->buttonCharSize, buttonTexture);
 		
 		(*this->buttonScreen).addButton(button);
 	}
@@ -122,7 +122,7 @@ void Path::setPrompt(std::string prompt)
 
 {
 	if (this->buttonScreen != NULL) {
-		(*this->buttonScreen).setPrompt(sf::Text(sf::String(prompt), this->font, 40));
+		(*this->buttonScreen).setPrompt(prompt, this->font, 40);
 	}
 }
 

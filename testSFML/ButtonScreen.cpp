@@ -23,14 +23,19 @@ void ButtonScreen:: setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f d
 	this->dialoguePane.setPosition(dialoguePanePos);
 	this->dialoguePane.setSize(sf::Vector2f(texture.getSize().x, texture.getSize().y));
 }
-void ButtonScreen::setPrompt(sf::Text text) {
-	this->promptText = text;
-	this->promptText.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, 10));
+void ButtonScreen::setPrompt(std::string prompt, sf::Font  font, int charSize) {
+	this->font = font;
+	this->promptText = sf::Text(sf::String(prompt), this->font, charSize);
+	this->promptText.setOrigin(sf::Vector2f(this->promptText.getLocalBounds().width / 2, this->promptText.getLocalBounds().height /2));
 	this->promptText.setPosition(this->dialoguePane.getPosition().x + (this->dialoguePane.getSize().x / 2), this->dialoguePane.getPosition().y + 10);
 }
 ButtonScreen::ButtonScreen(const ButtonScreen & copy)
 {
 	buttons = copy.buttons;
+	promptText = copy.promptText;
+	game = copy.game;
+	imageRect = copy.imageRect;
+	dialoguePane = copy.dialoguePane;
 	
 }
 

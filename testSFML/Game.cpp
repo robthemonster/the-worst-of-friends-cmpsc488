@@ -29,10 +29,10 @@ void Game::addPlayerAttribute(std::string key, int defaultValue)
 Game::Game(int numberOfPlayers, Requirements * gameOverRequirements)
 {
 	sf::Color colors[4];
-	colors[0] = sf::Color::Red;
-	colors[1] = sf::Color::Blue;
-	colors[2] = sf::Color::Green;
-	colors[3] = sf::Color::Yellow;
+	colors[0] = sf::Color(255, 0, 0, 130);
+	colors[1] = sf::Color(0, 255, 0, 130);
+	colors[2] = sf::Color(0, 0, 255, 130);
+	colors[3] = sf::Color(75, 0, 130, 130);
 
 	this->attributeMap = new AttributeMap;
 	this->interfacePointer = new Interface(attributeMap);

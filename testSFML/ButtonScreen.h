@@ -11,6 +11,7 @@ private:
 	sf::RectangleShape imageRect;
 	sf::RectangleShape dialoguePane;
 	sf::Text promptText;
+	sf::Font font;
 
 	std::vector<FButton * >  buttons;
 	const float SCREEN_WIDTH = 1920.0;
@@ -20,7 +21,7 @@ public:
 	ButtonScreen(Game * game);
 	void setImageTexture(sf::Texture & texture);
 	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f dialoguePanePos);
-	void setPrompt(sf::Text text);
+	void setPrompt(std::string prompt, sf::Font  font, int charSize);
 	ButtonScreen(const ButtonScreen&);
 	~ButtonScreen();
 	void addButton(FButton * button);
