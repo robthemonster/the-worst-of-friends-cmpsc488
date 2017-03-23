@@ -8,6 +8,7 @@ class Hub :
 	public Navigable, public Attributable
 {
 private:
+	//test comment
 	ButtonScreen * buttonScreen;
 	sf::Music * music;
 	std::string musicFile = "";
