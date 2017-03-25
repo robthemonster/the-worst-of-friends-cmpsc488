@@ -126,14 +126,17 @@ namespace GUI_Test2
             updateListBoxes();
         }
         public void updateListBoxes() {
-            List<String> nameList;
-            if (navIndex != null)
-            {
-                nameList = new List<String>(this.navIndex.Keys);
-                pathListBox.DataSource = null;
-                pathListBox.DataSource = nameList;
-                pathListBox.SelectedIndex = -1;
-            }
+            pathListBox.DataSource = null;
+            pathListBox.DataSource = paths;
+            pathListBox.SelectedIndex = -1;
+
+            pathGroupListBox.DataSource = null;
+            pathGroupListBox.DataSource = pathGroups;
+            pathGroupListBox.SelectedIndex = -1;
+
+            hubListBox.DataSource = null;
+            hubListBox.DataSource = hubs;
+            hubListBox.SelectedIndex = -1;
         }
         public void LoadPathFromPathListBox(object sender, EventArgs e) {
             if (pathListBox.SelectedIndex == -1)
@@ -176,6 +179,8 @@ namespace GUI_Test2
                     editHub.ShowDialog();
                     break;
             }
+            updateListBoxes();
+            screenID = -1;
 
 
         }
@@ -186,7 +191,13 @@ namespace GUI_Test2
                 navIndex.Add(p, new Path());
             }
             updateListBoxes();
+            
+        }
 
+        private void pathListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EditPathGroupForm editPathGroup = new EditPathGroupForm(this, navIndex.);
+            editPathGroup.ShowDialog();
         }
     }
 }

@@ -58,7 +58,7 @@
             this.removePathsButton.Name = "removePathsButton";
             this.removePathsButton.Size = new System.Drawing.Size(30, 19);
             this.removePathsButton.TabIndex = 2;
-            this.removePathsButton.Text = "-->";
+            this.removePathsButton.Text = "<--";
             this.removePathsButton.UseVisualStyleBackColor = true;
             this.removePathsButton.Click += new System.EventHandler(this.removePathsButton_Click);
             // 
@@ -70,7 +70,7 @@
             this.addPathsButton.Name = "addPathsButton";
             this.addPathsButton.Size = new System.Drawing.Size(30, 19);
             this.addPathsButton.TabIndex = 3;
-            this.addPathsButton.Text = "<--";
+            this.addPathsButton.Text = "-->";
             this.addPathsButton.UseVisualStyleBackColor = true;
             this.addPathsButton.Click += new System.EventHandler(this.addPathsButton_Click);
             // 
@@ -118,7 +118,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(189, 9);
+            this.label1.Location = new System.Drawing.Point(11, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 13);
@@ -128,7 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 9);
+            this.label2.Location = new System.Drawing.Point(196, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
@@ -139,18 +139,19 @@
             // 
             this.pathsNotInPathGroupListBox.AllowDrop = true;
             this.pathsNotInPathGroupListBox.FormattingEnabled = true;
-            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(172, 30);
+            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(3, 30);
             this.pathsNotInPathGroupListBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathsNotInPathGroupListBox.Name = "pathsNotInPathGroupListBox";
             this.pathsNotInPathGroupListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(151, 329);
+            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(131, 329);
             this.pathsNotInPathGroupListBox.TabIndex = 12;
+            this.pathsNotInPathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathsNotInPathGroupListBox_SelectedIndexChanged_1);
             // 
             // pathsInPathGroupListBox
             // 
             this.pathsInPathGroupListBox.AllowDrop = true;
             this.pathsInPathGroupListBox.FormattingEnabled = true;
-            this.pathsInPathGroupListBox.Location = new System.Drawing.Point(9, 30);
+            this.pathsInPathGroupListBox.Location = new System.Drawing.Point(178, 30);
             this.pathsInPathGroupListBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathsInPathGroupListBox.Name = "pathsInPathGroupListBox";
             this.pathsInPathGroupListBox.Size = new System.Drawing.Size(125, 329);
@@ -159,7 +160,7 @@
             // 
             // Cancelbutton
             // 
-            this.Cancelbutton.Location = new System.Drawing.Point(704, 333);
+            this.Cancelbutton.Location = new System.Drawing.Point(544, 336);
             this.Cancelbutton.Name = "Cancelbutton";
             this.Cancelbutton.Size = new System.Drawing.Size(75, 23);
             this.Cancelbutton.TabIndex = 15;
@@ -169,7 +170,7 @@
             // 
             // OKbutton
             // 
-            this.OKbutton.Location = new System.Drawing.Point(625, 333);
+            this.OKbutton.Location = new System.Drawing.Point(463, 336);
             this.OKbutton.Name = "OKbutton";
             this.OKbutton.Size = new System.Drawing.Size(75, 23);
             this.OKbutton.TabIndex = 16;
@@ -244,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 362);
+            this.ClientSize = new System.Drawing.Size(634, 362);
             this.Controls.Add(this.editTierPathButton);
             this.Controls.Add(this.tierPathsListBox);
             this.Controls.Add(this.pathWeightTextBox);

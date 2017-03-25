@@ -103,7 +103,7 @@ namespace GUI_Test2
 
     [Serializable]
     public class PathCondition {
-        public List<Path> prereqs;
+        //public List<Path> prereqs;
         public List<Comparison> comparison;
     }
 

@@ -62,6 +62,12 @@
     <Compile Include="CreatePathGroupForm.Designer.cs">
       <DependentUpon>CreatePathGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DefineAttributeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DefineAttributeForm.Designer.cs">
+      <DependentUpon>DefineAttributeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditCharactersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,12 @@
     <Compile Include="EditPathGroupForm.Designer.cs">
       <DependentUpon>EditPathGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Navigable.cs" />
     <Compile Include="ProjectHomeForm.cs">
       <SubType>Form</SubType>
@@ -104,6 +116,9 @@
     <EmbeddedResource Include="CreatePathGroupForm.resx">
       <DependentUpon>CreatePathGroupForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DefineAttributeForm.resx">
+      <DependentUpon>DefineAttributeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditCharactersForm.resx">
       <DependentUpon>EditCharactersForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditPathGroupForm.resx">
       <DependentUpon>EditPathGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectHomeForm.resx">
       <DependentUpon>ProjectHomeForm.cs</DependentUpon>

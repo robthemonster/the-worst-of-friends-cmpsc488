@@ -82,17 +82,18 @@ namespace GUI_Test2
                 pathsInPathGroupListBox.DataSource = pathsInGroup;
                 pathsInPathGroupListBox.SelectedIndex = -1;
                 justUpdated = true;
-            }
 
-        pnipg = new List<string>();
-            foreach (String p in parentForm.paths)
-            {
-                if (!pathsInGroup.Contains(p))
-                    pnipg.Add(p);
-            }
+                pnipg = new List<string>();
+                foreach (String p in parentForm.paths)
+                {
+                    if (!pathsInGroup.Contains(p))
+                        pnipg.Add(p);
+                }
                 pathsNotInPathGroupListBox.DataSource = null;
                 pathsNotInPathGroupListBox.DataSource = pnipg;
                 pathsNotInPathGroupListBox.SelectedIndex = -1;
+            }
+
 
             currentTier = new List<string>();
             for (int i=0; i<pathsInGroup.Count;++i) {
@@ -151,6 +152,7 @@ namespace GUI_Test2
         {
             if (pathsInPathGroupListBox.SelectedIndex != -1)
             {
+                pathsNotInPathGroupListBox.SelectedIndex = -1;
                 int index = pathsInPathGroupListBox.SelectedIndex;
                 tierComboBox.SelectedIndex = tiers[index];
                 pathWeightTextBox.Text = weights[index].ToString();
@@ -173,9 +175,10 @@ namespace GUI_Test2
             if (!parentForm.pathGroups.Contains(name))
             {
                 parentForm.pathGroups.Add(name);
-                parentForm.navIndex.Add(name, null);
+                parentForm.navIndex.Add(name, new PathGroup(name, pathsInGroup, weights, tiers));
             }
-            parentForm.navIndex.Add(name, new PathGroup(name, pathsInGroup, weights, tiers));
+            else
+                parentForm.navIndex[name] = new PathGroup(name, pathsInGroup, weights, tiers);
             Close();
         }
 
@@ -183,6 +186,12 @@ namespace GUI_Test2
         {
             if(tierPathsListBox.SelectedIndex!=-1)
                 pathWeightTextBox.Text = weights[pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem)].ToString();
+        }
+
+        private void pathsNotInPathGroupListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if(pathsNotInPathGroupListBox.SelectedIndex!=-1)
+                pathsInPathGroupListBox.SelectedIndex = -1;
         }
     }
 }
