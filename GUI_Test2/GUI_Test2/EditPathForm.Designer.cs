@@ -38,14 +38,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dialogueList = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.selectedDialogueTextBox = new System.Windows.Forms.TextBox();
+            this.editDialogueButton = new System.Windows.Forms.Button();
             this.DeleteSelectedDialogueButton = new System.Windows.Forms.Button();
             this.createNewDialogueButton = new System.Windows.Forms.Button();
             this.DialogueContentLabel = new System.Windows.Forms.Label();
-            this.DialogueNameTextBox = new System.Windows.Forms.TextBox();
             this.ShiftDialogueDownButton = new System.Windows.Forms.Button();
             this.ShiftDialogueUpButton = new System.Windows.Forms.Button();
+            this.dialogueTextBox = new System.Windows.Forms.TextBox();
             this.selectDefaultPathImageButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.hubImpactList = new System.Windows.Forms.ComboBox();
@@ -208,52 +207,43 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.selectedDialogueTextBox, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.DeleteSelectedDialogueButton, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.createNewDialogueButton, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.DialogueContentLabel, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.DialogueNameTextBox, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ShiftDialogueDownButton, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.ShiftDialogueUpButton, 0, 2);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableLayoutPanel2.Controls.Add(this.editDialogueButton, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.DeleteSelectedDialogueButton, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.createNewDialogueButton, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.DialogueContentLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ShiftDialogueDownButton, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.ShiftDialogueUpButton, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.dialogueTextBox, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(113, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(314, 290);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
-            // label1
+            // editDialogueButton
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Dialogue Name:";
-            // 
-            // selectedDialogueTextBox
-            // 
-            this.selectedDialogueTextBox.Location = new System.Drawing.Point(100, 29);
-            this.selectedDialogueTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.selectedDialogueTextBox.Multiline = true;
-            this.selectedDialogueTextBox.Name = "selectedDialogueTextBox";
-            this.selectedDialogueTextBox.Size = new System.Drawing.Size(211, 207);
-            this.selectedDialogueTextBox.TabIndex = 2;
+            this.editDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.editDialogueButton.Location = new System.Drawing.Point(101, 241);
+            this.editDialogueButton.Name = "editDialogueButton";
+            this.editDialogueButton.Size = new System.Drawing.Size(102, 20);
+            this.editDialogueButton.TabIndex = 19;
+            this.editDialogueButton.Text = "Edit Dialogue";
+            this.editDialogueButton.UseVisualStyleBackColor = true;
+            this.editDialogueButton.Click += new System.EventHandler(this.editDialogueButton_Click);
             // 
             // DeleteSelectedDialogueButton
             // 
             this.DeleteSelectedDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(194, 267);
+            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(209, 267);
             this.DeleteSelectedDialogueButton.Name = "DeleteSelectedDialogueButton";
-            this.DeleteSelectedDialogueButton.Size = new System.Drawing.Size(117, 20);
+            this.DeleteSelectedDialogueButton.Size = new System.Drawing.Size(102, 20);
             this.DeleteSelectedDialogueButton.TabIndex = 3;
             this.DeleteSelectedDialogueButton.Text = "Delete Selected";
             this.DeleteSelectedDialogueButton.UseVisualStyleBackColor = true;
@@ -262,12 +252,12 @@
             // createNewDialogueButton
             // 
             this.createNewDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.createNewDialogueButton.Location = new System.Drawing.Point(194, 243);
+            this.createNewDialogueButton.Location = new System.Drawing.Point(208, 240);
             this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewDialogueButton.Name = "createNewDialogueButton";
-            this.createNewDialogueButton.Size = new System.Drawing.Size(118, 19);
+            this.createNewDialogueButton.Size = new System.Drawing.Size(104, 22);
             this.createNewDialogueButton.TabIndex = 2;
-            this.createNewDialogueButton.Text = "Create/Edit Dialogue";
+            this.createNewDialogueButton.Text = "Create Dialogue";
             this.createNewDialogueButton.UseVisualStyleBackColor = true;
             this.createNewDialogueButton.Click += new System.EventHandler(this.createNewDialogueButton_Click);
             // 
@@ -275,19 +265,12 @@
             // 
             this.DialogueContentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DialogueContentLabel.AutoSize = true;
-            this.DialogueContentLabel.Location = new System.Drawing.Point(6, 35);
+            this.DialogueContentLabel.Location = new System.Drawing.Point(19, 8);
             this.DialogueContentLabel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.DialogueContentLabel.Name = "DialogueContentLabel";
-            this.DialogueContentLabel.Size = new System.Drawing.Size(89, 13);
+            this.DialogueContentLabel.Size = new System.Drawing.Size(76, 13);
             this.DialogueContentLabel.TabIndex = 6;
-            this.DialogueContentLabel.Text = "Dialogue Content";
-            // 
-            // DialogueNameTextBox
-            // 
-            this.DialogueNameTextBox.Location = new System.Drawing.Point(101, 3);
-            this.DialogueNameTextBox.Name = "DialogueNameTextBox";
-            this.DialogueNameTextBox.Size = new System.Drawing.Size(210, 20);
-            this.DialogueNameTextBox.TabIndex = 7;
+            this.DialogueContentLabel.Text = "Dialogue Text:";
             // 
             // ShiftDialogueDownButton
             // 
@@ -308,6 +291,16 @@
             this.ShiftDialogueUpButton.Text = "▲";
             this.ShiftDialogueUpButton.UseVisualStyleBackColor = true;
             this.ShiftDialogueUpButton.Click += new System.EventHandler(this.ShiftDialogueUpButton_Click);
+            // 
+            // dialogueTextBox
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.dialogueTextBox, 2);
+            this.dialogueTextBox.Location = new System.Drawing.Point(100, 2);
+            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.dialogueTextBox.Multiline = true;
+            this.dialogueTextBox.Name = "dialogueTextBox";
+            this.dialogueTextBox.Size = new System.Drawing.Size(188, 207);
+            this.dialogueTextBox.TabIndex = 2;
             // 
             // selectDefaultPathImageButton
             // 
@@ -869,14 +862,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 422);
+            this.ClientSize = new System.Drawing.Size(688, 426);
             this.Controls.Add(this.pathDialogueTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "EditPathForm";
-            this.Text = "-";
+            this.Text = "Edit Path: ";
             this.Load += new System.EventHandler(this.EditPath_Load);
             this.pathDialogueTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -909,12 +902,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListBox dialogueList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox selectedDialogueTextBox;
+        private System.Windows.Forms.TextBox dialogueTextBox;
         private System.Windows.Forms.Button DeleteSelectedDialogueButton;
         private System.Windows.Forms.Button createNewDialogueButton;
         private System.Windows.Forms.Label DialogueContentLabel;
-        private System.Windows.Forms.TextBox DialogueNameTextBox;
         private System.Windows.Forms.Button ShiftDialogueDownButton;
         private System.Windows.Forms.Button ShiftDialogueUpButton;
         private System.Windows.Forms.Button selectDefaultPathImageButton;
@@ -971,5 +962,6 @@
         private System.Windows.Forms.ComboBox hubImpactList;
         private System.Windows.Forms.CheckBox isHubSpecific;
         private System.Windows.Forms.CheckBox useButtonImage;
+        private System.Windows.Forms.Button editDialogueButton;
     }
 }

@@ -54,16 +54,14 @@ namespace GUI_Test2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (selectedDialogueTextBox.Text == ""||selectedDialogueTextBox==null||DialogueNameTextBox.Text=="")
+            if (dialogueTextBox.Text == ""||dialogueTextBox==null)
             {
 
             }
             else
             {
-                dialogueNameList.Add(DialogueNameTextBox.Text);
-                dialogueEntryList.Add(selectedDialogueTextBox.Text);
-                selectedDialogueTextBox.Text = null;
-                DialogueNameTextBox.Text = null;
+                dialogueEntryList.Add(dialogueTextBox.Text);
+                dialogueTextBox.Text = null;
                 updateListBoxes();
             }
         }
@@ -95,15 +93,11 @@ namespace GUI_Test2
         {
             if (dialogueList.SelectedIndex != -1)
             {
-                selectedDialogueTextBox.Text = dialogueEntryList[dialogueList.SelectedIndex];
-                DialogueNameTextBox.Text = dialogueNameList[dialogueList.SelectedIndex];
+                dialogueTextBox.Text = dialogueEntryList[dialogueList.SelectedIndex];
             }
             else
             {
-                selectedDialogueTextBox.Text = null;
-                DialogueNameTextBox.Text = null;
-
-
+                dialogueTextBox.Text = null;
             }
         }
         
@@ -152,11 +146,10 @@ namespace GUI_Test2
                 try
                 {
                     dialogueEntryList.RemoveAt(index);
-                    dialogueNameList.RemoveAt(index);
                     if (index == dialogueEntryList.Count)
                         index = index - 1;
                     dialogueList.DataSource = null;
-                    dialogueList.DataSource = dialogueNameList;
+                    dialogueList.DataSource = dialogueEntryList;
                     dialogueList.SelectedIndex = index;
 
                 }
@@ -165,33 +158,20 @@ namespace GUI_Test2
 
         private void createNewDialogueButton_Click(object sender, EventArgs e)
         {
-            if (selectedDialogueTextBox.Text != "" && selectedDialogueTextBox != null && DialogueNameTextBox.Text != "")
+            if (dialogueTextBox.Text != "" && dialogueTextBox != null)
             {
-                try
-                {
-                    int index = dialogueList.SelectedIndex;
-                    if (index == -1)
-                    {
-                        dialogueNameList.Add(DialogueNameTextBox.Text);
-                        dialogueEntryList.Add(selectedDialogueTextBox.Text);
-                    }
-                    else if (index >=0)
-                    {
-                        dialogueNameList [index] =DialogueNameTextBox.Text;
-                        dialogueEntryList[index] = selectedDialogueTextBox.Text;
-                    }
-                    updateListBoxes();
-                }
-                catch { }
+                dialogueEntryList.Add(dialogueTextBox.Text);
+                dialogueTextBox.Text = "";
+                updateListBoxes();
             }
         }
         private void updateListBoxes() {
             dialogueList.DataSource = null;
-            dialogueList.DataSource = dialogueNameList;
+            dialogueList.DataSource = dialogueEntryList;
             dialogueList.SelectedIndex = -1;
 
             pathListBoxTab2.DataSource = null;
-            pathListBoxTab2.DataSource = dialogueNameList;
+            pathListBoxTab2.DataSource = dialogueEntryList;
             pathListBoxTab2.SelectedIndex = -1;
 
             attributeComboBox.DataSource = null;
@@ -222,10 +202,14 @@ namespace GUI_Test2
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (parentForm.navIndex.ContainsKey(name))
+            {
                 parentForm.navIndex[name] = new Path(name, dialogueNameList, dialogueEntryList, buttonList);
+            }
             else
+            {
                 parentForm.paths.Add(name);
                 parentForm.navIndex.Add(name, new Path(name, dialogueNameList, dialogueEntryList, buttonList));
+            }
             parentForm.updateListBoxes();
             Close();
         }
@@ -337,7 +321,25 @@ namespace GUI_Test2
                 setButtonImageButton.Enabled = false;
             }
         }
-        
+
+        private void editDialogueButton_Click(object sender, EventArgs e)
+        {
+            if (dialogueList.SelectedIndex == -1)
+            {
+                if (dialogueTextBox.Text != "" && dialogueTextBox != null)
+                {
+                    dialogueEntryList.Add(dialogueTextBox.Text);
+                    dialogueTextBox.Text = "";
+                    updateListBoxes();
+                }
+            }
+            else
+            {
+                dialogueEntryList[dialogueList.SelectedIndex] = dialogueTextBox.Text;
+                dialogueTextBox.Text = "";
+                updateListBoxes();
+            }
+        }
     }
     
 }
