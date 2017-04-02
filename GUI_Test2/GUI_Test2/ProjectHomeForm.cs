@@ -100,30 +100,20 @@ namespace GUI_Test2
                 fileLocation = fileName;
             }
 
-            Game game = new Game();
+            Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+            Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths);
 
-            game.pathGroups = pathGroups;
-            game.hubs = hubs;
-            game.navIndex = navIndex;
-            game.navigableName = navigableName;
-            game.paths = paths;
-
-            saveToFile(game, fileName);
+            saveToFile(proj, fileName);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (fileLocation != "")
             {
-                Game game = new Game();
+                Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+                Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths);
 
-                game.pathGroups = pathGroups;
-                game.hubs = hubs;
-                game.navIndex = navIndex;
-                game.navigableName = navigableName;
-                game.paths = paths;
-
-                saveToFile(game, fileLocation);
+                saveToFile(proj, fileLocation);
             }
         }
 
@@ -194,12 +184,12 @@ namespace GUI_Test2
         }
 
         //Serialization
-        public void saveToFile(Game game, string fileName)
+        public void saveToFile(Project proj, string fileName)
         {
             var stream = File.Open(fileName, FileMode.Create);
 
             IFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(stream, game);
+            formatter.Serialize(stream, proj);
      
             stream.Flush();
             stream.Close();
@@ -215,21 +205,23 @@ namespace GUI_Test2
                 //Deserialization
 
 
-                Game game;
+               Project proj;
                 IFormatter formatter = new BinaryFormatter();
                 var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-                game = (Game)formatter.Deserialize(stream);
+                proj = (Project)formatter.Deserialize(stream);
 
 
                 stream.Close();
 
                 //Load the GameObject
-                pathGroups = (List<String>)game.pathGroups;
-                hubs = (List<String>)game.hubs;
-                navIndex = (Dictionary<String, Navigable>)game.navIndex;
-                navigableName = (String)game.navigableName;
-                paths = (List<String>)game.paths;
+                pathGroups = (List<String>)proj.pathGroups;
+                hubs = (List<String>)proj.hubs;
+                navIndex = (Dictionary<String, Navigable>)proj.navIndex;
+                navigableName = (String)proj.navigableName;
+                paths = (List<String>)proj.paths;
+                Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+
                 updateListBoxes();
             }
 
