@@ -76,7 +76,7 @@ FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &positio
 		this->buttonText = sf::Text(buttonText, this->font, charSize);
 		this->buttonText.setOutlineThickness(3);
 		this->buttonText.setOutlineColor(sf::Color::Black);
-//		this->buttonText.setOrigin(sf::Vector2f(this->buttonText.getLocalBounds().width / 2, this->buttonText.getLocalBounds().height / 2));
+	//	this->buttonText.setOrigin(sf::Vector2f(this->buttonText.getLocalBounds().width / 2, this->buttonText.getLocalBounds().height / 2));
 		this->buttonText.setPosition(position);
 	}
 	if (buttonTexture == NULL) {

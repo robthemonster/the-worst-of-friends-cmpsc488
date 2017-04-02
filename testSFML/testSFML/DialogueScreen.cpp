@@ -175,7 +175,10 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 			(*it).drawWords(font, charSize, textOrigin, width, window, charDelay, dialogueClock.getElapsedTime().asMilliseconds());
 
 		}
-		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
+
+		if (currPlayer != NULL)
+			(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
+		
 		(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
 		window.display();
 

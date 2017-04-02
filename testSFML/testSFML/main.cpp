@@ -209,6 +209,7 @@ int main() {
 
 
 	sf::Music songStream;
+	songStream.setVolume(50);
 	sf::Texture dialoguePaneTexture;
 
 	font.loadFromFile("fonts/8bit.ttf");
@@ -247,24 +248,68 @@ int main() {
 	}
 
 
-	Game game(2, NULL);
+	
+
+	Game * game = new Game(1);
+
+	Requirements gameOver(*(*game).getAttributeMapPointer());
+	gameOver.addRequirement((Attributable**)&game, "day", Requirements::GEQ, 4);
+
+	(*game).setGameOverRequirements(&gameOver);
+
+	PathGroup roundStart, roundEnd;
+	std::vector<Path*> dayStart, dayEnd;
+	std::vector<Requirements*> daysReq;
+
+	roundStart.setTiers(3);
+	roundEnd.setTiers(3);
+
+	
+
+	for (int i = 0; i < 3; i++) {
+		daysReq.push_back(new Requirements(*(*game).getAttributeMapPointer()));
+		(*daysReq[i]).addRequirement((Attributable**)&game, "day", Requirements::EQ, (i + 1));
+
+		std::string start = "Start of day "; 
+		start.append(std::to_string(i + 1));
+
+		dayStart.push_back(new Path(game));
+		(*dayStart[i]).setFont(font);
+		(*dayStart[i]).setImageTexture(imageTextures[13]);
+		(*dayStart[i]).addDialogueLine(start);
+		(*dayStart[i]).setDialoguePaneTexture(dialoguePane, dialoguePanePos);
+		roundStart.addPath(i, dayStart[i], 1, daysReq[i]);
+		
+		
+		dayEnd.push_back(new Path(game));
+		(*dayEnd[i]).setFont(font);
+		(*dayEnd[i]).setImageTexture(imageTextures[13]);
+		(*dayEnd[i]).addDialogueLine("End of day " + std::to_string(i+1), (Attributable**)&game, "day", Impact::INCREASE, 1);
+		(*dayEnd[i]).setDialoguePaneTexture(dialoguePane, dialoguePanePos);
+		roundEnd.addPath(i, dayEnd[i], 1, daysReq[i]);
+	}
+
+	(*game).setStartOfRound(&roundStart);
+	(*game).setEndOfRound(&roundEnd);
 
 
-	Hub hub(&game);
-	Path left(&game), right(&game);
+
+	Hub hub(game);
+	Path left(game), right(game);
 	PathGroup leftPg, rightPg;
-	Path leftSucceed(&game), leftFail(&game);
-	Path rightSucceed(&game), rightFail(&game);
+	Path leftSucceed(game), leftFail(game);
+	Path rightSucceed(game), rightFail(game);
 
 
+	(*game).addGlobalAttribute("day", 1);
 
-	game.addPlayerAttribute("strength", 5);
-	game.addPlayerAttribute("wisdom", 5);
-	game.addPlayerAttribute("score", 0);
-	game.addVisiblePlayerAttribute("strength");
-	game.addVisiblePlayerAttribute("wisdom");
-	game.addVisiblePlayerAttribute("score");
-	game.setStart(&hub);
+	(*game).addPlayerAttribute("strength", 5);
+	(*game).addPlayerAttribute("wisdom", 5);
+	(*game).addPlayerAttribute("score", 0);
+	(*game).addVisiblePlayerAttribute("strength");
+	(*game).addVisiblePlayerAttribute("wisdom");
+	(*game).addVisiblePlayerAttribute("score");
+	(*game).setStart(&hub);
 
 
 	leftPg.setTiers(2);
@@ -314,9 +359,9 @@ int main() {
 	right.setPrompt("What do you do?");
 	right.addButton("Test your widsom", &rightPg, button2Pos);
 
-	Requirements noReq(*game.getAttributeMapPointer()), tenStrength(*game.getAttributeMapPointer()), tenWisdom(*game.getAttributeMapPointer());
-	tenStrength.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "strength", Requirements::GEQ, 7);
-	tenWisdom.addRequirement((Attributable**)game.getCurrentPlayerPointer(), "wisdom", Requirements::GEQ, 7);
+	Requirements noReq(*(*game).getAttributeMapPointer()), tenStrength(*(*game).getAttributeMapPointer()), tenWisdom(*(*game).getAttributeMapPointer());
+	tenStrength.addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), "strength", Requirements::GEQ, 7);
+	tenWisdom.addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), "wisdom", Requirements::GEQ, 7);
 
 
 	leftPg.addPath(1, &leftSucceed, 1, &tenStrength);
@@ -326,10 +371,10 @@ int main() {
 	rightPg.addPath(0, &rightFail, 1, &noReq);
 	
 
-	leftSucceed.addDialogueLine("You succeeded by having 7 strength! +10 Points", (Attributable**)game.getCurrentPlayerPointer(), "score", Impact::INCREASE, 10);
-	rightSucceed.addDialogueLine("You  succeeded by having 7 wisdom! +10 Points", (Attributable**)game.getCurrentPlayerPointer(), "score", Impact::INCREASE, 10);
-	leftFail.addDialogueLine("You failed, but gained 1 strength in your efforts",  (Attributable**)game.getCurrentPlayerPointer(), "strength", Impact::INCREASE, 1);
-	rightFail.addDialogueLine("You failed, but gained 1 wisdom in your efforts", (Attributable**)game.getCurrentPlayerPointer(), "wisdom", Impact::INCREASE, 1);
+	leftSucceed.addDialogueLine("You succeeded by having 7 strength! +10 Points", (Attributable**)(*game).getCurrentPlayerPointer(), "score", Impact::INCREASE, 10);
+	rightSucceed.addDialogueLine("You  succeeded by having 7 wisdom! +10 Points", (Attributable**)(*game).getCurrentPlayerPointer(), "score", Impact::INCREASE, 10);
+	leftFail.addDialogueLine("You failed, but gained 1 strength in your efforts",  (Attributable**)(*game).getCurrentPlayerPointer(), "strength", Impact::INCREASE, 1);
+	rightFail.addDialogueLine("You failed, but gained 1 wisdom in your efforts", (Attributable**)(*game).getCurrentPlayerPointer(), "wisdom", Impact::INCREASE, 1);
 
 	
 
@@ -357,7 +402,7 @@ int main() {
 
 
 
-	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize | sf::Style::Fullscreen );
+	sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize );
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
 	gameWindow.setView(view);
 	gameWindow.setFramerateLimit(60);
@@ -367,7 +412,7 @@ int main() {
 
 
 
-	game.play(gameWindow, view);
+	(*game).play(gameWindow, view);
 
 /*	
 

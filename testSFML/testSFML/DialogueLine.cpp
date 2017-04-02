@@ -18,7 +18,7 @@ DialogueLine::DialogueLine(sf::String words, Character * character, std::string 
 
 void DialogueLine::drawCharacter(sf::RenderWindow& window) {
 	if (character != NULL && !key.empty()) {
-		(*character).draw(window, key, characterPosition);
+		(*character).draw(window, key, characterPosition); 
 
 	}
 }

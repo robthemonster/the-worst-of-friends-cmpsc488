@@ -3,13 +3,23 @@
 #include "Navigable.h"
 #include "AttributeMap.h"
 #include "Interface.h"
+#include "Requirements.h"
 
 void Game::play(sf::RenderWindow & window, sf::View & view)
 {
 	while (window.isOpen()) {
-		for (int i = 0; i < this->numPlayers; i++) {
-			this->currPlayer = &players[i];
-			(*this->start).display(window, view);
+		while (!(*this->gameOverRequirements).meetsAllRequirements()) {
+			//start of round
+			if (startOfRound != NULL)
+				(*startOfRound).display(window, view);
+
+			for (int i = 0; i < this->numPlayers; i++) {
+				this->currPlayer = &players[i];
+				(*this->start).display(window, view);
+			}
+			//end of round
+			if (endOfRound != NULL)
+				(*endOfRound).display(window, view);
 		}
 	}
 }
@@ -26,7 +36,7 @@ void Game::addPlayerAttribute(std::string key, int defaultValue)
 	}
 }
 
-Game::Game(int numberOfPlayers, Requirements * gameOverRequirements)
+Game::Game(int numberOfPlayers)
 {
 	sf::Color colors[4];
 	colors[0] = sf::Color(255, 0, 0, 130);
@@ -63,10 +73,32 @@ void Game::setStart(Navigable * start)
 	this->start = start;
 }
 
+void Game::setStartOfRound(Navigable * startOfRound)
+{
+	this->startOfRound = startOfRound;
+}
+
+void Game::setEndOfRound(Navigable * endOfRound)
+{
+	this->endOfRound = endOfRound;
+}
+
+void Game::setGameOverRequirements(Requirements * req)
+{
+	this->gameOverRequirements = req;
+}
+
 void Game::addVisiblePlayerAttribute(std::string key)
 {
 	(*this->interfacePointer).addVisiblePlayerAttribute(key);
 }
+
+void Game::addGlobalAttribute(std::string key, int defaultValue)
+{
+	(*this->attributeMap).addAttribute((Attributable*)this, key, defaultValue);
+}
+
+
 
 
 

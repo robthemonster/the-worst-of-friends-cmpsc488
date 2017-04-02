@@ -23,10 +23,10 @@ void ButtonScreen:: setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f d
 	this->dialoguePane.setPosition(dialoguePanePos);
 	this->dialoguePane.setSize(sf::Vector2f(texture.getSize().x, texture.getSize().y));
 }
-void ButtonScreen::setPrompt(std::string prompt, sf::Font  font, int charSize) {
+void ButtonScreen::setPrompt(std::string prompt, sf::Font font, int charSize) {
 	this->font = font;
-	this->promptText = sf::Text(sf::String(prompt), this->font, charSize);
-	this->promptText.setOrigin(sf::Vector2f(this->promptText.getLocalBounds().width / 2, this->promptText.getLocalBounds().height /2));
+	this->promptText = sf::Text(prompt, this->font, charSize);
+	//this->promptText.setOrigin(sf::Vector2f(this->promptText.getLocalBounds().width / 2, this->promptText.getLocalBounds().height /2));
 	this->promptText.setPosition(this->dialoguePane.getPosition().x + (this->dialoguePane.getSize().x / 2), this->dialoguePane.getPosition().y + 10);
 }
 ButtonScreen::ButtonScreen(const ButtonScreen & copy)
@@ -133,7 +133,10 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 		}
 
 		(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
-		(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
+		
+		if (currPlayer != NULL)
+			(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
+			
 		window.display();
 		
 		
