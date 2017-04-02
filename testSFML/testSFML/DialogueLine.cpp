@@ -88,15 +88,15 @@ bool DialogueLine::hasCharacter() {
 	return this->character != NULL;
 }
 
-void DialogueLine::setImpact(Impact * impact)
+void DialogueLine::addImpact(Impact * impact)
 {
-	this->impact = impact;
+	this->impacts.push_back(impact);
 }
 
 void DialogueLine::processImpact()
 {
-	if (this->impact != NULL) {
-		(*this->impact).processImpact();
+	for (int i = 0; i < this->impacts.size(); i++) {
+		(*this->impacts[i]).processImpact();
 	}
 }
 

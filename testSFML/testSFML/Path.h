@@ -6,6 +6,7 @@ class DialogueScreen;
 class ButtonScreen;
 class Interface;
 class Game;
+class Impact;
 class Attributable;
 class Path : public Navigable 
 {
@@ -25,6 +26,7 @@ public:
 	void setImageTexture(sf::Texture &);
 	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position);
 	void addDialogueLine(std::string);
+	void addDialogueLine(std::string, std::vector<Impact *>);
 	void addDialogueLine(std::string, Attributable ** target, std::string key, int op, int val);
 	void setButtonSize(sf::Vector2f size);
 	void setButtonCharSize(int size);
