@@ -1,6 +1,6 @@
 ﻿namespace GUI_Test2
 {
-    partial class CreatePathGroupForm
+    partial class CreateNavigableForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreatePathGroupForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateNavigableForm));
             this.label1 = new System.Windows.Forms.Label();
             this.navigableNameTextBox = new System.Windows.Forms.TextBox();
             this.Cancelbutton = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             // 
             // navigableNameTextBox
             // 
-            this.navigableNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.navigableNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.navigableNameTextBox.Location = new System.Drawing.Point(113, 6);
             this.navigableNameTextBox.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
@@ -54,7 +54,7 @@
             this.navigableNameTextBox.Size = new System.Drawing.Size(175, 20);
             this.navigableNameTextBox.TabIndex = 1;
             this.navigableNameTextBox.WordWrap = false;
-            this.navigableNameTextBox.TextChanged += new System.EventHandler(this.pathGroupNameTextBox_TextChanged);
+            this.navigableNameTextBox.TextChanged += new System.EventHandler(this.navigableNameTextBox_TextChanged);
             // 
             // Cancelbutton
             // 
@@ -88,8 +88,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreatePathGroupForm";
             this.Text = "CreatePathGroupForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreatePathGroupForm_FormClosed);
-            this.Load += new System.EventHandler(this.CreatePathGroupForm_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateNavigableForm_FormClosed);
+            this.Load += new System.EventHandler(this.CreateNavigableForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

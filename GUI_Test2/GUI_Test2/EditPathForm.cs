@@ -195,7 +195,7 @@ namespace GUI_Test2
             pathListBoxTab2.SelectedIndex = -1;
 
             attributeComboBox.DataSource = null;
-            attributeComboBox.DataSource = parentForm.attributes.names;
+            //attributeComboBox.DataSource = Attributes.getScope(0);
             attributeComboBox.SelectedIndex = -1;
 
 
@@ -337,6 +337,7 @@ namespace GUI_Test2
                 setButtonImageButton.Enabled = false;
             }
         }
+        
     }
     
 }

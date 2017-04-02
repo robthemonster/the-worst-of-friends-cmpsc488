@@ -14,14 +14,15 @@ using System.IO;
 
 namespace GUI_Test2
 {
+    [Serializable]
     public partial class ProjectHomeForm : Form
     {
 
-        public Attribs attributes;
+        
         //public List<NPC> characters;
         //public Dictionary<String,Path> paths;
-        public List<String> hubs;
         public List<String> pathGroups;
+        public List<String> hubs;
         //public List<P2PG> p2PG;
         public Dictionary<String, Navigable> navIndex;
         public String navigableName;
@@ -29,7 +30,9 @@ namespace GUI_Test2
 
         public int screenID;
         //1 = Path, 2 = Path Group, 3 = Hub
-        
+
+        public string fileLocation = "";
+        //Defaults to saving on the user's desktop
 
         public ProjectHomeForm()
         {
@@ -37,16 +40,15 @@ namespace GUI_Test2
             InitializeComponent();
 
             //paths = new Dictionary<string, Path>();
-            navIndex = new Dictionary<string, Navigable>();
-            attributes = new Attribs();
+            navIndex = new Dictionary<String, Navigable>();
+            //attributes = new Attribs();
             paths = new List<String>();
             pathGroups = new List<String>();
             hubs = new List<String>();
 
-            attributes.names = new List<string> {"Health","Strength","Agility","Charisma","Evil","Unrest"};
-            attributes.scopes = new List<int> { 0,0,0,0,2,2};
-            attributes.values = new List<int> { 20, 4, 2, 19, 0, 69 };
-
+            //attributes.names = new List<string> {"Health","Strength","Agility","Charisma","Evil","Unrest"};
+            //attributes.scopes = new List<int> { 0,0,0,0,2,2};
+            //attributes.values = new List<int> { 20, 4, 2, 19, 0, 69 };
 
             updateListBoxes();
         }
@@ -61,11 +63,20 @@ namespace GUI_Test2
 
         }
 
+        //deserialize
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string fileName = "";
+
             OpenFileDialog fd = new OpenFileDialog();
-            fd.ShowDialog();
-           
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                fileName = fd.FileName;
+                fileLocation = fileName;
+            }
+
+            openFile(fileName);
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,10 +91,42 @@ namespace GUI_Test2
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string fileName = "";
+
             SaveFileDialog sd = new SaveFileDialog();
-            sd.ShowDialog();
+            if (sd.ShowDialog() == DialogResult.OK)
+            {
+                fileName = sd.FileName;
+                fileLocation = fileName;
+            }
+
+            Game game = new Game();
+
+            game.pathGroups = pathGroups;
+            game.hubs = hubs;
+            game.navIndex = navIndex;
+            game.navigableName = navigableName;
+            game.paths = paths;
+
+            saveToFile(game, fileName);
         }
-        
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fileLocation != "")
+            {
+                Game game = new Game();
+
+                game.pathGroups = pathGroups;
+                game.hubs = hubs;
+                game.navIndex = navIndex;
+                game.navigableName = navigableName;
+                game.paths = paths;
+
+                saveToFile(game, fileLocation);
+            }
+        }
+
 
         private void charactersToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -149,18 +192,52 @@ namespace GUI_Test2
                 editPath.ShowDialog();
             }
         }
-        public void saveToFile()
+
+        //Serialization
+        public void saveToFile(Game game, string fileName)
         {
+            var stream = File.Open(fileName, FileMode.Create);
+
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("MyFile.bin", FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, attributes);
+            formatter.Serialize(stream, game);
+     
+            stream.Flush();
             stream.Close();
+
+        }
+
+        
+        public void openFile(string fileName)
+        {
+            if (fileName != "")
+            {
+
+                //Deserialization
+
+
+                Game game;
+                IFormatter formatter = new BinaryFormatter();
+                var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+                game = (Game)formatter.Deserialize(stream);
+
+
+                stream.Close();
+
+                //Load the GameObject
+                pathGroups = (List<String>)game.pathGroups;
+                hubs = (List<String>)game.hubs;
+                navIndex = (Dictionary<String, Navigable>)game.navIndex;
+                navigableName = (String)game.navigableName;
+                paths = (List<String>)game.paths;
+                updateListBoxes();
+            }
 
         }
 
         public void createNavigable()
         {
-            CreatePathGroupForm PathGroup = new CreatePathGroupForm(this);
+            CreateNavigableForm PathGroup = new CreateNavigableForm(this);
             PathGroup.ShowDialog();
 
             switch (screenID)
@@ -196,8 +273,30 @@ namespace GUI_Test2
 
         private void pathListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EditPathGroupForm editPathGroup = new EditPathGroupForm(this, navIndex.);
-            editPathGroup.ShowDialog();
+            try
+            {
+                if (pathListBox.SelectedIndex != -1)
+                {
+                    //On loading a file, a NullException happens here
+                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, (PathGroup)navIndex[(String)pathGroupListBox.SelectedItem]);
+                    editPathGroup.ShowDialog();
+                }
+            }
+            catch
+            {
+                Console.Write("NullException unhandled in pathListBox_SelectedIndexChanged.");
+            }
+        }
+
+        private void pathGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void attributesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DefineAttributeForm daf = new DefineAttributeForm();
+            daf.ShowDialog();
         }
     }
 }

@@ -16,3 +16,4 @@ make sound a thing
 run time storage
 homepage with stuff
 handle dict.
+tell galen how to merge

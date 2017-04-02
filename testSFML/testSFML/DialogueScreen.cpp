@@ -33,7 +33,7 @@ void DialogueScreen::setTextOrigin(sf::Vector2f & origin) {
 	this->textOrigin = origin;
 }
 
-void DialogueScreen::setDestination(ButtonScreen ** b)
+void DialogueScreen::setDestination(Navigable ** b)
 {
 	this->destination = b;
 }

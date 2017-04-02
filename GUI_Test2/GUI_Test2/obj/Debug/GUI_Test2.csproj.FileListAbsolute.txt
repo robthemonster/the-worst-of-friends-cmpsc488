@@ -1,59 +1,9 @@
-c:\users\the monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe.config
-c:\users\the monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csprojResolveAssemblyReference.cache
-c:\users\the monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.Properties.Resources.resources
-c:\users\the monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csproj.GenerateResource.Cache
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.pdb
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.exe
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.pdb
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreateHubForm.resources
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathForm.resources
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditCharactersForm.resources
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditHubForm.resources
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathForm.resources
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.ProjectHomeForm.resources
-C:\Users\The Monster\documents\visual studio 2013\Projects\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathGroupForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe.config
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.exe
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.pdb
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.pdb
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csprojResolveAssemblyReference.cache
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreateHubForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditCharactersForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditHubForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathGroupForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.ProjectHomeForm.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.Properties.Resources.resources
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csproj.GenerateResource.Cache
-C:\Users\Keith\Google Drive\Capstone\Phase 4\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathGroupForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe.config
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.exe
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.pdb
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.pdb
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csprojResolveAssemblyReference.cache
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreateHubForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathGroupForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditCharactersForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditHubForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathGroupForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.ProjectHomeForm.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.Properties.Resources.resources
-C:\Users\Keith\Google Drive\Gui Github Dir\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csproj.GenerateResource.Cache
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe.config
-C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.exe
-C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.pdb
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.pdb
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csprojResolveAssemblyReference.cache
-C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreateHubForm.resources
-C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathForm.resources
-C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreatePathGroupForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.CreateNavigableForm.resources
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.DefineAttributeForm.resources
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditCharactersForm.resources
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditHubForm.resources
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.EditPathForm.resources
@@ -61,5 +11,8 @@ C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.ProjectHomeForm.resources
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.Properties.Resources.resources
 C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.csproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.exe
+C:\Users\Galen\Documents\GitHub\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.pdb
+C:\Users\The Monster\Source\Repos\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\bin\Debug\GUI_Test2.exe.config
 C:\Users\The Monster\Source\Repos\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.exe
 C:\Users\The Monster\Source\Repos\the-worst-of-friends-cmpsc488\GUI_Test2\GUI_Test2\obj\Debug\GUI_Test2.pdb

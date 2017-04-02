@@ -44,23 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateHubForm.cs">
+    <Compile Include="Attributes.cs" />
+    <Compile Include="CreateNavigableForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateHubForm.Designer.cs">
-      <DependentUpon>CreateHubForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreatePathForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreatePathForm.Designer.cs">
-      <DependentUpon>CreatePathForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreatePathGroupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreatePathGroupForm.Designer.cs">
-      <DependentUpon>CreatePathGroupForm.cs</DependentUpon>
+    <Compile Include="CreateNavigableForm.Designer.cs">
+      <DependentUpon>CreateNavigableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DefineAttributeForm.cs">
       <SubType>Form</SubType>
@@ -68,7 +57,9 @@
     <Compile Include="DefineAttributeForm.Designer.cs">
       <DependentUpon>DefineAttributeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditCharactersForm.cs" />
+    <Compile Include="EditCharactersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EditCharactersForm.Designer.cs">
       <DependentUpon>EditCharactersForm.cs</DependentUpon>
     </Compile>
@@ -90,12 +81,8 @@
     <Compile Include="EditPathGroupForm.Designer.cs">
       <DependentUpon>EditPathGroupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="gameObject.cs" />
+    <Compile Include="HSerializer.cs" />
     <Compile Include="Navigable.cs" />
     <Compile Include="ProjectHomeForm.cs">
       <SubType>Form</SubType>
@@ -105,14 +92,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CreateHubForm.resx">
-      <DependentUpon>CreateHubForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreatePathForm.resx">
-      <DependentUpon>CreatePathForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreatePathGroupForm.resx">
-      <DependentUpon>CreatePathGroupForm.cs</DependentUpon>
+    <EmbeddedResource Include="CreateNavigableForm.resx">
+      <DependentUpon>CreateNavigableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DefineAttributeForm.resx">
       <DependentUpon>DefineAttributeForm.cs</DependentUpon>
@@ -128,9 +109,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditPathGroupForm.resx">
       <DependentUpon>EditPathGroupForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectHomeForm.resx">
       <DependentUpon>ProjectHomeForm.cs</DependentUpon>

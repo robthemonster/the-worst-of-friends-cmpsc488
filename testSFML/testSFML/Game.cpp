@@ -8,7 +8,7 @@
 void Game::play(sf::RenderWindow & window, sf::View & view)
 {
 	while (window.isOpen()) {
-		while (!(*this->gameOverRequirements).meetsAllRequirements()) {
+		while (window.isOpen() && !(*this->gameOverRequirements).meetsAllRequirements()) {
 			//start of round
 			if (startOfRound != NULL)
 				(*startOfRound).display(window, view);

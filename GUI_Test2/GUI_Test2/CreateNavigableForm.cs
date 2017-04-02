@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI_Test2
 {
-    public partial class CreatePathGroupForm : Form
+    public partial class CreateNavigableForm : Form
     {
         public ProjectHomeForm parent;
         public bool validClose = false;
-        public CreatePathGroupForm(ProjectHomeForm sender)
+        public CreateNavigableForm(ProjectHomeForm sender)
         {
             InitializeComponent();
             AcceptButton = OKbutton;
@@ -36,7 +36,7 @@ namespace GUI_Test2
             }
         }
 
-        private void pathGroupNameTextBox_TextChanged(object sender, EventArgs e)
+        private void navigableNameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -109,12 +109,12 @@ namespace GUI_Test2
             
         }
 
-        private void CreatePathGroupForm_Load(object sender, EventArgs e)
+        private void CreateNavigableForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void CreatePathGroupForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void CreateNavigableForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!validClose)
             {

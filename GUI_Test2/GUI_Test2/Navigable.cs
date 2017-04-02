@@ -11,6 +11,8 @@ namespace GUI_Test2
     
     public interface Navigable
     {
+        String getName();
+        Boolean isPathGroup();
     }
     [Serializable]
     public class Path : Navigable {
@@ -30,6 +32,9 @@ namespace GUI_Test2
             buttons = btns;
             //buttons = btons;
         }
+
+        public String getName() { return name; }
+        public Boolean isPathGroup() { return false; }
     }
 
     [Serializable]
@@ -52,6 +57,8 @@ namespace GUI_Test2
         public List<Button> buttons;
         //public something image;
         //public something sound;
+        public String getName() { return name; }
+        public Boolean isPathGroup() { return false; }
     }
 
     [Serializable]
@@ -81,16 +88,12 @@ namespace GUI_Test2
             pathsInGroup = pIG;
             weights = w;
             tiers = t;
-        } 
+        }
+        public String getName() { return name; }
+        public Boolean isPathGroup() { return true; }
     }
 
-    [Serializable]
-    public class Attribs
-    {
-        public List<String> names;
-        public List<int> scopes;
-        public List<int> values;
-    }
+    //Attributes is its own class
 
     [Serializable]
     public class P2PG{

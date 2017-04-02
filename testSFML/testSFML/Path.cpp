@@ -151,7 +151,7 @@ Path::Path(Game * game)
 	this->game = game;
 	this->buttonScreen = NULL;
 	this->dialogueScreen = new DialogueScreen(this->game);
-	(*this->dialogueScreen).setDestination(&this->buttonScreen);
+	(*this->dialogueScreen).setDestination((Navigable **)&this->buttonScreen);
 }
 
 
