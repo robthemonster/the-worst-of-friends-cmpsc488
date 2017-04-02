@@ -32,6 +32,8 @@ public:
 	void setPrompt(std::string prompt);
 	void setFont(sf::Font font);
 	void setMusic(sf::Music & music, std::string fileName);
+	void setDestination(Navigable ** destination);
+
 	Path(Game * game);
 	~Path();
 };

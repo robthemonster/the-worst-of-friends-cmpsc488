@@ -144,6 +144,11 @@ void Path::setMusic(sf::Music & music, std::string fileName)
 	this->hasMusic = true;
 }
 
+void Path::setDestination(Navigable ** destination)
+{
+	(*this->dialogueScreen).setDestination(destination);
+}
+
 
 
 Path::Path(Game * game)
