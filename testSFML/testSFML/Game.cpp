@@ -1,9 +1,11 @@
-#include "Game.h"
+
 #include "Player.h"
 #include "Navigable.h"
 #include "AttributeMap.h"
 #include "Interface.h"
+#include "EndingGenerator.h"
 #include "Requirements.h"
+#include "Game.h"
 
 void Game::play(sf::RenderWindow & window, sf::View & view)
 {
@@ -21,6 +23,8 @@ void Game::play(sf::RenderWindow & window, sf::View & view)
 			if (endOfRound != NULL)
 				(*endOfRound).display(window, view);
 		}
+		(*this->ending).display(window, view);
+		window.close();
 	}
 }
 
@@ -47,6 +51,7 @@ Game::Game(int numberOfPlayers)
 	this->attributeMap = new AttributeMap;
 	this->interfacePointer = new Interface(attributeMap);
 	this->players = new Player[numPlayers];
+	this->ending = new EndingGenerator;
 	this->numPlayers = numberOfPlayers;
 	this->gameOverRequirements = gameOverRequirements;
 
@@ -96,6 +101,16 @@ void Game::addVisiblePlayerAttribute(std::string key)
 void Game::addGlobalAttribute(std::string key, int defaultValue)
 {
 	(*this->attributeMap).addAttribute((Attributable*)this, key, defaultValue);
+}
+
+void Game::setEndingTiers(int tiers)
+{
+	(*this->ending).setTiers(tiers);
+}
+
+void Game::addEnding(int tier, Path * end, Requirements * req)
+{
+	(*this->ending).addEnding(tier, end, req);
 }
 
 

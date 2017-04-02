@@ -7,6 +7,8 @@ class AttributeMap;
 class Navigable;
 class Requirements;
 class Interface;
+class EndingGenerator;
+class Path;
 class Game : public Attributable
 {
 private:
@@ -20,6 +22,7 @@ private:
 	Navigable * startOfRound;
 	Navigable * endOfRound;
 	
+	EndingGenerator * ending;
 	Requirements * gameOverRequirements;
 
 	
@@ -38,6 +41,8 @@ private:
 	void setGameOverRequirements(Requirements * req);
 	void addVisiblePlayerAttribute(std::string key);
 	void addGlobalAttribute(std::string key, int defaultValue);
+	void setEndingTiers(int tiers);
+	void addEnding(int tier, Path * end, Requirements * req);
 
 
 	~Game();

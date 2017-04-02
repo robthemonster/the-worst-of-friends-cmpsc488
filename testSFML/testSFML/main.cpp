@@ -306,6 +306,9 @@ int main() {
 	(*game).addPlayerAttribute("strength", 5);
 	(*game).addPlayerAttribute("wisdom", 5);
 	(*game).addPlayerAttribute("score", 0);
+	(*game).addPlayerAttribute("passedTestOfStrength", 0);
+	(*game).addPlayerAttribute("passedTestOfWisdom", 0);
+
 	(*game).addVisiblePlayerAttribute("strength");
 	(*game).addVisiblePlayerAttribute("wisdom");
 	(*game).addVisiblePlayerAttribute("score");
@@ -398,7 +401,27 @@ int main() {
 
 
 	
+	Path goodEnding(game), badEnding(game);
 
+	
+
+	goodEnding.setFont(font);
+	goodEnding.setImageTexture(imageTextures[3]);
+	goodEnding.setDialoguePaneTexture(dialoguePane, dialoguePanePos);
+
+	badEnding.setFont(font);
+	badEnding.setImageTexture(imageTextures[4]);
+	badEnding.setDialoguePaneTexture(dialoguePane, dialoguePanePos);
+
+	Requirements twentyPoints(*(*game).getAttributeMapPointer());
+	twentyPoints.addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), "score", Requirements::GEQ, 10);
+
+	goodEnding.addDialogueLine("lmao gj u got the good ending");
+	badEnding.addDialogueLine("o no u got the bad ending");
+	(*game).setEndingTiers(1);
+	(*game).addEnding(0, &goodEnding, &twentyPoints);
+	(*game).addEnding(0, &badEnding, &noReq);
+	
 
 
 

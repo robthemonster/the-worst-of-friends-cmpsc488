@@ -10,7 +10,7 @@ private:
 public:
 	void setTiers(int tiers);
 	void addEnding(int tier, Path * path, Requirements * req);
-	void display(sf::RenderWindow window, sf::View view);
+	void display(sf::RenderWindow &window, sf::View &view);
 	EndingGenerator();
 	~EndingGenerator();
 };
