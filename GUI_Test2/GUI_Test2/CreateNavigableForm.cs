@@ -48,62 +48,71 @@ namespace GUI_Test2
 
         private void OKbutton_Click(object sender, EventArgs e)
         {
-
-            switch (parent.screenID)
+            if (navigableNameTextBox.Text.Contains("!") || navigableNameTextBox.Text.Contains("@")
+                || navigableNameTextBox.Text.Contains("#") || navigableNameTextBox.Text.Contains("$")
+                || navigableNameTextBox.Text.Contains("%") || navigableNameTextBox.Text.Contains("^")
+                || navigableNameTextBox.Text.Contains("&") || navigableNameTextBox.Text.Contains("*")
+                || navigableNameTextBox.Text.Contains("(") || navigableNameTextBox.Text.Contains(")")
+                || navigableNameTextBox.Text.Contains("_") || navigableNameTextBox.Text.Contains("+")
+                || navigableNameTextBox.Text.Contains("="))
             {
-                case 1:
-                    if (navigableNameTextBox.Text == "")
-                    {
-                        MessageBox.Show("You Must Enter A Name For The Path.");
-                    }
-                    else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
-                    {
-                        MessageBox.Show("Name Already Exists.");
-                    }
-                    else
-                    {
-                        parent.navigableName = navigableNameTextBox.Text;
+                MessageBox.Show("You May Not Use Characters '!', '@', '#', '$', '%', '^', '&', '*',\n '(', ')', '_', '+', or '='.");
+            }
 
-                        validClose = true;
-                        Close();
-                    }
-                    break;
+            else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
+            {
+                MessageBox.Show("Name Already Exists.");
+            }
 
-                case 2:
-                    if (navigableNameTextBox.Text == "")
-                    {
-                        MessageBox.Show("You Must Enter A Name For The PathGroup.");
-                    }
-                    else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
-                    {
-                        MessageBox.Show("Name Already Exists.");
-                    }
-                    else
-                    {
-                        parent.navigableName = navigableNameTextBox.Text;
+            else
+            {
+                switch (parent.screenID)
+                {
+                    case 1:
+                        if (navigableNameTextBox.Text == "")
+                        {
+                            MessageBox.Show("You Must Enter A Name For The Path.");
+                        }
 
-                        validClose = true;
-                        Close();
-                    }
-                    break;
+                        else
+                        {
+                            parent.navigableName = navigableNameTextBox.Text;
 
-                case 3:
-                    if (navigableNameTextBox.Text == "")
-                    {
-                        MessageBox.Show("You Must Enter A Name For The Hub");
-                    }
-                    else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
-                    {
-                        MessageBox.Show("Name Already Exists.");
-                    }
-                    else
-                    {
-                        parent.navigableName = navigableNameTextBox.Text;
+                            validClose = true;
+                            Close();
+                        }
+                        break;
 
-                        validClose = true;
-                        Close();
-                    }
-                    break;
+                    case 2:
+                        if (navigableNameTextBox.Text == "")
+                        {
+                            MessageBox.Show("You Must Enter A Name For The PathGroup.");
+                        }
+
+                        else
+                        {
+                            parent.navigableName = navigableNameTextBox.Text;
+
+                            validClose = true;
+                            Close();
+                        }
+                        break;
+
+                    case 3:
+                        if (navigableNameTextBox.Text == "")
+                        {
+                            MessageBox.Show("You Must Enter A Name For The Hub");
+                        }
+
+                        else
+                        {
+                            parent.navigableName = navigableNameTextBox.Text;
+
+                            validClose = true;
+                            Close();
+                        }
+                        break;
+                }
             }
 
             
