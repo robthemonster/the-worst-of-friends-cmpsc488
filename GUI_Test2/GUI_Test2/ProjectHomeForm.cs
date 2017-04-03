@@ -57,7 +57,7 @@ namespace GUI_Test2
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string mess = "Any unsaved material will be removed. \nAre you sure you wish to proceed?";
+            string mess = "Any unsaved material will be removed. \nAre you sure you wish to continue?";
             string cap = "New Project";
             var alert = MessageBox.Show(mess, cap, MessageBoxButtons.YesNo);
 
