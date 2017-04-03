@@ -10,7 +10,6 @@ namespace GUI_Test2
     public class Project
     {
         //public List<NPC> characters;
-        //public Dictionary<String,Path> paths;
         public List<String> pathGroups = new List<string>();
         public List<String> hubs = new List<string>();
         //public List<P2PG> p2PG;

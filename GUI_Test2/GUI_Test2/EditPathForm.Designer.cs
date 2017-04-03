@@ -47,14 +47,19 @@
             this.dialogueTextBox = new System.Windows.Forms.TextBox();
             this.selectDefaultPathImageButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.hubImpactList = new System.Windows.Forms.ComboBox();
-            this.isHubSpecific = new System.Windows.Forms.CheckBox();
+            this.valueNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ScopeGroup = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.globalRadioButton = new System.Windows.Forms.RadioButton();
+            this.hubRadioButton = new System.Windows.Forms.RadioButton();
+            this.playerRadioButton = new System.Windows.Forms.RadioButton();
+            this.allHubCheckBox = new System.Windows.Forms.CheckBox();
+            this.hubSelectionComboBox = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.saveButtonTab2 = new System.Windows.Forms.Button();
             this.editCreateImpactButton = new System.Windows.Forms.Button();
             this.deleteImpactButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.attributeAlterValueTextBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -103,6 +108,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).BeginInit();
+            this.ScopeGroup.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.Buttons.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -315,14 +323,13 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.hubImpactList);
-            this.tabPage2.Controls.Add(this.isHubSpecific);
+            this.tabPage2.Controls.Add(this.valueNumericUpDown);
+            this.tabPage2.Controls.Add(this.ScopeGroup);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.saveButtonTab2);
             this.tabPage2.Controls.Add(this.editCreateImpactButton);
             this.tabPage2.Controls.Add(this.deleteImpactButton);
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.attributeAlterValueTextBox1);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label3);
@@ -336,32 +343,102 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impacts";
             this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // hubImpactList
+            // valueNumericUpDown
             // 
-            this.hubImpactList.Enabled = false;
-            this.hubImpactList.FormattingEnabled = true;
-            this.hubImpactList.Location = new System.Drawing.Point(428, 90);
-            this.hubImpactList.Name = "hubImpactList";
-            this.hubImpactList.Size = new System.Drawing.Size(142, 21);
-            this.hubImpactList.TabIndex = 13;
-            this.hubImpactList.Text = "Select Hub";
+            this.valueNumericUpDown.Location = new System.Drawing.Point(474, 200);
+            this.valueNumericUpDown.Name = "valueNumericUpDown";
+            this.valueNumericUpDown.Size = new System.Drawing.Size(89, 20);
+            this.valueNumericUpDown.TabIndex = 16;
             // 
-            // isHubSpecific
+            // ScopeGroup
             // 
-            this.isHubSpecific.AutoSize = true;
-            this.isHubSpecific.Location = new System.Drawing.Point(237, 90);
-            this.isHubSpecific.Name = "isHubSpecific";
-            this.isHubSpecific.Size = new System.Drawing.Size(122, 17);
-            this.isHubSpecific.TabIndex = 12;
-            this.isHubSpecific.Text = "Impact Specific Hub";
-            this.isHubSpecific.UseVisualStyleBackColor = true;
-            this.isHubSpecific.CheckedChanged += new System.EventHandler(this.isHubSpecific_CheckedChanged);
+            this.ScopeGroup.Controls.Add(this.tableLayoutPanel5);
+            this.ScopeGroup.Controls.Add(this.allHubCheckBox);
+            this.ScopeGroup.Controls.Add(this.hubSelectionComboBox);
+            this.ScopeGroup.Location = new System.Drawing.Point(232, 63);
+            this.ScopeGroup.Name = "ScopeGroup";
+            this.ScopeGroup.Size = new System.Drawing.Size(331, 98);
+            this.ScopeGroup.TabIndex = 15;
+            this.ScopeGroup.TabStop = false;
+            this.ScopeGroup.Text = "Scope";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.globalRadioButton, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.hubRadioButton, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.playerRadioButton, 0, 2);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(6, 19);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(109, 72);
+            this.tableLayoutPanel5.TabIndex = 14;
+            // 
+            // globalRadioButton
+            // 
+            this.globalRadioButton.AutoSize = true;
+            this.globalRadioButton.Checked = true;
+            this.globalRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.globalRadioButton.Name = "globalRadioButton";
+            this.globalRadioButton.Size = new System.Drawing.Size(55, 17);
+            this.globalRadioButton.TabIndex = 0;
+            this.globalRadioButton.TabStop = true;
+            this.globalRadioButton.Text = "Global";
+            this.globalRadioButton.UseVisualStyleBackColor = true;
+            this.globalRadioButton.CheckedChanged += new System.EventHandler(this.globalRadioButton_CheckedChanged);
+            // 
+            // hubRadioButton
+            // 
+            this.hubRadioButton.AutoSize = true;
+            this.hubRadioButton.Location = new System.Drawing.Point(3, 27);
+            this.hubRadioButton.Name = "hubRadioButton";
+            this.hubRadioButton.Size = new System.Drawing.Size(45, 17);
+            this.hubRadioButton.TabIndex = 1;
+            this.hubRadioButton.Text = "Hub";
+            this.hubRadioButton.UseVisualStyleBackColor = true;
+            this.hubRadioButton.CheckedChanged += new System.EventHandler(this.hubRadioButton_CheckedChanged);
+            // 
+            // playerRadioButton
+            // 
+            this.playerRadioButton.AutoSize = true;
+            this.playerRadioButton.Location = new System.Drawing.Point(3, 51);
+            this.playerRadioButton.Name = "playerRadioButton";
+            this.playerRadioButton.Size = new System.Drawing.Size(54, 17);
+            this.playerRadioButton.TabIndex = 2;
+            this.playerRadioButton.Text = "Player";
+            this.playerRadioButton.UseVisualStyleBackColor = true;
+            this.playerRadioButton.CheckedChanged += new System.EventHandler(this.playerRadioButton_CheckedChanged);
+            // 
+            // allHubCheckBox
+            // 
+            this.allHubCheckBox.AutoSize = true;
+            this.allHubCheckBox.Location = new System.Drawing.Point(174, 21);
+            this.allHubCheckBox.Name = "allHubCheckBox";
+            this.allHubCheckBox.Size = new System.Drawing.Size(122, 17);
+            this.allHubCheckBox.TabIndex = 12;
+            this.allHubCheckBox.Text = "Impact Specific Hub";
+            this.allHubCheckBox.UseVisualStyleBackColor = true;
+            this.allHubCheckBox.CheckedChanged += new System.EventHandler(this.isHubSpecific_CheckedChanged);
+            // 
+            // hubSelectionComboBox
+            // 
+            this.hubSelectionComboBox.Enabled = false;
+            this.hubSelectionComboBox.FormattingEnabled = true;
+            this.hubSelectionComboBox.Location = new System.Drawing.Point(174, 45);
+            this.hubSelectionComboBox.Name = "hubSelectionComboBox";
+            this.hubSelectionComboBox.Size = new System.Drawing.Size(142, 21);
+            this.hubSelectionComboBox.TabIndex = 13;
+            this.hubSelectionComboBox.Text = "Select Hub";
+            this.hubSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.hubSelectionComboBox_SelectedIndexChanged);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(544, 307);
+            this.button2.Location = new System.Drawing.Point(474, 328);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 21);
             this.button2.TabIndex = 11;
@@ -371,7 +448,7 @@
             // 
             // saveButtonTab2
             // 
-            this.saveButtonTab2.Location = new System.Drawing.Point(462, 306);
+            this.saveButtonTab2.Location = new System.Drawing.Point(381, 327);
             this.saveButtonTab2.Name = "saveButtonTab2";
             this.saveButtonTab2.Size = new System.Drawing.Size(75, 23);
             this.saveButtonTab2.TabIndex = 10;
@@ -381,7 +458,7 @@
             // 
             // editCreateImpactButton
             // 
-            this.editCreateImpactButton.Location = new System.Drawing.Point(349, 306);
+            this.editCreateImpactButton.Location = new System.Drawing.Point(391, 265);
             this.editCreateImpactButton.Name = "editCreateImpactButton";
             this.editCreateImpactButton.Size = new System.Drawing.Size(107, 23);
             this.editCreateImpactButton.TabIndex = 9;
@@ -406,18 +483,10 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Add an Impact";
             // 
-            // attributeAlterValueTextBox1
-            // 
-            this.attributeAlterValueTextBox1.Location = new System.Drawing.Point(469, 147);
-            this.attributeAlterValueTextBox1.MaxLength = 10;
-            this.attributeAlterValueTextBox1.Name = "attributeAlterValueTextBox1";
-            this.attributeAlterValueTextBox1.Size = new System.Drawing.Size(94, 20);
-            this.attributeAlterValueTextBox1.TabIndex = 6;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(503, 130);
+            this.label5.Location = new System.Drawing.Point(494, 184);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 5;
@@ -426,7 +495,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(386, 130);
+            this.label4.Location = new System.Drawing.Point(388, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 4;
@@ -435,7 +504,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(229, 130);
+            this.label3.Location = new System.Drawing.Point(249, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 3;
@@ -444,7 +513,7 @@
             // attributeComboBox
             // 
             this.attributeComboBox.FormattingEnabled = true;
-            this.attributeComboBox.Location = new System.Drawing.Point(212, 146);
+            this.attributeComboBox.Location = new System.Drawing.Point(232, 200);
             this.attributeComboBox.Name = "attributeComboBox";
             this.attributeComboBox.Size = new System.Drawing.Size(135, 21);
             this.attributeComboBox.TabIndex = 2;
@@ -453,7 +522,7 @@
             // opComboBox
             // 
             this.opComboBox.FormattingEnabled = true;
-            this.opComboBox.Location = new System.Drawing.Point(381, 146);
+            this.opComboBox.Location = new System.Drawing.Point(391, 200);
             this.opComboBox.Name = "opComboBox";
             this.opComboBox.Size = new System.Drawing.Size(53, 21);
             this.opComboBox.TabIndex = 1;
@@ -489,18 +558,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Paths";
+            this.label6.Text = "Dialogues";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(101, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.Size = new System.Drawing.Size(89, 13);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Path Impacts";
+            this.label8.Text = "Dialogue Impacts";
             // 
             // impactAttributeListBox
             // 
@@ -563,7 +632,7 @@
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.pathGroupFromButtonRadio);
             this.groupBox1.Controls.Add(this.pathFromButtonRadio);
-            this.groupBox1.Location = new System.Drawing.Point(128, 129);
+            this.groupBox1.Location = new System.Drawing.Point(133, 149);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(241, 85);
             this.groupBox1.TabIndex = 2;
@@ -663,7 +732,7 @@
             // 
             // createButtonButton
             // 
-            this.createButtonButton.Location = new System.Drawing.Point(258, 221);
+            this.createButtonButton.Location = new System.Drawing.Point(263, 241);
             this.createButtonButton.Name = "createButtonButton";
             this.createButtonButton.Size = new System.Drawing.Size(75, 23);
             this.createButtonButton.TabIndex = 5;
@@ -673,7 +742,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(144, 65);
+            this.label15.Location = new System.Drawing.Point(136, 30);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 16;
@@ -681,9 +750,10 @@
             // 
             // buttonTextTextBox
             // 
-            this.buttonTextTextBox.Location = new System.Drawing.Point(147, 91);
+            this.buttonTextTextBox.Location = new System.Drawing.Point(139, 50);
+            this.buttonTextTextBox.Multiline = true;
             this.buttonTextTextBox.Name = "buttonTextTextBox";
-            this.buttonTextTextBox.Size = new System.Drawing.Size(164, 20);
+            this.buttonTextTextBox.Size = new System.Drawing.Size(164, 81);
             this.buttonTextTextBox.TabIndex = 0;
             // 
             // label14
@@ -880,6 +950,11 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).EndInit();
+            this.ScopeGroup.ResumeLayout(false);
+            this.ScopeGroup.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.Buttons.ResumeLayout(false);
@@ -915,7 +990,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ListBox pathListBoxTab2;
-        private System.Windows.Forms.TextBox attributeAlterValueTextBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -959,9 +1033,15 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.RadioButton pathGroupFromButtonRadio;
         private System.Windows.Forms.RadioButton pathFromButtonRadio;
-        private System.Windows.Forms.ComboBox hubImpactList;
-        private System.Windows.Forms.CheckBox isHubSpecific;
+        private System.Windows.Forms.ComboBox hubSelectionComboBox;
+        private System.Windows.Forms.CheckBox allHubCheckBox;
         private System.Windows.Forms.CheckBox useButtonImage;
         private System.Windows.Forms.Button editDialogueButton;
+        private System.Windows.Forms.GroupBox ScopeGroup;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.RadioButton globalRadioButton;
+        private System.Windows.Forms.RadioButton hubRadioButton;
+        private System.Windows.Forms.RadioButton playerRadioButton;
+        private System.Windows.Forms.NumericUpDown valueNumericUpDown;
     }
 }

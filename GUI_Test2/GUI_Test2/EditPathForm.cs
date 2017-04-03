@@ -12,12 +12,13 @@ namespace GUI_Test2
 {
     public partial class EditPathForm : Form
     {
-        private List<String> dialogueNameList;
         private List <String> dialogueEntryList;
         private List <Button> buttonList;
         private ProjectHomeForm parentForm;
         private String name;
         private String[] ops;
+        private int scope;
+        private string currHub;
         
         
 
@@ -28,7 +29,6 @@ namespace GUI_Test2
             name = n;
             this.Text = "Edit Path: "+name;
             dialogueEntryList = new List<String>();
-            dialogueNameList = new List<String>();
         }
         public EditPathForm(ProjectHomeForm par, Path p)
         {
@@ -37,7 +37,6 @@ namespace GUI_Test2
             name = p.name;
             this.Text = "Edit Path: " + name;
             dialogueEntryList = p.dialogueContents;
-            dialogueNameList = p.dialogueNames;
 
         }
             
@@ -47,6 +46,8 @@ namespace GUI_Test2
             this.AcceptButton = createNewDialogueButton;
             ops = new String[] { "+", "-", "/", "*", "=" };
             opComboBox.DataSource = this.ops;
+            scope = 0;
+            currHub = "";
 
 
             updateListBoxes();
@@ -105,9 +106,9 @@ namespace GUI_Test2
         private void ShiftDialogueUpButton_Click(object sender, EventArgs e)
         {
             int index = dialogueList.SelectedIndex;
-            if (index != -1&& index!=0)
+            if (index != -1 && index!=0)
             {
-                swap(dialogueList.SelectedIndex, dialogueList.SelectedIndex - 1);
+                swap(index, index - 1);
                 updateListBoxes();
                 dialogueList.SelectedIndex = index - 1;
 
@@ -118,7 +119,7 @@ namespace GUI_Test2
         {
 
             int index = dialogueList.SelectedIndex;
-            if (index != -1 && index < dialogueNameList.Count-1 )
+            if (index != -1 && index < dialogueEntryList.Count-1 )
             {
                 swap(dialogueList.SelectedIndex, dialogueList.SelectedIndex + 1);
                 updateListBoxes();
@@ -128,15 +129,12 @@ namespace GUI_Test2
         }
         private void swap(int from, int to) {
             String temp;
-            if(to>=0&&to<dialogueNameList.Count)
+            if(to>=0 && to< dialogueEntryList.Count)
             {
-                temp=dialogueNameList[to];
-                dialogueNameList[to] = dialogueNameList[from];
-                dialogueNameList[from] = temp;
-
-                temp = dialogueEntryList[to];
+                temp= dialogueEntryList[to];
                 dialogueEntryList[to] = dialogueEntryList[from];
                 dialogueEntryList[from] = temp;
+                
             }
          }
 
@@ -175,7 +173,7 @@ namespace GUI_Test2
             pathListBoxTab2.SelectedIndex = -1;
 
             attributeComboBox.DataSource = null;
-            //attributeComboBox.DataSource = Attributes.getScope(0);
+            attributeComboBox.DataSource = Attributes.getScope(scope,currHub);
             attributeComboBox.SelectedIndex = -1;
 
 
@@ -185,12 +183,11 @@ namespace GUI_Test2
         }
         private void EditCreateImpact(object sender, EventArgs e) {
             if (attributeComboBox.SelectedIndex != -1 &&
-                opComboBox.SelectedIndex != -1 &&
-                attributeAlterValueTextBox1.Text != "")
+                opComboBox.SelectedIndex != -1 )
             {
                 string name = (string)attributeComboBox.SelectedValue;
                 string op = (string)opComboBox.SelectedValue;
-                string val = attributeAlterValueTextBox1.Text;
+                int val = (int)valueNumericUpDown.Value;
             }
 
         }
@@ -203,12 +200,12 @@ namespace GUI_Test2
         {
             if (parentForm.navIndex.ContainsKey(name))
             {
-                parentForm.navIndex[name] = new Path(name, dialogueNameList, dialogueEntryList, buttonList);
+                parentForm.navIndex[name] = new Path(name, dialogueEntryList, dialogueEntryList, buttonList);
             }
             else
             {
                 parentForm.paths.Add(name);
-                parentForm.navIndex.Add(name, new Path(name, dialogueNameList, dialogueEntryList, buttonList));
+                parentForm.navIndex.Add(name, new Path(name, dialogueEntryList, dialogueEntryList, buttonList));
             }
             parentForm.updateListBoxes();
             Close();
@@ -276,7 +273,7 @@ namespace GUI_Test2
         {
 
             int index = buttonListBox.SelectedIndex;
-            if (index != -1 && index < dialogueNameList.Count - 1)
+            if (index != -1 && index < dialogueEntryList.Count - 1)
             {
                 swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex + 1);
                 updateListBoxes();
@@ -303,10 +300,10 @@ namespace GUI_Test2
 
         private void isHubSpecific_CheckedChanged(object sender, EventArgs e)
         {
-            if (isHubSpecific.Checked)
-                hubImpactList.Enabled = true;
+            if (allHubCheckBox.Checked)
+                hubSelectionComboBox.Enabled = true;
             else
-                hubImpactList.Enabled = false;
+                hubSelectionComboBox.Enabled = false;
         }
 
         private void useButtonImage_CheckedChanged(object sender, EventArgs e)
@@ -339,6 +336,60 @@ namespace GUI_Test2
                 dialogueTextBox.Text = "";
                 updateListBoxes();
             }
+        }
+
+        private void globalRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            scope = 0;
+            currHub = "";
+            allHubCheckBox.Enabled = false;
+            allHubCheckBox.Checked = false;
+            hubSelectionComboBox.Enabled = false;
+            updateScope();
+        }
+
+        private void hubRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+            allHubCheckBox.Enabled = true;
+            hubSelectionComboBox.Enabled = true;
+            if (hubSelectionComboBox.SelectedIndex >= 0)
+            {
+                currHub = (String)hubSelectionComboBox.SelectedItem;
+            }
+            if (hubSelectionComboBox.SelectedIndex >= 0)
+            scope = 1;
+            updateScope();
+
+        }
+
+        private void playerRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            scope = 2;
+            currHub = "";
+            allHubCheckBox.Enabled = false;
+            allHubCheckBox.Checked = false;
+            hubSelectionComboBox.Enabled = false;
+            updateScope();
+
+        }
+        private void updateScope()
+        {
+
+        }
+
+        private void hubSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            if (hubSelectionComboBox.SelectedIndex != -1)
+            {
+                currHub = (String) hubSelectionComboBox.SelectedItem;
+            }
+            else
+            {
+                currHub = "";
+            }
+            updateScope();
+
         }
     }
     
