@@ -10,12 +10,13 @@ namespace GUI_Test2
     public class Project
     {
         //public List<NPC> characters;
-        public List<String> pathGroups = new List<string>();
-        public List<String> hubs = new List<string>();
+        public List<String> pathGroups;
+        public List<String> hubs;
         //public List<P2PG> p2PG;
-        public Dictionary<String, Navigable> navIndex = new Dictionary<String, Navigable>();
-        public String navigableName = "";
-        public List<String> paths = new List<String>();
+        public Dictionary<String, Navigable> navIndex;
+        public String navigableName;
+        public List<String> paths;
+        public List<Attrib> attribs;
 
         public Project()
         {
@@ -24,15 +25,17 @@ namespace GUI_Test2
             navIndex = new Dictionary<String, Navigable>();
             navigableName = "";
             paths = new List<String>();
+            attribs = new List<Attrib>(); 
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p)
+        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p,List<Attrib> attribs)
         {
             pathGroups = pg;
             hubs = h;
             navIndex = nI;
             navigableName = nN;
             paths = p;
+            this.attribs = attribs;
         }
     }
 
