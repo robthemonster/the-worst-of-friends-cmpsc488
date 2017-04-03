@@ -19,6 +19,8 @@ namespace GUI_Test2
         private String[] ops;
         private int scope;
         private string currHub;
+        private List<List<Impact>> dialogueImpactList;
+
         
         
 
@@ -129,29 +131,37 @@ namespace GUI_Test2
         }
         private void swap(int from, int to) {
             String temp;
+            List<Impact> tempI;
             if(to>=0 && to< dialogueEntryList.Count)
             {
                 temp= dialogueEntryList[to];
                 dialogueEntryList[to] = dialogueEntryList[from];
                 dialogueEntryList[from] = temp;
-                
+
+                tempI = dialogueImpactList[to];
+                dialogueImpactList[to] = dialogueImpactList[from];
+                dialogueImpactList[from] = tempI;
+
+
+
             }
          }
 
         private void DeleteSelectedDialogueButton_Click(object sender, EventArgs e)
         {
             int index = dialogueList.SelectedIndex;
-                try
-                {
-                    dialogueEntryList.RemoveAt(index);
-                    if (index == dialogueEntryList.Count)
-                        index = index - 1;
-                    dialogueList.DataSource = null;
-                    dialogueList.DataSource = dialogueEntryList;
-                    dialogueList.SelectedIndex = index;
+            try
+            {
+                dialogueEntryList.RemoveAt(index);
+                dialogueImpactList.RemoveAt(index);
+                if (index == dialogueEntryList.Count)
+                    index = index - 1;
+                dialogueList.DataSource = null;
+                dialogueList.DataSource = dialogueEntryList;
+                dialogueList.SelectedIndex = index;
 
-                }
-                catch { }
+            }
+            catch { }
         }
 
         private void createNewDialogueButton_Click(object sender, EventArgs e)
@@ -159,8 +169,10 @@ namespace GUI_Test2
             if (dialogueTextBox.Text != "" && dialogueTextBox != null)
             {
                 dialogueEntryList.Add(dialogueTextBox.Text);
+                dialogueImpactList.Add(new List<Impact>());
                 dialogueTextBox.Text = "";
                 updateListBoxes();
+
             }
         }
         private void updateListBoxes() {
@@ -175,6 +187,11 @@ namespace GUI_Test2
             attributeComboBox.DataSource = null;
             attributeComboBox.DataSource = Attributes.getScope(scope,currHub);
             attributeComboBox.SelectedIndex = -1;
+
+            if (pathListBoxTab2.SelectedIndex != -1)
+            {
+
+            }
 
 
 
@@ -298,13 +315,7 @@ namespace GUI_Test2
             catch { }
         }
 
-        private void isHubSpecific_CheckedChanged(object sender, EventArgs e)
-        {
-            if (allHubCheckBox.Checked)
-                hubSelectionComboBox.Enabled = true;
-            else
-                hubSelectionComboBox.Enabled = false;
-        }
+     
 
         private void useButtonImage_CheckedChanged(object sender, EventArgs e)
         {
@@ -342,16 +353,13 @@ namespace GUI_Test2
         {
             scope = 0;
             currHub = "";
-            allHubCheckBox.Enabled = false;
-            allHubCheckBox.Checked = false;
             hubSelectionComboBox.Enabled = false;
             updateScope();
         }
 
         private void hubRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
-            allHubCheckBox.Enabled = true;
+            
             hubSelectionComboBox.Enabled = true;
             if (hubSelectionComboBox.SelectedIndex >= 0)
             {
@@ -367,8 +375,6 @@ namespace GUI_Test2
         {
             scope = 2;
             currHub = "";
-            allHubCheckBox.Enabled = false;
-            allHubCheckBox.Checked = false;
             hubSelectionComboBox.Enabled = false;
             updateScope();
 
@@ -376,7 +382,26 @@ namespace GUI_Test2
         private void updateScope()
         {
 
+            if (pathListBoxTab2.SelectedIndex != -1)
+            {
+                impactAttributeListBox.DataSource = null;
+                impactAttributeListBox.DataSource = getImpacts(pathListBoxTab2.SelectedIndex);
+            }
         }
+        private List<String> getImpacts(int index)
+        {
+            List<String> impacts = new List<String>();
+            if (index > -1)
+            {
+                foreach(Impact i in dialogueImpactList[index])
+                {
+                    impacts.Add(i.attribute);
+                }
+            }
+            return impacts;
+        }
+
+     
 
         private void hubSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         { 
@@ -390,6 +415,14 @@ namespace GUI_Test2
             }
             updateScope();
 
+        }
+
+        private void createImpactButton_Click(object sender, EventArgs e)
+        {
+            if(opComboBox.SelectedIndex!=-1 && attributeComboBox.SelectedIndex != -1)
+            {
+
+            }
         }
     }
     

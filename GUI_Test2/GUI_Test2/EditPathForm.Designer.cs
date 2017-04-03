@@ -53,11 +53,10 @@
             this.globalRadioButton = new System.Windows.Forms.RadioButton();
             this.hubRadioButton = new System.Windows.Forms.RadioButton();
             this.playerRadioButton = new System.Windows.Forms.RadioButton();
-            this.allHubCheckBox = new System.Windows.Forms.CheckBox();
             this.hubSelectionComboBox = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.saveButtonTab2 = new System.Windows.Forms.Button();
-            this.editCreateImpactButton = new System.Windows.Forms.Button();
+            this.createImpactButton = new System.Windows.Forms.Button();
             this.deleteImpactButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -327,7 +326,7 @@
             this.tabPage2.Controls.Add(this.ScopeGroup);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.saveButtonTab2);
-            this.tabPage2.Controls.Add(this.editCreateImpactButton);
+            this.tabPage2.Controls.Add(this.createImpactButton);
             this.tabPage2.Controls.Add(this.deleteImpactButton);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label5);
@@ -354,7 +353,6 @@
             // ScopeGroup
             // 
             this.ScopeGroup.Controls.Add(this.tableLayoutPanel5);
-            this.ScopeGroup.Controls.Add(this.allHubCheckBox);
             this.ScopeGroup.Controls.Add(this.hubSelectionComboBox);
             this.ScopeGroup.Location = new System.Drawing.Point(232, 63);
             this.ScopeGroup.Name = "ScopeGroup";
@@ -414,17 +412,6 @@
             this.playerRadioButton.UseVisualStyleBackColor = true;
             this.playerRadioButton.CheckedChanged += new System.EventHandler(this.playerRadioButton_CheckedChanged);
             // 
-            // allHubCheckBox
-            // 
-            this.allHubCheckBox.AutoSize = true;
-            this.allHubCheckBox.Location = new System.Drawing.Point(174, 21);
-            this.allHubCheckBox.Name = "allHubCheckBox";
-            this.allHubCheckBox.Size = new System.Drawing.Size(122, 17);
-            this.allHubCheckBox.TabIndex = 12;
-            this.allHubCheckBox.Text = "Impact Specific Hub";
-            this.allHubCheckBox.UseVisualStyleBackColor = true;
-            this.allHubCheckBox.CheckedChanged += new System.EventHandler(this.isHubSpecific_CheckedChanged);
-            // 
             // hubSelectionComboBox
             // 
             this.hubSelectionComboBox.Enabled = false;
@@ -456,14 +443,15 @@
             this.saveButtonTab2.UseVisualStyleBackColor = true;
             this.saveButtonTab2.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // editCreateImpactButton
+            // createImpactButton
             // 
-            this.editCreateImpactButton.Location = new System.Drawing.Point(391, 265);
-            this.editCreateImpactButton.Name = "editCreateImpactButton";
-            this.editCreateImpactButton.Size = new System.Drawing.Size(107, 23);
-            this.editCreateImpactButton.TabIndex = 9;
-            this.editCreateImpactButton.Text = "Edit/Create Impact";
-            this.editCreateImpactButton.UseVisualStyleBackColor = true;
+            this.createImpactButton.Location = new System.Drawing.Point(391, 265);
+            this.createImpactButton.Name = "createImpactButton";
+            this.createImpactButton.Size = new System.Drawing.Size(107, 23);
+            this.createImpactButton.TabIndex = 9;
+            this.createImpactButton.Text = "Edit/Create Impact";
+            this.createImpactButton.UseVisualStyleBackColor = true;
+            this.createImpactButton.Click += new System.EventHandler(this.createImpactButton_Click);
             // 
             // deleteImpactButton
             // 
@@ -952,7 +940,6 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).EndInit();
             this.ScopeGroup.ResumeLayout(false);
-            this.ScopeGroup.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -1000,7 +987,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox impactAttributeListBox;
         private System.Windows.Forms.Button saveButtonTab2;
-        private System.Windows.Forms.Button editCreateImpactButton;
+        private System.Windows.Forms.Button createImpactButton;
         private System.Windows.Forms.Button deleteImpactButton;
         private System.Windows.Forms.Button setButtonImageButton;
         private System.Windows.Forms.PictureBox buttonPictureBox;
@@ -1034,7 +1021,6 @@
         private System.Windows.Forms.RadioButton pathGroupFromButtonRadio;
         private System.Windows.Forms.RadioButton pathFromButtonRadio;
         private System.Windows.Forms.ComboBox hubSelectionComboBox;
-        private System.Windows.Forms.CheckBox allHubCheckBox;
         private System.Windows.Forms.CheckBox useButtonImage;
         private System.Windows.Forms.Button editDialogueButton;
         private System.Windows.Forms.GroupBox ScopeGroup;

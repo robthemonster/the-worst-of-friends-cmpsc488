@@ -47,8 +47,9 @@ namespace GUI_Test2
     [Serializable]
     public class Impact {
         public string attribute;
-        public char sym;
-        public string val;
+        public string hub;
+        public string sym;
+        public int val;
     }
 
     [Serializable]
