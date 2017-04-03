@@ -118,7 +118,6 @@ namespace GUI_Test2
             }
         }
 
-        //Where is this called from
         private void charactersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditCharactersForm ec = new EditCharactersForm(this);

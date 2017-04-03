@@ -55,7 +55,6 @@
             this.pathGroupLabel = new System.Windows.Forms.Label();
             this.pathLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
-            this.characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -146,21 +145,20 @@
             // charactersToolStripMenuItem
             // 
             this.charactersToolStripMenuItem.Name = "charactersToolStripMenuItem";
-            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.charactersToolStripMenuItem.Text = "Characters";
             this.charactersToolStripMenuItem.Click += new System.EventHandler(this.charactersToolStripMenuItem_Click);
             // 
             // attributesToolStripMenuItem
             // 
             this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
-            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.attributesToolStripMenuItem.Text = "Attributes";
             this.attributesToolStripMenuItem.Click += new System.EventHandler(this.attributesToolStripMenuItem_Click);
             // 
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.characterToolStripMenuItem,
             this.hubToolStripMenuItem,
             this.pathToolStripMenuItem,
             this.pathGroupToolStripMenuItem,
@@ -292,13 +290,6 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeWindow);
             // 
-            // characterToolStripMenuItem
-            // 
-            this.characterToolStripMenuItem.Name = "characterToolStripMenuItem";
-            this.characterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.characterToolStripMenuItem.Text = "Character";
-            this.characterToolStripMenuItem.Click += new System.EventHandler(this.characterToolStripMenuItem_Click);
-            // 
             // ProjectHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,6 +342,5 @@
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.ToolStripMenuItem attributesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mAKEPATHSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem characterToolStripMenuItem;
     }
 }

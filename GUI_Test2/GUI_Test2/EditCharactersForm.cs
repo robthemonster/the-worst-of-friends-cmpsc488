@@ -13,16 +13,14 @@ namespace GUI_Test2
     public partial class EditCharactersForm : Form
     {
         private List<String> nameList;
-        private Dictionary<String, NPC> characters;
         private ProjectHomeForm parentForm;
 
         public EditCharactersForm(ProjectHomeForm par)
         {
             InitializeComponent();
             parentForm = par;
-            nameList = new List<string>();
-            characters = new Dictionary<string, NPC>();
-            
+            nameList = Characters.getKeys();
+
         }
 
         private void chooseImageButton_Click(object sender, EventArgs e)
@@ -57,10 +55,10 @@ namespace GUI_Test2
                 string input = characterNameBox.Text;
 
                 //Add if/else to handle duplicate naming
-                if (!characters.ContainsKey(input))
+                if (!nameList.Contains(input))
                 {
                     nameList.Add(input);
-                    characters.Add(input, new NPC(input));
+                    Characters.Add(input, new NPC(input));
                     characterNameBox.Text = "";
                     updateList();
                 }
@@ -80,7 +78,7 @@ namespace GUI_Test2
                 string nameToRemove = nameList[index];
 
                 nameList.RemoveAt(index);
-                characters.Remove(nameToRemove);
+                Characters.Remove(nameToRemove);
 
                 updateList();
             }
