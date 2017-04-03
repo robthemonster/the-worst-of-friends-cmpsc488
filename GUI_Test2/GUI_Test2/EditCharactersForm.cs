@@ -20,7 +20,7 @@ namespace GUI_Test2
             InitializeComponent();
             parentForm = par;
             nameList = Characters.getKeys();
-
+            updateList();
         }
 
         private void chooseImageButton_Click(object sender, EventArgs e)
