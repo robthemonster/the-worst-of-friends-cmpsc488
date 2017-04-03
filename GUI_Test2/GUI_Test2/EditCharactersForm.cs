@@ -25,11 +25,6 @@ namespace GUI_Test2
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void chooseImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
@@ -61,10 +56,27 @@ namespace GUI_Test2
             {
                 string input = characterNameBox.Text;
                 nameList.Add(input);
+
+                //Add if/else to handle duplicate naming
                 characters.Add(input, new NPC(input));
                 characterNameBox.Text = "";
                 updateList();
             }
+        }
+
+        private void deleteSelectedCharacterButton_Click(object sender, EventArgs e)
+        {
+            if (characterList.SelectedIndex != -1)
+            {
+                int index = characterList.SelectedIndex;
+                string nameToRemove = nameList[index];
+
+                nameList.RemoveAt(index);
+                characters.Remove(nameToRemove);
+
+                updateList();
+            }
+
         }
 
         private void updateList()

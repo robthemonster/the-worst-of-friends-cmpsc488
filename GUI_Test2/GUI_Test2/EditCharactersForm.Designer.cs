@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditCharactersForm));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.createNewCharacterButton = new System.Windows.Forms.Button();
-            this.deleteSelectedCharacterButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.characterNameLabel = new System.Windows.Forms.Label();
             this.characterNameBox = new System.Windows.Forms.TextBox();
@@ -39,6 +38,7 @@
             this.characterImage = new System.Windows.Forms.PictureBox();
             this.chooseImageButton = new System.Windows.Forms.Button();
             this.characterList = new System.Windows.Forms.ListBox();
+            this.deleteSelectedCharacterButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
@@ -60,23 +60,11 @@
             this.createNewCharacterButton.Location = new System.Drawing.Point(2, 2);
             this.createNewCharacterButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewCharacterButton.Name = "createNewCharacterButton";
-            this.createNewCharacterButton.Size = new System.Drawing.Size(117, 19);
+            this.createNewCharacterButton.Size = new System.Drawing.Size(89, 19);
             this.createNewCharacterButton.TabIndex = 1;
             this.createNewCharacterButton.Text = "Create New Character";
             this.createNewCharacterButton.UseVisualStyleBackColor = true;
             this.createNewCharacterButton.Click += new System.EventHandler(this.createNewCharacterButton_Click);
-            // 
-            // deleteSelectedCharacterButton
-            // 
-            this.deleteSelectedCharacterButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deleteSelectedCharacterButton.Location = new System.Drawing.Point(123, 2);
-            this.deleteSelectedCharacterButton.Margin = new System.Windows.Forms.Padding(2);
-            this.deleteSelectedCharacterButton.Name = "deleteSelectedCharacterButton";
-            this.deleteSelectedCharacterButton.Size = new System.Drawing.Size(75, 19);
-            this.deleteSelectedCharacterButton.TabIndex = 2;
-            this.deleteSelectedCharacterButton.Text = "Delete Selected Character";
-            this.deleteSelectedCharacterButton.UseVisualStyleBackColor = true;
-            this.deleteSelectedCharacterButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // flowLayoutPanel3
             // 
@@ -151,6 +139,18 @@
             this.characterList.Size = new System.Drawing.Size(196, 238);
             this.characterList.TabIndex = 5;
             // 
+            // deleteSelectedCharacterButton
+            // 
+            this.deleteSelectedCharacterButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deleteSelectedCharacterButton.Location = new System.Drawing.Point(95, 2);
+            this.deleteSelectedCharacterButton.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteSelectedCharacterButton.Name = "deleteSelectedCharacterButton";
+            this.deleteSelectedCharacterButton.Size = new System.Drawing.Size(103, 19);
+            this.deleteSelectedCharacterButton.TabIndex = 3;
+            this.deleteSelectedCharacterButton.Text = "Delete Selected";
+            this.deleteSelectedCharacterButton.UseVisualStyleBackColor = true;
+            this.deleteSelectedCharacterButton.Click += new System.EventHandler(this.deleteSelectedCharacterButton_Click);
+            // 
             // EditCharactersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,7 +179,6 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button createNewCharacterButton;
-        private System.Windows.Forms.Button deleteSelectedCharacterButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label characterNameLabel;
         private System.Windows.Forms.TextBox characterNameBox;
@@ -187,5 +186,6 @@
         private System.Windows.Forms.PictureBox characterImage;
         private System.Windows.Forms.Button chooseImageButton;
         private System.Windows.Forms.ListBox characterList;
+        private System.Windows.Forms.Button deleteSelectedCharacterButton;
     }
 }
