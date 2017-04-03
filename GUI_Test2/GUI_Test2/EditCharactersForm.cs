@@ -20,6 +20,8 @@ namespace GUI_Test2
         {
             InitializeComponent();
             parentForm = par;
+            nameList = new List<string>();
+            characters = new Dictionary<string, NPC>();
             
         }
 
@@ -61,13 +63,15 @@ namespace GUI_Test2
                 nameList.Add(input);
                 characters.Add(input, new NPC(input));
                 characterNameBox.Text = "";
-                //visual update
+                updateList();
             }
         }
 
         private void updateList()
         {
-
+            characterList.DataSource = null;
+            characterList.DataSource = nameList;
+            characterList.SelectedIndex = -1;
         }
     }
 }

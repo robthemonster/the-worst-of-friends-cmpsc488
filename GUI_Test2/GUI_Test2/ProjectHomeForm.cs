@@ -118,13 +118,13 @@ namespace GUI_Test2
             }
         }
 
-
+        //Where is this called from
         private void charactersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditCharactersForm ec = new EditCharactersForm();
+            EditCharactersForm ec = new EditCharactersForm(this);
             ec.ShowDialog();
         }
-
+    
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
@@ -231,8 +231,8 @@ namespace GUI_Test2
 
         public void createNavigable()
         {
-            CreateNavigableForm PathGroup = new CreateNavigableForm(this);
-            PathGroup.ShowDialog();
+            CreateNavigableForm Navigable = new CreateNavigableForm(this);
+            Navigable.ShowDialog();
 
             switch (screenID)
             {
@@ -291,6 +291,12 @@ namespace GUI_Test2
         {
             DefineAttributeForm daf = new DefineAttributeForm();
             daf.ShowDialog();
+        }
+
+        private void characterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditCharactersForm ecf = new EditCharactersForm(this);
+            ecf.ShowDialog();
         }
     }
 }
