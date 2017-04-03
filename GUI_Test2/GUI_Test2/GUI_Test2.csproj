@@ -84,6 +84,7 @@
     <Compile Include="gameObject.cs" />
     <Compile Include="HSerializer.cs" />
     <Compile Include="Navigable.cs" />
+    <Compile Include="NPC.cs" />
     <Compile Include="ProjectHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>

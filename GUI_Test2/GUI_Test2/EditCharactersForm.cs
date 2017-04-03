@@ -12,6 +12,9 @@ namespace GUI_Test2
 {
     public partial class EditCharactersForm : Form
     {
+        private List<String> nameList;
+        private Dictionary<String, NPC> characters;
+
         public EditCharactersForm()
         {
             InitializeComponent();
@@ -40,15 +43,23 @@ namespace GUI_Test2
             
             }
 
-
-            
-            
-
         }
 
         private void characterImage_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void createNewCharacterButton_Click(object sender, EventArgs e)
+        {
+            if (characterNameBox.Text != "" && characterNameBox != null)
+            {
+                string input = characterNameBox.Text;
+                nameList.Add(input);
+                characters.Add(input, new NPC(input));
+                characterNameBox.Text = "";
+                //visual update
+            }
         }
     }
 }
