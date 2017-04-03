@@ -14,10 +14,12 @@ namespace GUI_Test2
     {
         private List<String> nameList;
         private Dictionary<String, NPC> characters;
+        private ProjectHomeForm parentForm;
 
-        public EditCharactersForm()
+        public EditCharactersForm(ProjectHomeForm par)
         {
             InitializeComponent();
+            parentForm = par;
             
         }
 
@@ -34,6 +36,7 @@ namespace GUI_Test2
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
   	 	    of.ShowDialog();
+
             try
             {
                 characterImage.Image = Image.FromStream(of.OpenFile());
@@ -60,6 +63,11 @@ namespace GUI_Test2
                 characterNameBox.Text = "";
                 //visual update
             }
+        }
+
+        private void updateList()
+        {
+
         }
     }
 }
