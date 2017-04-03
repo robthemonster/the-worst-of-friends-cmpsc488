@@ -20,7 +20,6 @@ namespace GUI_Test2
 
         
         //public List<NPC> characters;
-        //public Dictionary<String,Path> paths;
         public List<String> pathGroups;
         public List<String> hubs;
         //public List<P2PG> p2PG;
@@ -32,14 +31,12 @@ namespace GUI_Test2
         //1 = Path, 2 = Path Group, 3 = Hub
 
         public string fileLocation = "";
-        //Defaults to saving on the user's desktop
 
         public ProjectHomeForm()
         {
             
             InitializeComponent();
 
-            //paths = new Dictionary<string, Path>();
             navIndex = new Dictionary<String, Navigable>();
             //attributes = new Attribs();
             paths = new List<String>();
@@ -60,7 +57,21 @@ namespace GUI_Test2
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string mess = "Any unsaved material will be removed. \nAre you sure you wish to proceed?";
+            string cap = "New Project";
+            var alert = MessageBox.Show(mess, cap, MessageBoxButtons.YesNo);
 
+            if (alert == DialogResult.Yes)
+            {
+                navIndex = new Dictionary<String, Navigable>();
+                //attributes = new Attribs();
+                paths = new List<String>();
+                pathGroups = new List<String>();
+                hubs = new List<String>();
+
+                fileLocation = "";
+                updateListBoxes();
+            }
         }
 
         //deserialize
