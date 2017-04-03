@@ -90,16 +90,6 @@ namespace GUI_Test2
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string fileName = "";
