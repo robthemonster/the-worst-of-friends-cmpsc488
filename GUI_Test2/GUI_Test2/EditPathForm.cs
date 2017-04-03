@@ -50,6 +50,7 @@ namespace GUI_Test2
             opComboBox.DataSource = this.ops;
             scope = 0;
             currHub = "";
+            dialogueImpactList = new List<List<Impact>>();
 
 
             updateListBoxes();
