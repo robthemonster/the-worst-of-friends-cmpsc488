@@ -101,7 +101,7 @@ namespace GUI_Test2
             }
 
             Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-            Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths);
+            Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths,Attributes.attribs);
 
             saveToFile(proj, fileName);
         }
@@ -111,7 +111,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths);
+                Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths, Attributes.attribs);
 
                 saveToFile(proj, fileLocation);
             }
@@ -220,6 +220,7 @@ namespace GUI_Test2
                 navIndex = (Dictionary<String, Navigable>)proj.navIndex;
                 navigableName = (String)proj.navigableName;
                 paths = (List<String>)proj.paths;
+                Attributes.attribs = (List<Attrib>)proj.attribs;
                 Game.init(pathGroups, hubs, navIndex, navigableName, paths);
 
                 updateListBoxes();
