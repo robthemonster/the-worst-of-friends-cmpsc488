@@ -69,6 +69,11 @@ namespace GUI_Test2
                 pathGroups = new List<String>();
                 hubs = new List<String>();
 
+                foreach (string i in Characters.getKeys())
+                {
+                    Characters.Remove(i);
+                }
+
                 fileLocation = "";
                 updateListBoxes();
             }
@@ -101,8 +106,10 @@ namespace GUI_Test2
                 fileLocation = fileName;
             }
 
+            Dictionary<string, NPC> c = Characters.characters;
+
             Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-            Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths,Attributes.attribs);
+            Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths,Attributes.attribs, Characters.characters);
 
             saveToFile(proj, fileName);
         }
@@ -112,7 +119,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths, Attributes.attribs);
+                Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths, Attributes.attribs, Characters.characters);
 
                 saveToFile(proj, fileLocation);
             }
@@ -221,6 +228,7 @@ namespace GUI_Test2
                 navigableName = (String)proj.navigableName;
                 paths = (List<String>)proj.paths;
                 Attributes.attribs = (List<Attrib>)proj.attribs;
+                Characters.characters = (proj.characters);
                 Game.init(pathGroups, hubs, navIndex, navigableName, paths);
 
                 updateListBoxes();

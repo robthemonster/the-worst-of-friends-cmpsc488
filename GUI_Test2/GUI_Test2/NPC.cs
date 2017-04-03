@@ -26,7 +26,7 @@ namespace GUI_Test2
     [Serializable]
     static class Characters
     {
-        static Dictionary<string, NPC> characters = new Dictionary<string, NPC>();
+        public static Dictionary<string, NPC> characters = new Dictionary<string, NPC>();
 
         public static void Add(string n, NPC c)
         {

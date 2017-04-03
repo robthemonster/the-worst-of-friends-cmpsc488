@@ -54,7 +54,6 @@ namespace GUI_Test2
             {
                 string input = characterNameBox.Text;
 
-                //Add if/else to handle duplicate naming
                 if (!nameList.Contains(input))
                 {
                     nameList.Add(input);

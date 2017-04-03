@@ -17,6 +17,7 @@ namespace GUI_Test2
         public String navigableName;
         public List<String> paths;
         public List<Attrib> attribs;
+        public Dictionary<string, NPC> characters;
 
         public Project()
         {
@@ -25,10 +26,11 @@ namespace GUI_Test2
             navIndex = new Dictionary<String, Navigable>();
             navigableName = "";
             paths = new List<String>();
-            attribs = new List<Attrib>(); 
+            attribs = new List<Attrib>();
+            characters = new Dictionary<string, NPC>();
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p,List<Attrib> attribs)
+        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c)
         {
             pathGroups = pg;
             hubs = h;
@@ -36,6 +38,7 @@ namespace GUI_Test2
             navigableName = nN;
             paths = p;
             this.attribs = attribs;
+            characters = c;
         }
     }
 
