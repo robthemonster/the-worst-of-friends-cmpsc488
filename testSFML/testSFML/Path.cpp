@@ -78,11 +78,26 @@ void Path::addDialogueLine(std::string dialogueLine)
 	}
 }
 
+
+void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impacts)
+{
+	if (this->dialogueScreen != NULL) {
+		DialogueLine line(dialogueLine);
+
+		for (int i = 0; i < impacts.size(); i++) {
+			line.addImpact(impacts[i]);
+		}
+		(*this->dialogueScreen).addDialogueLine(line);
+	}
+	else {
+		std::cout << "Path has no dialogue screen! Cannot add dialogue" << std::endl;
+	}
+}
 void Path::addDialogueLine(std::string dialogueLine, Attributable ** target, std::string key, int op, int val)
 {
 	if (this->dialogueScreen != NULL) {
 		DialogueLine line(dialogueLine);
-		line.setImpact(new Impact((*this->game).getAttributeMapPointer(), target, key, op, val));
+		line.addImpact(new Impact((*this->game).getAttributeMapPointer(), target, key, op, val));
 		(*this->dialogueScreen).addDialogueLine(line);
 	}
 	else {

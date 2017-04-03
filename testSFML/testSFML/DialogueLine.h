@@ -17,13 +17,13 @@ private:
 	Character * character = NULL;
 	sf::Vector2f characterPosition;
 	std::string key;
-	Impact * impact = NULL;
+	std::vector<Impact *> impacts;
 
 public:
 	bool isDone();
 	void setDone(bool set);
 	bool hasCharacter();
-	void setImpact(Impact * impact);
+	void addImpact(Impact * impact);
 	void processImpact();
 	DialogueLine(sf::String line, Character * character = NULL, std::string key = "",
 		sf::Vector2f characterPosition = sf::Vector2f());
