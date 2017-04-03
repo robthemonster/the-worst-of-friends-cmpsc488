@@ -55,12 +55,20 @@ namespace GUI_Test2
             if (characterNameBox.Text != "" && characterNameBox != null)
             {
                 string input = characterNameBox.Text;
-                nameList.Add(input);
 
                 //Add if/else to handle duplicate naming
-                characters.Add(input, new NPC(input));
-                characterNameBox.Text = "";
-                updateList();
+                if (!characters.ContainsKey(input))
+                {
+                    nameList.Add(input);
+                    characters.Add(input, new NPC(input));
+                    characterNameBox.Text = "";
+                    updateList();
+                }
+
+                else
+                {
+                    MessageBox.Show("Name Already Exists.");
+                }
             }
         }
 
