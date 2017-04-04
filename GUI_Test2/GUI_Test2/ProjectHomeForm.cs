@@ -98,12 +98,24 @@ namespace GUI_Test2
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string fileName = "";
+            string folderPath = "";
 
             SaveFileDialog sd = new SaveFileDialog();
             if (sd.ShowDialog() == DialogResult.OK)
             {
                 fileName = sd.FileName;
                 fileLocation = fileName;
+
+                //Retrieve the name of the file, create a folder based off that name,
+                //place a file of the same name in the newly created directory
+
+                fileName = System.IO.Path.GetFileNameWithoutExtension(fileName);
+                //folderPath = System.IO.Path.GetDirectoryName(fileLocation);
+
+                System.IO.Directory.CreateDirectory(fileLocation);
+
+                fileLocation = System.IO.Path.Combine(fileLocation, fileName);
+                fileName = fileLocation;
             }
 
             Dictionary<string, NPC> c = Characters.characters;
@@ -213,13 +225,13 @@ namespace GUI_Test2
 
 
                Project proj;
-                IFormatter formatter = new BinaryFormatter();
-                var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+               IFormatter formatter = new BinaryFormatter();
+               var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-                proj = (Project)formatter.Deserialize(stream);
+               proj = (Project)formatter.Deserialize(stream);
 
 
-                stream.Close();
+               stream.Close();
 
                 //Load the GameObject
                 pathGroups = (List<String>)proj.pathGroups;
