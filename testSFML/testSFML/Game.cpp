@@ -11,11 +11,11 @@
 void Game::play(sf::RenderWindow & window, sf::View & view)
 {
 	while (window.isOpen()) {
-		
 		(*this->mainMenu).display(window, view);
 
 		while (window.isOpen() && !(*this->gameOverRequirements).meetsAllRequirements()) {
 			//start of round
+			this->currPlayer = NULL;
 			if (startOfRound != NULL)
 				(*startOfRound).display(window, view);
 
@@ -23,12 +23,17 @@ void Game::play(sf::RenderWindow & window, sf::View & view)
 				this->currPlayer = &players[i];
 				(*this->start).display(window, view);
 			}
+			this->currPlayer = NULL;
 			//end of round
 			if (endOfRound != NULL)
 				(*endOfRound).display(window, view);
 		}
-		(*this->ending).display(window, view);
-		
+
+		for (int i = 0; i < this->numPlayers; i++) {
+			this->currPlayer = &players[i];
+			(*this->ending).display(window, view);
+		}
+		(*this->attributeMap).resetAttributes();
 	}
 }
 
