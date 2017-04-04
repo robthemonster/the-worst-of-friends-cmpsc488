@@ -19,6 +19,7 @@
 #include "Hub.h"
 #include "Interface.h"
 #include "Impact.h"
+#include "MainMenu.h"
 
 static float VIEW_HEIGHT = 1080.0f;
 static float VIEW_WIDTH = 1920.0f;
@@ -434,6 +435,10 @@ int main() {
 
 
 
+	
+	(*game).setMainMenuImageTexture(imageTextures[10]);
+	(*game).setMainMenuMusic(songStream, "music/animalcrossing.ogg");
+	(*game).setMainMenuPlayButtonSound("music/letsgo.wav");
 
 	(*game).play(gameWindow, view);
 

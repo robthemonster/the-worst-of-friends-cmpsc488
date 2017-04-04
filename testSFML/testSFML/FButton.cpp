@@ -44,6 +44,13 @@ void FButton::setHighlighted(bool highlighted) {
 	this->highlighted = highlighted;
 }
 
+void FButton::setPosition(float x, float y)
+{
+	this->buttonRect.setPosition(x, y);
+	this->buttonText.setPosition(x, y);
+	this->highlightRect.setPosition(x, y);
+}
+
 bool FButton::isHighlighted()
 {
 	return highlighted;
@@ -62,12 +69,10 @@ FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &positio
 
 	this->target = target;
 	this->buttonRect = sf::RectangleShape(size);
-	this->buttonRect.setOrigin(size.x / 2, size.y / 2);
 
 	this->buttonRect.setPosition(position);
 	this->buttonRect.setTexture(buttonTexture);
 	this->highlightRect = sf::RectangleShape(size);
-	this->highlightRect.setOrigin(size.x / 2, size.y / 2);
 	this->highlightRect.setPosition(position);
 	this->highlightRect.setFillColor(sf::Color::Transparent);
 
@@ -78,6 +83,8 @@ FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &positio
 		this->buttonText.setOutlineColor(sf::Color::Black);
 	//	this->buttonText.setOrigin(sf::Vector2f(this->buttonText.getLocalBounds().width / 2, this->buttonText.getLocalBounds().height / 2));
 		this->buttonText.setPosition(position);
+		this->buttonRect.setSize(sf::Vector2f(this->buttonText.getLocalBounds().width, this->buttonText.getLocalBounds().height));
+		this->highlightRect.setSize(sf::Vector2f(this->buttonText.getLocalBounds().width, this->buttonText.getLocalBounds().height));
 	}
 	if (buttonTexture == NULL) {
 		

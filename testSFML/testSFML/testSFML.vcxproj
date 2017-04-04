@@ -165,6 +165,7 @@
     <ClCompile Include="Impact.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Navigable.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="PathGroup.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Hub.h" />
     <ClInclude Include="Impact.h" />
     <ClInclude Include="Interface.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Navigable.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="PathGroup.h" />

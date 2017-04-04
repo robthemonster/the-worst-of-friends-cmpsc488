@@ -5,11 +5,15 @@
 #include "Interface.h"
 #include "EndingGenerator.h"
 #include "Requirements.h"
+#include "MainMenu.h"
 #include "Game.h"
 
 void Game::play(sf::RenderWindow & window, sf::View & view)
 {
 	while (window.isOpen()) {
+		
+		(*this->mainMenu).display(window, view);
+
 		while (window.isOpen() && !(*this->gameOverRequirements).meetsAllRequirements()) {
 			//start of round
 			if (startOfRound != NULL)
@@ -24,7 +28,7 @@ void Game::play(sf::RenderWindow & window, sf::View & view)
 				(*endOfRound).display(window, view);
 		}
 		(*this->ending).display(window, view);
-		window.close();
+		
 	}
 }
 
@@ -52,6 +56,7 @@ Game::Game(int numberOfPlayers)
 	this->interfacePointer = new Interface(attributeMap);
 	this->players = new Player[numPlayers];
 	this->ending = new EndingGenerator;
+	this->mainMenu = new MainMenu;
 	this->numPlayers = numberOfPlayers;
 	this->gameOverRequirements = gameOverRequirements;
 
@@ -111,6 +116,21 @@ void Game::setEndingTiers(int tiers)
 void Game::addEnding(int tier, Path * end, Requirements * req)
 {
 	(*this->ending).addEnding(tier, end, req);
+}
+
+void Game::setMainMenuImageTexture(sf::Texture & texture)
+{
+	(*this->mainMenu).setImageTexture(texture);
+}
+
+void Game::setMainMenuMusic(sf::Music & stream, std::string musicFile)
+{
+	(*this->mainMenu).setMusicFile(stream, musicFile);
+}
+
+void Game::setMainMenuPlayButtonSound(std::string soundFile)
+{
+	(*this->mainMenu).setPlayGameSound(soundFile);
 }
 
 

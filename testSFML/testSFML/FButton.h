@@ -20,6 +20,7 @@ public:
 	void draw(sf::RenderWindow&, sf::View&);
 	bool mouseOver(sf::Vector2f mouseLocation);
 	void setHighlighted(bool highlighted);
+	void setPosition(float x, float y);
 	bool isHighlighted();
 	Navigable * getTarget();
 };
