@@ -19,15 +19,28 @@ namespace GUI_Test2
         private ProjectHomeForm parentForm;
         private string hubName;
         private int navType;
-        private string imagePath;
+        private string buttonImagePath1;
+        private string buttonImagePath2;
+        private string hubImagePath;
 
         public EditHubForm(String name)
         {
             InitializeComponent();
             this.Text = "Edit Hub: " + name;
             hubName = name;
-            imagePath = "";
+            buttonImagePath1 = "";
+            buttonImagePath2 = "";
+            hubImagePath = "";
             buttonList = new List<Button>();
+            buttonCount = buttonList.Count;
+            buttonNameList = new List<string>();
+
+            //Needs to be used when loading a hub, not creating a new one
+            for(int i = 1; i <= buttonCount; i++)
+            {
+                buttonNameList.Add("Button " + i);
+            }
+
             updateListBox();
         }
 
@@ -82,7 +95,10 @@ namespace GUI_Test2
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //if(Game.navIndex.ContainsKey())
+            if (Game.navIndex.ContainsKey(hubName))
+            {
+                Game.navIndex[hubName] = new Hub();
+            }
         }
 
         private void EditHubForm_Load(object sender, EventArgs e)
@@ -108,24 +124,6 @@ namespace GUI_Test2
                 }
 
             }
-        }
-
-        private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            navType = 0;
-            setScope();
-        }
-
-        private void pathGroupFromButtonRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            navType = 1;
-            setScope();
-        }
-
-        private void hubFromButtonRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            navType = 2;
-            setScope();
         }
 
         private void useButtonSizeDefaults_CheckedChanged(object sender, EventArgs e)
@@ -277,8 +275,8 @@ namespace GUI_Test2
             if (useButtonImage.Checked)
             {
                 //Need to add a way to choose the 2nd button image
-                pic1path = imagePath;
-                pic2path = imagePath;
+                pic1path = buttonImagePath1;
+                pic2path = buttonImagePath1;
             }
             else
             {
@@ -286,19 +284,33 @@ namespace GUI_Test2
                 pic2path = "";
             }
 
+            if (navComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please Select a Target Navigable \nfor the Button to lead to.");
+            }
+            else
+            {
+                //Passes a string
+                next = navComboBox.SelectedText;
+            }
+
             //Need to add the option for what gets highlighted
             highlight = 0;
 
-            //Create method to direct next
+            
             next = "";
 
             buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
+            buttonCount++;
+            buttonNameList.Add("Button " + buttonCount);
 
             buttonWidthTextBox.Text = "";
             buttonHeightTextBox.Text = "";
             buttonXLocTextBox.Text = "";
             buttonYLocTextBox.Text = "";
-        }
+
+            updateListBox();
+    }
 
         private void deleteButtonButton_Click(object sender, EventArgs e)
         {
@@ -306,9 +318,11 @@ namespace GUI_Test2
             try
             {
                 buttonList.RemoveAt(index);
+                buttonNameList.RemoveAt(index);
                 if (index == buttonList.Count)
                     index = index - 1;
 
+                updateListBox();
                 buttonListBox.SelectedIndex = index;
 
             }
@@ -317,12 +331,22 @@ namespace GUI_Test2
 
         private void chooseHubImageButton_Click(object sender, EventArgs e)
         {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            of.ShowDialog();
 
-        }
+            try
+            {
+                hubImagePictureBox.Image = Image.FromStream(of.OpenFile());
+                hubImagePath = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
 
-        private void addHubImageButton_Click(object sender, EventArgs e)
-        {
-
+            }
         }
 
         private void useButtonImage_CheckedChanged(object sender, EventArgs e)
@@ -350,7 +374,7 @@ namespace GUI_Test2
             try
             {
                 buttonPictureBox.Image = Image.FromStream(of.OpenFile());
-                imagePath = of.FileName;
+                buttonImagePath1 = of.FileName;
             }
             catch (IndexOutOfRangeException)
             {
@@ -362,6 +386,24 @@ namespace GUI_Test2
         private void addButtonBox_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 0;
+            setScope();
+        }
+
+        private void pathGroupFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 1;
+            setScope();
+        }
+
+        private void hubFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 2;
+            setScope();
         }
     }
 }

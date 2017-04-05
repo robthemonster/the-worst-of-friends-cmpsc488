@@ -38,7 +38,6 @@
             this.buttonListBox = new System.Windows.Forms.ListBox();
             this.hubImageBox = new System.Windows.Forms.GroupBox();
             this.hubImagePictureBox = new System.Windows.Forms.PictureBox();
-            this.addHubImageButton = new System.Windows.Forms.Button();
             this.chooseHubImageButton = new System.Windows.Forms.Button();
             this.addButtonBox = new System.Windows.Forms.GroupBox();
             this.targetNavigableBox = new System.Windows.Forms.GroupBox();
@@ -148,7 +147,6 @@
             // hubImageBox
             // 
             this.hubImageBox.Controls.Add(this.hubImagePictureBox);
-            this.hubImageBox.Controls.Add(this.addHubImageButton);
             this.hubImageBox.Controls.Add(this.chooseHubImageButton);
             this.hubImageBox.Location = new System.Drawing.Point(9, 12);
             this.hubImageBox.Name = "hubImageBox";
@@ -170,19 +168,9 @@
             this.hubImagePictureBox.TabIndex = 9;
             this.hubImagePictureBox.TabStop = false;
             // 
-            // addHubImageButton
-            // 
-            this.addHubImageButton.Location = new System.Drawing.Point(216, 41);
-            this.addHubImageButton.Name = "addHubImageButton";
-            this.addHubImageButton.Size = new System.Drawing.Size(121, 23);
-            this.addHubImageButton.TabIndex = 8;
-            this.addHubImageButton.Text = "Add Hub Image";
-            this.addHubImageButton.UseVisualStyleBackColor = true;
-            this.addHubImageButton.Click += new System.EventHandler(this.addHubImageButton_Click);
-            // 
             // chooseHubImageButton
             // 
-            this.chooseHubImageButton.Location = new System.Drawing.Point(216, 13);
+            this.chooseHubImageButton.Location = new System.Drawing.Point(215, 58);
             this.chooseHubImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.chooseHubImageButton.Name = "chooseHubImageButton";
             this.chooseHubImageButton.Size = new System.Drawing.Size(119, 23);
@@ -244,6 +232,7 @@
             this.hubFromButtonRadio.TabStop = true;
             this.hubFromButtonRadio.Text = "Hub";
             this.hubFromButtonRadio.UseVisualStyleBackColor = true;
+            this.hubFromButtonRadio.CheckedChanged += new System.EventHandler(this.hubFromButtonRadio_CheckedChanged);
             // 
             // navComboBox
             // 
@@ -263,6 +252,7 @@
             this.pathGroupFromButtonRadio.TabStop = true;
             this.pathGroupFromButtonRadio.Text = "Path Group";
             this.pathGroupFromButtonRadio.UseVisualStyleBackColor = true;
+            this.pathGroupFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathGroupFromButtonRadio_CheckedChanged);
             // 
             // pathFromButtonRadio
             // 
@@ -274,6 +264,7 @@
             this.pathFromButtonRadio.TabStop = true;
             this.pathFromButtonRadio.Text = "Path";
             this.pathFromButtonRadio.UseVisualStyleBackColor = true;
+            this.pathFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathFromButtonRadio_CheckedChanged);
             // 
             // deleteButton
             // 
@@ -507,7 +498,6 @@
         private System.Windows.Forms.Button buttonListDownButton;
         private System.Windows.Forms.GroupBox hubImageBox;
         private System.Windows.Forms.PictureBox hubImagePictureBox;
-        private System.Windows.Forms.Button addHubImageButton;
         private System.Windows.Forms.Button chooseHubImageButton;
         private System.Windows.Forms.GroupBox addButtonBox;
         private System.Windows.Forms.GroupBox targetNavigableBox;

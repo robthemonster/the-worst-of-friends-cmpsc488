@@ -72,10 +72,19 @@ namespace GUI_Test2
     public class Hub : Navigable {
         public string name;
         public List<Button> buttons;
-        //public something image;
+        public string hubImage;
         //public something sound;
         public String getName() { return name; }
         public Boolean isPathGroup() { return false; }
+
+        public Hub() { }
+
+        public Hub(string n, List<Button> b, string hI)
+        {
+            name = n;
+            buttons = b;
+            hubImage = hI;
+        }
     }
 
     [Serializable]
