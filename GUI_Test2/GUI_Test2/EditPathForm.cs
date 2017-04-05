@@ -198,7 +198,7 @@ namespace GUI_Test2
                 int op = opComboBox.SelectedIndex;
                 int val = (int)valueNumericUpDown.Value;
                 Impact i = new Impact(scope, name, currHub, op, val);
-                if (dialogueImpactList[pathListBoxTab2.SelectedIndex].Contains(i))
+                if (dialogueImpactList.Count> pathListBoxTab2.SelectedIndex && dialogueImpactList[pathListBoxTab2.SelectedIndex].Contains(i))
                 {
                     dialogueImpactList[pathListBoxTab2.SelectedIndex].Remove(i);
                 }

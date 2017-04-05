@@ -55,6 +55,7 @@ namespace GUI_Test2
                 return false;
             Impact that2 = (Impact)that;
             if (this.attribute.Equals(that2.attribute) && this.hub.Equals(that2.hub))
+
                 return true;
             return false;
         }
