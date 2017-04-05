@@ -41,7 +41,7 @@
             this.addHubImageButton = new System.Windows.Forms.Button();
             this.chooseHubImageButton = new System.Windows.Forms.Button();
             this.addButtonBox = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.targetNavigableBox = new System.Windows.Forms.GroupBox();
             this.hubFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.navComboBox = new System.Windows.Forms.ComboBox();
             this.pathGroupFromButtonRadio = new System.Windows.Forms.RadioButton();
@@ -63,13 +63,13 @@
             this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
             this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
             this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
-            this.setButtonImageButton = new System.Windows.Forms.Button();
+            this.chooseButtonImageButton = new System.Windows.Forms.Button();
             this.buttonPictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
             this.addButtonBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.targetNavigableBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,7 +193,7 @@
             // 
             // addButtonBox
             // 
-            this.addButtonBox.Controls.Add(this.groupBox1);
+            this.addButtonBox.Controls.Add(this.targetNavigableBox);
             this.addButtonBox.Controls.Add(this.deleteButton);
             this.addButtonBox.Controls.Add(this.createButtonButton);
             this.addButtonBox.Controls.Add(this.label15);
@@ -211,7 +211,7 @@
             this.addButtonBox.Controls.Add(this.buttonYLocTextBox);
             this.addButtonBox.Controls.Add(this.buttonXLocTextBox);
             this.addButtonBox.Controls.Add(this.useButtonLocationDefaults);
-            this.addButtonBox.Controls.Add(this.setButtonImageButton);
+            this.addButtonBox.Controls.Add(this.chooseButtonImageButton);
             this.addButtonBox.Controls.Add(this.buttonPictureBox);
             this.addButtonBox.Location = new System.Drawing.Point(143, 153);
             this.addButtonBox.Name = "addButtonBox";
@@ -219,19 +219,20 @@
             this.addButtonBox.TabIndex = 46;
             this.addButtonBox.TabStop = false;
             this.addButtonBox.Text = "Add Button";
+            this.addButtonBox.Enter += new System.EventHandler(this.addButtonBox_Enter);
             // 
-            // groupBox1
+            // targetNavigableBox
             // 
-            this.groupBox1.Controls.Add(this.hubFromButtonRadio);
-            this.groupBox1.Controls.Add(this.navComboBox);
-            this.groupBox1.Controls.Add(this.pathGroupFromButtonRadio);
-            this.groupBox1.Controls.Add(this.pathFromButtonRadio);
-            this.groupBox1.Location = new System.Drawing.Point(7, 62);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(241, 85);
-            this.groupBox1.TabIndex = 54;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Target Nagvigable";
+            this.targetNavigableBox.Controls.Add(this.hubFromButtonRadio);
+            this.targetNavigableBox.Controls.Add(this.navComboBox);
+            this.targetNavigableBox.Controls.Add(this.pathGroupFromButtonRadio);
+            this.targetNavigableBox.Controls.Add(this.pathFromButtonRadio);
+            this.targetNavigableBox.Location = new System.Drawing.Point(7, 62);
+            this.targetNavigableBox.Name = "targetNavigableBox";
+            this.targetNavigableBox.Size = new System.Drawing.Size(241, 85);
+            this.targetNavigableBox.TabIndex = 54;
+            this.targetNavigableBox.TabStop = false;
+            this.targetNavigableBox.Text = "Target Navigable";
             // 
             // hubFromButtonRadio
             // 
@@ -276,17 +277,17 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(200, 319);
+            this.deleteButton.Location = new System.Drawing.Point(211, 335);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(111, 23);
             this.deleteButton.TabIndex = 57;
             this.deleteButton.Text = "Delete Button";
             this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.deleteButtonButton_Click);
             // 
             // createButtonButton
             // 
-            this.createButtonButton.Location = new System.Drawing.Point(200, 290);
+            this.createButtonButton.Location = new System.Drawing.Point(211, 306);
             this.createButtonButton.Name = "createButtonButton";
             this.createButtonButton.Size = new System.Drawing.Size(111, 23);
             this.createButtonButton.TabIndex = 55;
@@ -440,15 +441,16 @@
             this.useButtonLocationDefaults.UseVisualStyleBackColor = true;
             this.useButtonLocationDefaults.CheckedChanged += new System.EventHandler(this.useButtonLocationDefaults_CheckedChanged);
             // 
-            // setButtonImageButton
+            // chooseButtonImageButton
             // 
-            this.setButtonImageButton.Enabled = false;
-            this.setButtonImageButton.Location = new System.Drawing.Point(210, 232);
-            this.setButtonImageButton.Name = "setButtonImageButton";
-            this.setButtonImageButton.Size = new System.Drawing.Size(101, 28);
-            this.setButtonImageButton.TabIndex = 50;
-            this.setButtonImageButton.Text = "Set Button Image";
-            this.setButtonImageButton.UseVisualStyleBackColor = true;
+            this.chooseButtonImageButton.Enabled = false;
+            this.chooseButtonImageButton.Location = new System.Drawing.Point(179, 232);
+            this.chooseButtonImageButton.Name = "chooseButtonImageButton";
+            this.chooseButtonImageButton.Size = new System.Drawing.Size(132, 25);
+            this.chooseButtonImageButton.TabIndex = 50;
+            this.chooseButtonImageButton.Text = "Choose Button Image";
+            this.chooseButtonImageButton.UseVisualStyleBackColor = true;
+            this.chooseButtonImageButton.Click += new System.EventHandler(this.setButtonImageButton_Click);
             // 
             // buttonPictureBox
             // 
@@ -488,8 +490,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).EndInit();
             this.addButtonBox.ResumeLayout(false);
             this.addButtonBox.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.targetNavigableBox.ResumeLayout(false);
+            this.targetNavigableBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -508,7 +510,7 @@
         private System.Windows.Forms.Button addHubImageButton;
         private System.Windows.Forms.Button chooseHubImageButton;
         private System.Windows.Forms.GroupBox addButtonBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox targetNavigableBox;
         private System.Windows.Forms.RadioButton hubFromButtonRadio;
         private System.Windows.Forms.ComboBox navComboBox;
         private System.Windows.Forms.RadioButton pathGroupFromButtonRadio;
@@ -530,7 +532,7 @@
         private System.Windows.Forms.TextBox buttonYLocTextBox;
         private System.Windows.Forms.TextBox buttonXLocTextBox;
         private System.Windows.Forms.CheckBox useButtonLocationDefaults;
-        private System.Windows.Forms.Button setButtonImageButton;
+        private System.Windows.Forms.Button chooseButtonImageButton;
         private System.Windows.Forms.PictureBox buttonPictureBox;
     }
 }

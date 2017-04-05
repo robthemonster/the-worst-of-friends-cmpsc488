@@ -10,26 +10,25 @@ using System.Windows.Forms;
 
 namespace GUI_Test2
 {
+    //Need to add a way to add 2nd button image
     public partial class EditHubForm : Form
     {
         private List<Button> buttonList;
         private List<string> buttonNameList;
+        private int buttonCount;
         private ProjectHomeForm parentForm;
         private string hubName;
         private int navType;
+        private string imagePath;
 
         public EditHubForm(String name)
         {
             InitializeComponent();
             this.Text = "Edit Hub: " + name;
             hubName = name;
+            imagePath = "";
             buttonList = new List<Button>();
             updateListBox();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonListUpButton_Click(object sender, EventArgs e)
@@ -74,22 +73,6 @@ namespace GUI_Test2
             buttonListBox.DataSource = buttonNameList;
             buttonListBox.SelectedIndex = -1;
 
-        }
-
-
-        private void deleteButtonButton_Click(object sender, EventArgs e)
-        {
-            int index = buttonListBox.SelectedIndex;
-            try
-            {
-                buttonList.RemoveAt(index);
-                if (index == buttonList.Count)
-                    index = index - 1;
-
-                buttonListBox.SelectedIndex = index;
-
-            }
-            catch { }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -190,6 +173,15 @@ namespace GUI_Test2
             string text, pic1path, pic2path, next;
             int sizeX, sizeY, posX, posY, highlight;
 
+            if (buttonTextTextBox.Text == "")
+            {
+                MessageBox.Show("Button Text is required.");
+                return;
+            }
+            else
+            {
+                text = buttonTextTextBox.Text;
+            }
 
             if (useButtonSizeDefaults.Checked)
             {
@@ -284,7 +276,9 @@ namespace GUI_Test2
 
             if (useButtonImage.Checked)
             {
-                //Add selected image
+                //Need to add a way to choose the 2nd button image
+                pic1path = imagePath;
+                pic2path = imagePath;
             }
             else
             {
@@ -292,6 +286,13 @@ namespace GUI_Test2
                 pic2path = "";
             }
 
+            //Need to add the option for what gets highlighted
+            highlight = 0;
+
+            //Create method to direct next
+            next = "";
+
+            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
 
             buttonWidthTextBox.Text = "";
             buttonHeightTextBox.Text = "";
@@ -299,9 +300,19 @@ namespace GUI_Test2
             buttonYLocTextBox.Text = "";
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void deleteButtonButton_Click(object sender, EventArgs e)
         {
+            int index = buttonListBox.SelectedIndex;
+            try
+            {
+                buttonList.RemoveAt(index);
+                if (index == buttonList.Count)
+                    index = index - 1;
 
+                buttonListBox.SelectedIndex = index;
+
+            }
+            catch { }
         }
 
         private void chooseHubImageButton_Click(object sender, EventArgs e)
@@ -319,12 +330,38 @@ namespace GUI_Test2
             if (useButtonImage.Checked)
             {
                 buttonPictureBox.Enabled = true;
-                setButtonImageButton.Enabled = true;
+                chooseButtonImageButton.Enabled = true;
             }
             else {
                 buttonPictureBox.Enabled = false;
-                setButtonImageButton.Enabled = false;
+                chooseButtonImageButton.Enabled = false;
             }
+        }
+
+        private void setButtonImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            of.ShowDialog();
+
+            try
+            {
+                buttonPictureBox.Image = Image.FromStream(of.OpenFile());
+                imagePath = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+        }
+
+        //This was an accidental click, need to remove
+        private void addButtonBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
