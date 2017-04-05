@@ -275,6 +275,16 @@ namespace GUI_Test2
                 Game.paths.Add(p);
                 Game.navIndex.Add(p, new Path());
             }
+            sillyString =new string[]{"hub1", "hub2", "hub3", "hub4", "hub5", "hub6" };
+            foreach (String p in sillyString)
+            {
+                Game.hubs.Add(p);
+                Game.navIndex.Add(p, new Hub());
+            }
+            Attributes.Add(0, "g1", 0, "");
+            Attributes.Add(1, "h1", 0, "");
+            Attributes.Add(1, "h2", 0, "hub1");
+            Attributes.Add(2, "p1", 0, "");
             updateListBoxes();
             
         }

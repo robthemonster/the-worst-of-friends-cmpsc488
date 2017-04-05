@@ -162,12 +162,10 @@
             // globalRadioButton
             // 
             this.globalRadioButton.AutoSize = true;
-            this.globalRadioButton.Checked = true;
             this.globalRadioButton.Location = new System.Drawing.Point(3, 3);
             this.globalRadioButton.Name = "globalRadioButton";
             this.globalRadioButton.Size = new System.Drawing.Size(55, 15);
             this.globalRadioButton.TabIndex = 1;
-            this.globalRadioButton.TabStop = true;
             this.globalRadioButton.Text = "Global";
             this.globalRadioButton.UseVisualStyleBackColor = true;
             this.globalRadioButton.CheckedChanged += new System.EventHandler(this.globalRadioButton_CheckedChanged);

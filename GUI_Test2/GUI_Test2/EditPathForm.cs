@@ -51,7 +51,7 @@ namespace GUI_Test2
             scope = 0;
             currHub = "";
             dialogueImpactList = new List<List<Impact>>();
-            //hubSelectionComboBox.DataSource = ;
+            hubSelectionComboBox.DataSource = Game.hubs;
 
 
             updateListBoxes();
@@ -84,7 +84,7 @@ namespace GUI_Test2
             {
                 defaultPathImage.Image = Image.FromStream(of.OpenFile());
             }
-            catch (IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException)
             {
 
 
@@ -184,16 +184,27 @@ namespace GUI_Test2
 
             pathListBoxTab2.DataSource = null;
             pathListBoxTab2.DataSource = dialogueEntryList;
-            pathListBoxTab2.SelectedIndex = -1;
             
         }
         private void EditCreateImpact(object sender, EventArgs e) {
-            if (attributeComboBox.SelectedIndex != -1 &&
-                opComboBox.SelectedIndex != -1 )
+            if (pathListBoxTab2.SelectedIndex!=-1
+                && attributeComboBox.SelectedIndex != -1 
+                && opComboBox.SelectedIndex != -1 
+                && (hubSelectionComboBox.SelectedIndex!=-1||!hubRadioButton.Checked)
+                &&(hubRadioButton.Checked||globalRadioButton.Checked||playerRadioButton.Checked))
             {
+                
                 string name = (string)attributeComboBox.SelectedValue;
-                string op = (string)opComboBox.SelectedValue;
+                int op = opComboBox.SelectedIndex;
                 int val = (int)valueNumericUpDown.Value;
+                Impact i = new Impact(scope, name, currHub, op, val);
+                if (dialogueImpactList[pathListBoxTab2.SelectedIndex].Contains(i))
+                {
+                    dialogueImpactList[pathListBoxTab2.SelectedIndex].Remove(i);
+                }
+                dialogueImpactList[pathListBoxTab2.SelectedIndex].Add(i);
+                updateImpactList();
+                
             }
 
         }
@@ -423,24 +434,27 @@ namespace GUI_Test2
         }
         private void pathListBoxTab2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            updateImpactList();
+        }
+        private void updateImpactList()
+        {
             if (pathListBoxTab2.SelectedIndex != -1)
             {
                 impactAttributeListBox.DataSource = null;
                 impactAttributeListBox.DataSource = getImpacts(pathListBoxTab2.SelectedIndex);
-                impactAttributeListBox.SelectedIndex = -1;
             }
             else
             {
                 impactAttributeListBox.DataSource = null;
             }
+
         }
 
         private void impactAttributeListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (impactAttributeListBox.SelectedIndex != -1)
+            if (impactAttributeListBox.SelectedIndex != -1&&pathListBoxTab2.SelectedIndex!=-1)
             {
-                Impact i = (Impact)impactAttributeListBox.SelectedItem;
+                Impact i = dialogueImpactList[pathListBoxTab2.SelectedIndex][impactAttributeListBox.SelectedIndex];
                 scope = i.scope;
                 currHub = i.hub;
                 updateScope();
@@ -448,6 +462,15 @@ namespace GUI_Test2
                 opComboBox.SelectedIndex = i.op;
                 valueNumericUpDown.Value = i.val;
 
+            }
+        }
+
+        private void deleteImpactButton_Click(object sender, EventArgs e)
+        {
+            if (pathListBoxTab2.SelectedIndex != -1 && impactAttributeListBox.SelectedIndex != -1)
+            {
+                dialogueImpactList[pathListBoxTab2.SelectedIndex].RemoveAt(impactAttributeListBox.SelectedIndex);
+                updateImpactList();
             }
         }
     }

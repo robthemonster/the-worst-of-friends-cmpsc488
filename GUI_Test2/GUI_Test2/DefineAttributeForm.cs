@@ -15,7 +15,6 @@ namespace GUI_Test2
         int scope; //0-global, 1-hub, 2-player
         List<String> dispScope;
         String currHub;
-        List<String> hubs;
         bool scopeChange = false;
 
 
@@ -24,10 +23,9 @@ namespace GUI_Test2
             InitializeComponent();
             dispScope = new List<string> { "Global", "Hub", "Player" };
             currHub = "";
-            hubs = new List<string> { "huba", "hubba", "ding", "dingg" };
-            if (hubs != null)
+            if (Game.hubs != null)
             {
-                hubSelectionComboBox.DataSource = hubs;
+                hubSelectionComboBox.DataSource = Game.hubs;
             }
             else
             {

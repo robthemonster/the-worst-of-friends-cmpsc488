@@ -49,6 +49,23 @@ namespace GUI_Test2
         public string hub;
         public int op; //0 = "=", 1 = "-", 2 = "+"
         public int val;
+        public override Boolean Equals(Object that)
+        {
+            if (that == null || GetType() != that.GetType())
+                return false;
+            Impact that2 = (Impact)that;
+            if (this.attribute.Equals(that2.attribute) && this.hub.Equals(that2.hub))
+                return true;
+            return false;
+        }
+        public Impact(int scope, string attribute, string hub, int op, int val)
+        {
+            this.scope = scope;
+            this.attribute = attribute;
+            this.hub = hub;
+            this.op = op;
+            this.val = val;
+        }
     }
 
     [Serializable]
