@@ -119,12 +119,12 @@ void Path::setButtonCharSize(int size) {
 	this->buttonCharSize = size;
 }
 
-void Path::addButton(std::string buttonText, Navigable * target, sf::Vector2f position, sf::Texture * buttonTexture)
+void Path::addButton(std::string buttonText, Navigable * target, sf::Vector2f position,int highlightMode, sf::Texture * buttonTexture)
 {
 	if (this->buttonScreen == NULL)
 		this->buttonScreen = new ButtonScreen(this->game);
 	if (this->buttonScreen != NULL) {
-		FButton * button = new FButton(this->buttonSize, target, position, buttonText, this->font, this->buttonCharSize, buttonTexture);
+		FButton * button = new FButton(this->buttonSize, target, position, highlightMode, buttonText, this->font, this->buttonCharSize, buttonTexture);
 		
 		(*this->buttonScreen).addButton(button);
 	}

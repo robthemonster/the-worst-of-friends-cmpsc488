@@ -83,6 +83,12 @@ AttributeMap * Game::getAttributeMapPointer()
 	return this->attributeMap;
 }
 
+void Game::setMenuFont(sf::Font font)
+{
+	(*this->interfacePointer).setFont(font);
+	(*this->mainMenu).setFont(font);
+}
+
 void Game::setStart(Navigable * start)
 {
 	this->start = start;

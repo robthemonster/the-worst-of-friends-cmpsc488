@@ -5,7 +5,7 @@
 
 void Hub::addButton(sf::Vector2f position, sf::Vector2f size, Navigable * target)
 {
-	(*this->buttonScreen).addButton(new FButton(size, target, position));
+	(*this->buttonScreen).addButton(new FButton(size, target, position, FButton::DO_NOTHING));
 }
 
 void Hub::setImageTexture(sf::Texture & texture)

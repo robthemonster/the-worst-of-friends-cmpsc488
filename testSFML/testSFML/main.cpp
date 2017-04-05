@@ -213,7 +213,7 @@ int main() {
 	songStream.setVolume(50);
 	sf::Texture dialoguePaneTexture;
 
-	font.loadFromFile("fonts/8bit.ttf");
+	font.loadFromFile("fonts/arial.ttf");
 	dialoguePaneTexture.loadFromFile("img/dialoguePane.png");
 	
 
@@ -357,11 +357,11 @@ int main() {
 	
 	left.setPrompt("What do you do?");
 	left.addDialogueLine("You will need 7 strength to proceed");
-	left.addButton("Test your strength", &leftPg, button1Pos);
+	left.addButton("Test your strength", &leftPg, button1Pos, Path::BUTTON_HIGHLIGHT_TEXT);
 
 	right.addDialogueLine("You will need 7 wisdom to proceed.");
 	right.setPrompt("What do you do?");
-	right.addButton("Test your widsom", &rightPg, button2Pos);
+	right.addButton("Test your widsom", &rightPg, button2Pos, Path::BUTTON_HIGHLIGHT_TEXT);
 
 	Requirements noReq(*(*game).getAttributeMapPointer()), tenStrength(*(*game).getAttributeMapPointer()), tenWisdom(*(*game).getAttributeMapPointer());
 	tenStrength.addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), "strength", Requirements::GEQ, 7);
@@ -439,7 +439,7 @@ int main() {
 	(*game).setMainMenuImageTexture(imageTextures[10]);
 	(*game).setMainMenuMusic(songStream, "music/animalcrossing.ogg");
 	(*game).setMainMenuPlayButtonSound("music/letsgo.wav");
-
+	(*game).setMenuFont(font);
 	(*game).play(gameWindow, view);
 
 /*	

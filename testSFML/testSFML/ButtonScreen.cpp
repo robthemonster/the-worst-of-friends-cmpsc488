@@ -83,7 +83,6 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 							it = this->buttons.begin();
 							while (it != this->buttons.end()) {
 								if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
-									(**it).setHighlighted(false);
 									(*(**it).getTarget()).display(window, view);
 									return;
 
