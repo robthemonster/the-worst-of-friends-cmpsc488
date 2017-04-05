@@ -155,22 +155,41 @@ namespace GUI_Test2
 
         private void createButtonButton_Click(object sender, EventArgs e)
         {
-            //string text, pic1path;
-            //int
+            string text, pic1path, pic2path, next;
+            int sizeX, sizeY, posX, posY, highlight;
 
 
             if (useButtonSizeDefaults.Checked)
             {
+                //CHANGE These are placeholder values
+                sizeX = 5;
+                sizeY = 5;
             }
             else
             {
+                //PICK UP HERE
+                if (buttonWidthTextBox.Text != "")
+                {
+                    sizeX = Int32.Parse(buttonWidthTextBox.Text);
+                    buttonWidthTextBox.Text = "";
+                }
+                sizeY = Int32.Parse(buttonHeightTextBox.Text);
+                
+                buttonHeightTextBox.Text = "";
             }
 
             if (useButtonLocationDefaults.Checked)
             {
+                //CHANGE These are placeholder values
+                posX = buttonNameList.Count * 5;
+                posY = 0;
             }
             else
             {
+                posX = Int32.Parse(buttonXLocTextBox.Text);
+                posY = Int32.Parse(buttonYLocTextBox.Text);
+                buttonXLocTextBox.Text = "";
+                buttonYLocTextBox.Text = "";
             }
 
             if (useButtonImage.Checked)
@@ -178,6 +197,8 @@ namespace GUI_Test2
             }
             else
             {
+                pic1path = "";
+                pic2path = "";
             }
         }
     }
