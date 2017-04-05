@@ -29,7 +29,7 @@ void MainMenu::setMusicFile(sf::Music & stream, std::string file)
 
 void MainMenu::setPlayGameSound(std::string file)
 {
-	this->font.loadFromFile(file);
+	this->playGameSoundFile = file;
 }
 
 void MainMenu::display(sf::RenderWindow & window, sf::View & view)

@@ -32,7 +32,7 @@ public:
 	void addDialogueLine(std::string, Attributable ** target, std::string key, int op, int val);
 	void setButtonSize(sf::Vector2f size);
 	void setButtonCharSize(int size);
-	void addButton(std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode,  sf::Texture * buttonTexture = NULL);
+	void addButton(std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode,  sf::Texture * buttonTexture = NULL, sf::Texture * highlightTexture = NULL);
 	void setPrompt(std::string prompt);
 	void setFont(sf::Font font);
 	void setMusic(sf::Music & music, std::string fileName);

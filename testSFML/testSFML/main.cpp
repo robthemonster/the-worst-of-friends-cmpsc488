@@ -171,7 +171,10 @@ int main() {
 
 
 
+	sf::Texture buttonUnhighlight, buttonHighlight;
 
+	buttonUnhighlight.loadFromFile("img/button.png");
+	buttonHighlight.loadFromFile("img/highlight.png");
 
 	sf::Font font;
 	sf::Texture dialoguePane;
@@ -180,7 +183,7 @@ int main() {
 	sf::Vector2f button1Pos(-200, 300);
 	sf::Vector2f button2Pos(200, 300);
 
-	font.loadFromFile("fonts/8bit.ttf");
+	font.loadFromFile("fonts/arial.ttf");
 
 
 	dialoguePane.loadFromFile("img/dialoguePane.png");
@@ -213,7 +216,6 @@ int main() {
 	songStream.setVolume(50);
 	sf::Texture dialoguePaneTexture;
 
-	font.loadFromFile("fonts/arial.ttf");
 	dialoguePaneTexture.loadFromFile("img/dialoguePane.png");
 	
 
@@ -357,7 +359,7 @@ int main() {
 	
 	left.setPrompt("What do you do?");
 	left.addDialogueLine("You will need 7 strength to proceed");
-	left.addButton("Test your strength", &leftPg, button1Pos, Path::BUTTON_HIGHLIGHT_TEXT);
+	left.addButton("", &leftPg, button1Pos, Path::BUTTON_HIGHLIGHT_IMAGE, &buttonUnhighlight, &buttonHighlight);
 
 	right.addDialogueLine("You will need 7 wisdom to proceed.");
 	right.setPrompt("What do you do?");

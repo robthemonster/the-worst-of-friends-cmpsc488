@@ -98,8 +98,10 @@ FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &positio
 	if (buttonTexture != NULL) {
 		this->buttonRect.setTexture(buttonTexture);
 		this->buttonTexture = buttonTexture;
+		this->buttonRect.setSize(sf::Vector2f((*buttonTexture).getSize().x, (*buttonTexture).getSize().y));
 		this->highlightedButtonTexture = highlightedButtonTexture;
 		this->highlightRect.setSize(buttonRect.getSize());
+		this->highlightRect.setFillColor(sf::Color::Transparent);
 		
 	}
 	if (buttonText.size() > 0) {
