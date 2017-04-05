@@ -44,9 +44,10 @@ namespace GUI_Test2
 
     [Serializable]
     public class Impact {
+        public int scope;
         public string attribute;
         public string hub;
-        public string sym;
+        public int op; //0 = "=", 1 = "-", 2 = "+"
         public int val;
     }
 

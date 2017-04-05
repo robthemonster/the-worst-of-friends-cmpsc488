@@ -145,14 +145,14 @@
             // charactersToolStripMenuItem
             // 
             this.charactersToolStripMenuItem.Name = "charactersToolStripMenuItem";
-            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.charactersToolStripMenuItem.Text = "Characters";
             this.charactersToolStripMenuItem.Click += new System.EventHandler(this.charactersToolStripMenuItem_Click);
             // 
             // attributesToolStripMenuItem
             // 
             this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
-            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.attributesToolStripMenuItem.Text = "Attributes";
             this.attributesToolStripMenuItem.Click += new System.EventHandler(this.attributesToolStripMenuItem_Click);
             // 
@@ -170,28 +170,28 @@
             // hubToolStripMenuItem
             // 
             this.hubToolStripMenuItem.Name = "hubToolStripMenuItem";
-            this.hubToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hubToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.hubToolStripMenuItem.Text = "Hub";
             this.hubToolStripMenuItem.Click += new System.EventHandler(this.hubToolStripMenuItem_Click);
             // 
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.pathToolStripMenuItem.Text = "Path";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
             // pathGroupToolStripMenuItem
             // 
             this.pathGroupToolStripMenuItem.Name = "pathGroupToolStripMenuItem";
-            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.pathGroupToolStripMenuItem.Text = "PathGroup";
             this.pathGroupToolStripMenuItem.Click += new System.EventHandler(this.pathGroupToolStripMenuItem_Click);
             // 
             // mAKEPATHSToolStripMenuItem
             // 
             this.mAKEPATHSToolStripMenuItem.Name = "mAKEPATHSToolStripMenuItem";
-            this.mAKEPATHSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mAKEPATHSToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.mAKEPATHSToolStripMenuItem.Text = "MAKE PATHS!";
             this.mAKEPATHSToolStripMenuItem.Click += new System.EventHandler(this.makeSamplePaths);
             // 
@@ -209,12 +209,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.hubListBox, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pathGroupListBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.pathListBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.hubLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.closeButton, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pathGroupListBox, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -248,7 +248,8 @@
             this.pathListBox.Name = "pathListBox";
             this.pathListBox.Size = new System.Drawing.Size(144, 355);
             this.pathListBox.TabIndex = 2;
-            this.pathListBox.SelectedIndexChanged += new System.EventHandler(this.pathListBox_SelectedIndexChanged);
+            this.pathListBox.Click += new System.EventHandler(this.pathListBox_SelectedIndexChanged);
+            //this.pathListBox.SelectedIndexChanged += new System.EventHandler(this.pathListBox_SelectedIndexChanged_1);
             this.pathListBox.DoubleClick += new System.EventHandler(this.LoadPathFromPathListBox);
             // 
             // hubLabel

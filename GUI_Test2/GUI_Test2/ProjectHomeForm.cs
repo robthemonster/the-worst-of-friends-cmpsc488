@@ -191,13 +191,13 @@ namespace GUI_Test2
             hubListBox.SelectedIndex = -1;
         }
         public void LoadPathFromPathListBox(object sender, EventArgs e) {
-            if (pathListBox.SelectedIndex == -1)
-                MessageBox.Show("Bad index on pathBoxList");
-            else {
+            if (pathListBox.SelectedIndex == -1) { }
+            else
+            {
                 string sampString = (string)pathListBox.SelectedValue;
                 Path targetPath = new Path();
-                    targetPath = (Path)navIndex[sampString];
-                EditPathForm editPath = new EditPathForm(this,(Path)navIndex[sampString]);
+                targetPath = (Path)navIndex[sampString];
+                EditPathForm editPath = new EditPathForm(this, (Path)navIndex[sampString]);
                 editPath.ShowDialog();
             }
         }
@@ -317,5 +317,6 @@ namespace GUI_Test2
             EditCharactersForm ecf = new EditCharactersForm(this);
             ecf.ShowDialog();
         }
+        
     }
 }

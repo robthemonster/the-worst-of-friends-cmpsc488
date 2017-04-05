@@ -127,6 +127,7 @@
             this.pathDialogueTab.SelectedIndex = 0;
             this.pathDialogueTab.Size = new System.Drawing.Size(663, 398);
             this.pathDialogueTab.TabIndex = 0;
+            this.pathDialogueTab.Click += new System.EventHandler(this.pathListBoxTab2_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -540,6 +541,7 @@
             this.pathListBoxTab2.Name = "pathListBoxTab2";
             this.pathListBoxTab2.Size = new System.Drawing.Size(92, 303);
             this.pathListBoxTab2.TabIndex = 1;
+            this.pathListBoxTab2.SelectedIndexChanged += new System.EventHandler(this.pathListBoxTab2_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -566,6 +568,7 @@
             this.impactAttributeListBox.Name = "impactAttributeListBox";
             this.impactAttributeListBox.Size = new System.Drawing.Size(91, 303);
             this.impactAttributeListBox.TabIndex = 4;
+            this.impactAttributeListBox.SelectedIndexChanged += new System.EventHandler(this.impactAttributeListBox_SelectedIndexChanged);
             // 
             // Buttons
             // 

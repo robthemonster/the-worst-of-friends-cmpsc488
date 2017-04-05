@@ -46,11 +46,12 @@ namespace GUI_Test2
         private void EditPath_Load(object sender, EventArgs e)
         {
             this.AcceptButton = createNewDialogueButton;
-            ops = new String[] { "+", "-", "/", "*", "=" };
+            ops = new String[] { "=", "-", "+" };
             opComboBox.DataSource = this.ops;
             scope = 0;
             currHub = "";
             dialogueImpactList = new List<List<Impact>>();
+            //hubSelectionComboBox.DataSource = ;
 
 
             updateListBoxes();
@@ -184,20 +185,7 @@ namespace GUI_Test2
             pathListBoxTab2.DataSource = null;
             pathListBoxTab2.DataSource = dialogueEntryList;
             pathListBoxTab2.SelectedIndex = -1;
-
-            attributeComboBox.DataSource = null;
-            attributeComboBox.DataSource = Attributes.getScope(scope,currHub);
-            attributeComboBox.SelectedIndex = -1;
-
-            if (pathListBoxTab2.SelectedIndex != -1)
-            {
-
-            }
-
-
-
-
-
+            
         }
         private void EditCreateImpact(object sender, EventArgs e) {
             if (attributeComboBox.SelectedIndex != -1 &&
@@ -218,12 +206,12 @@ namespace GUI_Test2
         {
             if (parentForm.navIndex.ContainsKey(name))
             {
-                parentForm.navIndex[name] = new Path(name, dialogueEntryList, dialogueEntryList, buttonList);
+                parentForm.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList);
             }
             else
             {
                 parentForm.paths.Add(name);
-                parentForm.navIndex.Add(name, new Path(name, dialogueEntryList, dialogueEntryList, buttonList));
+                parentForm.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList));
             }
             parentForm.updateListBoxes();
             Close();
@@ -366,7 +354,10 @@ namespace GUI_Test2
             {
                 currHub = (String)hubSelectionComboBox.SelectedItem;
             }
-            if (hubSelectionComboBox.SelectedIndex >= 0)
+            else
+            {
+                currHub = "";
+            }
             scope = 1;
             updateScope();
 
@@ -382,17 +373,17 @@ namespace GUI_Test2
         }
         private void updateScope()
         {
+            attributeComboBox.DataSource = null;
+            attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
 
-            if (pathListBoxTab2.SelectedIndex != -1)
-            {
-                impactAttributeListBox.DataSource = null;
-                impactAttributeListBox.DataSource = getImpacts(pathListBoxTab2.SelectedIndex);
-            }
+            opComboBox.SelectedIndex = 2;
+            valueNumericUpDown.Value = 0;
         }
+
         private List<String> getImpacts(int index)
         {
             List<String> impacts = new List<String>();
-            if (index > -1)
+            if (index > -1 && dialogueImpactList.Count>0)
             {
                 foreach(Impact i in dialogueImpactList[index])
                 {
@@ -422,6 +413,40 @@ namespace GUI_Test2
         {
             if(opComboBox.SelectedIndex!=-1 && attributeComboBox.SelectedIndex != -1)
             {
+
+            }
+            updateScope();
+        }
+        private void impactsTab_Selected(object sender, EventArgs e)
+        {
+            //update
+        }
+        private void pathListBoxTab2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (pathListBoxTab2.SelectedIndex != -1)
+            {
+                impactAttributeListBox.DataSource = null;
+                impactAttributeListBox.DataSource = getImpacts(pathListBoxTab2.SelectedIndex);
+                impactAttributeListBox.SelectedIndex = -1;
+            }
+            else
+            {
+                impactAttributeListBox.DataSource = null;
+            }
+        }
+
+        private void impactAttributeListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (impactAttributeListBox.SelectedIndex != -1)
+            {
+                Impact i = (Impact)impactAttributeListBox.SelectedItem;
+                scope = i.scope;
+                currHub = i.hub;
+                updateScope();
+                attributeComboBox.SelectedIndex = Attributes.getScope(scope, currHub).IndexOf(i.attribute);
+                opComboBox.SelectedIndex = i.op;
+                valueNumericUpDown.Value = i.val;
 
             }
         }
