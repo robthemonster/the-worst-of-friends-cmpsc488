@@ -260,7 +260,7 @@ namespace GUI_Test2
                     editPathGroup.ShowDialog();
                     break;
                 case 3:
-                    EditHubForm editHub = new EditHubForm(Game.navigableName);
+                    EditHubForm editHub = new EditHubForm(this, Game.navigableName);
                     editHub.ShowDialog();
                     break;
             }
