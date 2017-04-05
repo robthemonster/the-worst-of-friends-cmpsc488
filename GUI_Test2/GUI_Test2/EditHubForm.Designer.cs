@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditHubForm));
             this.addHubImageButton = new System.Windows.Forms.Button();
-            this.deleteHubImageButton = new System.Windows.Forms.Button();
             this.hubImagePictureBox = new System.Windows.Forms.PictureBox();
             this.useButtonImage = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -79,16 +78,6 @@
             this.addHubImageButton.Text = "Add Hub Image";
             this.addHubImageButton.UseVisualStyleBackColor = true;
             // 
-            // deleteHubImageButton
-            // 
-            this.deleteHubImageButton.Location = new System.Drawing.Point(393, 94);
-            this.deleteHubImageButton.Margin = new System.Windows.Forms.Padding(2);
-            this.deleteHubImageButton.Name = "deleteHubImageButton";
-            this.deleteHubImageButton.Size = new System.Drawing.Size(111, 19);
-            this.deleteHubImageButton.TabIndex = 2;
-            this.deleteHubImageButton.Text = "Delete Hub Image";
-            this.deleteHubImageButton.UseVisualStyleBackColor = true;
-            // 
             // hubImagePictureBox
             // 
             this.hubImagePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -97,7 +86,7 @@
             this.hubImagePictureBox.Location = new System.Drawing.Point(9, 10);
             this.hubImagePictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.hubImagePictureBox.Name = "hubImagePictureBox";
-            this.hubImagePictureBox.Size = new System.Drawing.Size(314, 186);
+            this.hubImagePictureBox.Size = new System.Drawing.Size(270, 186);
             this.hubImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hubImagePictureBox.TabIndex = 0;
             this.hubImagePictureBox.TabStop = false;
@@ -106,7 +95,7 @@
             // useButtonImage
             // 
             this.useButtonImage.AutoSize = true;
-            this.useButtonImage.Location = new System.Drawing.Point(337, 399);
+            this.useButtonImage.Location = new System.Drawing.Point(376, 397);
             this.useButtonImage.Name = "useButtonImage";
             this.useButtonImage.Size = new System.Drawing.Size(114, 17);
             this.useButtonImage.TabIndex = 33;
@@ -298,7 +287,7 @@
             this.useButtonSizeDefaults.AutoSize = true;
             this.useButtonSizeDefaults.Checked = true;
             this.useButtonSizeDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.useButtonSizeDefaults.Location = new System.Drawing.Point(376, 207);
+            this.useButtonSizeDefaults.Location = new System.Drawing.Point(374, 206);
             this.useButtonSizeDefaults.Name = "useButtonSizeDefaults";
             this.useButtonSizeDefaults.Size = new System.Drawing.Size(144, 17);
             this.useButtonSizeDefaults.TabIndex = 25;
@@ -450,7 +439,6 @@
             this.Controls.Add(this.setButtonImageButton);
             this.Controls.Add(this.buttonPictureBox);
             this.Controls.Add(this.tableLayoutPanel4);
-            this.Controls.Add(this.deleteHubImageButton);
             this.Controls.Add(this.addHubImageButton);
             this.Controls.Add(this.hubImagePictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -475,7 +463,6 @@
 
         private System.Windows.Forms.PictureBox hubImagePictureBox;
         private System.Windows.Forms.Button addHubImageButton;
-        private System.Windows.Forms.Button deleteHubImageButton;
         private System.Windows.Forms.ListBox buttonListBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;

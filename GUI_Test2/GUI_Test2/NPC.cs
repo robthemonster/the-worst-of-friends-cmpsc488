@@ -11,15 +11,33 @@ namespace GUI_Test2
     public class NPC
     {
         public string name;
-        //public Dictionary<String, String> image;
+        public List<String> imageNames;
+        public List<String> imagePaths;
 
-        public NPC()
-        {
-        }
+        public NPC() { }
 
         public NPC(string n)
         {
             name = n;
+            imageNames = new List<string>();
+            imagePaths = new List<string>();
+            Characters.Add(n, this);
+
+        }
+        public void addImage(string iname, string ipath) {
+            imageNames.Add(iname);
+            imagePaths.Add(ipath);
+            Characters.Add(this.name, this);
+        }
+        public void removeImage(int i)
+        {
+            imageNames.RemoveAt(i);
+            imagePaths.RemoveAt(i);
+            Characters.Add(this.name, this);
+        }
+        public void deleteCharacter()
+        {
+            Characters.Remove(this.name);
         }
     }
 
@@ -30,6 +48,10 @@ namespace GUI_Test2
 
         public static void Add(string n, NPC c)
         {
+            if (characters.ContainsKey(n))
+            {
+                characters.Remove(n);
+            }
             characters.Add(n, c);
         }
 
@@ -40,13 +62,7 @@ namespace GUI_Test2
 
         public static List<string> getKeys()
         {
-            List<string> keys = new List<string>();
-            foreach (string i in Characters.characters.Keys)
-            {
-                keys.Add(i);
-            }
-
-            return keys;
+            return characters.Keys.ToList();
         }
     }
 }

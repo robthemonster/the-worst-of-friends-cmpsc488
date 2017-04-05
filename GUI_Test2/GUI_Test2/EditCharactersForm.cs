@@ -14,13 +14,15 @@ namespace GUI_Test2
     {
         private List<String> nameList;
         private ProjectHomeForm parentForm;
+        private string imagePath;
 
         public EditCharactersForm(ProjectHomeForm par)
         {
             InitializeComponent();
             parentForm = par;
+            imagePath = "";
             nameList = Characters.getKeys();
-            updateList();
+            updateCharacterList();
         }
 
         private void chooseImageButton_Click(object sender, EventArgs e)
@@ -35,6 +37,7 @@ namespace GUI_Test2
             try
             {
                 characterImage.Image = Image.FromStream(of.OpenFile());
+                imagePath = of.FileName;
             }
             catch (IndexOutOfRangeException ex) {        
             
@@ -51,19 +54,19 @@ namespace GUI_Test2
         {
             if (characterNameBox.Text != "" && characterNameBox != null)
             {
-                string input = characterNameBox.Text;
+                string characterName = characterNameBox.Text;
 
-                if (!nameList.Contains(input))
+                if (!nameList.Contains(characterName))
                 {
-                    nameList.Add(input);
-                    Characters.Add(input, new NPC(input));
-                    characterNameBox.Text = "";
-                    updateList();
+                    nameList.Add(characterName);
+                    new NPC(characterName);
+                    updateCharacterList();
+                    characterList.SelectedIndex = Characters.characters.Count - 1;
                 }
 
                 else
                 {
-                    MessageBox.Show("Name Already Exists.");
+                    characterList.SelectedIndex = nameList.IndexOf(characterName);
                 }
             }
         }
@@ -72,22 +75,71 @@ namespace GUI_Test2
         {
             if (characterList.SelectedIndex != -1)
             {
-                int index = characterList.SelectedIndex;
-                string nameToRemove = nameList[index];
-
-                nameList.RemoveAt(index);
-                Characters.Remove(nameToRemove);
-
-                updateList();
+                Characters.Remove(nameList[characterList.SelectedIndex]);
+                updateCharacterList();
             }
-
         }
 
-        private void updateList()
+        private void updateCharacterList()
         {
             characterList.DataSource = null;
-            characterList.DataSource = nameList;
+            characterList.DataSource = Characters.characters.Keys.ToList();
+        }
+
+        private void deleteImageButton_Click(object sender, EventArgs e)
+        {
+            if (characterImageList.SelectedIndex != -1 && characterList.SelectedIndex!=-1)
+            {
+                Characters.characters[(string)characterList.SelectedValue].removeImage(characterImageList.SelectedIndex);
+                if (characterImageList.SelectedIndex == Characters.characters[characterList.Text].imageNames.Count)
+                {
+                    --characterImageList.SelectedIndex;
+                }
+
+                updateImageList();
+            }
+        }
+
+        private void addImageToCharacterButton_Click(object sender, EventArgs e)
+        {
+            if (imageNameTextBox.Text != "" && !imagePath.Equals("")&& !Characters.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text)&&characterList.SelectedIndex!=-1)
+            {
+                Characters.characters[characterList.Text].addImage(imageNameTextBox.Text, imagePath);
+                updateImageList();
+            }
+        }
+
+        private void characterList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (characterList.SelectedIndex != -1)
+            {
+                characterImageList.DataSource = null;
+                characterImageList.DataSource = Characters.characters[characterList.Text].imageNames;
+            }
+        }
+
+        private void characterImageList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (characterImageList.SelectedIndex != -1 && characterList.SelectedIndex != -1)
+            {
+                imageNameTextBox.Text = characterImageList.Text;
+                imagePath = Characters.characters[characterList.Text].imagePaths[characterImageList.SelectedIndex];
+                characterImage.ImageLocation = imagePath;
+            }
+            else {
+                characterImage.Image = GUI_Test2.Properties.Resources.character;
+            }
+        }
+        private void updateImageList()
+        {
+            int i = characterList.SelectedIndex;
             characterList.SelectedIndex = -1;
+            characterList.SelectedIndex = i;
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
