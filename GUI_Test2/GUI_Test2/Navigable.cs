@@ -17,20 +17,18 @@ namespace GUI_Test2
     [Serializable]
     public class Path : Navigable {
         public string name;
-        public List <String> dialogueNames;
         public List<String> dialogueContents;
+        public List<List<Impact>> dialogueImpactList;
         public List<Button> buttons;
         //public List<Button> buttons;
 
         public Path() {}
 
-        public Path(String n, List<String> names, List<String> contents,List<Button> btns) {
+        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL) {
             name = n;
-            dialogueNames = names;
             dialogueContents = contents;
-            //List<int, int> appl;
+            dialogueImpactList=dIL;
             buttons = btns;
-            //buttons = btons;
         }
 
         public String getName() { return name; }
@@ -66,8 +64,13 @@ namespace GUI_Test2
     public class Button {
         //text,X,Y, NavRef ,Picname
         public string text;
-        public int x;
-        public int y;
+        public int sizeX;
+        public int sizeY;
+        public int posX;
+        public int posY;
+        public string pic1path;
+        public string pic2path;
+        public int highlight; //2 picture, 1 text, 0 neither
         public Navigable next;
         //img,sound
     }
