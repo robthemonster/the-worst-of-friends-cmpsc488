@@ -19,13 +19,13 @@ namespace GUI_Test2
     {
 
         
-        //public List<NPC> characters;
-        public List<String> pathGroups;
-        public List<String> hubs;
+        ////public List<NPC> characters;
+        //public List<String> pathGroups;
+        //public List<String> hubs;
         //public List<P2PG> p2PG;
-        public Dictionary<String, Navigable> navIndex;
-        public String navigableName;
-        public List<String> paths;
+        //public Dictionary<String, Navigable> navIndex;
+        //public String navigableName;
+        //public List<String> paths;
 
         public int screenID;
         //1 = Path, 2 = Path Group, 3 = Hub
@@ -36,12 +36,7 @@ namespace GUI_Test2
         {
             
             InitializeComponent();
-
-            navIndex = new Dictionary<String, Navigable>();
-            //attributes = new Attribs();
-            paths = new List<String>();
-            pathGroups = new List<String>();
-            hubs = new List<String>();
+            
 
             //attributes.names = new List<string> {"Health","Strength","Agility","Charisma","Evil","Unrest"};
             //attributes.scopes = new List<int> { 0,0,0,0,2,2};
@@ -63,11 +58,11 @@ namespace GUI_Test2
 
             if (alert == DialogResult.Yes)
             {
-                navIndex = new Dictionary<String, Navigable>();
+                Game.navIndex = new Dictionary<String, Navigable>();
                 //attributes = new Attribs();
-                paths = new List<String>();
-                pathGroups = new List<String>();
-                hubs = new List<String>();
+                Game.paths = new List<String>();
+                Game.pathGroups = new List<String>();
+                Game.hubs = new List<String>();
 
                 foreach (string i in Characters.getKeys())
                 {
@@ -120,8 +115,8 @@ namespace GUI_Test2
 
             Dictionary<string, NPC> c = Characters.characters;
 
-            Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-            Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths,Attributes.attribs, Characters.characters);
+            //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+            Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.navigableName, Game.paths,Attributes.attribs, Characters.characters);
 
             saveToFile(proj, fileName);
         }
@@ -130,8 +125,8 @@ namespace GUI_Test2
         {
             if (fileLocation != "")
             {
-                Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(pathGroups, hubs, navIndex, navigableName, paths, Attributes.attribs, Characters.characters);
+                //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.navigableName, Game.paths, Attributes.attribs, Characters.characters);
 
                 saveToFile(proj, fileLocation);
             }
@@ -179,15 +174,15 @@ namespace GUI_Test2
         }
         public void updateListBoxes() {
             pathListBox.DataSource = null;
-            pathListBox.DataSource = paths;
+            pathListBox.DataSource = Game.paths;
             pathListBox.SelectedIndex = -1;
 
             pathGroupListBox.DataSource = null;
-            pathGroupListBox.DataSource = pathGroups;
+            pathGroupListBox.DataSource = Game.pathGroups;
             pathGroupListBox.SelectedIndex = -1;
 
             hubListBox.DataSource = null;
-            hubListBox.DataSource = hubs;
+            hubListBox.DataSource = Game.hubs;
             hubListBox.SelectedIndex = -1;
         }
         public void LoadPathFromPathListBox(object sender, EventArgs e) {
@@ -196,8 +191,8 @@ namespace GUI_Test2
             {
                 string sampString = (string)pathListBox.SelectedValue;
                 Path targetPath = new Path();
-                targetPath = (Path)navIndex[sampString];
-                EditPathForm editPath = new EditPathForm(this, (Path)navIndex[sampString]);
+                targetPath = (Path)Game.navIndex[sampString];
+                EditPathForm editPath = new EditPathForm(this, (Path)Game.navIndex[sampString]);
                 editPath.ShowDialog();
             }
         }
@@ -234,14 +229,14 @@ namespace GUI_Test2
                stream.Close();
 
                 //Load the GameObject
-                pathGroups = (List<String>)proj.pathGroups;
-                hubs = (List<String>)proj.hubs;
-                navIndex = (Dictionary<String, Navigable>)proj.navIndex;
-                navigableName = (String)proj.navigableName;
-                paths = (List<String>)proj.paths;
+                Game.pathGroups = (List<String>)proj.pathGroups;
+                Game.hubs = (List<String>)proj.hubs;
+                Game.navIndex = (Dictionary<String, Navigable>)proj.navIndex;
+                Game.navigableName = (String)proj.navigableName;
+                Game.paths = (List<String>)proj.paths;
                 Attributes.attribs = (List<Attrib>)proj.attribs;
                 Characters.characters = (proj.characters);
-                Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+                //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
 
                 updateListBoxes();
             }
@@ -257,15 +252,15 @@ namespace GUI_Test2
             {
 
                 case 1:
-                    EditPathForm editPath = new EditPathForm(this, navigableName);
+                    EditPathForm editPath = new EditPathForm(this, Game.navigableName);
                     editPath.ShowDialog();
                     break;
                 case 2:
-                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, navigableName);
+                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, Game.navigableName);
                     editPathGroup.ShowDialog();
                     break;
                 case 3:
-                    EditHubForm editHub = new EditHubForm(navigableName);
+                    EditHubForm editHub = new EditHubForm(Game.navigableName);
                     editHub.ShowDialog();
                     break;
             }
@@ -277,8 +272,8 @@ namespace GUI_Test2
         public void makeSamplePaths(object sender, EventArgs e) {
             String[] sillyString = { "asdf", "asdf2", "asdf3", "asdf4", "asdf5", "asdf6", "asdf7", "asdf8", "asdf9", "asdf10", "asdf11" };
             foreach (String p in sillyString) {
-                paths.Add(p);
-                navIndex.Add(p, new Path());
+                Game.paths.Add(p);
+                Game.navIndex.Add(p, new Path());
             }
             updateListBoxes();
             
@@ -291,7 +286,7 @@ namespace GUI_Test2
                 if (pathListBox.SelectedIndex != -1)
                 {
                     //On loading a file, a NullException happens here
-                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, (PathGroup)navIndex[(String)pathGroupListBox.SelectedItem]);
+                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, (PathGroup)Game.navIndex[(String)pathGroupListBox.SelectedItem]);
                     editPathGroup.ShowDialog();
                 }
             }

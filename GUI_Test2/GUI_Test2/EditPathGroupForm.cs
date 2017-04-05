@@ -84,7 +84,7 @@ namespace GUI_Test2
                 justUpdated = true;
 
                 pnipg = new List<string>();
-                foreach (String p in parentForm.paths)
+                foreach (String p in Game.paths)
                 {
                     if (!pathsInGroup.Contains(p))
                         pnipg.Add(p);
@@ -172,13 +172,13 @@ namespace GUI_Test2
 
         private void OKbutton_Click(object sender, EventArgs e)
         {
-            if (!parentForm.pathGroups.Contains(name))
+            if (!Game.pathGroups.Contains(name))
             {
-                parentForm.pathGroups.Add(name);
-                parentForm.navIndex.Add(name, new PathGroup(name, pathsInGroup, weights, tiers));
+                Game.pathGroups.Add(name);
+                Game.navIndex.Add(name, new PathGroup(name, pathsInGroup, weights, tiers));
             }
             else
-                parentForm.navIndex[name] = new PathGroup(name, pathsInGroup, weights, tiers);
+                Game.navIndex[name] = new PathGroup(name, pathsInGroup, weights, tiers);
             Close();
         }
 

@@ -36,8 +36,7 @@ namespace GUI_Test2
             {
                 characterImage.Image = Image.FromStream(of.OpenFile());
             }
-            catch (IndexOutOfRangeException ex) { 
-           
+            catch (IndexOutOfRangeException ex) {        
             
             }
 

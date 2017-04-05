@@ -204,14 +204,14 @@ namespace GUI_Test2
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (parentForm.navIndex.ContainsKey(name))
+            if (Game.navIndex.ContainsKey(name))
             {
-                parentForm.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList);
+                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList);
             }
             else
             {
-                parentForm.paths.Add(name);
-                parentForm.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList));
+                Game.paths.Add(name);
+                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList));
             }
             parentForm.updateListBoxes();
             Close();

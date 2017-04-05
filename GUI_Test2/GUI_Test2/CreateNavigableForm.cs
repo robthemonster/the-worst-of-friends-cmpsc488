@@ -59,7 +59,7 @@ namespace GUI_Test2
                 MessageBox.Show("You May Not Use Characters '!', '@', '#', '$', '%', '^', '&', '*',\n '(', ')', '_', '+', or '='.");
             }
 
-            else if (parent.navIndex.ContainsKey(navigableNameTextBox.Text))
+            else if (Game.navIndex.ContainsKey(navigableNameTextBox.Text))
             {
                 MessageBox.Show("Name Already Exists.");
             }
@@ -76,7 +76,7 @@ namespace GUI_Test2
 
                         else
                         {
-                            parent.navigableName = navigableNameTextBox.Text;
+                            Game.navigableName = navigableNameTextBox.Text;
 
                             validClose = true;
                             Close();
@@ -91,7 +91,7 @@ namespace GUI_Test2
 
                         else
                         {
-                            parent.navigableName = navigableNameTextBox.Text;
+                            Game.navigableName = navigableNameTextBox.Text;
 
                             validClose = true;
                             Close();
@@ -106,7 +106,7 @@ namespace GUI_Test2
 
                         else
                         {
-                            parent.navigableName = navigableNameTextBox.Text;
+                            Game.navigableName = navigableNameTextBox.Text;
 
                             validClose = true;
                             Close();
