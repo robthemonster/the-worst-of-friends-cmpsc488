@@ -14,6 +14,7 @@ class Interface
 	std::vector<std::string> visiblePlayerAttributes;
 public:
 	bool getPaused();
+	void setFont(sf::Font font);
 	void setPaused(bool paused);
 	bool quitHighlighted();
 	bool continueHighlighted();

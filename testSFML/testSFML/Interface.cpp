@@ -8,6 +8,18 @@ bool Interface::getPaused()
 	return this->paused;
 }
 
+void Interface::setFont(sf::Font font)
+{
+	sf::Vector2f buttonSize(300, 200);
+	sf::Vector2f continueButtonPosition(pauseMenuRect.getPosition().x - 40, pauseMenuRect.getPosition().y - 150);
+	sf::Vector2f quitButtonPosition(pauseMenuRect.getPosition().x - 40, pauseMenuRect.getPosition().y + 150);
+
+	this->font = font;
+	this->continueGame = new FButton(buttonSize, NULL, continueButtonPosition, FButton::HIGHLIGHT_TEXT, "continue", this->font, 40);
+
+	this->quit = new FButton(buttonSize, NULL, quitButtonPosition, FButton::HIGHLIGHT_TEXT, "quit", this->font, 40);
+}
+
 void Interface::setPaused(bool paused)
 {
 	this->paused = paused;
@@ -32,9 +44,6 @@ void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
 {
 	if (paused) {
 		this->pauseMenuRect.setPosition(0, 0);
-		(*this->continueGame).setHighlighted((*this->continueGame).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))));
-		(*this->quit).setHighlighted((*this->quit).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))));
-
 		window.draw(pauseMenuRect);
 		(*this->continueGame).draw(window, view);
 		(*this->quit).draw(window, view);
@@ -44,8 +53,6 @@ void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
 void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player, sf::Color playerColor)
 {
 	
-	sf::Font font;
-	font.loadFromFile("fonts/8bit.ttf");
 
 	sf::Vector2f startPos(800, -300);
 	sf::Vector2f currPos(startPos);
@@ -88,14 +95,9 @@ Interface::Interface(AttributeMap * attributeMap)
 	this->pauseMenuRect.setOutlineThickness(2);
 	this->pauseMenuRect.setOrigin(this->pauseMenuRect.getSize().x / 2, this->pauseMenuRect.getSize().y / 2);
 
-	sf::Vector2f buttonSize(300, 200);
-	sf::Vector2f continueButtonPosition(pauseMenuRect.getPosition().x - 40, pauseMenuRect.getPosition().y - 150);
-	sf::Vector2f quitButtonPosition(pauseMenuRect.getPosition().x - 40, pauseMenuRect.getPosition().y + 150);
 	
-	this->font.loadFromFile("fonts/8bit.ttf");
-	this->continueGame = new FButton(buttonSize, NULL, continueButtonPosition,"continue", font, 40);
 	
-	this->quit = new FButton(buttonSize, NULL, quitButtonPosition,"quit", font, 40);
+	
 }
 
 

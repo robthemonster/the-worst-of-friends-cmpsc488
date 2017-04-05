@@ -15,6 +15,8 @@ void FButton::draw(sf::RenderWindow& window, sf::View& view) {
 }
 
 bool FButton::mouseOver(sf::Vector2f mouseLocation) {
+
+
 	return this->buttonRect.getGlobalBounds().contains(mouseLocation.x, mouseLocation.y) || this->buttonText.getGlobalBounds().contains(mouseLocation.x, mouseLocation.y);
 
 	
@@ -22,22 +24,40 @@ bool FButton::mouseOver(sf::Vector2f mouseLocation) {
 
 void FButton::setHighlighted(bool highlighted) {
 	if (highlighted) {
-		if (buttonRect.getTexture() == NULL) {
-			if (buttonText.getString().getSize() == 0)
-				buttonRect.setOutlineColor(sf::Color::Yellow);
-			else
-				buttonText.setFillColor(sf::Color(255, 255, 0, 255));
-		
+		switch (this->highlightMode) {
+		case 2:	if (this->buttonTexture != NULL) {
+				if (this->highlightedButtonTexture != NULL) {
+					this->buttonRect.setTexture(this->highlightedButtonTexture);
+				}
+
+				else {
+					this->highlightRect.setOutlineColor(sf::Color::Yellow);
+				}
+			}
+				break;
+
+		case 1: if (this->buttonText.getString().getSize() > 0) {
+			this->buttonText.setFillColor(sf::Color::Yellow);
 		}
-		else
-		{
-			highlightRect.setFillColor(sf::Color(255, 255, 0, 90));
+				break;
 		}
 	}else {
-		if (buttonText.getString().getSize() == 0 && buttonRect.getTexture() == NULL)
-			buttonRect.setOutlineColor(sf::Color::Black);
-		buttonText.setFillColor(sf::Color::White);
-		highlightRect.setFillColor(sf::Color::Transparent);
+		switch (this->highlightMode) {
+		case 2:
+			if (this->buttonTexture != NULL) {
+				this->buttonRect.setTexture(this->buttonTexture);
+			}
+			else {
+				this->highlightRect.setOutlineColor(sf::Color::Transparent);
+			}
+			break;
+		case 1:
+			if (this->buttonText.getString().getSize() > 0) {
+				this->buttonText.setFillColor(sf::Color::White);
+			}
+			break;
+
+		}
 	}
 
 
@@ -64,36 +84,36 @@ FButton::~FButton() {
 	
 }
 
-FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &position, 
-	std::string buttonText, sf::Font font, int charSize, sf::Texture * buttonTexture) {
+
+
+FButton::FButton(sf::Vector2f & size,  Navigable * target, sf::Vector2f &position, int highlightMode, 
+	std::string buttonText, sf::Font font, int charSize, sf::Texture * buttonTexture, sf::Texture * highlightedButtonTexture) {
 
 	this->target = target;
-	this->buttonRect = sf::RectangleShape(size);
-
-	this->buttonRect.setPosition(position);
-	this->buttonRect.setTexture(buttonTexture);
-	this->highlightRect = sf::RectangleShape(size);
+	this->highlightMode = highlightMode;
+	this->highlightRect = sf::RectangleShape();
+	this->buttonRect = sf::RectangleShape();
 	this->highlightRect.setPosition(position);
-	this->highlightRect.setFillColor(sf::Color::Transparent);
-
+	this->buttonRect.setPosition(position);
+	if (buttonTexture != NULL) {
+		this->buttonRect.setTexture(buttonTexture);
+		this->buttonTexture = buttonTexture;
+		this->highlightedButtonTexture = highlightedButtonTexture;
+		this->highlightRect.setSize(buttonRect.getSize());
+		
+	}
 	if (buttonText.size() > 0) {
 		this->font = font;
 		this->buttonText = sf::Text(buttonText, this->font, charSize);
 		this->buttonText.setOutlineThickness(3);
 		this->buttonText.setOutlineColor(sf::Color::Black);
-	//	this->buttonText.setOrigin(sf::Vector2f(this->buttonText.getLocalBounds().width / 2, this->buttonText.getLocalBounds().height / 2));
 		this->buttonText.setPosition(position);
-		this->buttonRect.setSize(sf::Vector2f(this->buttonText.getLocalBounds().width, this->buttonText.getLocalBounds().height));
-		this->highlightRect.setSize(sf::Vector2f(this->buttonText.getLocalBounds().width, this->buttonText.getLocalBounds().height));
-	}
-	if (buttonTexture == NULL) {
-		
-		this->buttonRect.setFillColor(sf::Color::Transparent);
-		if (this->buttonText.getString().getSize() == 0) {
-			std::cout << "Button created without texture or text. Creating outline as placeholder." << std::endl;
-			buttonRect.setOutlineColor(sf::Color::Black);
-			buttonRect.setOutlineThickness(4);
 		}
+	if (buttonTexture == NULL && buttonText.size() == 0) {
+		this->buttonRect.setSize(size);
+		this->highlightRect.setSize(size);
+		this->buttonRect.setFillColor(sf::Color::Transparent);
+		this->highlightRect.setFillColor(sf::Color::Transparent);
 		
 	}
 

@@ -17,9 +17,10 @@ private:
 	std::string playGameSoundFile = "";
 
 	sf::RectangleShape image;
-
+	sf::Font font;
 	
 public:
+	void setFont(sf::Font font);
 	void setImageTexture(sf::Texture & texture);
 	void setMusicFile(sf::Music & stream, std::string file);
 	void setPlayGameSound(std::string file);

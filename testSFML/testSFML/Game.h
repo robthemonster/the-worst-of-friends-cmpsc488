@@ -38,6 +38,8 @@ private:
 	Game(int numberOfPlayers);
 	Interface * getInterfacePointer();
 	AttributeMap * getAttributeMapPointer();
+
+	void setMenuFont(sf::Font font);
 	void setStart(Navigable * start);
 	void setStartOfRound(Navigable * startOfRound);
 	void setEndOfRound(Navigable * endOfRound);
