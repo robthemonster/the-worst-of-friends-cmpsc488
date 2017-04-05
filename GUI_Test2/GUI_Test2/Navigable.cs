@@ -71,7 +71,7 @@ namespace GUI_Test2
         public string pic1path;
         public string pic2path;
         public int highlight; //2 picture, 1 text, 0 neither
-        public Navigable next;
+        public string next;
         //img,sound
 
         public Button()
@@ -84,10 +84,10 @@ namespace GUI_Test2
             pic1path = "";
             pic2path = "";
             highlight = 0;
-            next = null;
+            next = "";
         }
 
-        public Button(string t, int sX, int sY, int pX, int pY, string p1p, string p2p, int h, Navigable n)
+        public Button(string t, int sX, int sY, int pX, int pY, string p1p, string p2p, int h, string n)
         {
             text = t;
             sizeX = sX;
