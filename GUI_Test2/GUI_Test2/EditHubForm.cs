@@ -16,6 +16,7 @@ namespace GUI_Test2
         private List<string> buttonNameList;
         private ProjectHomeForm parentForm;
         private string hubName;
+        private int navType;
 
         public EditHubForm(String name)
         {
@@ -126,7 +127,9 @@ namespace GUI_Test2
             buttonListBox.DataSource = null;
             buttonListBox.DataSource = buttonNameList;
             buttonListBox.SelectedIndex = -1;
+
         }
+
 
         private void deleteButtonButton_Click(object sender, EventArgs e)
         {
@@ -161,35 +164,93 @@ namespace GUI_Test2
 
             if (useButtonSizeDefaults.Checked)
             {
+                //1920,1080 screen size
+                //-200,300 posL
+                //200, 300 posR
+                //300,100 size
                 //CHANGE These are placeholder values
-                sizeX = 5;
-                sizeY = 5;
+                sizeX = 300;
+                sizeY = 100;
             }
             else
             {
                 //PICK UP HERE
-                if (buttonWidthTextBox.Text != "")
+                //max width is 1920
+                try
                 {
                     sizeX = Int32.Parse(buttonWidthTextBox.Text);
-                    buttonWidthTextBox.Text = "";
+                    sizeY = Int32.Parse(buttonHeightTextBox.Text);
                 }
-                sizeY = Int32.Parse(buttonHeightTextBox.Text);
+                catch(FormatException ex) {
+                    MessageBox.Show("Width must be a positive number, less than 1920 \nHeight must be a positive number less than 1080");
+                    buttonWidthTextBox.Text = "";
+                    buttonHeightTextBox.Text = "";
+                    return;
+                }
+                if (sizeX > 1920 || sizeX <= 0)
+                {
+                    MessageBox.Show("Size width needs positive number less than 1920.");
+                    buttonWidthTextBox.Text = "";
+                    return;
+                }
                 
-                buttonHeightTextBox.Text = "";
+                //sizeY check 0<Y<1080
+            
+                if (sizeY > 1080 || sizeY <= 0)
+                {
+                    MessageBox.Show("Size height needs positive number less than 1080.");
+                    buttonHeightTextBox.Text = "";
+                    return;
+                }
             }
 
             if (useButtonLocationDefaults.Checked)
             {
-                //CHANGE These are placeholder values
-                posX = buttonNameList.Count * 5;
-                posY = 0;
+                if (buttonNameList.Count == 0)
+                {
+                    posX = -200;
+                    posY = 300;
+                }
+                else if(buttonNameList.Count == 1)
+                {
+                    posX = 200;
+                    posY = 300;
+                }
+                else
+                {
+                    MessageBox.Show("Default positions not available for more than two buttons.");
+                    return;
+                }
             }
             else
             {
-                posX = Int32.Parse(buttonXLocTextBox.Text);
-                posY = Int32.Parse(buttonYLocTextBox.Text);
-                buttonXLocTextBox.Text = "";
-                buttonYLocTextBox.Text = "";
+                try
+                {
+                    posX = Int32.Parse(buttonXLocTextBox.Text);
+                    posY = Int32.Parse(buttonYLocTextBox.Text);
+                }
+                catch(FormatException ex)
+                {
+                    MessageBox.Show("X and Y must be positive numbers.\n" +
+                        "X must be less than 960.\n" +
+                        "Y must be less than 540.");
+                    buttonXLocTextBox.Text = "";
+                    buttonYLocTextBox.Text = "";
+                    return;
+                }
+
+                if (Math.Abs(posX) > 960)
+                {
+                    MessageBox.Show("X coordinate must be between -960 and 960.");
+                    buttonXLocTextBox.Text = "";
+                    return;
+                }
+                if(Math.Abs(posY) > 540)
+                {
+                    MessageBox.Show("Y coordinate must be between -540 and 540.");
+                    buttonYLocTextBox.Text = "";
+                    return;
+                }
             }
 
             if (useButtonImage.Checked)
@@ -200,6 +261,53 @@ namespace GUI_Test2
                 pic1path = "";
                 pic2path = "";
             }
+
+
+            buttonWidthTextBox.Text = "";
+            buttonHeightTextBox.Text = "";
+            buttonXLocTextBox.Text = "";
+            buttonYLocTextBox.Text = "";
+        }
+
+        private void EditHubForm_Load(object sender, EventArgs e)
+        {
+            buttonNameList = new List<string>();
+        }
+        private void setScope() {
+            if (navType != -1)
+            {
+                navComboBox.DataSource = null;
+                switch (navType) {
+                    case 0:
+                        navComboBox.DataSource = Game.paths;
+                        break;
+                    case 1:
+                        navComboBox.DataSource = Game.pathGroups;
+                        break;
+                    case 2:
+                        navComboBox.DataSource = Game.hubs;
+                        break;
+                }
+
+            }
+        }
+
+        private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 0;
+            setScope();
+        }
+
+        private void pathGroupFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 1;
+            setScope();
+        }
+
+        private void hubFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 2;
+            setScope();
         }
     }
 }

@@ -35,7 +35,7 @@
             this.useButtonImage = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.hubFromButtonRadio = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.navComboBox = new System.Windows.Forms.ComboBox();
             this.pathGroupFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.pathFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.buttonListDownButton = new System.Windows.Forms.Button();
@@ -117,7 +117,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.hubFromButtonRadio);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.navComboBox);
             this.groupBox1.Controls.Add(this.pathGroupFromButtonRadio);
             this.groupBox1.Controls.Add(this.pathFromButtonRadio);
             this.groupBox1.Location = new System.Drawing.Point(115, 255);
@@ -138,13 +138,13 @@
             this.hubFromButtonRadio.Text = "Hub";
             this.hubFromButtonRadio.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // navComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(114, 15);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
+            this.navComboBox.FormattingEnabled = true;
+            this.navComboBox.Location = new System.Drawing.Point(114, 15);
+            this.navComboBox.Name = "navComboBox";
+            this.navComboBox.Size = new System.Drawing.Size(121, 21);
+            this.navComboBox.TabIndex = 4;
             // 
             // pathGroupFromButtonRadio
             // 
@@ -156,6 +156,7 @@
             this.pathGroupFromButtonRadio.TabStop = true;
             this.pathGroupFromButtonRadio.Text = "Path Group";
             this.pathGroupFromButtonRadio.UseVisualStyleBackColor = true;
+            this.pathGroupFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathGroupFromButtonRadio_CheckedChanged);
             // 
             // pathFromButtonRadio
             // 
@@ -167,6 +168,7 @@
             this.pathFromButtonRadio.TabStop = true;
             this.pathFromButtonRadio.Text = "Path";
             this.pathFromButtonRadio.UseVisualStyleBackColor = true;
+            this.pathFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathFromButtonRadio_CheckedChanged);
             // 
             // buttonListDownButton
             // 
@@ -457,6 +459,7 @@
             this.MaximizeBox = false;
             this.Name = "EditHubForm";
             this.Text = "Edit Hub";
+            this.Load += new System.EventHandler(this.EditHubForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -500,7 +503,7 @@
         private System.Windows.Forms.Button buttonListDownButton;
         private System.Windows.Forms.RadioButton pathFromButtonRadio;
         private System.Windows.Forms.RadioButton pathGroupFromButtonRadio;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox navComboBox;
         private System.Windows.Forms.RadioButton hubFromButtonRadio;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox useButtonImage;
