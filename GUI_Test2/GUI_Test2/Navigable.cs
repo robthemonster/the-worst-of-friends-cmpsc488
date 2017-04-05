@@ -73,6 +73,32 @@ namespace GUI_Test2
         public int highlight; //2 picture, 1 text, 0 neither
         public Navigable next;
         //img,sound
+
+        public Button()
+        {
+            text = "";
+            sizeX = 0;
+            sizeY = 0;
+            posX = 0;
+            posY = 0;
+            pic1path = "";
+            pic2path = "";
+            highlight = 0;
+            next = null;
+        }
+
+        public Button(string t, int sX, int sY, int pX, int pY, string p1p, string p2p, int h, Navigable n)
+        {
+            text = t;
+            sizeX = sX;
+            sizeY = sY;
+            posX = pX;
+            posY = pY;
+            pic1path = p1p;
+            pic2path = p2p;
+            highlight = h;
+            next = n;
+        }
     }
 
     [Serializable]

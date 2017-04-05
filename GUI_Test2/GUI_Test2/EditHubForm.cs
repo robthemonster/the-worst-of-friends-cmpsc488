@@ -15,11 +15,14 @@ namespace GUI_Test2
         private List<Button> buttonList;
         private List<string> buttonNameList;
         private ProjectHomeForm parentForm;
+        private string hubName;
 
         public EditHubForm(String name)
         {
             InitializeComponent();
             this.Text = "Edit Hub: " + name;
+            hubName = name;
+            buttonList = new List<Button>();
             updateListBox();
         }
 
@@ -138,6 +141,44 @@ namespace GUI_Test2
 
             }
             catch { }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            //if(Game.navIndex.ContainsKey())
+        }
+
+        private void createButtonButton_Click(object sender, EventArgs e)
+        {
+            //string text, pic1path;
+            //int
+
+
+            if (useButtonSizeDefaults.Checked)
+            {
+            }
+            else
+            {
+            }
+
+            if (useButtonLocationDefaults.Checked)
+            {
+            }
+            else
+            {
+            }
+
+            if (useButtonImage.Checked)
+            {
+            }
+            else
+            {
+            }
         }
     }
 }
