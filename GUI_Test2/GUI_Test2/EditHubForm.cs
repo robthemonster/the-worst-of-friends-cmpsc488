@@ -23,9 +23,10 @@ namespace GUI_Test2
         private string buttonImagePath2;
         private string hubImagePath;
 
-        public EditHubForm(String name)
+        public EditHubForm(ProjectHomeForm par, string name)
         {
             InitializeComponent();
+            parentForm = par;
             this.Text = "Edit Hub: " + name;
             hubName = name;
             buttonImagePath1 = "";
@@ -97,8 +98,15 @@ namespace GUI_Test2
         {
             if (Game.navIndex.ContainsKey(hubName))
             {
-                Game.navIndex[hubName] = new Hub();
+                Game.navIndex[hubName] = new Hub(hubName, buttonList, hubImagePath);
             }
+            else
+            {
+                Game.hubs.Add(hubName);
+                Game.navIndex.Add(hubName, new Hub(hubName, buttonList, hubImagePath));
+            }
+            parentForm.updateListBoxes();
+
         }
 
         private void EditHubForm_Load(object sender, EventArgs e)
@@ -287,6 +295,7 @@ namespace GUI_Test2
             if (navComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Please Select a Target Navigable \nfor the Button to lead to.");
+                return;
             }
             else
             {
