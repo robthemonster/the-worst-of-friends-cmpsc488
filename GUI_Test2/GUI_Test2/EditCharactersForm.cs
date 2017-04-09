@@ -38,10 +38,12 @@ namespace GUI_Test2
             {
                 characterImage.Image = Image.FromStream(of.OpenFile());
                 imagePath = of.FileName;
+                this.AcceptButton = addImageToCharacterButton;
             }
             catch (IndexOutOfRangeException) {        
             
             }
+            
 
         }
 
@@ -68,6 +70,8 @@ namespace GUI_Test2
                 {
                     characterList.SelectedIndex = nameList.IndexOf(characterName);
                 }
+                this.AcceptButton = chooseImageButton;
+                this.ActiveControl = imageNameTextBox;
             }
         }
 
@@ -102,10 +106,11 @@ namespace GUI_Test2
 
         private void addImageToCharacterButton_Click(object sender, EventArgs e)
         {
-            if (imageNameTextBox.Text != "" && !imagePath.Equals("")&& !Characters.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text)&&characterList.SelectedIndex!=-1)
+            if (imageNameTextBox.Text != "" && characterList.SelectedIndex!=-1 && !imagePath.Equals("")&& !Characters.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text))
             {
                 Characters.characters[characterList.Text].addImage(imageNameTextBox.Text, imagePath);
                 updateImageList();
+                this.ActiveControl = imageNameTextBox;
             }
         }
 
@@ -128,6 +133,7 @@ namespace GUI_Test2
             }
             else {
                 characterImage.Image = GUI_Test2.Properties.Resources.character;
+                imageNameTextBox.Text = "";
             }
         }
         private void updateImageList()
@@ -140,6 +146,22 @@ namespace GUI_Test2
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void EditCharactersForm_Load(object sender, EventArgs e)
+        {
+            this.AcceptButton = createNewCharacterButton;
+            this.ActiveControl = characterNameBox;
+        }
+
+        private void characterNameBox_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = createNewCharacterButton;
+        }
+
+        private void imageNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = chooseImageButton;
         }
     }
 }
