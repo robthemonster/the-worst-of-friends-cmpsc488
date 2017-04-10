@@ -20,9 +20,12 @@ namespace GUI_Test2
         private int scope;
         private string currHub;
         private List<List<Impact>> dialogueImpactList;
-
-        
-        
+        //Galen Additions
+        private List<string> buttonNameList;
+        private int buttonCount;
+        private int navType;
+        private string buttonImagePath1;
+        private string buttonImagePath2;
 
         public EditPathForm( ProjectHomeForm par, String n)
         {
@@ -31,6 +34,15 @@ namespace GUI_Test2
             name = n;
             this.Text = "Edit Path: "+name;
             dialogueEntryList = new List<String>();
+            buttonList = new List<Button>();
+            buttonNameList = new List<string>();
+
+            buttonCount = buttonList.Count;
+            buttonNameList = new List<string>();
+            for (int i = 1; i <= buttonCount; i++)
+            {
+                buttonNameList.Add("Button " + i);
+            }
         }
         public EditPathForm(ProjectHomeForm par, Path p)
         {
@@ -39,7 +51,16 @@ namespace GUI_Test2
             name = p.name;
             this.Text = "Edit Path: " + name;
             dialogueEntryList = p.dialogueContents;
+            buttonList = p.buttons;
 
+            buttonCount = buttonList.Count;
+            buttonNameList = new List<string>();
+            for (int i = 1; i <= buttonCount; i++)
+            {
+                buttonNameList.Add("Button " + i);
+            }
+
+            updateButtonListBox();
         }
             
 
@@ -148,6 +169,46 @@ namespace GUI_Test2
 
             }
          }
+
+        private bool inButtonList(List<Button> bl, string s)
+        {
+            foreach (Button b in bl)
+            {
+                if (b.text == s)
+                    return true;
+            }
+
+            return false;
+        }
+
+        private void updateButtonListBox()
+        {
+            buttonListBox.DataSource = null;
+            buttonListBox.DataSource = buttonNameList;
+            buttonListBox.SelectedIndex = -1;
+
+        }
+
+        private void setScope()
+        {
+            if (navType != -1)
+            {
+                navComboBox.DataSource = null;
+                switch (navType)
+                {
+                    case 0:
+                        navComboBox.DataSource = Game.paths;
+                        break;
+                    case 1:
+                        navComboBox.DataSource = Game.pathGroups;
+                        break;
+                    case 2:
+                        navComboBox.DataSource = Game.hubs;
+                        break;
+                }
+
+            }
+        }
 
         private void DeleteSelectedDialogueButton_Click(object sender, EventArgs e)
         {
@@ -279,7 +340,7 @@ namespace GUI_Test2
             int index = buttonListBox.SelectedIndex;
             if (index != -1 && index != 0)
             {
-                swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex - 1);
+                swap(index, index - 1);
                 updateListBoxes();
                 buttonListBox.SelectedIndex = index - 1;
 
@@ -288,14 +349,12 @@ namespace GUI_Test2
 
         private void buttonListDownButton_Click(object sender, EventArgs e)
         {
-
             int index = buttonListBox.SelectedIndex;
             if (index != -1 && index < dialogueEntryList.Count - 1)
             {
-                swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex + 1);
+                swap(index, index + 1);
                 updateListBoxes();
                 buttonListBox.SelectedIndex = index + 1;
-
             }
         }
 
@@ -309,6 +368,7 @@ namespace GUI_Test2
                 if (index == buttonList.Count)
                     index = index - 1;
 
+                updateButtonListBox();
                 buttonListBox.SelectedIndex = index;
 
             }
@@ -317,16 +377,16 @@ namespace GUI_Test2
 
      
 
-        private void useButtonImage_CheckedChanged(object sender, EventArgs e)
+        private void useButton1Image_CheckedChanged(object sender, EventArgs e)
         {
-            if (useButtonImage.Checked)
+            if (useButton1Image.Checked)
             {
-                buttonPictureBox.Enabled = true;
-                setButtonImageButton.Enabled = true;
+                button1PictureBox.Enabled = true;
+                chooseButton1ImageButton.Enabled = true;
             }
             else{
-                buttonPictureBox.Enabled = false;
-                setButtonImageButton.Enabled = false;
+                button1PictureBox.Enabled = false;
+                chooseButton1ImageButton.Enabled = false;
             }
         }
 
@@ -472,6 +532,369 @@ namespace GUI_Test2
                 dialogueImpactList[pathListBoxTab2.SelectedIndex].RemoveAt(impactAttributeListBox.SelectedIndex);
                 updateImpactList();
             }
+        }
+
+        private void createButtonButton_Click(object sender, EventArgs e)
+        {
+            string text, pic1path, pic2path, next;
+            int sizeX, sizeY, posX, posY, highlight;
+
+            if (buttonTextTextBox.Text == "")
+            {
+                MessageBox.Show("Button Text is required.");
+                return;
+            }
+            else
+            {
+                text = buttonTextTextBox.Text;
+            }
+
+            //If the button isn't selected, button size is required
+            if (useButton1Image.Checked == false && useButtonSizeDefaults.Checked == true)
+            {
+                MessageBox.Show("Button Size Required if No Picture is Used.");
+                return;
+            }
+
+            if (useButton2Image.Checked == true && useButton1Image.Checked == false)
+            {
+                MessageBox.Show("Use of Highlighted Button Image Requires \na Button Image to be Used.");
+                return;
+            }
+
+            if (useButtonSizeDefaults.Checked)
+            {
+                //1920,1080 screen size
+                //-200,300 posL
+                //200, 300 posR
+                //300,100 size
+                //CHANGE These are placeholder values
+                sizeX = 300;
+                sizeY = 100;
+            }
+            else
+            {
+                //max width is 1920
+                try
+                {
+                    sizeX = Int32.Parse(buttonWidthTextBox.Text);
+                    sizeY = Int32.Parse(buttonHeightTextBox.Text);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Width must be a positive number, less than 1920 \nHeight must be a positive number less than 1080");
+                    buttonWidthTextBox.Text = "";
+                    buttonHeightTextBox.Text = "";
+                    return;
+                }
+                if (sizeX > 1920 || sizeX <= 0)
+                {
+                    MessageBox.Show("Size width needs positive number less than 1920.");
+                    buttonWidthTextBox.Text = "";
+                    return;
+                }
+
+                //sizeY check 0<Y<1080
+
+                if (sizeY > 1080 || sizeY <= 0)
+                {
+                    MessageBox.Show("Size height needs positive number less than 1080.");
+                    buttonHeightTextBox.Text = "";
+                    return;
+                }
+            }
+
+            if (useButtonLocationDefaults.Checked)
+            {
+                if (buttonNameList.Count == 0)
+                {
+                    posX = -200;
+                    posY = 300;
+                }
+                else if (buttonNameList.Count == 1)
+                {
+                    posX = 200;
+                    posY = 300;
+                }
+                else
+                {
+                    MessageBox.Show("Default positions not available for more than two buttons.");
+                    return;
+                }
+            }
+            else
+            {
+                try
+                {
+                    posX = Int32.Parse(buttonXLocTextBox.Text);
+                    posY = Int32.Parse(buttonYLocTextBox.Text);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("X and Y must be positive numbers.\n" +
+                        "X must be less than 960.\n" +
+                        "Y must be less than 540.");
+                    buttonXLocTextBox.Text = "";
+                    buttonYLocTextBox.Text = "";
+                    return;
+                }
+
+                if (Math.Abs(posX) > 960)
+                {
+                    MessageBox.Show("X coordinate must be between -960 and 960.");
+                    buttonXLocTextBox.Text = "";
+                    return;
+                }
+                if (Math.Abs(posY) > 540)
+                {
+                    MessageBox.Show("Y coordinate must be between -540 and 540.");
+                    buttonYLocTextBox.Text = "";
+                    return;
+                }
+            }
+
+            if (useButton1Image.Checked)
+            {
+                if (buttonImagePath1 == "")
+                {
+                    MessageBox.Show("Please Select the Desired Button Image.");
+                    return;
+                }
+                pic1path = buttonImagePath1;
+            }
+            else
+            {
+                pic1path = "";
+
+            }
+
+            if (useButton2Image.Checked)
+            {
+                if (buttonImagePath2 == "")
+                {
+                    MessageBox.Show("Please Select the Desired Highlight Image.");
+                    return;
+                }
+                pic2path = buttonImagePath2;
+            }
+            else
+            {
+                pic2path = "";
+            }
+
+            if (navComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please Select a Target Navigable \nfor the Button to lead to.");
+                return;
+            }
+            else
+            {
+                //Passes a string
+                if (pathFromButtonRadio.Checked == true)
+                    next = Game.paths[navComboBox.SelectedIndex];
+                else if (pathGroupFromButtonRadio.Checked == true)
+                    next = Game.pathGroups[navComboBox.SelectedIndex];
+                else
+                    next = Game.hubs[navComboBox.SelectedIndex];
+            }
+
+            if (useButton2Image.Checked == true && HighlightTextButton.Checked == true)
+            {
+                MessageBox.Show("Please Select Either to Highlight the Button, \nthe Button Text, or Neither. Please Do Not Select Both.");
+                return;
+            }
+
+            if (useButton2Image.Checked == true)
+                highlight = 2;
+
+            else if (HighlightTextButton.Checked == true)
+                highlight = 1;
+
+            else
+                highlight = 0;
+
+            if (inButtonList(buttonList, buttonTextTextBox.Text))
+            {
+                buttonList[buttonListBox.SelectedIndex] = new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next);
+            }
+            else
+            {
+                buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
+                buttonCount++;
+                buttonNameList.Add("Button " + buttonCount);
+            }
+
+            buttonWidthTextBox.Text = "";
+            buttonHeightTextBox.Text = "";
+            buttonXLocTextBox.Text = "";
+            buttonYLocTextBox.Text = "";
+
+            updateButtonListBox();
+        }
+
+        private void buttonListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (buttonListBox.SelectedIndex != -1)
+            {
+                //Text
+                buttonTextTextBox.Text = buttonList[buttonListBox.SelectedIndex].text;
+
+                //Type
+                Button b = buttonList[buttonListBox.SelectedIndex];
+                if (Game.navIndex[b.next].isPath())
+                {
+                    pathFromButtonRadio.Checked = true;
+                }
+                else if (Game.navIndex[b.next].isPathGroup())
+                {
+                    pathGroupFromButtonRadio.Checked = true;
+                }
+                else
+                {
+                    hubFromButtonRadio.Checked = true;
+                }
+
+                //Next
+                navComboBox.SelectedIndex = navComboBox.FindStringExact(b.next);
+
+                //Size
+                if (b.sizeX == 300 && b.sizeY == 100)
+                {
+                    useButtonSizeDefaults.Checked = true;
+                }
+                else
+                {
+                    useButtonSizeDefaults.Checked = false;
+                    buttonWidthTextBox.Text = b.sizeX.ToString();
+                    buttonHeightTextBox.Text = b.sizeY.ToString();
+                }
+
+                //Position
+                if (buttonNameList.Count <= 2 && (b.posX == -200 || b.posX == 200) && b.posY == 300)
+                {
+                    useButtonLocationDefaults.Checked = true;
+                }
+                else
+                {
+                    useButtonLocationDefaults.Checked = false;
+                    buttonXLocTextBox.Text = b.posX.ToString();
+                    buttonYLocTextBox.Text = b.posY.ToString();
+                }
+
+                //Picture 1
+                if (b.pic1path == "")
+                {
+                    useButton1Image.Checked = false;
+                }
+                else
+                {
+                    useButton1Image.Checked = true;
+                    buttonImagePath1 = b.pic1path;
+                    button1PictureBox.Image = Image.FromFile(buttonImagePath1);
+                }
+
+                //Picture 2
+                if (b.pic2path == "")
+                {
+                    useButton2Image.Checked = false;
+                }
+                else
+                {
+                    useButton2Image.Checked = true;
+                    buttonImagePath2 = b.pic2path;
+                    button2PictureBox.Image = Image.FromFile(buttonImagePath2);
+                }
+
+            }
+            else
+            {
+                buttonTextTextBox.Text = "";
+                pathFromButtonRadio.Checked = false;
+                pathGroupFromButtonRadio.Checked = false;
+                hubFromButtonRadio.Checked = false;
+                navComboBox.Text = null;
+                useButtonSizeDefaults.Checked = false;
+                buttonWidthTextBox.Text = "";
+                buttonHeightTextBox.Text = "";
+                useButtonLocationDefaults.Checked = true;
+                buttonXLocTextBox.Text = "";
+                buttonYLocTextBox.Text = "";
+                useButton1Image.Checked = false;
+                useButton2Image.Checked = false;
+                button1PictureBox.Image = button1PictureBox.InitialImage;
+                button2PictureBox.Image = button2PictureBox.InitialImage;
+            }
+        }
+
+        private void chooseButton1ImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            of.ShowDialog();
+
+            try
+            {
+                button1PictureBox.Image = Image.FromStream(of.OpenFile());
+                buttonImagePath1 = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void chooseButton2ImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            of.ShowDialog();
+
+            try
+            {
+                button2PictureBox.Image = Image.FromStream(of.OpenFile());
+                buttonImagePath2 = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void useButton2Image_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useButton2Image.Checked)
+            {
+                button2PictureBox.Enabled = true;
+                chooseButton2ImageButton.Enabled = true;
+            }
+            else {
+                button2PictureBox.Enabled = false;
+                chooseButton2ImageButton.Enabled = false;
+            }
+        }
+
+        private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 0;
+            setScope();
+        }
+
+        private void pathGroupFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 1;
+            setScope();
+        }
+
+        private void hubFromButtonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            navType = 2;
+            setScope();
         }
     }
     

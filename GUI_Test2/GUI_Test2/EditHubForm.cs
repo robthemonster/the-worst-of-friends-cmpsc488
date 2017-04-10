@@ -80,7 +80,7 @@ namespace GUI_Test2
             int index = buttonListBox.SelectedIndex;
             if (index != -1 && index < buttonList.Count - 1)
             {
-                swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex + 1);
+                swap(index, index + 1);
                 updateListBox();
                 buttonListBox.SelectedIndex = index + 1;
 
@@ -335,7 +335,6 @@ namespace GUI_Test2
             else
             {
                 pic1path = "";
-
             }
 
             if (useButton2Image.Checked)

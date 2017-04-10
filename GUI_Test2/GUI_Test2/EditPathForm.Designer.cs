@@ -70,10 +70,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.impactAttributeListBox = new System.Windows.Forms.ListBox();
             this.Buttons = new System.Windows.Forms.TabPage();
-            this.useButtonImage = new System.Windows.Forms.CheckBox();
+            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
+            this.useButton2Image = new System.Windows.Forms.CheckBox();
+            this.chooseButton2ImageButton = new System.Windows.Forms.Button();
+            this.button2PictureBox = new System.Windows.Forms.PictureBox();
+            this.useButton1Image = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.hubFromButtonRadio = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.navComboBox = new System.Windows.Forms.ComboBox();
             this.pathGroupFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.pathFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.buttonListDownButton = new System.Windows.Forms.Button();
@@ -96,8 +100,8 @@
             this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
             this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
             this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
-            this.setButtonImageButton = new System.Windows.Forms.Button();
-            this.buttonPictureBox = new System.Windows.Forms.PictureBox();
+            this.chooseButton1ImageButton = new System.Windows.Forms.Button();
+            this.button1PictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
@@ -112,8 +116,9 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.Buttons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,7 +130,7 @@
             this.pathDialogueTab.Location = new System.Drawing.Point(12, 12);
             this.pathDialogueTab.Name = "pathDialogueTab";
             this.pathDialogueTab.SelectedIndex = 0;
-            this.pathDialogueTab.Size = new System.Drawing.Size(663, 398);
+            this.pathDialogueTab.Size = new System.Drawing.Size(620, 464);
             this.pathDialogueTab.TabIndex = 0;
             this.pathDialogueTab.Click += new System.EventHandler(this.pathListBoxTab2_SelectedIndexChanged);
             // 
@@ -140,14 +145,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(655, 372);
+            this.tabPage1.Size = new System.Drawing.Size(612, 438);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(476, 323);
+            this.saveButton.Location = new System.Drawing.Point(415, 320);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(78, 25);
             this.saveButton.TabIndex = 18;
@@ -157,7 +162,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(560, 322);
+            this.cancelButton.Location = new System.Drawing.Point(499, 319);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(83, 25);
             this.cancelButton.TabIndex = 17;
@@ -177,7 +182,7 @@
             // defaultPathImage
             // 
             this.defaultPathImage.Image = global::GUI_Test2.Properties.Resources.defaultPath;
-            this.defaultPathImage.Location = new System.Drawing.Point(436, 52);
+            this.defaultPathImage.Location = new System.Drawing.Point(389, 52);
             this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2);
             this.defaultPathImage.Name = "defaultPathImage";
             this.defaultPathImage.Size = new System.Drawing.Size(218, 126);
@@ -198,7 +203,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 296);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(385, 296);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // dialogueList
@@ -216,7 +221,7 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
             this.tableLayoutPanel2.Controls.Add(this.editDialogueButton, 1, 1);
@@ -232,15 +237,15 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(314, 290);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(266, 290);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // editDialogueButton
             // 
             this.editDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.editDialogueButton.Location = new System.Drawing.Point(101, 241);
+            this.editDialogueButton.Location = new System.Drawing.Point(86, 241);
             this.editDialogueButton.Name = "editDialogueButton";
-            this.editDialogueButton.Size = new System.Drawing.Size(102, 20);
+            this.editDialogueButton.Size = new System.Drawing.Size(69, 20);
             this.editDialogueButton.TabIndex = 19;
             this.editDialogueButton.Text = "Edit Dialogue";
             this.editDialogueButton.UseVisualStyleBackColor = true;
@@ -249,7 +254,7 @@
             // DeleteSelectedDialogueButton
             // 
             this.DeleteSelectedDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(209, 267);
+            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(161, 267);
             this.DeleteSelectedDialogueButton.Name = "DeleteSelectedDialogueButton";
             this.DeleteSelectedDialogueButton.Size = new System.Drawing.Size(102, 20);
             this.DeleteSelectedDialogueButton.TabIndex = 3;
@@ -260,7 +265,7 @@
             // createNewDialogueButton
             // 
             this.createNewDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.createNewDialogueButton.Location = new System.Drawing.Point(208, 240);
+            this.createNewDialogueButton.Location = new System.Drawing.Point(160, 240);
             this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewDialogueButton.Name = "createNewDialogueButton";
             this.createNewDialogueButton.Size = new System.Drawing.Size(104, 22);
@@ -273,7 +278,7 @@
             // 
             this.DialogueContentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DialogueContentLabel.AutoSize = true;
-            this.DialogueContentLabel.Location = new System.Drawing.Point(19, 8);
+            this.DialogueContentLabel.Location = new System.Drawing.Point(4, 8);
             this.DialogueContentLabel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.DialogueContentLabel.Name = "DialogueContentLabel";
             this.DialogueContentLabel.Size = new System.Drawing.Size(76, 13);
@@ -303,16 +308,16 @@
             // dialogueTextBox
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.dialogueTextBox, 2);
-            this.dialogueTextBox.Location = new System.Drawing.Point(100, 2);
+            this.dialogueTextBox.Location = new System.Drawing.Point(85, 2);
             this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dialogueTextBox.Multiline = true;
             this.dialogueTextBox.Name = "dialogueTextBox";
-            this.dialogueTextBox.Size = new System.Drawing.Size(188, 207);
+            this.dialogueTextBox.Size = new System.Drawing.Size(179, 207);
             this.dialogueTextBox.TabIndex = 2;
             // 
             // selectDefaultPathImageButton
             // 
-            this.selectDefaultPathImageButton.Location = new System.Drawing.Point(435, 183);
+            this.selectDefaultPathImageButton.Location = new System.Drawing.Point(388, 183);
             this.selectDefaultPathImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectDefaultPathImageButton.Name = "selectDefaultPathImageButton";
             this.selectDefaultPathImageButton.Size = new System.Drawing.Size(141, 19);
@@ -339,7 +344,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(655, 372);
+            this.tabPage2.Size = new System.Drawing.Size(612, 438);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impacts";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -571,7 +576,11 @@
             // 
             // Buttons
             // 
-            this.Buttons.Controls.Add(this.useButtonImage);
+            this.Buttons.Controls.Add(this.HighlightTextButton);
+            this.Buttons.Controls.Add(this.useButton2Image);
+            this.Buttons.Controls.Add(this.chooseButton2ImageButton);
+            this.Buttons.Controls.Add(this.button2PictureBox);
+            this.Buttons.Controls.Add(this.useButton1Image);
             this.Buttons.Controls.Add(this.groupBox1);
             this.Buttons.Controls.Add(this.buttonListDownButton);
             this.Buttons.Controls.Add(this.buttonListUpButton);
@@ -593,41 +602,86 @@
             this.Buttons.Controls.Add(this.buttonYLocTextBox);
             this.Buttons.Controls.Add(this.buttonXLocTextBox);
             this.Buttons.Controls.Add(this.useButtonLocationDefaults);
-            this.Buttons.Controls.Add(this.setButtonImageButton);
-            this.Buttons.Controls.Add(this.buttonPictureBox);
+            this.Buttons.Controls.Add(this.chooseButton1ImageButton);
+            this.Buttons.Controls.Add(this.button1PictureBox);
             this.Buttons.Controls.Add(this.tableLayoutPanel4);
             this.Buttons.Location = new System.Drawing.Point(4, 22);
             this.Buttons.Name = "Buttons";
             this.Buttons.Padding = new System.Windows.Forms.Padding(3);
-            this.Buttons.Size = new System.Drawing.Size(655, 372);
+            this.Buttons.Size = new System.Drawing.Size(612, 438);
             this.Buttons.TabIndex = 2;
             this.Buttons.Text = "Buttons";
             this.Buttons.UseVisualStyleBackColor = true;
             this.Buttons.Click += new System.EventHandler(this.Buttons_Click);
             // 
-            // useButtonImage
+            // HighlightTextButton
             // 
-            this.useButtonImage.AutoSize = true;
-            this.useButtonImage.Location = new System.Drawing.Point(418, 225);
-            this.useButtonImage.Name = "useButtonImage";
-            this.useButtonImage.Size = new System.Drawing.Size(80, 17);
-            this.useButtonImage.TabIndex = 12;
-            this.useButtonImage.Text = "Use Image ";
-            this.useButtonImage.UseVisualStyleBackColor = true;
-            this.useButtonImage.CheckedChanged += new System.EventHandler(this.useButtonImage_CheckedChanged);
+            this.HighlightTextButton.AutoSize = true;
+            this.HighlightTextButton.Location = new System.Drawing.Point(354, 397);
+            this.HighlightTextButton.Name = "HighlightTextButton";
+            this.HighlightTextButton.Size = new System.Drawing.Size(167, 17);
+            this.HighlightTextButton.TabIndex = 23;
+            this.HighlightTextButton.Text = "Highlight Text on Mouse Over";
+            this.HighlightTextButton.UseVisualStyleBackColor = true;
+            // 
+            // useButton2Image
+            // 
+            this.useButton2Image.AutoSize = true;
+            this.useButton2Image.Location = new System.Drawing.Point(354, 314);
+            this.useButton2Image.Name = "useButton2Image";
+            this.useButton2Image.Size = new System.Drawing.Size(170, 17);
+            this.useButton2Image.TabIndex = 21;
+            this.useButton2Image.Text = "Use Highlighted Button Image ";
+            this.useButton2Image.UseVisualStyleBackColor = true;
+            this.useButton2Image.CheckedChanged += new System.EventHandler(this.useButton2Image_CheckedChanged);
+            // 
+            // chooseButton2ImageButton
+            // 
+            this.chooseButton2ImageButton.Enabled = false;
+            this.chooseButton2ImageButton.Location = new System.Drawing.Point(336, 346);
+            this.chooseButton2ImageButton.Name = "chooseButton2ImageButton";
+            this.chooseButton2ImageButton.Size = new System.Drawing.Size(131, 28);
+            this.chooseButton2ImageButton.TabIndex = 22;
+            this.chooseButton2ImageButton.Text = "Choose Highlight Image";
+            this.chooseButton2ImageButton.UseVisualStyleBackColor = true;
+            this.chooseButton2ImageButton.Click += new System.EventHandler(this.chooseButton2ImageButton_Click);
+            // 
+            // button2PictureBox
+            // 
+            this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2PictureBox.Enabled = false;
+            this.button2PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("button2PictureBox.Image")));
+            this.button2PictureBox.InitialImage = null;
+            this.button2PictureBox.Location = new System.Drawing.Point(473, 335);
+            this.button2PictureBox.Name = "button2PictureBox";
+            this.button2PictureBox.Size = new System.Drawing.Size(100, 50);
+            this.button2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.button2PictureBox.TabIndex = 20;
+            this.button2PictureBox.TabStop = false;
+            // 
+            // useButton1Image
+            // 
+            this.useButton1Image.AutoSize = true;
+            this.useButton1Image.Location = new System.Drawing.Point(354, 237);
+            this.useButton1Image.Name = "useButton1Image";
+            this.useButton1Image.Size = new System.Drawing.Size(114, 17);
+            this.useButton1Image.TabIndex = 12;
+            this.useButton1Image.Text = "Use Button Image ";
+            this.useButton1Image.UseVisualStyleBackColor = true;
+            this.useButton1Image.CheckedChanged += new System.EventHandler(this.useButton1Image_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.hubFromButtonRadio);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.navComboBox);
             this.groupBox1.Controls.Add(this.pathGroupFromButtonRadio);
             this.groupBox1.Controls.Add(this.pathFromButtonRadio);
-            this.groupBox1.Location = new System.Drawing.Point(133, 149);
+            this.groupBox1.Location = new System.Drawing.Point(137, 137);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(241, 85);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Target Nagvigable";
+            this.groupBox1.Text = "Target Navigable";
             // 
             // hubFromButtonRadio
             // 
@@ -639,14 +693,15 @@
             this.hubFromButtonRadio.TabStop = true;
             this.hubFromButtonRadio.Text = "Hub";
             this.hubFromButtonRadio.UseVisualStyleBackColor = true;
+            this.hubFromButtonRadio.CheckedChanged += new System.EventHandler(this.hubFromButtonRadio_CheckedChanged);
             // 
-            // comboBox1
+            // navComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(114, 15);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
+            this.navComboBox.FormattingEnabled = true;
+            this.navComboBox.Location = new System.Drawing.Point(114, 15);
+            this.navComboBox.Name = "navComboBox";
+            this.navComboBox.Size = new System.Drawing.Size(121, 21);
+            this.navComboBox.TabIndex = 4;
             // 
             // pathGroupFromButtonRadio
             // 
@@ -658,6 +713,7 @@
             this.pathGroupFromButtonRadio.TabStop = true;
             this.pathGroupFromButtonRadio.Text = "Path Group";
             this.pathGroupFromButtonRadio.UseVisualStyleBackColor = true;
+            this.pathGroupFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathGroupFromButtonRadio_CheckedChanged);
             // 
             // pathFromButtonRadio
             // 
@@ -669,10 +725,11 @@
             this.pathFromButtonRadio.TabStop = true;
             this.pathFromButtonRadio.Text = "Path";
             this.pathFromButtonRadio.UseVisualStyleBackColor = true;
+            this.pathFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathFromButtonRadio_CheckedChanged);
             // 
             // buttonListDownButton
             // 
-            this.buttonListDownButton.Location = new System.Drawing.Point(114, 286);
+            this.buttonListDownButton.Location = new System.Drawing.Point(111, 399);
             this.buttonListDownButton.Name = "buttonListDownButton";
             this.buttonListDownButton.Size = new System.Drawing.Size(22, 23);
             this.buttonListDownButton.TabIndex = 18;
@@ -682,7 +739,7 @@
             // 
             // buttonListUpButton
             // 
-            this.buttonListUpButton.Location = new System.Drawing.Point(114, 257);
+            this.buttonListUpButton.Location = new System.Drawing.Point(111, 370);
             this.buttonListUpButton.Name = "buttonListUpButton";
             this.buttonListUpButton.Size = new System.Drawing.Size(22, 23);
             this.buttonListUpButton.TabIndex = 17;
@@ -692,7 +749,7 @@
             // 
             // cancelButtonTab3
             // 
-            this.cancelButtonTab3.Location = new System.Drawing.Point(556, 332);
+            this.cancelButtonTab3.Location = new System.Drawing.Point(455, 66);
             this.cancelButtonTab3.Name = "cancelButtonTab3";
             this.cancelButtonTab3.Size = new System.Drawing.Size(75, 23);
             this.cancelButtonTab3.TabIndex = 15;
@@ -702,9 +759,9 @@
             // 
             // deleteButtonButton
             // 
-            this.deleteButtonButton.Location = new System.Drawing.Point(114, 332);
+            this.deleteButtonButton.Location = new System.Drawing.Point(443, 185);
             this.deleteButtonButton.Name = "deleteButtonButton";
-            this.deleteButtonButton.Size = new System.Drawing.Size(95, 23);
+            this.deleteButtonButton.Size = new System.Drawing.Size(104, 23);
             this.deleteButtonButton.TabIndex = 19;
             this.deleteButtonButton.Text = "Delete Button";
             this.deleteButtonButton.UseVisualStyleBackColor = true;
@@ -712,7 +769,7 @@
             // 
             // saveButtonTab3
             // 
-            this.saveButtonTab3.Location = new System.Drawing.Point(472, 332);
+            this.saveButtonTab3.Location = new System.Drawing.Point(371, 66);
             this.saveButtonTab3.Name = "saveButtonTab3";
             this.saveButtonTab3.Size = new System.Drawing.Size(75, 23);
             this.saveButtonTab3.TabIndex = 14;
@@ -722,12 +779,13 @@
             // 
             // createButtonButton
             // 
-            this.createButtonButton.Location = new System.Drawing.Point(263, 241);
+            this.createButtonButton.Location = new System.Drawing.Point(443, 156);
             this.createButtonButton.Name = "createButtonButton";
-            this.createButtonButton.Size = new System.Drawing.Size(75, 23);
+            this.createButtonButton.Size = new System.Drawing.Size(104, 23);
             this.createButtonButton.TabIndex = 5;
-            this.createButtonButton.Text = "Create/Edit";
+            this.createButtonButton.Text = "Create/Edit Button";
             this.createButtonButton.UseVisualStyleBackColor = true;
+            this.createButtonButton.Click += new System.EventHandler(this.createButtonButton_Click);
             // 
             // label15
             // 
@@ -749,18 +807,16 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Enabled = false;
-            this.label14.Location = new System.Drawing.Point(427, 53);
+            this.label14.Location = new System.Drawing.Point(153, 257);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(170, 13);
+            this.label14.Size = new System.Drawing.Size(168, 13);
             this.label14.TabIndex = 14;
-            this.label14.Text = "Use Custom Picture Size (in Pixels)";
+            this.label14.Text = "Use Custom Button Size (in Pixels)";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Enabled = false;
-            this.label13.Location = new System.Drawing.Point(432, 98);
+            this.label13.Location = new System.Drawing.Point(158, 302);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 13);
             this.label13.TabIndex = 13;
@@ -769,8 +825,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Enabled = false;
-            this.label12.Location = new System.Drawing.Point(432, 72);
+            this.label12.Location = new System.Drawing.Point(158, 276);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
             this.label12.TabIndex = 12;
@@ -778,16 +833,14 @@
             // 
             // buttonHeightTextBox
             // 
-            this.buttonHeightTextBox.Enabled = false;
-            this.buttonHeightTextBox.Location = new System.Drawing.Point(472, 95);
+            this.buttonHeightTextBox.Location = new System.Drawing.Point(198, 299);
             this.buttonHeightTextBox.Name = "buttonHeightTextBox";
             this.buttonHeightTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonHeightTextBox.TabIndex = 8;
             // 
             // buttonWidthTextBox
             // 
-            this.buttonWidthTextBox.Enabled = false;
-            this.buttonWidthTextBox.Location = new System.Drawing.Point(472, 69);
+            this.buttonWidthTextBox.Location = new System.Drawing.Point(198, 273);
             this.buttonWidthTextBox.Name = "buttonWidthTextBox";
             this.buttonWidthTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonWidthTextBox.TabIndex = 7;
@@ -795,9 +848,7 @@
             // useButtonSizeDefaults
             // 
             this.useButtonSizeDefaults.AutoSize = true;
-            this.useButtonSizeDefaults.Checked = true;
-            this.useButtonSizeDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.useButtonSizeDefaults.Location = new System.Drawing.Point(413, 33);
+            this.useButtonSizeDefaults.Location = new System.Drawing.Point(139, 237);
             this.useButtonSizeDefaults.Name = "useButtonSizeDefaults";
             this.useButtonSizeDefaults.Size = new System.Drawing.Size(144, 17);
             this.useButtonSizeDefaults.TabIndex = 6;
@@ -809,7 +860,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Enabled = false;
-            this.label11.Location = new System.Drawing.Point(427, 194);
+            this.label11.Location = new System.Drawing.Point(153, 398);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(17, 13);
             this.label11.TabIndex = 8;
@@ -819,7 +870,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Enabled = false;
-            this.label10.Location = new System.Drawing.Point(427, 168);
+            this.label10.Location = new System.Drawing.Point(153, 372);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 13);
             this.label10.TabIndex = 7;
@@ -829,16 +880,16 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Enabled = false;
-            this.label9.Location = new System.Drawing.Point(427, 149);
+            this.label9.Location = new System.Drawing.Point(153, 353);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 13);
+            this.label9.Size = new System.Drawing.Size(158, 13);
             this.label9.TabIndex = 6;
-            this.label9.Text = "Coords for center of Button";
+            this.label9.Text = "Coordinates for Center of Button";
             // 
             // buttonYLocTextBox
             // 
             this.buttonYLocTextBox.Enabled = false;
-            this.buttonYLocTextBox.Location = new System.Drawing.Point(443, 191);
+            this.buttonYLocTextBox.Location = new System.Drawing.Point(169, 395);
             this.buttonYLocTextBox.Name = "buttonYLocTextBox";
             this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonYLocTextBox.TabIndex = 11;
@@ -846,7 +897,7 @@
             // buttonXLocTextBox
             // 
             this.buttonXLocTextBox.Enabled = false;
-            this.buttonXLocTextBox.Location = new System.Drawing.Point(443, 165);
+            this.buttonXLocTextBox.Location = new System.Drawing.Point(169, 369);
             this.buttonXLocTextBox.Name = "buttonXLocTextBox";
             this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonXLocTextBox.TabIndex = 10;
@@ -856,7 +907,7 @@
             this.useButtonLocationDefaults.AutoSize = true;
             this.useButtonLocationDefaults.Checked = true;
             this.useButtonLocationDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.useButtonLocationDefaults.Location = new System.Drawing.Point(411, 129);
+            this.useButtonLocationDefaults.Location = new System.Drawing.Point(137, 333);
             this.useButtonLocationDefaults.Name = "useButtonLocationDefaults";
             this.useButtonLocationDefaults.Size = new System.Drawing.Size(165, 17);
             this.useButtonLocationDefaults.TabIndex = 9;
@@ -864,28 +915,29 @@
             this.useButtonLocationDefaults.UseVisualStyleBackColor = true;
             this.useButtonLocationDefaults.CheckedChanged += new System.EventHandler(this.useButtonLocationDefaults_CheckedChanged);
             // 
-            // setButtonImageButton
+            // chooseButton1ImageButton
             // 
-            this.setButtonImageButton.Enabled = false;
-            this.setButtonImageButton.Location = new System.Drawing.Point(430, 257);
-            this.setButtonImageButton.Name = "setButtonImageButton";
-            this.setButtonImageButton.Size = new System.Drawing.Size(101, 28);
-            this.setButtonImageButton.TabIndex = 13;
-            this.setButtonImageButton.Text = "Set Button Image";
-            this.setButtonImageButton.UseVisualStyleBackColor = true;
+            this.chooseButton1ImageButton.Enabled = false;
+            this.chooseButton1ImageButton.Location = new System.Drawing.Point(336, 269);
+            this.chooseButton1ImageButton.Name = "chooseButton1ImageButton";
+            this.chooseButton1ImageButton.Size = new System.Drawing.Size(131, 28);
+            this.chooseButton1ImageButton.TabIndex = 13;
+            this.chooseButton1ImageButton.Text = "Choose Button Image";
+            this.chooseButton1ImageButton.UseVisualStyleBackColor = true;
+            this.chooseButton1ImageButton.Click += new System.EventHandler(this.chooseButton1ImageButton_Click);
             // 
-            // buttonPictureBox
+            // button1PictureBox
             // 
-            this.buttonPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonPictureBox.Enabled = false;
-            this.buttonPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("buttonPictureBox.Image")));
-            this.buttonPictureBox.InitialImage = null;
-            this.buttonPictureBox.Location = new System.Drawing.Point(537, 246);
-            this.buttonPictureBox.Name = "buttonPictureBox";
-            this.buttonPictureBox.Size = new System.Drawing.Size(100, 50);
-            this.buttonPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.buttonPictureBox.TabIndex = 1;
-            this.buttonPictureBox.TabStop = false;
+            this.button1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1PictureBox.Enabled = false;
+            this.button1PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("button1PictureBox.Image")));
+            this.button1PictureBox.InitialImage = null;
+            this.button1PictureBox.Location = new System.Drawing.Point(473, 258);
+            this.button1PictureBox.Name = "button1PictureBox";
+            this.button1PictureBox.Size = new System.Drawing.Size(100, 50);
+            this.button1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.button1PictureBox.TabIndex = 1;
+            this.button1PictureBox.TabStop = false;
             // 
             // tableLayoutPanel4
             // 
@@ -897,14 +949,15 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.384164F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 313F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(97, 341);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 394F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(97, 414);
             this.tableLayoutPanel4.TabIndex = 16;
             // 
             // label16
             // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 0);
+            this.label16.Location = new System.Drawing.Point(8, 3);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 13);
             this.label16.TabIndex = 0;
@@ -913,16 +966,17 @@
             // buttonListBox
             // 
             this.buttonListBox.FormattingEnabled = true;
-            this.buttonListBox.Location = new System.Drawing.Point(3, 31);
+            this.buttonListBox.Location = new System.Drawing.Point(3, 23);
             this.buttonListBox.Name = "buttonListBox";
-            this.buttonListBox.Size = new System.Drawing.Size(91, 303);
+            this.buttonListBox.Size = new System.Drawing.Size(91, 381);
             this.buttonListBox.TabIndex = 1;
+            this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 426);
+            this.ClientSize = new System.Drawing.Size(632, 478);
             this.Controls.Add(this.pathDialogueTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -948,9 +1002,10 @@
             this.tableLayoutPanel3.PerformLayout();
             this.Buttons.ResumeLayout(false);
             this.Buttons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
@@ -991,8 +1046,8 @@
         private System.Windows.Forms.Button saveButtonTab2;
         private System.Windows.Forms.Button createImpactButton;
         private System.Windows.Forms.Button deleteImpactButton;
-        private System.Windows.Forms.Button setButtonImageButton;
-        private System.Windows.Forms.PictureBox buttonPictureBox;
+        private System.Windows.Forms.Button chooseButton1ImageButton;
+        private System.Windows.Forms.PictureBox button1PictureBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -1019,11 +1074,11 @@
         private System.Windows.Forms.Button buttonListUpButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton hubFromButtonRadio;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox navComboBox;
         private System.Windows.Forms.RadioButton pathGroupFromButtonRadio;
         private System.Windows.Forms.RadioButton pathFromButtonRadio;
         private System.Windows.Forms.ComboBox hubSelectionComboBox;
-        private System.Windows.Forms.CheckBox useButtonImage;
+        private System.Windows.Forms.CheckBox useButton1Image;
         private System.Windows.Forms.Button editDialogueButton;
         private System.Windows.Forms.GroupBox ScopeGroup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -1031,5 +1086,9 @@
         private System.Windows.Forms.RadioButton hubRadioButton;
         private System.Windows.Forms.RadioButton playerRadioButton;
         private System.Windows.Forms.NumericUpDown valueNumericUpDown;
+        private System.Windows.Forms.CheckBox useButton2Image;
+        private System.Windows.Forms.Button chooseButton2ImageButton;
+        private System.Windows.Forms.PictureBox button2PictureBox;
+        private System.Windows.Forms.CheckBox HighlightTextButton;
     }
 }

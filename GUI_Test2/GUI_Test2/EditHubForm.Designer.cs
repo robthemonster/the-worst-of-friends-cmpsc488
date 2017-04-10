@@ -40,6 +40,7 @@
             this.hubImagePictureBox = new System.Windows.Forms.PictureBox();
             this.chooseHubImageButton = new System.Windows.Forms.Button();
             this.addButtonBox = new System.Windows.Forms.GroupBox();
+            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
             this.useButton2Image = new System.Windows.Forms.CheckBox();
             this.chooseButton2ImageButton = new System.Windows.Forms.Button();
             this.button2PictureBox = new System.Windows.Forms.PictureBox();
@@ -48,7 +49,7 @@
             this.navComboBox = new System.Windows.Forms.ComboBox();
             this.pathGroupFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.pathFromButtonRadio = new System.Windows.Forms.RadioButton();
-            this.deleteButton = new System.Windows.Forms.Button();
+            this.deleteButtonButton = new System.Windows.Forms.Button();
             this.createButtonButton = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.buttonTextTextBox = new System.Windows.Forms.TextBox();
@@ -67,7 +68,6 @@
             this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
             this.chooseButton1ImageButton = new System.Windows.Forms.Button();
             this.button1PictureBox = new System.Windows.Forms.PictureBox();
-            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
@@ -192,7 +192,7 @@
             this.addButtonBox.Controls.Add(this.chooseButton2ImageButton);
             this.addButtonBox.Controls.Add(this.button2PictureBox);
             this.addButtonBox.Controls.Add(this.targetNavigableBox);
-            this.addButtonBox.Controls.Add(this.deleteButton);
+            this.addButtonBox.Controls.Add(this.deleteButtonButton);
             this.addButtonBox.Controls.Add(this.createButtonButton);
             this.addButtonBox.Controls.Add(this.label15);
             this.addButtonBox.Controls.Add(this.buttonTextTextBox);
@@ -217,6 +217,16 @@
             this.addButtonBox.TabIndex = 46;
             this.addButtonBox.TabStop = false;
             this.addButtonBox.Text = "Add Button";
+            // 
+            // HighlightTextButton
+            // 
+            this.HighlightTextButton.AutoSize = true;
+            this.HighlightTextButton.Location = new System.Drawing.Point(270, 267);
+            this.HighlightTextButton.Name = "HighlightTextButton";
+            this.HighlightTextButton.Size = new System.Drawing.Size(167, 17);
+            this.HighlightTextButton.TabIndex = 61;
+            this.HighlightTextButton.Text = "Highlight Text on Mouse Over";
+            this.HighlightTextButton.UseVisualStyleBackColor = true;
             // 
             // useButton2Image
             // 
@@ -310,15 +320,15 @@
             this.pathFromButtonRadio.UseVisualStyleBackColor = true;
             this.pathFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathFromButtonRadio_CheckedChanged);
             // 
-            // deleteButton
+            // deleteButtonButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(325, 335);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(111, 23);
-            this.deleteButton.TabIndex = 57;
-            this.deleteButton.Text = "Delete Button";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButtonButton_Click);
+            this.deleteButtonButton.Location = new System.Drawing.Point(325, 335);
+            this.deleteButtonButton.Name = "deleteButtonButton";
+            this.deleteButtonButton.Size = new System.Drawing.Size(111, 23);
+            this.deleteButtonButton.TabIndex = 57;
+            this.deleteButtonButton.Text = "Delete Button";
+            this.deleteButtonButton.UseVisualStyleBackColor = true;
+            this.deleteButtonButton.Click += new System.EventHandler(this.deleteButtonButton_Click);
             // 
             // createButtonButton
             // 
@@ -493,16 +503,6 @@
             this.button1PictureBox.TabIndex = 38;
             this.button1PictureBox.TabStop = false;
             // 
-            // HighlightTextButton
-            // 
-            this.HighlightTextButton.AutoSize = true;
-            this.HighlightTextButton.Location = new System.Drawing.Point(270, 267);
-            this.HighlightTextButton.Name = "HighlightTextButton";
-            this.HighlightTextButton.Size = new System.Drawing.Size(167, 17);
-            this.HighlightTextButton.TabIndex = 61;
-            this.HighlightTextButton.Text = "Highlight Text on Mouse Over";
-            this.HighlightTextButton.UseVisualStyleBackColor = true;
-            // 
             // EditHubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,7 +553,7 @@
         private System.Windows.Forms.ComboBox navComboBox;
         private System.Windows.Forms.RadioButton pathGroupFromButtonRadio;
         private System.Windows.Forms.RadioButton pathFromButtonRadio;
-        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button deleteButtonButton;
         private System.Windows.Forms.Button createButtonButton;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox buttonTextTextBox;
