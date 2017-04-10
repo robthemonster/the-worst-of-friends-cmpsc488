@@ -107,9 +107,9 @@ namespace GUI_Test2
                 fileName = System.IO.Path.GetFileNameWithoutExtension(fileName);
                 //folderPath = System.IO.Path.GetDirectoryName(fileLocation);
 
-                System.IO.Directory.CreateDirectory(fileLocation);
+                //System.IO.Directory.CreateDirectory(fileLocation);
 
-                fileLocation = System.IO.Path.Combine(fileLocation, fileName);
+                //fileLocation = System.IO.Path.Combine(fileLocation, fileName);
                 fileName = fileLocation;
             }
 
