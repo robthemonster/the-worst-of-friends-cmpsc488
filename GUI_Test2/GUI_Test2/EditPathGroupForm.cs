@@ -92,13 +92,16 @@ namespace GUI_Test2
             pathsInPathGroupListBox.SelectedIndex = -1;
 
             pnipg = new List<string>();
-            foreach (String p in Game.paths)
+            pnipg.AddRange(Game.paths);
+            pnipg.AddRange(Game.pathGroups);
+            foreach(string p in pathsInGroup)
             {
-                if (!pathsInGroup.Contains(p))
+                if (pnipg.Contains(p))
                 {
-                    pnipg.Add(p);
+                    pnipg.Remove(p);
                 }
             }
+            pnipg.Remove(this.name);
             pathsNotInPathGroupListBox.DataSource = null;
             pathsNotInPathGroupListBox.DataSource = pnipg;
             pathsNotInPathGroupListBox.SelectedIndex = -1;

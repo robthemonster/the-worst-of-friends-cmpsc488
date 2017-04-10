@@ -38,7 +38,7 @@
             this.pathsNotInPathGroupListBox = new System.Windows.Forms.ListBox();
             this.pathsInPathGroupListBox = new System.Windows.Forms.ListBox();
             this.Cancelbutton = new System.Windows.Forms.Button();
-            this.OKbutton = new System.Windows.Forms.Button();
+            this.Savebutton = new System.Windows.Forms.Button();
             this.tierComboBox = new System.Windows.Forms.ComboBox();
             this.TierLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,10 +50,6 @@
             this.useOnceCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.defaultTargetCheckBox = new System.Windows.Forms.CheckBox();
-            this.defaultTargetComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pathRequirementsListBox = new System.Windows.Forms.ListBox();
             this.removeConditionButton = new System.Windows.Forms.Button();
@@ -73,7 +69,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -83,7 +78,7 @@
             // removePathsButton
             // 
             this.removePathsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.removePathsButton.Location = new System.Drawing.Point(277, 209);
+            this.removePathsButton.Location = new System.Drawing.Point(140, 133);
             this.removePathsButton.Margin = new System.Windows.Forms.Padding(2);
             this.removePathsButton.Name = "removePathsButton";
             this.removePathsButton.Size = new System.Drawing.Size(30, 19);
@@ -95,7 +90,7 @@
             // addPathsButton
             // 
             this.addPathsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.addPathsButton.Location = new System.Drawing.Point(277, 42);
+            this.addPathsButton.Location = new System.Drawing.Point(140, 101);
             this.addPathsButton.Margin = new System.Windows.Forms.Padding(2);
             this.addPathsButton.Name = "addPathsButton";
             this.addPathsButton.Size = new System.Drawing.Size(30, 19);
@@ -128,7 +123,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 13);
+            this.label1.Location = new System.Drawing.Point(39, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 13);
@@ -138,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(309, 13);
+            this.label2.Location = new System.Drawing.Point(172, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
@@ -149,11 +144,11 @@
             // 
             this.pathsNotInPathGroupListBox.AllowDrop = true;
             this.pathsNotInPathGroupListBox.FormattingEnabled = true;
-            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(162, 30);
+            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(42, 31);
             this.pathsNotInPathGroupListBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathsNotInPathGroupListBox.Name = "pathsNotInPathGroupListBox";
             this.pathsNotInPathGroupListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(94, 199);
+            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(94, 186);
             this.pathsNotInPathGroupListBox.TabIndex = 12;
             this.pathsNotInPathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathsNotInPathGroupListBox_SelectedIndexChanged_1);
             // 
@@ -161,16 +156,16 @@
             // 
             this.pathsInPathGroupListBox.AllowDrop = true;
             this.pathsInPathGroupListBox.FormattingEnabled = true;
-            this.pathsInPathGroupListBox.Location = new System.Drawing.Point(311, 28);
+            this.pathsInPathGroupListBox.Location = new System.Drawing.Point(174, 29);
             this.pathsInPathGroupListBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathsInPathGroupListBox.Name = "pathsInPathGroupListBox";
-            this.pathsInPathGroupListBox.Size = new System.Drawing.Size(94, 199);
+            this.pathsInPathGroupListBox.Size = new System.Drawing.Size(94, 186);
             this.pathsInPathGroupListBox.TabIndex = 13;
             this.pathsInPathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathsInPathGroupListBox_SelectedIndexChanged);
             // 
             // Cancelbutton
             // 
-            this.Cancelbutton.Location = new System.Drawing.Point(557, 381);
+            this.Cancelbutton.Location = new System.Drawing.Point(432, 130);
             this.Cancelbutton.Name = "Cancelbutton";
             this.Cancelbutton.Size = new System.Drawing.Size(75, 23);
             this.Cancelbutton.TabIndex = 15;
@@ -178,20 +173,20 @@
             this.Cancelbutton.UseVisualStyleBackColor = true;
             this.Cancelbutton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
-            // OKbutton
+            // Savebutton
             // 
-            this.OKbutton.Location = new System.Drawing.Point(476, 381);
-            this.OKbutton.Name = "OKbutton";
-            this.OKbutton.Size = new System.Drawing.Size(75, 23);
-            this.OKbutton.TabIndex = 16;
-            this.OKbutton.Text = "OK";
-            this.OKbutton.UseVisualStyleBackColor = true;
-            this.OKbutton.Click += new System.EventHandler(this.OKbutton_Click);
+            this.Savebutton.Location = new System.Drawing.Point(348, 130);
+            this.Savebutton.Name = "Savebutton";
+            this.Savebutton.Size = new System.Drawing.Size(75, 23);
+            this.Savebutton.TabIndex = 16;
+            this.Savebutton.Text = "Save";
+            this.Savebutton.UseVisualStyleBackColor = true;
+            this.Savebutton.Click += new System.EventHandler(this.OKbutton_Click);
             // 
             // tierComboBox
             // 
             this.tierComboBox.FormattingEnabled = true;
-            this.tierComboBox.Location = new System.Drawing.Point(432, 40);
+            this.tierComboBox.Location = new System.Drawing.Point(316, 49);
             this.tierComboBox.Name = "tierComboBox";
             this.tierComboBox.Size = new System.Drawing.Size(58, 21);
             this.tierComboBox.TabIndex = 17;
@@ -200,7 +195,7 @@
             // TierLabel
             // 
             this.TierLabel.AutoSize = true;
-            this.TierLabel.Location = new System.Drawing.Point(441, 20);
+            this.TierLabel.Location = new System.Drawing.Point(325, 29);
             this.TierLabel.Name = "TierLabel";
             this.TierLabel.Size = new System.Drawing.Size(25, 13);
             this.TierLabel.TabIndex = 18;
@@ -253,9 +248,9 @@
             // 
             // addConditionButton
             // 
-            this.addConditionButton.Location = new System.Drawing.Point(361, 120);
+            this.addConditionButton.Location = new System.Drawing.Point(327, 27);
             this.addConditionButton.Name = "addConditionButton";
-            this.addConditionButton.Size = new System.Drawing.Size(91, 26);
+            this.addConditionButton.Size = new System.Drawing.Size(91, 25);
             this.addConditionButton.TabIndex = 24;
             this.addConditionButton.Text = "Add Condition";
             this.addConditionButton.UseVisualStyleBackColor = true;
@@ -276,7 +271,7 @@
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Controls.Add(this.useOnceCheckBox);
             this.groupBox1.Controls.Add(this.editTierPathButton);
-            this.groupBox1.Location = new System.Drawing.Point(420, 77);
+            this.groupBox1.Location = new System.Drawing.Point(304, 76);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(166, 120);
             this.groupBox1.TabIndex = 28;
@@ -300,57 +295,20 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 45);
             this.tableLayoutPanel1.TabIndex = 26;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 28);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(129, 91);
-            this.groupBox2.TabIndex = 29;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "PNIPG Selection";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.defaultTargetCheckBox);
-            this.groupBox3.Controls.Add(this.defaultTargetComboBox);
-            this.groupBox3.Location = new System.Drawing.Point(12, 135);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(134, 93);
-            this.groupBox3.TabIndex = 31;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Default Target";
-            // 
-            // defaultTargetCheckBox
-            // 
-            this.defaultTargetCheckBox.AutoSize = true;
-            this.defaultTargetCheckBox.Location = new System.Drawing.Point(6, 24);
-            this.defaultTargetCheckBox.Name = "defaultTargetCheckBox";
-            this.defaultTargetCheckBox.Size = new System.Drawing.Size(123, 17);
-            this.defaultTargetCheckBox.TabIndex = 27;
-            this.defaultTargetCheckBox.Text = "Have Default Target";
-            this.defaultTargetCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // defaultTargetComboBox
-            // 
-            this.defaultTargetComboBox.FormattingEnabled = true;
-            this.defaultTargetComboBox.Location = new System.Drawing.Point(19, 47);
-            this.defaultTargetComboBox.Name = "defaultTargetComboBox";
-            this.defaultTargetComboBox.Size = new System.Drawing.Size(79, 21);
-            this.defaultTargetComboBox.TabIndex = 30;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.pathRequirementsListBox);
             this.groupBox4.Controls.Add(this.removeConditionButton);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.tableLayoutPanel2);
+            this.groupBox4.Controls.Add(this.Savebutton);
+            this.groupBox4.Controls.Add(this.Cancelbutton);
             this.groupBox4.Controls.Add(this.tierPathsListBox);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.addConditionButton);
-            this.groupBox4.Location = new System.Drawing.Point(12, 234);
+            this.groupBox4.Location = new System.Drawing.Point(12, 221);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(458, 176);
+            this.groupBox4.Size = new System.Drawing.Size(513, 166);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Requirements";
@@ -358,17 +316,17 @@
             // pathRequirementsListBox
             // 
             this.pathRequirementsListBox.FormattingEnabled = true;
-            this.pathRequirementsListBox.Location = new System.Drawing.Point(357, 20);
+            this.pathRequirementsListBox.Location = new System.Drawing.Point(429, 20);
             this.pathRequirementsListBox.Name = "pathRequirementsListBox";
-            this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 69);
+            this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 95);
             this.pathRequirementsListBox.TabIndex = 38;
             this.pathRequirementsListBox.SelectedIndexChanged += new System.EventHandler(this.pathRequirementsListBox_SelectedIndexChanged);
             // 
             // removeConditionButton
             // 
-            this.removeConditionButton.Location = new System.Drawing.Point(361, 91);
+            this.removeConditionButton.Location = new System.Drawing.Point(327, 54);
             this.removeConditionButton.Name = "removeConditionButton";
-            this.removeConditionButton.Size = new System.Drawing.Size(75, 23);
+            this.removeConditionButton.Size = new System.Drawing.Size(91, 22);
             this.removeConditionButton.TabIndex = 37;
             this.removeConditionButton.Text = "Remove Condition";
             this.removeConditionButton.UseVisualStyleBackColor = true;
@@ -379,7 +337,7 @@
             this.groupBox5.Controls.Add(this.hubComboBox);
             this.groupBox5.Controls.Add(this.hubLabel);
             this.groupBox5.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox5.Location = new System.Drawing.Point(118, 16);
+            this.groupBox5.Location = new System.Drawing.Point(111, 16);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(210, 83);
             this.groupBox5.TabIndex = 36;
@@ -534,16 +492,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 426);
+            this.ClientSize = new System.Drawing.Size(526, 388);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TierLabel);
             this.Controls.Add(this.tierComboBox);
-            this.Controls.Add(this.OKbutton);
             this.Controls.Add(this.pathsNotInPathGroupListBox);
-            this.Controls.Add(this.Cancelbutton);
             this.Controls.Add(this.pathsInPathGroupListBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -560,8 +514,6 @@
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -586,7 +538,7 @@
         private System.Windows.Forms.ListBox pathsNotInPathGroupListBox;
         private System.Windows.Forms.ListBox pathsInPathGroupListBox;
         private System.Windows.Forms.Button Cancelbutton;
-        private System.Windows.Forms.Button OKbutton;
+        private System.Windows.Forms.Button Savebutton;
         private System.Windows.Forms.ComboBox tierComboBox;
         private System.Windows.Forms.Label TierLabel;
         private System.Windows.Forms.Label label3;
@@ -598,10 +550,6 @@
         private System.Windows.Forms.CheckBox useOnceCheckBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox defaultTargetCheckBox;
-        private System.Windows.Forms.ComboBox defaultTargetComboBox;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox valueTextBox;
