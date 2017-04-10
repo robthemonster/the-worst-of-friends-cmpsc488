@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace GUI_Test2
 {
-    //Need to add a way to add 2nd button image
     public partial class EditHubForm : Form
     {
         private List<Button> buttonList;
@@ -43,6 +42,12 @@ namespace GUI_Test2
             this.hubName = that.name;
             this.hubImagePath = that.hubImage;
             this.buttonList = that.buttons;
+            buttonCount = buttonList.Count;
+            buttonNameList = new List<string>();
+            for (int i = 1; i <= buttonCount; i++)
+            {
+                buttonNameList.Add("Button " + i);
+            }
 
             updateListBox();
         }
@@ -214,6 +219,19 @@ namespace GUI_Test2
                 text = buttonTextTextBox.Text;
             }
 
+            //If the button isn't selected, button size is required
+            if (useButton1Image.Checked == false && useButtonSizeDefaults.Checked == true)
+            {
+                MessageBox.Show("Button Size Required if No Picture is Used.");
+                return;
+            }
+
+            if (useButton2Image.Checked == true && useButton1Image.Checked == false)
+            {
+                MessageBox.Show("Use of Highlighted Button Image Requires \na Button Image to be Used.");
+                return;
+            }
+
             if (useButtonSizeDefaults.Checked)
             {
                 //1920,1080 screen size
@@ -307,12 +325,30 @@ namespace GUI_Test2
 
             if (useButton1Image.Checked)
             {
+                if (buttonImagePath1 == "")
+                {
+                    MessageBox.Show("Please Select the Desired Button Image.");
+                    return;
+                }
                 pic1path = buttonImagePath1;
-                pic2path = buttonImagePath2;
             }
             else
             {
                 pic1path = "";
+
+            }
+
+            if (useButton2Image.Checked)
+            {
+                if (buttonImagePath2 == "")
+                {
+                    MessageBox.Show("Please Select the Desired Highlight Image.");
+                    return;
+                }
+                pic2path = buttonImagePath2;
+            }
+            else
+            {
                 pic2path = "";
             }
 
@@ -332,8 +368,21 @@ namespace GUI_Test2
                     next = Game.hubs[navComboBox.SelectedIndex];
             }
 
-            //Need to add the option for what gets highlighted
-            highlight = 0;
+            if (useButton2Image.Checked == true && HighlightTextButton.Checked == true)
+            {
+                MessageBox.Show("Please Select Either to Highlight the Button, \nthe Button Text, or Neither. Please Do Not Select Both.");
+                return;
+            }
+
+            if (useButton2Image.Checked == true)
+                highlight = 2;
+
+            else if (HighlightTextButton.Checked == true)
+                highlight = 1;
+
+            else
+                highlight = 0;
+
 
             if (inButtonList(buttonList, buttonTextTextBox.Text))
             {
@@ -458,12 +507,6 @@ namespace GUI_Test2
             }
         }
 
-        //This was an accidental click, need to remove
-        private void addButtonBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
             navType = 0;
@@ -541,8 +584,18 @@ namespace GUI_Test2
                 {
                     useButton1Image.Checked = true;
                     buttonImagePath1 = b.pic1path;
-                    buttonImagePath2 = b.pic2path;
                     button1PictureBox.Image = Image.FromFile(buttonImagePath1);
+                }
+
+                //Picture 2
+                if (b.pic2path == "")
+                {
+                    useButton2Image.Checked = false;
+                }
+                else
+                {
+                    useButton2Image.Checked = true;
+                    buttonImagePath2 = b.pic2path;
                     button2PictureBox.Image = Image.FromFile(buttonImagePath2);
                 }
 
@@ -554,8 +607,12 @@ namespace GUI_Test2
                 pathGroupFromButtonRadio.Checked = false;
                 hubFromButtonRadio.Checked = false;
                 navComboBox.Text = null;
-                useButtonSizeDefaults.Checked = true;
+                useButtonSizeDefaults.Checked = false;
+                buttonWidthTextBox.Text = "";
+                buttonHeightTextBox.Text = "";
                 useButtonLocationDefaults.Checked = true;
+                buttonXLocTextBox.Text = "";
+                buttonYLocTextBox.Text = "";
                 useButton1Image.Checked = false;
                 useButton2Image.Checked = false;
                 button1PictureBox.Image = button1PictureBox.InitialImage;

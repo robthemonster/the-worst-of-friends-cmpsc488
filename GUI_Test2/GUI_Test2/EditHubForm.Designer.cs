@@ -67,6 +67,7 @@
             this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
             this.chooseButton1ImageButton = new System.Windows.Forms.Button();
             this.button1PictureBox = new System.Windows.Forms.PictureBox();
+            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
@@ -186,6 +187,7 @@
             // 
             // addButtonBox
             // 
+            this.addButtonBox.Controls.Add(this.HighlightTextButton);
             this.addButtonBox.Controls.Add(this.useButton2Image);
             this.addButtonBox.Controls.Add(this.chooseButton2ImageButton);
             this.addButtonBox.Controls.Add(this.button2PictureBox);
@@ -215,7 +217,6 @@
             this.addButtonBox.TabIndex = 46;
             this.addButtonBox.TabStop = false;
             this.addButtonBox.Text = "Add Button";
-            this.addButtonBox.Enter += new System.EventHandler(this.addButtonBox_Enter);
             // 
             // useButton2Image
             // 
@@ -311,7 +312,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(259, 319);
+            this.deleteButton.Location = new System.Drawing.Point(325, 335);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(111, 23);
             this.deleteButton.TabIndex = 57;
@@ -321,7 +322,7 @@
             // 
             // createButtonButton
             // 
-            this.createButtonButton.Location = new System.Drawing.Point(259, 290);
+            this.createButtonButton.Location = new System.Drawing.Point(325, 306);
             this.createButtonButton.Name = "createButtonButton";
             this.createButtonButton.Size = new System.Drawing.Size(111, 23);
             this.createButtonButton.TabIndex = 55;
@@ -360,17 +361,15 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Enabled = false;
             this.label14.Location = new System.Drawing.Point(24, 175);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(170, 13);
+            this.label14.Size = new System.Drawing.Size(168, 13);
             this.label14.TabIndex = 52;
-            this.label14.Text = "Use Custom Picture Size (in Pixels)";
+            this.label14.Text = "Use Custom Button Size (in Pixels)";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Enabled = false;
             this.label13.Location = new System.Drawing.Point(29, 220);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 13);
@@ -380,7 +379,6 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Enabled = false;
             this.label12.Location = new System.Drawing.Point(29, 194);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
@@ -389,7 +387,6 @@
             // 
             // buttonHeightTextBox
             // 
-            this.buttonHeightTextBox.Enabled = false;
             this.buttonHeightTextBox.Location = new System.Drawing.Point(69, 217);
             this.buttonHeightTextBox.Name = "buttonHeightTextBox";
             this.buttonHeightTextBox.Size = new System.Drawing.Size(50, 20);
@@ -397,7 +394,6 @@
             // 
             // buttonWidthTextBox
             // 
-            this.buttonWidthTextBox.Enabled = false;
             this.buttonWidthTextBox.Location = new System.Drawing.Point(69, 191);
             this.buttonWidthTextBox.Name = "buttonWidthTextBox";
             this.buttonWidthTextBox.Size = new System.Drawing.Size(50, 20);
@@ -406,8 +402,6 @@
             // useButtonSizeDefaults
             // 
             this.useButtonSizeDefaults.AutoSize = true;
-            this.useButtonSizeDefaults.Checked = true;
-            this.useButtonSizeDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
             this.useButtonSizeDefaults.Location = new System.Drawing.Point(8, 154);
             this.useButtonSizeDefaults.Name = "useButtonSizeDefaults";
             this.useButtonSizeDefaults.Size = new System.Drawing.Size(144, 17);
@@ -442,9 +436,9 @@
             this.label9.Enabled = false;
             this.label9.Location = new System.Drawing.Point(24, 271);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 13);
+            this.label9.Size = new System.Drawing.Size(158, 13);
             this.label9.TabIndex = 39;
-            this.label9.Text = "Coords for center of Button";
+            this.label9.Text = "Coordinates for Center of Button";
             // 
             // buttonYLocTextBox
             // 
@@ -498,6 +492,16 @@
             this.button1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.button1PictureBox.TabIndex = 38;
             this.button1PictureBox.TabStop = false;
+            // 
+            // HighlightTextButton
+            // 
+            this.HighlightTextButton.AutoSize = true;
+            this.HighlightTextButton.Location = new System.Drawing.Point(270, 267);
+            this.HighlightTextButton.Name = "HighlightTextButton";
+            this.HighlightTextButton.Size = new System.Drawing.Size(167, 17);
+            this.HighlightTextButton.TabIndex = 61;
+            this.HighlightTextButton.Text = "Highlight Text on Mouse Over";
+            this.HighlightTextButton.UseVisualStyleBackColor = true;
             // 
             // EditHubForm
             // 
@@ -571,5 +575,6 @@
         private System.Windows.Forms.CheckBox useButton2Image;
         private System.Windows.Forms.Button chooseButton2ImageButton;
         private System.Windows.Forms.PictureBox button2PictureBox;
+        private System.Windows.Forms.CheckBox HighlightTextButton;
     }
 }
