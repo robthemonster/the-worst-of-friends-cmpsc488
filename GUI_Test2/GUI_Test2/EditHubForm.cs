@@ -27,22 +27,33 @@ namespace GUI_Test2
         {
             InitializeComponent();
             parentForm = par;
-            this.Text = "Edit Hub: " + name;
             hubName = name;
             buttonImagePath1 = "";
             buttonImagePath2 = "";
             hubImagePath = "";
             buttonList = new List<Button>();
-            buttonCount = buttonList.Count;
-            buttonNameList = new List<string>();
 
-            //Needs to be used when loading a hub, not creating a new one
-            for(int i = 1; i <= buttonCount; i++)
+
+            updateListBox();
+        }
+        public EditHubForm(ProjectHomeForm par, Hub that)
+        {
+            InitializeComponent();
+            this.parentForm = par;
+            this.hubName = that.name;
+            this.hubImagePath = that.hubImage;
+            this.buttonList = that.buttons;
+        }
+
+        private void EditHubForm_Load(object sender, EventArgs e)
+        {
+            this.Text = "Edit Hub: " + hubName;
+            buttonNameList = new List<string>();
+            for (int i = 1; i <= buttonCount; i++)
             {
                 buttonNameList.Add("Button " + i);
             }
-
-            updateListBox();
+            hubImagePictureBox.ImageLocation = hubImagePath;
         }
 
         private void buttonListUpButton_Click(object sender, EventArgs e)
@@ -106,13 +117,10 @@ namespace GUI_Test2
                 Game.navIndex.Add(hubName, new Hub(hubName, buttonList, hubImagePath));
             }
             parentForm.updateListBoxes();
+            Close();
 
         }
 
-        private void EditHubForm_Load(object sender, EventArgs e)
-        {
-            buttonNameList = new List<string>();
-        }
         private void setScope()
         {
             if (navType != -1)
@@ -413,6 +421,11 @@ namespace GUI_Test2
         {
             navType = 2;
             setScope();
+        }
+
+        private void buttonListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

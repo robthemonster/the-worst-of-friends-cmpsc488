@@ -231,6 +231,8 @@
             this.hubListBox.Name = "hubListBox";
             this.hubListBox.Size = new System.Drawing.Size(142, 355);
             this.hubListBox.TabIndex = 0;
+            this.hubListBox.SelectedIndexChanged += new System.EventHandler(this.hubListBox_SelectedIndexChanged);
+            this.hubListBox.DoubleClick += new System.EventHandler(this.LoadHubFromListBox);
             // 
             // pathListBox
             // 
@@ -239,7 +241,7 @@
             this.pathListBox.Name = "pathListBox";
             this.pathListBox.Size = new System.Drawing.Size(144, 355);
             this.pathListBox.TabIndex = 2;
-            this.pathListBox.Click += new System.EventHandler(this.pathListBox_SelectedIndexChanged);
+            this.pathListBox.SelectedIndexChanged += new System.EventHandler(this.pathListBox_SelectedIndexChanged_1);
             this.pathListBox.DoubleClick += new System.EventHandler(this.LoadPathFromPathListBox);
             // 
             // hubLabel
@@ -289,6 +291,7 @@
             this.pathGroupListBox.Size = new System.Drawing.Size(143, 355);
             this.pathGroupListBox.TabIndex = 1;
             this.pathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathGroupListBox_SelectedIndexChanged);
+            this.pathGroupListBox.DoubleClick += new System.EventHandler(this.LoadPathGroupFromPathListBox);
             // 
             // ProjectHomeForm
             // 

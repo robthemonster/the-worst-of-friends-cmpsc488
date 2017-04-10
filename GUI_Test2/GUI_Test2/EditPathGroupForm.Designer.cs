@@ -33,8 +33,6 @@
             this.addPathsButton = new System.Windows.Forms.Button();
             this.tierWeightTextBox = new System.Windows.Forms.TextBox();
             this.weightLabel = new System.Windows.Forms.Label();
-            this.addConditionToSelectedPathInPathGroup = new System.Windows.Forms.Button();
-            this.removeSelectedConditionFromPathInPathGroup = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pathsNotInPathGroupListBox = new System.Windows.Forms.ListBox();
@@ -48,12 +46,44 @@
             this.pathWeightTextBox = new System.Windows.Forms.TextBox();
             this.tierPathsListBox = new System.Windows.Forms.ListBox();
             this.editTierPathButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.useOnceCheckBox = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.defaultTargetCheckBox = new System.Windows.Forms.CheckBox();
+            this.defaultTargetComboBox = new System.Windows.Forms.ComboBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.globalRadioButton = new System.Windows.Forms.RadioButton();
+            this.hubRadioButton = new System.Windows.Forms.RadioButton();
+            this.playerRadioButton = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pathRequirementsListBox = new System.Windows.Forms.ListBox();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // removePathsButton
             // 
             this.removePathsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.removePathsButton.Location = new System.Drawing.Point(138, 153);
+            this.removePathsButton.Location = new System.Drawing.Point(277, 209);
             this.removePathsButton.Margin = new System.Windows.Forms.Padding(2);
             this.removePathsButton.Name = "removePathsButton";
             this.removePathsButton.Size = new System.Drawing.Size(30, 19);
@@ -65,7 +95,7 @@
             // addPathsButton
             // 
             this.addPathsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.addPathsButton.Location = new System.Drawing.Point(138, 190);
+            this.addPathsButton.Location = new System.Drawing.Point(277, 42);
             this.addPathsButton.Margin = new System.Windows.Forms.Padding(2);
             this.addPathsButton.Name = "addPathsButton";
             this.addPathsButton.Size = new System.Drawing.Size(30, 19);
@@ -76,7 +106,7 @@
             // 
             // tierWeightTextBox
             // 
-            this.tierWeightTextBox.Location = new System.Drawing.Point(444, 122);
+            this.tierWeightTextBox.Location = new System.Drawing.Point(74, 20);
             this.tierWeightTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.tierWeightTextBox.Name = "tierWeightTextBox";
             this.tierWeightTextBox.ReadOnly = true;
@@ -87,7 +117,7 @@
             // weightLabel
             // 
             this.weightLabel.AutoSize = true;
-            this.weightLabel.Location = new System.Drawing.Point(337, 106);
+            this.weightLabel.Location = new System.Drawing.Point(2, 0);
             this.weightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.weightLabel.Name = "weightLabel";
             this.weightLabel.Size = new System.Drawing.Size(66, 13);
@@ -95,30 +125,10 @@
             this.weightLabel.Text = "Path Weight";
             this.weightLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // addConditionToSelectedPathInPathGroup
-            // 
-            this.addConditionToSelectedPathInPathGroup.Location = new System.Drawing.Point(591, 295);
-            this.addConditionToSelectedPathInPathGroup.Margin = new System.Windows.Forms.Padding(2);
-            this.addConditionToSelectedPathInPathGroup.Name = "addConditionToSelectedPathInPathGroup";
-            this.addConditionToSelectedPathInPathGroup.Size = new System.Drawing.Size(19, 19);
-            this.addConditionToSelectedPathInPathGroup.TabIndex = 8;
-            this.addConditionToSelectedPathInPathGroup.Text = "+";
-            this.addConditionToSelectedPathInPathGroup.UseVisualStyleBackColor = true;
-            // 
-            // removeSelectedConditionFromPathInPathGroup
-            // 
-            this.removeSelectedConditionFromPathInPathGroup.Location = new System.Drawing.Point(591, 318);
-            this.removeSelectedConditionFromPathInPathGroup.Margin = new System.Windows.Forms.Padding(2);
-            this.removeSelectedConditionFromPathInPathGroup.Name = "removeSelectedConditionFromPathInPathGroup";
-            this.removeSelectedConditionFromPathInPathGroup.Size = new System.Drawing.Size(19, 19);
-            this.removeSelectedConditionFromPathInPathGroup.TabIndex = 9;
-            this.removeSelectedConditionFromPathInPathGroup.Text = "-";
-            this.removeSelectedConditionFromPathInPathGroup.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 15);
+            this.label1.Location = new System.Drawing.Point(159, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 13);
@@ -128,7 +138,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(196, 15);
+            this.label2.Location = new System.Drawing.Point(309, 13);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
@@ -139,11 +149,11 @@
             // 
             this.pathsNotInPathGroupListBox.AllowDrop = true;
             this.pathsNotInPathGroupListBox.FormattingEnabled = true;
-            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(3, 30);
+            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(151, 28);
             this.pathsNotInPathGroupListBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathsNotInPathGroupListBox.Name = "pathsNotInPathGroupListBox";
             this.pathsNotInPathGroupListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(131, 329);
+            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(122, 199);
             this.pathsNotInPathGroupListBox.TabIndex = 12;
             this.pathsNotInPathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathsNotInPathGroupListBox_SelectedIndexChanged_1);
             // 
@@ -151,16 +161,16 @@
             // 
             this.pathsInPathGroupListBox.AllowDrop = true;
             this.pathsInPathGroupListBox.FormattingEnabled = true;
-            this.pathsInPathGroupListBox.Location = new System.Drawing.Point(178, 30);
+            this.pathsInPathGroupListBox.Location = new System.Drawing.Point(311, 28);
             this.pathsInPathGroupListBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathsInPathGroupListBox.Name = "pathsInPathGroupListBox";
-            this.pathsInPathGroupListBox.Size = new System.Drawing.Size(125, 329);
+            this.pathsInPathGroupListBox.Size = new System.Drawing.Size(94, 199);
             this.pathsInPathGroupListBox.TabIndex = 13;
             this.pathsInPathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathsInPathGroupListBox_SelectedIndexChanged);
             // 
             // Cancelbutton
             // 
-            this.Cancelbutton.Location = new System.Drawing.Point(544, 336);
+            this.Cancelbutton.Location = new System.Drawing.Point(557, 381);
             this.Cancelbutton.Name = "Cancelbutton";
             this.Cancelbutton.Size = new System.Drawing.Size(75, 23);
             this.Cancelbutton.TabIndex = 15;
@@ -170,7 +180,7 @@
             // 
             // OKbutton
             // 
-            this.OKbutton.Location = new System.Drawing.Point(463, 336);
+            this.OKbutton.Location = new System.Drawing.Point(476, 381);
             this.OKbutton.Name = "OKbutton";
             this.OKbutton.Size = new System.Drawing.Size(75, 23);
             this.OKbutton.TabIndex = 16;
@@ -181,7 +191,7 @@
             // tierComboBox
             // 
             this.tierComboBox.FormattingEnabled = true;
-            this.tierComboBox.Location = new System.Drawing.Point(387, 66);
+            this.tierComboBox.Location = new System.Drawing.Point(432, 40);
             this.tierComboBox.Name = "tierComboBox";
             this.tierComboBox.Size = new System.Drawing.Size(58, 21);
             this.tierComboBox.TabIndex = 17;
@@ -190,7 +200,7 @@
             // TierLabel
             // 
             this.TierLabel.AutoSize = true;
-            this.TierLabel.Location = new System.Drawing.Point(396, 46);
+            this.TierLabel.Location = new System.Drawing.Point(441, 20);
             this.TierLabel.Name = "TierLabel";
             this.TierLabel.Size = new System.Drawing.Size(25, 13);
             this.TierLabel.TabIndex = 18;
@@ -199,7 +209,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(531, 8);
+            this.label3.Location = new System.Drawing.Point(6, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 19;
@@ -208,7 +218,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(441, 106);
+            this.label4.Location = new System.Drawing.Point(75, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 20;
@@ -216,7 +226,7 @@
             // 
             // pathWeightTextBox
             // 
-            this.pathWeightTextBox.Location = new System.Drawing.Point(340, 122);
+            this.pathWeightTextBox.Location = new System.Drawing.Point(3, 21);
             this.pathWeightTextBox.Name = "pathWeightTextBox";
             this.pathWeightTextBox.Size = new System.Drawing.Size(60, 20);
             this.pathWeightTextBox.TabIndex = 21;
@@ -225,32 +235,299 @@
             // tierPathsListBox
             // 
             this.tierPathsListBox.FormattingEnabled = true;
-            this.tierPathsListBox.Location = new System.Drawing.Point(510, 30);
+            this.tierPathsListBox.Location = new System.Drawing.Point(6, 38);
             this.tierPathsListBox.Name = "tierPathsListBox";
-            this.tierPathsListBox.Size = new System.Drawing.Size(100, 264);
+            this.tierPathsListBox.Size = new System.Drawing.Size(92, 121);
             this.tierPathsListBox.TabIndex = 22;
             this.tierPathsListBox.SelectedIndexChanged += new System.EventHandler(this.tierPathsListBox_SelectedIndexChanged);
             // 
             // editTierPathButton
             // 
-            this.editTierPathButton.Location = new System.Drawing.Point(387, 177);
+            this.editTierPathButton.Location = new System.Drawing.Point(98, 67);
             this.editTierPathButton.Name = "editTierPathButton";
             this.editTierPathButton.Size = new System.Drawing.Size(62, 45);
             this.editTierPathButton.TabIndex = 23;
-            this.editTierPathButton.Text = "Edit Path In Tier";
+            this.editTierPathButton.Text = "Edit Path in Tier";
             this.editTierPathButton.UseVisualStyleBackColor = true;
             this.editTierPathButton.Click += new System.EventHandler(this.editTierPathButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(361, 120);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 26);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Add Condition";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // useOnceCheckBox
+            // 
+            this.useOnceCheckBox.AutoSize = true;
+            this.useOnceCheckBox.Location = new System.Drawing.Point(12, 76);
+            this.useOnceCheckBox.Name = "useOnceCheckBox";
+            this.useOnceCheckBox.Size = new System.Drawing.Size(77, 17);
+            this.useOnceCheckBox.TabIndex = 25;
+            this.useOnceCheckBox.Text = "1 Visit Max";
+            this.useOnceCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Controls.Add(this.useOnceCheckBox);
+            this.groupBox1.Controls.Add(this.editTierPathButton);
+            this.groupBox1.Location = new System.Drawing.Point(420, 77);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(166, 120);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tier Information";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.weightLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tierWeightTextBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pathWeightTextBox, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 16);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 45);
+            this.tableLayoutPanel1.TabIndex = 26;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(12, 28);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(129, 91);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "PNIPG Selection";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.defaultTargetCheckBox);
+            this.groupBox3.Controls.Add(this.defaultTargetComboBox);
+            this.groupBox3.Location = new System.Drawing.Point(12, 135);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(134, 93);
+            this.groupBox3.TabIndex = 31;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Default Target";
+            // 
+            // defaultTargetCheckBox
+            // 
+            this.defaultTargetCheckBox.AutoSize = true;
+            this.defaultTargetCheckBox.Location = new System.Drawing.Point(6, 24);
+            this.defaultTargetCheckBox.Name = "defaultTargetCheckBox";
+            this.defaultTargetCheckBox.Size = new System.Drawing.Size(123, 17);
+            this.defaultTargetCheckBox.TabIndex = 27;
+            this.defaultTargetCheckBox.Text = "Have Default Target";
+            this.defaultTargetCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // defaultTargetComboBox
+            // 
+            this.defaultTargetComboBox.FormattingEnabled = true;
+            this.defaultTargetComboBox.Location = new System.Drawing.Point(19, 47);
+            this.defaultTargetComboBox.Name = "defaultTargetComboBox";
+            this.defaultTargetComboBox.Size = new System.Drawing.Size(79, 21);
+            this.defaultTargetComboBox.TabIndex = 30;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.pathRequirementsListBox);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.groupBox5);
+            this.groupBox4.Controls.Add(this.tableLayoutPanel2);
+            this.groupBox4.Controls.Add(this.tierPathsListBox);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Location = new System.Drawing.Point(12, 234);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(458, 176);
+            this.groupBox4.TabIndex = 32;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Requirements";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(99, 21);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(62, 21);
+            this.comboBox1.TabIndex = 23;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(3, 21);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(90, 21);
+            this.comboBox2.TabIndex = 24;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(170, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(47, 20);
+            this.textBox1.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(99, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Comparison";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel2.Controls.Add(this.textBox1, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.comboBox2, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.comboBox1, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(111, 105);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.90476F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(221, 48);
+            this.tableLayoutPanel2.TabIndex = 35;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Atribute";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.comboBox3);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox5.Location = new System.Drawing.Point(118, 16);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(210, 83);
+            this.groupBox5.TabIndex = 36;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Atribute Scope";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.globalRadioButton, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.hubRadioButton, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.playerRadioButton, 0, 2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 14);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(90, 68);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // globalRadioButton
+            // 
+            this.globalRadioButton.AutoSize = true;
+            this.globalRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.globalRadioButton.Name = "globalRadioButton";
+            this.globalRadioButton.Size = new System.Drawing.Size(55, 15);
+            this.globalRadioButton.TabIndex = 0;
+            this.globalRadioButton.TabStop = true;
+            this.globalRadioButton.Text = "Global";
+            this.globalRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // hubRadioButton
+            // 
+            this.hubRadioButton.AutoSize = true;
+            this.hubRadioButton.Location = new System.Drawing.Point(3, 24);
+            this.hubRadioButton.Name = "hubRadioButton";
+            this.hubRadioButton.Size = new System.Drawing.Size(45, 15);
+            this.hubRadioButton.TabIndex = 1;
+            this.hubRadioButton.TabStop = true;
+            this.hubRadioButton.Text = "Hub";
+            this.hubRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // playerRadioButton
+            // 
+            this.playerRadioButton.AutoSize = true;
+            this.playerRadioButton.Location = new System.Drawing.Point(3, 45);
+            this.playerRadioButton.Name = "playerRadioButton";
+            this.playerRadioButton.Size = new System.Drawing.Size(54, 17);
+            this.playerRadioButton.TabIndex = 2;
+            this.playerRadioButton.TabStop = true;
+            this.playerRadioButton.Text = "Player";
+            this.playerRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(117, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Hub Select";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(113, 38);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(91, 21);
+            this.comboBox3.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(170, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Value";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(361, 91);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Remove Condition";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // pathRequirementsListBox
+            // 
+            this.pathRequirementsListBox.FormattingEnabled = true;
+            this.pathRequirementsListBox.Location = new System.Drawing.Point(357, 20);
+            this.pathRequirementsListBox.Name = "pathRequirementsListBox";
+            this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 69);
+            this.pathRequirementsListBox.TabIndex = 38;
             // 
             // EditPathGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 362);
-            this.Controls.Add(this.editTierPathButton);
-            this.Controls.Add(this.tierPathsListBox);
-            this.Controls.Add(this.pathWeightTextBox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(634, 426);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TierLabel);
             this.Controls.Add(this.tierComboBox);
             this.Controls.Add(this.OKbutton);
@@ -259,10 +536,6 @@
             this.Controls.Add(this.pathsNotInPathGroupListBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.removeSelectedConditionFromPathInPathGroup);
-            this.Controls.Add(this.addConditionToSelectedPathInPathGroup);
-            this.Controls.Add(this.weightLabel);
-            this.Controls.Add(this.tierWeightTextBox);
             this.Controls.Add(this.addPathsButton);
             this.Controls.Add(this.removePathsButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -272,6 +545,20 @@
             this.Name = "EditPathGroupForm";
             this.Text = "Edit Path Group";
             this.Load += new System.EventHandler(this.EditPathGroupForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,8 +570,6 @@
         private System.Windows.Forms.Button addPathsButton;
         private System.Windows.Forms.TextBox tierWeightTextBox;
         private System.Windows.Forms.Label weightLabel;
-        private System.Windows.Forms.Button addConditionToSelectedPathInPathGroup;
-        private System.Windows.Forms.Button removeSelectedConditionFromPathInPathGroup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox pathsNotInPathGroupListBox;
@@ -298,5 +583,30 @@
         private System.Windows.Forms.TextBox pathWeightTextBox;
         private System.Windows.Forms.ListBox tierPathsListBox;
         private System.Windows.Forms.Button editTierPathButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox useOnceCheckBox;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox defaultTargetCheckBox;
+        private System.Windows.Forms.ComboBox defaultTargetComboBox;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ListBox pathRequirementsListBox;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.RadioButton globalRadioButton;
+        private System.Windows.Forms.RadioButton hubRadioButton;
+        private System.Windows.Forms.RadioButton playerRadioButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
     }
 }

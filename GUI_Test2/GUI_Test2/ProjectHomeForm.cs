@@ -186,14 +186,29 @@ namespace GUI_Test2
             hubListBox.SelectedIndex = -1;
         }
         public void LoadPathFromPathListBox(object sender, EventArgs e) {
-            if (pathListBox.SelectedIndex == -1) { }
-            else
+            if (pathListBox.SelectedIndex != -1)
             {
                 string sampString = (string)pathListBox.SelectedValue;
-                Path targetPath = new Path();
-                targetPath = (Path)Game.navIndex[sampString];
                 EditPathForm editPath = new EditPathForm(this, (Path)Game.navIndex[sampString]);
                 editPath.ShowDialog();
+            }
+        }
+        public void LoadPathGroupFromPathListBox(object sender, EventArgs e)
+        {
+            if (pathGroupListBox.SelectedIndex != -1)
+            {
+                string navName = (string)pathGroupListBox.SelectedValue;
+                EditPathGroupForm editPathGroup = new EditPathGroupForm(this, (PathGroup)Game.navIndex[navName]);
+                editPathGroup.ShowDialog();
+            }
+        }
+        public void LoadHubFromListBox(object sender, EventArgs e)
+        {
+            if (hubListBox.SelectedIndex != -1)
+            {
+                string navName = (string)hubListBox.SelectedValue;
+                EditHubForm editHub = new EditHubForm(this, (Hub)Game.navIndex[navName]);
+                editHub.ShowDialog();
             }
         }
 
@@ -291,24 +306,16 @@ namespace GUI_Test2
 
         private void pathListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (pathListBox.SelectedIndex != -1)
-                {
-                    //On loading a file, a NullException happens here
-                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, (PathGroup)Game.navIndex[(String)pathGroupListBox.SelectedItem]);
-                    editPathGroup.ShowDialog();
-                }
-            }
-            catch
-            {
-                Console.Write("NullException unhandled in pathListBox_SelectedIndexChanged.");
-            }
+
         }
 
         private void pathGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (pathGroupListBox.SelectedIndex != -1)
+            {
+                hubListBox.SelectedIndex = -1;
+                pathListBox.SelectedIndex = -1;
+            }
         }
 
         private void attributesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -322,6 +329,23 @@ namespace GUI_Test2
             EditCharactersForm ecf = new EditCharactersForm(this);
             ecf.ShowDialog();
         }
-        
+
+        private void hubListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (hubListBox.SelectedIndex != -1)
+            {
+                pathGroupListBox.SelectedIndex = -1;
+                pathListBox.SelectedIndex = -1;
+            }
+        }
+
+        private void pathListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (pathListBox.SelectedIndex != -1)
+            {
+                hubListBox.SelectedIndex = -1;
+                pathGroupListBox.SelectedIndex = -1;
+            }
+        }
     }
 }

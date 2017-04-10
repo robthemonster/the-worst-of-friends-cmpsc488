@@ -143,6 +143,7 @@
             this.buttonListBox.Name = "buttonListBox";
             this.buttonListBox.Size = new System.Drawing.Size(91, 329);
             this.buttonListBox.TabIndex = 1;
+            this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
             // hubImageBox
             // 

@@ -132,20 +132,25 @@ namespace GUI_Test2
     [Serializable]
     public class PathGroup : Navigable {
         public String name;
-        public List<List<PathCondition>> pathConds;
+        public List<List<String>> pathPreReqs;
+        public List<List<Requirement>> pathRequirements;
         public List<String> pathsInGroup;
-        public List<int> weights;
-        public List<int> tiers;
+        public List<int> weightsofEachPath;
+        public List<int> tiersofEachPath;
+        public List<Boolean> useOnce;
         //public Navigable nextDefault;
         //public Navigable getNext();
 
         public PathGroup() { }
-        public PathGroup(String n, List<String> pIG, List<int>w, List<int> t)
+        public PathGroup(String n, List<String> pathsInGroup, List<int>weightsofEachPath, List<int> tiersofEachPath,List<List<Requirement>>pathRequirements, List<Boolean> useOnce)
+
         {
             name = n;
-            pathsInGroup = pIG;
-            weights = w;
-            tiers = t;
+            this.pathsInGroup = pathsInGroup;
+            this.weightsofEachPath = weightsofEachPath;
+            this.tiersofEachPath = tiersofEachPath;
+            this.pathRequirements = pathRequirements;
+            this.useOnce = useOnce;
         }
         public String getName() { return name; }
         public Boolean isPathGroup() { return true; }
@@ -159,17 +164,16 @@ namespace GUI_Test2
         public PathGroup pathGroup;
         public int tier;
         public byte weight;
-        public PathCondition condition;
+        public List <Requirement> requirements;
     }
 
     [Serializable]
-    public class PathCondition {
-        //public List<Path> prereqs;
-        public List<Comparison> comparison;
+    public class PathRequirements {
+        public List<Requirement> requirement;
     }
 
     [Serializable]
-    public class Comparison {
+    public class Requirement {
         public string stat;
         public List<string> names;
         public List<int> scopes;

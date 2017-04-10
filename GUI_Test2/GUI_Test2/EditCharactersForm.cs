@@ -108,8 +108,10 @@ namespace GUI_Test2
         {
             if (imageNameTextBox.Text != "" && characterList.SelectedIndex!=-1 && !imagePath.Equals("")&& !Characters.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text))
             {
+                string imageName = imageNameTextBox.Text;
                 Characters.characters[characterList.Text].addImage(imageNameTextBox.Text, imagePath);
                 updateImageList();
+                characterImageList.SelectedIndex = characterImageList.FindString(imageName);
                 this.ActiveControl = imageNameTextBox;
             }
         }
@@ -140,7 +142,8 @@ namespace GUI_Test2
         {
             int i = characterList.SelectedIndex;
             characterList.SelectedIndex = -1;
-            characterList.SelectedIndex = i;
+            if(i!=-1)
+                characterList.SelectedIndex = i;
         }
 
         private void closeButton_Click(object sender, EventArgs e)
