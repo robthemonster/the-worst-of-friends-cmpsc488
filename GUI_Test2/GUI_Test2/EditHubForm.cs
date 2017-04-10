@@ -63,7 +63,7 @@ namespace GUI_Test2
             int index = buttonListBox.SelectedIndex;
             if (index != -1 && index != 0)
             {
-                swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex - 1);
+                swap(index, index - 1);
                 updateListBox();
                 buttonListBox.SelectedIndex = index - 1;
 
@@ -91,6 +91,10 @@ namespace GUI_Test2
                 temp = buttonList[to];
                 buttonList[to] = buttonList[from];
                 buttonList[from] = temp;
+
+                string t = buttonNameList[to];
+                buttonNameList[to] = buttonNameList[from];
+                buttonNameList[from] = t;
             }
         }
 
