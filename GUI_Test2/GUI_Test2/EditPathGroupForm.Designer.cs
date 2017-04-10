@@ -46,7 +46,7 @@
             this.pathWeightTextBox = new System.Windows.Forms.TextBox();
             this.tierPathsListBox = new System.Windows.Forms.ListBox();
             this.editTierPathButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addConditionButton = new System.Windows.Forms.Button();
             this.useOnceCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,7 +56,7 @@
             this.defaultTargetComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pathRequirementsListBox = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.removeConditionButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.hubComboBox = new System.Windows.Forms.ComboBox();
             this.hubLabel = new System.Windows.Forms.Label();
@@ -251,14 +251,15 @@
             this.editTierPathButton.UseVisualStyleBackColor = true;
             this.editTierPathButton.Click += new System.EventHandler(this.editTierPathButton_Click);
             // 
-            // button1
+            // addConditionButton
             // 
-            this.button1.Location = new System.Drawing.Point(361, 120);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 26);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Add Condition";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addConditionButton.Location = new System.Drawing.Point(361, 120);
+            this.addConditionButton.Name = "addConditionButton";
+            this.addConditionButton.Size = new System.Drawing.Size(91, 26);
+            this.addConditionButton.TabIndex = 24;
+            this.addConditionButton.Text = "Add Condition";
+            this.addConditionButton.UseVisualStyleBackColor = true;
+            this.addConditionButton.Click += new System.EventHandler(this.addConditionButton_Click);
             // 
             // useOnceCheckBox
             // 
@@ -341,12 +342,12 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.pathRequirementsListBox);
-            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.removeConditionButton);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.tableLayoutPanel2);
             this.groupBox4.Controls.Add(this.tierPathsListBox);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.addConditionButton);
             this.groupBox4.Location = new System.Drawing.Point(12, 234);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(458, 176);
@@ -362,14 +363,14 @@
             this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 69);
             this.pathRequirementsListBox.TabIndex = 38;
             // 
-            // button2
+            // removeConditionButton
             // 
-            this.button2.Location = new System.Drawing.Point(361, 91);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Remove Condition";
-            this.button2.UseVisualStyleBackColor = true;
+            this.removeConditionButton.Location = new System.Drawing.Point(361, 91);
+            this.removeConditionButton.Name = "removeConditionButton";
+            this.removeConditionButton.Size = new System.Drawing.Size(75, 23);
+            this.removeConditionButton.TabIndex = 37;
+            this.removeConditionButton.Text = "Remove Condition";
+            this.removeConditionButton.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -385,6 +386,7 @@
             // 
             // hubComboBox
             // 
+            this.hubComboBox.Enabled = false;
             this.hubComboBox.FormattingEnabled = true;
             this.hubComboBox.Location = new System.Drawing.Point(113, 38);
             this.hubComboBox.Name = "hubComboBox";
@@ -395,6 +397,7 @@
             // hubLabel
             // 
             this.hubLabel.AutoSize = true;
+            this.hubLabel.Enabled = false;
             this.hubLabel.Location = new System.Drawing.Point(117, 22);
             this.hubLabel.Name = "hubLabel";
             this.hubLabel.Size = new System.Drawing.Size(60, 13);
@@ -589,7 +592,7 @@
         private System.Windows.Forms.TextBox pathWeightTextBox;
         private System.Windows.Forms.ListBox tierPathsListBox;
         private System.Windows.Forms.Button editTierPathButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addConditionButton;
         private System.Windows.Forms.CheckBox useOnceCheckBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -603,7 +606,7 @@
         private System.Windows.Forms.ComboBox attributeComboBox;
         private System.Windows.Forms.ComboBox comparitorComboBox;
         private System.Windows.Forms.ListBox pathRequirementsListBox;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button removeConditionButton;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox hubComboBox;
         private System.Windows.Forms.Label hubLabel;

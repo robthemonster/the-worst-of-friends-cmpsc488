@@ -26,6 +26,9 @@ namespace GUI_Test2
         private const string tierLabel = "Paths in Tier: ";
         private string currHub;
         private int scope;
+        private List<String> attributes;
+        
+
 
         
 
@@ -70,6 +73,9 @@ namespace GUI_Test2
             hubComboBox.DataSource = Game.hubs;//", "
             comparitorComboBox.DataSource = new string[] { "<", "<=", "==", ">=", ">" };
             valueTextBox.Text = "0";
+            currHub = "";
+            globalRadioButton.Checked = true;
+            attributes = new List<string>();
             updatePathGroupLists();
 
         }
@@ -257,7 +263,7 @@ namespace GUI_Test2
                 int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
                 pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
                 useOnceCheckBox.Checked = useOnceList[pIGindex];
-                if (pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()));
+                if (pathsInGroup.Count>0 && pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()));
                 { 
                     pathsInPathGroupListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
                 }
@@ -280,7 +286,6 @@ namespace GUI_Test2
             if (globalRadioButton.Enabled)
             {
                 scope = 0;
-                currHub = "";
                 setAttributeComboBox();
             }
         }
@@ -294,7 +299,7 @@ namespace GUI_Test2
                 hubComboBox.Enabled = true;
                 if (hubComboBox.SelectedIndex != -1)
                 {
-                    currHub = hubComboBox.SelectedText;
+                    currHub = hubComboBox.SelectedItem.ToString();
                     setAttributeComboBox();
                 }
                 else
@@ -306,6 +311,7 @@ namespace GUI_Test2
             {
                 hubLabel.Enabled = false;
                 hubComboBox.Enabled = false;
+                currHub = "";
             }
         }
 
@@ -314,12 +320,11 @@ namespace GUI_Test2
             if (playerRadioButton.Enabled)
             {
                 scope = 2;
-                currHub = "";
                 setAttributeComboBox();
             }
         }
         private void setAttributeComboBox()
-        {
+        { 
             attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
 
         }
@@ -329,6 +334,15 @@ namespace GUI_Test2
             if (hubComboBox.SelectedIndex > 0)
             {
                 setAttributeComboBox();
+            }
+        }
+
+        private void addConditionButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int value = Int32.Parse(valueTextBox.Text());
+
             }
         }
     }
