@@ -55,29 +55,29 @@
             this.defaultTargetCheckBox = new System.Windows.Forms.CheckBox();
             this.defaultTargetComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.pathRequirementsListBox = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.hubComboBox = new System.Windows.Forms.ComboBox();
+            this.hubLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.globalRadioButton = new System.Windows.Forms.RadioButton();
             this.hubRadioButton = new System.Windows.Forms.RadioButton();
             this.playerRadioButton = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.valueTextBox = new System.Windows.Forms.TextBox();
+            this.attributeComboBox = new System.Windows.Forms.ComboBox();
+            this.comparitorComboBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pathRequirementsListBox = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // removePathsButton
@@ -149,11 +149,11 @@
             // 
             this.pathsNotInPathGroupListBox.AllowDrop = true;
             this.pathsNotInPathGroupListBox.FormattingEnabled = true;
-            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(151, 28);
+            this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(162, 30);
             this.pathsNotInPathGroupListBox.Margin = new System.Windows.Forms.Padding(2);
             this.pathsNotInPathGroupListBox.Name = "pathsNotInPathGroupListBox";
             this.pathsNotInPathGroupListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(122, 199);
+            this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(94, 199);
             this.pathsNotInPathGroupListBox.TabIndex = 12;
             this.pathsNotInPathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathsNotInPathGroupListBox_SelectedIndexChanged_1);
             // 
@@ -354,71 +354,27 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Requirements";
             // 
-            // comboBox1
+            // pathRequirementsListBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(99, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(62, 21);
-            this.comboBox1.TabIndex = 23;
+            this.pathRequirementsListBox.FormattingEnabled = true;
+            this.pathRequirementsListBox.Location = new System.Drawing.Point(357, 20);
+            this.pathRequirementsListBox.Name = "pathRequirementsListBox";
+            this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 69);
+            this.pathRequirementsListBox.TabIndex = 38;
             // 
-            // comboBox2
+            // button2
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(3, 21);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(90, 21);
-            this.comboBox2.TabIndex = 24;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(170, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(47, 20);
-            this.textBox1.TabIndex = 33;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(99, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "Comparison";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel2.Controls.Add(this.textBox1, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox1, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(111, 105);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.90476F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(221, 48);
-            this.tableLayoutPanel2.TabIndex = 35;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Atribute";
+            this.button2.Location = new System.Drawing.Point(361, 91);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Remove Condition";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.comboBox3);
-            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.hubComboBox);
+            this.groupBox5.Controls.Add(this.hubLabel);
             this.groupBox5.Controls.Add(this.tableLayoutPanel3);
             this.groupBox5.Location = new System.Drawing.Point(118, 16);
             this.groupBox5.Name = "groupBox5";
@@ -426,6 +382,24 @@
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Atribute Scope";
+            // 
+            // hubComboBox
+            // 
+            this.hubComboBox.FormattingEnabled = true;
+            this.hubComboBox.Location = new System.Drawing.Point(113, 38);
+            this.hubComboBox.Name = "hubComboBox";
+            this.hubComboBox.Size = new System.Drawing.Size(91, 21);
+            this.hubComboBox.TabIndex = 2;
+            this.hubComboBox.SelectedIndexChanged += new System.EventHandler(this.hubComboBox_SelectedIndexChanged);
+            // 
+            // hubLabel
+            // 
+            this.hubLabel.AutoSize = true;
+            this.hubLabel.Location = new System.Drawing.Point(117, 22);
+            this.hubLabel.Name = "hubLabel";
+            this.hubLabel.Size = new System.Drawing.Size(60, 13);
+            this.hubLabel.TabIndex = 1;
+            this.hubLabel.Text = "Hub Select";
             // 
             // tableLayoutPanel3
             // 
@@ -453,6 +427,7 @@
             this.globalRadioButton.TabStop = true;
             this.globalRadioButton.Text = "Global";
             this.globalRadioButton.UseVisualStyleBackColor = true;
+            this.globalRadioButton.CheckedChanged += new System.EventHandler(this.globalRadioButton_CheckedChanged);
             // 
             // hubRadioButton
             // 
@@ -464,6 +439,7 @@
             this.hubRadioButton.TabStop = true;
             this.hubRadioButton.Text = "Hub";
             this.hubRadioButton.UseVisualStyleBackColor = true;
+            this.hubRadioButton.CheckedChanged += new System.EventHandler(this.hubRadioButton_CheckedChanged);
             // 
             // playerRadioButton
             // 
@@ -475,49 +451,79 @@
             this.playerRadioButton.TabStop = true;
             this.playerRadioButton.Text = "Player";
             this.playerRadioButton.UseVisualStyleBackColor = true;
+            this.playerRadioButton.CheckedChanged += new System.EventHandler(this.playerRadioButton_CheckedChanged);
             // 
-            // label7
+            // tableLayoutPanel2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(117, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Hub Select";
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(111, 105);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.90476F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(221, 48);
+            this.tableLayoutPanel2.TabIndex = 35;
             // 
-            // comboBox3
+            // valueTextBox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(113, 38);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(91, 21);
-            this.comboBox3.TabIndex = 2;
+            this.valueTextBox.Location = new System.Drawing.Point(169, 21);
+            this.valueTextBox.Name = "valueTextBox";
+            this.valueTextBox.Size = new System.Drawing.Size(47, 20);
+            this.valueTextBox.TabIndex = 33;
+            this.valueTextBox.Text = "0";
+            this.valueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // attributeComboBox
+            // 
+            this.attributeComboBox.FormattingEnabled = true;
+            this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
+            this.attributeComboBox.Name = "attributeComboBox";
+            this.attributeComboBox.Size = new System.Drawing.Size(90, 21);
+            this.attributeComboBox.TabIndex = 24;
+            // 
+            // comparitorComboBox
+            // 
+            this.comparitorComboBox.FormattingEnabled = true;
+            this.comparitorComboBox.Location = new System.Drawing.Point(99, 21);
+            this.comparitorComboBox.Name = "comparitorComboBox";
+            this.comparitorComboBox.Size = new System.Drawing.Size(62, 21);
+            this.comparitorComboBox.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(99, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Comparison";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Atribute";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(170, 0);
+            this.label8.Location = new System.Drawing.Point(169, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
             this.label8.Text = "Value";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(361, 91);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Remove Condition";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // pathRequirementsListBox
-            // 
-            this.pathRequirementsListBox.FormattingEnabled = true;
-            this.pathRequirementsListBox.Location = new System.Drawing.Point(357, 20);
-            this.pathRequirementsListBox.Name = "pathRequirementsListBox";
-            this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 69);
-            this.pathRequirementsListBox.TabIndex = 38;
             // 
             // EditPathGroupForm
             // 
@@ -531,9 +537,9 @@
             this.Controls.Add(this.TierLabel);
             this.Controls.Add(this.tierComboBox);
             this.Controls.Add(this.OKbutton);
+            this.Controls.Add(this.pathsNotInPathGroupListBox);
             this.Controls.Add(this.Cancelbutton);
             this.Controls.Add(this.pathsInPathGroupListBox);
-            this.Controls.Add(this.pathsNotInPathGroupListBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addPathsButton);
@@ -553,12 +559,12 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,14 +599,14 @@
         private System.Windows.Forms.ComboBox defaultTargetComboBox;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox valueTextBox;
+        private System.Windows.Forms.ComboBox attributeComboBox;
+        private System.Windows.Forms.ComboBox comparitorComboBox;
         private System.Windows.Forms.ListBox pathRequirementsListBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox hubComboBox;
+        private System.Windows.Forms.Label hubLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.RadioButton globalRadioButton;
         private System.Windows.Forms.RadioButton hubRadioButton;

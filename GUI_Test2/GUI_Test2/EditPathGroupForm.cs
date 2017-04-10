@@ -24,6 +24,9 @@ namespace GUI_Test2
         public List<String> pnipg;
         public List<String> currentTier;
         private const string tierLabel = "Paths in Tier: ";
+        private string currHub;
+        private int scope;
+
         
 
 
@@ -64,14 +67,13 @@ namespace GUI_Test2
             tier = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             tierComboBox.DataSource = tier;
             tierComboBox.SelectedIndex = 0;
-
+            hubComboBox.DataSource = Game.hubs;//", "
+            comparitorComboBox.DataSource = new string[] { "<", "<=", "==", ">=", ">" };
+            valueTextBox.Text = "0";
             updatePathGroupLists();
-        }
-
-        private void removeSelectedPathsFromPathGroup_Click(object sender, EventArgs e)
-        {
 
         }
+        
 
         private void pathsNotInPathGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -271,6 +273,63 @@ namespace GUI_Test2
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void globalRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (globalRadioButton.Enabled)
+            {
+                scope = 0;
+                currHub = "";
+                setAttributeComboBox();
+            }
+        }
+
+        private void hubRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (hubRadioButton.Checked)
+            {
+                scope = 1;
+                hubLabel.Enabled = true;
+                hubComboBox.Enabled = true;
+                if (hubComboBox.SelectedIndex != -1)
+                {
+                    currHub = hubComboBox.SelectedText;
+                    setAttributeComboBox();
+                }
+                else
+                {
+                    attributeComboBox.DataSource = null;
+                }
+            }
+            else
+            {
+                hubLabel.Enabled = false;
+                hubComboBox.Enabled = false;
+            }
+        }
+
+        private void playerRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (playerRadioButton.Enabled)
+            {
+                scope = 2;
+                currHub = "";
+                setAttributeComboBox();
+            }
+        }
+        private void setAttributeComboBox()
+        {
+            attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
+
+        }
+
+        private void hubComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (hubComboBox.SelectedIndex > 0)
+            {
+                setAttributeComboBox();
+            }
         }
     }
 }

@@ -297,8 +297,9 @@ namespace GUI_Test2
                 Game.navIndex.Add(p, new Hub());
             }
             Attributes.Add(0, "g1", 0, "");
-            Attributes.Add(1, "h1", 0, "");
-            Attributes.Add(1, "h2", 0, "hub1");
+            Attributes.Add(1, "allHub1", 0, "");
+            Attributes.Add(1, "hub1One", 0, "hub1");
+            Attributes.Add(1, "hub2", 0, "hub2");
             Attributes.Add(2, "p1", 0, "");
             updateListBoxes();
             

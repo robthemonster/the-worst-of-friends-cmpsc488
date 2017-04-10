@@ -81,22 +81,23 @@ namespace GUI_Test2
         public static List<String> getScope(int scope, String hub = "")
         {
             List<String> resultList = new List<string>();
-
-            if (scope == 1)
+            
+            foreach (Attrib a in Attributes.attribs)
+            {
+                if (a.scope == scope && a.hub.Equals(""))
+                {
+                    resultList.Add(a.name);
+                }
+            }
+            
+            if (scope==1 && !hub.Equals(""))
             {
                 foreach (Attrib a in Attributes.attribs)
                 {
-                    if (a.scope == 1 && a.hub.Equals(""))
+                    if (a.scope == scope && a.hub.Equals(hub))
                     {
                         resultList.Add(a.name);
                     }
-                }
-            }
-            foreach (Attrib a in Attributes.attribs)
-            {
-                if (a.scope == scope && a.hub.Equals( hub))
-                {
-                    resultList.Add(a.name);
                 }
             }
             return resultList;
