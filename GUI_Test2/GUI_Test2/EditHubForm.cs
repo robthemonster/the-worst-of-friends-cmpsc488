@@ -305,11 +305,10 @@ namespace GUI_Test2
                 }
             }
 
-            if (useButtonImage.Checked)
+            if (useButton1Image.Checked)
             {
-                //Need to add a way to choose the 2nd button image
                 pic1path = buttonImagePath1;
-                pic2path = buttonImagePath1;
+                pic2path = buttonImagePath2;
             }
             else
             {
@@ -393,20 +392,33 @@ namespace GUI_Test2
             }
         }
 
-        private void useButtonImage_CheckedChanged(object sender, EventArgs e)
+        private void useButton1Image_CheckedChanged(object sender, EventArgs e)
         {
-            if (useButtonImage.Checked)
+            if (useButton1Image.Checked)
             {
-                buttonPictureBox.Enabled = true;
-                chooseButtonImageButton.Enabled = true;
+                button1PictureBox.Enabled = true;
+                chooseButton1ImageButton.Enabled = true;
             }
             else {
-                buttonPictureBox.Enabled = false;
-                chooseButtonImageButton.Enabled = false;
+                button1PictureBox.Enabled = false;
+                chooseButton1ImageButton.Enabled = false;
             }
         }
 
-        private void setButtonImageButton_Click(object sender, EventArgs e)
+        private void useButton2Image_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useButton2Image.Checked)
+            {
+                button2PictureBox.Enabled = true;
+                chooseButton2ImageButton.Enabled = true;
+            }
+            else {
+                button2PictureBox.Enabled = false;
+                chooseButton2ImageButton.Enabled = false;
+            }
+        }
+
+        private void setButton1ImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
             of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
@@ -417,8 +429,28 @@ namespace GUI_Test2
 
             try
             {
-                buttonPictureBox.Image = Image.FromStream(of.OpenFile());
+                button1PictureBox.Image = Image.FromStream(of.OpenFile());
                 buttonImagePath1 = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void setButton2ImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            of.ShowDialog();
+
+            try
+            {
+                button2PictureBox.Image = Image.FromStream(of.OpenFile());
+                buttonImagePath2 = of.FileName;
             }
             catch (IndexOutOfRangeException)
             {
@@ -489,7 +521,7 @@ namespace GUI_Test2
                 }
 
                 //Position
-                if (buttonNameList.Count < 2 && (b.posX == -200 || b.posX == 200) && b.posY == 300)
+                if (buttonNameList.Count <= 2 && (b.posX == -200 || b.posX == 200) && b.posY == 300)
                 {
                     useButtonLocationDefaults.Checked = true;
                 }
@@ -503,21 +535,31 @@ namespace GUI_Test2
                 //Picture 1
                 if (b.pic1path == "")
                 {
-                    useButtonImage.Checked = false;
+                    useButton1Image.Checked = false;
                 }
                 else
                 {
-                    useButtonImage.Checked = true;
+                    useButton1Image.Checked = true;
                     buttonImagePath1 = b.pic1path;
                     buttonImagePath2 = b.pic2path;
-                    buttonPictureBox.Image = Image.FromFile(buttonImagePath1);
+                    button1PictureBox.Image = Image.FromFile(buttonImagePath1);
+                    button2PictureBox.Image = Image.FromFile(buttonImagePath2);
                 }
 
             }
             else
             {
                 buttonTextTextBox.Text = "";
+                pathFromButtonRadio.Checked = false;
+                pathGroupFromButtonRadio.Checked = false;
+                hubFromButtonRadio.Checked = false;
                 navComboBox.Text = null;
+                useButtonSizeDefaults.Checked = true;
+                useButtonLocationDefaults.Checked = true;
+                useButton1Image.Checked = false;
+                useButton2Image.Checked = false;
+                button1PictureBox.Image = button1PictureBox.InitialImage;
+                button2PictureBox.Image = button2PictureBox.InitialImage;
             }
         }
     }
