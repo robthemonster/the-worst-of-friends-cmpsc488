@@ -14,7 +14,7 @@ namespace GUI_Test2
     {
         public String name;
         public ProjectHomeForm parentForm;
-        private List<List<String>> pathPreReqs;
+        //private List<List<String>> pathPreReqs;
         public List<List<Requirement>> reqsofEachPath;
         public List<String> pathsInGroup;
         public List<int> weightofEachPath;
@@ -38,7 +38,7 @@ namespace GUI_Test2
             InitializeComponent();
             name = nam;
             parentForm = par;
-            pathPreReqs = new List<List<String>>();
+            //pathPreReqs = new List<List<String>>();
             reqsofEachPath = new List<List<Requirement>>();
             pathsInGroup = new List<String>();
             weightofEachPath = new List<int>();
@@ -51,7 +51,7 @@ namespace GUI_Test2
             InitializeComponent();
             name = pg.name;
             parentForm = par;
-            pathPreReqs = pg.pathPreReqs;
+            //pathPreReqs = pg.pathPreReqs;
             reqsofEachPath = pg.pathRequirements;
             pathsInGroup = pg.pathsInGroup;
             weightofEachPath = pg.weightsofEachPath;
@@ -167,6 +167,7 @@ namespace GUI_Test2
                     tierofEachPath.Add(tierComboBox.SelectedIndex);
                     weightofEachPath.Add(Int32.Parse(pathWeightTextBox.Text));
                     useOnceList.Add(useOnceCheckBox.Checked);
+                    reqsofEachPath.Add(new List<Requirement>());
                 }
                 updatePathGroupLists();
             }
@@ -185,6 +186,7 @@ namespace GUI_Test2
                 tierofEachPath.RemoveAt(i);
                 weightofEachPath.RemoveAt(i);
                 useOnceList.RemoveAt(i);
+                reqsofEachPath.RemoveAt(i);
 
             }
             updatePathGroupLists();
@@ -263,7 +265,7 @@ namespace GUI_Test2
                 int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
                 pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
                 useOnceCheckBox.Checked = useOnceList[pIGindex];
-                if (pathsInGroup.Count>0 && pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()));
+                if (pathsInGroup.Count>0 && pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
                 { 
                     pathsInPathGroupListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
                 }
@@ -324,28 +326,93 @@ namespace GUI_Test2
             }
         }
         private void setAttributeComboBox()
-        { 
+        {
             attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
 
         }
 
         private void hubComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (hubComboBox.SelectedIndex > 0)
+            if (hubComboBox.SelectedIndex !=-1)
             {
-                setAttributeComboBox();
+                playerRadioButton.Checked = true;
+                hubRadioButton.Checked = true;
+                //setAttributeComboBox();
             }
         }
 
         private void addConditionButton_Click(object sender, EventArgs e)
         {
-            try
+            if (attributeComboBox.SelectedIndex != -1&& pathsInPathGroupListBox.SelectedIndex!=-1)
             {
-                int value = Int32.Parse(valueTextBox.Text);
 
+
+                try
+                {
+                    int value = Int32.Parse(valueTextBox.Text);
+                    int i = pathsInPathGroupListBox.SelectedIndex;
+                    reqsofEachPath[i].Add(new Requirement(scope, currHub, attributeComboBox.SelectedValue.ToString(), comparitorComboBox.SelectedValue.ToString(), value));
+                    updateReqList();
+                    pathRequirementsListBox.SelectedIndex = reqsofEachPath[i].Count-1;
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Value must be an Integer.");
+                    valueTextBox.Text = "";
+                }
             }
-            catch (FormatException)
+        }
+        private int updateReqList()
+        {
+            int i = pathsInPathGroupListBox.SelectedIndex;
+            List<string> reqs = new List<string>();
+            foreach(Requirement r in reqsofEachPath[i])
             {
+                reqs.Add(r.name);
+            }
+            pathRequirementsListBox.DataSource = reqs;
+            return reqs.Count;
+        }
+
+        private void pathRequirementsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (pathRequirementsListBox.SelectedIndex != -1)
+            {
+                Requirement r = reqsofEachPath[pathsInPathGroupListBox.SelectedIndex][pathRequirementsListBox.SelectedIndex];
+                if(r != null)
+                {
+                    switch (r.scope)
+                    {
+                        case 0:
+                            globalRadioButton.Checked = true;
+                            break;
+                        case 1:
+                            hubRadioButton.Checked = true;
+                            hubComboBox.SelectedIndex = hubComboBox.FindStringExact(r.hub);
+                            break;
+                        case 2:
+                            playerRadioButton.Checked = true;
+                            break;
+                    }
+                    attributeComboBox.SelectedIndex = attributeComboBox.FindStringExact(r.name);
+                    comparitorComboBox.SelectedIndex = comparitorComboBox.FindStringExact(r.comp);
+                    valueTextBox.Text = r.value.ToString() ;
+                }
+            }
+        }
+
+        private void removeConditionButton_Click(object sender, EventArgs e)
+        {
+            if (pathRequirementsListBox.SelectedIndex != -1)
+            {
+                int i = pathRequirementsListBox.SelectedIndex;
+                reqsofEachPath[pathsInPathGroupListBox.SelectedIndex].RemoveAt(pathRequirementsListBox.SelectedIndex);
+                if (i == updateReqList())
+                {
+                    i = i-1;
+                }
+               pathRequirementsListBox.SelectedIndex = i;
+                
             }
         }
     }

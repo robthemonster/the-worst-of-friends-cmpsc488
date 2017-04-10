@@ -362,6 +362,7 @@
             this.pathRequirementsListBox.Name = "pathRequirementsListBox";
             this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 69);
             this.pathRequirementsListBox.TabIndex = 38;
+            this.pathRequirementsListBox.SelectedIndexChanged += new System.EventHandler(this.pathRequirementsListBox_SelectedIndexChanged);
             // 
             // removeConditionButton
             // 
@@ -371,6 +372,7 @@
             this.removeConditionButton.TabIndex = 37;
             this.removeConditionButton.Text = "Remove Condition";
             this.removeConditionButton.UseVisualStyleBackColor = true;
+            this.removeConditionButton.Click += new System.EventHandler(this.removeConditionButton_Click);
             // 
             // groupBox5
             // 
@@ -461,7 +463,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -478,7 +480,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(169, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(167, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -490,13 +492,13 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(90, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(89, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(99, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(98, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(62, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -504,7 +506,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(99, 0);
+            this.label5.Location = new System.Drawing.Point(98, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 34;
@@ -522,7 +524,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(169, 0);
+            this.label8.Location = new System.Drawing.Point(167, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
