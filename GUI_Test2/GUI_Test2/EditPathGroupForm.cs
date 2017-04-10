@@ -341,8 +341,11 @@ namespace GUI_Test2
         {
             try
             {
-                int value = Int32.Parse(valueTextBox.Text());
+                int value = Int32.Parse(valueTextBox.Text);
 
+            }
+            catch (FormatException)
+            {
             }
         }
     }
