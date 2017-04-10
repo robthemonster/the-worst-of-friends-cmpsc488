@@ -182,9 +182,22 @@ namespace GUI_Test2
 
     [Serializable]
     public class Requirement {
-        public string stat;
-        public List<string> names;
-        public List<int> scopes;
+        public int value;
+        public string name;
+        public int scope;
+        public string hub;
+        public string comp;
+
+
+        public Requirement() { }
+        public Requirement(int scope, string hub, string name, string comp,int value)
+        {
+            this.scope = scope;
+            this.hub = hub;
+            this.name = name;
+            this.comp = comp;
+            this.value = value;
+        }
     }
 
 }
