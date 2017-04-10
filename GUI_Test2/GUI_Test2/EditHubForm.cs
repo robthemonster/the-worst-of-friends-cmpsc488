@@ -43,6 +43,8 @@ namespace GUI_Test2
             this.hubName = that.name;
             this.hubImagePath = that.hubImage;
             this.buttonList = that.buttons;
+
+            updateListBox();
         }
 
         private void EditHubForm_Load(object sender, EventArgs e)
@@ -308,7 +310,7 @@ namespace GUI_Test2
             else
             {
                 //Passes a string
-                next = navComboBox.SelectedText;
+                next = Game.paths[navComboBox.SelectedIndex];
             }
 
             //Need to add the option for what gets highlighted
@@ -425,7 +427,71 @@ namespace GUI_Test2
 
         private void buttonListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Load the selected button into the editor
+            if (buttonListBox.SelectedIndex != -1)
+            {
+                //Text
+                buttonTextTextBox.Text = buttonList[buttonListBox.SelectedIndex].text;
 
+                //Type
+                Button b = buttonList[buttonListBox.SelectedIndex];
+                Navigable test = Game.navIndex[b.next];
+                if (Game.navIndex[b.next].isPath())
+                {
+                    pathFromButtonRadio.Checked = true;
+                }
+                else if (Game.navIndex[b.next].isPathGroup())
+                {
+                    pathGroupFromButtonRadio.Checked = true;
+                }
+                else
+                {
+                    hubFromButtonRadio.Checked = true;
+                }
+
+                //Size
+                if (b.sizeX == 300 && b.sizeY == 100)
+                {
+                    useButtonSizeDefaults.Checked = true;
+                }
+                else
+                {
+                    useButtonSizeDefaults.Checked = false;
+                    buttonWidthTextBox.Text = b.sizeX.ToString();
+                    buttonHeightTextBox.Text = b.sizeY.ToString();
+                }
+
+                //Position
+                if (buttonNameList.Count < 2 && (b.posX == -200 || b.posX == 200) && b.posY == 300)
+                {
+                    useButtonLocationDefaults.Checked = true;
+                }
+                else
+                {
+                    useButtonLocationDefaults.Checked = false;
+                    buttonXLocTextBox.Text = b.posX.ToString();
+                    buttonYLocTextBox.Text = b.posY.ToString();
+                }
+
+                //Picture 1
+                if (b.pic1path == "")
+                {
+                    useButtonImage.Checked = false;
+                }
+                else
+                {
+                    useButtonImage.Checked = true;
+                    buttonImagePath1 = b.pic1path;
+                    buttonImagePath2 = b.pic2path;
+                    buttonPictureBox.Image = Image.FromFile(buttonImagePath1);
+                }
+
+            }
+            else
+            {
+                buttonTextTextBox.Text = "";
+                navComboBox.Text = null;
+            }
         }
     }
 }

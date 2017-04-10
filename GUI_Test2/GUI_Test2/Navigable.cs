@@ -13,6 +13,8 @@ namespace GUI_Test2
     {
         String getName();
         Boolean isPathGroup();
+        Boolean isPath();
+        Boolean isHub();
     }
     [Serializable]
     public class Path : Navigable {
@@ -33,6 +35,8 @@ namespace GUI_Test2
 
         public String getName() { return name; }
         public Boolean isPathGroup() { return false; }
+        public Boolean isPath() { return true; }
+        public Boolean isHub() { return false; }
     }
 
     [Serializable]
@@ -77,6 +81,8 @@ namespace GUI_Test2
         //public something sound;
         public String getName() { return name; }
         public Boolean isPathGroup() { return false; }
+        public Boolean isPath() { return false; }
+        public Boolean isHub() { return true; }
 
         public Hub() { }
 
@@ -154,6 +160,8 @@ namespace GUI_Test2
         }
         public String getName() { return name; }
         public Boolean isPathGroup() { return true; }
+        public Boolean isPath() { return false; }
+        public Boolean isHub() { return false; }
     }
 
     //Attributes is its own class
