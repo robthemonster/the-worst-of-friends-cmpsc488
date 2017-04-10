@@ -348,5 +348,43 @@ namespace GUI_Test2
                 pathGroupListBox.SelectedIndex = -1;
             }
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            int index = -1;
+            if(hubListBox.SelectedIndex != -1)
+            {
+                index = hubListBox.SelectedIndex;
+                Game.hubs.RemoveAt(index);
+                if (index == Game.hubs.Count)
+                {
+                    index = index - 1;
+                }
+                updateListBoxes();
+                hubListBox.SelectedIndex = index;
+            }
+            else if (pathGroupListBox.SelectedIndex != -1)
+            {
+                index = pathGroupListBox.SelectedIndex;
+                Game.pathGroups.RemoveAt(index);
+                if (index == Game.pathGroups.Count)
+                {
+                    index = index - 1;
+                }
+                updateListBoxes();
+                pathGroupListBox.SelectedIndex = index;
+            }
+            else if (pathListBox.SelectedIndex != -1)
+            {
+                index = pathListBox.SelectedIndex;
+                Game.paths.RemoveAt(index);
+                if (index == Game.paths.Count)
+                {
+                    index = index - 1;
+                }
+                updateListBoxes();
+                pathListBox.SelectedIndex = index;
+            }
+        }
     }
 }

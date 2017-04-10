@@ -55,6 +55,7 @@
             this.pathLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.pathGroupListBox = new System.Windows.Forms.ListBox();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -203,25 +204,22 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.hubListBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.pathListBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.hubLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathLabel, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.closeButton, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupListBox, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(867, 424);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(453, 398);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // hubListBox
@@ -274,7 +272,7 @@
             // closeButton
             // 
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.Location = new System.Drawing.Point(773, 349);
+            this.closeButton.Location = new System.Drawing.Point(490, 399);
             this.closeButton.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(74, 35);
@@ -293,14 +291,26 @@
             this.pathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathGroupListBox_SelectedIndexChanged);
             this.pathGroupListBox.DoubleClick += new System.EventHandler(this.LoadPathGroupFromPathListBox);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(489, 370);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // ProjectHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(894, 464);
+            this.ClientSize = new System.Drawing.Size(894, 507);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.closeButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -345,5 +355,6 @@
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.ToolStripMenuItem attributesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mAKEPATHSToolStripMenuItem;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
