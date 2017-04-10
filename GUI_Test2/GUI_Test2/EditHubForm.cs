@@ -63,7 +63,7 @@ namespace GUI_Test2
             int index = buttonListBox.SelectedIndex;
             if (index != -1 && index != 0)
             {
-                swap(buttonListBox.SelectedIndex, buttonListBox.SelectedIndex - 1);
+                swap(index, index - 1);
                 updateListBox();
                 buttonListBox.SelectedIndex = index - 1;
 
@@ -91,6 +91,10 @@ namespace GUI_Test2
                 temp = buttonList[to];
                 buttonList[to] = buttonList[from];
                 buttonList[from] = temp;
+
+                string t = buttonNameList[to];
+                buttonNameList[to] = buttonNameList[from];
+                buttonNameList[from] = t;
             }
         }
 
@@ -100,6 +104,17 @@ namespace GUI_Test2
             buttonListBox.DataSource = buttonNameList;
             buttonListBox.SelectedIndex = -1;
 
+        }
+
+        private bool inButtonList(List<Button> bl, string s)
+        {
+            foreach (Button b in bl)
+            {
+                if (b.text == s)
+                    return true;
+            }
+
+            return false;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -310,18 +325,28 @@ namespace GUI_Test2
             else
             {
                 //Passes a string
-                next = Game.paths[navComboBox.SelectedIndex];
+                if (pathFromButtonRadio.Checked == true)
+                    next = Game.paths[navComboBox.SelectedIndex];
+                else if (pathGroupFromButtonRadio.Checked == true)
+                    next = Game.pathGroups[navComboBox.SelectedIndex];
+                else
+                    next = Game.hubs[navComboBox.SelectedIndex];
             }
 
             //Need to add the option for what gets highlighted
             highlight = 0;
 
+            if (inButtonList(buttonList, buttonTextTextBox.Text))
+            {
+                buttonList[buttonListBox.SelectedIndex] = new Button(text,sizeX,sizeY,posX,posY,pic1path,pic2path,highlight,next);
+            }
+            else
+            {
+                buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
+                buttonCount++;
+                buttonNameList.Add("Button " + buttonCount);
+            }
             
-            next = "";
-
-            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
-            buttonCount++;
-            buttonNameList.Add("Button " + buttonCount);
 
             buttonWidthTextBox.Text = "";
             buttonHeightTextBox.Text = "";
@@ -435,7 +460,6 @@ namespace GUI_Test2
 
                 //Type
                 Button b = buttonList[buttonListBox.SelectedIndex];
-                Navigable test = Game.navIndex[b.next];
                 if (Game.navIndex[b.next].isPath())
                 {
                     pathFromButtonRadio.Checked = true;
@@ -448,6 +472,9 @@ namespace GUI_Test2
                 {
                     hubFromButtonRadio.Checked = true;
                 }
+
+                //Next
+                navComboBox.SelectedIndex = navComboBox.FindStringExact(b.next);
 
                 //Size
                 if (b.sizeX == 300 && b.sizeY == 100)
