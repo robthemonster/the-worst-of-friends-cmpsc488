@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using Microsoft;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +89,48 @@ namespace GUI_Test2
         public static void setPaths(List<String> p)
         {
             paths = p;
+        }
+
+        public static void generateCode()
+        {
+
+            String vsCommandPath = System.Environment.GetEnvironmentVariable("windir") + "\\System32\\cmd.exe";
+            String directory = Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\aaaa.cpp";
+
+            StreamWriter output = new StreamWriter(directory);
+            String s = @"#include <iostream>
+//#include ""Game.h""
+int main(){
+    //Game g = new Game(1, NULL);
+    //sf::Vector2f v(0, 0);
+    std::cout<<""Hello World""<< std::endl;
+    return 0;
+}";
+            output.WriteLine(s);
+            output.Close();
+            Process compile = new Process();
+            compile.StartInfo.FileName = vsCommandPath;
+            compile.StartInfo.RedirectStandardInput = true;
+            compile.StartInfo.RedirectStandardOutput = true;
+            compile.StartInfo.CreateNoWindow = true;
+            compile.StartInfo.UseShellExecute = false;
+            compile.Start();
+
+            DirectoryInfo d = Directory.GetParent(directory);
+            
+            Console.Out.WriteLine(directory);
+            compile.StandardInput.WriteLine("cd " + d );
+            compile.StandardInput.WriteLine(@"VC\bin\vcvars32");
+            compile.StandardInput.WriteLine(@"VC\bin\cl /EHsc aaaa.cpp");
+            compile.StandardInput.Flush();
+            
+
+
+           Console.Out.WriteLine(compile.StandardOutput.ReadToEnd());
+            Console.Out.WriteLine(compile.StandardError.ReadToEnd());
+            compile.Close();
+           // compile.WaitForExit();
+            
         }
     }
 }
