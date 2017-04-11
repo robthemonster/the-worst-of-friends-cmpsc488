@@ -94,10 +94,10 @@ namespace GUI_Test2
         {
 
             String vsCommandPath = System.Environment.GetEnvironmentVariable("windir") + "\\System32\\cmd.exe";
-            String directory = Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\main.cpp";
-            DirectoryInfo d = Directory.GetParent(directory);
+            String mainPath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\main.cpp";
+            DirectoryInfo directory = Directory.GetParent(mainPath);
 
-            FileInfo[] files = d.GetFiles();
+            FileInfo[] files = directory.GetFiles();
             foreach (FileInfo f in files)
             {
                 if (f.Name == "main.exe" || f.Name == "main.cpp")
@@ -105,13 +105,13 @@ namespace GUI_Test2
             }
 
             ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
-            cmd.Arguments = @"/c cd " + d + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include .\include\*.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
+            cmd.Arguments = @"/c cd " + directory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .\VC\include .\include\*.cpp  /link /LIBPATH:.\VC\lib *.lib /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
            
             Process compiler = Process.Start(cmd);
             compiler.WaitForExit();
 
-            StreamWriter output = new StreamWriter(directory);
-            String s = @"
+            StreamWriter output = new StreamWriter(mainPath);
+            string s = @"
                 #include <SFML\Graphics.hpp>
 #include <iostream>
 
@@ -630,13 +630,10 @@ int main()
 
 
 }
-
-
-
 "; //TODO: fix
             output.WriteLine(s);
             output.Close();
-            cmd.Arguments = @"/c cd " + d + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
+            cmd.Arguments = @"/c cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .\VC\include main.cpp /link /LIBPATH:.\VC\lib *.lib /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
                             
             compiler = Process.Start(cmd);
             
@@ -644,14 +641,14 @@ int main()
 
         
 
-            foreach (FileInfo f in d.GetFiles())
+            foreach (FileInfo f in directory.GetFiles())
             {
                 if (f.Extension == ".obj" || f.Name == "main.cpp" || (f.Extension == ".exe" && f.Name != "main.exe"))
                     f.Delete();
             }
 
-            ProcessStartInfo game = new ProcessStartInfo(d + "\\main.exe");
-            game.WorkingDirectory = d.ToString();
+            ProcessStartInfo game = new ProcessStartInfo(directory + "\\main.exe");
+            game.WorkingDirectory = directory.ToString();
             Process gameProc = Process.Start(game);
             gameProc.WaitForExit();
             
