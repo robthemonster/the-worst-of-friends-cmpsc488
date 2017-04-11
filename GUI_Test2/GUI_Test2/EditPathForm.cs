@@ -365,6 +365,7 @@ namespace GUI_Test2
             try
             {
                 buttonList.RemoveAt(index);
+                buttonNameList.RemoveAt(index);
                 if (index == buttonList.Count)
                     index = index - 1;
 
