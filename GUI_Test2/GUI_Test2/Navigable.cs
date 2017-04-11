@@ -78,7 +78,7 @@ namespace GUI_Test2
         public string name;
         public List<Button> buttons;
         public string hubImage;
-        //public something sound;
+        public string hubSound;
         public String getName() { return name; }
         public Boolean isPathGroup() { return false; }
         public Boolean isPath() { return false; }
@@ -86,11 +86,12 @@ namespace GUI_Test2
 
         public Hub() { }
 
-        public Hub(string n, List<Button> b, string hI)
+        public Hub(string n, List<Button> b, string hI, string hS)
         {
             name = n;
             buttons = b;
             hubImage = hI;
+            hubSound = hS;
         }
     }
 

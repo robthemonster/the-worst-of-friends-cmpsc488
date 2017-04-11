@@ -21,7 +21,7 @@ namespace GUI_Test2
         private string buttonImagePath1;
         private string buttonImagePath2;
         private string hubImagePath;
-        private string musicPath;
+        private string hubSoundPath;
 
         public EditHubForm(ProjectHomeForm par, string name)
         {
@@ -32,7 +32,7 @@ namespace GUI_Test2
             buttonImagePath2 = "";
             hubImagePath = "";
             buttonList = new List<Button>();
-            musicPath = "";
+            hubSoundPath = "";
 
 
             updateListBox();
@@ -50,6 +50,7 @@ namespace GUI_Test2
             {
                 buttonNameList.Add("Button " + i);
             }
+            this.hubSoundPath = that.hubSound;
 
             updateListBox();
         }
@@ -133,12 +134,12 @@ namespace GUI_Test2
         {
             if (Game.navIndex.ContainsKey(hubName))
             {
-                Game.navIndex[hubName] = new Hub(hubName, buttonList, hubImagePath);
+                Game.navIndex[hubName] = new Hub(hubName, buttonList, hubImagePath, hubSoundPath);
             }
             else
             {
                 Game.hubs.Add(hubName);
-                Game.navIndex.Add(hubName, new Hub(hubName, buttonList, hubImagePath));
+                Game.navIndex.Add(hubName, new Hub(hubName, buttonList, hubImagePath, hubSoundPath));
             }
             parentForm.updateListBoxes();
             Close();
@@ -395,8 +396,10 @@ namespace GUI_Test2
                 buttonCount++;
                 buttonNameList.Add("Button " + buttonCount);
             }
-            
 
+            buttonImagePath1 = "";
+            buttonImagePath2 = "";
+            //button1PictureBox.Image = "";
             buttonWidthTextBox.Text = "";
             buttonHeightTextBox.Text = "";
             buttonXLocTextBox.Text = "";
@@ -644,7 +647,7 @@ namespace GUI_Test2
 
             try
             {
-                musicPath = of.FileName;
+                hubSoundPath = of.FileName;
             }
             catch (IndexOutOfRangeException)
             {

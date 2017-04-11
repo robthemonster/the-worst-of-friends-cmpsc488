@@ -258,7 +258,6 @@
             // 
             this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2PictureBox.Enabled = false;
-            this.button2PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("button2PictureBox.Image")));
             this.button2PictureBox.InitialImage = null;
             this.button2PictureBox.Location = new System.Drawing.Point(270, 175);
             this.button2PictureBox.Name = "button2PictureBox";
@@ -498,7 +497,6 @@
             // 
             this.button1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1PictureBox.Enabled = false;
-            this.button1PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("button1PictureBox.Image")));
             this.button1PictureBox.InitialImage = null;
             this.button1PictureBox.Location = new System.Drawing.Point(270, 49);
             this.button1PictureBox.Name = "button1PictureBox";

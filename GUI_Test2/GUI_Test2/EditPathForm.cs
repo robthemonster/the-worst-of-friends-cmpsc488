@@ -133,7 +133,7 @@ namespace GUI_Test2
             int index = dialogueList.SelectedIndex;
             if (index != -1 && index!=0)
             {
-                swap(index, index - 1);
+                swapImpact(index, index - 1);
                 updateListBoxes();
                 dialogueList.SelectedIndex = index - 1;
 
@@ -146,13 +146,14 @@ namespace GUI_Test2
             int index = dialogueList.SelectedIndex;
             if (index != -1 && index < dialogueEntryList.Count-1 )
             {
-                swap(dialogueList.SelectedIndex, dialogueList.SelectedIndex + 1);
+                swapImpact(dialogueList.SelectedIndex, dialogueList.SelectedIndex + 1);
                 updateListBoxes();
                 dialogueList.SelectedIndex = index + 1;
 
             }
         }
-        private void swap(int from, int to) {
+        private void swapImpact(int from, int to) {
+
             String temp;
             List<Impact> tempI;
             if(to>=0 && to< dialogueEntryList.Count)
@@ -169,6 +170,22 @@ namespace GUI_Test2
 
             }
          }
+
+        private void swapButton(int from, int to)
+        {
+            Button temp = new Button();
+
+            if (to >= 0 && to < buttonList.Count)
+            {
+                temp = buttonList[to];
+                buttonList[to] = buttonList[from];
+                buttonList[from] = temp;
+
+                string t = buttonNameList[to];
+                buttonNameList[to] = buttonNameList[from];
+                buttonNameList[from] = t;
+            }
+        }
 
         private bool inButtonList(List<Button> bl, string s)
         {
@@ -340,8 +357,8 @@ namespace GUI_Test2
             int index = buttonListBox.SelectedIndex;
             if (index != -1 && index != 0)
             {
-                swap(index, index - 1);
-                updateListBoxes();
+                swapButton(index, index - 1);
+                updateButtonListBox();
                 buttonListBox.SelectedIndex = index - 1;
 
             }
@@ -350,10 +367,10 @@ namespace GUI_Test2
         private void buttonListDownButton_Click(object sender, EventArgs e)
         {
             int index = buttonListBox.SelectedIndex;
-            if (index != -1 && index < dialogueEntryList.Count - 1)
+            if (index != -1 && index < buttonList.Count - 1)
             {
-                swap(index, index + 1);
-                updateListBoxes();
+                swapButton(index, index + 1);
+                updateButtonListBox();
                 buttonListBox.SelectedIndex = index + 1;
             }
         }
@@ -729,6 +746,8 @@ namespace GUI_Test2
             buttonHeightTextBox.Text = "";
             buttonXLocTextBox.Text = "";
             buttonYLocTextBox.Text = "";
+            buttonImagePath1 = "";
+            buttonImagePath2 = "";
 
             updateButtonListBox();
         }
@@ -896,6 +915,30 @@ namespace GUI_Test2
         {
             navType = 2;
             setScope();
+        }
+
+        private void useMusic_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chooseMusicButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Audio files (*.ogg) | *.ogg";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            of.ShowDialog();
+
+            try
+            {
+                //hubSoundPath = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
         }
     }
     

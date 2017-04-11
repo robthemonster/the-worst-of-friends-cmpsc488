@@ -105,6 +105,9 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
+            this.musicBox = new System.Windows.Forms.GroupBox();
+            this.useMusic = new System.Windows.Forms.CheckBox();
+            this.chooseMusicButton = new System.Windows.Forms.Button();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).BeginInit();
@@ -120,6 +123,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
+            this.musicBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -136,6 +140,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.musicBox);
             this.tabPage1.Controls.Add(this.saveButton);
             this.tabPage1.Controls.Add(this.cancelButton);
             this.tabPage1.Controls.Add(this.label2);
@@ -972,6 +977,39 @@
             this.buttonListBox.TabIndex = 1;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
+            // musicBox
+            // 
+            this.musicBox.Controls.Add(this.useMusic);
+            this.musicBox.Controls.Add(this.chooseMusicButton);
+            this.musicBox.Location = new System.Drawing.Point(99, 353);
+            this.musicBox.Name = "musicBox";
+            this.musicBox.Size = new System.Drawing.Size(415, 79);
+            this.musicBox.TabIndex = 48;
+            this.musicBox.TabStop = false;
+            this.musicBox.Text = "Background Music (Optional)";
+            // 
+            // useMusic
+            // 
+            this.useMusic.AutoSize = true;
+            this.useMusic.Location = new System.Drawing.Point(140, 19);
+            this.useMusic.Name = "useMusic";
+            this.useMusic.Size = new System.Drawing.Size(137, 17);
+            this.useMusic.TabIndex = 1;
+            this.useMusic.Text = "Use Background Music";
+            this.useMusic.UseVisualStyleBackColor = true;
+            this.useMusic.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
+            // 
+            // chooseMusicButton
+            // 
+            this.chooseMusicButton.Enabled = false;
+            this.chooseMusicButton.Location = new System.Drawing.Point(162, 42);
+            this.chooseMusicButton.Name = "chooseMusicButton";
+            this.chooseMusicButton.Size = new System.Drawing.Size(95, 23);
+            this.chooseMusicButton.TabIndex = 0;
+            this.chooseMusicButton.Text = "Choose Music";
+            this.chooseMusicButton.UseVisualStyleBackColor = true;
+            this.chooseMusicButton.Click += new System.EventHandler(this.chooseMusicButton_Click);
+            // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1008,6 +1046,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.musicBox.ResumeLayout(false);
+            this.musicBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1090,5 +1130,8 @@
         private System.Windows.Forms.Button chooseButton2ImageButton;
         private System.Windows.Forms.PictureBox button2PictureBox;
         private System.Windows.Forms.CheckBox HighlightTextButton;
+        private System.Windows.Forms.GroupBox musicBox;
+        private System.Windows.Forms.CheckBox useMusic;
+        private System.Windows.Forms.Button chooseMusicButton;
     }
 }
