@@ -352,9 +352,11 @@ namespace GUI_Test2
         private void deleteButton_Click(object sender, EventArgs e)
         {
             int index = -1;
+            string n = "";
             if(hubListBox.SelectedIndex != -1)
             {
                 index = hubListBox.SelectedIndex;
+                n = Game.hubs[index];
                 Game.hubs.RemoveAt(index);
                 if (index == Game.hubs.Count)
                 {
@@ -366,6 +368,7 @@ namespace GUI_Test2
             else if (pathGroupListBox.SelectedIndex != -1)
             {
                 index = pathGroupListBox.SelectedIndex;
+                n = Game.pathGroups[index];
                 Game.pathGroups.RemoveAt(index);
                 if (index == Game.pathGroups.Count)
                 {
@@ -377,6 +380,7 @@ namespace GUI_Test2
             else if (pathListBox.SelectedIndex != -1)
             {
                 index = pathListBox.SelectedIndex;
+                n = Game.paths[index];
                 Game.paths.RemoveAt(index);
                 if (index == Game.paths.Count)
                 {
@@ -385,6 +389,8 @@ namespace GUI_Test2
                 updateListBoxes();
                 pathListBox.SelectedIndex = index;
             }
+
+            Game.navIndex.Remove(n);
         }
 
         private void runPlayTest_MenuItemClick(object sender, EventArgs e)
