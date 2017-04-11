@@ -68,6 +68,9 @@
             this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
             this.chooseButton1ImageButton = new System.Windows.Forms.Button();
             this.button1PictureBox = new System.Windows.Forms.PictureBox();
+            this.musicBox = new System.Windows.Forms.GroupBox();
+            this.useMusic = new System.Windows.Forms.CheckBox();
+            this.chooseMusicButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
@@ -75,11 +78,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             this.targetNavigableBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
+            this.musicBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonListDownButton
             // 
-            this.buttonListDownButton.Location = new System.Drawing.Point(115, 493);
+            this.buttonListDownButton.Location = new System.Drawing.Point(118, 615);
             this.buttonListDownButton.Name = "buttonListDownButton";
             this.buttonListDownButton.Size = new System.Drawing.Size(22, 23);
             this.buttonListDownButton.TabIndex = 43;
@@ -89,7 +93,7 @@
             // 
             // buttonListUpButton
             // 
-            this.buttonListUpButton.Location = new System.Drawing.Point(115, 464);
+            this.buttonListUpButton.Location = new System.Drawing.Point(118, 586);
             this.buttonListUpButton.Name = "buttonListUpButton";
             this.buttonListUpButton.Size = new System.Drawing.Size(22, 23);
             this.buttonListUpButton.TabIndex = 42;
@@ -127,8 +131,8 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.384164F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 340F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(97, 363);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 471F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(97, 494);
             this.tableLayoutPanel4.TabIndex = 41;
             // 
             // label16
@@ -146,7 +150,7 @@
             this.buttonListBox.FormattingEnabled = true;
             this.buttonListBox.Location = new System.Drawing.Point(3, 26);
             this.buttonListBox.Name = "buttonListBox";
-            this.buttonListBox.Size = new System.Drawing.Size(91, 329);
+            this.buttonListBox.Size = new System.Drawing.Size(91, 459);
             this.buttonListBox.TabIndex = 1;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
@@ -211,7 +215,7 @@
             this.addButtonBox.Controls.Add(this.useButtonLocationDefaults);
             this.addButtonBox.Controls.Add(this.chooseButton1ImageButton);
             this.addButtonBox.Controls.Add(this.button1PictureBox);
-            this.addButtonBox.Location = new System.Drawing.Point(143, 153);
+            this.addButtonBox.Location = new System.Drawing.Point(118, 153);
             this.addButtonBox.Name = "addButtonBox";
             this.addButtonBox.Size = new System.Drawing.Size(442, 363);
             this.addButtonBox.TabIndex = 46;
@@ -503,11 +507,45 @@
             this.button1PictureBox.TabIndex = 38;
             this.button1PictureBox.TabStop = false;
             // 
+            // musicBox
+            // 
+            this.musicBox.Controls.Add(this.useMusic);
+            this.musicBox.Controls.Add(this.chooseMusicButton);
+            this.musicBox.Location = new System.Drawing.Point(143, 522);
+            this.musicBox.Name = "musicBox";
+            this.musicBox.Size = new System.Drawing.Size(415, 116);
+            this.musicBox.TabIndex = 47;
+            this.musicBox.TabStop = false;
+            this.musicBox.Text = "Background Music (Optional)";
+            // 
+            // useMusic
+            // 
+            this.useMusic.AutoSize = true;
+            this.useMusic.Location = new System.Drawing.Point(138, 38);
+            this.useMusic.Name = "useMusic";
+            this.useMusic.Size = new System.Drawing.Size(137, 17);
+            this.useMusic.TabIndex = 1;
+            this.useMusic.Text = "Use Background Music";
+            this.useMusic.UseVisualStyleBackColor = true;
+            this.useMusic.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
+            // 
+            // chooseMusicButton
+            // 
+            this.chooseMusicButton.Enabled = false;
+            this.chooseMusicButton.Location = new System.Drawing.Point(160, 61);
+            this.chooseMusicButton.Name = "chooseMusicButton";
+            this.chooseMusicButton.Size = new System.Drawing.Size(95, 23);
+            this.chooseMusicButton.TabIndex = 0;
+            this.chooseMusicButton.Text = "Choose Music";
+            this.chooseMusicButton.UseVisualStyleBackColor = true;
+            this.chooseMusicButton.Click += new System.EventHandler(this.chooseMusicButton_Click);
+            // 
             // EditHubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 521);
+            this.ClientSize = new System.Drawing.Size(568, 652);
+            this.Controls.Add(this.musicBox);
             this.Controls.Add(this.addButtonBox);
             this.Controls.Add(this.hubImageBox);
             this.Controls.Add(this.buttonListDownButton);
@@ -532,6 +570,8 @@
             this.targetNavigableBox.ResumeLayout(false);
             this.targetNavigableBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
+            this.musicBox.ResumeLayout(false);
+            this.musicBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -576,5 +616,8 @@
         private System.Windows.Forms.Button chooseButton2ImageButton;
         private System.Windows.Forms.PictureBox button2PictureBox;
         private System.Windows.Forms.CheckBox HighlightTextButton;
+        private System.Windows.Forms.GroupBox musicBox;
+        private System.Windows.Forms.Button chooseMusicButton;
+        private System.Windows.Forms.CheckBox useMusic;
     }
 }

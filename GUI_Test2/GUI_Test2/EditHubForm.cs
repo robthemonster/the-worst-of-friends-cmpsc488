@@ -21,6 +21,7 @@ namespace GUI_Test2
         private string buttonImagePath1;
         private string buttonImagePath2;
         private string hubImagePath;
+        private string musicPath;
 
         public EditHubForm(ProjectHomeForm par, string name)
         {
@@ -31,6 +32,7 @@ namespace GUI_Test2
             buttonImagePath2 = "";
             hubImagePath = "";
             buttonList = new List<Button>();
+            musicPath = "";
 
 
             updateListBox();
@@ -598,6 +600,8 @@ namespace GUI_Test2
                     button2PictureBox.Image = Image.FromFile(buttonImagePath2);
                 }
 
+                //Music
+
             }
             else
             {
@@ -616,6 +620,35 @@ namespace GUI_Test2
                 useButton2Image.Checked = false;
                 button1PictureBox.Image = button1PictureBox.InitialImage;
                 button2PictureBox.Image = button2PictureBox.InitialImage;
+                useMusic.Checked = false;
+                chooseMusicButton.Enabled = false;
+            }
+        }
+
+        private void useMusic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useMusic.Checked == true)
+                chooseMusicButton.Enabled = true;
+            else
+                chooseMusicButton.Enabled = false;
+        }
+
+        private void chooseMusicButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Audio files (*.ogg) | *.ogg";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            of.ShowDialog();
+
+            try
+            {
+                musicPath = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+
             }
         }
     }
