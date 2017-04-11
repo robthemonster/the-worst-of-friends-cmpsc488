@@ -399,7 +399,8 @@ namespace GUI_Test2
 
             buttonImagePath1 = "";
             buttonImagePath2 = "";
-            //button1PictureBox.Image = "";
+            button1PictureBox.Image = null;
+            button2PictureBox.Image = null;
             buttonWidthTextBox.Text = "";
             buttonHeightTextBox.Text = "";
             buttonXLocTextBox.Text = "";
@@ -625,6 +626,9 @@ namespace GUI_Test2
                 button2PictureBox.Image = button2PictureBox.InitialImage;
                 useMusic.Checked = false;
                 chooseMusicButton.Enabled = false;
+                buttonImagePath1 = "";
+                buttonImagePath2 = "";
+
             }
         }
 

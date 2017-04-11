@@ -22,15 +22,16 @@ namespace GUI_Test2
         public List<String> dialogueContents;
         public List<List<Impact>> dialogueImpactList;
         public List<Button> buttons;
-        //public List<Button> buttons;
+        public string pathSoundPath;
 
         public Path() {}
 
-        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL) {
+        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pS) {
             name = n;
             dialogueContents = contents;
             dialogueImpactList=dIL;
             buttons = btns;
+            pathSoundPath = pS;
         }
 
         public String getName() { return name; }

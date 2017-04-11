@@ -26,6 +26,7 @@ namespace GUI_Test2
         private int navType;
         private string buttonImagePath1;
         private string buttonImagePath2;
+        private string pathSoundPath;
 
         public EditPathForm( ProjectHomeForm par, String n)
         {
@@ -43,6 +44,9 @@ namespace GUI_Test2
             {
                 buttonNameList.Add("Button " + i);
             }
+            buttonImagePath1 = "";
+            buttonImagePath2 = "";
+            pathSoundPath = "";
         }
         public EditPathForm(ProjectHomeForm par, Path p)
         {
@@ -295,12 +299,12 @@ namespace GUI_Test2
         {
             if (Game.navIndex.ContainsKey(name))
             {
-                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList);
+                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathSoundPath);
             }
             else
             {
                 Game.paths.Add(name);
-                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList));
+                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathSoundPath));
             }
             parentForm.updateListBoxes();
             Close();
@@ -843,6 +847,8 @@ namespace GUI_Test2
                 useButton2Image.Checked = false;
                 button1PictureBox.Image = button1PictureBox.InitialImage;
                 button2PictureBox.Image = button2PictureBox.InitialImage;
+                buttonImagePath1 = "";
+                buttonImagePath2 = "";
             }
         }
 
@@ -919,7 +925,10 @@ namespace GUI_Test2
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (useMusic.Checked == true)
+                chooseMusicButton.Enabled = true;
+            else
+                chooseMusicButton.Enabled = false;
         }
 
         private void chooseMusicButton_Click(object sender, EventArgs e)
@@ -933,7 +942,7 @@ namespace GUI_Test2
 
             try
             {
-                //hubSoundPath = of.FileName;
+                pathSoundPath = of.FileName;
             }
             catch (IndexOutOfRangeException)
             {
