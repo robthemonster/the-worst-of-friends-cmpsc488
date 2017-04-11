@@ -386,5 +386,10 @@ namespace GUI_Test2
                 pathListBox.SelectedIndex = index;
             }
         }
+
+        private void runPlayTest_MenuItemClick(object sender, EventArgs e)
+        {
+            Game.generateCode();
+        }
     }
 }
