@@ -1,0 +1,2 @@
+.\GUI_Test2\codegen_test filter=lfs diff=lfs merge=lfs -text
+.\GUI_Test2\codegen_test\* filter=lfs diff=lfs merge=lfs -text
