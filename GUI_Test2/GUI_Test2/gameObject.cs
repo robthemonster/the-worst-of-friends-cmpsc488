@@ -646,7 +646,7 @@ int main()
 
             foreach (FileInfo f in d.GetFiles())
             {
-                if (f.Extension == ".obj" || f.Name == "main.cpp")
+                if (f.Extension == ".obj" || f.Name == "main.cpp" || (f.Extension == ".exe" && f.Name != "main.exe"))
                     f.Delete();
             }
 
