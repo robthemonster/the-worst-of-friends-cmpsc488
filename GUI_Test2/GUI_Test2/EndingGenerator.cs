@@ -184,6 +184,7 @@ namespace GUI_Test2
                 int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
                 pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
                 //useOnceCheckBox.Checked = useOnceList[pIGindex];
+                updatePathLists();
                 if (tierPathsListBox.SelectedIndex != -1 && pathsInGroup.Count > 0 && usedPathsListBox.SelectedIndex == -1 || !usedPathsListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
                 {
                     usedPathsListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
