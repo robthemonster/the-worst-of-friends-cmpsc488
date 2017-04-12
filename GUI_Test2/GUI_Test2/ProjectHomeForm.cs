@@ -406,5 +406,10 @@ namespace GUI_Test2
             EndingGenerator eg = new EndingGenerator((EndingGen)Game.endingGen);
             eg.ShowDialog();
         }
+
+        private void gameSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -63,6 +63,12 @@
     <Compile Include="EditCharactersForm.Designer.cs">
       <DependentUpon>EditCharactersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditGameSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditGameSettings.Designer.cs">
+      <DependentUpon>EditGameSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditHubForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditCharactersForm.resx">
       <DependentUpon>EditCharactersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditGameSettings.resx">
+      <DependentUpon>EditGameSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditHubForm.resx">
       <DependentUpon>EditHubForm.cs</DependentUpon>
