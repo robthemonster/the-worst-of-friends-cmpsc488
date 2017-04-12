@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EndingGenerator));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.weightLabel = new System.Windows.Forms.Label();
@@ -77,7 +78,7 @@
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Controls.Add(this.editTierPathButton);
-            this.groupBox1.Location = new System.Drawing.Point(270, 84);
+            this.groupBox1.Location = new System.Drawing.Point(245, 90);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(166, 120);
             this.groupBox1.TabIndex = 31;
@@ -151,7 +152,7 @@
             // TierLabel
             // 
             this.TierLabel.AutoSize = true;
-            this.TierLabel.Location = new System.Drawing.Point(291, 37);
+            this.TierLabel.Location = new System.Drawing.Point(266, 43);
             this.TierLabel.Name = "TierLabel";
             this.TierLabel.Size = new System.Drawing.Size(25, 13);
             this.TierLabel.TabIndex = 30;
@@ -160,7 +161,7 @@
             // tierComboBox
             // 
             this.tierComboBox.FormattingEnabled = true;
-            this.tierComboBox.Location = new System.Drawing.Point(282, 57);
+            this.tierComboBox.Location = new System.Drawing.Point(257, 63);
             this.tierComboBox.Name = "tierComboBox";
             this.tierComboBox.Size = new System.Drawing.Size(58, 21);
             this.tierComboBox.TabIndex = 29;
@@ -177,7 +178,7 @@
             this.groupBox4.Controls.Add(this.addConditionButton);
             this.groupBox4.Controls.Add(this.Savebutton);
             this.groupBox4.Controls.Add(this.Cancelbutton);
-            this.groupBox4.Location = new System.Drawing.Point(12, 274);
+            this.groupBox4.Location = new System.Drawing.Point(12, 217);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(513, 166);
             this.groupBox4.TabIndex = 33;
@@ -477,7 +478,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 452);
+            this.ClientSize = new System.Drawing.Size(529, 387);
             this.Controls.Add(this.unusedPathsListBox);
             this.Controls.Add(this.usedPathsListBox);
             this.Controls.Add(this.label2);
@@ -488,6 +489,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TierLabel);
             this.Controls.Add(this.tierComboBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EndingGenerator";
             this.Text = "EndingGenerator";
             this.Load += new System.EventHandler(this.EndingGenerator_Load);

@@ -261,6 +261,7 @@ namespace GUI_Test2
                 { 
                     pathsInPathGroupListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
                 }
+                updateReqList();
             }
         }
 

@@ -63,6 +63,8 @@ namespace GUI_Test2
             globalRadioButton.Checked = true;
             attributes = new List<string>();
             updatePathLists();
+            updateTierPaths();
+            updateReqList();
         }
 
         private void updatePathLists()
@@ -186,6 +188,7 @@ namespace GUI_Test2
                 {
                     usedPathsListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
                 }
+                updateReqList();
             }
         }
 
@@ -329,6 +332,7 @@ namespace GUI_Test2
         private void Savebutton_Click(object sender, EventArgs e)
         {
             Game.endingGen = new EndingGen(reqsofEachPath, pathsInGroup, weightofEachPath, tierofEachPath);
+            Close();
         }
 
         private void globalRadioButton_CheckedChanged(object sender, EventArgs e)
