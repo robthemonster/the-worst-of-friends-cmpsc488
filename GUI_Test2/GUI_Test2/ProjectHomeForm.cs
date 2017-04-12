@@ -400,5 +400,11 @@ namespace GUI_Test2
         {
             Game.generateCode();
         }
+
+        private void endingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EndingGenerator eg = new EndingGenerator();
+            eg.ShowDialog();
+        }
     }
 }
