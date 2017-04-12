@@ -27,11 +27,6 @@ namespace GUI_Test2
         private string currHub;
         private int scope;
         private List<String> attributes;
-        
-
-
-        
-
 
         public EditPathGroupForm(ProjectHomeForm par, String nam)
         {
@@ -59,11 +54,6 @@ namespace GUI_Test2
             useOnceList = pg.useOnce;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void EditPathGroupForm_Load(object sender, EventArgs e)
         {
             this.Text = "Edit PathGroup: " + name;
@@ -77,7 +67,6 @@ namespace GUI_Test2
             globalRadioButton.Checked = true;
             attributes = new List<string>();
             updatePathGroupLists();
-
         }
         
 
@@ -268,10 +257,12 @@ namespace GUI_Test2
                 int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
                 pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
                 useOnceCheckBox.Checked = useOnceList[pIGindex];
+                updatePathGroupLists();
                 if (tierPathsListBox.SelectedIndex!=-1&& pathsInGroup.Count>0 && pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
                 { 
                     pathsInPathGroupListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
                 }
+                updateReqList();
             }
         }
 
