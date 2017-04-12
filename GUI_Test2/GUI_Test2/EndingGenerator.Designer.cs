@@ -164,6 +164,7 @@
             this.tierComboBox.Name = "tierComboBox";
             this.tierComboBox.Size = new System.Drawing.Size(58, 21);
             this.tierComboBox.TabIndex = 29;
+            this.tierComboBox.SelectedIndexChanged += new System.EventHandler(this.tierComboBox_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -259,6 +260,7 @@
             this.globalRadioButton.TabStop = true;
             this.globalRadioButton.Text = "Global";
             this.globalRadioButton.UseVisualStyleBackColor = true;
+            this.globalRadioButton.CheckedChanged += new System.EventHandler(this.globalRadioButton_CheckedChanged);
             // 
             // hubRadioButton
             // 
@@ -270,6 +272,7 @@
             this.hubRadioButton.TabStop = true;
             this.hubRadioButton.Text = "Hub";
             this.hubRadioButton.UseVisualStyleBackColor = true;
+            this.hubRadioButton.CheckedChanged += new System.EventHandler(this.hubRadioButton_CheckedChanged);
             // 
             // playerRadioButton
             // 
@@ -281,13 +284,14 @@
             this.playerRadioButton.TabStop = true;
             this.playerRadioButton.Text = "Player";
             this.playerRadioButton.UseVisualStyleBackColor = true;
+            this.playerRadioButton.CheckedChanged += new System.EventHandler(this.playerRadioButton_CheckedChanged);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -304,7 +308,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(162, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(160, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -316,21 +320,21 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(86, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(85, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(95, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(94, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
-            this.comparitorComboBox.Size = new System.Drawing.Size(61, 21);
+            this.comparitorComboBox.Size = new System.Drawing.Size(60, 21);
             this.comparitorComboBox.TabIndex = 23;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(95, 0);
+            this.label5.Location = new System.Drawing.Point(94, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 34;
@@ -348,7 +352,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(162, 0);
+            this.label8.Location = new System.Drawing.Point(160, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
@@ -412,7 +416,7 @@
             this.unusedPathsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.unusedPathsListBox.Size = new System.Drawing.Size(94, 186);
             this.unusedPathsListBox.TabIndex = 38;
-            this.unusedPathsListBox.SelectedIndexChanged += new System.EventHandler(this.pathsNotInPathGroupListBox_SelectedIndexChanged);
+            this.unusedPathsListBox.SelectedIndexChanged += new System.EventHandler(this.unusedPathsListBox_SelectedIndexChanged);
             // 
             // usedPathsListBox
             // 
@@ -423,7 +427,7 @@
             this.usedPathsListBox.Name = "usedPathsListBox";
             this.usedPathsListBox.Size = new System.Drawing.Size(94, 186);
             this.usedPathsListBox.TabIndex = 39;
-            this.usedPathsListBox.SelectedIndexChanged += new System.EventHandler(this.pathsInPathGroupListBox_SelectedIndexChanged);
+            this.usedPathsListBox.SelectedIndexChanged += new System.EventHandler(this.usedPathsListBox_SelectedIndexChanged);
             // 
             // label2
             // 

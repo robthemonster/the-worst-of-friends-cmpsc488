@@ -74,6 +74,14 @@ namespace GUI_Test2
             unusedPaths = new List<string>();
             unusedPaths.AddRange(Game.paths);
 
+            foreach (string p in pathsInGroup)
+            {
+                if (unusedPaths.Contains(p))
+                {
+                    unusedPaths.Remove(p);
+                }
+            }
+
             unusedPathsListBox.DataSource = null;
             unusedPathsListBox.DataSource = unusedPaths;
             unusedPathsListBox.SelectedIndex = -1;
@@ -140,24 +148,72 @@ namespace GUI_Test2
             return reqs.Count;
         }
 
-        private void pathsNotInPathGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void setAttributeComboBox()
         {
-
+            attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
         }
 
-        private void pathsInPathGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void unusedPathsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (unusedPathsListBox.SelectedIndex != -1)
+                usedPathsListBox.SelectedIndex = -1;
+        }
 
+        private void usedPathsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (usedPathsListBox.SelectedIndex != -1)
+            {
+
+                unusedPathsListBox.SelectedIndex = -1;
+                if (tierPathsListBox.SelectedIndex == -1 || (usedPathsListBox.SelectedValue != tierPathsListBox.SelectedValue))
+                {
+                    int index = usedPathsListBox.SelectedIndex;
+                    tierComboBox.SelectedIndex = -1;
+                    tierComboBox.SelectedIndex = tierofEachPath[index];
+                    tierPathsListBox.SelectedIndex = ((List<String>)tierPathsListBox.DataSource).IndexOf(pathsInGroup[index]);
+                }
+            }
         }
 
         private void tierPathsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (tierPathsListBox.SelectedIndex != -1)
+            {
+                int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
+                pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
+                //useOnceCheckBox.Checked = useOnceList[pIGindex];
+                if (tierPathsListBox.SelectedIndex != -1 && pathsInGroup.Count > 0 && usedPathsListBox.SelectedIndex == -1 || !usedPathsListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
+                {
+                    usedPathsListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
+                }
+            }
         }
 
         private void pathRequirementsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (pathRequirementsListBox.SelectedIndex != -1)
+            {
+                Requirement r = reqsofEachPath[usedPathsListBox.SelectedIndex][pathRequirementsListBox.SelectedIndex];
+                if (r != null)
+                {
+                    switch (r.scope)
+                    {
+                        case 0:
+                            globalRadioButton.Checked = true;
+                            break;
+                        case 1:
+                            hubRadioButton.Checked = true;
+                            hubComboBox.SelectedIndex = hubComboBox.FindStringExact(r.hub);
+                            break;
+                        case 2:
+                            playerRadioButton.Checked = true;
+                            break;
+                    }
+                    attributeComboBox.SelectedIndex = attributeComboBox.FindStringExact(r.name);
+                    comparitorComboBox.SelectedIndex = comparitorComboBox.FindStringExact(r.comp);
+                    valueTextBox.Text = r.value.ToString();
+                }
+            }
         }
 
         private void addPathsButton_Click(object sender, EventArgs e)
@@ -272,7 +328,56 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
+            Game.endingGen = new EndingGen(reqsofEachPath, pathsInGroup, weightofEachPath, tierofEachPath);
+        }
 
+        private void globalRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (globalRadioButton.Enabled)
+            {
+                scope = 0;
+                setAttributeComboBox();
+            }
+        }
+
+        private void hubRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (hubRadioButton.Checked)
+            {
+                scope = 1;
+                hubLabel.Enabled = true;
+                hubComboBox.Enabled = true;
+                if (hubComboBox.SelectedIndex != -1)
+                {
+                    currHub = hubComboBox.SelectedItem.ToString();
+                    setAttributeComboBox();
+                }
+                else
+                {
+                    attributeComboBox.DataSource = null;
+                }
+            }
+            else
+            {
+                hubLabel.Enabled = false;
+                hubComboBox.Enabled = false;
+                currHub = "";
+            }
+        }
+
+        private void playerRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (playerRadioButton.Enabled)
+            {
+                scope = 2;
+                setAttributeComboBox();
+            }
+        }
+
+        private void tierComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label3.Text = tierLabel + tierComboBox.SelectedIndex;
+            updateTierPaths();
         }
     }
 }
