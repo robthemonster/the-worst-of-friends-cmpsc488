@@ -14,18 +14,10 @@ using System.IO;
 
 namespace GUI_Test2
 {
-    [Serializable]
     public partial class ProjectHomeForm : Form
     {
 
         
-        ////public List<NPC> characters;
-        //public List<String> pathGroups;
-        //public List<String> hubs;
-        //public List<P2PG> p2PG;
-        //public Dictionary<String, Navigable> navIndex;
-        //public String navigableName;
-        //public List<String> paths;
 
         public int screenID;
         //1 = Path, 2 = Path Group, 3 = Hub
@@ -34,20 +26,13 @@ namespace GUI_Test2
 
         public ProjectHomeForm()
         {
-            
             InitializeComponent();
-            
-
-            //attributes.names = new List<string> {"Health","Strength","Agility","Charisma","Evil","Unrest"};
-            //attributes.scopes = new List<int> { 0,0,0,0,2,2};
-            //attributes.values = new List<int> { 20, 4, 2, 19, 0, 69 };
-
             updateListBoxes();
         }
 
         private void ProjectHub_Load(object sender, EventArgs e)
         {
-            
+            this.Text = "(Unsaved Project) - FireSide Toolkit";
         }
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,55 +55,57 @@ namespace GUI_Test2
                 }
 
                 fileLocation = "";
+                setWindowTitle(fileLocation);
                 updateListBoxes();
             }
+        }
+        private void setWindowTitle(String fileLocation)
+        {
+            if (!fileLocation.Equals(null))
+            {
+                if (fileLocation.Equals(""))
+                {
+                    this.Text = "(Unsaved Project) - FireSide Toolkit";
+                }
+                else
+                {
+                    char[] name = System.IO.Path.GetFileNameWithoutExtension(fileLocation).ToCharArray();
+                    name[0] = char.ToUpper(name[0]); 
+                    this.Text =  new String(name) + " - FireSide Toolkit";
+                }
+            } 
         }
 
         //deserialize
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string fileName = "";
-
             OpenFileDialog fd = new OpenFileDialog();
-            if (fd.ShowDialog() == DialogResult.OK)
-            {
-                fileName = fd.FileName;
-                fileLocation = fileName;
-            }
+            fd.Filter = "FireSide Project (*.fsp)| *.fsp";
+                if (fd.ShowDialog() == DialogResult.OK)
+                {
+                        fileLocation = fd.FileName;
+                        openFile(fileLocation);
+                        setWindowTitle(fileLocation);
+                }
 
-            openFile(fileName);
 
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string fileName = "";
-            string folderPath = "";
 
             SaveFileDialog sd = new SaveFileDialog();
+            sd.Filter = "FireSide Project (*.fsp)| *.fsp";
+            sd.AddExtension = true;
             if (sd.ShowDialog() == DialogResult.OK)
             {
-                fileName = sd.FileName;
-                fileLocation = fileName;
-
-                //Retrieve the name of the file, create a folder based off that name,
-                //place a file of the same name in the newly created directory
-
-                fileName = System.IO.Path.GetFileNameWithoutExtension(fileName);
-                //folderPath = System.IO.Path.GetDirectoryName(fileLocation);
-
-                //System.IO.Directory.CreateDirectory(fileLocation);
-
-                //fileLocation = System.IO.Path.Combine(fileLocation, fileName);
-                fileName = fileLocation;
+                fileLocation = sd.FileName;
+                saveToolStripMenuItem_Click(sender, e);
+                setWindowTitle(fileLocation);
             }
 
-            Dictionary<string, NPC> c = Characters.characters;
 
-            //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-            Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.navigableName, Game.paths,Attributes.attribs, Characters.characters);
-
-            saveToFile(proj, fileName);
+            
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,8 +114,11 @@ namespace GUI_Test2
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
                 Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.navigableName, Game.paths, Attributes.attribs, Characters.characters);
-
                 saveToFile(proj, fileLocation);
+            }
+            else
+            {
+                saveAsToolStripMenuItem_Click(sender, e);
             }
         }
 
@@ -165,7 +155,20 @@ namespace GUI_Test2
             createNavigable();
         }
         private void closeWindow(object sender, EventArgs e) {
-            Close();
+            DialogResult result = MessageBox.Show("Save before exit?", "Exiting FireSide", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+            else if (result == DialogResult.Yes)
+            {
+                saveToolStripMenuItem_Click(sender, e);
+                Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                Close();
+            }
         }
         
         private void updateListBoxes(object sender, EventArgs e)
