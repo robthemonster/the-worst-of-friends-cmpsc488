@@ -113,7 +113,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.navigableName, Game.paths, Attributes.attribs, Characters.characters);
+                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.navigableName, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen);
                 saveToFile(proj, fileLocation);
             }
             else
