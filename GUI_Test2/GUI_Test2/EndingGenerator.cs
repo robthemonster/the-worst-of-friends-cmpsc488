@@ -13,9 +13,8 @@ namespace GUI_Test2
     public partial class EndingGenerator : Form
     {
         public List<List<Requirement>> reqsofEachPath;
-        public List<String> pathsInGroup;
+        public List<String> usedPaths;
         public List<int> tierofEachPath;
-        //public List<Boolean> useOnceList;
         public int[] tier;
         public List<String> unusedPaths;
         public List<String> currentTier;
@@ -30,7 +29,7 @@ namespace GUI_Test2
         {
             InitializeComponent();
             reqsofEachPath = new List<List<Requirement>>();
-            pathsInGroup = new List<String>();
+            usedPaths = new List<String>();
             tierofEachPath = new List<int>();
             //public List<Boolean> useOnceList
 
@@ -43,7 +42,7 @@ namespace GUI_Test2
         {
             InitializeComponent();
             this.reqsofEachPath = eg.reqsofEachPath;
-            this.pathsInGroup = eg.pathsInGroup;
+            this.usedPaths = eg.pathsInGroup;
             this.tierofEachPath = eg.tierofEachPath;
         }
 
@@ -67,13 +66,13 @@ namespace GUI_Test2
         private void updatePathLists()
         {
             usedPathsListBox.DataSource = null;
-            usedPathsListBox.DataSource = pathsInGroup;
+            usedPathsListBox.DataSource = usedPaths;
             usedPathsListBox.SelectedIndex = -1;
 
             unusedPaths = new List<string>();
             unusedPaths.AddRange(Game.paths);
 
-            foreach (string p in pathsInGroup)
+            foreach (string p in usedPaths)
             {
                 if (unusedPaths.Contains(p))
                 {
@@ -84,9 +83,9 @@ namespace GUI_Test2
             unusedPathsListBox.DataSource = null;
             unusedPathsListBox.DataSource = unusedPaths;
             unusedPathsListBox.SelectedIndex = -1;
-            usedPathsListBox.SelectedIndex = pathsInGroup.Count - 1;
+            usedPathsListBox.SelectedIndex = usedPaths.Count - 1;
 
-            if (pathsInGroup.Count == 0)
+            if (usedPaths.Count == 0)
             {
                 tierPathsListBox.DataSource = null;
             }
@@ -97,11 +96,11 @@ namespace GUI_Test2
             if (tierComboBox.SelectedIndex != -1)
             {
                 currentTier = new List<string>();
-                for (int i = 0; i < pathsInGroup.Count; ++i)
+                for (int i = 0; i < usedPaths.Count; ++i)
                 {
                     if (tierofEachPath[i] == tierComboBox.SelectedIndex)
                     {
-                        currentTier.Add(pathsInGroup[i]);
+                        currentTier.Add(usedPaths[i]);
                     }
                 }
                 tierPathsListBox.DataSource = null;
@@ -119,11 +118,11 @@ namespace GUI_Test2
             {
                 pathsInTier = new List<string>();
                 int tier = tierComboBox.SelectedIndex;
-                for (int i = 0; i < pathsInGroup.Count; ++i)
+                for (int i = 0; i < usedPaths.Count; ++i)
                 {
                     if (tierofEachPath[i] == tier)
                     {
-                        pathsInTier.Add(pathsInGroup[i]);
+                        pathsInTier.Add(usedPaths[i]);
                     }
                 }
             }
@@ -147,6 +146,38 @@ namespace GUI_Test2
             attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
         }
 
+        private void swap(int from, int to)
+        {
+            string temp = "";
+            List<List<Requirement>> t = new List<List<Requirement>>();
+            t.Add(new List<Requirement>());
+
+            if (to >= 0 && to < usedPaths.Count)
+            {
+                temp = usedPaths[to];
+                usedPaths[to] = usedPaths[from];
+                usedPaths[from] = temp;
+
+                for (int i = 0; i < reqsofEachPath[to].Count; i++)
+                {
+                    t[0].Add(reqsofEachPath[to][i]);
+                    reqsofEachPath[to].RemoveAt(i);
+                }
+
+                for (int i = 0; i < reqsofEachPath[from].Count; i++)
+                {
+                    reqsofEachPath[to].Add(reqsofEachPath[from][i]);
+                    reqsofEachPath[from].RemoveAt(i);
+                }
+
+                for (int i = 0; i < t[0].Count; i++)
+                {
+                        reqsofEachPath[from].Add(t[0][i]);
+                        t[0].RemoveAt(i);
+                }
+            }
+        }
+
         private void unusedPathsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (unusedPathsListBox.SelectedIndex != -1)
@@ -164,7 +195,7 @@ namespace GUI_Test2
                     int index = usedPathsListBox.SelectedIndex;
                     tierComboBox.SelectedIndex = -1;
                     tierComboBox.SelectedIndex = tierofEachPath[index];
-                    tierPathsListBox.SelectedIndex = ((List<String>)tierPathsListBox.DataSource).IndexOf(pathsInGroup[index]);
+                    tierPathsListBox.SelectedIndex = ((List<String>)tierPathsListBox.DataSource).IndexOf(usedPaths[index]);
                 }
             }
         }
@@ -173,11 +204,11 @@ namespace GUI_Test2
         {
             if (tierPathsListBox.SelectedIndex != -1)
             {
-                int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
-                updatePathLists();
-                if (tierPathsListBox.SelectedIndex != -1 && pathsInGroup.Count > 0 && usedPathsListBox.SelectedIndex == -1 || !usedPathsListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
+                int pIGindex = usedPaths.IndexOf((String)tierPathsListBox.SelectedItem);
+                //updatePathLists();
+                if (tierPathsListBox.SelectedIndex != -1 && usedPaths.Count > 0 && usedPathsListBox.SelectedIndex == -1 || !usedPathsListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
                 {
-                    usedPathsListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
+                    usedPathsListBox.SelectedIndex = usedPaths.IndexOf((String)tierPathsListBox.SelectedValue);
                 }
                 updateReqList();
             }
@@ -214,7 +245,7 @@ namespace GUI_Test2
         {
             foreach (int i in unusedPathsListBox.SelectedIndices)
             {
-                pathsInGroup.Add(unusedPaths[i]);
+                usedPaths.Add(unusedPaths[i]);
                 tierofEachPath.Add(tierComboBox.SelectedIndex);
                 reqsofEachPath.Add(new List<Requirement>());
             }
@@ -226,7 +257,7 @@ namespace GUI_Test2
             int i = usedPathsListBox.SelectedIndex;
             if (i != -1)
             {
-                pathsInGroup.RemoveAt(i);
+                usedPaths.RemoveAt(i);
                 tierofEachPath.RemoveAt(i);
                 //useOnceList.RemoveAt(i);
                 reqsofEachPath.RemoveAt(i);
@@ -239,7 +270,7 @@ namespace GUI_Test2
         {
             if (tierPathsListBox.SelectedIndex != -1)
             {
-                int indexofPath = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
+                int indexofPath = usedPaths.IndexOf((String)tierPathsListBox.SelectedItem);
 
                 int index = tierPathsListBox.SelectedIndex;
                 tierPathsListBox.DataSource = null;
@@ -293,7 +324,7 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
-            Game.endingGen = new EndingGen(reqsofEachPath, pathsInGroup, tierofEachPath);
+            Game.endingGen = new EndingGen(reqsofEachPath, usedPaths, tierofEachPath);
             Close();
         }
 
@@ -344,6 +375,36 @@ namespace GUI_Test2
         {
             label3.Text = tierLabel + tierComboBox.SelectedIndex;
             updateTierPaths();
+        }
+
+        private void buttonListUpButton_Click(object sender, EventArgs e)
+        {
+            int index = tierPathsListBox.SelectedIndex;
+            if (index != -1 && index != 0)
+            {
+                swap(index, index - 1);
+                updateTierPaths();
+                updatePathLists();
+                updateReqList();
+                tierPathsListBox.SelectedIndex = -1;
+                usedPathsListBox.SelectedIndex = -1;
+                pathRequirementsListBox.SelectedIndex = -1;
+            }
+        }
+
+        private void buttonListDownButton_Click(object sender, EventArgs e)
+        {
+            int index = tierPathsListBox.SelectedIndex;
+            if (index != -1 && index < usedPaths.Count - 1)
+            {
+                swap(index, index + 1);
+                updateTierPaths();
+                updatePathLists();
+                updateReqList();
+                tierPathsListBox.SelectedIndex = -1;
+                usedPathsListBox.SelectedIndex = -1;
+                pathRequirementsListBox.SelectedIndex = -1;
+            }
         }
     }
 }

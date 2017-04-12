@@ -111,6 +111,7 @@
             this.buttonListDownButton.TabIndex = 45;
             this.buttonListDownButton.Text = "▼";
             this.buttonListDownButton.UseVisualStyleBackColor = true;
+            this.buttonListDownButton.Click += new System.EventHandler(this.buttonListDownButton_Click);
             // 
             // buttonListUpButton
             // 
@@ -120,11 +121,12 @@
             this.buttonListUpButton.TabIndex = 44;
             this.buttonListUpButton.Text = "▲";
             this.buttonListUpButton.UseVisualStyleBackColor = true;
+            this.buttonListUpButton.Click += new System.EventHandler(this.buttonListUpButton_Click);
             // 
             // pathRequirementsListBox
             // 
             this.pathRequirementsListBox.FormattingEnabled = true;
-            this.pathRequirementsListBox.Location = new System.Drawing.Point(369, 19);
+            this.pathRequirementsListBox.Location = new System.Drawing.Point(369, 13);
             this.pathRequirementsListBox.Name = "pathRequirementsListBox";
             this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 95);
             this.pathRequirementsListBox.TabIndex = 38;
@@ -150,7 +152,7 @@
             this.groupBox5.Size = new System.Drawing.Size(210, 83);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Atribute Scope";
+            this.groupBox5.Text = "Attribute Scope";
             // 
             // hubComboBox
             // 
@@ -228,7 +230,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -245,7 +247,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(157, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(156, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -257,13 +259,13 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(83, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(82, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(92, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(91, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(59, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -271,7 +273,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(92, 0);
+            this.label5.Location = new System.Drawing.Point(91, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 34;
@@ -282,14 +284,14 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 35;
-            this.label6.Text = "Atribute";
+            this.label6.Text = "Attribute";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(157, 0);
+            this.label8.Location = new System.Drawing.Point(156, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
