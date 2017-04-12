@@ -159,9 +159,9 @@
             // 
             this.musicBox.Controls.Add(this.useMusic);
             this.musicBox.Controls.Add(this.chooseMusicButton);
-            this.musicBox.Location = new System.Drawing.Point(99, 353);
+            this.musicBox.Location = new System.Drawing.Point(395, 218);
             this.musicBox.Name = "musicBox";
-            this.musicBox.Size = new System.Drawing.Size(415, 79);
+            this.musicBox.Size = new System.Drawing.Size(212, 79);
             this.musicBox.TabIndex = 48;
             this.musicBox.TabStop = false;
             this.musicBox.Text = "Background Music (Optional)";
@@ -169,7 +169,7 @@
             // useMusic
             // 
             this.useMusic.AutoSize = true;
-            this.useMusic.Location = new System.Drawing.Point(140, 19);
+            this.useMusic.Location = new System.Drawing.Point(28, 19);
             this.useMusic.Name = "useMusic";
             this.useMusic.Size = new System.Drawing.Size(137, 17);
             this.useMusic.TabIndex = 1;
@@ -180,7 +180,7 @@
             // chooseMusicButton
             // 
             this.chooseMusicButton.Enabled = false;
-            this.chooseMusicButton.Location = new System.Drawing.Point(162, 42);
+            this.chooseMusicButton.Location = new System.Drawing.Point(50, 42);
             this.chooseMusicButton.Name = "chooseMusicButton";
             this.chooseMusicButton.Size = new System.Drawing.Size(95, 23);
             this.chooseMusicButton.TabIndex = 0;
@@ -665,6 +665,7 @@
             // useButton2Image
             // 
             this.useButton2Image.AutoSize = true;
+            this.useButton2Image.Enabled = false;
             this.useButton2Image.Location = new System.Drawing.Point(354, 314);
             this.useButton2Image.Name = "useButton2Image";
             this.useButton2Image.Size = new System.Drawing.Size(170, 17);
@@ -688,7 +689,6 @@
             // 
             this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2PictureBox.Enabled = false;
-            this.button2PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("button2PictureBox.Image")));
             this.button2PictureBox.InitialImage = null;
             this.button2PictureBox.Location = new System.Drawing.Point(473, 335);
             this.button2PictureBox.Name = "button2PictureBox";
@@ -767,7 +767,7 @@
             // 
             // buttonListDownButton
             // 
-            this.buttonListDownButton.Location = new System.Drawing.Point(111, 399);
+            this.buttonListDownButton.Location = new System.Drawing.Point(111, 166);
             this.buttonListDownButton.Name = "buttonListDownButton";
             this.buttonListDownButton.Size = new System.Drawing.Size(22, 23);
             this.buttonListDownButton.TabIndex = 18;
@@ -777,7 +777,7 @@
             // 
             // buttonListUpButton
             // 
-            this.buttonListUpButton.Location = new System.Drawing.Point(111, 370);
+            this.buttonListUpButton.Location = new System.Drawing.Point(111, 137);
             this.buttonListUpButton.Name = "buttonListUpButton";
             this.buttonListUpButton.Size = new System.Drawing.Size(22, 23);
             this.buttonListUpButton.TabIndex = 17;
@@ -836,7 +836,7 @@
             // 
             // buttonTextTextBox
             // 
-            this.buttonTextTextBox.Location = new System.Drawing.Point(139, 50);
+            this.buttonTextTextBox.Location = new System.Drawing.Point(143, 50);
             this.buttonTextTextBox.Multiline = true;
             this.buttonTextTextBox.Name = "buttonTextTextBox";
             this.buttonTextTextBox.Size = new System.Drawing.Size(164, 81);
@@ -934,7 +934,7 @@
             // buttonYLocTextBox
             // 
             this.buttonYLocTextBox.Enabled = false;
-            this.buttonYLocTextBox.Location = new System.Drawing.Point(169, 395);
+            this.buttonYLocTextBox.Location = new System.Drawing.Point(176, 391);
             this.buttonYLocTextBox.Name = "buttonYLocTextBox";
             this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonYLocTextBox.TabIndex = 11;
@@ -942,7 +942,7 @@
             // buttonXLocTextBox
             // 
             this.buttonXLocTextBox.Enabled = false;
-            this.buttonXLocTextBox.Location = new System.Drawing.Point(169, 369);
+            this.buttonXLocTextBox.Location = new System.Drawing.Point(176, 369);
             this.buttonXLocTextBox.Name = "buttonXLocTextBox";
             this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonXLocTextBox.TabIndex = 10;
@@ -975,7 +975,6 @@
             // 
             this.button1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1PictureBox.Enabled = false;
-            this.button1PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("button1PictureBox.Image")));
             this.button1PictureBox.InitialImage = null;
             this.button1PictureBox.Location = new System.Drawing.Point(473, 258);
             this.button1PictureBox.Name = "button1PictureBox";
@@ -987,22 +986,22 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.buttonListBox, 0, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(11, 21);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.384164F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 394F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(97, 414);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(97, 174);
             this.tableLayoutPanel4.TabIndex = 16;
             // 
             // label16
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 3);
+            this.label16.Location = new System.Drawing.Point(8, 5);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 13);
             this.label16.TabIndex = 0;
@@ -1011,9 +1010,9 @@
             // buttonListBox
             // 
             this.buttonListBox.FormattingEnabled = true;
-            this.buttonListBox.Location = new System.Drawing.Point(3, 23);
+            this.buttonListBox.Location = new System.Drawing.Point(3, 27);
             this.buttonListBox.Name = "buttonListBox";
-            this.buttonListBox.Size = new System.Drawing.Size(91, 381);
+            this.buttonListBox.Size = new System.Drawing.Size(91, 147);
             this.buttonListBox.TabIndex = 1;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
