@@ -81,6 +81,12 @@
     <Compile Include="EditPathGroupForm.Designer.cs">
       <DependentUpon>EditPathGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EndingGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndingGenerator.Designer.cs">
+      <DependentUpon>EndingGenerator.cs</DependentUpon>
+    </Compile>
     <Compile Include="gameObject.cs" />
     <Compile Include="HSerializer.cs" />
     <Compile Include="Navigable.cs" />
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditPathGroupForm.resx">
       <DependentUpon>EditPathGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndingGenerator.resx">
+      <DependentUpon>EndingGenerator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectHomeForm.resx">
       <DependentUpon>ProjectHomeForm.cs</DependentUpon>

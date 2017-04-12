@@ -20,6 +20,7 @@ namespace GUI_Test2
         public List<String> paths;
         public List<Attrib> attribs;
         public Dictionary<string, NPC> characters;
+        public EndingGen endingGen;
 
         public Project()
         {
@@ -30,9 +31,10 @@ namespace GUI_Test2
             paths = new List<String>();
             attribs = new List<Attrib>();
             characters = new Dictionary<string, NPC>();
+            endingGen = new EndingGen();
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c)
+        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG)
         {
             pathGroups = pg;
             hubs = h;
@@ -41,6 +43,7 @@ namespace GUI_Test2
             paths = p;
             this.attribs = attribs;
             characters = c;
+            endingGen = eG;
         }
     }
 
@@ -55,14 +58,16 @@ namespace GUI_Test2
         public static Dictionary<String, Navigable> navIndex = new Dictionary<String, Navigable>();
         public static String navigableName = "";
         public static List<String> paths = new List<String>();
+        public static EndingGen endingGen = new EndingGen();
 
-        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p)
+        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p, EndingGen eG)
         {
             pathGroups = pg;
             hubs = h;
             navIndex = nI;
             navigableName = nN;
             paths = p;
+            endingGen = eG;
         }
 
         public static void setPathGroup(List<String> pg)
@@ -88,6 +93,11 @@ namespace GUI_Test2
         public static void setPaths(List<String> p)
         {
             paths = p;
+        }
+
+        public static void setEndingGenerator(EndingGen eg)
+        {
+            endingGen = eg;
         }
 
         public static void generateCode()

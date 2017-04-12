@@ -202,6 +202,26 @@ namespace GUI_Test2
         }
     }
 
+    [Serializable]
+    public class EndingGen
+    {
+        public List<List<Requirement>> reqsofEachPath;
+        public List<String> pathsInGroup;
+        public List<int> weightofEachPath;
+        public List<int> tierofEachPath;
+        //public List<Boolean> useOnceList;
+
+        public EndingGen() { }
+
+        public EndingGen(List<List<Requirement>> rOEP, List<String> pIG, List<int> wOEP, List<int> tOEP)
+        {
+            reqsofEachPath = rOEP;
+            pathsInGroup = pIG;
+            weightofEachPath = wOEP;
+            tierofEachPath = tOEP;
+        }
+    }
+
 }
 
 
