@@ -115,7 +115,9 @@ namespace GUI_Test2
             }
 
             ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
-            cmd.Arguments = @"/c cd " + directory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
+
+            cmd.Arguments = @"/c cd " + directory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
+
            
             Process compiler = Process.Start(cmd);
             compiler.WaitForExit();
@@ -560,7 +562,7 @@ int main()
 
 
 
-    sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), ""Game Window"", sf::Style::Close | sf::Style::Resize );
+    sf::RenderWindow gameWindow(sf::VideoMode(1600, 900), ""Game Window"", sf::Style::Close | sf::Style::Resize | sf::Style::Fullscreen);
     sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
     gameWindow.setView(view);
     gameWindow.setFramerateLimit(60);
