@@ -489,8 +489,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TierLabel);
             this.Controls.Add(this.tierComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EndingGenerator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "EndingGenerator";
             this.Load += new System.EventHandler(this.EndingGenerator_Load);
             this.groupBox1.ResumeLayout(false);
