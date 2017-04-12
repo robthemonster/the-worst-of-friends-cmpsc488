@@ -14,7 +14,6 @@ namespace GUI_Test2
     {
         public List<List<Requirement>> reqsofEachPath;
         public List<String> pathsInGroup;
-        public List<int> weightofEachPath;
         public List<int> tierofEachPath;
         //public List<Boolean> useOnceList;
         public int[] tier;
@@ -32,7 +31,6 @@ namespace GUI_Test2
             InitializeComponent();
             reqsofEachPath = new List<List<Requirement>>();
             pathsInGroup = new List<String>();
-            weightofEachPath = new List<int>();
             tierofEachPath = new List<int>();
             //public List<Boolean> useOnceList
 
@@ -46,7 +44,6 @@ namespace GUI_Test2
             InitializeComponent();
             this.reqsofEachPath = eg.reqsofEachPath;
             this.pathsInGroup = eg.pathsInGroup;
-            this.weightofEachPath = eg.weightofEachPath;
             this.tierofEachPath = eg.tierofEachPath;
         }
 
@@ -99,22 +96,17 @@ namespace GUI_Test2
         {
             if (tierComboBox.SelectedIndex != -1)
             {
-                int tierWeight = 0;
                 currentTier = new List<string>();
                 for (int i = 0; i < pathsInGroup.Count; ++i)
                 {
                     if (tierofEachPath[i] == tierComboBox.SelectedIndex)
                     {
                         currentTier.Add(pathsInGroup[i]);
-                        tierWeight += weightofEachPath[i];
-
                     }
                 }
                 tierPathsListBox.DataSource = null;
                 tierPathsListBox.DataSource = currentTier;
                 tierPathsListBox.SelectedIndex = -1;
-                tierWeightTextBox.Text = tierWeight.ToString();
-
             }
 
         }
@@ -182,8 +174,6 @@ namespace GUI_Test2
             if (tierPathsListBox.SelectedIndex != -1)
             {
                 int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
-                pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
-                //useOnceCheckBox.Checked = useOnceList[pIGindex];
                 updatePathLists();
                 if (tierPathsListBox.SelectedIndex != -1 && pathsInGroup.Count > 0 && usedPathsListBox.SelectedIndex == -1 || !usedPathsListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
                 {
@@ -222,27 +212,13 @@ namespace GUI_Test2
 
         private void addPathsButton_Click(object sender, EventArgs e)
         {
-            try
+            foreach (int i in unusedPathsListBox.SelectedIndices)
             {
-                int weight = Int32.Parse(pathWeightTextBox.Text);
-                if (weight <= 0)
-                {
-                    throw new FormatException();
-                }
-                foreach (int i in unusedPathsListBox.SelectedIndices)
-                {
-                    pathsInGroup.Add(unusedPaths[i]);
-                    tierofEachPath.Add(tierComboBox.SelectedIndex);
-                    weightofEachPath.Add(Int32.Parse(pathWeightTextBox.Text));
-                    //useOnceList.Add(useOnceCheckBox.Checked);
-                    reqsofEachPath.Add(new List<Requirement>());
-                }
-                updatePathLists();
+                pathsInGroup.Add(unusedPaths[i]);
+                tierofEachPath.Add(tierComboBox.SelectedIndex);
+                reqsofEachPath.Add(new List<Requirement>());
             }
-            catch (FormatException)
-            {
-                MessageBox.Show("Weight must be a positive integer.");
-            }
+            updatePathLists();
         }
 
         private void removePathsButton_Click(object sender, EventArgs e)
@@ -252,7 +228,6 @@ namespace GUI_Test2
             {
                 pathsInGroup.RemoveAt(i);
                 tierofEachPath.RemoveAt(i);
-                weightofEachPath.RemoveAt(i);
                 //useOnceList.RemoveAt(i);
                 reqsofEachPath.RemoveAt(i);
 
@@ -264,27 +239,13 @@ namespace GUI_Test2
         {
             if (tierPathsListBox.SelectedIndex != -1)
             {
-                int weight;
-                try
-                {
-                    weight = Int32.Parse(pathWeightTextBox.Text);
-                    int indexofPath = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
-                    if (weight <= 0)
-                    {
-                        throw new FormatException();
-                    }
-                    weightofEachPath[indexofPath] = weight;
-                    //useOnceCheckBox.Checked = useOnceList[indexofPath];
+                int indexofPath = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
 
-                    int index = tierPathsListBox.SelectedIndex;
-                    tierPathsListBox.DataSource = null;
-                    tierPathsListBox.DataSource = getTierPathsNames();
-                    tierPathsListBox.SelectedIndex = index;
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("Weight must be a positive integer.");
-                }
+                int index = tierPathsListBox.SelectedIndex;
+                tierPathsListBox.DataSource = null;
+                tierPathsListBox.DataSource = getTierPathsNames();
+                tierPathsListBox.SelectedIndex = index;
+
             }
         }
 
@@ -332,7 +293,7 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
-            Game.endingGen = new EndingGen(reqsofEachPath, pathsInGroup, weightofEachPath, tierofEachPath);
+            Game.endingGen = new EndingGen(reqsofEachPath, pathsInGroup, tierofEachPath);
             Close();
         }
 

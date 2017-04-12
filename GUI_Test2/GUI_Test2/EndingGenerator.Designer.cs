@@ -29,16 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EndingGenerator));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.weightLabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tierWeightTextBox = new System.Windows.Forms.TextBox();
-            this.pathWeightTextBox = new System.Windows.Forms.TextBox();
-            this.editTierPathButton = new System.Windows.Forms.Button();
             this.TierLabel = new System.Windows.Forms.Label();
             this.tierComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.buttonListDownButton = new System.Windows.Forms.Button();
+            this.buttonListUpButton = new System.Windows.Forms.Button();
             this.pathRequirementsListBox = new System.Windows.Forms.ListBox();
             this.removeConditionButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -66,93 +61,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.addPathsButton = new System.Windows.Forms.Button();
             this.removePathsButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Controls.Add(this.editTierPathButton);
-            this.groupBox1.Location = new System.Drawing.Point(245, 90);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(166, 120);
-            this.groupBox1.TabIndex = 31;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tier Information";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.weightLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tierWeightTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pathWeightTextBox, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 16);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 45);
-            this.tableLayoutPanel1.TabIndex = 26;
-            // 
-            // weightLabel
-            // 
-            this.weightLabel.AutoSize = true;
-            this.weightLabel.Location = new System.Drawing.Point(2, 0);
-            this.weightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.weightLabel.Name = "weightLabel";
-            this.weightLabel.Size = new System.Drawing.Size(66, 13);
-            this.weightLabel.TabIndex = 7;
-            this.weightLabel.Text = "Path Weight";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(75, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Tier Weight";
-            // 
-            // tierWeightTextBox
-            // 
-            this.tierWeightTextBox.Location = new System.Drawing.Point(74, 20);
-            this.tierWeightTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.tierWeightTextBox.Name = "tierWeightTextBox";
-            this.tierWeightTextBox.ReadOnly = true;
-            this.tierWeightTextBox.Size = new System.Drawing.Size(60, 20);
-            this.tierWeightTextBox.TabIndex = 6;
-            this.tierWeightTextBox.Text = "0";
-            // 
-            // pathWeightTextBox
-            // 
-            this.pathWeightTextBox.Location = new System.Drawing.Point(3, 21);
-            this.pathWeightTextBox.Name = "pathWeightTextBox";
-            this.pathWeightTextBox.Size = new System.Drawing.Size(60, 20);
-            this.pathWeightTextBox.TabIndex = 21;
-            this.pathWeightTextBox.Text = "1";
-            // 
-            // editTierPathButton
-            // 
-            this.editTierPathButton.Location = new System.Drawing.Point(56, 67);
-            this.editTierPathButton.Name = "editTierPathButton";
-            this.editTierPathButton.Size = new System.Drawing.Size(62, 45);
-            this.editTierPathButton.TabIndex = 23;
-            this.editTierPathButton.Text = "Edit Path in Tier";
-            this.editTierPathButton.UseVisualStyleBackColor = true;
-            this.editTierPathButton.Click += new System.EventHandler(this.editTierPathButton_Click);
-            // 
             // TierLabel
             // 
             this.TierLabel.AutoSize = true;
-            this.TierLabel.Location = new System.Drawing.Point(266, 43);
+            this.TierLabel.Location = new System.Drawing.Point(269, 9);
             this.TierLabel.Name = "TierLabel";
             this.TierLabel.Size = new System.Drawing.Size(25, 13);
             this.TierLabel.TabIndex = 30;
@@ -161,7 +79,7 @@
             // tierComboBox
             // 
             this.tierComboBox.FormattingEnabled = true;
-            this.tierComboBox.Location = new System.Drawing.Point(257, 63);
+            this.tierComboBox.Location = new System.Drawing.Point(252, 25);
             this.tierComboBox.Name = "tierComboBox";
             this.tierComboBox.Size = new System.Drawing.Size(58, 21);
             this.tierComboBox.TabIndex = 29;
@@ -169,6 +87,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.buttonListDownButton);
+            this.groupBox4.Controls.Add(this.buttonListUpButton);
             this.groupBox4.Controls.Add(this.pathRequirementsListBox);
             this.groupBox4.Controls.Add(this.removeConditionButton);
             this.groupBox4.Controls.Add(this.groupBox5);
@@ -176,19 +96,35 @@
             this.groupBox4.Controls.Add(this.tierPathsListBox);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.addConditionButton);
-            this.groupBox4.Controls.Add(this.Savebutton);
-            this.groupBox4.Controls.Add(this.Cancelbutton);
             this.groupBox4.Location = new System.Drawing.Point(12, 217);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(513, 166);
+            this.groupBox4.Size = new System.Drawing.Size(454, 166);
             this.groupBox4.TabIndex = 33;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Requirements";
             // 
+            // buttonListDownButton
+            // 
+            this.buttonListDownButton.Location = new System.Drawing.Point(100, 134);
+            this.buttonListDownButton.Name = "buttonListDownButton";
+            this.buttonListDownButton.Size = new System.Drawing.Size(26, 23);
+            this.buttonListDownButton.TabIndex = 45;
+            this.buttonListDownButton.Text = "▼";
+            this.buttonListDownButton.UseVisualStyleBackColor = true;
+            // 
+            // buttonListUpButton
+            // 
+            this.buttonListUpButton.Location = new System.Drawing.Point(100, 105);
+            this.buttonListUpButton.Name = "buttonListUpButton";
+            this.buttonListUpButton.Size = new System.Drawing.Size(26, 23);
+            this.buttonListUpButton.TabIndex = 44;
+            this.buttonListUpButton.Text = "▲";
+            this.buttonListUpButton.UseVisualStyleBackColor = true;
+            // 
             // pathRequirementsListBox
             // 
             this.pathRequirementsListBox.FormattingEnabled = true;
-            this.pathRequirementsListBox.Location = new System.Drawing.Point(429, 20);
+            this.pathRequirementsListBox.Location = new System.Drawing.Point(369, 19);
             this.pathRequirementsListBox.Name = "pathRequirementsListBox";
             this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 95);
             this.pathRequirementsListBox.TabIndex = 38;
@@ -196,7 +132,7 @@
             // 
             // removeConditionButton
             // 
-            this.removeConditionButton.Location = new System.Drawing.Point(327, 54);
+            this.removeConditionButton.Location = new System.Drawing.Point(358, 141);
             this.removeConditionButton.Name = "removeConditionButton";
             this.removeConditionButton.Size = new System.Drawing.Size(91, 22);
             this.removeConditionButton.TabIndex = 37;
@@ -209,7 +145,7 @@
             this.groupBox5.Controls.Add(this.hubComboBox);
             this.groupBox5.Controls.Add(this.hubLabel);
             this.groupBox5.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox5.Location = new System.Drawing.Point(111, 16);
+            this.groupBox5.Location = new System.Drawing.Point(134, 19);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(210, 83);
             this.groupBox5.TabIndex = 36;
@@ -292,14 +228,14 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(111, 105);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(134, 108);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
@@ -309,7 +245,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(160, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(157, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -321,21 +257,21 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(85, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(83, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(94, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(92, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
-            this.comparitorComboBox.Size = new System.Drawing.Size(60, 21);
+            this.comparitorComboBox.Size = new System.Drawing.Size(59, 21);
             this.comparitorComboBox.TabIndex = 23;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(94, 0);
+            this.label5.Location = new System.Drawing.Point(92, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 34;
@@ -353,7 +289,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(160, 0);
+            this.label8.Location = new System.Drawing.Point(157, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
@@ -379,7 +315,7 @@
             // 
             // addConditionButton
             // 
-            this.addConditionButton.Location = new System.Drawing.Point(327, 27);
+            this.addConditionButton.Location = new System.Drawing.Point(358, 114);
             this.addConditionButton.Name = "addConditionButton";
             this.addConditionButton.Size = new System.Drawing.Size(91, 25);
             this.addConditionButton.TabIndex = 24;
@@ -389,7 +325,7 @@
             // 
             // Savebutton
             // 
-            this.Savebutton.Location = new System.Drawing.Point(349, 130);
+            this.Savebutton.Location = new System.Drawing.Point(318, 92);
             this.Savebutton.Name = "Savebutton";
             this.Savebutton.Size = new System.Drawing.Size(75, 23);
             this.Savebutton.TabIndex = 16;
@@ -399,7 +335,7 @@
             // 
             // Cancelbutton
             // 
-            this.Cancelbutton.Location = new System.Drawing.Point(433, 130);
+            this.Cancelbutton.Location = new System.Drawing.Point(318, 121);
             this.Cancelbutton.Name = "Cancelbutton";
             this.Cancelbutton.Size = new System.Drawing.Size(75, 23);
             this.Cancelbutton.TabIndex = 15;
@@ -478,7 +414,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 387);
+            this.ClientSize = new System.Drawing.Size(471, 387);
             this.Controls.Add(this.unusedPathsListBox);
             this.Controls.Add(this.usedPathsListBox);
             this.Controls.Add(this.label2);
@@ -486,7 +422,8 @@
             this.Controls.Add(this.addPathsButton);
             this.Controls.Add(this.removePathsButton);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Cancelbutton);
+            this.Controls.Add(this.Savebutton);
             this.Controls.Add(this.TierLabel);
             this.Controls.Add(this.tierComboBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -495,9 +432,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "EndingGenerator";
             this.Load += new System.EventHandler(this.EndingGenerator_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -512,14 +446,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label weightLabel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tierWeightTextBox;
-        private System.Windows.Forms.TextBox pathWeightTextBox;
-        private System.Windows.Forms.Button editTierPathButton;
         private System.Windows.Forms.Label TierLabel;
         private System.Windows.Forms.ComboBox tierComboBox;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -550,5 +476,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button addPathsButton;
         private System.Windows.Forms.Button removePathsButton;
+        private System.Windows.Forms.Button buttonListDownButton;
+        private System.Windows.Forms.Button buttonListUpButton;
     }
 }
