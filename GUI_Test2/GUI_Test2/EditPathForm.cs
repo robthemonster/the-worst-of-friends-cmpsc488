@@ -409,7 +409,7 @@ namespace GUI_Test2
             if (useButton1Image.Checked)
             {
                 button1PictureBox.Enabled = true;
-                chooseButton1ImageButton.Enabled = true;
+                //chooseButton1ImageButton.Enabled = true;
                 if (!buttonLoading)
                 {
                     chooseButton1ImageButton_Click(sender, e);
@@ -421,7 +421,7 @@ namespace GUI_Test2
             else{
                 buttonImageState = 0;
                 button1PictureBox.Enabled = false;
-                chooseButton1ImageButton.Enabled = false;
+                //chooseButton1ImageButton.Enabled = false;
                 useButton2Image.Checked = false;
                 useButton2Image.Enabled = false;
             }
@@ -911,7 +911,7 @@ namespace GUI_Test2
             if (useButton2Image.Checked)
             {
                 button2PictureBox.Enabled = true;
-                chooseButton2ImageButton.Enabled = true;
+                //chooseButton2ImageButton.Enabled = true;
                 if (!buttonLoading)
                 {
                     chooseButton2ImageButton_Click(sender, e);
@@ -929,7 +929,7 @@ namespace GUI_Test2
             }
             else {
                 button2PictureBox.Enabled = false;
-                chooseButton2ImageButton.Enabled = false;
+                //chooseButton2ImageButton.Enabled = false;
             }
         }
 

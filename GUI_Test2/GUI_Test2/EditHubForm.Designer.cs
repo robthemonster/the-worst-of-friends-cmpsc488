@@ -38,21 +38,19 @@
             this.buttonListBox = new System.Windows.Forms.ListBox();
             this.hubImageBox = new System.Windows.Forms.GroupBox();
             this.hubImagePictureBox = new System.Windows.Forms.PictureBox();
+            this.musicBox = new System.Windows.Forms.GroupBox();
+            this.useMusic = new System.Windows.Forms.CheckBox();
             this.chooseHubImageButton = new System.Windows.Forms.Button();
             this.addButtonBox = new System.Windows.Forms.GroupBox();
-            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
-            this.useButton2Image = new System.Windows.Forms.CheckBox();
-            this.button2PictureBox = new System.Windows.Forms.PictureBox();
             this.targetNavigableBox = new System.Windows.Forms.GroupBox();
             this.hubFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.navComboBox = new System.Windows.Forms.ComboBox();
             this.pathGroupFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.pathFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.deleteButtonButton = new System.Windows.Forms.Button();
-            this.createButtonButton = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.buttonTextTextBox = new System.Windows.Forms.TextBox();
-            this.useButton1Image = new System.Windows.Forms.CheckBox();
+            this.createButtonButton = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -65,18 +63,20 @@
             this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
             this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
             this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
+            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
+            this.useButton2Image = new System.Windows.Forms.CheckBox();
+            this.button2PictureBox = new System.Windows.Forms.PictureBox();
+            this.useButton1Image = new System.Windows.Forms.CheckBox();
             this.button1PictureBox = new System.Windows.Forms.PictureBox();
-            this.musicBox = new System.Windows.Forms.GroupBox();
-            this.useMusic = new System.Windows.Forms.CheckBox();
             this.buttonImageGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
-            this.addButtonBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
-            this.targetNavigableBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             this.musicBox.SuspendLayout();
+            this.addButtonBox.SuspendLayout();
+            this.targetNavigableBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             this.buttonImageGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,6 +178,27 @@
             this.hubImagePictureBox.TabIndex = 9;
             this.hubImagePictureBox.TabStop = false;
             // 
+            // musicBox
+            // 
+            this.musicBox.Controls.Add(this.useMusic);
+            this.musicBox.Location = new System.Drawing.Point(199, 69);
+            this.musicBox.Name = "musicBox";
+            this.musicBox.Size = new System.Drawing.Size(110, 51);
+            this.musicBox.TabIndex = 47;
+            this.musicBox.TabStop = false;
+            this.musicBox.Text = "Background Music";
+            // 
+            // useMusic
+            // 
+            this.useMusic.AutoSize = true;
+            this.useMusic.Location = new System.Drawing.Point(14, 19);
+            this.useMusic.Name = "useMusic";
+            this.useMusic.Size = new System.Drawing.Size(76, 17);
+            this.useMusic.TabIndex = 1;
+            this.useMusic.Text = "Use Music";
+            this.useMusic.UseVisualStyleBackColor = true;
+            this.useMusic.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
+            // 
             // chooseHubImageButton
             // 
             this.chooseHubImageButton.Location = new System.Drawing.Point(190, 18);
@@ -214,40 +235,6 @@
             this.addButtonBox.TabIndex = 46;
             this.addButtonBox.TabStop = false;
             this.addButtonBox.Text = "Add Button";
-            // 
-            // HighlightTextButton
-            // 
-            this.HighlightTextButton.AutoSize = true;
-            this.HighlightTextButton.Location = new System.Drawing.Point(15, 63);
-            this.HighlightTextButton.Name = "HighlightTextButton";
-            this.HighlightTextButton.Size = new System.Drawing.Size(91, 17);
-            this.HighlightTextButton.TabIndex = 61;
-            this.HighlightTextButton.Text = "Highlight Text";
-            this.HighlightTextButton.UseVisualStyleBackColor = true;
-            // 
-            // useButton2Image
-            // 
-            this.useButton2Image.AutoSize = true;
-            this.useButton2Image.Enabled = false;
-            this.useButton2Image.Location = new System.Drawing.Point(15, 40);
-            this.useButton2Image.Name = "useButton2Image";
-            this.useButton2Image.Size = new System.Drawing.Size(170, 17);
-            this.useButton2Image.TabIndex = 59;
-            this.useButton2Image.Text = "Use Highlighted Button Image ";
-            this.useButton2Image.UseVisualStyleBackColor = true;
-            this.useButton2Image.CheckedChanged += new System.EventHandler(this.useButton2Image_CheckedChanged);
-            // 
-            // button2PictureBox
-            // 
-            this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2PictureBox.Enabled = false;
-            this.button2PictureBox.InitialImage = null;
-            this.button2PictureBox.Location = new System.Drawing.Point(99, 86);
-            this.button2PictureBox.Name = "button2PictureBox";
-            this.button2PictureBox.Size = new System.Drawing.Size(79, 48);
-            this.button2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.button2PictureBox.TabIndex = 58;
-            this.button2PictureBox.TabStop = false;
             // 
             // targetNavigableBox
             // 
@@ -316,16 +303,6 @@
             this.deleteButtonButton.UseVisualStyleBackColor = true;
             this.deleteButtonButton.Click += new System.EventHandler(this.deleteButtonButton_Click);
             // 
-            // createButtonButton
-            // 
-            this.createButtonButton.Location = new System.Drawing.Point(309, 147);
-            this.createButtonButton.Name = "createButtonButton";
-            this.createButtonButton.Size = new System.Drawing.Size(111, 23);
-            this.createButtonButton.TabIndex = 55;
-            this.createButtonButton.Text = "Create/Edit Button";
-            this.createButtonButton.UseVisualStyleBackColor = true;
-            this.createButtonButton.Click += new System.EventHandler(this.createButtonButton_Click);
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -343,16 +320,15 @@
             this.buttonTextTextBox.Size = new System.Drawing.Size(158, 73);
             this.buttonTextTextBox.TabIndex = 53;
             // 
-            // useButton1Image
+            // createButtonButton
             // 
-            this.useButton1Image.AutoSize = true;
-            this.useButton1Image.Location = new System.Drawing.Point(14, 17);
-            this.useButton1Image.Name = "useButton1Image";
-            this.useButton1Image.Size = new System.Drawing.Size(114, 17);
-            this.useButton1Image.TabIndex = 48;
-            this.useButton1Image.Text = "Use Button Image ";
-            this.useButton1Image.UseVisualStyleBackColor = true;
-            this.useButton1Image.CheckedChanged += new System.EventHandler(this.useButton1Image_CheckedChanged);
+            this.createButtonButton.Location = new System.Drawing.Point(309, 147);
+            this.createButtonButton.Name = "createButtonButton";
+            this.createButtonButton.Size = new System.Drawing.Size(111, 23);
+            this.createButtonButton.TabIndex = 55;
+            this.createButtonButton.Text = "Create Button";
+            this.createButtonButton.UseVisualStyleBackColor = true;
+            this.createButtonButton.Click += new System.EventHandler(this.createButtonButton_Click);
             // 
             // label14
             // 
@@ -472,6 +448,51 @@
             this.useButtonLocationDefaults.UseVisualStyleBackColor = true;
             this.useButtonLocationDefaults.CheckedChanged += new System.EventHandler(this.useButtonLocationDefaults_CheckedChanged);
             // 
+            // HighlightTextButton
+            // 
+            this.HighlightTextButton.AutoSize = true;
+            this.HighlightTextButton.Location = new System.Drawing.Point(15, 63);
+            this.HighlightTextButton.Name = "HighlightTextButton";
+            this.HighlightTextButton.Size = new System.Drawing.Size(91, 17);
+            this.HighlightTextButton.TabIndex = 61;
+            this.HighlightTextButton.Text = "Highlight Text";
+            this.HighlightTextButton.UseVisualStyleBackColor = true;
+            // 
+            // useButton2Image
+            // 
+            this.useButton2Image.AutoSize = true;
+            this.useButton2Image.Enabled = false;
+            this.useButton2Image.Location = new System.Drawing.Point(15, 40);
+            this.useButton2Image.Name = "useButton2Image";
+            this.useButton2Image.Size = new System.Drawing.Size(136, 17);
+            this.useButton2Image.TabIndex = 59;
+            this.useButton2Image.Text = "Use Highlighted Image ";
+            this.useButton2Image.UseVisualStyleBackColor = true;
+            this.useButton2Image.CheckedChanged += new System.EventHandler(this.useButton2Image_CheckedChanged);
+            // 
+            // button2PictureBox
+            // 
+            this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2PictureBox.Enabled = false;
+            this.button2PictureBox.InitialImage = null;
+            this.button2PictureBox.Location = new System.Drawing.Point(99, 86);
+            this.button2PictureBox.Name = "button2PictureBox";
+            this.button2PictureBox.Size = new System.Drawing.Size(79, 48);
+            this.button2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.button2PictureBox.TabIndex = 58;
+            this.button2PictureBox.TabStop = false;
+            // 
+            // useButton1Image
+            // 
+            this.useButton1Image.AutoSize = true;
+            this.useButton1Image.Location = new System.Drawing.Point(14, 17);
+            this.useButton1Image.Name = "useButton1Image";
+            this.useButton1Image.Size = new System.Drawing.Size(114, 17);
+            this.useButton1Image.TabIndex = 48;
+            this.useButton1Image.Text = "Use Button Image ";
+            this.useButton1Image.UseVisualStyleBackColor = true;
+            this.useButton1Image.CheckedChanged += new System.EventHandler(this.useButton1Image_CheckedChanged);
+            // 
             // button1PictureBox
             // 
             this.button1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -483,27 +504,6 @@
             this.button1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.button1PictureBox.TabIndex = 38;
             this.button1PictureBox.TabStop = false;
-            // 
-            // musicBox
-            // 
-            this.musicBox.Controls.Add(this.useMusic);
-            this.musicBox.Location = new System.Drawing.Point(199, 69);
-            this.musicBox.Name = "musicBox";
-            this.musicBox.Size = new System.Drawing.Size(110, 51);
-            this.musicBox.TabIndex = 47;
-            this.musicBox.TabStop = false;
-            this.musicBox.Text = "Background Music";
-            // 
-            // useMusic
-            // 
-            this.useMusic.AutoSize = true;
-            this.useMusic.Location = new System.Drawing.Point(14, 19);
-            this.useMusic.Name = "useMusic";
-            this.useMusic.Size = new System.Drawing.Size(76, 17);
-            this.useMusic.TabIndex = 1;
-            this.useMusic.Text = "Use Music";
-            this.useMusic.UseVisualStyleBackColor = true;
-            this.useMusic.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
             // 
             // buttonImageGroupBox
             // 
@@ -543,14 +543,14 @@
             this.tableLayoutPanel4.PerformLayout();
             this.hubImageBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).EndInit();
-            this.addButtonBox.ResumeLayout(false);
-            this.addButtonBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
-            this.targetNavigableBox.ResumeLayout(false);
-            this.targetNavigableBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
             this.musicBox.ResumeLayout(false);
             this.musicBox.PerformLayout();
+            this.addButtonBox.ResumeLayout(false);
+            this.addButtonBox.PerformLayout();
+            this.targetNavigableBox.ResumeLayout(false);
+            this.targetNavigableBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
             this.buttonImageGroupBox.ResumeLayout(false);
             this.buttonImageGroupBox.PerformLayout();
             this.ResumeLayout(false);
