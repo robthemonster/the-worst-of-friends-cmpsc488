@@ -73,41 +73,41 @@
             this.label8 = new System.Windows.Forms.Label();
             this.impactAttributeListBox = new System.Windows.Forms.ListBox();
             this.Buttons = new System.Windows.Forms.TabPage();
-            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
-            this.useButton2Image = new System.Windows.Forms.CheckBox();
-            this.button2PictureBox = new System.Windows.Forms.PictureBox();
-            this.useButton1Image = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.useButtonSizeDefaults = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.hubFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.navComboBox = new System.Windows.Forms.ComboBox();
             this.pathGroupFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.pathFromButtonRadio = new System.Windows.Forms.RadioButton();
+            this.buttonWidthTextBox = new System.Windows.Forms.TextBox();
+            this.buttonHeightTextBox = new System.Windows.Forms.TextBox();
+            this.deleteButtonButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.createButtonButton = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
+            this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
+            this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.buttonTextTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.useButton2Image = new System.Windows.Forms.CheckBox();
+            this.HighlightTextButton = new System.Windows.Forms.CheckBox();
+            this.button1PictureBox = new System.Windows.Forms.PictureBox();
+            this.useButton1Image = new System.Windows.Forms.CheckBox();
+            this.button2PictureBox = new System.Windows.Forms.PictureBox();
             this.buttonListDownButton = new System.Windows.Forms.Button();
             this.buttonListUpButton = new System.Windows.Forms.Button();
             this.cancelButtonTab3 = new System.Windows.Forms.Button();
-            this.deleteButtonButton = new System.Windows.Forms.Button();
             this.saveButtonTab3 = new System.Windows.Forms.Button();
-            this.createButtonButton = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.buttonTextTextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.buttonHeightTextBox = new System.Windows.Forms.TextBox();
-            this.buttonWidthTextBox = new System.Windows.Forms.TextBox();
-            this.useButtonSizeDefaults = new System.Windows.Forms.CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
-            this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
-            this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
-            this.button1PictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.musicBox.SuspendLayout();
@@ -120,12 +120,12 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.Buttons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -152,7 +152,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(612, 356);
+            this.tabPage1.Size = new System.Drawing.Size(566, 356);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -384,7 +384,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(612, 356);
+            this.tabPage2.Size = new System.Drawing.Size(566, 356);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impacts";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -632,50 +632,54 @@
             this.Buttons.UseVisualStyleBackColor = true;
             this.Buttons.Click += new System.EventHandler(this.Buttons_Click);
             // 
-            // HighlightTextButton
+            // groupBox3
             // 
-            this.HighlightTextButton.AutoSize = true;
-            this.HighlightTextButton.Location = new System.Drawing.Point(18, 62);
-            this.HighlightTextButton.Name = "HighlightTextButton";
-            this.HighlightTextButton.Size = new System.Drawing.Size(91, 17);
-            this.HighlightTextButton.TabIndex = 23;
-            this.HighlightTextButton.Text = "Highlight Text";
-            this.HighlightTextButton.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.useButtonSizeDefaults);
+            this.groupBox3.Controls.Add(this.groupBox1);
+            this.groupBox3.Controls.Add(this.buttonWidthTextBox);
+            this.groupBox3.Controls.Add(this.buttonHeightTextBox);
+            this.groupBox3.Controls.Add(this.deleteButtonButton);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.createButtonButton);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.useButtonLocationDefaults);
+            this.groupBox3.Controls.Add(this.buttonXLocTextBox);
+            this.groupBox3.Controls.Add(this.buttonYLocTextBox);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.buttonTextTextBox);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Location = new System.Drawing.Point(9, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(406, 187);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Button Properties";
             // 
-            // useButton2Image
+            // label14
             // 
-            this.useButton2Image.AutoSize = true;
-            this.useButton2Image.Enabled = false;
-            this.useButton2Image.Location = new System.Drawing.Point(18, 39);
-            this.useButton2Image.Name = "useButton2Image";
-            this.useButton2Image.Size = new System.Drawing.Size(136, 17);
-            this.useButton2Image.TabIndex = 21;
-            this.useButton2Image.Text = "Use Highlighted Image ";
-            this.useButton2Image.UseVisualStyleBackColor = true;
-            this.useButton2Image.CheckedChanged += new System.EventHandler(this.useButton2Image_CheckedChanged);
+            this.label14.AutoSize = true;
+            this.label14.Enabled = false;
+            this.label14.Location = new System.Drawing.Point(37, 116);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(112, 13);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "Custom Size (in Pixels)";
             // 
-            // button2PictureBox
+            // useButtonSizeDefaults
             // 
-            this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2PictureBox.Enabled = false;
-            this.button2PictureBox.InitialImage = null;
-            this.button2PictureBox.Location = new System.Drawing.Point(95, 85);
-            this.button2PictureBox.Name = "button2PictureBox";
-            this.button2PictureBox.Size = new System.Drawing.Size(79, 50);
-            this.button2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.button2PictureBox.TabIndex = 20;
-            this.button2PictureBox.TabStop = false;
-            // 
-            // useButton1Image
-            // 
-            this.useButton1Image.AutoSize = true;
-            this.useButton1Image.Location = new System.Drawing.Point(18, 17);
-            this.useButton1Image.Name = "useButton1Image";
-            this.useButton1Image.Size = new System.Drawing.Size(114, 17);
-            this.useButton1Image.TabIndex = 12;
-            this.useButton1Image.Text = "Use Button Image ";
-            this.useButton1Image.UseVisualStyleBackColor = true;
-            this.useButton1Image.CheckedChanged += new System.EventHandler(this.useButton1Image_CheckedChanged);
+            this.useButtonSizeDefaults.AutoSize = true;
+            this.useButtonSizeDefaults.Checked = true;
+            this.useButtonSizeDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.useButtonSizeDefaults.Location = new System.Drawing.Point(23, 96);
+            this.useButtonSizeDefaults.Name = "useButtonSizeDefaults";
+            this.useButtonSizeDefaults.Size = new System.Drawing.Size(110, 17);
+            this.useButtonSizeDefaults.TabIndex = 6;
+            this.useButtonSizeDefaults.Text = "Use Size Defaults";
+            this.useButtonSizeDefaults.UseVisualStyleBackColor = true;
+            this.useButtonSizeDefaults.CheckedChanged += new System.EventHandler(this.useButtonSizeDefaults_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -734,6 +738,209 @@
             this.pathFromButtonRadio.UseVisualStyleBackColor = true;
             this.pathFromButtonRadio.CheckedChanged += new System.EventHandler(this.pathFromButtonRadio_CheckedChanged);
             // 
+            // buttonWidthTextBox
+            // 
+            this.buttonWidthTextBox.Enabled = false;
+            this.buttonWidthTextBox.Location = new System.Drawing.Point(86, 132);
+            this.buttonWidthTextBox.Name = "buttonWidthTextBox";
+            this.buttonWidthTextBox.Size = new System.Drawing.Size(50, 20);
+            this.buttonWidthTextBox.TabIndex = 7;
+            // 
+            // buttonHeightTextBox
+            // 
+            this.buttonHeightTextBox.Enabled = false;
+            this.buttonHeightTextBox.Location = new System.Drawing.Point(86, 154);
+            this.buttonHeightTextBox.Name = "buttonHeightTextBox";
+            this.buttonHeightTextBox.Size = new System.Drawing.Size(50, 20);
+            this.buttonHeightTextBox.TabIndex = 8;
+            // 
+            // deleteButtonButton
+            // 
+            this.deleteButtonButton.Location = new System.Drawing.Point(292, 154);
+            this.deleteButtonButton.Name = "deleteButtonButton";
+            this.deleteButtonButton.Size = new System.Drawing.Size(104, 23);
+            this.deleteButtonButton.TabIndex = 19;
+            this.deleteButtonButton.Text = "Delete Button";
+            this.deleteButtonButton.UseVisualStyleBackColor = true;
+            this.deleteButtonButton.Click += new System.EventHandler(this.deleteButtonButton_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Enabled = false;
+            this.label12.Location = new System.Drawing.Point(42, 135);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Width:";
+            // 
+            // createButtonButton
+            // 
+            this.createButtonButton.Location = new System.Drawing.Point(292, 125);
+            this.createButtonButton.Name = "createButtonButton";
+            this.createButtonButton.Size = new System.Drawing.Size(104, 23);
+            this.createButtonButton.TabIndex = 5;
+            this.createButtonButton.Text = "Create Button";
+            this.createButtonButton.UseVisualStyleBackColor = true;
+            this.createButtonButton.Click += new System.EventHandler(this.createButtonButton_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Enabled = false;
+            this.label13.Location = new System.Drawing.Point(42, 157);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 13);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Height:";
+            // 
+            // useButtonLocationDefaults
+            // 
+            this.useButtonLocationDefaults.AutoSize = true;
+            this.useButtonLocationDefaults.Checked = true;
+            this.useButtonLocationDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.useButtonLocationDefaults.Location = new System.Drawing.Point(156, 96);
+            this.useButtonLocationDefaults.Name = "useButtonLocationDefaults";
+            this.useButtonLocationDefaults.Size = new System.Drawing.Size(131, 17);
+            this.useButtonLocationDefaults.TabIndex = 9;
+            this.useButtonLocationDefaults.Text = "Use Location Defaults";
+            this.useButtonLocationDefaults.UseVisualStyleBackColor = true;
+            this.useButtonLocationDefaults.CheckedChanged += new System.EventHandler(this.useButtonLocationDefaults_CheckedChanged);
+            // 
+            // buttonXLocTextBox
+            // 
+            this.buttonXLocTextBox.Enabled = false;
+            this.buttonXLocTextBox.Location = new System.Drawing.Point(195, 132);
+            this.buttonXLocTextBox.Name = "buttonXLocTextBox";
+            this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
+            this.buttonXLocTextBox.TabIndex = 10;
+            // 
+            // buttonYLocTextBox
+            // 
+            this.buttonYLocTextBox.Enabled = false;
+            this.buttonYLocTextBox.Location = new System.Drawing.Point(195, 154);
+            this.buttonYLocTextBox.Name = "buttonYLocTextBox";
+            this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
+            this.buttonYLocTextBox.TabIndex = 11;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 13);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "Button Text";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Enabled = false;
+            this.label9.Location = new System.Drawing.Point(172, 116);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Center Coords";
+            // 
+            // buttonTextTextBox
+            // 
+            this.buttonTextTextBox.Location = new System.Drawing.Point(23, 45);
+            this.buttonTextTextBox.Multiline = true;
+            this.buttonTextTextBox.Name = "buttonTextTextBox";
+            this.buttonTextTextBox.Size = new System.Drawing.Size(145, 45);
+            this.buttonTextTextBox.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Enabled = false;
+            this.label10.Location = new System.Drawing.Point(172, 135);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(17, 13);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "X:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Enabled = false;
+            this.label11.Location = new System.Drawing.Point(172, 161);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(17, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Y:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.useButton2Image);
+            this.groupBox2.Controls.Add(this.HighlightTextButton);
+            this.groupBox2.Controls.Add(this.button1PictureBox);
+            this.groupBox2.Controls.Add(this.useButton1Image);
+            this.groupBox2.Controls.Add(this.button2PictureBox);
+            this.groupBox2.Location = new System.Drawing.Point(137, 214);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(178, 142);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Button Images";
+            // 
+            // useButton2Image
+            // 
+            this.useButton2Image.AutoSize = true;
+            this.useButton2Image.Enabled = false;
+            this.useButton2Image.Location = new System.Drawing.Point(18, 39);
+            this.useButton2Image.Name = "useButton2Image";
+            this.useButton2Image.Size = new System.Drawing.Size(136, 17);
+            this.useButton2Image.TabIndex = 21;
+            this.useButton2Image.Text = "Use Highlighted Image ";
+            this.useButton2Image.UseVisualStyleBackColor = true;
+            this.useButton2Image.CheckedChanged += new System.EventHandler(this.useButton2Image_CheckedChanged);
+            // 
+            // HighlightTextButton
+            // 
+            this.HighlightTextButton.AutoSize = true;
+            this.HighlightTextButton.Location = new System.Drawing.Point(18, 62);
+            this.HighlightTextButton.Name = "HighlightTextButton";
+            this.HighlightTextButton.Size = new System.Drawing.Size(91, 17);
+            this.HighlightTextButton.TabIndex = 23;
+            this.HighlightTextButton.Text = "Highlight Text";
+            this.HighlightTextButton.UseVisualStyleBackColor = true;
+            // 
+            // button1PictureBox
+            // 
+            this.button1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1PictureBox.Enabled = false;
+            this.button1PictureBox.InitialImage = null;
+            this.button1PictureBox.Location = new System.Drawing.Point(9, 85);
+            this.button1PictureBox.Name = "button1PictureBox";
+            this.button1PictureBox.Size = new System.Drawing.Size(79, 50);
+            this.button1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.button1PictureBox.TabIndex = 1;
+            this.button1PictureBox.TabStop = false;
+            // 
+            // useButton1Image
+            // 
+            this.useButton1Image.AutoSize = true;
+            this.useButton1Image.Location = new System.Drawing.Point(18, 17);
+            this.useButton1Image.Name = "useButton1Image";
+            this.useButton1Image.Size = new System.Drawing.Size(114, 17);
+            this.useButton1Image.TabIndex = 12;
+            this.useButton1Image.Text = "Use Button Image ";
+            this.useButton1Image.UseVisualStyleBackColor = true;
+            this.useButton1Image.CheckedChanged += new System.EventHandler(this.useButton1Image_CheckedChanged);
+            // 
+            // button2PictureBox
+            // 
+            this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2PictureBox.Enabled = false;
+            this.button2PictureBox.InitialImage = null;
+            this.button2PictureBox.Location = new System.Drawing.Point(95, 85);
+            this.button2PictureBox.Name = "button2PictureBox";
+            this.button2PictureBox.Size = new System.Drawing.Size(79, 50);
+            this.button2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.button2PictureBox.TabIndex = 20;
+            this.button2PictureBox.TabStop = false;
+            // 
             // buttonListDownButton
             // 
             this.buttonListDownButton.Location = new System.Drawing.Point(109, 328);
@@ -764,16 +971,6 @@
             this.cancelButtonTab3.UseVisualStyleBackColor = true;
             this.cancelButtonTab3.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // deleteButtonButton
-            // 
-            this.deleteButtonButton.Location = new System.Drawing.Point(292, 154);
-            this.deleteButtonButton.Name = "deleteButtonButton";
-            this.deleteButtonButton.Size = new System.Drawing.Size(104, 23);
-            this.deleteButtonButton.TabIndex = 19;
-            this.deleteButtonButton.Text = "Delete Button";
-            this.deleteButtonButton.UseVisualStyleBackColor = true;
-            this.deleteButtonButton.Click += new System.EventHandler(this.deleteButtonButton_Click);
-            // 
             // saveButtonTab3
             // 
             this.saveButtonTab3.Location = new System.Drawing.Point(340, 304);
@@ -783,163 +980,6 @@
             this.saveButtonTab3.Text = "Save";
             this.saveButtonTab3.UseVisualStyleBackColor = true;
             this.saveButtonTab3.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // createButtonButton
-            // 
-            this.createButtonButton.Location = new System.Drawing.Point(292, 125);
-            this.createButtonButton.Name = "createButtonButton";
-            this.createButtonButton.Size = new System.Drawing.Size(104, 23);
-            this.createButtonButton.TabIndex = 5;
-            this.createButtonButton.Text = "Create Button";
-            this.createButtonButton.UseVisualStyleBackColor = true;
-            this.createButtonButton.Click += new System.EventHandler(this.createButtonButton_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 25);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 13);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Button Text";
-            // 
-            // buttonTextTextBox
-            // 
-            this.buttonTextTextBox.Location = new System.Drawing.Point(23, 45);
-            this.buttonTextTextBox.Multiline = true;
-            this.buttonTextTextBox.Name = "buttonTextTextBox";
-            this.buttonTextTextBox.Size = new System.Drawing.Size(145, 45);
-            this.buttonTextTextBox.TabIndex = 0;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Enabled = false;
-            this.label14.Location = new System.Drawing.Point(37, 116);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(112, 13);
-            this.label14.TabIndex = 14;
-            this.label14.Text = "Custom Size (in Pixels)";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Enabled = false;
-            this.label13.Location = new System.Drawing.Point(42, 157);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Height:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Enabled = false;
-            this.label12.Location = new System.Drawing.Point(42, 135);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Width:";
-            // 
-            // buttonHeightTextBox
-            // 
-            this.buttonHeightTextBox.Enabled = false;
-            this.buttonHeightTextBox.Location = new System.Drawing.Point(86, 154);
-            this.buttonHeightTextBox.Name = "buttonHeightTextBox";
-            this.buttonHeightTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonHeightTextBox.TabIndex = 8;
-            // 
-            // buttonWidthTextBox
-            // 
-            this.buttonWidthTextBox.Enabled = false;
-            this.buttonWidthTextBox.Location = new System.Drawing.Point(86, 132);
-            this.buttonWidthTextBox.Name = "buttonWidthTextBox";
-            this.buttonWidthTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonWidthTextBox.TabIndex = 7;
-            // 
-            // useButtonSizeDefaults
-            // 
-            this.useButtonSizeDefaults.AutoSize = true;
-            this.useButtonSizeDefaults.Checked = true;
-            this.useButtonSizeDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.useButtonSizeDefaults.Location = new System.Drawing.Point(23, 96);
-            this.useButtonSizeDefaults.Name = "useButtonSizeDefaults";
-            this.useButtonSizeDefaults.Size = new System.Drawing.Size(110, 17);
-            this.useButtonSizeDefaults.TabIndex = 6;
-            this.useButtonSizeDefaults.Text = "Use Size Defaults";
-            this.useButtonSizeDefaults.UseVisualStyleBackColor = true;
-            this.useButtonSizeDefaults.CheckedChanged += new System.EventHandler(this.useButtonSizeDefaults_CheckedChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Enabled = false;
-            this.label11.Location = new System.Drawing.Point(172, 161);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(17, 13);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Y:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Enabled = false;
-            this.label10.Location = new System.Drawing.Point(172, 135);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 13);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "X:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Enabled = false;
-            this.label9.Location = new System.Drawing.Point(172, 116);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Center Coords";
-            // 
-            // buttonYLocTextBox
-            // 
-            this.buttonYLocTextBox.Enabled = false;
-            this.buttonYLocTextBox.Location = new System.Drawing.Point(195, 154);
-            this.buttonYLocTextBox.Name = "buttonYLocTextBox";
-            this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonYLocTextBox.TabIndex = 11;
-            // 
-            // buttonXLocTextBox
-            // 
-            this.buttonXLocTextBox.Enabled = false;
-            this.buttonXLocTextBox.Location = new System.Drawing.Point(195, 132);
-            this.buttonXLocTextBox.Name = "buttonXLocTextBox";
-            this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonXLocTextBox.TabIndex = 10;
-            // 
-            // useButtonLocationDefaults
-            // 
-            this.useButtonLocationDefaults.AutoSize = true;
-            this.useButtonLocationDefaults.Checked = true;
-            this.useButtonLocationDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.useButtonLocationDefaults.Location = new System.Drawing.Point(156, 96);
-            this.useButtonLocationDefaults.Name = "useButtonLocationDefaults";
-            this.useButtonLocationDefaults.Size = new System.Drawing.Size(131, 17);
-            this.useButtonLocationDefaults.TabIndex = 9;
-            this.useButtonLocationDefaults.Text = "Use Location Defaults";
-            this.useButtonLocationDefaults.UseVisualStyleBackColor = true;
-            this.useButtonLocationDefaults.CheckedChanged += new System.EventHandler(this.useButtonLocationDefaults_CheckedChanged);
-            // 
-            // button1PictureBox
-            // 
-            this.button1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1PictureBox.Enabled = false;
-            this.button1PictureBox.InitialImage = null;
-            this.button1PictureBox.Location = new System.Drawing.Point(9, 85);
-            this.button1PictureBox.Name = "button1PictureBox";
-            this.button1PictureBox.Size = new System.Drawing.Size(79, 50);
-            this.button1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.button1PictureBox.TabIndex = 1;
-            this.button1PictureBox.TabStop = false;
             // 
             // tableLayoutPanel4
             // 
@@ -974,46 +1014,6 @@
             this.buttonListBox.TabIndex = 1;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.useButton2Image);
-            this.groupBox2.Controls.Add(this.HighlightTextButton);
-            this.groupBox2.Controls.Add(this.button1PictureBox);
-            this.groupBox2.Controls.Add(this.useButton1Image);
-            this.groupBox2.Controls.Add(this.button2PictureBox);
-            this.groupBox2.Location = new System.Drawing.Point(137, 214);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(178, 142);
-            this.groupBox2.TabIndex = 24;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Button Images";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.useButtonSizeDefaults);
-            this.groupBox3.Controls.Add(this.groupBox1);
-            this.groupBox3.Controls.Add(this.buttonWidthTextBox);
-            this.groupBox3.Controls.Add(this.buttonHeightTextBox);
-            this.groupBox3.Controls.Add(this.deleteButtonButton);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.createButtonButton);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.useButtonLocationDefaults);
-            this.groupBox3.Controls.Add(this.buttonXLocTextBox);
-            this.groupBox3.Controls.Add(this.buttonYLocTextBox);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.buttonTextTextBox);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(9, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(406, 187);
-            this.groupBox3.TabIndex = 25;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Button Properties";
-            // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1045,16 +1045,16 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.Buttons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
