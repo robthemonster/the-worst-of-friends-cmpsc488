@@ -64,6 +64,7 @@ namespace GUI_Test2
                 buttonNameList.Add("Button " + i);
             }
             hubImagePictureBox.ImageLocation = hubImagePath;
+            pathFromButtonRadio.Checked = true;
         }
 
         private void buttonListUpButton_Click(object sender, EventArgs e)
@@ -514,20 +515,29 @@ namespace GUI_Test2
 
         private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
-            navType = 0;
-            setScope();
+            if (pathFromButtonRadio.Checked)
+            {
+                navType = 0;
+                setScope();
+            }
         }
 
         private void pathGroupFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
-            navType = 1;
-            setScope();
+            if (pathGroupFromButtonRadio.Checked)
+            {
+                navType = 1;
+                setScope();
+            }
         }
 
         private void hubFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
-            navType = 2;
-            setScope();
+            if (hubFromButtonRadio.Checked)
+            {
+                navType = 2;
+                setScope();
+            }
         }
 
         private void buttonListBox_SelectedIndexChanged(object sender, EventArgs e)

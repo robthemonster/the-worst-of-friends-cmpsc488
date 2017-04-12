@@ -374,6 +374,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Enabled = false;
             this.label14.Location = new System.Drawing.Point(24, 175);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(168, 13);
@@ -383,6 +384,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Enabled = false;
             this.label13.Location = new System.Drawing.Point(29, 220);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 13);
@@ -392,6 +394,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.Enabled = false;
             this.label12.Location = new System.Drawing.Point(29, 194);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
@@ -400,6 +403,7 @@
             // 
             // buttonHeightTextBox
             // 
+            this.buttonHeightTextBox.Enabled = false;
             this.buttonHeightTextBox.Location = new System.Drawing.Point(69, 217);
             this.buttonHeightTextBox.Name = "buttonHeightTextBox";
             this.buttonHeightTextBox.Size = new System.Drawing.Size(50, 20);
@@ -407,6 +411,7 @@
             // 
             // buttonWidthTextBox
             // 
+            this.buttonWidthTextBox.Enabled = false;
             this.buttonWidthTextBox.Location = new System.Drawing.Point(69, 191);
             this.buttonWidthTextBox.Name = "buttonWidthTextBox";
             this.buttonWidthTextBox.Size = new System.Drawing.Size(50, 20);
@@ -415,6 +420,8 @@
             // useButtonSizeDefaults
             // 
             this.useButtonSizeDefaults.AutoSize = true;
+            this.useButtonSizeDefaults.Checked = true;
+            this.useButtonSizeDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
             this.useButtonSizeDefaults.Location = new System.Drawing.Point(8, 154);
             this.useButtonSizeDefaults.Name = "useButtonSizeDefaults";
             this.useButtonSizeDefaults.Size = new System.Drawing.Size(144, 17);
