@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPathForm));
             this.pathDialogueTab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.musicBox = new System.Windows.Forms.GroupBox();
+            this.useMusic = new System.Windows.Forms.CheckBox();
+            this.chooseMusicButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -105,11 +108,9 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
-            this.musicBox = new System.Windows.Forms.GroupBox();
-            this.useMusic = new System.Windows.Forms.CheckBox();
-            this.chooseMusicButton = new System.Windows.Forms.Button();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.musicBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -123,7 +124,6 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
-            this.musicBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -154,6 +154,39 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // musicBox
+            // 
+            this.musicBox.Controls.Add(this.useMusic);
+            this.musicBox.Controls.Add(this.chooseMusicButton);
+            this.musicBox.Location = new System.Drawing.Point(99, 353);
+            this.musicBox.Name = "musicBox";
+            this.musicBox.Size = new System.Drawing.Size(415, 79);
+            this.musicBox.TabIndex = 48;
+            this.musicBox.TabStop = false;
+            this.musicBox.Text = "Background Music (Optional)";
+            // 
+            // useMusic
+            // 
+            this.useMusic.AutoSize = true;
+            this.useMusic.Location = new System.Drawing.Point(140, 19);
+            this.useMusic.Name = "useMusic";
+            this.useMusic.Size = new System.Drawing.Size(137, 17);
+            this.useMusic.TabIndex = 1;
+            this.useMusic.Text = "Use Background Music";
+            this.useMusic.UseVisualStyleBackColor = true;
+            this.useMusic.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
+            // 
+            // chooseMusicButton
+            // 
+            this.chooseMusicButton.Enabled = false;
+            this.chooseMusicButton.Location = new System.Drawing.Point(162, 42);
+            this.chooseMusicButton.Name = "chooseMusicButton";
+            this.chooseMusicButton.Size = new System.Drawing.Size(95, 23);
+            this.chooseMusicButton.TabIndex = 0;
+            this.chooseMusicButton.Text = "Choose Music";
+            this.chooseMusicButton.UseVisualStyleBackColor = true;
+            this.chooseMusicButton.Click += new System.EventHandler(this.chooseMusicButton_Click);
             // 
             // saveButton
             // 
@@ -812,6 +845,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Enabled = false;
             this.label14.Location = new System.Drawing.Point(153, 257);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(168, 13);
@@ -821,6 +855,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Enabled = false;
             this.label13.Location = new System.Drawing.Point(158, 302);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 13);
@@ -830,6 +865,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.Enabled = false;
             this.label12.Location = new System.Drawing.Point(158, 276);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
@@ -838,6 +874,7 @@
             // 
             // buttonHeightTextBox
             // 
+            this.buttonHeightTextBox.Enabled = false;
             this.buttonHeightTextBox.Location = new System.Drawing.Point(198, 299);
             this.buttonHeightTextBox.Name = "buttonHeightTextBox";
             this.buttonHeightTextBox.Size = new System.Drawing.Size(50, 20);
@@ -845,6 +882,7 @@
             // 
             // buttonWidthTextBox
             // 
+            this.buttonWidthTextBox.Enabled = false;
             this.buttonWidthTextBox.Location = new System.Drawing.Point(198, 273);
             this.buttonWidthTextBox.Name = "buttonWidthTextBox";
             this.buttonWidthTextBox.Size = new System.Drawing.Size(50, 20);
@@ -853,6 +891,8 @@
             // useButtonSizeDefaults
             // 
             this.useButtonSizeDefaults.AutoSize = true;
+            this.useButtonSizeDefaults.Checked = true;
+            this.useButtonSizeDefaults.CheckState = System.Windows.Forms.CheckState.Checked;
             this.useButtonSizeDefaults.Location = new System.Drawing.Point(139, 237);
             this.useButtonSizeDefaults.Name = "useButtonSizeDefaults";
             this.useButtonSizeDefaults.Size = new System.Drawing.Size(144, 17);
@@ -977,39 +1017,6 @@
             this.buttonListBox.TabIndex = 1;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
-            // musicBox
-            // 
-            this.musicBox.Controls.Add(this.useMusic);
-            this.musicBox.Controls.Add(this.chooseMusicButton);
-            this.musicBox.Location = new System.Drawing.Point(99, 353);
-            this.musicBox.Name = "musicBox";
-            this.musicBox.Size = new System.Drawing.Size(415, 79);
-            this.musicBox.TabIndex = 48;
-            this.musicBox.TabStop = false;
-            this.musicBox.Text = "Background Music (Optional)";
-            // 
-            // useMusic
-            // 
-            this.useMusic.AutoSize = true;
-            this.useMusic.Location = new System.Drawing.Point(140, 19);
-            this.useMusic.Name = "useMusic";
-            this.useMusic.Size = new System.Drawing.Size(137, 17);
-            this.useMusic.TabIndex = 1;
-            this.useMusic.Text = "Use Background Music";
-            this.useMusic.UseVisualStyleBackColor = true;
-            this.useMusic.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
-            // 
-            // chooseMusicButton
-            // 
-            this.chooseMusicButton.Enabled = false;
-            this.chooseMusicButton.Location = new System.Drawing.Point(162, 42);
-            this.chooseMusicButton.Name = "chooseMusicButton";
-            this.chooseMusicButton.Size = new System.Drawing.Size(95, 23);
-            this.chooseMusicButton.TabIndex = 0;
-            this.chooseMusicButton.Text = "Choose Music";
-            this.chooseMusicButton.UseVisualStyleBackColor = true;
-            this.chooseMusicButton.Click += new System.EventHandler(this.chooseMusicButton_Click);
-            // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1026,6 +1033,8 @@
             this.pathDialogueTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.musicBox.ResumeLayout(false);
+            this.musicBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -1046,8 +1055,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.musicBox.ResumeLayout(false);
-            this.musicBox.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -77,6 +77,7 @@ namespace GUI_Test2
             currHub = "";
             dialogueImpactList = new List<List<Impact>>();
             hubSelectionComboBox.DataSource = Game.hubs;
+            pathFromButtonRadio.Checked = true;
 
 
             updateListBoxes();
@@ -907,20 +908,29 @@ namespace GUI_Test2
 
         private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
-            navType = 0;
-            setScope();
+            if (pathFromButtonRadio.Checked)
+            {
+                navType = 0;
+                setScope();
+            }
         }
 
         private void pathGroupFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
-            navType = 1;
-            setScope();
+            if (pathGroupFromButtonRadio.Checked)
+            {
+                navType = 1;
+                setScope();
+            }
         }
 
         private void hubFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
-            navType = 2;
-            setScope();
+            if (hubFromButtonRadio.Checked)
+            {
+                navType = 2;
+                setScope();
+            }
         }
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
