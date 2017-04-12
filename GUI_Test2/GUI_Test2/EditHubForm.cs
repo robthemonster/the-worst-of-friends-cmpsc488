@@ -22,6 +22,10 @@ namespace GUI_Test2
         private string buttonImagePath2;
         private string hubImagePath;
         private string hubSoundPath;
+        private bool buttonLoading=false;
+        private int buttonImageState = 0;
+        private bool musicSelected = false;
+        private bool musicLoading = false;
 
         public EditHubForm(ProjectHomeForm par, string name)
         {
@@ -51,6 +55,13 @@ namespace GUI_Test2
                 buttonNameList.Add("Button " + i);
             }
             this.hubSoundPath = that.hubSound;
+            if (!this.hubSoundPath.Equals(""))
+            {
+                musicLoading = true;
+                useMusic.Checked = true;
+                musicLoading = false;
+            }
+
 
             updateListBox();
         }
@@ -230,7 +241,7 @@ namespace GUI_Test2
                 return;
             }
 
-            if (useButton2Image.Checked == true && useButton1Image.Checked == false)
+            if (useButton2Image.Checked && !useButton1Image.Checked)
             {
                 MessageBox.Show("Use of Highlighted Button Image Requires \na Button Image to be Used.");
                 return;
@@ -397,15 +408,7 @@ namespace GUI_Test2
                 buttonCount++;
                 buttonNameList.Add("Button " + buttonCount);
             }
-
-            buttonImagePath1 = "";
-            buttonImagePath2 = "";
-            button1PictureBox.Image = null;
-            button2PictureBox.Image = null;
-            buttonWidthTextBox.Text = "";
-            buttonHeightTextBox.Text = "";
-            buttonXLocTextBox.Text = "";
-            buttonYLocTextBox.Text = "";
+            
 
             updateListBox();
     }
@@ -453,10 +456,28 @@ namespace GUI_Test2
             {
                 button1PictureBox.Enabled = true;
                 chooseButton1ImageButton.Enabled = true;
+                if (!buttonLoading)
+                {
+                    setButton1ImageButton_Click(sender, e);
+                    if (buttonImageState == 1)
+                    {
+                        useButton2Image.Enabled = true;
+                    }
+                    else
+                    {
+                        buttonLoading = true;
+                        useButton1Image.Checked = false;
+                        buttonLoading = false;
+                    }
+                }
             }
-            else {
+            else
+            {
                 button1PictureBox.Enabled = false;
                 chooseButton1ImageButton.Enabled = false;
+                useButton2Image.Checked = false;
+                useButton2Image.Enabled = false;
+                buttonImageState = 0;
             }
         }
 
@@ -466,8 +487,23 @@ namespace GUI_Test2
             {
                 button2PictureBox.Enabled = true;
                 chooseButton2ImageButton.Enabled = true;
+                if (!buttonLoading)
+                {
+                    setButton2ImageButton_Click(sender, e);
+                    if (buttonImageState == 2)
+                    {
+                        button2PictureBox.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonLoading = true;
+                        useButton2Image.Checked = false;
+                        buttonLoading = false;
+                    }
+                }
             }
-            else {
+            else
+            {
                 button2PictureBox.Enabled = false;
                 chooseButton2ImageButton.Enabled = false;
             }
@@ -480,12 +516,17 @@ namespace GUI_Test2
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            of.ShowDialog();
+            //of.ShowDialog();
 
             try
             {
-                button1PictureBox.Image = Image.FromStream(of.OpenFile());
-                buttonImagePath1 = of.FileName;
+                if (of.ShowDialog() == DialogResult.OK)
+                {
+                    button2PictureBox.Image = Image.FromStream(of.OpenFile());
+                    buttonImagePath2 = of.FileName;
+                    buttonImageState = 2;
+                }
+;
             }
             catch (IndexOutOfRangeException)
             {
@@ -542,9 +583,11 @@ namespace GUI_Test2
 
         private void buttonListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             //Load the selected button into the editor
             if (buttonListBox.SelectedIndex != -1)
             {
+                buttonLoading = true;
                 //Text
                 buttonTextTextBox.Text = buttonList[buttonListBox.SelectedIndex].text;
 
@@ -615,27 +658,18 @@ namespace GUI_Test2
                 }
 
                 //Music
+                buttonLoading = false;
 
             }
             else
             {
                 buttonTextTextBox.Text = "";
-                pathFromButtonRadio.Checked = false;
-                pathGroupFromButtonRadio.Checked = false;
-                hubFromButtonRadio.Checked = false;
-                navComboBox.Text = null;
-                useButtonSizeDefaults.Checked = false;
-                buttonWidthTextBox.Text = "";
-                buttonHeightTextBox.Text = "";
+                useButtonSizeDefaults.Checked = true;
                 useButtonLocationDefaults.Checked = true;
                 buttonXLocTextBox.Text = "";
                 buttonYLocTextBox.Text = "";
                 useButton1Image.Checked = false;
                 useButton2Image.Checked = false;
-                button1PictureBox.Image = button1PictureBox.InitialImage;
-                button2PictureBox.Image = button2PictureBox.InitialImage;
-                useMusic.Checked = false;
-                chooseMusicButton.Enabled = false;
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
 
@@ -644,10 +678,25 @@ namespace GUI_Test2
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
         {
-            if (useMusic.Checked == true)
-                chooseMusicButton.Enabled = true;
+            if (useMusic.Checked)
+            {
+                if (!musicLoading)
+                {
+                    chooseMusicButton_Click(sender, e);
+                    if (!musicSelected)
+                    {
+                        musicLoading = true;
+                        useMusic.Checked = false;
+                        musicLoading = false;
+                    }
+                }
+            }
             else
-                chooseMusicButton.Enabled = false;
+            {
+                musicSelected = false;
+            }
+            // chooseMusicButton.Enabled = true;
+            // chooseMusicButton.Enabled = false;
         }
 
         private void chooseMusicButton_Click(object sender, EventArgs e)
@@ -657,11 +706,19 @@ namespace GUI_Test2
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            of.ShowDialog();
+            //of.ShowDialog();
 
             try
             {
-                hubSoundPath = of.FileName;
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    hubSoundPath = of.FileName;
+                    musicSelected = true;
+                }
+                else
+                {
+                    musicSelected = false;
+                }
             }
             catch (IndexOutOfRangeException)
             {

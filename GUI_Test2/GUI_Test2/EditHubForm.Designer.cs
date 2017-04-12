@@ -235,6 +235,7 @@
             // useButton2Image
             // 
             this.useButton2Image.AutoSize = true;
+            this.useButton2Image.Enabled = false;
             this.useButton2Image.Location = new System.Drawing.Point(270, 152);
             this.useButton2Image.Name = "useButton2Image";
             this.useButton2Image.Size = new System.Drawing.Size(170, 17);
@@ -463,7 +464,7 @@
             // buttonYLocTextBox
             // 
             this.buttonYLocTextBox.Enabled = false;
-            this.buttonYLocTextBox.Location = new System.Drawing.Point(40, 313);
+            this.buttonYLocTextBox.Location = new System.Drawing.Point(47, 309);
             this.buttonYLocTextBox.Name = "buttonYLocTextBox";
             this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonYLocTextBox.TabIndex = 47;
@@ -471,7 +472,7 @@
             // buttonXLocTextBox
             // 
             this.buttonXLocTextBox.Enabled = false;
-            this.buttonXLocTextBox.Location = new System.Drawing.Point(40, 287);
+            this.buttonXLocTextBox.Location = new System.Drawing.Point(47, 287);
             this.buttonXLocTextBox.Name = "buttonXLocTextBox";
             this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonXLocTextBox.TabIndex = 46;
