@@ -398,7 +398,7 @@ namespace GUI_Test2
 
         private void runPlayTest_MenuItemClick(object sender, EventArgs e)
         {
-            Game.generateCode();
+            Game.compileAndRun();
         }
 
         private void endingsToolStripMenuItem_Click(object sender, EventArgs e)

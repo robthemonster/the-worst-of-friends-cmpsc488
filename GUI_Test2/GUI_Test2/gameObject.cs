@@ -56,9 +56,21 @@ namespace GUI_Test2
         public static List<String> hubs = new List<string>();
         //public List<P2PG> p2PG;
         public static Dictionary<String, Navigable> navIndex = new Dictionary<String, Navigable>();
+
         public static String navigableName = "";
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
+        public static int maxPlayers;
+
+
+        
+        private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
+
+        private static Dictionary<String, int> navNameToImageIndex = new Dictionary<string, int>();
+        private static Dictionary<String, int> navNameToSoundIndex = new Dictionary<string, int>();
+        private static List<string> imageAssets = new List<string>();
+        private static List<string> soundAssets = new List<string>();
+
 
         public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p, EndingGen eG)
         {
@@ -100,7 +112,90 @@ namespace GUI_Test2
             endingGen = eg;
         }
 
-        public static void generateCode()
+        private static bool generateCode(string filePath)
+        {
+            StreamWriter outputStream = new StreamWriter(filePath);
+            StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
+
+            code.AppendLine("Game game = new Game(" + maxPlayers + ");");
+
+            string loadTextureCode = getLoadTextureCode();
+            if (loadTextureCode == "")
+            {
+                return false;
+            }
+
+            code.AppendLine(loadTextureCode);
+
+
+            return true;
+        }
+
+        private static bool copyAssetsToDir()
+        {
+            int imgCounter = 0, soundCounter = 0;
+            Console.Out.WriteLine("Copying assets to dir..");
+            System.IO.Directory.CreateDirectory(Game.directory+ "\\assets\\img");
+            System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\music");
+
+            foreach (Navigable nav in Game.navIndex.Values)
+            {
+                if (nav.isHub() )
+                {
+                    if (((Hub)nav).hubImage != "")
+                    {
+                        FileInfo image = new FileInfo(((Hub)nav).hubImage);
+
+
+                        if (image.Exists)
+                        {
+                            image.CopyTo(Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension, true);
+                            Game.imageAssets.Add(Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension);
+                            Game.navNameToImageIndex[nav.getName()] = imgCounter;
+                            imgCounter++;
+
+                        }else
+                        {
+                            Console.Out.WriteLine("Could not find: " + image);
+                            return false;
+                        }
+                    }
+                    if (((Hub)nav).hubSound != "")
+                    {
+                        FileInfo sound = new FileInfo(((Hub)nav).hubSound);
+                        if (sound.Exists)
+                        {
+                            sound.CopyTo(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension, true);
+                            Game.soundAssets.Add(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension);
+                            Game.navNameToSoundIndex[nav.getName()] = soundCounter;
+                            soundCounter++;
+                        }
+                        else 
+                        {
+                            Console.Out.WriteLine("Could not find: " + sound);
+                            return false;
+                        }
+                    }
+                        
+                    
+                }
+            }
+            return true;
+        }
+
+        private static string getLoadTextureCode()
+        {
+            if (!copyAssetsToDir()) 
+            {
+                Console.Out.WriteLine("One of the image or sound assets could not be found. It has been moved, renamed, or deleted.");
+                return "";    
+            }
+            return "";
+            
+
+        }
+
+        public static void compileAndRun()
         {
 
             String vsCommandPath = System.Environment.GetEnvironmentVariable("windir") + "\\System32\\cmd.exe";
@@ -114,6 +209,12 @@ namespace GUI_Test2
                     f.Delete();
             }
 
+
+          /*  if (!Game.generateCode(mainPath)){
+                return;
+            }*/
+            
+
             ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
 
             cmd.Arguments = @"/c cd " + directory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
@@ -121,6 +222,9 @@ namespace GUI_Test2
            
             Process compiler = Process.Start(cmd);
             compiler.WaitForExit();
+
+           
+
 
             StreamWriter output = new StreamWriter(mainPath);
             string s = @"
@@ -642,7 +746,7 @@ int main()
 
 
 }
-"; //TODO: fix
+"; //TODO: remove giant string
             output.WriteLine(s);
             output.Close();
             cmd.Arguments = @"/c cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";

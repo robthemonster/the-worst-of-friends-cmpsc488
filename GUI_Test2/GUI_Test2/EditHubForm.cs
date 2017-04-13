@@ -224,26 +224,14 @@ namespace GUI_Test2
             string text, pic1path, pic2path, next;
             int sizeX, sizeY, posX, posY, highlight;
 
-            if (buttonTextTextBox.Text == "")
-            {
-                MessageBox.Show("Button Text is required.");
-                return;
-            }
-            else
-            {
+            
                 text = buttonTextTextBox.Text;
-            }
+            
 
             //If the button isn't selected, button size is required
-            if (useButton1Image.Checked == false && useButtonSizeDefaults.Checked == true)
+            if (!useButton1Image.Checked  && !useButtonSizeDefaults.Checked && (buttonWidthTextBox.Text.Equals("") ||buttonHeightTextBox.Text.Equals("")))
             {
                 MessageBox.Show("Button Size Required if No Picture is Used.");
-                return;
-            }
-
-            if (useButton2Image.Checked && !useButton1Image.Checked)
-            {
-                MessageBox.Show("Use of Highlighted Button Image Requires \na Button Image to be Used.");
                 return;
             }
 
@@ -376,41 +364,36 @@ namespace GUI_Test2
             else
             {
                 //Passes a string
-                if (pathFromButtonRadio.Checked == true)
+                if (pathFromButtonRadio.Checked)
                     next = Game.paths[navComboBox.SelectedIndex];
-                else if (pathGroupFromButtonRadio.Checked == true)
+                else if (pathGroupFromButtonRadio.Checked)
                     next = Game.pathGroups[navComboBox.SelectedIndex];
                 else
                     next = Game.hubs[navComboBox.SelectedIndex];
             }
 
-            if (useButton2Image.Checked == true && HighlightTextButton.Checked == true)
+            if (useButton2Image.Checked && HighlightTextButton.Checked)
             {
                 MessageBox.Show("Please Select Either to Highlight the Button, \nthe Button Text, or Neither. Please Do Not Select Both.");
                 return;
             }
 
-            if (useButton2Image.Checked == true)
+            if (useButton2Image.Checked )
                 highlight = 2;
 
-            else if (HighlightTextButton.Checked == true)
+            else if (HighlightTextButton.Checked )
                 highlight = 1;
 
             else
                 highlight = 0;
 
 
-            if (inButtonList(buttonList, buttonTextTextBox.Text))
-            {
-                buttonList[buttonListBox.SelectedIndex] = new Button(text,sizeX,sizeY,posX,posY,pic1path,pic2path,highlight,next);
-            }
-            else
-            {
+           
                 buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
                 buttonCount++;
                 buttonNameList.Add("Button " + buttonCount);
-            }
             
+           
 
             updateListBox();
     }

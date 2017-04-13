@@ -71,6 +71,25 @@ namespace GUI_Test2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to #include &quot;Game.h&quot;
+        ///#include &quot;Path.h&quot;
+        ///#include &quot;PathGroup.h&quot;
+        ///#include &quot;Hub.h&quot;
+        ///#include &quot;Requirements.h&quot;
+        ///#include &quot;Impact.h&quot;
+        ///
+        ///static float VIEW_HEIGHT = 1080.0f;
+        ///static float VIEW_WIDTH = 1920.0f;
+        ///
+        ///int main() {.
+        /// </summary>
+        internal static string defaultHeader {
+            get {
+                return ResourceManager.GetString("defaultHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap defaultHub {

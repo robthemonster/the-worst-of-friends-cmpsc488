@@ -576,26 +576,14 @@ namespace GUI_Test2
             string text, pic1path, pic2path, next;
             int sizeX, sizeY, posX, posY, highlight;
 
-            if (buttonTextTextBox.Text == "")
-            {
-                MessageBox.Show("Button Text is required.");
-                return;
-            }
-            else
-            {
-                text = buttonTextTextBox.Text;
-            }
+
+            text = buttonTextTextBox.Text;
+
 
             //If the button isn't selected, button size is required
-            if (useButton1Image.Checked == false && useButtonSizeDefaults.Checked == true)
+            if (!useButton1Image.Checked && !useButtonSizeDefaults.Checked && (buttonWidthTextBox.Text.Equals("") || buttonHeightTextBox.Text.Equals("")))
             {
                 MessageBox.Show("Button Size Required if No Picture is Used.");
-                return;
-            }
-
-            if (useButton2Image.Checked == true && useButton1Image.Checked == false)
-            {
-                MessageBox.Show("Use of Highlighted Button Image Requires \na Button Image to be Used.");
                 return;
             }
 
@@ -704,7 +692,6 @@ namespace GUI_Test2
             else
             {
                 pic1path = "";
-
             }
 
             if (useButton2Image.Checked)
@@ -721,23 +708,21 @@ namespace GUI_Test2
                 pic2path = "";
             }
 
-            if (navComboBox.SelectedItem == null)
-            {
-                MessageBox.Show("Please Select a Target Navigable \nfor the Button to lead to.");
-                return;
-            }
-            else
-            {
+            if (navComboBox.SelectedItem != null)
+            { 
                 //Passes a string
-                if (pathFromButtonRadio.Checked == true)
+                if (pathFromButtonRadio.Checked)
                     next = Game.paths[navComboBox.SelectedIndex];
-                else if (pathGroupFromButtonRadio.Checked == true)
+                else if (pathGroupFromButtonRadio.Checked)
                     next = Game.pathGroups[navComboBox.SelectedIndex];
                 else
                     next = Game.hubs[navComboBox.SelectedIndex];
+            }else
+            {
+                next = "";
             }
 
-            if (useButton2Image.Checked == true && HighlightTextButton.Checked == true)
+            if (useButton2Image.Checked && HighlightTextButton.Checked)
             {
                 MessageBox.Show("Please Select Either to Highlight the Button, \nthe Button Text, or Neither. Please Do Not Select Both.");
                 return;
@@ -752,17 +737,13 @@ namespace GUI_Test2
             else
                 highlight = 0;
 
-            if (inButtonList(buttonList, buttonTextTextBox.Text))
-            {
-                buttonList[buttonListBox.SelectedIndex] = new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next);
-            }
-            else
-            {
-                buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
-                buttonCount++;
-                buttonNameList.Add("Button " + buttonCount);
-            }
-            
+
+
+            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
+            buttonCount++;
+            buttonNameList.Add("Button " + buttonCount);
+
+
 
             updateButtonListBox();
         }
