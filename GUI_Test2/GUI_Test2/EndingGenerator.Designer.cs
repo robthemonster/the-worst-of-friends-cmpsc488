@@ -70,18 +70,21 @@
             // TierLabel
             // 
             this.TierLabel.AutoSize = true;
-            this.TierLabel.Location = new System.Drawing.Point(269, 9);
+            this.TierLabel.Location = new System.Drawing.Point(359, 11);
+            this.TierLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TierLabel.Name = "TierLabel";
-            this.TierLabel.Size = new System.Drawing.Size(25, 13);
+            this.TierLabel.Size = new System.Drawing.Size(33, 17);
             this.TierLabel.TabIndex = 30;
             this.TierLabel.Text = "Tier";
             // 
             // tierComboBox
             // 
+            this.tierComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tierComboBox.FormattingEnabled = true;
-            this.tierComboBox.Location = new System.Drawing.Point(252, 25);
+            this.tierComboBox.Location = new System.Drawing.Point(336, 31);
+            this.tierComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tierComboBox.Name = "tierComboBox";
-            this.tierComboBox.Size = new System.Drawing.Size(58, 21);
+            this.tierComboBox.Size = new System.Drawing.Size(76, 24);
             this.tierComboBox.TabIndex = 29;
             this.tierComboBox.SelectedIndexChanged += new System.EventHandler(this.tierComboBox_SelectedIndexChanged);
             // 
@@ -96,18 +99,21 @@
             this.groupBox4.Controls.Add(this.tierPathsListBox);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.addConditionButton);
-            this.groupBox4.Location = new System.Drawing.Point(12, 217);
+            this.groupBox4.Location = new System.Drawing.Point(16, 267);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(454, 166);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(605, 204);
             this.groupBox4.TabIndex = 33;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Requirements";
             // 
             // buttonListDownButton
             // 
-            this.buttonListDownButton.Location = new System.Drawing.Point(100, 134);
+            this.buttonListDownButton.Location = new System.Drawing.Point(133, 165);
+            this.buttonListDownButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonListDownButton.Name = "buttonListDownButton";
-            this.buttonListDownButton.Size = new System.Drawing.Size(26, 23);
+            this.buttonListDownButton.Size = new System.Drawing.Size(35, 28);
             this.buttonListDownButton.TabIndex = 45;
             this.buttonListDownButton.Text = "▼";
             this.buttonListDownButton.UseVisualStyleBackColor = true;
@@ -115,9 +121,10 @@
             // 
             // buttonListUpButton
             // 
-            this.buttonListUpButton.Location = new System.Drawing.Point(100, 105);
+            this.buttonListUpButton.Location = new System.Drawing.Point(133, 129);
+            this.buttonListUpButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonListUpButton.Name = "buttonListUpButton";
-            this.buttonListUpButton.Size = new System.Drawing.Size(26, 23);
+            this.buttonListUpButton.Size = new System.Drawing.Size(35, 28);
             this.buttonListUpButton.TabIndex = 44;
             this.buttonListUpButton.Text = "▲";
             this.buttonListUpButton.UseVisualStyleBackColor = true;
@@ -126,17 +133,20 @@
             // pathRequirementsListBox
             // 
             this.pathRequirementsListBox.FormattingEnabled = true;
-            this.pathRequirementsListBox.Location = new System.Drawing.Point(369, 13);
+            this.pathRequirementsListBox.ItemHeight = 16;
+            this.pathRequirementsListBox.Location = new System.Drawing.Point(492, 16);
+            this.pathRequirementsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pathRequirementsListBox.Name = "pathRequirementsListBox";
-            this.pathRequirementsListBox.Size = new System.Drawing.Size(78, 95);
+            this.pathRequirementsListBox.Size = new System.Drawing.Size(103, 116);
             this.pathRequirementsListBox.TabIndex = 38;
             this.pathRequirementsListBox.SelectedIndexChanged += new System.EventHandler(this.pathRequirementsListBox_SelectedIndexChanged);
             // 
             // removeConditionButton
             // 
-            this.removeConditionButton.Location = new System.Drawing.Point(358, 141);
+            this.removeConditionButton.Location = new System.Drawing.Point(477, 174);
+            this.removeConditionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.removeConditionButton.Name = "removeConditionButton";
-            this.removeConditionButton.Size = new System.Drawing.Size(91, 22);
+            this.removeConditionButton.Size = new System.Drawing.Size(121, 27);
             this.removeConditionButton.TabIndex = 37;
             this.removeConditionButton.Text = "Remove Condition";
             this.removeConditionButton.UseVisualStyleBackColor = true;
@@ -147,29 +157,34 @@
             this.groupBox5.Controls.Add(this.hubComboBox);
             this.groupBox5.Controls.Add(this.hubLabel);
             this.groupBox5.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox5.Location = new System.Drawing.Point(134, 19);
+            this.groupBox5.Location = new System.Drawing.Point(179, 23);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(210, 83);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Size = new System.Drawing.Size(280, 102);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Attribute Scope";
             // 
             // hubComboBox
             // 
+            this.hubComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.hubComboBox.Enabled = false;
             this.hubComboBox.FormattingEnabled = true;
-            this.hubComboBox.Location = new System.Drawing.Point(113, 38);
+            this.hubComboBox.Location = new System.Drawing.Point(151, 47);
+            this.hubComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.hubComboBox.Name = "hubComboBox";
-            this.hubComboBox.Size = new System.Drawing.Size(91, 21);
+            this.hubComboBox.Size = new System.Drawing.Size(120, 24);
             this.hubComboBox.TabIndex = 2;
             // 
             // hubLabel
             // 
             this.hubLabel.AutoSize = true;
             this.hubLabel.Enabled = false;
-            this.hubLabel.Location = new System.Drawing.Point(117, 22);
+            this.hubLabel.Location = new System.Drawing.Point(156, 27);
+            this.hubLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.hubLabel.Name = "hubLabel";
-            this.hubLabel.Size = new System.Drawing.Size(60, 13);
+            this.hubLabel.Size = new System.Drawing.Size(77, 17);
             this.hubLabel.TabIndex = 1;
             this.hubLabel.Text = "Hub Select";
             // 
@@ -180,21 +195,23 @@
             this.tableLayoutPanel3.Controls.Add(this.globalRadioButton, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.hubRadioButton, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.playerRadioButton, 0, 2);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 14);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(8, 17);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(90, 68);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(120, 84);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // globalRadioButton
             // 
             this.globalRadioButton.AutoSize = true;
-            this.globalRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.globalRadioButton.Location = new System.Drawing.Point(4, 4);
+            this.globalRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.globalRadioButton.Name = "globalRadioButton";
-            this.globalRadioButton.Size = new System.Drawing.Size(55, 15);
+            this.globalRadioButton.Size = new System.Drawing.Size(70, 18);
             this.globalRadioButton.TabIndex = 0;
             this.globalRadioButton.TabStop = true;
             this.globalRadioButton.Text = "Global";
@@ -204,9 +221,10 @@
             // hubRadioButton
             // 
             this.hubRadioButton.AutoSize = true;
-            this.hubRadioButton.Location = new System.Drawing.Point(3, 24);
+            this.hubRadioButton.Location = new System.Drawing.Point(4, 30);
+            this.hubRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.hubRadioButton.Name = "hubRadioButton";
-            this.hubRadioButton.Size = new System.Drawing.Size(45, 15);
+            this.hubRadioButton.Size = new System.Drawing.Size(55, 18);
             this.hubRadioButton.TabIndex = 1;
             this.hubRadioButton.TabStop = true;
             this.hubRadioButton.Text = "Hub";
@@ -216,9 +234,10 @@
             // playerRadioButton
             // 
             this.playerRadioButton.AutoSize = true;
-            this.playerRadioButton.Location = new System.Drawing.Point(3, 45);
+            this.playerRadioButton.Location = new System.Drawing.Point(4, 56);
+            this.playerRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.playerRadioButton.Name = "playerRadioButton";
-            this.playerRadioButton.Size = new System.Drawing.Size(54, 17);
+            this.playerRadioButton.Size = new System.Drawing.Size(69, 21);
             this.playerRadioButton.TabIndex = 2;
             this.playerRadioButton.TabStop = true;
             this.playerRadioButton.Text = "Player";
@@ -230,96 +249,109 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(134, 108);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(179, 133);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.90476F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(221, 48);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(295, 59);
             this.tableLayoutPanel2.TabIndex = 35;
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(156, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(207, 26);
+            this.valueTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.valueTextBox.Name = "valueTextBox";
-            this.valueTextBox.Size = new System.Drawing.Size(47, 20);
+            this.valueTextBox.Size = new System.Drawing.Size(61, 22);
             this.valueTextBox.TabIndex = 33;
             this.valueTextBox.Text = "0";
             this.valueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // attributeComboBox
             // 
+            this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.attributeComboBox.FormattingEnabled = true;
-            this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
+            this.attributeComboBox.Location = new System.Drawing.Point(4, 26);
+            this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(82, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(108, 24);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
+            this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(91, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(121, 26);
+            this.comparitorComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comparitorComboBox.Name = "comparitorComboBox";
-            this.comparitorComboBox.Size = new System.Drawing.Size(59, 21);
+            this.comparitorComboBox.Size = new System.Drawing.Size(77, 24);
             this.comparitorComboBox.TabIndex = 23;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(91, 0);
+            this.label5.Location = new System.Drawing.Point(121, 0);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 18);
+            this.label5.Size = new System.Drawing.Size(75, 22);
             this.label5.TabIndex = 34;
             this.label5.Text = "Comparison";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Location = new System.Drawing.Point(4, 0);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.Size = new System.Drawing.Size(61, 17);
             this.label6.TabIndex = 35;
             this.label6.Text = "Attribute";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(156, 0);
+            this.label8.Location = new System.Drawing.Point(207, 0);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.Size = new System.Drawing.Size(44, 17);
             this.label8.TabIndex = 36;
             this.label8.Text = "Value";
             // 
             // tierPathsListBox
             // 
             this.tierPathsListBox.FormattingEnabled = true;
-            this.tierPathsListBox.Location = new System.Drawing.Point(6, 38);
+            this.tierPathsListBox.ItemHeight = 16;
+            this.tierPathsListBox.Location = new System.Drawing.Point(8, 47);
+            this.tierPathsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tierPathsListBox.Name = "tierPathsListBox";
-            this.tierPathsListBox.Size = new System.Drawing.Size(92, 121);
+            this.tierPathsListBox.Size = new System.Drawing.Size(121, 148);
             this.tierPathsListBox.TabIndex = 22;
             this.tierPathsListBox.SelectedIndexChanged += new System.EventHandler(this.tierPathsListBox_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 22);
+            this.label3.Location = new System.Drawing.Point(11, 27);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.Size = new System.Drawing.Size(103, 17);
             this.label3.TabIndex = 19;
             this.label3.Text = "Endings In Tier";
             // 
             // addConditionButton
             // 
-            this.addConditionButton.Location = new System.Drawing.Point(358, 114);
+            this.addConditionButton.Location = new System.Drawing.Point(477, 140);
+            this.addConditionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addConditionButton.Name = "addConditionButton";
-            this.addConditionButton.Size = new System.Drawing.Size(91, 25);
+            this.addConditionButton.Size = new System.Drawing.Size(121, 31);
             this.addConditionButton.TabIndex = 24;
             this.addConditionButton.Text = "Add Condition";
             this.addConditionButton.UseVisualStyleBackColor = true;
@@ -327,9 +359,10 @@
             // 
             // Savebutton
             // 
-            this.Savebutton.Location = new System.Drawing.Point(318, 92);
+            this.Savebutton.Location = new System.Drawing.Point(424, 113);
+            this.Savebutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Savebutton.Name = "Savebutton";
-            this.Savebutton.Size = new System.Drawing.Size(75, 23);
+            this.Savebutton.Size = new System.Drawing.Size(100, 28);
             this.Savebutton.TabIndex = 16;
             this.Savebutton.Text = "Save";
             this.Savebutton.UseVisualStyleBackColor = true;
@@ -337,9 +370,10 @@
             // 
             // Cancelbutton
             // 
-            this.Cancelbutton.Location = new System.Drawing.Point(318, 121);
+            this.Cancelbutton.Location = new System.Drawing.Point(424, 149);
+            this.Cancelbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cancelbutton.Name = "Cancelbutton";
-            this.Cancelbutton.Size = new System.Drawing.Size(75, 23);
+            this.Cancelbutton.Size = new System.Drawing.Size(100, 28);
             this.Cancelbutton.TabIndex = 15;
             this.Cancelbutton.Text = "Cancel";
             this.Cancelbutton.UseVisualStyleBackColor = true;
@@ -349,11 +383,12 @@
             // 
             this.unusedPathsListBox.AllowDrop = true;
             this.unusedPathsListBox.FormattingEnabled = true;
-            this.unusedPathsListBox.Location = new System.Drawing.Point(14, 26);
-            this.unusedPathsListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.unusedPathsListBox.ItemHeight = 16;
+            this.unusedPathsListBox.Location = new System.Drawing.Point(19, 32);
+            this.unusedPathsListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unusedPathsListBox.Name = "unusedPathsListBox";
             this.unusedPathsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.unusedPathsListBox.Size = new System.Drawing.Size(94, 186);
+            this.unusedPathsListBox.Size = new System.Drawing.Size(124, 228);
             this.unusedPathsListBox.TabIndex = 38;
             this.unusedPathsListBox.SelectedIndexChanged += new System.EventHandler(this.unusedPathsListBox_SelectedIndexChanged);
             // 
@@ -361,40 +396,39 @@
             // 
             this.usedPathsListBox.AllowDrop = true;
             this.usedPathsListBox.FormattingEnabled = true;
-            this.usedPathsListBox.Location = new System.Drawing.Point(146, 24);
-            this.usedPathsListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.usedPathsListBox.ItemHeight = 16;
+            this.usedPathsListBox.Location = new System.Drawing.Point(195, 30);
+            this.usedPathsListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.usedPathsListBox.Name = "usedPathsListBox";
-            this.usedPathsListBox.Size = new System.Drawing.Size(94, 186);
+            this.usedPathsListBox.Size = new System.Drawing.Size(124, 228);
             this.usedPathsListBox.TabIndex = 39;
             this.usedPathsListBox.SelectedIndexChanged += new System.EventHandler(this.usedPathsListBox_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(160, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(213, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(92, 17);
             this.label2.TabIndex = 37;
             this.label2.Text = "Ending Paths";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(27, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(97, 17);
             this.label1.TabIndex = 36;
             this.label1.Text = "Unused Paths";
             // 
             // addPathsButton
             // 
             this.addPathsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.addPathsButton.Location = new System.Drawing.Point(112, 96);
-            this.addPathsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.addPathsButton.Location = new System.Drawing.Point(149, 118);
+            this.addPathsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addPathsButton.Name = "addPathsButton";
-            this.addPathsButton.Size = new System.Drawing.Size(30, 19);
+            this.addPathsButton.Size = new System.Drawing.Size(40, 23);
             this.addPathsButton.TabIndex = 35;
             this.addPathsButton.Text = "-->";
             this.addPathsButton.UseVisualStyleBackColor = true;
@@ -403,10 +437,10 @@
             // removePathsButton
             // 
             this.removePathsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.removePathsButton.Location = new System.Drawing.Point(112, 128);
-            this.removePathsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.removePathsButton.Location = new System.Drawing.Point(149, 158);
+            this.removePathsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.removePathsButton.Name = "removePathsButton";
-            this.removePathsButton.Size = new System.Drawing.Size(30, 19);
+            this.removePathsButton.Size = new System.Drawing.Size(40, 23);
             this.removePathsButton.TabIndex = 34;
             this.removePathsButton.Text = "<--";
             this.removePathsButton.UseVisualStyleBackColor = true;
@@ -414,9 +448,9 @@
             // 
             // EndingGenerator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 387);
+            this.ClientSize = new System.Drawing.Size(628, 476);
             this.Controls.Add(this.unusedPathsListBox);
             this.Controls.Add(this.usedPathsListBox);
             this.Controls.Add(this.label2);
@@ -430,6 +464,7 @@
             this.Controls.Add(this.tierComboBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EndingGenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "EndingGenerator";

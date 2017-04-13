@@ -267,6 +267,7 @@ namespace GUI_Test2
                 }
                 catch (FormatException ex)
                 {
+                    Console.Out.WriteLine(ex.StackTrace);
                     MessageBox.Show("Width must be a positive number, less than 1920 \nHeight must be a positive number less than 1080");
                     buttonWidthTextBox.Text = "";
                     buttonHeightTextBox.Text = "";
@@ -316,6 +317,7 @@ namespace GUI_Test2
                 }
                 catch (FormatException ex)
                 {
+                    Console.Out.WriteLine(ex.StackTrace);
                     MessageBox.Show("X and Y must be positive numbers.\n" +
                         "X must be less than 960.\n" +
                         "Y must be less than 540.");

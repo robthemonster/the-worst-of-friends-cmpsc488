@@ -41,7 +41,7 @@ namespace GUI_Test2
             dialogueEntryList = new List<String>();
             buttonList = new List<Button>();
             buttonNameList = new List<string>();
-
+            dialogueImpactList = new List<List<Impact>>();
             buttonCount = buttonList.Count;
             buttonNameList = new List<string>();
             for (int i = 1; i <= buttonCount; i++)
@@ -60,7 +60,7 @@ namespace GUI_Test2
             this.Text = "Edit Path: " + name;
             dialogueEntryList = p.dialogueContents;
             buttonList = p.buttons;
-
+            dialogueImpactList = p.dialogueImpactList;
             buttonCount = buttonList.Count;
             buttonNameList = new List<string>();
             for (int i = 1; i <= buttonCount; i++)
@@ -79,7 +79,7 @@ namespace GUI_Test2
             opComboBox.DataSource = this.ops;
             scope = 0;
             currHub = "";
-            dialogueImpactList = new List<List<Impact>>();
+           
             hubSelectionComboBox.DataSource = Game.hubs;
             pathFromButtonRadio.Checked = true;
 
@@ -619,6 +619,7 @@ namespace GUI_Test2
                 }
                 catch (FormatException ex)
                 {
+                    Console.Out.WriteLine(ex.StackTrace);
                     MessageBox.Show("Width must be a positive number, less than 1920 \nHeight must be a positive number less than 1080");
                     buttonWidthTextBox.Text = "";
                     buttonHeightTextBox.Text = "";
@@ -668,6 +669,7 @@ namespace GUI_Test2
                 }
                 catch (FormatException ex)
                 {
+                    Console.Out.WriteLine(ex.StackTrace);
                     MessageBox.Show("X and Y must be positive numbers.\n" +
                         "X must be less than 960.\n" +
                         "Y must be less than 540.");
