@@ -351,10 +351,12 @@ namespace GUI_Test2
             int indexInTier = tier.Items.IndexOf(selectedItem);
             if (indexInTier > 0 && indexInTier < selectedItem.Group.Items.Count)
             {
-                swap(index, index - 1);
+                int swapIndex = pathsGroupedByTier.Items.IndexOf(tier.Items[indexInTier - 1]);
+                swap(index, swapIndex);
                 updatePathLists();
-                pathsGroupedByTier.Groups[tierIndex].Items[indexInTier - 1].Selected = true;
-                
+                pathsGroupedByTier.Items[swapIndex].Selected = true;
+                pathsGroupedByTier.Items[swapIndex].Focused = true;
+
             }
         }
 
@@ -370,10 +372,12 @@ namespace GUI_Test2
             int indexInTier = tier.Items.IndexOf(selectedItem);
             if (indexInTier >= 0 && indexInTier < selectedItem.Group.Items.Count- 1)
             {
-                swap(index, index + 1);
+                int swapIndex = pathsGroupedByTier.Items.IndexOf(tier.Items[indexInTier + 1]);
+                swap(index, swapIndex);
                 
                 updatePathLists();
-                pathsGroupedByTier.Groups[tierIndex].Items[indexInTier + 1].Selected = true;
+                pathsGroupedByTier.Items[swapIndex].Selected = true;
+                pathsGroupedByTier.Items[swapIndex].Focused = true;
 
             }
         }
