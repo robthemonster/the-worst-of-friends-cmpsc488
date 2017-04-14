@@ -69,7 +69,8 @@ namespace GUI_Test2
         private static Dictionary<String, int> navNameToImageIndex = new Dictionary<string, int>();
         private static Dictionary<String, int> navNameToSoundIndex = new Dictionary<string, int>();
         private static List<string> imageAssets = new List<string>();
-        private static List<string> soundAssets = new List<string>();
+        private static List<string> musicAssets = new List<string>();
+
 
 
         public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p, EndingGen eG)
@@ -119,7 +120,7 @@ namespace GUI_Test2
 
             code.AppendLine("Game game = new Game(" + maxPlayers + ");");
 
-            string loadTextureCode = getLoadTextureCode();
+            string loadTextureCode = getLoadAssetCode();
             if (loadTextureCode == "")
             {
                 return false;
@@ -175,7 +176,7 @@ namespace GUI_Test2
                             if (!assetToIndex.ContainsKey(sound.FullName))
                             {
                                 sound.CopyTo(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension, true);
-                                Game.soundAssets.Add(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension);
+                                Game.musicAssets.Add(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension);
                                 Game.navNameToSoundIndex[nav.getName()] = soundCounter;
                                 assetToIndex[sound.FullName] = soundCounter;
                                 soundCounter++;
@@ -189,7 +190,7 @@ namespace GUI_Test2
                             Console.Out.WriteLine("Could not find: " + sound);
                             return false;
                         }
-                    }
+                     }
                         
                     
                 }
@@ -197,15 +198,32 @@ namespace GUI_Test2
             return true;
         }
 
-        private static string getLoadTextureCode()
+        private static string getLoadAssetCode()
         {
             if (!copyAssetsToDir()) 
             {
                 Console.Out.WriteLine("One of the image or sound assets could not be found. It has been moved, renamed, or deleted.");
                 return "";    
             }
-            return "";
-            
+            StringBuilder assetCode = new StringBuilder();
+            int ctr = 0;
+            foreach (string filePath in Game.imageAssets)
+            {
+
+                assetCode.AppendLine("sf::Texture texture" + ctr + ";");
+                assetCode.AppendLine(@"if (!texture" + ctr + ".loadFromFile(\"" + filePath.Replace("\\", "/") + "\"))");
+                assetCode.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
+                ctr++;
+            }
+            ctr = 0;
+            foreach (string filePath in Game.musicAssets)
+            {
+                assetCode.AppendLine("sf::Music music" + ctr + ";");
+                assetCode.AppendLine("if (!music" + ctr + ".openFromFile(\"" + filePath.Replace("\\", "/") + "\"))");
+                assetCode.AppendLine("\t std::cout<< \"Error loading music file \" << std::endl; ");
+            }
+
+            return assetCode.ToString();
 
         }
 
