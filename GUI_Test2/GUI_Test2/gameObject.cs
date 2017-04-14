@@ -137,38 +137,52 @@ namespace GUI_Test2
             Console.Out.WriteLine("Copying assets to dir..");
             System.IO.Directory.CreateDirectory(Game.directory+ "\\assets\\img");
             System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\music");
+            
+            Dictionary<string, int> assetToIndex = new Dictionary<string, int>();
 
             foreach (Navigable nav in Game.navIndex.Values)
             {
-                if (nav.isHub() )
-                {
-                    if (((Hub)nav).hubImage != "")
+               
+                    if (nav.getImagePath() != "")
                     {
-                        FileInfo image = new FileInfo(((Hub)nav).hubImage);
+                        FileInfo image = new FileInfo(nav.getImagePath());
 
 
                         if (image.Exists)
                         {
-                            image.CopyTo(Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension, true);
-                            Game.imageAssets.Add(Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension);
-                            Game.navNameToImageIndex[nav.getName()] = imgCounter;
-                            imgCounter++;
-
+                            if (!assetToIndex.ContainsKey(image.FullName))
+                            {
+                                image.CopyTo(Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension, true);
+                                Game.imageAssets.Add(Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension);
+                                Game.navNameToImageIndex[nav.getName()] = imgCounter;
+                                assetToIndex[image.FullName] = imgCounter;
+                                imgCounter++;
+                            }else
+                            {
+                                Game.navNameToImageIndex[nav.getName()] = assetToIndex[image.FullName];
+                            }
                         }else
                         {
                             Console.Out.WriteLine("Could not find: " + image);
                             return false;
                         }
-                    }
-                    if (((Hub)nav).hubSound != "")
+                    
+                    if (nav.getSoundPath() != "")
                     {
-                        FileInfo sound = new FileInfo(((Hub)nav).hubSound);
+                        FileInfo sound = new FileInfo(nav.getSoundPath());
                         if (sound.Exists)
                         {
-                            sound.CopyTo(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension, true);
-                            Game.soundAssets.Add(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension);
-                            Game.navNameToSoundIndex[nav.getName()] = soundCounter;
-                            soundCounter++;
+                            if (!assetToIndex.ContainsKey(sound.FullName))
+                            {
+                                sound.CopyTo(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension, true);
+                                Game.soundAssets.Add(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension);
+                                Game.navNameToSoundIndex[nav.getName()] = soundCounter;
+                                assetToIndex[sound.FullName] = soundCounter;
+                                soundCounter++;
+                            }else
+                            {
+                                Game.navNameToSoundIndex[nav.getName()] = assetToIndex[sound.FullName];
+                            }
                         }
                         else 
                         {
@@ -210,9 +224,9 @@ namespace GUI_Test2
             }
 
 
-          /*  if (!Game.generateCode(mainPath)){
+            if (!Game.generateCode(mainPath)){
                 return;
-            }*/
+            }
             
 
             ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);

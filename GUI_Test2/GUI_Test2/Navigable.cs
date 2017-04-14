@@ -12,6 +12,8 @@ namespace GUI_Test2
     public interface Navigable
     {
         String getName();
+        string getImagePath();
+        string getSoundPath();
         Boolean isPathGroup();
         Boolean isPath();
         Boolean isHub();
@@ -23,15 +25,26 @@ namespace GUI_Test2
         public List<List<Impact>> dialogueImpactList;
         public List<Button> buttons;
         public string pathSoundPath;
+        public string pathImagePath;
+
+       public string getImagePath()
+        {
+            return pathImagePath;
+        }
+        public string getSoundPath()
+        {
+            return pathSoundPath;
+        }
 
         public Path() {}
 
-        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pS) {
+        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pathImagePath, string pS) {
             name = n;
             dialogueContents = contents;
             dialogueImpactList=dIL;
             buttons = btns;
             pathSoundPath = pS;
+            this.pathImagePath = pathImagePath;
         }
 
         public String getName() { return name; }
@@ -84,6 +97,15 @@ namespace GUI_Test2
         public Boolean isPathGroup() { return false; }
         public Boolean isPath() { return false; }
         public Boolean isHub() { return true; }
+
+        public string getImagePath()
+        {
+            return hubImage;
+        }
+        public string getSoundPath()
+        {
+            return hubSound;
+        }
 
         public Hub() { }
 
@@ -148,6 +170,15 @@ namespace GUI_Test2
         public List<Boolean> useOnce;
         //public Navigable nextDefault;
         //public Navigable getNext();
+        
+        public string getImagePath()
+        {
+            return "";
+        }
+        public string getSoundPath()
+        {
+            return "";
+        }
 
         public PathGroup() { }
         public PathGroup(String n, List<String> pathsInGroup, List<int>weightsofEachPath, List<int> tiersofEachPath,List<List<Requirement>>pathRequirements, List<Boolean> useOnce)

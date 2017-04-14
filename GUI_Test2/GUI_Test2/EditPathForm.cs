@@ -27,6 +27,7 @@ namespace GUI_Test2
         private string buttonImagePath1;
         private string buttonImagePath2;
         private string pathSoundPath;
+        private string pathImagePath;
         private bool buttonLoading = false;
         private int buttonImageState = 0;
         private bool musicSelected = false;
@@ -51,6 +52,7 @@ namespace GUI_Test2
             buttonImagePath1 = "";
             buttonImagePath2 = "";
             pathSoundPath = "";
+            pathImagePath = "";
         }
         public EditPathForm(ProjectHomeForm par, Path p)
         {
@@ -113,6 +115,8 @@ namespace GUI_Test2
             try
             {
                 defaultPathImage.Image = Image.FromStream(of.OpenFile());
+                pathImagePath = of.FileName;
+                
             }
             catch (IndexOutOfRangeException)
             {
@@ -304,12 +308,12 @@ namespace GUI_Test2
         {
             if (Game.navIndex.ContainsKey(name))
             {
-                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathSoundPath);
+                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath, pathSoundPath);
             }
             else
             {
                 Game.paths.Add(name);
-                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathSoundPath));
+                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath,pathSoundPath));
             }
             parentForm.updateListBoxes();
             Close();
