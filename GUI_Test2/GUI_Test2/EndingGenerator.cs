@@ -149,32 +149,18 @@ namespace GUI_Test2
         private void swap(int from, int to)
         {
             string temp = "";
-            List<List<Requirement>> t = new List<List<Requirement>>();
-            t.Add(new List<Requirement>());
+            List<Requirement> t = new List<Requirement>();
+           
 
             if (to >= 0 && to < usedPaths.Count)
             {
                 temp = usedPaths[to];
                 usedPaths[to] = usedPaths[from];
                 usedPaths[from] = temp;
-
-                for (int i = 0; i < reqsofEachPath[to].Count; i++)
-                {
-                    t[0].Add(reqsofEachPath[to][i]);
-                    reqsofEachPath[to].RemoveAt(i);
-                }
-
-                for (int i = 0; i < reqsofEachPath[from].Count; i++)
-                {
-                    reqsofEachPath[to].Add(reqsofEachPath[from][i]);
-                    reqsofEachPath[from].RemoveAt(i);
-                }
-
-                for (int i = 0; i < t[0].Count; i++)
-                {
-                        reqsofEachPath[from].Add(t[0][i]);
-                        t[0].RemoveAt(i);
-                }
+                t = reqsofEachPath[to];
+                reqsofEachPath[to] = reqsofEachPath[from];
+                reqsofEachPath[from] = t;
+                
             }
         }
 
