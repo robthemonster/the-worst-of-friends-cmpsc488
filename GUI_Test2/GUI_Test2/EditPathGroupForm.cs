@@ -21,7 +21,7 @@ namespace GUI_Test2
         public List<int> tierofEachPath;
         public List<Boolean> useOnceList;
         public int[] tier;
-        public List<String> pnipg;
+        public List<String> navsNotInPG;
         public List<String> currentTier;
         private const string tierLabel = "Paths in Tier: ";
         private string currHub;
@@ -80,21 +80,21 @@ namespace GUI_Test2
             pathsInPathGroupListBox.DataSource = pathsInGroup;
             pathsInPathGroupListBox.SelectedIndex = -1;
 
-            pnipg = new List<string>();
-            pnipg.AddRange(Game.paths);
-            pnipg.AddRange(Game.pathGroups);
+            navsNotInPG = new List<string>();
+            navsNotInPG.AddRange(Game.paths);
+            navsNotInPG.AddRange(Game.pathGroups);
             foreach(string p in pathsInGroup)
             {
-                if (pnipg.Contains(p))
+                if (navsNotInPG.Contains(p))
                 {
-                    pnipg.Remove(p);
+                    navsNotInPG.Remove(p);
                 }
             }
-            pnipg.Remove(this.name);
+            navsNotInPG.Remove(this.name);
             pathsNotInPathGroupListBox.DataSource = null;
-            pathsNotInPathGroupListBox.DataSource = pnipg;
+            pathsNotInPathGroupListBox.DataSource = navsNotInPG;
             pathsNotInPathGroupListBox.SelectedIndex = -1;
-            pathsInPathGroupListBox.SelectedIndex = pathsInGroup.Count - 1;
+            //pathsInPathGroupListBox.SelectedIndex = pathsInGroup.Count - 1;
             if (pathsInGroup.Count == 0)
             {
                 tierPathsListBox.DataSource = null;
@@ -155,7 +155,7 @@ namespace GUI_Test2
                 }
                 foreach (int i in pathsNotInPathGroupListBox.SelectedIndices)
                 {
-                    pathsInGroup.Add(pnipg[i]);
+                    pathsInGroup.Add(navsNotInPG[i]);
                     tierofEachPath.Add(tierComboBox.SelectedIndex);
                     weightofEachPath.Add(Int32.Parse(pathWeightTextBox.Text));
                     useOnceList.Add(useOnceCheckBox.Checked);
