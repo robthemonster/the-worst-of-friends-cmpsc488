@@ -59,7 +59,7 @@
             this.removeGlobalAttributeVisibleButton = new System.Windows.Forms.Button();
             this.addGlobalAttributeVisibleButton = new System.Windows.Forms.Button();
             this.visibleGlobalAttributesListBox = new System.Windows.Forms.ListBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.globalAttributesBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.roundStartNavBox = new System.Windows.Forms.ComboBox();
@@ -71,7 +71,7 @@
             this.defaultFontButton = new System.Windows.Forms.Button();
             this.defaultDialoguePaneTextureButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.chooseScrollSoundButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
             this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
@@ -79,6 +79,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.maxPlayerCountTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -143,6 +145,7 @@
             this.hubComboBox.Name = "hubComboBox";
             this.hubComboBox.Size = new System.Drawing.Size(91, 21);
             this.hubComboBox.TabIndex = 2;
+            this.hubComboBox.SelectedIndexChanged += new System.EventHandler(this.hubComboBox_SelectedIndexChanged);
             // 
             // hubLabel
             // 
@@ -211,7 +214,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -228,7 +231,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(161, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(167, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -248,7 +251,7 @@
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(94, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(98, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(61, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -256,9 +259,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(94, 0);
+            this.label5.Location = new System.Drawing.Point(98, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 18);
+            this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 34;
             this.label5.Text = "Comparison";
             // 
@@ -274,7 +277,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(161, 0);
+            this.label8.Location = new System.Drawing.Point(167, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
@@ -374,7 +377,7 @@
             this.groupBox2.Controls.Add(this.removeGlobalAttributeVisibleButton);
             this.groupBox2.Controls.Add(this.addGlobalAttributeVisibleButton);
             this.groupBox2.Controls.Add(this.visibleGlobalAttributesListBox);
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.globalAttributesBox);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Location = new System.Drawing.Point(7, 139);
             this.groupBox2.Name = "groupBox2";
@@ -410,14 +413,14 @@
             this.visibleGlobalAttributesListBox.TabIndex = 39;
             this.visibleGlobalAttributesListBox.SelectedIndexChanged += new System.EventHandler(this.visibleGlobalAttributesListBox_SelectedIndexChanged);
             // 
-            // comboBox2
+            // globalAttributesBox
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 35);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(88, 21);
-            this.comboBox2.TabIndex = 34;
+            this.globalAttributesBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.globalAttributesBox.FormattingEnabled = true;
+            this.globalAttributesBox.Location = new System.Drawing.Point(6, 35);
+            this.globalAttributesBox.Name = "globalAttributesBox";
+            this.globalAttributesBox.Size = new System.Drawing.Size(88, 21);
+            this.globalAttributesBox.TabIndex = 34;
             // 
             // label9
             // 
@@ -496,7 +499,6 @@
             // 
             // defaultFontButton
             // 
-            this.defaultFontButton.Enabled = false;
             this.defaultFontButton.Location = new System.Drawing.Point(29, 69);
             this.defaultFontButton.Name = "defaultFontButton";
             this.defaultFontButton.Size = new System.Drawing.Size(77, 23);
@@ -507,13 +509,13 @@
             // 
             // defaultDialoguePaneTextureButton
             // 
-            this.defaultDialoguePaneTextureButton.Enabled = false;
             this.defaultDialoguePaneTextureButton.Location = new System.Drawing.Point(6, 111);
             this.defaultDialoguePaneTextureButton.Name = "defaultDialoguePaneTextureButton";
             this.defaultDialoguePaneTextureButton.Size = new System.Drawing.Size(119, 23);
             this.defaultDialoguePaneTextureButton.TabIndex = 52;
             this.defaultDialoguePaneTextureButton.Text = "Choose Pane Texture";
             this.defaultDialoguePaneTextureButton.UseVisualStyleBackColor = true;
+            this.defaultDialoguePaneTextureButton.Click += new System.EventHandler(this.defaultDialoguePaneTextureButton_Click);
             // 
             // label2
             // 
@@ -524,15 +526,15 @@
             this.label2.TabIndex = 51;
             this.label2.Text = "Pane Texture";
             // 
-            // button1
+            // chooseScrollSoundButton
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(16, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 23);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "Choose Scroll Sound";
-            this.button1.UseVisualStyleBackColor = true;
+            this.chooseScrollSoundButton.Location = new System.Drawing.Point(16, 31);
+            this.chooseScrollSoundButton.Name = "chooseScrollSoundButton";
+            this.chooseScrollSoundButton.Size = new System.Drawing.Size(114, 23);
+            this.chooseScrollSoundButton.TabIndex = 54;
+            this.chooseScrollSoundButton.Text = "Choose Scroll Sound";
+            this.chooseScrollSoundButton.UseVisualStyleBackColor = true;
+            this.chooseScrollSoundButton.Click += new System.EventHandler(this.chooseScrollSoundButton_Click);
             // 
             // label3
             // 
@@ -594,7 +596,7 @@
             this.groupBox3.Controls.Add(this.buttonXLocTextBox);
             this.groupBox3.Controls.Add(this.defaultDialoguePaneTextureButton);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.chooseScrollSoundButton);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.defaultFontButton);
             this.groupBox3.Controls.Add(this.label3);
@@ -609,11 +611,31 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Default Dialogue Pane Options";
             // 
+            // maxPlayerCountTextBox
+            // 
+            this.maxPlayerCountTextBox.Enabled = false;
+            this.maxPlayerCountTextBox.Location = new System.Drawing.Point(231, 164);
+            this.maxPlayerCountTextBox.Name = "maxPlayerCountTextBox";
+            this.maxPlayerCountTextBox.Size = new System.Drawing.Size(87, 20);
+            this.maxPlayerCountTextBox.TabIndex = 62;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Enabled = false;
+            this.label14.Location = new System.Drawing.Point(228, 148);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(90, 13);
+            this.label14.TabIndex = 61;
+            this.label14.Text = "Max Player Count";
+            // 
             // EditGameSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 558);
+            this.Controls.Add(this.maxPlayerCountTextBox);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.musicBox);
             this.Controls.Add(this.label11);
@@ -680,7 +702,7 @@
         private System.Windows.Forms.Button removeGlobalAttributeVisibleButton;
         private System.Windows.Forms.Button addGlobalAttributeVisibleButton;
         private System.Windows.Forms.ListBox visibleGlobalAttributesListBox;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox globalAttributesBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox roundStartNavBox;
@@ -692,7 +714,7 @@
         private System.Windows.Forms.Button defaultFontButton;
         private System.Windows.Forms.Button defaultDialoguePaneTextureButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button chooseScrollSoundButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox buttonXLocTextBox;
         private System.Windows.Forms.TextBox buttonYLocTextBox;
@@ -700,5 +722,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox maxPlayerCountTextBox;
+        private System.Windows.Forms.Label label14;
     }
 }

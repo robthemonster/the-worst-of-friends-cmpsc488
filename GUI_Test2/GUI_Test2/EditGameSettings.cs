@@ -50,6 +50,15 @@ namespace GUI_Test2
             currHub = "";
             musicSelected = false;
             musicLoading = false;
+
+            playerAttributesBox.DataSource = Attributes.getScope(2, currHub);
+            globalAttributesBox.DataSource = Attributes.getScope(0, currHub);
+            comparitorComboBox.DataSource = new string[] { "<", "<=", "==", ">=", ">" };
+            hubComboBox.DataSource = Game.hubs;
+
+            //Causing them to select the same path
+            roundStartNavBox.DataSource = Game.pathGroups;
+            roundEndNavBox.DataSource = Game.pathGroups;
         }
 
         private void setAttributeComboBox()
@@ -138,11 +147,7 @@ namespace GUI_Test2
         private void defaultFontButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Audio files (*.otf, *.ttf) | *.ogg, *.ttf";
-            //Devam Mehta
-            //97163
-            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            //of.ShowDialog();
+            of.Filter = "Font files (*.otf, *.ttf) | *.otf; *.ttf;";
 
             try
             {
@@ -156,11 +161,6 @@ namespace GUI_Test2
             {
 
             }
-        }
-
-        private void chooseMusicButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
@@ -199,6 +199,54 @@ namespace GUI_Test2
             else
             {
                 musicSelected = false;
+            }
+        }
+
+        private void hubComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (hubComboBox.SelectedIndex != -1)
+            {
+                GOPlayerRadioButton.Checked = true;
+                GOHubRadioButton.Checked = true;
+                attributeComboBox.DataSource = Attributes.getScope(1, currHub);
+            }
+        }
+
+        private void chooseScrollSoundButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Audio files (*.ogg) | *.ogg";
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    playSoundPath = of.FileName;
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+
+        }
+
+        private void defaultDialoguePaneTextureButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    defaultFontPath = of.FileName;
+                }
+
+            }
+            catch (IndexOutOfRangeException)
+            {
+
             }
         }
     }
