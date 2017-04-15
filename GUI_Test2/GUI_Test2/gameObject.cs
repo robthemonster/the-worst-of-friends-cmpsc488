@@ -116,7 +116,7 @@ namespace GUI_Test2
         private static bool generateCode(string filePath)
         {
             //This is for testing purposes. TODO: remove 
-            /*Galen's Version*/
+            /*Galen's Version
             Game.gameSettings = new GameSettings(null, "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
@@ -125,11 +125,11 @@ namespace GUI_Test2
                  "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
                  "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",
                  "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.ttf"),
-                 new List<string>(),new List<string>());
+                 new List<string>(),new List<string>());*/
 
-            /* Rob's Version
+            /* Rob's Version*/
 
-            Game.gameSettings = new GameSettings(null, "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
+            Game.gameSettings = new GameSettings(null, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
                  , 300, 300,1,
@@ -138,7 +138,7 @@ namespace GUI_Test2
                  "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",
                  "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.otf"),
                  new List<string>(),new List<string>());
-            */
+            
 
 
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
@@ -153,6 +153,10 @@ namespace GUI_Test2
             string instantiateNavigablesCode = getInstantiateNavigablesCode();
 
             code.AppendLine(instantiateNavigablesCode);
+
+            string requirementsCode = getRequirementsCode();
+
+            code.AppendLine(requirementsCode);
 
             string setGameSettingsCode = getSetGameSettingsCode();
 
@@ -234,6 +238,63 @@ namespace GUI_Test2
                 ctr++;
             }
             return instantiateNavigablesCode.ToString();
+        }
+
+        private static string getRequirementsCode()
+        {
+            StringBuilder code = new StringBuilder();
+
+            string attributeMap = "*(*game).getAttributeMapPointer()";
+
+            code.AppendLine("Requirements noReq("+attributeMap+");");
+
+            int reqCtr = 0;
+            foreach (Navigable nav in Game.navIndex.Values)
+            {
+                if (nav.getNavType() == Navigable.PATHGROUP)
+                {
+                    PathGroup pg = (PathGroup)nav;
+                   
+                    int pathCtr = 0;
+                        foreach (string p in pg.pathsInGroup)
+                        {
+                        code.AppendLine("Requirements req" + reqCtr + "(" + attributeMap + ");");
+                        foreach (Requirement r in pg.pathRequirements[pathCtr])
+                        {
+                            string op = "";
+                            switch (r.comp)
+                            {
+                                case ">":
+                                    op = "Requirements::GT";
+                                    break;
+                                case ">=":
+                                    op = "Requirements::GEQ";
+                                    break;
+                                case "<":
+                                    op = "Requirements::LT";
+                                    break;
+                                case "<=":
+                                    op = "Requirements::LEQ";
+                                    break;
+                                case "==":
+                                    op = "Requirements::EQ";
+                                    break;
+                            }
+                            if (r.scope == Requirement.GLOBAL)
+                                code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)game, \"" + r.name +"\", " + op + ", " + r.value + ");");
+
+                            if (r.scope == Requirement.PLAYER)
+                                code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
+                            if (r.scope == Requirement.HUB)
+                                code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*nav" + navNameToCodeIndex[r.hub] + "), \"" + r.name + "\", " + op + "," + r.value + ");");
+                            reqCtr++;
+                        }
+                        pathCtr++;
+                        }
+                    }
+                }
+
+            return code.ToString() ;
         }
 
         private static bool copyAssetsToDir()
