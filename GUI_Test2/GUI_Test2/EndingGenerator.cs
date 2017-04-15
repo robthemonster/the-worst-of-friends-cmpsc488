@@ -40,9 +40,9 @@ namespace GUI_Test2
         public EndingGenerator(EndingGen eg)
         {
             InitializeComponent();
-            this.reqsofEachPath = eg.reqsofEachPath;
-            this.usedPaths = eg.pathsInGroup;
-            this.tierofEachPath = eg.tierofEachPath;
+            this.reqsofEachPath =  new List<List<Requirement>>(eg.reqsofEachPath);
+            this.usedPaths = new List<string>(eg.pathsInGroup);
+            this.tierofEachPath = new List<int>(eg.tierofEachPath);
         }
 
         private void EndingGenerator_Load(object sender, EventArgs e)

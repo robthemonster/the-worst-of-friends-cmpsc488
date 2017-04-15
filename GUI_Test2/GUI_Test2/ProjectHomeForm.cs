@@ -403,7 +403,7 @@ namespace GUI_Test2
 
         private void endingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EndingGenerator eg = new EndingGenerator((EndingGen)Game.endingGen);
+            EndingGenerator eg = new EndingGenerator(Game.endingGen);
             eg.ShowDialog();
         }
 
