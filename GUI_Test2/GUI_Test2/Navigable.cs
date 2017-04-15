@@ -272,36 +272,58 @@ namespace GUI_Test2
     public class GameSettings
     {
         public List<Requirement> gameOverRequirement;
-        public string playSoundPath;
+        
         public string defaultFontPath;
-        public string SORPathGroupName;
-        public string EORPathGroupName;
+        public string startNavigable;
+        public string startOfRoundNav;
+        public string endOfRoundNav;
+        public string menuFont;
+        public string menuImage;
+        public string menuMusic;
+        public string menuStartButtonSound;
         public string dialogueScrollSoundPath;
+        public string dialogueEndSoundPath;
         public string dialoguePaneTexturePath;
+        public string dialoguePaneFlashingTexturePath;
+        public int dialoguePanePosX, dialoguePanePosY;
         public int maxPlayers;
 
         public GameSettings()
         {
             gameOverRequirement = new List<Requirement>();
-            playSoundPath = "";
+            menuStartButtonSound = "";
             defaultFontPath = "";
-            SORPathGroupName = "";
-            EORPathGroupName = "";
+            startOfRoundNav = "";
+            endOfRoundNav = "";
             dialogueScrollSoundPath = "";
             dialoguePaneTexturePath = "";
             maxPlayers = 1;
         }
 
-        public GameSettings(List<Requirement> gOR, string pSP, string dFP, string sorPGN, string eorPGN, string dSSP, string dPTP, int mP)
+        public GameSettings(List<Requirement> gameOverRequirement, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
+            string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
+            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers,
+            string menuFont, string menuImage, string menuMusic, string menuStartButtonSound)
         {
-            gameOverRequirement = gOR;
-            playSoundPath = pSP;
-            defaultFontPath = dFP;
-            SORPathGroupName = sorPGN;
-            EORPathGroupName = eorPGN;
-            dialogueScrollSoundPath = dSSP;
-            dialoguePaneTexturePath = dPTP;
-            maxPlayers = mP;
+            this.gameOverRequirement = gameOverRequirement;
+            this.defaultFontPath = defaultFontPath;
+            this.startNavigable = startNavigable;
+            this.startOfRoundNav = startOfRoundNav;
+            this.endOfRoundNav = endOfRoundNav;
+            this.dialogueScrollSoundPath = dialogueScrollSoundPath;
+            this.dialogueEndSoundPath = dialogueEndSoundPath;
+            this.dialoguePaneTexturePath = dialoguePaneTexturePath;
+            this.dialoguePaneFlashingTexturePath = dialoguePaneFlashingTexturePath;
+            this.dialoguePanePosX = dialoguePanePosX;
+            this.dialoguePanePosY = dialoguePanePosY;
+            this.maxPlayers = maxPlayers;
+
+            this.menuStartButtonSound = menuStartButtonSound;
+            this.menuFont = menuFont;
+            this.menuImage = menuImage;
+            this.menuMusic = menuMusic;
+
+
         }
     }
 }

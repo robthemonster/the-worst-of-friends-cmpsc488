@@ -38,10 +38,10 @@ namespace GUI_Test2
             InitializeComponent();
 
             gameOverReq = gS.gameOverRequirement;
-            playSoundPath = gS.playSoundPath;
+            playSoundPath = gS.menuStartButtonSound;
             defaultFontPath = gS.defaultFontPath;
-            SORPathGroupName = gS.SORPathGroupName;
-            EORPathGroupName = gS.EORPathGroupName;
+            SORPathGroupName = gS.startOfRoundNav;
+            EORPathGroupName = gS.endOfRoundNav;
         }
 
         private void EditGameSettings_Load(object sender, EventArgs e)

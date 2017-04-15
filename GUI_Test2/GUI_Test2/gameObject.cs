@@ -58,10 +58,7 @@ namespace GUI_Test2
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
         public static GameSettings gameSettings = new GameSettings();
-        public static string defaultFont = "";
-        public static string startTurnNav = "";
-        public static string startRoundNav = "";
-        public static string endRoundNav = "";
+        
 
         
         private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
@@ -70,6 +67,8 @@ namespace GUI_Test2
         private static Dictionary<String, int> navNameToSoundIndex = new Dictionary<string, int>();
         private static List<string> imageAssets = new List<string>();
         private static List<string> musicAssets = new List<string>();
+        private static Dictionary<string, int> navNameToCodeIndex = new Dictionary<string, int>();
+        private static Dictionary<string, string> oldPathToNewPath = new Dictionary<string, string>();
 
 
 
@@ -117,12 +116,21 @@ namespace GUI_Test2
 
         private static bool generateCode(string filePath)
         {
-           
+            //This is for testing purposes. TODO: remove
+            Game.gameSettings = new GameSettings(null, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
+                 Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
+                 "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
+                 , 300, 300, 1, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.otf",
+                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//img//absolver.jpg",
+                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
+                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav");
+
+
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
 
             code.AppendLine("Game * game = new Game(" + gameSettings.maxPlayers + ");");
-
-
+            code.AppendLine("sf::Music music;");
+            
            string loadTextureCode = getLoadTexturesCode();
           
             code.AppendLine(loadTextureCode);
@@ -130,6 +138,10 @@ namespace GUI_Test2
             string instantiateNavigablesCode = getInstantiateNavigablesCode();
 
             code.AppendLine(instantiateNavigablesCode);
+
+            string setGameSettingsCode = getSetGameSettingsCode();
+
+            code.AppendLine(setGameSettingsCode);
 
             string setImageTexturesCode = getSetImageTextureCode();
 
@@ -146,6 +158,30 @@ namespace GUI_Test2
             return true;
         }
 
+        private static string getSetGameSettingsCode()
+        {
+            
+
+
+            StringBuilder code = new StringBuilder();
+            code.AppendLine("sf::Font defaultFont;");
+            code.AppendLine("if (defaultFont.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.defaultFontPath] + "\"))");
+            code.AppendLine("\tstd::cout<<\"Error loading font file\" << std::endl;");
+            code.AppendLine("sf::Texture defaultDialoguePane;");
+         
+            code.AppendLine("(*game).setStart(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
+            code.AppendLine("(*game).setStartOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
+            code.AppendLine("(*game).setEndOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
+
+            code.AppendLine("(*game).setMainMenuImageTexture(menuImage);");
+            code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath[Game.gameSettings.menuMusic] + "\");"); 
+
+            //code.AppendLine("if (defaultDialoguePane.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.dialoguePaneTexturePath] + "\"))");
+            //code.AppendLine("\tstd::cout<<\"Error loading dialogue pane file\" << std::endl;");
+
+            return code.ToString();
+        }
+
         private static string getSetImageTextureCode()
         {
             int ctr = 0;
@@ -160,8 +196,6 @@ namespace GUI_Test2
            }
             return code.ToString();
         }
-
-
 
         private static string getInstantiateNavigablesCode()
         {
@@ -181,6 +215,7 @@ namespace GUI_Test2
                         instantiateNavigablesCode.AppendLine("PathGroup nav" + ctr + ";");
                         break;
                 }
+                Game.navNameToCodeIndex[nav.getName()] = ctr;
                 ctr++;
             }
             return instantiateNavigablesCode.ToString();
@@ -192,6 +227,7 @@ namespace GUI_Test2
             Console.Out.WriteLine("Copying assets to dir..");
             System.IO.Directory.CreateDirectory(Game.directory+ "\\assets\\img");
             System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\music");
+            System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\fonts");
             
             Dictionary<string, int> assetToIndex = new Dictionary<string, int>();
 
@@ -211,6 +247,7 @@ namespace GUI_Test2
                                 Game.imageAssets.Add(Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension);
                                 Game.navNameToImageIndex[nav.getName()] = imgCounter;
                                 assetToIndex[image.FullName] = imgCounter;
+                                Game.oldPathToNewPath[image.FullName] = Game.directory + "\\assets\\img\\img" + imgCounter + image.Extension;
                                 imgCounter++;
                             }else
                             {
@@ -233,6 +270,7 @@ namespace GUI_Test2
                                 Game.musicAssets.Add(Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension);
                                 Game.navNameToSoundIndex[nav.getName()] = soundCounter;
                                 assetToIndex[sound.FullName] = soundCounter;
+                                Game.oldPathToNewPath[sound.FullName] = Game.directory + "\\assets\\music\\sound" + soundCounter + sound.Extension;
                                 soundCounter++;
                             }else
                             {
@@ -249,7 +287,22 @@ namespace GUI_Test2
                     
                 }
             }
+            copyFileTo(Game.gameSettings.menuImage, "\\assets\\img\\menuImage");
+            copyFileTo(Game.gameSettings.menuMusic, "\\assets\\music\\menuMusic");
+            copyFileTo(Game.gameSettings.menuStartButtonSound, "\\assets\\music\\menuPressPlay");
+            copyFileTo(Game.gameSettings.defaultFontPath, "\\assets\\fonts\\defaultFont");               
+            
             return true;
+        }
+
+        private static void copyFileTo(string file, string destFile)
+        {
+            FileInfo f = new FileInfo(file);
+            if (f.Exists)
+            {
+                f.CopyTo(Game.directory + destFile + f.Extension, true);
+                Game.oldPathToNewPath[file] = (Game.directory + destFile + f.Extension).Replace("\\", "/");
+            }
         }
 
         private static string getLoadTexturesCode()
@@ -268,7 +321,11 @@ namespace GUI_Test2
                 code.AppendLine(@"if (!texture" + ctr + ".loadFromFile(\"" + filePath.Replace("\\", "/") + "\"))");
                 code.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
                 ctr++;
-            }           
+            }
+
+            code.AppendLine("sf::Texture menuImage;");
+            code.AppendLine("if (!menuImage.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.menuImage] + "\"))");
+            code.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
 
             return code.ToString();
 
