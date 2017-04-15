@@ -229,15 +229,14 @@ namespace GUI_Test2
 
         private void removePathsButton_Click(object sender, EventArgs e)
         {
-            int i = pathsGroupedByTier.SelectedIndices[0];
-            if (i != -1)
+            if (pathsGroupedByTier.SelectedIndices.Count > 0)
             {
+                int i = pathsGroupedByTier.SelectedIndices[0];
                 usedPaths.RemoveAt(i);
                 tierofEachPath.RemoveAt(i);
                 reqsofEachPath.RemoveAt(i);
-
+                updatePathLists();
             }
-            updatePathLists();
         }
 
        
