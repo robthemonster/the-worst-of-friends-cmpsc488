@@ -123,7 +123,7 @@ namespace GUI_Test2
                  , 300, 300, 1, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.otf",
                  "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//img//absolver.jpg",
                  "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
-                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav");
+                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",new List<string>(),new List<string>());
 
 
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);

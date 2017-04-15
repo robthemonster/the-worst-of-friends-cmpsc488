@@ -162,6 +162,7 @@ namespace GUI_Test2
                     reqsofEachPath.Add(new List<Requirement>());
                 }
                 updatePathGroupLists();
+                tierComboBox_SelectedIndexChanged(sender, e);
             }
             catch (FormatException)
             {
@@ -182,6 +183,7 @@ namespace GUI_Test2
 
             }
             updatePathGroupLists();
+            tierComboBox_SelectedIndexChanged(sender, e);
         }
 
         private void editTierPathButton_Click(object sender, EventArgs e)

@@ -21,6 +21,9 @@ namespace GUI_Test2
         private string defaultFontPath;
         private string SORPathGroupName;
         private string EORPathGroupName;
+        //VV no interaction with GameObject just yet VV 
+        private List<string> visPlayerAts;
+        private List<string> visGlobalAts;
 
         public EditGameSettings()
         {
@@ -31,6 +34,7 @@ namespace GUI_Test2
             defaultFontPath = "";
             SORPathGroupName = "";
             EORPathGroupName = "";
+
         }
 
         public EditGameSettings(GameSettings gS)
@@ -42,6 +46,9 @@ namespace GUI_Test2
             defaultFontPath = gS.defaultFontPath;
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;
+
+            visPlayerAts = gS.visPlayerAtts;
+            visGlobalAts = gS.visGlobalAtts;
         }
 
         private void EditGameSettings_Load(object sender, EventArgs e)
@@ -51,14 +58,20 @@ namespace GUI_Test2
             musicSelected = false;
             musicLoading = false;
 
-            playerAttributesBox.DataSource = Attributes.getScope(2, currHub);
-            globalAttributesBox.DataSource = Attributes.getScope(0, currHub);
+            playerAttributesComboBox.DataSource = Attributes.getScope(2, currHub);
+            globalAttributesComboBox.DataSource = Attributes.getScope(0, currHub);
+            updateVisPlayerList();
+            visiblePlayerAttributesListBox.SelectedIndex = -1;
+            updateVisGlobalList();
+            visibleGlobalAttributesListBox.SelectedIndex = -1;
             comparitorComboBox.DataSource = new string[] { "<", "<=", "==", ">=", ">" };
             hubComboBox.DataSource = Game.hubs;
 
+
             //Causing them to select the same path
-            roundStartNavBox.DataSource = Game.pathGroups;
-            roundEndNavBox.DataSource = Game.pathGroups;
+            roundStartNavComboBox.DataSource = Game.pathGroups;
+            roundEndNavComboBox.DataSource = Game.pathGroups;
+            GOGlobalRadioButton.Checked = true;
         }
 
         private void setAttributeComboBox()
@@ -75,6 +88,8 @@ namespace GUI_Test2
         {
 
         }
+
+
 
         private void GOGlobalRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -247,6 +262,74 @@ namespace GUI_Test2
             catch (IndexOutOfRangeException)
             {
 
+            }
+        }
+
+        private void updateVisPlayerList()
+        {
+            visiblePlayerAttributesListBox.DataSource = null;
+            visiblePlayerAttributesListBox.DataSource = visPlayerAts;
+        }
+
+        private void updateVisGlobalList()
+        {
+            visibleGlobalAttributesListBox.DataSource = null;
+            visibleGlobalAttributesListBox.DataSource = visGlobalAts;
+        }
+        private void visibleGlobalList_LoseFocus(Object sender, EventArgs e)
+        {
+            visibleGlobalAttributesListBox.SelectedIndex = -1;
+        }
+        private void visiblePlayerList_LoseFocus(Object sender, EventArgs e)
+        {
+            visiblePlayerAttributesListBox.SelectedIndex = -1;
+        }
+
+        private void addPlayerAttributeVisibleButton_Click(object sender, EventArgs e)
+        {
+            if (!visPlayerAts.Contains((string)playerAttributesComboBox.SelectedItem)) 
+            {
+                visPlayerAts.Add((string)playerAttributesComboBox.SelectedItem);
+                updateVisPlayerList();
+                visiblePlayerAttributesListBox.SelectedIndex = -1;
+            }
+        }
+
+        private void removePlayerAttributeVisibleButton_Click(object sender, EventArgs e)
+        {
+            if (visiblePlayerAttributesListBox.SelectedIndex!=-1){
+                int index = visiblePlayerAttributesListBox.SelectedIndex;
+                visPlayerAts.RemoveAt(index);
+                if (index == visPlayerAts.Count)
+                {
+                    --index;
+                }
+                updateVisPlayerList();
+                visiblePlayerAttributesListBox.SelectedIndex = index;
+            }
+        }
+        private void addGlobalAttributeVisibleButton_Click(object sender, EventArgs e)
+        {
+            if (!visGlobalAts.Contains((string)globalAttributesComboBox.SelectedItem))
+            {
+                visGlobalAts.Add((string)globalAttributesComboBox.SelectedItem);
+                updateVisGlobalList();
+                visibleGlobalAttributesListBox.SelectedIndex = -1;
+            }
+        }
+
+        private void removeGlobalAttributeVisibleButton_Click(object sender, EventArgs e)
+        {
+            if (visibleGlobalAttributesListBox.SelectedIndex != -1)
+            {
+                int index = visibleGlobalAttributesListBox.SelectedIndex;
+                visGlobalAts.RemoveAt(index);
+                if (index == visGlobalAts.Count)
+                {
+                    --index;
+                }
+                updateVisGlobalList();
+                visibleGlobalAttributesListBox.SelectedIndex = index;
             }
         }
     }

@@ -150,7 +150,7 @@
             this.tabPage1.Controls.Add(this.selectDefaultPathImageButton);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(566, 356);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
@@ -210,7 +210,7 @@
             // 
             this.defaultPathImage.Image = global::GUI_Test2.Properties.Resources.defaultPath;
             this.defaultPathImage.Location = new System.Drawing.Point(364, 52);
-            this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2);
             this.defaultPathImage.Name = "defaultPathImage";
             this.defaultPathImage.Size = new System.Drawing.Size(218, 126);
             this.defaultPathImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -225,7 +225,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dialogueList, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 52);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -293,7 +293,7 @@
             // 
             this.createNewDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.createNewDialogueButton.Location = new System.Drawing.Point(138, 239);
-            this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewDialogueButton.Name = "createNewDialogueButton";
             this.createNewDialogueButton.Size = new System.Drawing.Size(104, 22);
             this.createNewDialogueButton.TabIndex = 2;
@@ -336,7 +336,7 @@
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.dialogueTextBox, 2);
             this.dialogueTextBox.Location = new System.Drawing.Point(85, 2);
-            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dialogueTextBox.Multiline = true;
             this.dialogueTextBox.Name = "dialogueTextBox";
             this.dialogueTextBox.Size = new System.Drawing.Size(157, 207);
@@ -345,7 +345,7 @@
             // selectDefaultPathImageButton
             // 
             this.selectDefaultPathImageButton.Location = new System.Drawing.Point(363, 183);
-            this.selectDefaultPathImageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectDefaultPathImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectDefaultPathImageButton.Name = "selectDefaultPathImageButton";
             this.selectDefaultPathImageButton.Size = new System.Drawing.Size(141, 19);
             this.selectDefaultPathImageButton.TabIndex = 11;
@@ -370,7 +370,7 @@
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(566, 356);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impacts";
@@ -612,7 +612,7 @@
             this.Buttons.Controls.Add(this.tableLayoutPanel4);
             this.Buttons.Location = new System.Drawing.Point(4, 22);
             this.Buttons.Name = "Buttons";
-            this.Buttons.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Buttons.Padding = new System.Windows.Forms.Padding(3);
             this.Buttons.Size = new System.Drawing.Size(566, 356);
             this.Buttons.TabIndex = 2;
             this.Buttons.Text = "Buttons";
@@ -1010,7 +1010,7 @@
             this.Controls.Add(this.pathDialogueTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "EditPathForm";
             this.Text = "Edit Path: ";

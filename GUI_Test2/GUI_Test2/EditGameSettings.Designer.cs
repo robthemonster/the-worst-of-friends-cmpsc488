@@ -49,7 +49,7 @@
             this.addRequirementButton = new System.Windows.Forms.Button();
             this.Savebutton = new System.Windows.Forms.Button();
             this.Cancelbutton = new System.Windows.Forms.Button();
-            this.playerAttributesBox = new System.Windows.Forms.ComboBox();
+            this.playerAttributesComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.removePlayerAttributeVisibleButton = new System.Windows.Forms.Button();
@@ -59,12 +59,12 @@
             this.removeGlobalAttributeVisibleButton = new System.Windows.Forms.Button();
             this.addGlobalAttributeVisibleButton = new System.Windows.Forms.Button();
             this.visibleGlobalAttributesListBox = new System.Windows.Forms.ListBox();
-            this.globalAttributesBox = new System.Windows.Forms.ComboBox();
+            this.globalAttributesComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.roundStartNavBox = new System.Windows.Forms.ComboBox();
+            this.roundStartNavComboBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.roundEndNavBox = new System.Windows.Forms.ComboBox();
+            this.roundEndNavComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.musicBox = new System.Windows.Forms.GroupBox();
             this.useMusic = new System.Windows.Forms.CheckBox();
@@ -214,7 +214,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -231,7 +231,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(167, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(166, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -251,7 +251,7 @@
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(98, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(97, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(61, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -259,7 +259,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(98, 0);
+            this.label5.Location = new System.Drawing.Point(97, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 34;
@@ -277,7 +277,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(167, 0);
+            this.label8.Location = new System.Drawing.Point(166, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
@@ -313,14 +313,14 @@
             this.Cancelbutton.UseVisualStyleBackColor = true;
             this.Cancelbutton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
-            // playerAttributesBox
+            // playerAttributesComboBox
             // 
-            this.playerAttributesBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.playerAttributesBox.FormattingEnabled = true;
-            this.playerAttributesBox.Location = new System.Drawing.Point(6, 35);
-            this.playerAttributesBox.Name = "playerAttributesBox";
-            this.playerAttributesBox.Size = new System.Drawing.Size(88, 21);
-            this.playerAttributesBox.TabIndex = 34;
+            this.playerAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerAttributesComboBox.FormattingEnabled = true;
+            this.playerAttributesComboBox.Location = new System.Drawing.Point(6, 35);
+            this.playerAttributesComboBox.Name = "playerAttributesComboBox";
+            this.playerAttributesComboBox.Size = new System.Drawing.Size(88, 21);
+            this.playerAttributesComboBox.TabIndex = 34;
             // 
             // label4
             // 
@@ -336,7 +336,7 @@
             this.groupBox1.Controls.Add(this.removePlayerAttributeVisibleButton);
             this.groupBox1.Controls.Add(this.addPlayerAttributeVisibleButton);
             this.groupBox1.Controls.Add(this.visiblePlayerAttributesListBox);
-            this.groupBox1.Controls.Add(this.playerAttributesBox);
+            this.groupBox1.Controls.Add(this.playerAttributesComboBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(7, 12);
             this.groupBox1.Name = "groupBox1";
@@ -344,6 +344,7 @@
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Visible Player Attributes";
+            this.groupBox1.Leave += new System.EventHandler(this.visiblePlayerList_LoseFocus);
             // 
             // removePlayerAttributeVisibleButton
             // 
@@ -353,6 +354,7 @@
             this.removePlayerAttributeVisibleButton.TabIndex = 41;
             this.removePlayerAttributeVisibleButton.Text = "Remove Condition";
             this.removePlayerAttributeVisibleButton.UseVisualStyleBackColor = true;
+            this.removePlayerAttributeVisibleButton.Click += new System.EventHandler(this.removePlayerAttributeVisibleButton_Click);
             // 
             // addPlayerAttributeVisibleButton
             // 
@@ -362,6 +364,7 @@
             this.addPlayerAttributeVisibleButton.TabIndex = 40;
             this.addPlayerAttributeVisibleButton.Text = "Add Attribute";
             this.addPlayerAttributeVisibleButton.UseVisualStyleBackColor = true;
+            this.addPlayerAttributeVisibleButton.Click += new System.EventHandler(this.addPlayerAttributeVisibleButton_Click);
             // 
             // visiblePlayerAttributesListBox
             // 
@@ -377,7 +380,7 @@
             this.groupBox2.Controls.Add(this.removeGlobalAttributeVisibleButton);
             this.groupBox2.Controls.Add(this.addGlobalAttributeVisibleButton);
             this.groupBox2.Controls.Add(this.visibleGlobalAttributesListBox);
-            this.groupBox2.Controls.Add(this.globalAttributesBox);
+            this.groupBox2.Controls.Add(this.globalAttributesComboBox);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Location = new System.Drawing.Point(7, 139);
             this.groupBox2.Name = "groupBox2";
@@ -385,6 +388,7 @@
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Visible Global Attributes";
+            this.groupBox2.Leave += new System.EventHandler(this.visibleGlobalList_LoseFocus);
             // 
             // removeGlobalAttributeVisibleButton
             // 
@@ -394,6 +398,7 @@
             this.removeGlobalAttributeVisibleButton.TabIndex = 41;
             this.removeGlobalAttributeVisibleButton.Text = "Remove Condition";
             this.removeGlobalAttributeVisibleButton.UseVisualStyleBackColor = true;
+            this.removeGlobalAttributeVisibleButton.Click += new System.EventHandler(this.removeGlobalAttributeVisibleButton_Click);
             // 
             // addGlobalAttributeVisibleButton
             // 
@@ -403,6 +408,7 @@
             this.addGlobalAttributeVisibleButton.TabIndex = 40;
             this.addGlobalAttributeVisibleButton.Text = "Add Attribute";
             this.addGlobalAttributeVisibleButton.UseVisualStyleBackColor = true;
+            this.addGlobalAttributeVisibleButton.Click += new System.EventHandler(this.addGlobalAttributeVisibleButton_Click);
             // 
             // visibleGlobalAttributesListBox
             // 
@@ -413,14 +419,14 @@
             this.visibleGlobalAttributesListBox.TabIndex = 39;
             this.visibleGlobalAttributesListBox.SelectedIndexChanged += new System.EventHandler(this.visibleGlobalAttributesListBox_SelectedIndexChanged);
             // 
-            // globalAttributesBox
+            // globalAttributesComboBox
             // 
-            this.globalAttributesBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.globalAttributesBox.FormattingEnabled = true;
-            this.globalAttributesBox.Location = new System.Drawing.Point(6, 35);
-            this.globalAttributesBox.Name = "globalAttributesBox";
-            this.globalAttributesBox.Size = new System.Drawing.Size(88, 21);
-            this.globalAttributesBox.TabIndex = 34;
+            this.globalAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.globalAttributesComboBox.FormattingEnabled = true;
+            this.globalAttributesComboBox.Location = new System.Drawing.Point(6, 35);
+            this.globalAttributesComboBox.Name = "globalAttributesComboBox";
+            this.globalAttributesComboBox.Size = new System.Drawing.Size(88, 21);
+            this.globalAttributesComboBox.TabIndex = 34;
             // 
             // label9
             // 
@@ -440,14 +446,14 @@
             this.label11.TabIndex = 1;
             this.label11.Text = "Start of Round Path Group";
             // 
-            // roundStartNavBox
+            // roundStartNavComboBox
             // 
-            this.roundStartNavBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.roundStartNavBox.FormattingEnabled = true;
-            this.roundStartNavBox.Location = new System.Drawing.Point(205, 66);
-            this.roundStartNavBox.Name = "roundStartNavBox";
-            this.roundStartNavBox.Size = new System.Drawing.Size(121, 21);
-            this.roundStartNavBox.TabIndex = 0;
+            this.roundStartNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.roundStartNavComboBox.FormattingEnabled = true;
+            this.roundStartNavComboBox.Location = new System.Drawing.Point(205, 66);
+            this.roundStartNavComboBox.Name = "roundStartNavComboBox";
+            this.roundStartNavComboBox.Size = new System.Drawing.Size(121, 21);
+            this.roundStartNavComboBox.TabIndex = 0;
             // 
             // label12
             // 
@@ -458,14 +464,14 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "End of Round Path Group";
             // 
-            // roundEndNavBox
+            // roundEndNavComboBox
             // 
-            this.roundEndNavBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.roundEndNavBox.FormattingEnabled = true;
-            this.roundEndNavBox.Location = new System.Drawing.Point(205, 109);
-            this.roundEndNavBox.Name = "roundEndNavBox";
-            this.roundEndNavBox.Size = new System.Drawing.Size(121, 21);
-            this.roundEndNavBox.TabIndex = 0;
+            this.roundEndNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.roundEndNavComboBox.FormattingEnabled = true;
+            this.roundEndNavComboBox.Location = new System.Drawing.Point(205, 109);
+            this.roundEndNavComboBox.Name = "roundEndNavComboBox";
+            this.roundEndNavComboBox.Size = new System.Drawing.Size(121, 21);
+            this.roundEndNavComboBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -640,8 +646,8 @@
             this.Controls.Add(this.musicBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.roundStartNavBox);
-            this.Controls.Add(this.roundEndNavBox);
+            this.Controls.Add(this.roundStartNavComboBox);
+            this.Controls.Add(this.roundEndNavComboBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
@@ -692,7 +698,7 @@
         private System.Windows.Forms.Button addRequirementButton;
         private System.Windows.Forms.Button Savebutton;
         private System.Windows.Forms.Button Cancelbutton;
-        private System.Windows.Forms.ComboBox playerAttributesBox;
+        private System.Windows.Forms.ComboBox playerAttributesComboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox visiblePlayerAttributesListBox;
@@ -702,12 +708,12 @@
         private System.Windows.Forms.Button removeGlobalAttributeVisibleButton;
         private System.Windows.Forms.Button addGlobalAttributeVisibleButton;
         private System.Windows.Forms.ListBox visibleGlobalAttributesListBox;
-        private System.Windows.Forms.ComboBox globalAttributesBox;
+        private System.Windows.Forms.ComboBox globalAttributesComboBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox roundStartNavBox;
+        private System.Windows.Forms.ComboBox roundStartNavComboBox;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox roundEndNavBox;
+        private System.Windows.Forms.ComboBox roundEndNavComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox musicBox;
         private System.Windows.Forms.CheckBox useMusic;

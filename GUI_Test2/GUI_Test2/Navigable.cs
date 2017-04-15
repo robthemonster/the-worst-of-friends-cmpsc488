@@ -288,6 +288,9 @@ namespace GUI_Test2
         public int dialoguePanePosX, dialoguePanePosY;
         public int maxPlayers;
 
+        public List<String> visPlayerAtts;
+        public List<String> visGlobalAtts;
+
         public GameSettings()
         {
             gameOverRequirement = new List<Requirement>();
@@ -298,12 +301,14 @@ namespace GUI_Test2
             dialogueScrollSoundPath = "";
             dialoguePaneTexturePath = "";
             maxPlayers = 1;
+            visGlobalAtts = new List<string>();
+            visPlayerAtts = new List<string>();
         }
 
         public GameSettings(List<Requirement> gameOverRequirement, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
             int dialoguePanePosX, int dialoguePanePosY, int maxPlayers,
-            string menuFont, string menuImage, string menuMusic, string menuStartButtonSound)
+            string menuFont, string menuImage, string menuMusic, string menuStartButtonSound, List<string> visPlayerAtts, List<string>visGlobalAtts)
         {
             this.gameOverRequirement = gameOverRequirement;
             this.defaultFontPath = defaultFontPath;
@@ -322,6 +327,8 @@ namespace GUI_Test2
             this.menuFont = menuFont;
             this.menuImage = menuImage;
             this.menuMusic = menuMusic;
+            this.visPlayerAtts = visPlayerAtts;
+            this.visGlobalAtts = visGlobalAtts;
 
 
         }
