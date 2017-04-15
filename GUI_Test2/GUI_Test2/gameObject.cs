@@ -21,7 +21,6 @@ namespace GUI_Test2
         public Dictionary<string, NPC> characters;
         public EndingGen endingGen;
         public GameSettings gameSettings;
-        public MainMenu mainMenu;
 
         public Project()
         {
@@ -34,10 +33,9 @@ namespace GUI_Test2
             characters = new Dictionary<string, NPC>();
             endingGen = new EndingGen();
             gameSettings = new GameSettings();
-            mainMenu = new MainMenu();
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG, GameSettings gS, MainMenu mM)
+        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG, GameSettings gS)
         {
             pathGroups = pg;
             hubs = h;
@@ -47,7 +45,6 @@ namespace GUI_Test2
             characters = c;
             endingGen = eG;
             gameSettings = gS;
-            mainMenu = mM;
         }
     }
 
@@ -61,7 +58,6 @@ namespace GUI_Test2
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
         public static GameSettings gameSettings = new GameSettings();
-        public static MainMenu mainMenu = new MainMenu();
 
         
         private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
@@ -75,7 +71,7 @@ namespace GUI_Test2
 
 
 
-        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG, GameSettings gS, MainMenu mM)
+        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG, GameSettings gS)
         {
             pathGroups = pg;
             hubs = h;
@@ -84,7 +80,6 @@ namespace GUI_Test2
             paths = p;
             endingGen = eG;
             gameSettings = gS;
-            mainMenu = mM;
         }
 
         public static void setPathGroup(List<String> pg)
@@ -120,11 +115,30 @@ namespace GUI_Test2
 
         private static bool generateCode(string filePath)
         {
-            //This is for testing purposes. TODO: remove GALEN CHANGED THE FUNCTION CALL, ADDED MAIN MENU
-            Game.gameSettings = new GameSettings(null, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
+            //This is for testing purposes. TODO: remove 
+            /*Galen's Version*/
+            Game.gameSettings = new GameSettings(null, "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
-                 , 300, 300, 1, Game.mainMenu ,new List<string>(),new List<string>());
+                 , 300, 300,1,
+                 new MainMenu("C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//img//absolver.jpg",
+                 "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
+                 "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",
+                 "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.ttf"),
+                 new List<string>(),new List<string>());
+
+            /* Rob's Version
+
+            Game.gameSettings = new GameSettings(null, "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
+                 Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
+                 "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
+                 , 300, 300,1,
+                 new MainMenu("C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//img//absolver.jpg",
+                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
+                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",
+                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.otf"),
+                 new List<string>(),new List<string>());
+            */
 
 
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
@@ -175,7 +189,7 @@ namespace GUI_Test2
             code.AppendLine("(*game).setEndOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
 
             code.AppendLine("(*game).setMainMenuImageTexture(menuImage);");
-            code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath[Game.gameSettings.menuMusic] + "\");"); 
+            code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath[Game.gameSettings.mainMenu.mainMenuSoundPath] + "\");"); 
 
             //code.AppendLine("if (defaultDialoguePane.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.dialoguePaneTexturePath] + "\"))");
             //code.AppendLine("\tstd::cout<<\"Error loading dialogue pane file\" << std::endl;");
@@ -288,9 +302,9 @@ namespace GUI_Test2
                     
                 }
             }
-            copyFileTo(Game.gameSettings.menuImage, "\\assets\\img\\menuImage");
-            copyFileTo(Game.gameSettings.menuMusic, "\\assets\\music\\menuMusic");
-            copyFileTo(Game.gameSettings.menuStartButtonSound, "\\assets\\music\\menuPressPlay");
+            copyFileTo(Game.gameSettings.mainMenu.mainMenuImagePath, "\\assets\\img\\menuImage");
+            copyFileTo(Game.gameSettings.mainMenu.mainMenuSoundPath, "\\assets\\music\\menuMusic");
+            copyFileTo(Game.gameSettings.mainMenu.playButtonSoundPath, "\\assets\\music\\menuPressPlay");
             copyFileTo(Game.gameSettings.defaultFontPath, "\\assets\\fonts\\defaultFont");               
             
             return true;
@@ -325,7 +339,7 @@ namespace GUI_Test2
             }
 
             code.AppendLine("sf::Texture menuImage;");
-            code.AppendLine("if (!menuImage.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.menuImage] + "\"))");
+            code.AppendLine("if (!menuImage.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.mainMenu.mainMenuImagePath] + "\"))");
             code.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
 
             return code.ToString();

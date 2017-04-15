@@ -162,8 +162,7 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
-            Game.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
-            Game.gameSettings = new GameSettings(Game.gameSettings.gameOverRequirement, Game.gameSettings.defaultFontPath, Game.gameSettings.startNavigable, Game.gameSettings.startOfRoundNav, Game.gameSettings.endOfRoundNav, Game.gameSettings.dialogueScrollSoundPath, Game.gameSettings.dialogueEndSoundPath, Game.gameSettings.dialoguePaneTexturePath, Game.gameSettings.dialoguePaneFlashingTexturePath, Game.gameSettings.dialoguePanePosX, Game.gameSettings.dialoguePanePosY, Game.gameSettings.maxPlayers, Game.mainMenu, Game.gameSettings.visPlayerAtts, Game.gameSettings.visGlobalAtts);
+            Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
             this.Close();
         }
 

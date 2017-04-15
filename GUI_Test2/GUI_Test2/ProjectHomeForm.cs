@@ -113,7 +113,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen,Game.gameSettings,Game.mainMenu);
+                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen,Game.gameSettings);
                 saveToFile(proj, fileLocation);
             }
             else
@@ -411,7 +411,7 @@ namespace GUI_Test2
 
         private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditMainMenuForm mM = new EditMainMenuForm(Game.mainMenu);
+            EditMainMenuForm mM = new EditMainMenuForm(Game.gameSettings.mainMenu);
             mM.ShowDialog();
         }
     }

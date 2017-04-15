@@ -42,7 +42,7 @@ namespace GUI_Test2
             InitializeComponent();
 
             gameOverReq = gS.gameOverRequirement;
-            playSoundPath = gS.menuStartButtonSound;
+            playSoundPath = gS.mainMenu.playButtonSoundPath;
             defaultFontPath = gS.defaultFontPath;
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;

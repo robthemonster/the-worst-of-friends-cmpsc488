@@ -277,10 +277,7 @@ namespace GUI_Test2
         public string startNavigable;
         public string startOfRoundNav;
         public string endOfRoundNav;
-        public string menuFont;
-        public string menuImage;
-        public string menuMusic;
-        public string menuStartButtonSound;
+        public MainMenu mainMenu;
         public string dialogueScrollSoundPath;
         public string dialogueEndSoundPath;
         public string dialoguePaneTexturePath;
@@ -294,7 +291,6 @@ namespace GUI_Test2
         public GameSettings()
         {
             gameOverRequirement = new List<Requirement>();
-            menuStartButtonSound = "";
             defaultFontPath = "";
             startOfRoundNav = "";
             endOfRoundNav = "";
@@ -322,10 +318,7 @@ namespace GUI_Test2
             this.dialoguePanePosY = dialoguePanePosY;
             this.maxPlayers = maxPlayers;
 
-            this.menuStartButtonSound = mM.playButtonSoundPath;
-            this.menuFont = mM.fontImagePath;
-            this.menuImage = mM.mainMenuImagePath;
-            this.menuMusic = mM.mainMenuSoundPath;
+            this.mainMenu = mM;
             this.visPlayerAtts = visPlayerAtts;
             this.visGlobalAtts = visGlobalAtts;
 
