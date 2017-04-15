@@ -75,6 +75,12 @@
     <Compile Include="EditHubForm.Designer.cs">
       <DependentUpon>EditHubForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditMainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMainMenuForm.Designer.cs">
+      <DependentUpon>EditMainMenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditPathForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     <EmbeddedResource Include="EditHubForm.resx">
       <DependentUpon>EditHubForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditMainMenuForm.resx">
+      <DependentUpon>EditMainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditPathForm.resx">
       <DependentUpon>EditPathForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,8 +151,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
