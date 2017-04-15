@@ -28,10 +28,26 @@ namespace GUI_Test2
             mainMenuSoundPath = "";
             playButtonSoundPath = "";
             fontImagePath = "";
+            
+        }
+
+        public EditMainMenuForm(MainMenu mM)
+        {
+            InitializeComponent();
+            mainMenuImagePath = mM.mainMenuImagePath;
+            mainMenuSoundPath = mM.mainMenuSoundPath;
+            playButtonSoundPath = mM.playButtonSoundPath;
+            fontImagePath = mM.fontImagePath;
+        }
+
+        private void EditMainMenuForm_Load(object sender, EventArgs e)
+        {
             mainMenuSoundSelected = false;
             mainMenuSoundLoading = false;
             playButtonSoundLoading = false;
             playButtonSoundSelected = false;
+
+            mainMenuPictureBox.Image = Image.FromFile(mainMenuImagePath);
         }
 
         private void selectMainMenuImageButton_Click(object sender, EventArgs e)
@@ -146,7 +162,8 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
-
+            Game.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
+            this.Close();
         }
 
         private void Cancelbutton_Click(object sender, EventArgs e)

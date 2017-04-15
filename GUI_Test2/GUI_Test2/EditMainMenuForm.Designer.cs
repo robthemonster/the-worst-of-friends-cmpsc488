@@ -33,8 +33,8 @@
             this.selectMainMenuImageButton = new System.Windows.Forms.Button();
             this.imageGroupBox = new System.Windows.Forms.GroupBox();
             this.soundGroupBox = new System.Windows.Forms.GroupBox();
-            this.useBackgroundSound = new System.Windows.Forms.CheckBox();
             this.usePlayButtonSound = new System.Windows.Forms.CheckBox();
+            this.useBackgroundSound = new System.Windows.Forms.CheckBox();
             this.defaultFontButton = new System.Windows.Forms.Button();
             this.Savebutton = new System.Windows.Forms.Button();
             this.Cancelbutton = new System.Windows.Forms.Button();
@@ -86,17 +86,6 @@
             this.soundGroupBox.TabStop = false;
             this.soundGroupBox.Text = "Sounds (Optional)";
             // 
-            // useBackgroundSound
-            // 
-            this.useBackgroundSound.AutoSize = true;
-            this.useBackgroundSound.Location = new System.Drawing.Point(6, 19);
-            this.useBackgroundSound.Name = "useBackgroundSound";
-            this.useBackgroundSound.Size = new System.Drawing.Size(140, 17);
-            this.useBackgroundSound.TabIndex = 1;
-            this.useBackgroundSound.Text = "Use Background Sound";
-            this.useBackgroundSound.UseVisualStyleBackColor = true;
-            this.useBackgroundSound.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
-            // 
             // usePlayButtonSound
             // 
             this.usePlayButtonSound.AutoSize = true;
@@ -107,6 +96,17 @@
             this.usePlayButtonSound.Text = "Use Play Button Sound";
             this.usePlayButtonSound.UseVisualStyleBackColor = true;
             this.usePlayButtonSound.CheckedChanged += new System.EventHandler(this.usePlayButtonSound_CheckedChanged);
+            // 
+            // useBackgroundSound
+            // 
+            this.useBackgroundSound.AutoSize = true;
+            this.useBackgroundSound.Location = new System.Drawing.Point(6, 19);
+            this.useBackgroundSound.Name = "useBackgroundSound";
+            this.useBackgroundSound.Size = new System.Drawing.Size(140, 17);
+            this.useBackgroundSound.TabIndex = 1;
+            this.useBackgroundSound.Text = "Use Background Sound";
+            this.useBackgroundSound.UseVisualStyleBackColor = true;
+            this.useBackgroundSound.CheckedChanged += new System.EventHandler(this.useMusic_CheckedChanged);
             // 
             // defaultFontButton
             // 
@@ -161,6 +161,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditMainMenuForm";
             this.Text = "Edit Main Menu";
+            this.Load += new System.EventHandler(this.EditMainMenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuPictureBox)).EndInit();
             this.imageGroupBox.ResumeLayout(false);
             this.soundGroupBox.ResumeLayout(false);

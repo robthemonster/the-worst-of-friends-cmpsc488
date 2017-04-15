@@ -42,6 +42,7 @@
             this.attributesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.charactersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,7 @@
             this.pathGroupListBox = new System.Windows.Forms.ListBox();
             this.closeButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.gameSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -142,7 +143,8 @@
             this.attributesToolStripMenuItem,
             this.charactersToolStripMenuItem,
             this.endingsToolStripMenuItem,
-            this.gameSettingsToolStripMenuItem});
+            this.gameSettingsToolStripMenuItem,
+            this.mainMenuToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -167,6 +169,13 @@
             this.endingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.endingsToolStripMenuItem.Text = "Endings";
             this.endingsToolStripMenuItem.Click += new System.EventHandler(this.endingsToolStripMenuItem_Click);
+            // 
+            // gameSettingsToolStripMenuItem
+            // 
+            this.gameSettingsToolStripMenuItem.Name = "gameSettingsToolStripMenuItem";
+            this.gameSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gameSettingsToolStripMenuItem.Text = "Game Settings";
+            this.gameSettingsToolStripMenuItem.Click += new System.EventHandler(this.gameSettingsToolStripMenuItem_Click);
             // 
             // createToolStripMenuItem
             // 
@@ -313,12 +322,12 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // gameSettingsToolStripMenuItem
+            // mainMenuToolStripMenuItem
             // 
-            this.gameSettingsToolStripMenuItem.Name = "gameSettingsToolStripMenuItem";
-            this.gameSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.gameSettingsToolStripMenuItem.Text = "Game Settings";
-            this.gameSettingsToolStripMenuItem.Click += new System.EventHandler(this.gameSettingsToolStripMenuItem_Click);
+            this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mainMenuToolStripMenuItem.Text = "Main Menu";
+            this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.mainMenuToolStripMenuItem_Click);
             // 
             // ProjectHomeForm
             // 
@@ -377,5 +386,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.ToolStripMenuItem endingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
     }
 }
