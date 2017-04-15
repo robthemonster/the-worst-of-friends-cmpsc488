@@ -285,7 +285,7 @@ namespace GUI_Test2
         {
             if (globalRadioButton.Enabled)
             {
-                scope = 0;
+                scope = Requirement.GLOBAL;
                 setAttributeComboBox();
             }
         }
@@ -294,7 +294,7 @@ namespace GUI_Test2
         {
             if (hubRadioButton.Checked)
             {
-                scope = 1;
+                scope = Requirement.HUB;
                 hubLabel.Enabled = true;
                 hubComboBox.Enabled = true;
                 if (hubComboBox.SelectedIndex != -1)
@@ -319,7 +319,7 @@ namespace GUI_Test2
         {
             if (playerRadioButton.Enabled)
             {
-                scope = 2;
+                scope = Requirement.PLAYER;
                 setAttributeComboBox();
             }
         }

@@ -211,14 +211,6 @@ namespace GUI_Test2
 
     //Attributes is its own class
 
-    [Serializable]
-    public class P2PG{
-        public Path path;
-        public PathGroup pathGroup;
-        public int tier;
-        public byte weight;
-        public List <Requirement> requirements;
-    }
 
     [Serializable]
     public class PathRequirements {
@@ -232,6 +224,8 @@ namespace GUI_Test2
         public int scope;
         public string hub;
         public string comp;
+
+        public const int GLOBAL = 0, HUB = 1, PLAYER = 2;
 
 
         public Requirement() { }
