@@ -113,7 +113,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen);
+                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen,Game.gameSettings);
                 saveToFile(proj, fileLocation);
             }
             else
@@ -127,11 +127,7 @@ namespace GUI_Test2
             EditCharactersForm ec = new EditCharactersForm(this);
             ec.ShowDialog();
         }
-    
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
 
-        }
 
         private void pathToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -409,7 +405,8 @@ namespace GUI_Test2
 
         private void gameSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            EditGameSettings gs = new EditGameSettings(Game.gameSettings);
+            gs.ShowDialog();
         }
     }
 }

@@ -278,7 +278,7 @@ namespace GUI_Test2
         public string EORPathGroupName;
         public string dialogueScrollSoundPath;
         public string dialoguePaneTexturePath;
-        public int playerCount;
+        public int maxPlayers;
 
         public GameSettings()
         {
@@ -289,10 +289,10 @@ namespace GUI_Test2
             EORPathGroupName = "";
             dialogueScrollSoundPath = "";
             dialoguePaneTexturePath = "";
-            playerCount = 1;
+            maxPlayers = 1;
         }
 
-        public GameSettings(List<Requirement> gOR, string pSP, string dFP, string sorPGN, string eorPGN, string dSSP, string dPTP, int pC)
+        public GameSettings(List<Requirement> gOR, string pSP, string dFP, string sorPGN, string eorPGN, string dSSP, string dPTP, int mP)
         {
             gameOverRequirement = gOR;
             playSoundPath = pSP;
@@ -301,7 +301,7 @@ namespace GUI_Test2
             EORPathGroupName = eorPGN;
             dialogueScrollSoundPath = dSSP;
             dialoguePaneTexturePath = dPTP;
-            playerCount = pC;
+            maxPlayers = mP;
         }
     }
 }

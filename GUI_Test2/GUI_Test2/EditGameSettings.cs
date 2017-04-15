@@ -25,8 +25,7 @@ namespace GUI_Test2
         public EditGameSettings()
         {
             InitializeComponent();
-            gameOverScope = 0;
-            currHub = "";
+
             gameOverReq = new List<Requirement>();
             playSoundPath = "";
             defaultFontPath = "";
@@ -34,10 +33,21 @@ namespace GUI_Test2
             EORPathGroupName = "";
         }
 
-        //constructor passed an object
+        public EditGameSettings(GameSettings gS)
+        {
+            InitializeComponent();
+
+            gameOverReq = gS.gameOverRequirement;
+            playSoundPath = gS.playSoundPath;
+            defaultFontPath = gS.defaultFontPath;
+            SORPathGroupName = gS.SORPathGroupName;
+            EORPathGroupName = gS.EORPathGroupName;
+        }
 
         private void EditGameSettings_Load(object sender, EventArgs e)
         {
+            gameOverScope = 0;
+            currHub = "";
             musicSelected = false;
             musicLoading = false;
         }

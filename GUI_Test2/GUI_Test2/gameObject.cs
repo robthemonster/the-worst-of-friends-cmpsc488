@@ -14,13 +14,13 @@ namespace GUI_Test2
         //public List<NPC> characters;
         public List<String> pathGroups;
         public List<String> hubs;
-        //public List<P2PG> p2PG;
         public Dictionary<String, Navigable> navIndex;
         public String navigableName;
         public List<String> paths;
         public List<Attrib> attribs;
         public Dictionary<string, NPC> characters;
         public EndingGen endingGen;
+        public GameSettings gameSettings;
 
         public Project()
         {
@@ -32,9 +32,10 @@ namespace GUI_Test2
             attribs = new List<Attrib>();
             characters = new Dictionary<string, NPC>();
             endingGen = new EndingGen();
+            gameSettings = new GameSettings();
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG)
+        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG, GameSettings gS)
         {
             pathGroups = pg;
             hubs = h;
@@ -43,6 +44,7 @@ namespace GUI_Test2
             this.attribs = attribs;
             characters = c;
             endingGen = eG;
+            gameSettings = gS;
         }
     }
 
@@ -50,16 +52,12 @@ namespace GUI_Test2
     public static class Game
     {
         //public List<NPC> characters;
-        //public Dictionary<String,Path> paths;
         public static List<String> pathGroups = new List<string>();
         public static List<String> hubs = new List<string>();
-        //public List<P2PG> p2PG;
         public static Dictionary<String, Navigable> navIndex = new Dictionary<String, Navigable>();
-        
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
-        public static int maxPlayers;
-
+        public static GameSettings gameSettings = new GameSettings();
         public static string defaultFont = "";
         public static string startTurnNav = "";
         public static string startRoundNav = "";
@@ -75,7 +73,7 @@ namespace GUI_Test2
 
 
 
-        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG)
+        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG, GameSettings gS)
         {
             pathGroups = pg;
             hubs = h;
@@ -83,6 +81,7 @@ namespace GUI_Test2
            
             paths = p;
             endingGen = eG;
+            gameSettings = gS;
         }
 
         public static void setPathGroup(List<String> pg)
@@ -110,6 +109,10 @@ namespace GUI_Test2
             endingGen = eg;
         }
 
+        public static void setGameSettings(GameSettings gS)
+        {
+            gameSettings = gS;
+        }
 
 
         private static bool generateCode(string filePath)
@@ -117,7 +120,7 @@ namespace GUI_Test2
            
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
 
-            code.AppendLine("Game * game = new Game(" + maxPlayers + ");");
+            code.AppendLine("Game * game = new Game(" + gameSettings.maxPlayers + ");");
 
 
            string loadTextureCode = getLoadTexturesCode();
