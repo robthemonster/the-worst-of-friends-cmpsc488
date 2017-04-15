@@ -58,7 +58,7 @@ namespace GUI_Test2
         
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
-        public static int maxPlayers;
+        public static int playersCount;
 
         public static string defaultFont = "";
         public static string startTurnNav = "";
@@ -115,7 +115,17 @@ namespace GUI_Test2
            
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
 
+<<<<<<< HEAD
             code.AppendLine("Game * game = new Game(" + maxPlayers + ");");
+=======
+            code.AppendLine("Game game = new Game(" + playersCount + ");");
+
+            string loadTextureCode = getLoadAssetCode();
+            if (loadTextureCode == "")
+            {
+                return false;
+            }
+>>>>>>> 726e9349c2e637e2c30e2765443fc62271f46cb2
 
             string loadTextureCode = getLoadTexturesCode();
           
