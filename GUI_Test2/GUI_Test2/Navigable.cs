@@ -240,7 +240,6 @@ namespace GUI_Test2
         public List<String> pathsInGroup;
         public List<int> weightofEachPath;
         public List<int> tierofEachPath;
-        //public List<Boolean> useOnceList;
 
         public EndingGen()
         {
@@ -257,6 +256,42 @@ namespace GUI_Test2
         }
     }
 
+    [Serializable]
+    public class GameSettings
+    {
+        public List<Requirement> gameOverRequirement;
+        public string playSoundPath;
+        public string defaultFontPath;
+        public string SORPathGroupName;
+        public string EORPathGroupName;
+        public string dialogueScrollSoundPath;
+        public string dialoguePaneTexturePath;
+        public int playerCount;
+
+        public GameSettings()
+        {
+            gameOverRequirement = new List<Requirement>();
+            playSoundPath = "";
+            defaultFontPath = "";
+            SORPathGroupName = "";
+            EORPathGroupName = "";
+            dialogueScrollSoundPath = "";
+            dialoguePaneTexturePath = "";
+            playerCount = 1;
+        }
+
+        public GameSettings(List<Requirement> gOR, string pSP, string dFP, string sorPGN, string eorPGN, string dSSP, string dPTP, int pC)
+        {
+            gameOverRequirement = gOR;
+            playSoundPath = pSP;
+            defaultFontPath = dFP;
+            SORPathGroupName = sorPGN;
+            EORPathGroupName = eorPGN;
+            dialogueScrollSoundPath = dSSP;
+            dialoguePaneTexturePath = dPTP;
+            playerCount = pC;
+        }
+    }
 }
 
 

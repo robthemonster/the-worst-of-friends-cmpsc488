@@ -70,6 +70,9 @@ namespace GUI_Test2
                 buttonNameList.Add("Button " + i);
             }
 
+            pathImagePath = p.pathImagePath;
+            pathSoundPath = p.pathSoundPath;
+
             updateButtonListBox();
         }
             

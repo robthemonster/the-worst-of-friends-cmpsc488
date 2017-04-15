@@ -60,7 +60,7 @@ namespace GUI_Test2
         public static String navigableName = "";
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
-        public static int maxPlayers;
+        public static int playersCount;
 
 
         
@@ -118,7 +118,7 @@ namespace GUI_Test2
             StreamWriter outputStream = new StreamWriter(filePath);
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
 
-            code.AppendLine("Game game = new Game(" + maxPlayers + ");");
+            code.AppendLine("Game game = new Game(" + playersCount + ");");
 
             string loadTextureCode = getLoadAssetCode();
             if (loadTextureCode == "")
