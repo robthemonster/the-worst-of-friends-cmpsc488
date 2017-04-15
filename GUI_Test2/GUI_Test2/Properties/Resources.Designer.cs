@@ -81,7 +81,8 @@ namespace GUI_Test2.Properties {
         ///static float VIEW_HEIGHT = 1080.0f;
         ///static float VIEW_WIDTH = 1920.0f;
         ///
-        ///int main() {.
+        ///int main() {
+        ///.
         /// </summary>
         internal static string defaultHeader {
             get {

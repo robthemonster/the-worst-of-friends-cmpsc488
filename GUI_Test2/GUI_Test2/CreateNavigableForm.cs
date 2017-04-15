@@ -14,6 +14,7 @@ namespace GUI_Test2
     {
         public ProjectHomeForm parent;
         public bool validClose = false;
+        public string navigableName = "";
         public CreateNavigableForm(ProjectHomeForm sender)
         {
             InitializeComponent();
@@ -76,7 +77,7 @@ namespace GUI_Test2
 
                         else
                         {
-                            Game.navigableName = navigableNameTextBox.Text;
+                            navigableName = navigableNameTextBox.Text;
 
                             validClose = true;
                             Close();
@@ -91,7 +92,8 @@ namespace GUI_Test2
 
                         else
                         {
-                            Game.navigableName = navigableNameTextBox.Text;
+
+                            navigableName = navigableNameTextBox.Text;
 
                             validClose = true;
                             Close();
@@ -106,7 +108,7 @@ namespace GUI_Test2
 
                         else
                         {
-                            Game.navigableName = navigableNameTextBox.Text;
+                            navigableName = navigableNameTextBox.Text;
 
                             validClose = true;
                             Close();

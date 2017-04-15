@@ -113,7 +113,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.navigableName, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen);
+                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen);
                 saveToFile(proj, fileLocation);
             }
             else
@@ -250,7 +250,7 @@ namespace GUI_Test2
                 Game.pathGroups = (List<String>)proj.pathGroups;
                 Game.hubs = (List<String>)proj.hubs;
                 Game.navIndex = (Dictionary<String, Navigable>)proj.navIndex;
-                Game.navigableName = (String)proj.navigableName;
+                
                 Game.paths = (List<String>)proj.paths;
                 Attributes.attribs = (List<Attrib>)proj.attribs;
                 Characters.characters = (proj.characters);
@@ -263,22 +263,22 @@ namespace GUI_Test2
 
         public void createNavigable()
         {
-            CreateNavigableForm Navigable = new CreateNavigableForm(this);
-            Navigable.ShowDialog();
+            CreateNavigableForm navigable = new CreateNavigableForm(this);
+            navigable.ShowDialog();
 
             switch (screenID)
             {
 
                 case 1:
-                    EditPathForm editPath = new EditPathForm(this, Game.navigableName);
+                    EditPathForm editPath = new EditPathForm(this, navigable.navigableName);
                     editPath.ShowDialog();
                     break;
                 case 2:
-                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, Game.navigableName);
+                    EditPathGroupForm editPathGroup = new EditPathGroupForm(this, navigable.navigableName);
                     editPathGroup.ShowDialog();
                     break;
                 case 3:
-                    EditHubForm editHub = new EditHubForm(this, Game.navigableName);
+                    EditHubForm editHub = new EditHubForm(this, navigable.navigableName);
                     editHub.ShowDialog();
                     break;
             }

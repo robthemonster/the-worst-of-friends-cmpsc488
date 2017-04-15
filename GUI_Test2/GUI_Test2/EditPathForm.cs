@@ -762,11 +762,11 @@ namespace GUI_Test2
 
                 //Type
                 Button b = buttonList[buttonListBox.SelectedIndex];
-                if (Game.navIndex[b.next].isPath())
+                if (Game.navIndex[b.next].getNavType() == Navigable.PATH)
                 {
                     pathFromButtonRadio.Checked = true;
                 }
-                else if (Game.navIndex[b.next].isPathGroup())
+                else if (Game.navIndex[b.next].getNavType() == Navigable.PATHGROUP)
                 {
                     pathGroupFromButtonRadio.Checked = true;
                 }

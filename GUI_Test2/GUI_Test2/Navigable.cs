@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 namespace GUI_Test2
 {
 
-    
-    public interface Navigable
+    [Serializable]
+    public abstract class Navigable
     {
-        String getName();
-        string getImagePath();
-        string getSoundPath();
-        Boolean isPathGroup();
-        Boolean isPath();
-        Boolean isHub();
+      public abstract String getName();
+       public abstract string getImagePath();
+        public abstract string getSoundPath();
+        public abstract int getNavType();
+        public const int PATH = 0, PATHGROUP = 1, HUB = 2;
+        
     }
     [Serializable]
     public class Path : Navigable {
@@ -24,14 +24,20 @@ namespace GUI_Test2
         public List<String> dialogueContents;
         public List<List<Impact>> dialogueImpactList;
         public List<Button> buttons;
-        public string pathSoundPath;
-        public string pathImagePath;
+        public string pathSoundPath = "";
+        public string pathImagePath = "";
 
-       public string getImagePath()
+     
+        override public int  getNavType()
+        {
+            return Navigable.PATH;
+        }
+
+       override public string  getImagePath()
         {
             return pathImagePath;
         }
-        public string getSoundPath()
+        override public string getSoundPath()
         {
             return pathSoundPath;
         }
@@ -47,10 +53,8 @@ namespace GUI_Test2
             this.pathImagePath = pathImagePath;
         }
 
-        public String getName() { return name; }
-        public Boolean isPathGroup() { return false; }
-        public Boolean isPath() { return true; }
-        public Boolean isHub() { return false; }
+       override public String getName() { return name; }
+
     }
 
     [Serializable]
@@ -93,16 +97,17 @@ namespace GUI_Test2
         public List<Button> buttons;
         public string hubImage;
         public string hubSound;
-        public String getName() { return name; }
-        public Boolean isPathGroup() { return false; }
-        public Boolean isPath() { return false; }
-        public Boolean isHub() { return true; }
-
-        public string getImagePath()
+       override public String getName() { return name; }
+        
+       override public int getNavType()
+        {
+            return Navigable.HUB;
+        }
+      override  public string getImagePath()
         {
             return hubImage;
         }
-        public string getSoundPath()
+       override  public string getSoundPath()
         {
             return hubSound;
         }
@@ -170,14 +175,23 @@ namespace GUI_Test2
         public List<Boolean> useOnce;
         //public Navigable nextDefault;
         //public Navigable getNext();
+
         
-        public string getImagePath()
+       override public int getNavType()
+        {
+            return Navigable.PATHGROUP;
+        }
+
+       override public string getImagePath()
         {
             return "";
         }
-        public string getSoundPath()
+       override public string getSoundPath()
         {
             return "";
+        }
+        override public String getName() {
+            return name;
         }
 
         public PathGroup() { }
@@ -191,10 +205,8 @@ namespace GUI_Test2
             this.pathRequirements = pathRequirements;
             this.useOnce = useOnce;
         }
-        public String getName() { return name; }
-        public Boolean isPathGroup() { return true; }
-        public Boolean isPath() { return false; }
-        public Boolean isHub() { return false; }
+       
+    
     }
 
     //Attributes is its own class

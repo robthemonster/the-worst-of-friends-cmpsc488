@@ -34,12 +34,11 @@ namespace GUI_Test2
             endingGen = new EndingGen();
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG)
+        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG)
         {
             pathGroups = pg;
             hubs = h;
             navIndex = nI;
-            navigableName = nN;
             paths = p;
             this.attribs = attribs;
             characters = c;
@@ -56,12 +55,15 @@ namespace GUI_Test2
         public static List<String> hubs = new List<string>();
         //public List<P2PG> p2PG;
         public static Dictionary<String, Navigable> navIndex = new Dictionary<String, Navigable>();
-
-        public static String navigableName = "";
+        
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
         public static int maxPlayers;
 
+        public static string defaultFont = "";
+        public static string startTurnNav = "";
+        public static string startRoundNav = "";
+        public static string endRoundNav = "";
 
         
         private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
@@ -73,12 +75,12 @@ namespace GUI_Test2
 
 
 
-        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, string nN, List<String> p, EndingGen eG)
+        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG)
         {
             pathGroups = pg;
             hubs = h;
             navIndex = nI;
-            navigableName = nN;
+           
             paths = p;
             endingGen = eG;
         }
@@ -98,11 +100,6 @@ namespace GUI_Test2
             navIndex = nI;
         }
 
-        public static void setNavigableName(string nN)
-        {
-            navigableName = nN;
-        }
-
         public static void setPaths(List<String> p)
         {
             paths = p;
@@ -115,21 +112,72 @@ namespace GUI_Test2
 
         private static bool generateCode(string filePath)
         {
-            StreamWriter outputStream = new StreamWriter(filePath);
+           
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
 
-            code.AppendLine("Game game = new Game(" + maxPlayers + ");");
+            code.AppendLine("Game * game = new Game(" + maxPlayers + ");");
 
-            string loadTextureCode = getLoadAssetCode();
-            if (loadTextureCode == "")
-            {
-                return false;
-            }
-
+            string loadTextureCode = getLoadTexturesCode();
+          
             code.AppendLine(loadTextureCode);
 
+            string instantiateNavigablesCode = getInstantiateNavigablesCode();
+
+            code.AppendLine(instantiateNavigablesCode);
+
+            string setImageTexturesCode = getSetImageTextureCode();
+
+            code.AppendLine(setImageTexturesCode);
+
+
+            code.AppendLine("}");
+            StreamWriter outputStream = new StreamWriter(filePath);
+
+            outputStream.WriteLine(code.ToString());
+
+            outputStream.Close();
 
             return true;
+        }
+
+        private static string getSetImageTextureCode()
+        {
+            int ctr = 0;
+            StringBuilder code = new StringBuilder(); 
+            foreach (Navigable nav in Game.navIndex.Values)
+            {
+                if (navNameToImageIndex.ContainsKey(nav.getName()))
+                {
+                    code.AppendLine("nav" + ctr + ".setImageTexture(texture" + navNameToImageIndex[nav.getName()] + ");");
+                }
+                ctr++;
+           }
+            return code.ToString();
+        }
+
+
+
+        private static string getInstantiateNavigablesCode()
+        {
+            StringBuilder instantiateNavigablesCode = new StringBuilder();
+            int ctr = 0;
+            foreach (Navigable nav in navIndex.Values)
+            {
+                switch (nav.getNavType())
+                {
+                    case Navigable.PATH:
+                        instantiateNavigablesCode.AppendLine("Path nav" + ctr + "(game);");
+                        break;
+                    case Navigable.HUB:
+                        instantiateNavigablesCode.AppendLine("Hub nav" + ctr + "(game);");
+                        break;
+                    case Navigable.PATHGROUP:
+                        instantiateNavigablesCode.AppendLine("PathGroup nav" + ctr + ";");
+                        break;
+                }
+                ctr++;
+            }
+            return instantiateNavigablesCode.ToString();
         }
 
         private static bool copyAssetsToDir()
@@ -198,32 +246,25 @@ namespace GUI_Test2
             return true;
         }
 
-        private static string getLoadAssetCode()
+        private static string getLoadTexturesCode()
         {
             if (!copyAssetsToDir()) 
             {
                 Console.Out.WriteLine("One of the image or sound assets could not be found. It has been moved, renamed, or deleted.");
                 return "";    
             }
-            StringBuilder assetCode = new StringBuilder();
+            StringBuilder code = new StringBuilder();
             int ctr = 0;
             foreach (string filePath in Game.imageAssets)
             {
 
-                assetCode.AppendLine("sf::Texture texture" + ctr + ";");
-                assetCode.AppendLine(@"if (!texture" + ctr + ".loadFromFile(\"" + filePath.Replace("\\", "/") + "\"))");
-                assetCode.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
+                code.AppendLine("sf::Texture texture" + ctr + ";");
+                code.AppendLine(@"if (!texture" + ctr + ".loadFromFile(\"" + filePath.Replace("\\", "/") + "\"))");
+                code.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
                 ctr++;
-            }
-            ctr = 0;
-            foreach (string filePath in Game.musicAssets)
-            {
-                assetCode.AppendLine("sf::Music music" + ctr + ";");
-                assetCode.AppendLine("if (!music" + ctr + ".openFromFile(\"" + filePath.Replace("\\", "/") + "\"))");
-                assetCode.AppendLine("\t std::cout<< \"Error loading music file \" << std::endl; ");
-            }
+            }           
 
-            return assetCode.ToString();
+            return code.ToString();
 
         }
 
