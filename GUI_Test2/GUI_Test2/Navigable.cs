@@ -296,6 +296,7 @@ namespace GUI_Test2
             endOfRoundNav = "";
             dialogueScrollSoundPath = "";
             dialoguePaneTexturePath = "";
+            mainMenu = new MainMenu();
             maxPlayers = 1;
             visGlobalAtts = new List<string>();
             visPlayerAtts = new List<string>();

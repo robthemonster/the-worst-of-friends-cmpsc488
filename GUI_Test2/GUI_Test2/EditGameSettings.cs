@@ -332,5 +332,15 @@ namespace GUI_Test2
                 visibleGlobalAttributesListBox.SelectedIndex = index;
             }
         }
+
+        private void chooseDialogueEndSoundButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chooseEnterKeyTextureButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
