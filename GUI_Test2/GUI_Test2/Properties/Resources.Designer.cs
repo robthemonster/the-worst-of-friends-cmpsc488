@@ -71,6 +71,38 @@ namespace GUI_Test2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to #include &lt;SFML\Graphics.hpp&gt;
+        ///#include &lt;iostream&gt;
+        ///
+        ///#include &lt;SFML/Audio.hpp&gt;
+        ///#include &lt;string&gt;
+        ///#include &lt;fstream&gt;
+        ///#include &lt;ctime&gt;
+        ///#include &lt;cstdlib&gt;
+        ///#include &lt;Windows.h&gt;
+        ///#include &lt;sstream&gt;
+        ///#include &quot;Path.h&quot;
+        ///#include &quot;PathGroup.h&quot;
+        ///#include &quot;Character.h&quot;
+        ///#include &quot;Requirements.h&quot;
+        ///#include &quot;Game.h&quot;
+        ///#include &quot;Player.h&quot;
+        ///#include &quot;AttributeMap.h&quot;
+        ///#include &quot;Hub.h&quot;
+        ///#include &quot;Interface.h&quot;
+        ///#include &quot;Impact.h&quot;
+        ///#include &quot;MainMenu.h&quot;
+        ///
+        ///static float VIEW_HEIGHT = 1080.0f;
+        ///            static float VI [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string cookieCutterGame {
+            get {
+                return ResourceManager.GetString("cookieCutterGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to #include &quot;Game.h&quot;
         ///#include &quot;Path.h&quot;
         ///#include &quot;PathGroup.h&quot;
