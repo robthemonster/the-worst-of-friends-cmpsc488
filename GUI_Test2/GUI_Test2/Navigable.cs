@@ -333,6 +333,31 @@ namespace GUI_Test2
 
         }
     }
+
+    [Serializable]
+    public class MainMenu
+    {
+        public string mainMenuImagePath;
+        public string mainMenuSoundPath;
+        public string playButtonSoundPath;
+        public string fontImagePath;
+
+        public MainMenu()
+        {
+            mainMenuImagePath = "";
+            mainMenuSoundPath = "";
+            playButtonSoundPath = "";
+            fontImagePath = "";
+        }
+
+        public MainMenu(string mMIP, string mMSP, string pBSP, string fIP)
+        {
+            mainMenuImagePath = mMIP;
+            mainMenuSoundPath = mMSP;
+            playButtonSoundPath = pBSP;
+            fontImagePath = fIP;
+        }
+    }
 }
 
 

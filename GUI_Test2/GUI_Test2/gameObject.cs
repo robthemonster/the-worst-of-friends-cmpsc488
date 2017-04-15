@@ -21,6 +21,7 @@ namespace GUI_Test2
         public Dictionary<string, NPC> characters;
         public EndingGen endingGen;
         public GameSettings gameSettings;
+        public MainMenu mainMenu;
 
         public Project()
         {
@@ -33,9 +34,10 @@ namespace GUI_Test2
             characters = new Dictionary<string, NPC>();
             endingGen = new EndingGen();
             gameSettings = new GameSettings();
+            mainMenu = new MainMenu();
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG, GameSettings gS)
+        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG, GameSettings gS, MainMenu mM)
         {
             pathGroups = pg;
             hubs = h;
@@ -45,6 +47,7 @@ namespace GUI_Test2
             characters = c;
             endingGen = eG;
             gameSettings = gS;
+            mainMenu = mM;
         }
     }
 
@@ -58,7 +61,7 @@ namespace GUI_Test2
         public static List<String> paths = new List<String>();
         public static EndingGen endingGen = new EndingGen();
         public static GameSettings gameSettings = new GameSettings();
-        
+        public static MainMenu mainMenu = new MainMenu();
 
         
         private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
@@ -72,7 +75,7 @@ namespace GUI_Test2
 
 
 
-        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG, GameSettings gS)
+        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG, GameSettings gS, MainMenu mM)
         {
             pathGroups = pg;
             hubs = h;
@@ -81,6 +84,7 @@ namespace GUI_Test2
             paths = p;
             endingGen = eG;
             gameSettings = gS;
+            mainMenu = mM;
         }
 
         public static void setPathGroup(List<String> pg)
