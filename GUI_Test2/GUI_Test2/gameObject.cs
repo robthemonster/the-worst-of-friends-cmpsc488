@@ -120,14 +120,11 @@ namespace GUI_Test2
 
         private static bool generateCode(string filePath)
         {
-            //This is for testing purposes. TODO: remove
+            //This is for testing purposes. TODO: remove GALEN CHANGED THE FUNCTION CALL, ADDED MAIN MENU
             Game.gameSettings = new GameSettings(null, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
-                 , 300, 300, 1, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.otf",
-                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//img//absolver.jpg",
-                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
-                 "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",new List<string>(),new List<string>());
+                 , 300, 300, 1, Game.mainMenu ,new List<string>(),new List<string>());
 
 
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
