@@ -19,6 +19,8 @@ namespace GUI_Test2
         private bool musicSelected;
         private bool musicLoading;
         private string defaultFontPath;
+        private string defaultDialoguePaneFlashingTexturePath;
+        private string defaultDialogueEndSoundPath;
         private string SORPathGroupName;
         private string EORPathGroupName;
         //VV no interaction with GameObject just yet VV 
@@ -32,6 +34,9 @@ namespace GUI_Test2
             gameOverReq = new List<Requirement>();
             playSoundPath = "";
             defaultFontPath = "";
+            defaultDialoguePaneFlashingTexturePath = "";
+            defaultDialogueEndSoundPath = "";
+            
             SORPathGroupName = "";
             EORPathGroupName = "";
 
@@ -41,9 +46,11 @@ namespace GUI_Test2
         {
             InitializeComponent();
 
-            gameOverReq = gS.gameOverRequirement;
+            gameOverReq = gS.gameOverRequirements;
             playSoundPath = gS.mainMenu.playButtonSoundPath;
             defaultFontPath = gS.defaultFontPath;
+            defaultDialoguePaneFlashingTexturePath = gS.dialoguePaneFlashingTexturePath;
+            defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;
 
@@ -86,7 +93,46 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
+            //missing startnav
+            /*gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
+            string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
+            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
+            */
 
+            string endORNav;
+            if (this.roundEndNavComboBox.SelectedIndex != -1)
+            {
+                endORNav = (string)this.roundEndNavComboBox.SelectedItem;
+            }
+            else
+            {
+                MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+            }
+
+
+            string startNav;
+            if (this.roundStartNavComboBox.SelectedIndex != -1)
+            {
+                startNav = (string)this.roundStartNavComboBox.SelectedItem;
+            }
+            else
+            {
+                MessageBox.Show("You Must Make a Path or Hub before you can run the project.","Cannot Save Settings",MessageBoxButtons.OK);
+            }
+
+            string turnStartNav;
+            if (this.startofPlayerTurnNavigableComboBox.SelectedIndex != -1)
+            {
+                turnStartNav = (string)this.startofPlayerTurnNavigableComboBox.SelectedItem;
+            }
+            else
+            {
+                MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+            }
+
+
+
+            //Game.gameSettings = new GameSettings(this.gameOverReq, this.defaultFontPath, );
         }
 
 
@@ -330,6 +376,43 @@ namespace GUI_Test2
                 }
                 updateVisGlobalList();
                 visibleGlobalAttributesListBox.SelectedIndex = index;
+            }
+        }
+
+        private void chooseDialogueEndSoundButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Audio files (*.ogg) | *.ogg";
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    playSoundPath = of.FileName;
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void chooseEnterKeyTextureButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    defaultFontPath = of.FileName;
+                }
+
+            }
+            catch (IndexOutOfRangeException)
+            {
+
             }
         }
     }

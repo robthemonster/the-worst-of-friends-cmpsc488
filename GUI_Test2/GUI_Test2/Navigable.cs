@@ -265,7 +265,7 @@ namespace GUI_Test2
     [Serializable]
     public class GameSettings
     {
-        public List<Requirement> gameOverRequirement;
+        public List<Requirement> gameOverRequirements;
         
         public string defaultFontPath;
         public string startNavigable;
@@ -284,22 +284,24 @@ namespace GUI_Test2
 
         public GameSettings()
         {
-            gameOverRequirement = new List<Requirement>();
+            gameOverRequirements = new List<Requirement>();
             defaultFontPath = "";
             startOfRoundNav = "";
             endOfRoundNav = "";
             dialogueScrollSoundPath = "";
             dialoguePaneTexturePath = "";
+            mainMenu = new MainMenu();
             maxPlayers = 1;
             visGlobalAtts = new List<string>();
             visPlayerAtts = new List<string>();
+            mainMenu = new MainMenu("", "", "", "");
         }
 
-        public GameSettings(List<Requirement> gameOverRequirement, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
+        public GameSettings(List<Requirement> gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
             int dialoguePanePosX, int dialoguePanePosY, int maxPlayers, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
         {
-            this.gameOverRequirement = gameOverRequirement;
+            this.gameOverRequirements = gameOverRequirements;
             this.defaultFontPath = defaultFontPath;
             this.startNavigable = startNavigable;
             this.startOfRoundNav = startOfRoundNav;
