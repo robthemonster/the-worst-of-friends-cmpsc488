@@ -28,8 +28,6 @@ namespace GUI_Test2
         private List<string> visPlayerAts;
         private List<string> visGlobalAts;
         private string SOTNav;
-        private int enterTextureXLoc;
-        private int enterTextureYLoc;
         private string mainMenuImagePath;
         private string mainMenuSoundPath;
         private string playButtonSoundPath;
@@ -45,8 +43,7 @@ namespace GUI_Test2
             InitializeComponent();
 
             gameOverReq = new List<Requirement>();
-            enterTextureXLoc = 0;
-            enterTextureYLoc = 0;
+            
         dialogueScrollSound="";
             dialogueEndSound="";
 
@@ -58,10 +55,7 @@ namespace GUI_Test2
             EORPathGroupName = "";
             SOTNav = "";
 
-
-            enterTextureXLoc=0;
-            enterTextureYLoc=0;
-
+            
             mainMenuImagePath = "";
             mainMenuSoundPath = "";
             playButtonSoundPath = "";
@@ -84,6 +78,8 @@ namespace GUI_Test2
             defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
             paneXLocTextBox.Text = gS.dialoguePanePosX.ToString() ;
             paneYLocTextBox.Text = gS.dialoguePanePosY.ToString();
+            NPCXLocTextBox.Text = gS.NPCXLoc.ToString();
+            NPCYLocTextBox.Text = gS.NPCYLoc.ToString();
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;
             SOTNav = gS.startNavigable;
@@ -124,8 +120,8 @@ namespace GUI_Test2
 
 
             //Causing them to select the same path
-            roundStartNavComboBox.DataSource = Game.pathGroups;
-            roundEndNavComboBox.DataSource = Game.pathGroups;
+            roundStartNavComboBox.DataSource = new List<string>(Game.pathGroups);
+            roundEndNavComboBox.DataSource = new List<string>(Game.pathGroups);
             if (Game.hubs.Contains(SOTNav) || Game.pathGroups.Contains(SOTNav))
             {
                 startofPlayerTurnNavigableComboBox.SelectedItem = SOTNav;
@@ -184,16 +180,20 @@ namespace GUI_Test2
             catch (FormatException ex) {
                 Console.Out.WriteLine(ex.StackTrace);
             }
-            int x, y, x1, y1;
+            int x, y, x1, y1,x2,y2;
             try {
                 x = Int32.Parse(this.paneXLocTextBox.Text);
                 y = Int32.Parse(this.paneYLocTextBox.Text);
                 x1 = Int32.Parse(this.enterTextureXLocTextBox.Text);
                 y1 = Int32.Parse(this.enterTextureYLocTextBox.Text);
+                x2 = Int32.Parse(this.NPCXLocTextBox.Text);
+                y2 = Int32.Parse(this.NPCYLocTextBox.Text);
                 Game.gameSettings.dialoguePanePosX = x;
                 Game.gameSettings.dialoguePanePosY = y;
                 Game.gameSettings.flashingTextureXLoc = x1;
                 Game.gameSettings.flashingTextureYLoc = y1;
+                Game.gameSettings.NPCXLoc = x2;
+                Game.gameSettings.NPCYLoc = y2;
             }
             catch (FormatException ex)
             {

@@ -60,7 +60,6 @@
             this.saveButtonTab2 = new System.Windows.Forms.Button();
             this.createImpactButton = new System.Windows.Forms.Button();
             this.deleteImpactButton = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -107,6 +106,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.musicBox.SuspendLayout();
@@ -125,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -355,18 +356,9 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.valueNumericUpDown);
-            this.tabPage2.Controls.Add(this.ScopeGroup);
+            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.saveButtonTab2);
-            this.tabPage2.Controls.Add(this.createImpactButton);
-            this.tabPage2.Controls.Add(this.deleteImpactButton);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.attributeComboBox);
-            this.tabPage2.Controls.Add(this.opComboBox);
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -378,7 +370,7 @@
             // 
             // valueNumericUpDown
             // 
-            this.valueNumericUpDown.Location = new System.Drawing.Point(474, 200);
+            this.valueNumericUpDown.Location = new System.Drawing.Point(237, 133);
             this.valueNumericUpDown.Name = "valueNumericUpDown";
             this.valueNumericUpDown.Size = new System.Drawing.Size(89, 20);
             this.valueNumericUpDown.TabIndex = 16;
@@ -387,9 +379,9 @@
             // 
             this.ScopeGroup.Controls.Add(this.tableLayoutPanel5);
             this.ScopeGroup.Controls.Add(this.hubSelectionComboBox);
-            this.ScopeGroup.Location = new System.Drawing.Point(232, 63);
+            this.ScopeGroup.Location = new System.Drawing.Point(10, 16);
             this.ScopeGroup.Name = "ScopeGroup";
-            this.ScopeGroup.Size = new System.Drawing.Size(331, 98);
+            this.ScopeGroup.Size = new System.Drawing.Size(316, 98);
             this.ScopeGroup.TabIndex = 15;
             this.ScopeGroup.TabStop = false;
             this.ScopeGroup.Text = "Scope";
@@ -448,7 +440,7 @@
             this.hubSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.hubSelectionComboBox.Enabled = false;
             this.hubSelectionComboBox.FormattingEnabled = true;
-            this.hubSelectionComboBox.Location = new System.Drawing.Point(174, 45);
+            this.hubSelectionComboBox.Location = new System.Drawing.Point(163, 42);
             this.hubSelectionComboBox.Name = "hubSelectionComboBox";
             this.hubSelectionComboBox.Size = new System.Drawing.Size(142, 21);
             this.hubSelectionComboBox.TabIndex = 13;
@@ -456,7 +448,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(474, 328);
+            this.button2.Location = new System.Drawing.Point(455, 328);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 21);
             this.button2.TabIndex = 11;
@@ -466,7 +458,7 @@
             // 
             // saveButtonTab2
             // 
-            this.saveButtonTab2.Location = new System.Drawing.Point(381, 327);
+            this.saveButtonTab2.Location = new System.Drawing.Point(374, 327);
             this.saveButtonTab2.Name = "saveButtonTab2";
             this.saveButtonTab2.Size = new System.Drawing.Size(75, 23);
             this.saveButtonTab2.TabIndex = 10;
@@ -476,7 +468,7 @@
             // 
             // createImpactButton
             // 
-            this.createImpactButton.Location = new System.Drawing.Point(391, 265);
+            this.createImpactButton.Location = new System.Drawing.Point(219, 166);
             this.createImpactButton.Name = "createImpactButton";
             this.createImpactButton.Size = new System.Drawing.Size(107, 23);
             this.createImpactButton.TabIndex = 9;
@@ -486,7 +478,7 @@
             // 
             // deleteImpactButton
             // 
-            this.deleteImpactButton.Location = new System.Drawing.Point(212, 327);
+            this.deleteImpactButton.Location = new System.Drawing.Point(16, 166);
             this.deleteImpactButton.Name = "deleteImpactButton";
             this.deleteImpactButton.Size = new System.Drawing.Size(100, 23);
             this.deleteImpactButton.TabIndex = 8;
@@ -494,19 +486,10 @@
             this.deleteImpactButton.UseVisualStyleBackColor = true;
             this.deleteImpactButton.Click += new System.EventHandler(this.deleteImpactButton_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(229, 34);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Add an Impact";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(494, 184);
+            this.label5.Location = new System.Drawing.Point(257, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 5;
@@ -515,7 +498,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(388, 183);
+            this.label4.Location = new System.Drawing.Point(170, 116);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 4;
@@ -524,7 +507,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(249, 184);
+            this.label3.Location = new System.Drawing.Point(31, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 3;
@@ -534,7 +517,7 @@
             // 
             this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.attributeComboBox.FormattingEnabled = true;
-            this.attributeComboBox.Location = new System.Drawing.Point(232, 200);
+            this.attributeComboBox.Location = new System.Drawing.Point(14, 133);
             this.attributeComboBox.Name = "attributeComboBox";
             this.attributeComboBox.Size = new System.Drawing.Size(135, 21);
             this.attributeComboBox.TabIndex = 2;
@@ -543,7 +526,7 @@
             // 
             this.opComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.opComboBox.FormattingEnabled = true;
-            this.opComboBox.Location = new System.Drawing.Point(391, 200);
+            this.opComboBox.Location = new System.Drawing.Point(173, 133);
             this.opComboBox.Name = "opComboBox";
             this.opComboBox.Size = new System.Drawing.Size(53, 21);
             this.opComboBox.TabIndex = 1;
@@ -865,7 +848,7 @@
             this.groupBox2.Controls.Add(this.button1PictureBox);
             this.groupBox2.Controls.Add(this.useButton1Image);
             this.groupBox2.Controls.Add(this.button2PictureBox);
-            this.groupBox2.Location = new System.Drawing.Point(137, 214);
+            this.groupBox2.Location = new System.Drawing.Point(137, 210);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(178, 142);
             this.groupBox2.TabIndex = 24;
@@ -1002,11 +985,29 @@
             this.buttonListBox.TabIndex = 1;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.ScopeGroup);
+            this.groupBox4.Controls.Add(this.valueNumericUpDown);
+            this.groupBox4.Controls.Add(this.opComboBox);
+            this.groupBox4.Controls.Add(this.deleteImpactButton);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.attributeComboBox);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.createImpactButton);
+            this.groupBox4.Location = new System.Drawing.Point(212, 21);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(332, 198);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Add Impact";
+            // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 395);
+            this.ClientSize = new System.Drawing.Size(592, 395);
             this.Controls.Add(this.pathDialogueTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1025,7 +1026,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).EndInit();
             this.ScopeGroup.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -1043,6 +1043,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1074,7 +1076,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox attributeComboBox;
         private System.Windows.Forms.ComboBox opComboBox;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox impactAttributeListBox;
@@ -1127,5 +1128,6 @@
         private System.Windows.Forms.CheckBox useMusic;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
