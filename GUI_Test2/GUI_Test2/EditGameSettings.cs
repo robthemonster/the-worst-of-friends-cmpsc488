@@ -411,44 +411,7 @@ namespace GUI_Test2
             }
         }
 
-        private void useMusic_CheckedChanged(object sender, EventArgs e)
-        {
-            if (useMusic.Checked)
-            {
-                if (!musicLoading)
-                {
-                    OpenFileDialog of = new OpenFileDialog();
-                    of.Filter = "Audio files (*.ogg) | *.ogg";
-
-                    try
-                    {
-                        if (DialogResult.OK == of.ShowDialog())
-                        {
-                            dialogueButtonSoundPath = of.FileName;
-                            musicSelected = true;
-                        }
-                        else
-                        {
-                            musicSelected = false;
-                        }
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-
-                    }
-                    if (!musicSelected)
-                    {
-                        musicLoading = true;
-                        useMusic.Checked = false;
-                        musicLoading = false;
-                    }
-                }
-            }
-            else
-            {
-                musicSelected = false;
-            }
-        }
+        
 
         private void hubComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
