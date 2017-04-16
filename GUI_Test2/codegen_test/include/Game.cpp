@@ -28,12 +28,13 @@ void Game::play(sf::RenderWindow & window, sf::View & view)
 			if (endOfRound != NULL)
 				(*endOfRound).display(window, view);
 		}
-
-		for (int i = 0; i < this->numPlayers; i++) {
-			this->currPlayer = &players[i];
-			(*this->ending).display(window, view);
+		if (window.isOpen()) {
+			for (int i = 0; i < this->numPlayers; i++) {
+				this->currPlayer = &players[i];
+				(*this->ending).display(window, view);
+			}
+			(*this->attributeMap).resetAttributes();
 		}
-		(*this->attributeMap).resetAttributes();
 	}
 }
 
