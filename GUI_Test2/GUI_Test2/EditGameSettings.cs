@@ -15,45 +15,68 @@ namespace GUI_Test2
         private int gameOverScope;
         private string currHub;
         private List<Requirement> gameOverReq;
-        private string playSoundPath;
+        private string dialogueButtonSoundPath;
+        private string dialogueScrollSound;
+        private string dialogueEndSound;
         private bool musicSelected;
         private bool musicLoading;
         private string defaultFontPath;
+        private string defaultDialoguePaneTexturePath;
         private string defaultDialoguePaneFlashingTexturePath;
         private string defaultDialogueEndSoundPath;
         private string SORPathGroupName;
         private string EORPathGroupName;
-        //VV no interaction with GameObject just yet VV 
         private List<string> visPlayerAts;
         private List<string> visGlobalAts;
+        private string SOTNav;
+        private int enterTextureXLoc;
+        private int enterTextureYLoc;
 
         public EditGameSettings()
         {
             InitializeComponent();
 
             gameOverReq = new List<Requirement>();
-            playSoundPath = "";
+            dialogueButtonSoundPath = "";
+            enterTextureXLoc = 0;
+            enterTextureYLoc = 0;
+        dialogueScrollSound="";
+            dialogueEndSound="";
+
             defaultFontPath = "";
             defaultDialoguePaneFlashingTexturePath = "";
             defaultDialogueEndSoundPath = "";
-            
+            maxPlayerCountTextBox.Text = "1";
             SORPathGroupName = "";
             EORPathGroupName = "";
+            SOTNav = "";
 
-        }
+
+            enterTextureXLoc=0;
+            enterTextureYLoc=0;
+
+    }
 
         public EditGameSettings(GameSettings gS)
         {
             InitializeComponent();
 
             gameOverReq = gS.gameOverRequirements;
-            playSoundPath = gS.mainMenu.playButtonSoundPath;
+            dialogueButtonSoundPath = gS.dialogueButtonSound;
+            enterTextureXLocTextBox.Text = gS.flashingTextureXLoc.ToString();
+            enterTextureYLocTextBox.Text = gS.flashingTextureYLoc.ToString();
+
+            dialogueScrollSound = gS.dialogueScrollSoundPath;
+            dialogueEndSound = gS.dialogueEndSoundPath;
             defaultFontPath = gS.defaultFontPath;
             defaultDialoguePaneFlashingTexturePath = gS.dialoguePaneFlashingTexturePath;
             defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
+            paneXLocTextBox.Text = gS.dialoguePanePosX.ToString() ;
+            paneYLocTextBox.Text = gS.dialoguePanePosY.ToString();
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;
-            //maxPlayerCountTextBox.Text = gS.maxPlayers;
+            SOTNav = gS.startNavigable;
+            maxPlayerCountTextBox.Text = gS.maxPlayers.ToString();
 
             visPlayerAts = gS.visPlayerAtts;
             visGlobalAts = gS.visGlobalAtts;
@@ -68,17 +91,39 @@ namespace GUI_Test2
 
             playerAttributesComboBox.DataSource = Attributes.getScope(2, currHub);
             globalAttributesComboBox.DataSource = Attributes.getScope(0, currHub);
+            List<string> navList = new List<string>();
+            navList.AddRange(Game.hubs);
+            navList.AddRange(Game.pathGroups);
+            startofPlayerTurnNavigableComboBox.DataSource = navList;
+
             updateVisPlayerList();
             visiblePlayerAttributesListBox.SelectedIndex = -1;
+
             updateVisGlobalList();
             visibleGlobalAttributesListBox.SelectedIndex = -1;
+
             comparitorComboBox.DataSource = new string[] { "<", "<=", "==", ">=", ">" };
+
             hubComboBox.DataSource = Game.hubs;
 
 
             //Causing them to select the same path
             roundStartNavComboBox.DataSource = Game.pathGroups;
             roundEndNavComboBox.DataSource = Game.pathGroups;
+            if (Game.hubs.Contains(SOTNav) || Game.pathGroups.Contains(SOTNav))
+            {
+                startofPlayerTurnNavigableComboBox.SelectedItem = SOTNav;
+            }
+            if (Game.pathGroups.Contains(SORPathGroupName))
+            {
+                roundStartNavComboBox.SelectedItem = SORPathGroupName;
+            }
+            if (Game.pathGroups.Contains(EORPathGroupName))
+            {
+                roundEndNavComboBox.SelectedItem = EORPathGroupName;
+            }
+
+
             GOGlobalRadioButton.Checked = true;
         }
 
@@ -94,14 +139,16 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
-            //missing startnav,dialogueEndSoundPath, dialogueFlashingTexturePath
+            //missing startTurnnav,dialogueEndSoundPath, dialogueFlashingTexturePath
             /*gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
             int dialoguePanePosX, int dialoguePanePosY, int maxPlayers, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
             */
             Game.gameSettings.visPlayerAtts = visPlayerAts;
             Game.gameSettings.visGlobalAtts = visGlobalAts;
-            
+            Game.gameSettings.dialoguePaneTexturePath = defaultDialoguePaneTexturePath;
+            Game.gameSettings.dialoguePaneFlashingTexturePath = defaultDialoguePaneFlashingTexturePath;
+
             int maxPlayers;
             try {
                 maxPlayers = Int32.Parse(maxPlayerCountTextBox.Text);
@@ -114,12 +161,16 @@ namespace GUI_Test2
             catch (FormatException ex) {
                 Console.Out.WriteLine(ex.StackTrace);
             }
-            int x, y;
+            int x, y, x1, y1;
             try {
-                x = Int32.Parse(this.buttonXLocTextBox.Text);
-                y = Int32.Parse(this.buttonYLocTextBox.Text);
+                x = Int32.Parse(this.paneXLocTextBox.Text);
+                y = Int32.Parse(this.paneYLocTextBox.Text);
+                x1 = Int32.Parse(this.enterTextureXLocTextBox.Text);
+                y1 = Int32.Parse(this.enterTextureYLocTextBox.Text);
                 Game.gameSettings.dialoguePanePosX = x;
                 Game.gameSettings.dialoguePanePosY = y;
+                Game.gameSettings.flashingTextureXLoc = x1;
+                Game.gameSettings.flashingTextureYLoc = y1;
             }
             catch (FormatException ex)
             {
@@ -127,29 +178,33 @@ namespace GUI_Test2
                 MessageBox.Show("X and Y must be positive numbers.\n" +
                     "X must be less than 960.\n" +
                     "Y must be less than 540.");
-                buttonXLocTextBox.Text = "";
-                buttonYLocTextBox.Text = "";
+                paneXLocTextBox.Text = "";
+                paneYLocTextBox.Text = "";
                 return;
             }
 
             if (Math.Abs(x) > 960)
             {
                 MessageBox.Show("X coordinate must be between -960 and 960.");
-                buttonXLocTextBox.Text = "";
+                paneXLocTextBox.Text = "";
                 return;
             }
             if (Math.Abs(y) > 540)
             {
                 MessageBox.Show("Y coordinate must be between -540 and 540.");
-                buttonYLocTextBox.Text = "";
+                paneYLocTextBox.Text = "";
                 return;
             }
-        
-            
-            if (playSoundPath == "") {/**/ }
-            else
+            if (dialogueButtonSoundPath != "")
             {
-                Game.gameSettings.dialogueScrollSoundPath = playSoundPath;
+                Game.gameSettings.dialogueButtonSound = dialogueButtonSoundPath;
+            }
+            if (dialogueEndSound != "")
+            {
+                Game.gameSettings.dialogueEndSoundPath = dialogueEndSound;
+            }
+            if (dialogueScrollSound != "") {
+                Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSound;
             }
             
             if (this.roundStartNavComboBox.SelectedIndex != -1)
@@ -177,6 +232,7 @@ namespace GUI_Test2
             if (this.startofPlayerTurnNavigableComboBox.SelectedIndex != -1)
             {
                 turnStartNav = (string)this.startofPlayerTurnNavigableComboBox.SelectedItem;
+                Game.gameSettings.startNavigable = turnStartNav;
             }
             else
             {
@@ -185,7 +241,7 @@ namespace GUI_Test2
 
 
 
-            //Game.gameSettings = new GameSettings(this.gameOverReq, this.defaultFontPath, );
+            
         }
 
 
@@ -290,7 +346,7 @@ namespace GUI_Test2
                     {
                         if (DialogResult.OK == of.ShowDialog())
                         {
-                            playSoundPath = of.FileName;
+                            dialogueButtonSoundPath = of.FileName;
                             musicSelected = true;
                         }
                         else
@@ -335,7 +391,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    playSoundPath = of.FileName;
+                    dialogueScrollSound = of.FileName;
                 }
             }
             catch (IndexOutOfRangeException)
@@ -354,7 +410,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    defaultFontPath = of.FileName;
+                    defaultDialoguePaneTexturePath = of.FileName;
                 }
 
             }
@@ -441,7 +497,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    playSoundPath = of.FileName;
+                    dialogueEndSound = of.FileName;
                 }
             }
             catch (IndexOutOfRangeException)
@@ -459,7 +515,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    defaultFontPath = of.FileName;
+                   defaultDialoguePaneFlashingTexturePath  = of.FileName;
                 }
 
             }
