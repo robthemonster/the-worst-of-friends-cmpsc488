@@ -75,12 +75,6 @@
     <Compile Include="EditHubForm.Designer.cs">
       <DependentUpon>EditHubForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditMainMenuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditMainMenuForm.Designer.cs">
-      <DependentUpon>EditMainMenuForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="EditPathForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,9 +119,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditHubForm.resx">
       <DependentUpon>EditHubForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditMainMenuForm.resx">
-      <DependentUpon>EditMainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPathForm.resx">
       <DependentUpon>EditPathForm.cs</DependentUpon>
