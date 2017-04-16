@@ -310,7 +310,7 @@ namespace GUI_Test2
 
         public GameSettings(List<Requirement> gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
-            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
+            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers,int flashingTextureXLoc, int flashingTextureYLoc, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
         {
             this.gameOverRequirements = gameOverRequirements;
             this.defaultFontPath = defaultFontPath;
@@ -324,6 +324,9 @@ namespace GUI_Test2
             this.dialoguePanePosX = dialoguePanePosX;
             this.dialoguePanePosY = dialoguePanePosY;
             this.maxPlayers = maxPlayers;
+            this.flashingTextureXLoc = flashingTextureXLoc;
+            this.flashingTextureYLoc = flashingTextureYLoc;
+
 
             this.mainMenu = mM;
             this.visPlayerAtts = visPlayerAtts;
