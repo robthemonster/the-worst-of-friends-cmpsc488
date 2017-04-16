@@ -280,6 +280,8 @@ namespace GUI_Test2
         public int maxPlayers;
         public int flashingTextureXLoc;
         public int flashingTextureYLoc;
+        public int NPCXLoc;
+        public int NPCYLoc;
 
         public List<String> visPlayerAtts;
         public List<String> visGlobalAtts;
@@ -301,6 +303,8 @@ namespace GUI_Test2
             mainMenu = new MainMenu("", "", "", "");
             flashingTextureXLoc=0;
             flashingTextureYLoc=0;
+            NPCXLoc = 0;
+            NPCYLoc = 0;
 
             visGlobalAtts = new List<string>();
             visPlayerAtts = new List<string>();
@@ -308,7 +312,8 @@ namespace GUI_Test2
 
         public GameSettings(List<Requirement> gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
-            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers,int flashingTextureXLoc, int flashingTextureYLoc, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
+            int dialoguePanePosX, int dialoguePanePosY, int NPCXLoc, int NPCYLoc,
+            int maxPlayers,int flashingTextureXLoc, int flashingTextureYLoc, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
         {
             this.gameOverRequirements = gameOverRequirements;
             this.defaultFontPath = defaultFontPath;
@@ -324,6 +329,8 @@ namespace GUI_Test2
             this.maxPlayers = maxPlayers;
             this.flashingTextureXLoc = flashingTextureXLoc;
             this.flashingTextureYLoc = flashingTextureYLoc;
+            this.NPCXLoc = NPCXLoc;
+            this.NPCYLoc = NPCYLoc;
 
 
             this.mainMenu = mM;

@@ -126,7 +126,7 @@ namespace GUI_Test2
             Game.gameSettings = new GameSettings(null, workingDir +"//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
-                 , 300, 300,1, 0, 0,
+                 , 300, 300,1, 0, 0,0,0,
                  new MainMenu(workingDir +"//img//absolver.jpg",
                  workingDir + "//music//waterfall.ogg",
                  workingDir + "//music//letsgo.wav",
