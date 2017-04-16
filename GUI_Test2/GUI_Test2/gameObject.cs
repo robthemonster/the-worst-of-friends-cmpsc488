@@ -248,7 +248,7 @@ namespace GUI_Test2
 
             code.AppendLine("Requirements noReq("+attributeMap+");");
 
-            int reqCtr = 0;
+            
             foreach (Navigable nav in Game.navIndex.Values)
             {
                 if (nav.getNavType() == Navigable.PATHGROUP)
@@ -258,7 +258,7 @@ namespace GUI_Test2
                     int pathCtr = 0;
                         foreach (string p in pg.pathsInGroup)
                         {
-                        code.AppendLine("Requirements req" + reqCtr + "(" + attributeMap + ");");
+                        code.AppendLine("Requirements req" + pathCtr + "(" + attributeMap + ");");
                         foreach (Requirement r in pg.pathRequirements[pathCtr])
                         {
                             string op = "";
@@ -281,14 +281,14 @@ namespace GUI_Test2
                                     break;
                             }
                             if (r.scope == Requirement.GLOBAL)
-                                code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)game, \"" + r.name +"\", " + op + ", " + r.value + ");");
-
+                                code.AppendLine("req" + pathCtr + ".addRequirement((Attributable**)game, \"" + r.name +"\", " + op + ", " + r.value + ");");
                             if (r.scope == Requirement.PLAYER)
-                                code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
+                                code.AppendLine("req" + pathCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
                             if (r.scope == Requirement.HUB)
-                                code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*nav" + navNameToCodeIndex[r.hub] + "), \"" + r.name + "\", " + op + "," + r.value + ");");
-                            reqCtr++;
+                                code.AppendLine("req" + pathCtr + ".addRequirement((Attributable**)(*nav" + navNameToCodeIndex[r.hub] + "), \"" + r.name + "\", " + op + "," + r.value + ");");
+                            
                         }
+                        code.AppendLine("nav" +navNameToCodeIndex[pg.name] + ".addPath(" + pg.tiersofEachPath[pathCtr] + ", &nav" + navNameToCodeIndex[pg.pathsInGroup[pathCtr]] + ", " + pg.weightsofEachPath[pathCtr] + ", " + "&req" + pathCtr + ");");
                         pathCtr++;
                         }
                     }
