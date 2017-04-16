@@ -103,6 +103,22 @@ namespace GUI_Test2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sf::RenderWindow window(sf::VideoMode(1600, 900), &quot;Game Window&quot;, sf::Style::Close | sf::Style::Resize);
+        ///        sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
+        ///        window.setView(view);
+        ///        window.setFramerateLimit(60);
+        ///
+        ///       
+        ///        (*game).play(window, view);
+        ///}.
+        /// </summary>
+        internal static string defaultFooter {
+            get {
+                return ResourceManager.GetString("defaultFooter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to #include &quot;Game.h&quot;
         ///#include &quot;Path.h&quot;
         ///#include &quot;PathGroup.h&quot;

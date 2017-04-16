@@ -14,7 +14,7 @@ PathGroup::~PathGroup()
 
 void PathGroup::setTiers(int tiers)
 {
-	for (int i = 0; i < tiers; i++) {
+	for (int i = 0; i <= tiers; i++) {
 		paths.push_back(std::vector<std::tuple<Navigable *, int, Requirements*> >());
 	}
 }

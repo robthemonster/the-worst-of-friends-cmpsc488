@@ -125,12 +125,12 @@ namespace GUI_Test2
             workingDir = workingDir.Replace("\\", "//");
             Game.gameSettings = new GameSettings(null, workingDir +"//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
-                 "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
+                 "dialogue scroll sound", "dialogue end sound", workingDir + "//img//dialoguePane.png", "dialogue flashing texture"
                  , 300, 300,1, 0, 0,
                  new MainMenu(workingDir +"//img//absolver.jpg",
                  workingDir + "//music//waterfall.ogg",
                  workingDir + "//music//letsgo.wav",
-                 workingDir + "//fonts//arial.otf"),
+                 workingDir + "//fonts//arial.ttf"),
                  new List<string>(),new List<string>());
           
 
@@ -156,12 +156,19 @@ namespace GUI_Test2
 
             code.AppendLine(setGameSettingsCode);
 
-            string setImageTexturesCode = getSetImageTextureCode();
+            string setImageTexturesCode = getImageAndMusicSetCode();
 
             code.AppendLine(setImageTexturesCode);
 
+            string setDialoguePanes = getDialoguePaneCode();
 
-            code.AppendLine("}");
+            code.AppendLine(setDialoguePanes);
+
+            string addDialogueCode = getAddDialogueCode();
+
+            code.AppendLine(addDialogueCode);
+
+            code.AppendLine(GUI_Test2.Properties.Resources.defaultFooter);
             StreamWriter outputStream = new StreamWriter(filePath);
 
             outputStream.WriteLine(code.ToString());
@@ -169,6 +176,36 @@ namespace GUI_Test2
             outputStream.Close();
 
             return true;
+        }
+
+        private static string getDialoguePaneCode()
+        {
+            StringBuilder dialoguePaneCode = new StringBuilder();
+            foreach (Navigable nav in Game.navIndex.Values)
+            {
+                if (nav.getNavType() == Navigable.PATH)
+                {
+                    dialoguePaneCode.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setDialoguePaneTexture(defaultDialoguePane, sf::Vector2f(" + Game.gameSettings.dialoguePanePosX + ", " + Game.gameSettings.dialoguePanePosY + "));");
+                }
+            }
+            return dialoguePaneCode.ToString();
+        }
+
+        private static string getAddDialogueCode()
+        {
+            StringBuilder addDialogueCode = new StringBuilder();
+            foreach (Navigable nav in Game.navIndex.Values)
+            {
+                if (nav.getNavType() == Navigable.PATH)
+                {
+                    Path p = (Path)nav;
+                    foreach (string dialogue in p.dialogueContents)
+                    {
+                        addDialogueCode.AppendLine("nav" + Game.navNameToCodeIndex[p.name] + ".addDialogueLine(\"" + dialogue + "\");");
+                    }
+                }
+            }
+            return addDialogueCode.ToString();
         }
 
         private static string getSetGameSettingsCode()
@@ -180,22 +217,28 @@ namespace GUI_Test2
             code.AppendLine("sf::Font defaultFont;");
             code.AppendLine("if (defaultFont.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.defaultFontPath] + "\"))");
             code.AppendLine("\tstd::cout<<\"Error loading font file\" << std::endl;");
+
+            code.AppendLine("sf::Font menuFont;");
+            code.AppendLine("if (menuFont.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.mainMenu.fontImagePath] + "\"))");
+            code.AppendLine("\tstd::cout<<\"Error loading font file\" << std::endl;");
+
             code.AppendLine("sf::Texture defaultDialoguePane;");
          
             code.AppendLine("(*game).setStart(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
             code.AppendLine("(*game).setStartOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
             code.AppendLine("(*game).setEndOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
 
+            code.AppendLine("(*game).setMenuFont(menuFont);");
             code.AppendLine("(*game).setMainMenuImageTexture(menuImage);");
             code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath[Game.gameSettings.mainMenu.mainMenuSoundPath] + "\");"); 
 
-            //code.AppendLine("if (defaultDialoguePane.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.dialoguePaneTexturePath] + "\"))");
-            //code.AppendLine("\tstd::cout<<\"Error loading dialogue pane file\" << std::endl;");
+            code.AppendLine("if (defaultDialoguePane.loadFromFile(\"" + Game.oldPathToNewPath[Game.gameSettings.dialoguePaneTexturePath] + "\"))");
+            code.AppendLine("\tstd::cout<<\"Error loading dialogue pane file\" << std::endl;");
 
             return code.ToString();
         }
 
-        private static string getSetImageTextureCode()
+        private static string getImageAndMusicSetCode()
         {
             int ctr = 0;
             StringBuilder code = new StringBuilder(); 
@@ -204,6 +247,13 @@ namespace GUI_Test2
                 if (navNameToImageIndex.ContainsKey(nav.getName()))
                 {
                     code.AppendLine("nav" + ctr + ".setImageTexture(texture" + navNameToImageIndex[nav.getName()] + ");");
+                }
+                if (navNameToSoundIndex.ContainsKey(nav.getName()))
+                {
+                    if (nav.getNavType() == Navigable.PATH || nav.getNavType() == Navigable.HUB)
+                    {
+                        code.AppendLine("nav" + ctr + ".setMusic(music, \"" + Game.oldPathToNewPath[nav.getSoundPath()] + "\");");
+                    }
                 }
                 ctr++;
            }
@@ -242,48 +292,60 @@ namespace GUI_Test2
 
             code.AppendLine("Requirements noReq("+attributeMap+");");
 
-            
+            int reqCtr = 0;
             foreach (Navigable nav in Game.navIndex.Values)
             {
+               
                 if (nav.getNavType() == Navigable.PATHGROUP)
                 {
-                    PathGroup pg = (PathGroup)nav;
-                   
-                    int pathCtr = 0;
-                        foreach (string p in pg.pathsInGroup)
+                    PathGroup pg = (PathGroup)nav; 
+                    code.AppendLine("nav" + Game.navNameToCodeIndex[pg.name] + ".setTiers(" + pg.tiersofEachPath.Max() + ");");
+                    int pathsInPathGroupCtr = 0;
+                    foreach (string p in pg.pathsInGroup)
                         {
-                        code.AppendLine("Requirements req" + pathCtr + "(" + attributeMap + ");");
-                        foreach (Requirement r in pg.pathRequirements[pathCtr])
+                        if (pg.pathRequirements[pathsInPathGroupCtr].Count > 0)
                         {
-                            string op = "";
-                            switch (r.comp)
+
+                            code.AppendLine("Requirements req" + reqCtr + "(" + attributeMap + ");");
+
+                            foreach (Requirement r in pg.pathRequirements[pathsInPathGroupCtr])
                             {
-                                case ">":
-                                    op = "Requirements::GT";
-                                    break;
-                                case ">=":
-                                    op = "Requirements::GEQ";
-                                    break;
-                                case "<":
-                                    op = "Requirements::LT";
-                                    break;
-                                case "<=":
-                                    op = "Requirements::LEQ";
-                                    break;
-                                case "==":
-                                    op = "Requirements::EQ";
-                                    break;
+                                string op = "";
+                                switch (r.comp)
+                                {
+                                    case ">":
+                                        op = "Requirements::GT";
+                                        break;
+                                    case ">=":
+                                        op = "Requirements::GEQ";
+                                        break;
+                                    case "<":
+                                        op = "Requirements::LT";
+                                        break;
+                                    case "<=":
+                                        op = "Requirements::LEQ";
+                                        break;
+                                    case "==":
+                                        op = "Requirements::EQ";
+                                        break;
+                                }
+                                if (r.scope == Requirement.GLOBAL)
+                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)game, \"" + r.name + "\", " + op + ", " + r.value + ");");
+                                if (r.scope == Requirement.PLAYER)
+                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
+                                if (r.scope == Requirement.HUB)
+                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**) &nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
+
                             }
-                            if (r.scope == Requirement.GLOBAL)
-                                code.AppendLine("req" + pathCtr + ".addRequirement((Attributable**)game, \"" + r.name +"\", " + op + ", " + r.value + ");");
-                            if (r.scope == Requirement.PLAYER)
-                                code.AppendLine("req" + pathCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
-                            if (r.scope == Requirement.HUB)
-                                code.AppendLine("req" + pathCtr + ".addRequirement((Attributable**) &nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
-                            
+                            code.AppendLine("nav" + navNameToCodeIndex[pg.name] + ".addNavigable(" + pg.tiersofEachPath[pathsInPathGroupCtr] + ", &nav" + navNameToCodeIndex[pg.pathsInGroup[pathsInPathGroupCtr]] + ", " + pg.weightsofEachPath[pathsInPathGroupCtr] + ", " + "&req" + reqCtr + ");");
+                            reqCtr++;
                         }
-                        code.AppendLine("nav" +navNameToCodeIndex[pg.name] + ".addNavigable(" + pg.tiersofEachPath[pathCtr] + ", &nav" + navNameToCodeIndex[pg.pathsInGroup[pathCtr]] + ", " + pg.weightsofEachPath[pathCtr] + ", " + "&req" + pathCtr + ");");
-                        pathCtr++;
+                        else
+                        {
+                            code.AppendLine("nav" + navNameToCodeIndex[pg.name] + ".addNavigable(" + pg.tiersofEachPath[pathsInPathGroupCtr] + ", &nav" + navNameToCodeIndex[pg.pathsInGroup[pathsInPathGroupCtr]] + ", " + pg.weightsofEachPath[pathsInPathGroupCtr] + ", &noReq);");
+                        }
+
+                        pathsInPathGroupCtr++;
                         }
                     }
                 }
@@ -360,7 +422,9 @@ namespace GUI_Test2
             copyFileTo(Game.gameSettings.mainMenu.mainMenuImagePath, "\\assets\\img\\menuImage");
             copyFileTo(Game.gameSettings.mainMenu.mainMenuSoundPath, "\\assets\\music\\menuMusic");
             copyFileTo(Game.gameSettings.mainMenu.playButtonSoundPath, "\\assets\\music\\menuPressPlay");
-            copyFileTo(Game.gameSettings.defaultFontPath, "\\assets\\fonts\\defaultFont");               
+            copyFileTo(Game.gameSettings.mainMenu.fontImagePath, "\\assets\\fonts\\menuFont");
+            copyFileTo(Game.gameSettings.defaultFontPath, "\\assets\\fonts\\defaultFont");
+            copyFileTo(Game.gameSettings.dialoguePaneTexturePath, "\\assets\\img\\defaultDialoguePane");           
             
             return true;
         }

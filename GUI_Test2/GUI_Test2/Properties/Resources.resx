@@ -667,4 +667,14 @@ int main()
 
 }</value>
   </data>
+  <data name="defaultFooter" xml:space="preserve">
+    <value>sf::RenderWindow window(sf::VideoMode(1600, 900), "Game Window", sf::Style::Close | sf::Style::Resize);
+        sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
+        window.setView(view);
+        window.setFramerateLimit(60);
+
+       
+        (*game).play(window, view);
+}</value>
+  </data>
 </root>
