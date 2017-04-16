@@ -116,7 +116,24 @@ namespace GUI_Test2
         private static bool generateCode(string filePath)
         {
             //This is for testing purposes. TODO: remove 
-            /*Galen's Version
+
+            /*Keith's Version*/
+            
+            Game.gameSettings = new GameSettings(null, "C://Users//Keith//Google Drive//Gui Github Dir//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
+                 Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
+                 "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
+                 , 300, 300,1,
+                 new MainMenu("C://Users//Keith//Google Drive//Gui Github Dir//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//img//absolver.jpg",
+                 "C://Users//Keith//Google Drive//Gui Github Dir//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
+                 "C://Users//Keith//Google Drive//Gui Github Dir//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",
+                 "C://Users//Keith//Google Drive//Gui Github Dir//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.ttf"),
+                 new List<string>(),new List<string>());
+            
+
+
+            
+            /*Galen's Version*/
+            /*
             Game.gameSettings = new GameSettings(null, "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
@@ -125,11 +142,13 @@ namespace GUI_Test2
                  "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//waterfall.ogg",
                  "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",
                  "C://Users//Galen//Documents//GitHub//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.ttf"),
-                 new List<string>(),new List<string>());*/
+
+                 new List<string>(),new List<string>());
+            */
 
             /* Rob's Version*/
 
-            Game.gameSettings = new GameSettings(null, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
+            /*Game.gameSettings = new GameSettings(null, "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", "dialogue texture", "dialogue flashing texture"
                  , 300, 300,1,
@@ -138,7 +157,7 @@ namespace GUI_Test2
                  "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//music//letsgo.wav",
                  "C://Users//The Monster//Source//Repos//the-worst-of-friends-cmpsc488//GUI_Test2//codegen_test//fonts//arial.otf"),
                  new List<string>(),new List<string>());
-            
+         */  
 
 
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);

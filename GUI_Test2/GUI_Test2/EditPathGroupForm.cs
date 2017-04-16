@@ -70,6 +70,7 @@ namespace GUI_Test2
             attributes = new List<string>();
             updatePathGroupLists();
             onLoad = false;
+            tierPathsListBox.SelectedIndex = -1;
         }
         
 
@@ -79,9 +80,6 @@ namespace GUI_Test2
         }
         private void updatePathGroupLists()
         {
-            pathsInPathGroupListBox.DataSource = null;
-            pathsInPathGroupListBox.DataSource = pathsInGroup;
-            pathsInPathGroupListBox.SelectedIndex = -1;
 
             navsNotInPG = new List<string>();
             navsNotInPG.AddRange(Game.paths);
@@ -97,11 +95,15 @@ namespace GUI_Test2
             pathsNotInPathGroupListBox.DataSource = null;
             pathsNotInPathGroupListBox.DataSource = navsNotInPG;
             pathsNotInPathGroupListBox.SelectedIndex = -1;
+            pathsInPathGroupListBox.DataSource = null;
+            pathsInPathGroupListBox.DataSource = pathsInGroup;
+            pathsInPathGroupListBox.SelectedIndex = -1;
             //pathsInPathGroupListBox.SelectedIndex = pathsInGroup.Count - 1;
             if (pathsInGroup.Count == 0)
             {
                 tierPathsListBox.DataSource = null;
             }
+            
             
 
 
@@ -149,6 +151,7 @@ namespace GUI_Test2
 
         private void addPathsButton_Click(object sender, EventArgs e)
         {
+            int index;
             try
             {
                 int weight = Int32.Parse(pathWeightTextBox.Text);
@@ -156,6 +159,7 @@ namespace GUI_Test2
                 {
                     throw new FormatException();
                 }
+                index = pathsInGroup.Count - 1;
                 foreach (int i in pathsNotInPathGroupListBox.SelectedIndices)
                 {
                     pathsInGroup.Add(navsNotInPG[i]);
@@ -164,8 +168,14 @@ namespace GUI_Test2
                     useOnceList.Add(useOnceCheckBox.Checked);
                     reqsofEachPath.Add(new List<Requirement>());
                 }
+                if (pathsNotInPathGroupListBox.SelectedIndices.Count > 0)
+                {
+                    ++index;
+                }
+                
                 updatePathGroupLists();
                 tierComboBox_SelectedIndexChanged(sender, e);
+                pathsInPathGroupListBox.SelectedIndex = index;
             }
             catch (FormatException)
             {
@@ -176,17 +186,22 @@ namespace GUI_Test2
 
         private void removePathsButton_Click(object sender, EventArgs e)
         {
-            int i = pathsInPathGroupListBox.SelectedIndex;
-            if (i != -1) {
-                pathsInGroup.RemoveAt(i);
-                tierofEachPath.RemoveAt(i);
-                weightofEachPath.RemoveAt(i);
-                useOnceList.RemoveAt(i);
-                reqsofEachPath.RemoveAt(i);
+            int index = pathsInPathGroupListBox.SelectedIndex;
+            if (index != -1) {
+                pathsInGroup.RemoveAt(index);
+                tierofEachPath.RemoveAt(index);
+                weightofEachPath.RemoveAt(index);
+                useOnceList.RemoveAt(index);
+                reqsofEachPath.RemoveAt(index);
+                if (index == pathsInGroup.Count)
+                {
+                    --index;
+                }
 
             }
             updatePathGroupLists();
             tierComboBox_SelectedIndexChanged(sender, e);
+            pathsInPathGroupListBox.SelectedIndex = index;
         }
 
         private void editTierPathButton_Click(object sender, EventArgs e)

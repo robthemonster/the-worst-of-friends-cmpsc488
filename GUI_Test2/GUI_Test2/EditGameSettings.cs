@@ -53,6 +53,7 @@ namespace GUI_Test2
             defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;
+            //maxPlayerCountTextBox.Text = gS.maxPlayers;
 
             visPlayerAts = gS.visPlayerAtts;
             visGlobalAts = gS.visGlobalAtts;
@@ -93,31 +94,83 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
-            //missing startnav
+            //missing startnav,dialogueEndSoundPath, dialogueFlashingTexturePath
             /*gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
             int dialoguePanePosX, int dialoguePanePosY, int maxPlayers, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
             */
-
-            string endORNav;
-            if (this.roundEndNavComboBox.SelectedIndex != -1)
+            Game.gameSettings.visPlayerAtts = visPlayerAts;
+            Game.gameSettings.visGlobalAtts = visGlobalAts;
+            
+            int maxPlayers;
+            try {
+                maxPlayers = Int32.Parse(maxPlayerCountTextBox.Text);
+                if (maxPlayers < 1)
+                {
+                    maxPlayers = 1;
+                }
+                Game.gameSettings.maxPlayers = maxPlayers;
+            }
+            catch (FormatException ex) {
+                Console.Out.WriteLine(ex.StackTrace);
+            }
+            int x, y;
+            try {
+                x = Int32.Parse(this.buttonXLocTextBox.Text);
+                y = Int32.Parse(this.buttonYLocTextBox.Text);
+                Game.gameSettings.dialoguePanePosX = x;
+                Game.gameSettings.dialoguePanePosY = y;
+            }
+            catch (FormatException ex)
             {
-                endORNav = (string)this.roundEndNavComboBox.SelectedItem;
+                Console.Out.WriteLine(ex.StackTrace);
+                MessageBox.Show("X and Y must be positive numbers.\n" +
+                    "X must be less than 960.\n" +
+                    "Y must be less than 540.");
+                buttonXLocTextBox.Text = "";
+                buttonYLocTextBox.Text = "";
+                return;
+            }
+
+            if (Math.Abs(x) > 960)
+            {
+                MessageBox.Show("X coordinate must be between -960 and 960.");
+                buttonXLocTextBox.Text = "";
+                return;
+            }
+            if (Math.Abs(y) > 540)
+            {
+                MessageBox.Show("Y coordinate must be between -540 and 540.");
+                buttonYLocTextBox.Text = "";
+                return;
+            }
+        
+            
+            if (playSoundPath == "") {/**/ }
+            else
+            {
+                Game.gameSettings.dialogueScrollSoundPath = playSoundPath;
+            }
+            
+            if (this.roundStartNavComboBox.SelectedIndex != -1)
+            {
+                Game.gameSettings.endOfRoundNav = (string)this.roundStartNavComboBox.SelectedItem;
             }
             else
             {
                 MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+                return;
             }
 
-
-            string startNav;
+            
             if (this.roundStartNavComboBox.SelectedIndex != -1)
             {
-                startNav = (string)this.roundStartNavComboBox.SelectedItem;
+                Game.gameSettings.startOfRoundNav = (string)this.roundStartNavComboBox.SelectedItem;
             }
             else
             {
                 MessageBox.Show("You Must Make a Path or Hub before you can run the project.","Cannot Save Settings",MessageBoxButtons.OK);
+                return;
             }
 
             string turnStartNav;
