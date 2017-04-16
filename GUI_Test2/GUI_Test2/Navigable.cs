@@ -15,6 +15,8 @@ namespace GUI_Test2
        public abstract string getImagePath();
         public abstract string getSoundPath();
         public abstract int getNavType();
+        public abstract string getButtonFont();
+        public abstract int getButtonCharSize();
         public const int PATH = 0, PATHGROUP = 1, HUB = 2;
         
     }
@@ -26,8 +28,20 @@ namespace GUI_Test2
         public List<Button> buttons;
         public string pathSoundPath = "";
         public string pathImagePath = "";
+        public string buttonFontPath = "";
+        public int buttonFontCharSize;
 
-     
+        public override string getButtonFont()
+        {
+            return buttonFontPath;
+        }
+
+        public override int getButtonCharSize()
+        {
+            return buttonFontCharSize;
+        }
+
+
         override public int  getNavType()
         {
             return Navigable.PATH;
@@ -99,7 +113,20 @@ namespace GUI_Test2
         public List<Button> buttons;
         public string hubImage;
         public string hubSound;
-       override public String getName() { return name; }
+        public string buttonFont = "";
+        public int buttonFontCharSize;
+
+        public override int getButtonCharSize()
+        {
+            return buttonFontCharSize;
+        }
+
+        public override string getButtonFont()
+        {
+            return buttonFont;
+        }
+
+        override public String getName() { return name; }
         
        override public int getNavType()
         {
@@ -178,8 +205,16 @@ namespace GUI_Test2
         //public Navigable nextDefault;
         //public Navigable getNext();
 
-        
-       override public int getNavType()
+        public override string getButtonFont()
+        {
+            return "";
+        }
+        public override int getButtonCharSize()
+        {
+            return -1;
+        }
+
+        override public int getNavType()
         {
             return Navigable.PATHGROUP;
         }
