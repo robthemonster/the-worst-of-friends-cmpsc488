@@ -27,6 +27,7 @@ namespace GUI_Test2
         private string currHub;
         private int scope;
         private List<String> attributes;
+        private bool onLoad = false;
 
         public EditPathGroupForm(ProjectHomeForm par, String nam)
         {
@@ -57,6 +58,7 @@ namespace GUI_Test2
         private void EditPathGroupForm_Load(object sender, EventArgs e)
         {
             this.Text = "Edit PathGroup: " + name;
+            onLoad = true;
             tier = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             tierComboBox.DataSource = tier;
             tierComboBox.SelectedIndex = 0;
@@ -67,6 +69,7 @@ namespace GUI_Test2
             globalRadioButton.Checked = true;
             attributes = new List<string>();
             updatePathGroupLists();
+            onLoad = false;
         }
         
 
@@ -259,8 +262,7 @@ namespace GUI_Test2
                 int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
                 pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
                 useOnceCheckBox.Checked = useOnceList[pIGindex];
-                updatePathGroupLists();
-                if (tierPathsListBox.SelectedIndex!=-1&& pathsInGroup.Count>0 && pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString()))
+                if (!onLoad&&(pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString())))
                 { 
                     pathsInPathGroupListBox.SelectedIndex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedValue);
                 }
@@ -360,13 +362,17 @@ namespace GUI_Test2
         }
         private int updateReqList()
         {
-            int i = pathsInPathGroupListBox.SelectedIndex;
             List<string> reqs = new List<string>();
-            foreach(Requirement r in reqsofEachPath[i])
+            if (pathsInPathGroupListBox.SelectedIndex != -1)
             {
-                reqs.Add(r.name);
+                int i = pathsInPathGroupListBox.SelectedIndex;
+                foreach (Requirement r in reqsofEachPath[i])
+                {
+                    reqs.Add(r.name);
+                }
+                pathRequirementsListBox.DataSource = reqs;
             }
-            pathRequirementsListBox.DataSource = reqs;
+
             return reqs.Count;
         }
 
