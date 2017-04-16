@@ -385,7 +385,6 @@
             this.visiblePlayerAttributesListBox.Name = "visiblePlayerAttributesListBox";
             this.visiblePlayerAttributesListBox.Size = new System.Drawing.Size(78, 95);
             this.visiblePlayerAttributesListBox.TabIndex = 39;
-            this.visiblePlayerAttributesListBox.SelectedIndexChanged += new System.EventHandler(this.visiblePlayerAttributesListBox_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -429,7 +428,6 @@
             this.visibleGlobalAttributesListBox.Name = "visibleGlobalAttributesListBox";
             this.visibleGlobalAttributesListBox.Size = new System.Drawing.Size(78, 95);
             this.visibleGlobalAttributesListBox.TabIndex = 39;
-            this.visibleGlobalAttributesListBox.SelectedIndexChanged += new System.EventHandler(this.visibleGlobalAttributesListBox_SelectedIndexChanged);
             // 
             // globalAttributesComboBox
             // 

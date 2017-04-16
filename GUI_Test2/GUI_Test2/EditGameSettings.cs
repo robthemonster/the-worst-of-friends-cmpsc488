@@ -288,45 +288,82 @@ namespace GUI_Test2
                 setAttributeComboBox();
             }
         }
-
-        private void visiblePlayerAttributesListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void visibleGlobalAttributesListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void GameOverReqsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (GameOverReqsListBox.SelectedIndex != -1)
+            {
+                Requirement r = gameOverReq[GameOverReqsListBox.SelectedIndex];
+                if (r != null)
+                {
+                    switch (r.scope)
+                    {
+                        case 0:
+                            GOGlobalRadioButton.Checked = true;
+                            break;
+                        case 1:
+                            GOHubRadioButton.Checked = true;
+                            hubComboBox.SelectedIndex = hubComboBox.FindStringExact(r.hub);
+                            break;
+                        case 2:
+                            GOPlayerRadioButton.Checked = true;
+                            break;
+                    }
+                    if (r.hub != "")
+                    {
+                        hubComboBox.SelectedIndex = Game.hubs.IndexOf(r.hub);
+                    }
+                    attributeComboBox.SelectedIndex = attributeComboBox.FindStringExact(r.name);
+                    comparitorComboBox.SelectedIndex = comparitorComboBox.FindStringExact(r.comp);
+                    valueUpDown.Value = r.value;
+                }
+            }
+            
         }
-        
+        private void updateGameOver()
+        {
+            List<string> GORs = new List<string>();
+            foreach(Requirement r in gameOverReq)
+            {
+                GORs.Add(r.name);
+            }
+            GameOverReqsListBox.DataSource = null;
+            GameOverReqsListBox.DataSource = GORs;
+        }
 
         private void addRequirementButton_Click(object sender, EventArgs e)
         {
-            if (attributeComboBox.SelectedIndex != -1&&((gameOverScope==0||gameOverScope==2)||hubComboBox.SelectedIndex!=-1)) {
-                foreach (Requirement r in gameOverReq)
+            if (attributeComboBox.SelectedIndex != -1 && ((gameOverScope == 0 || gameOverScope == 2) || hubComboBox.SelectedIndex != -1))
+            {
+               
+                int value = (int)valueUpDown.Value;
+                if (gameOverScope == 0 || gameOverScope == 2)
                 {
-                    if (gameOverScope==r.scope && ((gameOverScope == 0 || gameOverScope == 2) 
-                        || (hubComboBox.SelectedIndex != -1 && r.hub == (string)hubComboBox.SelectedItem))){
-                        gameOverReq.Remove(r);
-                    }
-                    if(gameOverScope == 0 || gameOverScope == 2)
-                    {
-                        gameOverReq.Add(new Requirement(gameOverScope,"",(string)attributeComboBox.SelectedItem,(string)comparitorComboBox.SelectedItem,(int)valueUpDown.Value));
-                        //updateGameOver();
-                    }
-
+                    gameOverReq.Add(new Requirement(gameOverScope, "", attributeComboBox.SelectedValue.ToString(), comparitorComboBox.SelectedValue.ToString(), value));
                 }
+                else
+                {
+                    gameOverReq.Add(new Requirement(gameOverScope, hubComboBox.SelectedValue.ToString(), attributeComboBox.SelectedValue.ToString(), comparitorComboBox.SelectedValue.ToString(), value));
+                }
+                updateGameOver();
+                GameOverReqsListBox.SelectedIndex = gameOverReq.Count - 1;
             }
         }
 
         private void removeRequirementButton_Click(object sender, EventArgs e)
         {
-
+            if (GameOverReqsListBox.SelectedIndex != -1)
+            {
+                int index = GameOverReqsListBox.SelectedIndex;
+                gameOverReq.RemoveAt(index);
+                if (index == gameOverReq.Count)
+                {
+                    --index;
+                }
+                updateGameOver();
+                GameOverReqsListBox.SelectedIndex = index;
+            }
         }
 
         private void defaultFontButton_Click(object sender, EventArgs e)
