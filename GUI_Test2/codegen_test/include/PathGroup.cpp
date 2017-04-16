@@ -15,11 +15,11 @@ PathGroup::~PathGroup()
 void PathGroup::setTiers(int tiers)
 {
 	for (int i = 0; i < tiers; i++) {
-		paths.push_back(std::vector<std::tuple<Path*, int, Requirements*> >());
+		paths.push_back(std::vector<std::tuple<Navigable *, int, Requirements*> >());
 	}
 }
 
-void PathGroup::addPath(int tier, Path * path, int weight, Requirements * req )
+void PathGroup::addNavigable(int tier, Navigable * path, int weight, Requirements * req )
 {
 	this->paths.at(tier).push_back(std::make_tuple(path, weight, req));
 }
@@ -30,7 +30,7 @@ void PathGroup::display(sf::RenderWindow & window, sf::View & view)
 
 	int tierSum = 0;
 	int selectedTier;
-	Path * currPath;
+	Navigable * currPath;
 	Requirements * currReq;
 	if (paths.size() < 1) {
 		std::cout << "No paths path group. Make sure you set tier # and insert paths" << std::endl;
