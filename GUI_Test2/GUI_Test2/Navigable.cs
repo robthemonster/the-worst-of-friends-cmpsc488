@@ -272,7 +272,6 @@ namespace GUI_Test2
         public string startOfRoundNav;
         public string endOfRoundNav;
         public MainMenu mainMenu;
-        public string dialogueButtonSound;
         public string dialogueScrollSoundPath;
         public string dialogueEndSoundPath;
         public string dialoguePaneTexturePath;
@@ -292,7 +291,6 @@ namespace GUI_Test2
             startNavigable = "";
             startOfRoundNav = "";
             endOfRoundNav = "";
-            dialogueButtonSound = "";
             dialogueScrollSoundPath = "";
             dialogueEndSoundPath = "";
             dialoguePaneTexturePath = "";

@@ -15,7 +15,6 @@ namespace GUI_Test2
         private int gameOverScope;
         private string currHub;
         private List<Requirement> gameOverReq;
-        private string dialogueButtonSoundPath;
         private string dialogueScrollSound;
         private string dialogueEndSound;
         private bool musicSelected;
@@ -46,7 +45,6 @@ namespace GUI_Test2
             InitializeComponent();
 
             gameOverReq = new List<Requirement>();
-            dialogueButtonSoundPath = "";
             enterTextureXLoc = 0;
             enterTextureYLoc = 0;
         dialogueScrollSound="";
@@ -76,7 +74,6 @@ namespace GUI_Test2
             InitializeComponent();
 
             gameOverReq = gS.gameOverRequirements;
-            dialogueButtonSoundPath = gS.dialogueButtonSound;
             enterTextureXLocTextBox.Text = gS.flashingTextureXLoc.ToString();
             enterTextureYLocTextBox.Text = gS.flashingTextureYLoc.ToString();
 
@@ -220,10 +217,6 @@ namespace GUI_Test2
                 MessageBox.Show("Y coordinate must be between -540 and 540.");
                 paneYLocTextBox.Text = "";
                 return;
-            }
-            if (dialogueButtonSoundPath != "")
-            {
-                Game.gameSettings.dialogueButtonSound = dialogueButtonSoundPath;
             }
             if (dialogueEndSound != "")
             {
