@@ -89,8 +89,8 @@ namespace GUI_Test2
             musicSelected = false;
             musicLoading = false;
 
-            playerAttributesComboBox.DataSource = Attributes.getScope(2, currHub);
-            globalAttributesComboBox.DataSource = Attributes.getScope(0, currHub);
+            playerAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(2, currHub);
+            globalAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(0, currHub);
             List<string> navList = new List<string>();
             navList.AddRange(Game.hubs);
             navList.AddRange(Game.pathGroups);
@@ -129,7 +129,7 @@ namespace GUI_Test2
 
         private void setAttributeComboBox()
         {
-            attributeComboBox.DataSource = Attributes.getScope(gameOverScope, currHub);
+            attributeComboBox.DataSource = GUI_Test2.Attributes.getScope(gameOverScope, currHub);
         }
 
         private void Cancelbutton_Click(object sender, EventArgs e)
@@ -303,10 +303,25 @@ namespace GUI_Test2
         {
 
         }
+        
 
         private void addRequirementButton_Click(object sender, EventArgs e)
         {
+            if (attributeComboBox.SelectedIndex != -1&&((gameOverScope==0||gameOverScope==2)||hubComboBox.SelectedIndex!=-1)) {
+                foreach (Requirement r in gameOverReq)
+                {
+                    if (gameOverScope==r.scope && ((gameOverScope == 0 || gameOverScope == 2) 
+                        || (hubComboBox.SelectedIndex != -1 && r.hub == (string)hubComboBox.SelectedItem))){
+                        gameOverReq.Remove(r);
+                    }
+                    if(gameOverScope == 0 || gameOverScope == 2)
+                    {
+                        gameOverReq.Add(new Requirement(gameOverScope,"",(string)attributeComboBox.SelectedItem,(string)comparitorComboBox.SelectedItem,(int)valueUpDown.Value));
+                        //updateGameOver();
+                    }
 
+                }
+            }
         }
 
         private void removeRequirementButton_Click(object sender, EventArgs e)
@@ -378,7 +393,7 @@ namespace GUI_Test2
             {
                 GOPlayerRadioButton.Checked = true;
                 GOHubRadioButton.Checked = true;
-                attributeComboBox.DataSource = Attributes.getScope(1, currHub);
+                attributeComboBox.DataSource = GUI_Test2.Attributes.getScope(1, currHub);
             }
         }
 
