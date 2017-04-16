@@ -31,6 +31,15 @@ namespace GUI_Test2
         private string SOTNav;
         private int enterTextureXLoc;
         private int enterTextureYLoc;
+        private string mainMenuImagePath;
+        private string mainMenuSoundPath;
+        private string playButtonSoundPath;
+        private string fontImagePath;
+
+        public bool mainMenuSoundLoading;
+        public bool mainMenuSoundSelected;
+        public bool playButtonSoundLoading;
+        public bool playButtonSoundSelected;
 
         public EditGameSettings()
         {
@@ -55,7 +64,12 @@ namespace GUI_Test2
             enterTextureXLoc=0;
             enterTextureYLoc=0;
 
-    }
+            mainMenuImagePath = "";
+            mainMenuSoundPath = "";
+            playButtonSoundPath = "";
+            fontImagePath = "";
+
+        }
 
         public EditGameSettings(GameSettings gS)
         {
@@ -80,6 +94,11 @@ namespace GUI_Test2
 
             visPlayerAts = gS.visPlayerAtts;
             visGlobalAts = gS.visGlobalAtts;
+
+            mainMenuImagePath = gS.mainMenu.mainMenuImagePath;
+            mainMenuSoundPath = gS.mainMenu.mainMenuSoundPath;
+            playButtonSoundPath = gS.mainMenu.playButtonSoundPath;
+            fontImagePath = gS.mainMenu.fontImagePath;
         }
 
         private void EditGameSettings_Load(object sender, EventArgs e)
@@ -89,8 +108,8 @@ namespace GUI_Test2
             musicSelected = false;
             musicLoading = false;
 
-            playerAttributesComboBox.DataSource = Attributes.getScope(2, currHub);
-            globalAttributesComboBox.DataSource = Attributes.getScope(0, currHub);
+            playerAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(2, currHub);
+            globalAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(0, currHub);
             List<string> navList = new List<string>();
             navList.AddRange(Game.hubs);
             navList.AddRange(Game.pathGroups);
@@ -125,11 +144,18 @@ namespace GUI_Test2
 
 
             GOGlobalRadioButton.Checked = true;
+
+            mainMenuSoundSelected = false;
+            mainMenuSoundLoading = false;
+            playButtonSoundLoading = false;
+            playButtonSoundSelected = false;
+
+            mainMenuImagePictureBox.Image = Image.FromFile(mainMenuImagePath);
         }
 
         private void setAttributeComboBox()
         {
-            attributeComboBox.DataSource = Attributes.getScope(gameOverScope, currHub);
+            attributeComboBox.DataSource = GUI_Test2.Attributes.getScope(gameOverScope, currHub);
         }
 
         private void Cancelbutton_Click(object sender, EventArgs e)
@@ -239,9 +265,9 @@ namespace GUI_Test2
                 MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
             }
 
+            Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
 
 
-            
         }
 
 
@@ -303,10 +329,25 @@ namespace GUI_Test2
         {
 
         }
+        
 
         private void addRequirementButton_Click(object sender, EventArgs e)
         {
+            if (attributeComboBox.SelectedIndex != -1&&((gameOverScope==0||gameOverScope==2)||hubComboBox.SelectedIndex!=-1)) {
+                foreach (Requirement r in gameOverReq)
+                {
+                    if (gameOverScope==r.scope && ((gameOverScope == 0 || gameOverScope == 2) 
+                        || (hubComboBox.SelectedIndex != -1 && r.hub == (string)hubComboBox.SelectedItem))){
+                        gameOverReq.Remove(r);
+                    }
+                    if(gameOverScope == 0 || gameOverScope == 2)
+                    {
+                        gameOverReq.Add(new Requirement(gameOverScope,"",(string)attributeComboBox.SelectedItem,(string)comparitorComboBox.SelectedItem,(int)valueUpDown.Value));
+                        //updateGameOver();
+                    }
 
+                }
+            }
         }
 
         private void removeRequirementButton_Click(object sender, EventArgs e)
@@ -378,7 +419,7 @@ namespace GUI_Test2
             {
                 GOPlayerRadioButton.Checked = true;
                 GOHubRadioButton.Checked = true;
-                attributeComboBox.DataSource = Attributes.getScope(1, currHub);
+                attributeComboBox.DataSource = GUI_Test2.Attributes.getScope(1, currHub);
             }
         }
 
@@ -522,6 +563,116 @@ namespace GUI_Test2
             catch (IndexOutOfRangeException)
             {
 
+            }
+        }
+
+        private void selectMainMenuImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            of.ShowDialog();
+            try
+            {
+                mainMenuImagePictureBox.Image = Image.FromStream(of.OpenFile());
+                mainMenuImagePath = of.FileName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+            }
+        }
+
+        private void useBackgroundSoundCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useBackgroundSoundCheckBox.Checked)
+            {
+                if (!mainMenuSoundLoading)
+                {
+                    OpenFileDialog of = new OpenFileDialog();
+                    of.Filter = "Audio files (*.ogg) | *.ogg";
+
+                    try
+                    {
+                        if (DialogResult.OK == of.ShowDialog())
+                        {
+                            mainMenuSoundPath = of.FileName;
+                            mainMenuSoundSelected = true;
+                        }
+                        else
+                        {
+                            mainMenuSoundSelected = false;
+                        }
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                    }
+                    if (!mainMenuSoundSelected)
+                    {
+                        mainMenuSoundLoading = true;
+                        useBackgroundSoundCheckBox.Checked = false;
+                        mainMenuSoundLoading = false;
+                    }
+                }
+            }
+            else
+            {
+                mainMenuSoundSelected = false;
+            }
+        }
+
+        private void usePlayButtonSoundCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (usePlayButtonSoundCheckBox.Checked)
+            {
+                if (!playButtonSoundLoading)
+                {
+                    OpenFileDialog of = new OpenFileDialog();
+                    of.Filter = "Audio files (*.ogg) | *.ogg";
+
+                    try
+                    {
+                        if (DialogResult.OK == of.ShowDialog())
+                        {
+                            playButtonSoundPath = of.FileName;
+                            playButtonSoundSelected = true;
+                        }
+                        else
+                        {
+                            playButtonSoundSelected = false;
+                        }
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                    }
+                    if (!playButtonSoundSelected)
+                    {
+                        playButtonSoundLoading = true;
+                        usePlayButtonSoundCheckBox.Checked = false;
+                        playButtonSoundLoading = false;
+                    }
+                }
+            }
+            else
+            {
+                playButtonSoundSelected = false;
+            }
+        }
+
+        private void chooseFontImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Font files (*.otf, *.ttf) | *.otf; *.ttf;";
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    fontImagePath = of.FileName;
+                }
+
+            }
+            catch (IndexOutOfRangeException)
+            {
             }
         }
     }

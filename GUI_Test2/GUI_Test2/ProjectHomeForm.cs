@@ -408,11 +408,5 @@ namespace GUI_Test2
             EditGameSettings gs = new EditGameSettings(Game.gameSettings);
             gs.ShowDialog();
         }
-
-        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EditMainMenuForm mM = new EditMainMenuForm(Game.gameSettings.mainMenu);
-            mM.ShowDialog();
-        }
     }
 }
