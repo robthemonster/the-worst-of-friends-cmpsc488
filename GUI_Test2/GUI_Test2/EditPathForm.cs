@@ -455,7 +455,7 @@ namespace GUI_Test2
 
         private void globalRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            scope = 0;
+            scope = Impact.GLOBAL;
             currHub = "";
             hubSelectionComboBox.Enabled = false;
             updateScope();
@@ -473,14 +473,14 @@ namespace GUI_Test2
             {
                 currHub = "";
             }
-            scope = 1;
+            scope = Impact.HUB;
             updateScope();
 
         }
 
         private void playerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            scope = 2;
+            scope = Impact.PLAYER;
             currHub = "";
             hubSelectionComboBox.Enabled = false;
             updateScope();

@@ -71,6 +71,8 @@ namespace GUI_Test2
         public string hub;
         public int op; //0 = "=", 1 = "-", 2 = "+"
         public int val;
+        public const int GLOBAL = 0, HUB = 1, PLAYER = 2;
+        public const int SET = 0, DECREASE = 1, INCREASE = 2;
         public override Boolean Equals(Object that)
         {
             if (that == null || GetType() != that.GetType())

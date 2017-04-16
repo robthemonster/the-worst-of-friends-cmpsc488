@@ -198,14 +198,56 @@ namespace GUI_Test2
         private static string getAddDialogueCode()
         {
             StringBuilder addDialogueCode = new StringBuilder();
+            int impactCtr = 0;
             foreach (Navigable nav in Game.navIndex.Values)
             {
                 if (nav.getNavType() == Navigable.PATH)
                 {
+                    int dialogueCtr = 0;
                     Path p = (Path)nav;
                     foreach (string dialogue in p.dialogueContents)
                     {
-                        addDialogueCode.AppendLine("nav" + Game.navNameToCodeIndex[p.name] + ".addDialogueLine(\"" + dialogue + "\");");
+                        if (p.dialogueImpactList[dialogueCtr].Count == 0)
+                        {
+                            addDialogueCode.AppendLine("nav" + Game.navNameToCodeIndex[p.name] + ".addDialogueLine(\"" + dialogue + "\");");
+                        }
+                        else
+                        {
+                            addDialogueCode.AppendLine("std::vector<Impact *> impacts" + impactCtr + " = std::vector<Impact *>();");
+                            foreach (Impact impact in p.dialogueImpactList[dialogueCtr])
+                            {
+                                string target = "";
+                                string op = "Impact::";
+                                switch (impact.scope)
+                                {
+                                    case Impact.GLOBAL:
+                                        target = "game";
+                                        break;
+                                    case Impact.HUB:
+                                        target = "&nav" + Game.navNameToCodeIndex[impact.hub];
+                                        break;
+                                    case Impact.PLAYER:
+                                        target = "(*game).getCurrentPlayerPointer()";
+                                        break;
+                                }
+                                switch (impact.op)
+                                {
+                                    case Impact.SET:
+                                        op = "SET";
+                                        break;
+                                    case Impact.INCREASE:
+                                        op = "INCREASE";
+                                        break;
+                                    case Impact.DECREASE:
+                                        op = "DECREASE";
+                                        break;
+                                }
+                                addDialogueCode.AppendLine("impacts" + impactCtr + ".push_back(new Impact((*game).getAttributeMapPointer(), (Attributable**)" + target + ", \"" + impact.attribute + "\", Impact::" + op + ", " + impact.val + "));");
+                            }
+                            addDialogueCode.AppendLine("nav" + Game.navNameToCodeIndex[p.name] + ".addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr +");");
+                            impactCtr++;
+                        }
+                        dialogueCtr++;
                     }
                 }
             }
