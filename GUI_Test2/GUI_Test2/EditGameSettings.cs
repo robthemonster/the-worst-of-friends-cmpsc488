@@ -41,7 +41,7 @@ namespace GUI_Test2
         {
             InitializeComponent();
 
-            gameOverReq = gS.gameOverRequirement;
+            gameOverReq = gS.gameOverRequirements;
             playSoundPath = gS.mainMenu.playButtonSoundPath;
             defaultFontPath = gS.defaultFontPath;
             SORPathGroupName = gS.startOfRoundNav;
@@ -86,7 +86,38 @@ namespace GUI_Test2
 
         private void Savebutton_Click(object sender, EventArgs e)
         {
+            //missing startnav
+            /*gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
+            string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
+            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
+            */
 
+            string endORNav;
+            if (this.roundStartNavComboBox.SelectedIndex != -1)
+            {
+                endORNav = (string)this.roundStartNavComboBox.SelectedItem;
+            }
+            else
+            {
+                MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+            }
+
+
+            string startNav;
+            if (this.roundStartNavComboBox.SelectedIndex != -1)
+            {
+                startNav = (string)this.roundStartNavComboBox.SelectedItem;
+            }
+            else
+            {
+                MessageBox.Show("You Must Make a Path or Hub before you can run the project.","Cannot Save Settings",MessageBoxButtons.OK);
+            }
+
+
+
+
+
+            //Game.gameSettings = new GameSettings(this.gameOverReq, this.defaultFontPath, );
         }
 
 
