@@ -84,6 +84,7 @@ namespace GUI_Test2
             navsNotInPG = new List<string>();
             navsNotInPG.AddRange(Game.paths);
             navsNotInPG.AddRange(Game.pathGroups);
+            navsNotInPG.AddRange(Game.hubs);
             foreach(string p in pathsInGroup)
             {
                 if (navsNotInPG.Contains(p))
@@ -411,11 +412,16 @@ namespace GUI_Test2
                             playerRadioButton.Checked = true;
                             break;
                     }
+                    if (r.hub != "")
+                    {
+                        hubComboBox.SelectedIndex = Game.hubs.IndexOf(r.hub);
+                    }
                     attributeComboBox.SelectedIndex = attributeComboBox.FindStringExact(r.name);
                     comparitorComboBox.SelectedIndex = comparitorComboBox.FindStringExact(r.comp);
                     valueTextBox.Text = r.value.ToString() ;
                 }
             }
+            
         }
 
         private void removeConditionButton_Click(object sender, EventArgs e)
