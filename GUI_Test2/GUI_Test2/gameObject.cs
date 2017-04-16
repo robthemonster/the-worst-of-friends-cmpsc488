@@ -123,7 +123,7 @@ namespace GUI_Test2
 
             string workingDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\codegen_test";
             workingDir = workingDir.Replace("\\", "//");
-            Game.gameSettings = new GameSettings(null, workingDir +"//fonts//regular.otf",
+            Game.gameSettings = new GameSettings(new List<Requirement>(), workingDir +"//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", workingDir + "//img//dialoguePane.png", "dialogue flashing texture"
                  , 300, 300,1, 0, 0, 0, 0,
@@ -227,6 +227,45 @@ namespace GUI_Test2
             code.AppendLine("(*game).setStart(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
             code.AppendLine("(*game).setStartOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
             code.AppendLine("(*game).setEndOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
+
+            code.AppendLine("Requirements gameOver(*(*game).getAttributeMapPointer());");
+            foreach (Requirement req in Game.gameSettings.gameOverRequirements)
+            {
+                string target = "";
+                switch (req.scope)
+                {
+                    case Requirement.GLOBAL:
+                        target = "game";
+                        break;
+                    case Requirement.PLAYER:
+                        target = "(*game).getCurrentPlayerPointer()";
+                        break;
+                    case Requirement.HUB:
+                        target = "nav" + navNameToCodeIndex[req.hub];
+                        break;
+                }
+                string op = "Requirements::";
+                switch (req.comp)
+                {
+                    case "==":
+                        op += "EQ";
+                        break;
+                    case ">":
+                        op += "GT";
+                        break;
+                    case ">=":
+                        op += "GEQ";
+                        break;
+                    case "<":
+                        op += "LT";
+                        break;
+                    case "<=":
+                        op += "LEQ";
+                        break;
+                }
+                code.AppendLine("gameOver.addRequirement((Attributable**)" + target + ", \"" + req.name + "\", " + op + ", " + req.value);
+            }
+            code.AppendLine("(*game).setGameOverRequirements(&gameOver);");
 
             code.AppendLine("(*game).setMenuFont(menuFont);");
             code.AppendLine("(*game).setMainMenuImageTexture(menuImage);");
