@@ -272,12 +272,15 @@ namespace GUI_Test2
         public string startOfRoundNav;
         public string endOfRoundNav;
         public MainMenu mainMenu;
+        public string dialogueButtonSound;
         public string dialogueScrollSoundPath;
         public string dialogueEndSoundPath;
         public string dialoguePaneTexturePath;
         public string dialoguePaneFlashingTexturePath;
         public int dialoguePanePosX, dialoguePanePosY;
         public int maxPlayers;
+        public int flashingTextureXLoc;
+        public int flashingTextureYLoc;
 
         public List<String> visPlayerAtts;
         public List<String> visGlobalAtts;
@@ -286,20 +289,28 @@ namespace GUI_Test2
         {
             gameOverRequirements = new List<Requirement>();
             defaultFontPath = "";
+            startNavigable = "";
             startOfRoundNav = "";
             endOfRoundNav = "";
+            dialogueButtonSound = "";
             dialogueScrollSoundPath = "";
+            dialogueEndSoundPath = "";
             dialoguePaneTexturePath = "";
-            mainMenu = new MainMenu();
+            dialoguePaneFlashingTexturePath = "";
+            dialoguePanePosX = 300;
+            dialoguePanePosY = 300;
             maxPlayers = 1;
+            mainMenu = new MainMenu("", "", "", "");
+            flashingTextureXLoc=0;
+            flashingTextureYLoc=0;
+
             visGlobalAtts = new List<string>();
             visPlayerAtts = new List<string>();
-            mainMenu = new MainMenu("", "", "", "");
         }
 
         public GameSettings(List<Requirement> gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
-            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
+            int dialoguePanePosX, int dialoguePanePosY, int maxPlayers,int flashingTextureXLoc, int flashingTextureYLoc, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
         {
             this.gameOverRequirements = gameOverRequirements;
             this.defaultFontPath = defaultFontPath;
@@ -313,6 +324,9 @@ namespace GUI_Test2
             this.dialoguePanePosX = dialoguePanePosX;
             this.dialoguePanePosY = dialoguePanePosY;
             this.maxPlayers = maxPlayers;
+            this.flashingTextureXLoc = flashingTextureXLoc;
+            this.flashingTextureYLoc = flashingTextureYLoc;
+
 
             this.mainMenu = mM;
             this.visPlayerAtts = visPlayerAtts;
