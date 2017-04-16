@@ -19,6 +19,8 @@ namespace GUI_Test2
         private bool musicSelected;
         private bool musicLoading;
         private string defaultFontPath;
+        private string defaultDialoguePaneFlashingTexturePath;
+        private string defaultDialogueEndSoundPath;
         private string SORPathGroupName;
         private string EORPathGroupName;
         //VV no interaction with GameObject just yet VV 
@@ -32,6 +34,9 @@ namespace GUI_Test2
             gameOverReq = new List<Requirement>();
             playSoundPath = "";
             defaultFontPath = "";
+            defaultDialoguePaneFlashingTexturePath = "";
+            defaultDialogueEndSoundPath = "";
+            
             SORPathGroupName = "";
             EORPathGroupName = "";
 
@@ -44,6 +49,8 @@ namespace GUI_Test2
             gameOverReq = gS.gameOverRequirements;
             playSoundPath = gS.mainMenu.playButtonSoundPath;
             defaultFontPath = gS.defaultFontPath;
+            defaultDialoguePaneFlashingTexturePath = gS.dialoguePaneFlashingTexturePath;
+            defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;
             //maxPlayerCountTextBox.Text = gS.maxPlayers;
@@ -94,7 +101,7 @@ namespace GUI_Test2
             */
             Game.gameSettings.visPlayerAtts = visPlayerAts;
             Game.gameSettings.visGlobalAtts = visGlobalAts;
-
+            
             int maxPlayers;
             try {
                 maxPlayers = Int32.Parse(maxPlayerCountTextBox.Text);
@@ -166,7 +173,15 @@ namespace GUI_Test2
                 return;
             }
 
-
+            string turnStartNav;
+            if (this.startofPlayerTurnNavigableComboBox.SelectedIndex != -1)
+            {
+                turnStartNav = (string)this.startofPlayerTurnNavigableComboBox.SelectedItem;
+            }
+            else
+            {
+                MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+            }
 
 
 
@@ -414,6 +429,43 @@ namespace GUI_Test2
                 }
                 updateVisGlobalList();
                 visibleGlobalAttributesListBox.SelectedIndex = index;
+            }
+        }
+
+        private void chooseDialogueEndSoundButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Audio files (*.ogg) | *.ogg";
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    playSoundPath = of.FileName;
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void chooseEnterKeyTextureButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                    defaultFontPath = of.FileName;
+                }
+
+            }
+            catch (IndexOutOfRangeException)
+            {
+
             }
         }
     }

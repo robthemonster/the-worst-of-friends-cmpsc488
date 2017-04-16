@@ -82,6 +82,11 @@
             this.maxPlayerCountTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.startofPlayerTurnNavigableComboBox = new System.Windows.Forms.ComboBox();
+            this.chooseDialogueEndSoundButton = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.chooseEnterKeyTextureButton = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -441,7 +446,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(203, 50);
+            this.label11.Location = new System.Drawing.Point(204, 88);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(133, 13);
             this.label11.TabIndex = 1;
@@ -451,7 +456,7 @@
             // 
             this.roundStartNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roundStartNavComboBox.FormattingEnabled = true;
-            this.roundStartNavComboBox.Location = new System.Drawing.Point(205, 66);
+            this.roundStartNavComboBox.Location = new System.Drawing.Point(206, 104);
             this.roundStartNavComboBox.Name = "roundStartNavComboBox";
             this.roundStartNavComboBox.Size = new System.Drawing.Size(121, 21);
             this.roundStartNavComboBox.TabIndex = 0;
@@ -459,7 +464,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(203, 93);
+            this.label12.Location = new System.Drawing.Point(204, 131);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(130, 13);
             this.label12.TabIndex = 1;
@@ -469,7 +474,7 @@
             // 
             this.roundEndNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roundEndNavComboBox.FormattingEnabled = true;
-            this.roundEndNavComboBox.Location = new System.Drawing.Point(205, 109);
+            this.roundEndNavComboBox.Location = new System.Drawing.Point(206, 147);
             this.roundEndNavComboBox.Name = "roundEndNavComboBox";
             this.roundEndNavComboBox.Size = new System.Drawing.Size(121, 21);
             this.roundEndNavComboBox.TabIndex = 0;
@@ -477,7 +482,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 56);
+            this.label1.Location = new System.Drawing.Point(54, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 44;
@@ -506,7 +511,7 @@
             // 
             // defaultFontButton
             // 
-            this.defaultFontButton.Location = new System.Drawing.Point(29, 69);
+            this.defaultFontButton.Location = new System.Drawing.Point(29, 66);
             this.defaultFontButton.Name = "defaultFontButton";
             this.defaultFontButton.Size = new System.Drawing.Size(77, 23);
             this.defaultFontButton.TabIndex = 50;
@@ -516,7 +521,7 @@
             // 
             // defaultDialoguePaneTextureButton
             // 
-            this.defaultDialoguePaneTextureButton.Location = new System.Drawing.Point(6, 111);
+            this.defaultDialoguePaneTextureButton.Location = new System.Drawing.Point(6, 108);
             this.defaultDialoguePaneTextureButton.Name = "defaultDialoguePaneTextureButton";
             this.defaultDialoguePaneTextureButton.Size = new System.Drawing.Size(119, 23);
             this.defaultDialoguePaneTextureButton.TabIndex = 52;
@@ -527,7 +532,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 95);
+            this.label2.Location = new System.Drawing.Point(35, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 51;
@@ -535,7 +540,7 @@
             // 
             // chooseScrollSoundButton
             // 
-            this.chooseScrollSoundButton.Location = new System.Drawing.Point(16, 31);
+            this.chooseScrollSoundButton.Location = new System.Drawing.Point(6, 30);
             this.chooseScrollSoundButton.Name = "chooseScrollSoundButton";
             this.chooseScrollSoundButton.Size = new System.Drawing.Size(114, 23);
             this.chooseScrollSoundButton.TabIndex = 54;
@@ -546,7 +551,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 16);
+            this.label3.Location = new System.Drawing.Point(6, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 53;
@@ -554,16 +559,14 @@
             // 
             // buttonXLocTextBox
             // 
-            this.buttonXLocTextBox.Enabled = false;
-            this.buttonXLocTextBox.Location = new System.Drawing.Point(158, 77);
+            this.buttonXLocTextBox.Location = new System.Drawing.Point(204, 49);
             this.buttonXLocTextBox.Name = "buttonXLocTextBox";
             this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonXLocTextBox.TabIndex = 58;
             // 
             // buttonYLocTextBox
             // 
-            this.buttonYLocTextBox.Enabled = false;
-            this.buttonYLocTextBox.Location = new System.Drawing.Point(158, 99);
+            this.buttonYLocTextBox.Location = new System.Drawing.Point(204, 71);
             this.buttonYLocTextBox.Name = "buttonYLocTextBox";
             this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.buttonYLocTextBox.TabIndex = 59;
@@ -571,8 +574,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Enabled = false;
-            this.label7.Location = new System.Drawing.Point(136, 54);
+            this.label7.Location = new System.Drawing.Point(182, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 55;
@@ -581,8 +583,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Enabled = false;
-            this.label10.Location = new System.Drawing.Point(135, 80);
+            this.label10.Location = new System.Drawing.Point(182, 52);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 13);
             this.label10.TabIndex = 56;
@@ -591,8 +592,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Enabled = false;
-            this.label13.Location = new System.Drawing.Point(135, 106);
+            this.label13.Location = new System.Drawing.Point(182, 78);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(17, 13);
             this.label13.TabIndex = 57;
@@ -600,6 +600,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chooseEnterKeyTextureButton);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.chooseDialogueEndSoundButton);
+            this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.buttonXLocTextBox);
             this.groupBox3.Controls.Add(this.defaultDialoguePaneTextureButton);
             this.groupBox3.Controls.Add(this.label2);
@@ -613,7 +617,7 @@
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(368, 21);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(214, 140);
+            this.groupBox3.Size = new System.Drawing.Size(311, 185);
             this.groupBox3.TabIndex = 60;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Default Dialogue Pane Options";
@@ -621,7 +625,7 @@
             // maxPlayerCountTextBox
             // 
             this.maxPlayerCountTextBox.Enabled = false;
-            this.maxPlayerCountTextBox.Location = new System.Drawing.Point(231, 164);
+            this.maxPlayerCountTextBox.Location = new System.Drawing.Point(231, 186);
             this.maxPlayerCountTextBox.Name = "maxPlayerCountTextBox";
             this.maxPlayerCountTextBox.Size = new System.Drawing.Size(87, 20);
             this.maxPlayerCountTextBox.TabIndex = 62;
@@ -630,7 +634,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Enabled = false;
-            this.label14.Location = new System.Drawing.Point(228, 148);
+            this.label14.Location = new System.Drawing.Point(228, 170);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(90, 13);
             this.label14.TabIndex = 61;
@@ -639,17 +643,66 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(425, 183);
+            this.label15.Location = new System.Drawing.Point(201, 51);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(0, 13);
-            this.label15.TabIndex = 63;
+            this.label15.Size = new System.Drawing.Size(149, 13);
+            this.label15.TabIndex = 64;
+            this.label15.Text = "Start of Player Turn Navigable";
+            // 
+            // startofPlayerTurnNavigableComboBox
+            // 
+            this.startofPlayerTurnNavigableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.startofPlayerTurnNavigableComboBox.FormattingEnabled = true;
+            this.startofPlayerTurnNavigableComboBox.Location = new System.Drawing.Point(207, 67);
+            this.startofPlayerTurnNavigableComboBox.Name = "startofPlayerTurnNavigableComboBox";
+            this.startofPlayerTurnNavigableComboBox.Size = new System.Drawing.Size(120, 21);
+            this.startofPlayerTurnNavigableComboBox.TabIndex = 63;
+            // 
+            // chooseDialogueEndSoundButton
+            // 
+            this.chooseDialogueEndSoundButton.Location = new System.Drawing.Point(11, 152);
+            this.chooseDialogueEndSoundButton.Name = "chooseDialogueEndSoundButton";
+            this.chooseDialogueEndSoundButton.Size = new System.Drawing.Size(114, 23);
+            this.chooseDialogueEndSoundButton.TabIndex = 61;
+            this.chooseDialogueEndSoundButton.Text = "Choose End Sound";
+            this.chooseDialogueEndSoundButton.UseVisualStyleBackColor = true;
+            this.chooseDialogueEndSoundButton.Click += new System.EventHandler(this.chooseDialogueEndSoundButton_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(11, 137);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(105, 13);
+            this.label16.TabIndex = 60;
+            this.label16.Text = "Dialogue End Sound";
+            // 
+            // chooseEnterKeyTextureButton
+            // 
+            this.chooseEnterKeyTextureButton.Location = new System.Drawing.Point(168, 154);
+            this.chooseEnterKeyTextureButton.Name = "chooseEnterKeyTextureButton";
+            this.chooseEnterKeyTextureButton.Size = new System.Drawing.Size(128, 23);
+            this.chooseEnterKeyTextureButton.TabIndex = 63;
+            this.chooseEnterKeyTextureButton.Text = "Choose \"Enter\" Texture";
+            this.chooseEnterKeyTextureButton.UseVisualStyleBackColor = true;
+            this.chooseEnterKeyTextureButton.Click += new System.EventHandler(this.chooseEnterKeyTextureButton_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(182, 137);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(92, 13);
+            this.label17.TabIndex = 62;
+            this.label17.Text = "Enter Key Texture";
             // 
             // EditGameSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 443);
+            this.ClientSize = new System.Drawing.Size(697, 441);
             this.Controls.Add(this.label15);
+            this.Controls.Add(this.startofPlayerTurnNavigableComboBox);
             this.Controls.Add(this.maxPlayerCountTextBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox3);
@@ -741,5 +794,10 @@
         private System.Windows.Forms.TextBox maxPlayerCountTextBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox startofPlayerTurnNavigableComboBox;
+        private System.Windows.Forms.Button chooseEnterKeyTextureButton;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button chooseDialogueEndSoundButton;
+        private System.Windows.Forms.Label label16;
     }
 }
