@@ -27,6 +27,8 @@ namespace GUI_Test2
         private bool musicSelected = false;
         private bool musicLoading = false;
 
+        private const int NO_IMAGE_SELECTED = 0, ONE_IMAGE_SELECTED = 1, TWO_IMAGES_SELECTED = 2;
+
         public EditHubForm(ProjectHomeForm par, string name)
         {
             InitializeComponent();
@@ -64,6 +66,7 @@ namespace GUI_Test2
 
 
             updateListBox();
+           
         }
 
         private void EditHubForm_Load(object sender, EventArgs e)
@@ -422,16 +425,19 @@ namespace GUI_Test2
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            of.ShowDialog();
+           
 
             try
             {
-                hubImagePictureBox.Image = Image.FromStream(of.OpenFile());
-                hubImagePath = of.FileName;
+                if (of.ShowDialog() == DialogResult.OK)
+                {
+                    hubImagePictureBox.Image = Image.FromStream(of.OpenFile());
+                    hubImagePath = of.FileName;
+                }
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -439,30 +445,27 @@ namespace GUI_Test2
         {
             if (useButton1Image.Checked)
             {
-                button1PictureBox.Enabled = true;
-                //chooseButton1ImageButton.Enabled = true;
-                if (!buttonLoading)
-                {
+                
+                  
                     setButton1ImageButton_Click(sender, e);
-                    if (buttonImageState == 1)
+                    if (buttonImageState == EditHubForm.ONE_IMAGE_SELECTED)
                     {
+                        button1PictureBox.Visible = true;
                         useButton2Image.Enabled = true;
-                    }
-                    else
+                    }else
                     {
-                        buttonLoading = true;
                         useButton1Image.Checked = false;
-                        buttonLoading = false;
                     }
-                }
+                 
+                
             }
             else
             {
-                button1PictureBox.Enabled = false;
-                //chooseButton1ImageButton.Enabled = false;
+                button1PictureBox.Visible = false;
+                button2PictureBox.Visible = false;
                 useButton2Image.Checked = false;
                 useButton2Image.Enabled = false;
-                buttonImageState = 0;
+                buttonImageState = EditHubForm.NO_IMAGE_SELECTED;
             }
         }
 
@@ -470,27 +473,22 @@ namespace GUI_Test2
         {
             if (useButton2Image.Checked)
             {
-                button2PictureBox.Enabled = true;
-                //chooseButton2ImageButton.Enabled = true;
-                if (!buttonLoading)
-                {
+                    
                     setButton2ImageButton_Click(sender, e);
-                    if (buttonImageState == 2)
+                    if (buttonImageState == EditHubForm.TWO_IMAGES_SELECTED)
                     {
-                        button2PictureBox.Enabled = false;
-                    }
-                    else
+                        button2PictureBox.Visible = true;
+                    }else
                     {
-                        buttonLoading = true;
                         useButton2Image.Checked = false;
-                        buttonLoading = false;
                     }
-                }
+                 
+                
             }
             else
             {
-                button2PictureBox.Enabled = false;
-                //chooseButton2ImageButton.Enabled = false;
+                button2PictureBox.Visible = false;
+                buttonImageState = EditHubForm.ONE_IMAGE_SELECTED;
             }
         }
 
@@ -507,16 +505,16 @@ namespace GUI_Test2
             {
                 if (of.ShowDialog() == DialogResult.OK)
                 {
-                    button2PictureBox.Image = Image.FromStream(of.OpenFile());
-                    buttonImagePath2 = of.FileName;
-                    buttonImageState = 2;
+                    button1PictureBox.Image = Image.FromStream(of.OpenFile());
+                    buttonImagePath1 = of.FileName;
+                    buttonImageState = EditHubForm.ONE_IMAGE_SELECTED;
                 }
-;
-            }
-            catch (IndexOutOfRangeException)
+            }catch(IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
+;
+         
         }
 
         private void setButton2ImageButton_Click(object sender, EventArgs e)
@@ -526,24 +524,27 @@ namespace GUI_Test2
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            of.ShowDialog();
-
+                
+                
             try
             {
-                button2PictureBox.Image = Image.FromStream(of.OpenFile());
-                buttonImagePath2 = of.FileName;
-            }
-            catch (IndexOutOfRangeException)
+                if (of.ShowDialog() == DialogResult.OK)
+                {
+                    button2PictureBox.Image = Image.FromStream(of.OpenFile());
+                    buttonImagePath2 = of.FileName;
+                    buttonImageState = EditHubForm.TWO_IMAGES_SELECTED;
+                }
+            }catch(IndexOutOfRangeException ex)
             {
-
-            }
+                Console.Out.WriteLine(ex.StackTrace);
+            }       
         }
 
         private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (pathFromButtonRadio.Checked)
             {
-                navType = 0;
+                navType = Navigable.PATH;
                 setScope();
             }
         }
@@ -552,7 +553,7 @@ namespace GUI_Test2
         {
             if (pathGroupFromButtonRadio.Checked)
             {
-                navType = 1;
+                navType = Navigable.PATHGROUP;
                 setScope();
             }
         }
@@ -561,7 +562,7 @@ namespace GUI_Test2
         {
             if (hubFromButtonRadio.Checked)
             {
-                navType = 2;
+                navType = Navigable.HUB;
                 setScope();
             }
         }
