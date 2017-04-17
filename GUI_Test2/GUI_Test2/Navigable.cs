@@ -164,6 +164,7 @@ namespace GUI_Test2
         public string pic2path;
         public int highlight; //2 picture, 1 text, 0 neither
         public string next;
+        public int buttonFontSize;
         //img,sound
 
         public const int HIGHLIGHT_PICTURE = 2, HIGHLIGHT_TEXT = 1, DO_NOTHING = 0;
@@ -179,9 +180,10 @@ namespace GUI_Test2
             pic2path = "";
             highlight = 0;
             next = "";
+            buttonFontSize = 0;
         }
 
-        public Button(string t, int sX, int sY, int pX, int pY, string p1p, string p2p, int h, string n)
+        public Button(string t, int sX, int sY, int pX, int pY, string p1p, string p2p, int h, string n, int bFS)
         {
             text = t;
             sizeX = sX;
@@ -192,6 +194,7 @@ namespace GUI_Test2
             pic2path = p2p;
             highlight = h;
             next = n;
+            buttonFontSize = bFS;
         }
     }
 

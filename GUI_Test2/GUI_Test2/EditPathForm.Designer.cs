@@ -49,22 +49,23 @@
             this.dialogueTextBox = new System.Windows.Forms.TextBox();
             this.selectDefaultPathImageButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.valueNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ScopeGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.globalRadioButton = new System.Windows.Forms.RadioButton();
             this.hubRadioButton = new System.Windows.Forms.RadioButton();
             this.playerRadioButton = new System.Windows.Forms.RadioButton();
             this.hubSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.saveButtonTab2 = new System.Windows.Forms.Button();
-            this.createImpactButton = new System.Windows.Forms.Button();
+            this.valueNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.opComboBox = new System.Windows.Forms.ComboBox();
             this.deleteImpactButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.attributeComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.attributeComboBox = new System.Windows.Forms.ComboBox();
-            this.opComboBox = new System.Windows.Forms.ComboBox();
+            this.createImpactButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.saveButtonTab2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pathListBoxTab2 = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -106,7 +107,11 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chooseFontButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonFontSizeTextBox = new System.Windows.Forms.TextBox();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.musicBox.SuspendLayout();
@@ -114,9 +119,10 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.ScopeGroup.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.Buttons.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -125,7 +131,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -142,6 +147,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.chooseFontButton);
             this.tabPage1.Controls.Add(this.musicBox);
             this.tabPage1.Controls.Add(this.saveButton);
             this.tabPage1.Controls.Add(this.cancelButton);
@@ -201,7 +209,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 21);
+            this.label2.Location = new System.Drawing.Point(6, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 13);
             this.label2.TabIndex = 16;
@@ -225,13 +233,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.4375F));
             this.tableLayoutPanel1.Controls.Add(this.dialogueList, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 52);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 65);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 296);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 283);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // dialogueList
@@ -242,7 +250,7 @@
             this.dialogueList.Location = new System.Drawing.Point(3, 3);
             this.dialogueList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.dialogueList.Name = "dialogueList";
-            this.dialogueList.Size = new System.Drawing.Size(104, 290);
+            this.dialogueList.Size = new System.Drawing.Size(104, 277);
             this.dialogueList.TabIndex = 3;
             this.dialogueList.SelectedIndexChanged += new System.EventHandler(this.dialogueList_SelectedIndexChanged);
             // 
@@ -265,13 +273,13 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 289);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 277);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // editDialogueButton
             // 
             this.editDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.editDialogueButton.Location = new System.Drawing.Point(87, 240);
+            this.editDialogueButton.Location = new System.Drawing.Point(87, 228);
             this.editDialogueButton.Name = "editDialogueButton";
             this.editDialogueButton.Size = new System.Drawing.Size(46, 20);
             this.editDialogueButton.TabIndex = 19;
@@ -282,7 +290,7 @@
             // DeleteSelectedDialogueButton
             // 
             this.DeleteSelectedDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(139, 266);
+            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(139, 254);
             this.DeleteSelectedDialogueButton.Name = "DeleteSelectedDialogueButton";
             this.DeleteSelectedDialogueButton.Size = new System.Drawing.Size(102, 20);
             this.DeleteSelectedDialogueButton.TabIndex = 3;
@@ -293,7 +301,7 @@
             // createNewDialogueButton
             // 
             this.createNewDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.createNewDialogueButton.Location = new System.Drawing.Point(138, 239);
+            this.createNewDialogueButton.Location = new System.Drawing.Point(138, 227);
             this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewDialogueButton.Name = "createNewDialogueButton";
             this.createNewDialogueButton.Size = new System.Drawing.Size(104, 22);
@@ -315,7 +323,7 @@
             // 
             // ShiftDialogueDownButton
             // 
-            this.ShiftDialogueDownButton.Location = new System.Drawing.Point(3, 266);
+            this.ShiftDialogueDownButton.Location = new System.Drawing.Point(3, 254);
             this.ShiftDialogueDownButton.Name = "ShiftDialogueDownButton";
             this.ShiftDialogueDownButton.Size = new System.Drawing.Size(24, 20);
             this.ShiftDialogueDownButton.TabIndex = 9;
@@ -325,7 +333,7 @@
             // 
             // ShiftDialogueUpButton
             // 
-            this.ShiftDialogueUpButton.Location = new System.Drawing.Point(3, 240);
+            this.ShiftDialogueUpButton.Location = new System.Drawing.Point(3, 228);
             this.ShiftDialogueUpButton.Name = "ShiftDialogueUpButton";
             this.ShiftDialogueUpButton.Size = new System.Drawing.Size(24, 19);
             this.ShiftDialogueUpButton.TabIndex = 8;
@@ -368,12 +376,23 @@
             this.tabPage2.Text = "Impacts";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // valueNumericUpDown
+            // groupBox4
             // 
-            this.valueNumericUpDown.Location = new System.Drawing.Point(237, 133);
-            this.valueNumericUpDown.Name = "valueNumericUpDown";
-            this.valueNumericUpDown.Size = new System.Drawing.Size(89, 20);
-            this.valueNumericUpDown.TabIndex = 16;
+            this.groupBox4.Controls.Add(this.ScopeGroup);
+            this.groupBox4.Controls.Add(this.valueNumericUpDown);
+            this.groupBox4.Controls.Add(this.opComboBox);
+            this.groupBox4.Controls.Add(this.deleteImpactButton);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.attributeComboBox);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.createImpactButton);
+            this.groupBox4.Location = new System.Drawing.Point(212, 21);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(332, 198);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Add Impact";
             // 
             // ScopeGroup
             // 
@@ -446,35 +465,21 @@
             this.hubSelectionComboBox.TabIndex = 13;
             this.hubSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.hubSelectionComboBox_SelectedIndexChanged);
             // 
-            // button2
+            // valueNumericUpDown
             // 
-            this.button2.Location = new System.Drawing.Point(455, 328);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 21);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.cancelButton_Click);
+            this.valueNumericUpDown.Location = new System.Drawing.Point(237, 133);
+            this.valueNumericUpDown.Name = "valueNumericUpDown";
+            this.valueNumericUpDown.Size = new System.Drawing.Size(89, 20);
+            this.valueNumericUpDown.TabIndex = 16;
             // 
-            // saveButtonTab2
+            // opComboBox
             // 
-            this.saveButtonTab2.Location = new System.Drawing.Point(374, 327);
-            this.saveButtonTab2.Name = "saveButtonTab2";
-            this.saveButtonTab2.Size = new System.Drawing.Size(75, 23);
-            this.saveButtonTab2.TabIndex = 10;
-            this.saveButtonTab2.Text = "Save";
-            this.saveButtonTab2.UseVisualStyleBackColor = true;
-            this.saveButtonTab2.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // createImpactButton
-            // 
-            this.createImpactButton.Location = new System.Drawing.Point(219, 166);
-            this.createImpactButton.Name = "createImpactButton";
-            this.createImpactButton.Size = new System.Drawing.Size(107, 23);
-            this.createImpactButton.TabIndex = 9;
-            this.createImpactButton.Text = "Edit/Create Impact";
-            this.createImpactButton.UseVisualStyleBackColor = true;
-            this.createImpactButton.Click += new System.EventHandler(this.EditCreateImpact);
+            this.opComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.opComboBox.FormattingEnabled = true;
+            this.opComboBox.Location = new System.Drawing.Point(173, 133);
+            this.opComboBox.Name = "opComboBox";
+            this.opComboBox.Size = new System.Drawing.Size(53, 21);
+            this.opComboBox.TabIndex = 1;
             // 
             // deleteImpactButton
             // 
@@ -495,6 +500,15 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Value";
             // 
+            // attributeComboBox
+            // 
+            this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.attributeComboBox.FormattingEnabled = true;
+            this.attributeComboBox.Location = new System.Drawing.Point(14, 133);
+            this.attributeComboBox.Name = "attributeComboBox";
+            this.attributeComboBox.Size = new System.Drawing.Size(135, 21);
+            this.attributeComboBox.TabIndex = 2;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -513,23 +527,35 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Attribute";
             // 
-            // attributeComboBox
+            // createImpactButton
             // 
-            this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.attributeComboBox.FormattingEnabled = true;
-            this.attributeComboBox.Location = new System.Drawing.Point(14, 133);
-            this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(135, 21);
-            this.attributeComboBox.TabIndex = 2;
+            this.createImpactButton.Location = new System.Drawing.Point(219, 166);
+            this.createImpactButton.Name = "createImpactButton";
+            this.createImpactButton.Size = new System.Drawing.Size(107, 23);
+            this.createImpactButton.TabIndex = 9;
+            this.createImpactButton.Text = "Edit/Create Impact";
+            this.createImpactButton.UseVisualStyleBackColor = true;
+            this.createImpactButton.Click += new System.EventHandler(this.EditCreateImpact);
             // 
-            // opComboBox
+            // button2
             // 
-            this.opComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.opComboBox.FormattingEnabled = true;
-            this.opComboBox.Location = new System.Drawing.Point(173, 133);
-            this.opComboBox.Name = "opComboBox";
-            this.opComboBox.Size = new System.Drawing.Size(53, 21);
-            this.opComboBox.TabIndex = 1;
+            this.button2.Location = new System.Drawing.Point(455, 328);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 21);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // saveButtonTab2
+            // 
+            this.saveButtonTab2.Location = new System.Drawing.Point(374, 327);
+            this.saveButtonTab2.Name = "saveButtonTab2";
+            this.saveButtonTab2.Size = new System.Drawing.Size(75, 23);
+            this.saveButtonTab2.TabIndex = 10;
+            this.saveButtonTab2.Text = "Save";
+            this.saveButtonTab2.UseVisualStyleBackColor = true;
+            this.saveButtonTab2.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -586,6 +612,8 @@
             // 
             // Buttons
             // 
+            this.Buttons.Controls.Add(this.label7);
+            this.Buttons.Controls.Add(this.buttonFontSizeTextBox);
             this.Buttons.Controls.Add(this.groupBox3);
             this.Buttons.Controls.Add(this.groupBox2);
             this.Buttons.Controls.Add(this.buttonListDownButton);
@@ -985,23 +1013,46 @@
             this.buttonListBox.TabIndex = 1;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
-            // groupBox4
+            // chooseFontButton
             // 
-            this.groupBox4.Controls.Add(this.ScopeGroup);
-            this.groupBox4.Controls.Add(this.valueNumericUpDown);
-            this.groupBox4.Controls.Add(this.opComboBox);
-            this.groupBox4.Controls.Add(this.deleteImpactButton);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.attributeComboBox);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.createImpactButton);
-            this.groupBox4.Location = new System.Drawing.Point(212, 21);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(332, 198);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Add Impact";
+            this.chooseFontButton.Location = new System.Drawing.Point(6, 37);
+            this.chooseFontButton.Name = "chooseFontButton";
+            this.chooseFontButton.Size = new System.Drawing.Size(75, 23);
+            this.chooseFontButton.TabIndex = 49;
+            this.chooseFontButton.Text = "Choose Font";
+            this.chooseFontButton.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(189, 39);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 50;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(87, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Dialogue Font Size:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(327, 240);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.TabIndex = 53;
+            this.label7.Text = "Button Font Size:";
+            // 
+            // buttonFontSizeTextBox
+            // 
+            this.buttonFontSizeTextBox.Location = new System.Drawing.Point(421, 237);
+            this.buttonFontSizeTextBox.Name = "buttonFontSizeTextBox";
+            this.buttonFontSizeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.buttonFontSizeTextBox.TabIndex = 52;
             // 
             // EditPathForm
             // 
@@ -1026,13 +1077,16 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ScopeGroup.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.Buttons.ResumeLayout(false);
+            this.Buttons.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1043,8 +1097,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1129,5 +1181,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button chooseFontButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox buttonFontSizeTextBox;
     }
 }

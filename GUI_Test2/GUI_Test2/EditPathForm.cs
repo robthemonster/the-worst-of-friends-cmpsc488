@@ -20,7 +20,6 @@ namespace GUI_Test2
         private int scope;
         private string currHub;
         private List<List<Impact>> dialogueImpactList;
-        //Galen Additions
         private List<string> buttonNameList;
         private int buttonCount;
         private int navType;
@@ -581,7 +580,7 @@ namespace GUI_Test2
         private void createButtonButton_Click(object sender, EventArgs e)
         {
             string text, pic1path, pic2path, next;
-            int sizeX, sizeY, posX, posY, highlight;
+            int sizeX, sizeY, posX, posY, highlight, buttonFontSize;
 
 
             text = buttonTextTextBox.Text;
@@ -744,9 +743,17 @@ namespace GUI_Test2
             else
                 highlight = 0;
 
+            if (buttonFontSizeTextBox.Text == "")
+            {
+                MessageBox.Show("Please Enter a Font Size for Your Button.");
+                return;
+            }
+            else
+                buttonFontSize = Int32.Parse(buttonFontSizeTextBox.Text);
 
 
-            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
+
+            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next, buttonFontSize));
             buttonCount++;
             buttonNameList.Add("Button " + buttonCount);
 
@@ -830,6 +837,8 @@ namespace GUI_Test2
                 }
                 buttonLoading = false;
 
+                buttonFontSizeTextBox.Text = b.buttonFontSize.ToString();
+
             }
             else
             {
@@ -842,6 +851,7 @@ namespace GUI_Test2
                 useButton2Image.Checked = false;
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
+                buttonFontSizeTextBox.Text = "";
                 
             }
         }
