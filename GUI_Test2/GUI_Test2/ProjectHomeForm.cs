@@ -250,6 +250,7 @@ namespace GUI_Test2
                 Game.paths = (List<String>)proj.paths;
                 Attributes.attribs = (List<Attrib>)proj.attribs;
                 Characters.characters = (proj.characters);
+                Game.gameSettings = proj.gameSettings;
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
 
                 updateListBoxes();

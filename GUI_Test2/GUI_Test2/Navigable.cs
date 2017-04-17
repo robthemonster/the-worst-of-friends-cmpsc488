@@ -29,7 +29,7 @@ namespace GUI_Test2
         public string pathSoundPath = "";
         public string pathImagePath = "";
         public string buttonFontPath = "";
-        public int buttonFontCharSize;
+        public int buttonFontCharSize, dialogueFontCharSize;
 
         public override string getButtonFont()
         {
@@ -58,13 +58,16 @@ namespace GUI_Test2
 
         public Path() {}
 
-        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pathImagePath, string pS) {
+        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pathImagePath, string pS, string buttonFontPath, int buttonFontCharSize, int dialogueFontCharSize) {
             name = n;
             dialogueContents = contents;
             dialogueImpactList=dIL;
             buttons = btns;
             pathSoundPath = pS;
             this.pathImagePath = pathImagePath;
+            this.buttonFontPath = buttonFontPath;
+            this.buttonFontCharSize = buttonFontCharSize;
+            this.dialogueFontCharSize = dialogueFontCharSize;
         }
 
        override public String getName() { return name; }
@@ -164,7 +167,6 @@ namespace GUI_Test2
         public string pic2path;
         public int highlight; //2 picture, 1 text, 0 neither
         public string next;
-        public int buttonFontSize;
         //img,sound
 
         public const int HIGHLIGHT_PICTURE = 2, HIGHLIGHT_TEXT = 1, DO_NOTHING = 0;
@@ -180,21 +182,20 @@ namespace GUI_Test2
             pic2path = "";
             highlight = 0;
             next = "";
-            buttonFontSize = 0;
         }
 
-        public Button(string t, int sX, int sY, int pX, int pY, string p1p, string p2p, int h, string n, int bFS)
+        public Button(string text, int sizeX, int sizeY, int posX, int posY, string pic1path,
+            string pic2path, int highlight, string next)
         {
-            text = t;
-            sizeX = sX;
-            sizeY = sY;
-            posX = pX;
-            posY = pY;
-            pic1path = p1p;
-            pic2path = p2p;
-            highlight = h;
-            next = n;
-            buttonFontSize = bFS;
+            this.text = text;
+            this.sizeX = sizeX;
+            this.sizeY = sizeY;
+            this.posX = posX;
+            this.posY = posY;
+            this.pic1path = pic1path;
+            this.pic2path = pic2path;
+            this.highlight = highlight;
+            this.next = next;
         }
     }
 
@@ -350,6 +351,7 @@ namespace GUI_Test2
 
             visGlobalAtts = new List<string>();
             visPlayerAtts = new List<string>();
+            gameOverRequirements = new List<Requirement>();
         }
 
         public GameSettings(List<Requirement> gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,

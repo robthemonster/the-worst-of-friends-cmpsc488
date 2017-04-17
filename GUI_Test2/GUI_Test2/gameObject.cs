@@ -122,11 +122,10 @@ namespace GUI_Test2
 
             string workingDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\codegen_test";
             workingDir = workingDir.Replace("\\", "//");
-            List<Requirement> gameOver = new List<Requirement>();
            
-            // gameOver.Add(new Requirement(Requirement.PLAYER, "", "lol", ">", 3));
+          
 
-            Game.gameSettings = new GameSettings(gameOver, workingDir +"//fonts//regular.otf",
+            Game.gameSettings = new GameSettings( Game.gameSettings.gameOverRequirements, workingDir +"//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", workingDir + "//img//dialoguePane.png", "dialogue flashing texture"
                  , 1,-750, 200,0, 0, 0, 0,

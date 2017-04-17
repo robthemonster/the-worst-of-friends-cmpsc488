@@ -67,7 +67,7 @@ namespace GUI_Test2
         {
             InitializeComponent();
 
-            gameOverReq = gS.gameOverRequirements;
+            gameOverReq = new List<Requirement>(gS.gameOverRequirements);
             enterTextureXLocTextBox.Text = gS.flashingTextureXLoc.ToString();
             enterTextureYLocTextBox.Text = gS.flashingTextureYLoc.ToString();
 
@@ -101,8 +101,11 @@ namespace GUI_Test2
             musicSelected = false;
             musicLoading = false;
 
+
+            
             playerAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(2, currHub);
             globalAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(0, currHub);
+            
             List<string> navList = new List<string>();
             navList.AddRange(Game.hubs);
             navList.AddRange(Game.pathGroups);
@@ -113,6 +116,8 @@ namespace GUI_Test2
 
             updateVisGlobalList();
             visibleGlobalAttributesListBox.SelectedIndex = -1;
+
+            updateGameOver();
 
             comparitorComboBox.DataSource = new string[] { "<", "<=", "==", ">=", ">" };
 
@@ -144,6 +149,7 @@ namespace GUI_Test2
             playButtonSoundSelected = false;
 
             mainMenuImagePictureBox.Image = Image.FromFile(mainMenuImagePath);
+
         }
 
         private void setAttributeComboBox()
@@ -258,6 +264,15 @@ namespace GUI_Test2
                 MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
             }
 
+            if (gameOverReq.Count > 0)
+            {
+                Game.gameSettings.gameOverRequirements = new List<Requirement>(gameOverReq);
+            }
+            else
+            {
+                MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
+            }
+
             Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
 
             this.Close();
@@ -349,6 +364,7 @@ namespace GUI_Test2
             }
             GameOverReqsListBox.DataSource = null;
             GameOverReqsListBox.DataSource = GORs;
+            GameOverReqsListBox.SelectedIndex = -1;
         }
 
         private void addRequirementButton_Click(object sender, EventArgs e)

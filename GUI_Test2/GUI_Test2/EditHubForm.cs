@@ -392,7 +392,7 @@ namespace GUI_Test2
 
 
            
-                buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next, 0));
+                buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
                 buttonCount++;
                 buttonNameList.Add("Button " + buttonCount);
             

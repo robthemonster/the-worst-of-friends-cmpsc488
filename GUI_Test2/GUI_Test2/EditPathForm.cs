@@ -31,10 +31,12 @@ namespace GUI_Test2
         private int buttonImageState = 0;
         private bool musicSelected = false;
         private bool musicLoading = false;
+        private const int NO_IMAGES_SELECTED = 0, ONE_IMAGE_SELECTED = 1, TWO_IMAGES_SELECTED = 2;
 
         public EditPathForm( ProjectHomeForm par, String n)
         {
             InitializeComponent();
+           
             parentForm = par;
             name = n;
             this.Text = "Edit Path: "+name;
@@ -71,6 +73,13 @@ namespace GUI_Test2
 
             pathImagePath = p.pathImagePath;
             pathSoundPath = p.pathSoundPath;
+
+            selectedFontPath.Text = p.buttonFontPath;
+
+            dialogueFontSizeNumeric.Value = p.dialogueFontCharSize;
+            buttonFontSizeNumeric.Value = p.buttonFontCharSize;
+
+
 
             updateButtonListBox();
         }
@@ -310,12 +319,12 @@ namespace GUI_Test2
         {
             if (Game.navIndex.ContainsKey(name))
             {
-                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath, pathSoundPath);
+                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value);
             }
             else
             {
                 Game.paths.Add(name);
-                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath,pathSoundPath));
+                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath,pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value));
             }
             parentForm.updateListBoxes();
             Close();
@@ -410,28 +419,7 @@ namespace GUI_Test2
 
      
 
-        private void useButton1Image_CheckedChanged(object sender, EventArgs e)
-        {
-            if (useButton1Image.Checked)
-            {
-                button1PictureBox.Enabled = true;
-                //chooseButton1ImageButton.Enabled = true;
-                if (!buttonLoading)
-                {
-                    chooseButton1ImageButton_Click(sender, e);
-                    if (buttonImageState == 1) {
-                        useButton2Image.Enabled = true;
-                    }
-                }
-            }
-            else{
-                buttonImageState = 0;
-                button1PictureBox.Enabled = false;
-                //chooseButton1ImageButton.Enabled = false;
-                useButton2Image.Checked = false;
-                useButton2Image.Enabled = false;
-            }
-        }
+       
 
         private void editDialogueButton_Click(object sender, EventArgs e)
         {
@@ -580,7 +568,7 @@ namespace GUI_Test2
         private void createButtonButton_Click(object sender, EventArgs e)
         {
             string text, pic1path, pic2path, next;
-            int sizeX, sizeY, posX, posY, highlight, buttonFontSize;
+            int sizeX, sizeY, posX, posY, highlight;
 
 
             text = buttonTextTextBox.Text;
@@ -735,25 +723,19 @@ namespace GUI_Test2
             }
 
             if (useButton2Image.Checked)
-                highlight = 2;
+                highlight = Button.HIGHLIGHT_PICTURE;
 
             else if (HighlightTextButton.Checked)
-                highlight = 1;
+                highlight = Button.HIGHLIGHT_TEXT;
 
             else
-                highlight = 0;
+                highlight = Button.DO_NOTHING;
 
-            if (buttonFontSizeTextBox.Text == "")
-            {
-                MessageBox.Show("Please Enter a Font Size for Your Button.");
-                return;
-            }
-            else
-                buttonFontSize = Int32.Parse(buttonFontSizeTextBox.Text);
+           
 
 
 
-            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next, buttonFontSize));
+            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
             buttonCount++;
             buttonNameList.Add("Button " + buttonCount);
 
@@ -772,7 +754,8 @@ namespace GUI_Test2
 
                 //Type
                 Button b = buttonList[buttonListBox.SelectedIndex];
-                if (Game.navIndex[b.next].getNavType() == Navigable.PATH)
+               
+                if (b.next == "" || Game.navIndex[b.next].getNavType() == Navigable.PATH)
                 {
                     pathFromButtonRadio.Checked = true;
                 }
@@ -815,29 +798,38 @@ namespace GUI_Test2
                 //Picture 1
                 if (b.pic1path == "")
                 {
+
                     useButton1Image.Checked = false;
                 }
                 else
                 {
+                    useButton1Image.CheckedChanged -= useButton1Image_CheckedChanged;
                     useButton1Image.Checked = true;
+                    useButton1Image.CheckedChanged += useButton1Image_CheckedChanged;
                     buttonImagePath1 = b.pic1path;
                     button1PictureBox.Image = Image.FromFile(buttonImagePath1);
-                }
+                    button1PictureBox.Visible = true;
+                    //Picture 2
+                    if (b.pic2path == "")
+                    {
+                        useButton2Image.Checked = false;
+                    }
+                    else
+                    {
+                        useButton2Image.CheckedChanged -= useButton2Image_CheckedChanged;
+                        useButton2Image.Checked = true;
+                        useButton2Image.CheckedChanged += useButton2Image_CheckedChanged;
+                        useButton2Image.Enabled = true;
+                        buttonImagePath2 = b.pic2path;
+                        button2PictureBox.Image = Image.FromFile(buttonImagePath2);
+                        button2PictureBox.Visible = true;
+                    }
 
-                //Picture 2
-                if (b.pic2path == "")
-                {
-                    useButton2Image.Checked = false;
-                }
-                else
-                {
-                    useButton2Image.Checked = true;
-                    buttonImagePath2 = b.pic2path;
-                    button2PictureBox.Image = Image.FromFile(buttonImagePath2);
+               
                 }
                 buttonLoading = false;
 
-                buttonFontSizeTextBox.Text = b.buttonFontSize.ToString();
+                
 
             }
             else
@@ -851,8 +843,51 @@ namespace GUI_Test2
                 useButton2Image.Checked = false;
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
-                buttonFontSizeTextBox.Text = "";
                 
+            }
+        }
+
+        private void useButton1Image_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useButton1Image.Checked)
+            {
+                
+
+                chooseButton1ImageButton_Click(sender, e);
+                if (buttonImageState == EditPathForm.ONE_IMAGE_SELECTED)
+                {
+                    button1PictureBox.Visible = true;
+                    useButton2Image.Enabled = true;
+                }
+
+            }
+            else
+            {
+                buttonImageState = EditPathForm.NO_IMAGES_SELECTED;
+                button1PictureBox.Visible = false;
+                useButton2Image.Checked = false;
+                useButton2Image.Enabled = false;
+            }
+        }
+
+        private void useButton2Image_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useButton2Image.Checked)
+            {
+                chooseButton2ImageButton_Click(sender, e);
+                if (buttonImageState == EditPathForm.TWO_IMAGES_SELECTED)
+                {
+                    button2PictureBox.Visible = true;
+                }
+                else
+                {
+                    useButton2Image.Checked = false;
+                }
+
+            }
+            else
+            {
+                button2PictureBox.Visible = false;
             }
         }
 
@@ -871,7 +906,7 @@ namespace GUI_Test2
                 {
                     button1PictureBox.Image = Image.FromStream(of.OpenFile());
                     buttonImagePath1 = of.FileName;
-                    buttonImageState = 1;
+                    buttonImageState = EditPathForm.ONE_IMAGE_SELECTED;
                 }
 
             }
@@ -896,7 +931,7 @@ namespace GUI_Test2
                 {
                     button2PictureBox.Image = Image.FromStream(of.OpenFile());
                     buttonImagePath2 = of.FileName;
-                    buttonImageState = 2;
+                    buttonImageState = EditPathForm.TWO_IMAGES_SELECTED;
                 }
 ;
             }
@@ -906,33 +941,7 @@ namespace GUI_Test2
             }
         }
 
-        private void useButton2Image_CheckedChanged(object sender, EventArgs e)
-        { 
-            if (useButton2Image.Checked)
-            {
-                button2PictureBox.Enabled = true;
-                //chooseButton2ImageButton.Enabled = true;
-                if (!buttonLoading)
-                {
-                    chooseButton2ImageButton_Click(sender, e);
-                    if (buttonImageState == 2)
-                    {
-                        button2PictureBox.Enabled = false;
-                    }
-                    else
-                    {
-                        buttonLoading = true;
-                        useButton2Image.Checked = false;
-                        buttonLoading = false;
-                    }
-                }
-            }
-            else {
-                button2PictureBox.Enabled = false;
-                //chooseButton2ImageButton.Enabled = false;
-            }
-        }
-
+ 
         private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (pathFromButtonRadio.Checked)
@@ -959,6 +968,32 @@ namespace GUI_Test2
                 setScope();
             }
         }
+
+        private void chooseFontButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Font files (*.otf, *.ttf) | *.otf; *.ttf";
+            //Devam Mehta
+            //97163
+            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            //of.ShowDialog();
+
+            try
+            {
+                if (DialogResult.OK == of.ShowDialog())
+                {
+                   string font  = of.FileName;
+                    selectedFontPath.Text = of.FileName;
+                       
+                }                
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+            }
+        }
+
+        
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
         {
