@@ -64,9 +64,9 @@ namespace GUI_Test2
             parentForm = par;
             name = p.name;
             this.Text = "Edit Path: " + name;
-            dialogueEntryList = p.dialogueContents;
-            buttonList = p.buttons;
-            dialogueImpactList = p.dialogueImpactList;
+            dialogueEntryList = new List<string>(p.dialogueContents);
+            buttonList = new List<Button>(p.buttons);
+            dialogueImpactList = new List<List<Impact>>(p.dialogueImpactList);
             buttonCount = buttonList.Count;
             buttonNameList = new List<string>();
             for (int i = 1; i <= buttonCount; i++)
@@ -125,29 +125,13 @@ namespace GUI_Test2
             updateListBoxes();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (dialogueTextBox.Text == ""||dialogueTextBox==null)
-            {
-
-            }
-            else
-            {
-                dialogueEntryList.Add(dialogueTextBox.Text);
-                dialogueTextBox.Text = null;
-                updateListBoxes();
-            }
-        }
         private void selectDefaultPathImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
 
-            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            //Devam Mehta
-            //97163
-            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";            
             of.ShowDialog();
+
             try
             {
                 defaultPathImage.Image = Image.FromStream(of.OpenFile());
@@ -309,6 +293,11 @@ namespace GUI_Test2
                 dialogueList.DataSource = null;
                 dialogueList.DataSource = dialogueEntryList;
                 dialogueList.SelectedIndex = index;
+                
+                pathListBoxTab2.DataSource = null;
+                pathListBoxTab2.DataSource = dialogueEntryList;
+                pathListBoxTab2.SelectedIndex = index;
+
 
             }
             catch { }
