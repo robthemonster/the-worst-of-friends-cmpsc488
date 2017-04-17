@@ -260,7 +260,7 @@ namespace GUI_Test2
 
             Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
 
-
+            this.Close();
         }
 
 
