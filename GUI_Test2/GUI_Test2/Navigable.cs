@@ -30,6 +30,7 @@ namespace GUI_Test2
         public string pathImagePath = "";
         public string buttonFontPath = "";
         public int buttonFontCharSize, dialogueFontCharSize;
+        public string defaultTargetNavigable;
 
         public override string getButtonFont()
         {
@@ -58,7 +59,7 @@ namespace GUI_Test2
 
         public Path() {}
 
-        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pathImagePath, string pS, string buttonFontPath, int buttonFontCharSize, int dialogueFontCharSize) {
+        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pathImagePath, string pS, string buttonFontPath, int buttonFontCharSize, int dialogueFontCharSize, string dTN) {
             name = n;
             dialogueContents = contents;
             dialogueImpactList=dIL;
@@ -68,6 +69,7 @@ namespace GUI_Test2
             this.buttonFontPath = buttonFontPath;
             this.buttonFontCharSize = buttonFontCharSize;
             this.dialogueFontCharSize = dialogueFontCharSize;
+            defaultTargetNavigable = dTN;
         }
 
        override public String getName() { return name; }

@@ -633,6 +633,7 @@ namespace GUI_Test2
                     button1PictureBox.Image = Image.FromFile(buttonImagePath1);
                     button1PictureBox.Visible = true;
                     useButton2Image.Enabled = true;
+
                     //Picture 2
                     if (b.pic2path == "")
                     {

@@ -23,6 +23,7 @@ namespace GUI_Test2
         private List<string> buttonNameList;
         private int buttonCount;
         private int navType;
+        private int defaultNavType;
         private string buttonImagePath1;
         private string buttonImagePath2;
         private string pathSoundPath;
@@ -32,6 +33,7 @@ namespace GUI_Test2
         private bool musicSelected = false;
         private bool musicLoading = false;
         private const int NO_IMAGES_SELECTED = 0, ONE_IMAGE_SELECTED = 1, TWO_IMAGES_SELECTED = 2;
+        private string defaultTargetNavigable;
 
         public EditPathForm( ProjectHomeForm par, String n)
         {
@@ -54,6 +56,7 @@ namespace GUI_Test2
             buttonImagePath2 = "";
             pathSoundPath = "";
             pathImagePath = "";
+            defaultTargetNavigable = "";
         }
         public EditPathForm(ProjectHomeForm par, Path p)
         {
@@ -79,7 +82,7 @@ namespace GUI_Test2
             dialogueFontSizeNumeric.Value = p.dialogueFontCharSize;
             buttonFontSizeNumeric.Value = p.buttonFontCharSize;
 
-
+            defaultTargetNavigable = p.defaultTargetNavigable;
 
             updateButtonListBox();
         }
@@ -96,6 +99,22 @@ namespace GUI_Test2
             hubSelectionComboBox.DataSource = Game.hubs;
             pathFromButtonRadio.Checked = true;
 
+            if (defaultTargetNavigable != "")
+            {
+                if (Game.paths.Contains(defaultTargetNavigable))
+                    defaultTargetPathRadioButton.Checked = true;
+                else if (Game.pathGroups.Contains(defaultTargetNavigable))
+                    defaultTargetPathGroupRadioButton.Checked = true;
+                else
+                    defaultTargetHubRadioButton.Checked = true;
+            }
+            else
+                useDefaultTargetNavigableCheckBox.Checked = false;
+
+            //Tooltips
+            System.Windows.Forms.ToolTip defaultTargetNavToolTip = new System.Windows.Forms.ToolTip();
+            string defaultTargetNavMsg = "The default destination of a path \nif no buttons are given to it.";
+            defaultTargetNavToolTip.SetToolTip(this.useDefaultTargetNavigableCheckBox, defaultTargetNavMsg);
 
             updateListBoxes();
         }
@@ -251,6 +270,27 @@ namespace GUI_Test2
             }
         }
 
+        private void setDefaultScope()
+        {
+            if (navType != -1)
+            {
+                defaultTargetNavComboBox.DataSource = null;
+                switch (defaultNavType)
+                {
+                    case 0:
+                        defaultTargetNavComboBox.DataSource = Game.paths;
+                        break;
+                    case 1:
+                        defaultTargetNavComboBox.DataSource = Game.pathGroups;
+                        break;
+                    case 2:
+                        defaultTargetNavComboBox.DataSource = Game.hubs;
+                        break;
+                }
+
+            }
+        }
+
         private void DeleteSelectedDialogueButton_Click(object sender, EventArgs e)
         {
             int index = dialogueList.SelectedIndex;
@@ -317,14 +357,19 @@ namespace GUI_Test2
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (useDefaultTargetNavigableCheckBox.Checked)
+            {
+                defaultTargetNavigable = defaultTargetNavComboBox.Text;
+            }
+
             if (Game.navIndex.ContainsKey(name))
             {
-                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value);
+                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable);
             }
             else
             {
                 Game.paths.Add(name);
-                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath,pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value));
+                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath,pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable));
             }
             parentForm.updateListBoxes();
             Close();
@@ -999,7 +1044,50 @@ namespace GUI_Test2
             }
         }
 
-        
+        private void useDefaultTargetNavigableCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useDefaultTargetNavigableCheckBox.Checked)
+            {
+                defaultTargetPathRadioButton.Enabled = true;
+                defaultTargetPathGroupRadioButton.Enabled = true;
+                defaultTargetHubRadioButton.Enabled = true;
+                defaultTargetNavComboBox.Enabled = true;
+            }
+            else
+            {
+                defaultTargetPathRadioButton.Enabled = false;
+                defaultTargetPathGroupRadioButton.Enabled = false;
+                defaultTargetHubRadioButton.Enabled = false;
+                defaultTargetNavComboBox.Enabled = false;
+            }
+        }
+
+        private void defaultTargetPathRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (defaultTargetPathRadioButton.Checked)
+            {
+                defaultNavType = 0;
+                setDefaultScope();
+            }
+        }
+
+        private void defaultTargetPathGroupRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (defaultTargetPathGroupRadioButton.Checked)
+            {
+                defaultNavType = 1;
+                setDefaultScope();
+            }
+        }
+
+        private void defaultTargetHubRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (defaultTargetHubRadioButton.Checked)
+            {
+                defaultNavType = 2;
+                setDefaultScope();
+            }
+        }
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
         {
