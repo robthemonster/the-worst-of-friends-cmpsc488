@@ -49,7 +49,7 @@ namespace GUI_Test2
             this.parentForm = par;
             this.hubName = that.name;
             this.hubImagePath = that.hubImage;
-            this.buttonList = that.buttons;
+            this.buttonList = new List<Button>(that.buttons);
             buttonCount = buttonList.Count;
             buttonNameList = new List<string>();
             for (int i = 1; i <= buttonCount; i++)
