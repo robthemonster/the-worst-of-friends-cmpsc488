@@ -95,9 +95,13 @@ namespace GUI_Test2
             opComboBox.DataSource = this.ops;
             scope = 0;
             currHub = "";
-           
+
+            navComboBox.DataSource = new List<string>(Game.paths);
+            defaultTargetNavComboBox.DataSource = new List<string>();
+
             hubSelectionComboBox.DataSource = Game.hubs;
             pathFromButtonRadio.Checked = true;
+            globalRadioButton.Checked = true;
 
             if (defaultTargetNavigable != "")
             {
@@ -110,6 +114,8 @@ namespace GUI_Test2
             }
             else
                 useDefaultTargetNavigableCheckBox.Checked = false;
+
+            defaultPathImage.Image = Image.FromFile(pathImagePath);
 
             //Tooltips
             System.Windows.Forms.ToolTip defaultTargetNavToolTip = new System.Windows.Forms.ToolTip();
@@ -257,13 +263,13 @@ namespace GUI_Test2
                 switch (navType)
                 {
                     case 0:
-                        navComboBox.DataSource = Game.paths;
+                        navComboBox.DataSource = new List<string>(Game.paths);
                         break;
                     case 1:
-                        navComboBox.DataSource = Game.pathGroups;
+                        navComboBox.DataSource = new List<string>(Game.pathGroups);
                         break;
                     case 2:
-                        navComboBox.DataSource = Game.hubs;
+                        navComboBox.DataSource = new List<string>(Game.hubs);
                         break;
                 }
 
@@ -278,13 +284,13 @@ namespace GUI_Test2
                 switch (defaultNavType)
                 {
                     case 0:
-                        defaultTargetNavComboBox.DataSource = Game.paths;
+                        defaultTargetNavComboBox.DataSource = new List<string>(Game.paths);
                         break;
                     case 1:
-                        defaultTargetNavComboBox.DataSource = Game.pathGroups;
+                        defaultTargetNavComboBox.DataSource = new List<string>(Game.pathGroups);
                         break;
                     case 2:
-                        defaultTargetNavComboBox.DataSource = Game.hubs;
+                        defaultTargetNavComboBox.DataSource = new List<string>(Game.hubs);
                         break;
                 }
 
@@ -523,6 +529,53 @@ namespace GUI_Test2
             attributeComboBox.DataSource = null;
             attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
 
+            if (scope == 0)
+            {
+                globalRadioButton.CheckedChanged -= globalRadioButton_CheckedChanged;
+                hubRadioButton.CheckedChanged -= hubRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+
+                globalRadioButton.Checked = true;
+                hubRadioButton.Checked = false;
+                hubSelectionComboBox.Enabled = false;
+                playerRadioButton.Checked = false;
+
+                globalRadioButton.CheckedChanged += globalRadioButton_CheckedChanged;
+                hubRadioButton.CheckedChanged += hubRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+
+            }
+            if (scope == 1)
+            {
+                globalRadioButton.CheckedChanged -= globalRadioButton_CheckedChanged;
+                hubRadioButton.CheckedChanged -= hubRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+
+                globalRadioButton.Checked = false;
+                hubRadioButton.Checked = true;
+                hubSelectionComboBox.Enabled = true;
+                playerRadioButton.Checked = false;
+
+                globalRadioButton.CheckedChanged += globalRadioButton_CheckedChanged;
+                hubRadioButton.CheckedChanged += hubRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+            }
+            if (scope == 2)
+            {
+                globalRadioButton.CheckedChanged -= globalRadioButton_CheckedChanged;
+                hubRadioButton.CheckedChanged -= hubRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+
+                globalRadioButton.Checked = false;
+                hubRadioButton.Checked = false;
+                hubSelectionComboBox.Enabled = false;
+                playerRadioButton.Checked = true;
+
+                globalRadioButton.CheckedChanged += globalRadioButton_CheckedChanged;
+                hubRadioButton.CheckedChanged += hubRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+            }
+
             opComboBox.SelectedIndex = 2;
             valueNumericUpDown.Value = 0;
         }
@@ -597,7 +650,6 @@ namespace GUI_Test2
                 attributeComboBox.SelectedIndex = Attributes.getScope(scope, currHub).IndexOf(i.attribute);
                 opComboBox.SelectedIndex = i.op;
                 valueNumericUpDown.Value = i.val;
-
             }
         }
 
