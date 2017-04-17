@@ -1,6 +1,7 @@
 #pragma once
 #include "Attributable.h"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class Player;
 class AttributeMap;

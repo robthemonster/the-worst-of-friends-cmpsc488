@@ -37,8 +37,8 @@ void EndingGenerator::display(sf::RenderWindow & window, sf::View & view)
 			last = curr;
 		}
 	}
-
-	(*first).display(window, view);
+	if (first != NULL)
+		(*first).display(window, view);
 }
 
 EndingGenerator::EndingGenerator()

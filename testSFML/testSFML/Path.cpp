@@ -105,26 +105,21 @@ void Path::addDialogueLine(std::string dialogueLine, Attributable ** target, std
 	}
 }
 
-void Path::setButtonSize(sf::Vector2f size) {
 
-	if (this->buttonScreen == NULL)
-		this->buttonScreen = new ButtonScreen(this->game);
-	this->buttonSize = size;
-}
 
-void Path::setButtonCharSize(int size) {
+void Path::setFontCharSize(int size) {
 
 	if (this->buttonScreen == NULL)
 		this->buttonScreen = new ButtonScreen(this->game);
 	this->buttonCharSize = size;
 }
 
-void Path::addButton(std::string buttonText, Navigable * target, sf::Vector2f position,int highlightMode, sf::Texture * buttonTexture, sf::Texture * highlightTexture)
+void Path::addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position,int highlightMode, sf::Texture * buttonTexture, sf::Texture * highlightTexture)
 {
 	if (this->buttonScreen == NULL)
 		this->buttonScreen = new ButtonScreen(this->game);
 	if (this->buttonScreen != NULL) {
-		FButton * button = new FButton(this->buttonSize, target, position, highlightMode, buttonText, this->font, this->buttonCharSize, buttonTexture, highlightTexture);
+		FButton * button = new FButton(buttonSize, target, position, highlightMode, buttonText, this->font, this->buttonCharSize, buttonTexture, highlightTexture);
 		
 		(*this->buttonScreen).addButton(button);
 	}

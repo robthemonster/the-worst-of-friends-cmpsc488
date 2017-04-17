@@ -53,6 +53,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 	Player * currPlayer = *(*this->game).getCurrentPlayerPointer();
 
 	std::vector<DialogueLine>::iterator it = this->dialogue.begin();
+	
 
 	sf::Texture enterSymbol;
 	sf::RectangleShape enterSymbolRect;

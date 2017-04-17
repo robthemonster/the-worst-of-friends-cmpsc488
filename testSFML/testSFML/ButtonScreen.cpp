@@ -56,7 +56,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 
 //	imageRect.setPosition(-958, -550);
 	if (this->buttons.begin() == this->buttons.end()) {
-		std::cout << "No buttons in button screen! Skipping this button screen. May have called setButtonSize or setButtonCharSize but didn't add any buttons" << std::endl;
+		std::cout << "No buttons in button screen! Skipping this button screen. May have called setButtonSize or setFontCharSize but didn't add any buttons" << std::endl;
 		return;
 	}
 	

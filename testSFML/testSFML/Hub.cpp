@@ -3,10 +3,11 @@
 #include "ButtonScreen.h"
 
 
-void Hub::addButton(sf::Vector2f position, sf::Vector2f size, Navigable * target)
+void Hub::addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode, sf::Texture * buttonTexture, sf::Texture * highlightTexture)
 {
-	(*this->buttonScreen).addButton(new FButton(size, target, position, FButton::DO_NOTHING));
+	(*this->buttonScreen).addButton(new FButton(buttonSize, target, position, highlightMode, buttonText, this->buttonFont, this->buttonFontCharSize, buttonTexture, highlightTexture));
 }
+
 
 void Hub::setImageTexture(sf::Texture & texture)
 {
@@ -28,6 +29,16 @@ void Hub::setMusic(sf::Music & music, std::string fileName)
 	this->music = &music;
 	this->musicFile = fileName;
 	this->hasMusic = true;
+}
+
+void Hub::setFont(sf::Font font)
+{
+	this->buttonFont = font;
+}
+
+void Hub::setFontCharSize(int charSize)
+{
+	this->buttonFontCharSize = charSize;
 }
 
 Hub::Hub(Game * game)

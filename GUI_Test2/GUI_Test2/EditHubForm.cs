@@ -379,13 +379,13 @@ namespace GUI_Test2
             }
 
             if (useButton2Image.Checked )
-                highlight = 2;
+                highlight = Button.HIGHLIGHT_PICTURE;
 
             else if (HighlightTextButton.Checked )
-                highlight = 1;
+                highlight = Button.HIGHLIGHT_TEXT;
 
             else
-                highlight = 0;
+                highlight = Button.DO_NOTHING;
 
 
            

@@ -14,7 +14,6 @@ private:
 	DialogueScreen * dialogueScreen;
 	ButtonScreen * buttonScreen;
 	int buttonCharSize;
-	sf::Vector2f buttonSize;
 	sf::Font font;
 	sf::Vector2f dialoguePanePosition;
 	std::string musicFile = "";
@@ -30,9 +29,9 @@ public:
 	void addDialogueLine(std::string);
 	void addDialogueLine(std::string, std::vector<Impact *>);
 	void addDialogueLine(std::string, Attributable ** target, std::string key, int op, int val);
-	void setButtonSize(sf::Vector2f size);
-	void setButtonCharSize(int size);
-	void addButton(std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode,  sf::Texture * buttonTexture = NULL, sf::Texture * highlightTexture = NULL);
+	
+	void setFontCharSize(int size);
+	void addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode,  sf::Texture * buttonTexture = NULL, sf::Texture * highlightTexture = NULL);
 	void setPrompt(std::string prompt);
 	void setFont(sf::Font font);
 	void setMusic(sf::Music & music, std::string fileName);

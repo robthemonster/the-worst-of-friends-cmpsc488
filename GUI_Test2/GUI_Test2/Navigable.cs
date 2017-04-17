@@ -166,6 +166,8 @@ namespace GUI_Test2
         public string next;
         //img,sound
 
+        public const int HIGHLIGHT_PICTURE = 2, HIGHLIGHT_TEXT = 1, DO_NOTHING = 0;
+
         public Button()
         {
             text = "";
