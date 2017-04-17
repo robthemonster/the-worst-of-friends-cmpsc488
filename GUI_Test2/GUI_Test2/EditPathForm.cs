@@ -722,6 +722,12 @@ namespace GUI_Test2
                 return;
             }
 
+            if (next == "")
+            {
+                MessageBox.Show("Cannot create a button with no Navigable target. Try creating some Navigables.");
+                return;
+            }
+
             if (useButton2Image.Checked)
                 highlight = Button.HIGHLIGHT_PICTURE;
 

@@ -626,22 +626,30 @@ namespace GUI_Test2
                 }
                 else
                 {
+                    useButton1Image.CheckedChanged -= useButton1Image_CheckedChanged;
                     useButton1Image.Checked = true;
+                    useButton1Image.CheckedChanged += useButton1Image_CheckedChanged;
                     buttonImagePath1 = b.pic1path;
                     button1PictureBox.Image = Image.FromFile(buttonImagePath1);
+                    button1PictureBox.Visible = true;
+                    useButton2Image.Enabled = true;
+                    //Picture 2
+                    if (b.pic2path == "")
+                    {
+                        useButton2Image.Checked = false;
+                    }
+                    else
+                    {
+                        useButton2Image.CheckedChanged -= useButton2Image_CheckedChanged;
+                        useButton2Image.Checked = true;
+                        useButton2Image.CheckedChanged += useButton2Image_CheckedChanged;
+                        buttonImagePath2 = b.pic2path;
+                        button2PictureBox.Image = Image.FromFile(buttonImagePath2);
+                        button2PictureBox.Visible = true;
+                    }
                 }
 
-                //Picture 2
-                if (b.pic2path == "")
-                {
-                    useButton2Image.Checked = false;
-                }
-                else
-                {
-                    useButton2Image.Checked = true;
-                    buttonImagePath2 = b.pic2path;
-                    button2PictureBox.Image = Image.FromFile(buttonImagePath2);
-                }
+                
 
                 //Music
                 buttonLoading = false;
