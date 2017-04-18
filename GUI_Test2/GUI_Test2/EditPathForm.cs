@@ -84,15 +84,15 @@ namespace GUI_Test2
 
             defaultTargetNavigable = p.defaultTargetNavigable;
 
-            updateListBoxes();
-            updateButtonListBox();
+            //updateListBoxes();
+            //updateButtonListBox();
         }
             
 
         private void EditPath_Load(object sender, EventArgs e)
         {
             this.AcceptButton = createNewDialogueButton;
-            ops = new String[] { "=", "-", "+" };
+            this.ops = new String[] { "=", "-", "+" };
             opComboBox.DataSource = this.ops;
             scope = 0;
             currHub = "";
@@ -120,6 +120,9 @@ namespace GUI_Test2
                 useDefaultTargetNavigableCheckBox.Checked = false;
 
             defaultPathImage.Image = Image.FromFile(pathImagePath);
+
+            updateListBoxes();
+            updateButtonListBox();
 
             //Tooltips
             System.Windows.Forms.ToolTip defaultTargetNavToolTip = new System.Windows.Forms.ToolTip();
