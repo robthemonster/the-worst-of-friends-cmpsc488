@@ -149,8 +149,22 @@ namespace GUI_Test2
             playButtonSoundLoading = false;
             playButtonSoundSelected = false;
 
-            mainMenuImagePictureBox.Image = Image.FromFile(mainMenuImagePath);
+            if (mainMenuSoundPath != "")
+            {
+                useBackgroundSoundCheckBox.CheckedChanged -= useBackgroundSoundCheckBox_CheckedChanged;
+                useBackgroundSoundCheckBox.Checked = true;
+                useBackgroundSoundCheckBox.CheckedChanged += useBackgroundSoundCheckBox_CheckedChanged;
+            }
 
+            if (playButtonSoundPath != "")
+            {
+                usePlayButtonSoundCheckBox.CheckedChanged -= usePlayButtonSoundCheckBox_CheckedChanged;
+                usePlayButtonSoundCheckBox.Checked = true;
+                usePlayButtonSoundCheckBox.CheckedChanged += usePlayButtonSoundCheckBox_CheckedChanged;
+
+            }
+
+            mainMenuImagePictureBox.Image = Image.FromFile(mainMenuImagePath);
         }
 
         private void setAttributeComboBox()
