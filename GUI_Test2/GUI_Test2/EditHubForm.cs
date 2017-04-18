@@ -64,7 +64,6 @@ namespace GUI_Test2
                 musicLoading = false;
             }
 
-
             updateListBox();
            
         }
@@ -78,6 +77,8 @@ namespace GUI_Test2
                 buttonNameList.Add("Button " + i);
             }
             hubImagePictureBox.ImageLocation = hubImagePath;
+
+            
             pathFromButtonRadio.Checked = true;
             //navComboBox.SelectedItem =
         }
@@ -655,6 +656,10 @@ namespace GUI_Test2
 
                 //Music
                 buttonLoading = false;
+
+                //Target Navigable
+                //if ()
+                //{ }
 
             }
             else

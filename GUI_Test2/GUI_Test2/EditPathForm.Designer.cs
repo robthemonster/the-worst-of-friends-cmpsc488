@@ -75,6 +75,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.impactAttributeListBox = new System.Windows.Forms.ListBox();
             this.Buttons = new System.Windows.Forms.TabPage();
+            this.useDefaultTargetNavigableCheckBox = new System.Windows.Forms.CheckBox();
+            this.defaultTargetNavigableGroupBox = new System.Windows.Forms.GroupBox();
+            this.defaultTargetHubRadioButton = new System.Windows.Forms.RadioButton();
+            this.defaultTargetNavComboBox = new System.Windows.Forms.ComboBox();
+            this.defaultTargetPathGroupRadioButton = new System.Windows.Forms.RadioButton();
+            this.defaultTargetPathRadioButton = new System.Windows.Forms.RadioButton();
             this.buttonFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -112,12 +118,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
-            this.defaultTargetNavigableGroupBox = new System.Windows.Forms.GroupBox();
-            this.defaultTargetHubRadioButton = new System.Windows.Forms.RadioButton();
-            this.defaultTargetNavComboBox = new System.Windows.Forms.ComboBox();
-            this.defaultTargetPathGroupRadioButton = new System.Windows.Forms.RadioButton();
-            this.defaultTargetPathRadioButton = new System.Windows.Forms.RadioButton();
-            this.useDefaultTargetNavigableCheckBox = new System.Windows.Forms.CheckBox();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dialogueFontSizeNumeric)).BeginInit();
@@ -132,6 +132,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.valueNumericUpDown)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.Buttons.SuspendLayout();
+            this.defaultTargetNavigableGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonFontSizeNumeric)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -139,7 +140,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
-            this.defaultTargetNavigableGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -168,7 +168,7 @@
             this.tabPage1.Controls.Add(this.selectDefaultPathImageButton);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(566, 356);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
@@ -177,7 +177,7 @@
             // dialogueFontSizeNumeric
             // 
             this.dialogueFontSizeNumeric.Location = new System.Drawing.Point(113, 42);
-            this.dialogueFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dialogueFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2);
             this.dialogueFontSizeNumeric.Name = "dialogueFontSizeNumeric";
             this.dialogueFontSizeNumeric.Size = new System.Drawing.Size(90, 20);
             this.dialogueFontSizeNumeric.TabIndex = 53;
@@ -260,7 +260,7 @@
             // 
             this.defaultPathImage.Image = global::GUI_Test2.Properties.Resources.defaultPath;
             this.defaultPathImage.Location = new System.Drawing.Point(364, 52);
-            this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2);
             this.defaultPathImage.Name = "defaultPathImage";
             this.defaultPathImage.Size = new System.Drawing.Size(218, 126);
             this.defaultPathImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -275,7 +275,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dialogueList, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 65);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -343,7 +343,7 @@
             // 
             this.createNewDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.createNewDialogueButton.Location = new System.Drawing.Point(138, 226);
-            this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewDialogueButton.Name = "createNewDialogueButton";
             this.createNewDialogueButton.Size = new System.Drawing.Size(104, 22);
             this.createNewDialogueButton.TabIndex = 2;
@@ -386,7 +386,7 @@
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.dialogueTextBox, 2);
             this.dialogueTextBox.Location = new System.Drawing.Point(85, 2);
-            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dialogueTextBox.Multiline = true;
             this.dialogueTextBox.Name = "dialogueTextBox";
             this.dialogueTextBox.Size = new System.Drawing.Size(157, 207);
@@ -395,7 +395,7 @@
             // selectDefaultPathImageButton
             // 
             this.selectDefaultPathImageButton.Location = new System.Drawing.Point(363, 183);
-            this.selectDefaultPathImageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectDefaultPathImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectDefaultPathImageButton.Name = "selectDefaultPathImageButton";
             this.selectDefaultPathImageButton.Size = new System.Drawing.Size(141, 19);
             this.selectDefaultPathImageButton.TabIndex = 11;
@@ -411,7 +411,7 @@
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(566, 356);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impacts";
@@ -666,17 +666,88 @@
             this.Buttons.Controls.Add(this.tableLayoutPanel4);
             this.Buttons.Location = new System.Drawing.Point(4, 22);
             this.Buttons.Name = "Buttons";
-            this.Buttons.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Buttons.Padding = new System.Windows.Forms.Padding(3);
             this.Buttons.Size = new System.Drawing.Size(566, 356);
             this.Buttons.TabIndex = 2;
             this.Buttons.Text = "Buttons";
             this.Buttons.UseVisualStyleBackColor = true;
             this.Buttons.Click += new System.EventHandler(this.Buttons_Click);
             // 
+            // useDefaultTargetNavigableCheckBox
+            // 
+            this.useDefaultTargetNavigableCheckBox.AutoSize = true;
+            this.useDefaultTargetNavigableCheckBox.Checked = true;
+            this.useDefaultTargetNavigableCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.useDefaultTargetNavigableCheckBox.Location = new System.Drawing.Point(434, 181);
+            this.useDefaultTargetNavigableCheckBox.Name = "useDefaultTargetNavigableCheckBox";
+            this.useDefaultTargetNavigableCheckBox.Size = new System.Drawing.Size(116, 17);
+            this.useDefaultTargetNavigableCheckBox.TabIndex = 56;
+            this.useDefaultTargetNavigableCheckBox.Text = "Use Default Target";
+            this.useDefaultTargetNavigableCheckBox.UseVisualStyleBackColor = true;
+            this.useDefaultTargetNavigableCheckBox.CheckedChanged += new System.EventHandler(this.useDefaultTargetNavigableCheckBox_CheckedChanged);
+            // 
+            // defaultTargetNavigableGroupBox
+            // 
+            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetHubRadioButton);
+            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetNavComboBox);
+            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetPathGroupRadioButton);
+            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetPathRadioButton);
+            this.defaultTargetNavigableGroupBox.Location = new System.Drawing.Point(340, 204);
+            this.defaultTargetNavigableGroupBox.Name = "defaultTargetNavigableGroupBox";
+            this.defaultTargetNavigableGroupBox.Size = new System.Drawing.Size(210, 85);
+            this.defaultTargetNavigableGroupBox.TabIndex = 55;
+            this.defaultTargetNavigableGroupBox.TabStop = false;
+            this.defaultTargetNavigableGroupBox.Text = "Default Target Navigable of Path";
+            // 
+            // defaultTargetHubRadioButton
+            // 
+            this.defaultTargetHubRadioButton.AutoSize = true;
+            this.defaultTargetHubRadioButton.Location = new System.Drawing.Point(6, 64);
+            this.defaultTargetHubRadioButton.Name = "defaultTargetHubRadioButton";
+            this.defaultTargetHubRadioButton.Size = new System.Drawing.Size(45, 17);
+            this.defaultTargetHubRadioButton.TabIndex = 3;
+            this.defaultTargetHubRadioButton.TabStop = true;
+            this.defaultTargetHubRadioButton.Text = "Hub";
+            this.defaultTargetHubRadioButton.UseVisualStyleBackColor = true;
+            this.defaultTargetHubRadioButton.CheckedChanged += new System.EventHandler(this.defaultTargetHubRadioButton_CheckedChanged);
+            // 
+            // defaultTargetNavComboBox
+            // 
+            this.defaultTargetNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.defaultTargetNavComboBox.FormattingEnabled = true;
+            this.defaultTargetNavComboBox.Location = new System.Drawing.Point(87, 15);
+            this.defaultTargetNavComboBox.Name = "defaultTargetNavComboBox";
+            this.defaultTargetNavComboBox.Size = new System.Drawing.Size(116, 21);
+            this.defaultTargetNavComboBox.TabIndex = 4;
+            // 
+            // defaultTargetPathGroupRadioButton
+            // 
+            this.defaultTargetPathGroupRadioButton.AutoSize = true;
+            this.defaultTargetPathGroupRadioButton.Location = new System.Drawing.Point(6, 41);
+            this.defaultTargetPathGroupRadioButton.Name = "defaultTargetPathGroupRadioButton";
+            this.defaultTargetPathGroupRadioButton.Size = new System.Drawing.Size(79, 17);
+            this.defaultTargetPathGroupRadioButton.TabIndex = 2;
+            this.defaultTargetPathGroupRadioButton.TabStop = true;
+            this.defaultTargetPathGroupRadioButton.Text = "Path Group";
+            this.defaultTargetPathGroupRadioButton.UseVisualStyleBackColor = true;
+            this.defaultTargetPathGroupRadioButton.CheckedChanged += new System.EventHandler(this.defaultTargetPathGroupRadioButton_CheckedChanged);
+            // 
+            // defaultTargetPathRadioButton
+            // 
+            this.defaultTargetPathRadioButton.AutoSize = true;
+            this.defaultTargetPathRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.defaultTargetPathRadioButton.Name = "defaultTargetPathRadioButton";
+            this.defaultTargetPathRadioButton.Size = new System.Drawing.Size(47, 17);
+            this.defaultTargetPathRadioButton.TabIndex = 1;
+            this.defaultTargetPathRadioButton.TabStop = true;
+            this.defaultTargetPathRadioButton.Text = "Path";
+            this.defaultTargetPathRadioButton.UseVisualStyleBackColor = true;
+            this.defaultTargetPathRadioButton.CheckedChanged += new System.EventHandler(this.defaultTargetPathRadioButton_CheckedChanged);
+            // 
             // buttonFontSizeNumeric
             // 
             this.buttonFontSizeNumeric.Location = new System.Drawing.Point(472, 33);
-            this.buttonFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2);
             this.buttonFontSizeNumeric.Name = "buttonFontSizeNumeric";
             this.buttonFontSizeNumeric.Size = new System.Drawing.Size(90, 20);
             this.buttonFontSizeNumeric.TabIndex = 54;
@@ -1078,77 +1149,6 @@
             this.buttonListBox.TabIndex = 0;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
-            // defaultTargetNavigableGroupBox
-            // 
-            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetHubRadioButton);
-            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetNavComboBox);
-            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetPathGroupRadioButton);
-            this.defaultTargetNavigableGroupBox.Controls.Add(this.defaultTargetPathRadioButton);
-            this.defaultTargetNavigableGroupBox.Location = new System.Drawing.Point(340, 204);
-            this.defaultTargetNavigableGroupBox.Name = "defaultTargetNavigableGroupBox";
-            this.defaultTargetNavigableGroupBox.Size = new System.Drawing.Size(210, 85);
-            this.defaultTargetNavigableGroupBox.TabIndex = 55;
-            this.defaultTargetNavigableGroupBox.TabStop = false;
-            this.defaultTargetNavigableGroupBox.Text = "Default Target Navigable of Path";
-            // 
-            // defaultTargetHubRadioButton
-            // 
-            this.defaultTargetHubRadioButton.AutoSize = true;
-            this.defaultTargetHubRadioButton.Location = new System.Drawing.Point(6, 64);
-            this.defaultTargetHubRadioButton.Name = "defaultTargetHubRadioButton";
-            this.defaultTargetHubRadioButton.Size = new System.Drawing.Size(45, 17);
-            this.defaultTargetHubRadioButton.TabIndex = 3;
-            this.defaultTargetHubRadioButton.TabStop = true;
-            this.defaultTargetHubRadioButton.Text = "Hub";
-            this.defaultTargetHubRadioButton.UseVisualStyleBackColor = true;
-            this.defaultTargetHubRadioButton.CheckedChanged += new System.EventHandler(this.defaultTargetHubRadioButton_CheckedChanged);
-            // 
-            // defaultTargetNavComboBox
-            // 
-            this.defaultTargetNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.defaultTargetNavComboBox.FormattingEnabled = true;
-            this.defaultTargetNavComboBox.Location = new System.Drawing.Point(87, 15);
-            this.defaultTargetNavComboBox.Name = "defaultTargetNavComboBox";
-            this.defaultTargetNavComboBox.Size = new System.Drawing.Size(116, 21);
-            this.defaultTargetNavComboBox.TabIndex = 4;
-            // 
-            // defaultTargetPathGroupRadioButton
-            // 
-            this.defaultTargetPathGroupRadioButton.AutoSize = true;
-            this.defaultTargetPathGroupRadioButton.Location = new System.Drawing.Point(6, 41);
-            this.defaultTargetPathGroupRadioButton.Name = "defaultTargetPathGroupRadioButton";
-            this.defaultTargetPathGroupRadioButton.Size = new System.Drawing.Size(79, 17);
-            this.defaultTargetPathGroupRadioButton.TabIndex = 2;
-            this.defaultTargetPathGroupRadioButton.TabStop = true;
-            this.defaultTargetPathGroupRadioButton.Text = "Path Group";
-            this.defaultTargetPathGroupRadioButton.UseVisualStyleBackColor = true;
-            this.defaultTargetPathGroupRadioButton.CheckedChanged += new System.EventHandler(this.defaultTargetPathGroupRadioButton_CheckedChanged);
-            // 
-            // defaultTargetPathRadioButton
-            // 
-            this.defaultTargetPathRadioButton.AutoSize = true;
-            this.defaultTargetPathRadioButton.Location = new System.Drawing.Point(6, 19);
-            this.defaultTargetPathRadioButton.Name = "defaultTargetPathRadioButton";
-            this.defaultTargetPathRadioButton.Size = new System.Drawing.Size(47, 17);
-            this.defaultTargetPathRadioButton.TabIndex = 1;
-            this.defaultTargetPathRadioButton.TabStop = true;
-            this.defaultTargetPathRadioButton.Text = "Path";
-            this.defaultTargetPathRadioButton.UseVisualStyleBackColor = true;
-            this.defaultTargetPathRadioButton.CheckedChanged += new System.EventHandler(this.defaultTargetPathRadioButton_CheckedChanged);
-            // 
-            // useDefaultTargetNavigableCheckBox
-            // 
-            this.useDefaultTargetNavigableCheckBox.AutoSize = true;
-            this.useDefaultTargetNavigableCheckBox.Checked = true;
-            this.useDefaultTargetNavigableCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.useDefaultTargetNavigableCheckBox.Location = new System.Drawing.Point(434, 181);
-            this.useDefaultTargetNavigableCheckBox.Name = "useDefaultTargetNavigableCheckBox";
-            this.useDefaultTargetNavigableCheckBox.Size = new System.Drawing.Size(116, 17);
-            this.useDefaultTargetNavigableCheckBox.TabIndex = 56;
-            this.useDefaultTargetNavigableCheckBox.Text = "Use Default Target";
-            this.useDefaultTargetNavigableCheckBox.UseVisualStyleBackColor = true;
-            this.useDefaultTargetNavigableCheckBox.CheckedChanged += new System.EventHandler(this.useDefaultTargetNavigableCheckBox_CheckedChanged);
-            // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1157,7 +1157,7 @@
             this.Controls.Add(this.pathDialogueTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "EditPathForm";
             this.Text = "Edit Path: ";
@@ -1183,6 +1183,8 @@
             this.tableLayoutPanel3.PerformLayout();
             this.Buttons.ResumeLayout(false);
             this.Buttons.PerformLayout();
+            this.defaultTargetNavigableGroupBox.ResumeLayout(false);
+            this.defaultTargetNavigableGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonFontSizeNumeric)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1194,8 +1196,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.defaultTargetNavigableGroupBox.ResumeLayout(false);
-            this.defaultTargetNavigableGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }

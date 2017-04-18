@@ -109,7 +109,10 @@ namespace GUI_Test2
                 if (Game.paths.Contains(defaultTargetNavigable))
                     defaultTargetPathRadioButton.Checked = true;
                 else if (Game.pathGroups.Contains(defaultTargetNavigable))
+                {
                     defaultTargetPathGroupRadioButton.Checked = true;
+                    hubSelectionComboBox.SelectedItem = defaultTargetNavigable;
+                }
                 else
                     defaultTargetHubRadioButton.Checked = true;
             }
