@@ -482,35 +482,43 @@ namespace GUI_Test2
 
         private void globalRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            scope = Impact.GLOBAL;
-            currHub = "";
-            hubSelectionComboBox.Enabled = false;
-            updateScope();
+            if (globalRadioButton.Checked)
+            {
+                scope = Impact.GLOBAL;
+                currHub = "";
+                hubSelectionComboBox.Enabled = false;
+                updateScope();
+            }
         }
 
         private void hubRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            
-            hubSelectionComboBox.Enabled = true;
-            if (hubSelectionComboBox.SelectedIndex >= 0)
+            if (hubRadioButton.Checked)
             {
-                currHub = (String)hubSelectionComboBox.SelectedItem;
+                hubSelectionComboBox.Enabled = true;
+                if (hubSelectionComboBox.SelectedIndex >= 0)
+                {
+                    currHub = (String)hubSelectionComboBox.SelectedItem;
+                }
+                else
+                {
+                    currHub = "";
+                }
+                scope = Impact.HUB;
+                updateScope();
             }
-            else
-            {
-                currHub = "";
-            }
-            scope = Impact.HUB;
-            updateScope();
 
         }
 
         private void playerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            scope = Impact.PLAYER;
-            currHub = "";
-            hubSelectionComboBox.Enabled = false;
-            updateScope();
+            if (playerRadioButton.Checked)
+            {
+                scope = Impact.PLAYER;
+                currHub = "";
+                hubSelectionComboBox.Enabled = false;
+                updateScope();
+            }
 
         }
         private void updateScope()
@@ -518,7 +526,7 @@ namespace GUI_Test2
             attributeComboBox.DataSource = null;
             attributeComboBox.DataSource = Attributes.getScope(scope, currHub);
 
-            if (scope == 0)
+            if (scope == Impact.GLOBAL)
             {
                 globalRadioButton.CheckedChanged -= globalRadioButton_CheckedChanged;
                 hubRadioButton.CheckedChanged -= hubRadioButton_CheckedChanged;
@@ -531,10 +539,10 @@ namespace GUI_Test2
 
                 globalRadioButton.CheckedChanged += globalRadioButton_CheckedChanged;
                 hubRadioButton.CheckedChanged += hubRadioButton_CheckedChanged;
-                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged += playerRadioButton_CheckedChanged;
 
             }
-            if (scope == 1)
+            if (scope == Impact.HUB)
             {
                 globalRadioButton.CheckedChanged -= globalRadioButton_CheckedChanged;
                 hubRadioButton.CheckedChanged -= hubRadioButton_CheckedChanged;
@@ -547,9 +555,9 @@ namespace GUI_Test2
 
                 globalRadioButton.CheckedChanged += globalRadioButton_CheckedChanged;
                 hubRadioButton.CheckedChanged += hubRadioButton_CheckedChanged;
-                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged += playerRadioButton_CheckedChanged;
             }
-            if (scope == 2)
+            if (scope == Impact.PLAYER)
             {
                 globalRadioButton.CheckedChanged -= globalRadioButton_CheckedChanged;
                 hubRadioButton.CheckedChanged -= hubRadioButton_CheckedChanged;
@@ -562,7 +570,7 @@ namespace GUI_Test2
 
                 globalRadioButton.CheckedChanged += globalRadioButton_CheckedChanged;
                 hubRadioButton.CheckedChanged += hubRadioButton_CheckedChanged;
-                playerRadioButton.CheckedChanged -= playerRadioButton_CheckedChanged;
+                playerRadioButton.CheckedChanged += playerRadioButton_CheckedChanged;
             }
 
             opComboBox.SelectedIndex = 2;
