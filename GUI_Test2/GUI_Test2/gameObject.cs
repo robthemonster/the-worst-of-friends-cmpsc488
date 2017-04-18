@@ -162,6 +162,10 @@ namespace GUI_Test2
 
             code.AppendLine(setFontandCharSizeCode);
 
+            string addButtonsCode = getAddButtonsCode();
+
+            code.AppendLine(addButtonsCode);
+
             string setImageTexturesCode = getImageAndMusicSetCode();
 
             code.AppendLine(setImageTexturesCode);
@@ -174,9 +178,7 @@ namespace GUI_Test2
 
             code.AppendLine(addDialogueCode);
             
-            string addButtonsCode = getAddButtonsCode();
-
-            code.AppendLine(addButtonsCode);
+     
 
             code.AppendLine(GUI_Test2.Properties.Resources.defaultFooter);
             StreamWriter outputStream = new StreamWriter(filePath);
@@ -242,7 +244,7 @@ namespace GUI_Test2
                         {
                             if (((Path)nav).defaultTargetNavigable != "")
                             {
-                                code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setDestination((Navigable**)nav" + Game.navNameToCodeIndex[((Path)nav).defaultTargetNavigable] + ");");
+                                code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setDestination((Navigable**)&nav" + Game.navNameToCodeIndex[((Path)nav).defaultTargetNavigable] + ");");
                             }
                         }
                         break;
@@ -373,7 +375,11 @@ namespace GUI_Test2
             }
             code.AppendLine("(*game).setGameOverRequirements(&gameOver);");
 
-            code.AppendLine("(*game).setMenuFont(" + Game.oldPathToCodeObject[Game.gameSettings.defaultFontPath] + ");");
+            string font = Game.gameSettings.mainMenu.fontImagePath;
+            if (font == "")
+                font = Game.gameSettings.defaultFontPath;
+
+            code.AppendLine("(*game).setMenuFont(" + Game.oldPathToCodeObject[font] + ");");
             code.AppendLine("(*game).setMainMenuImageTexture(" + Game.oldPathToCodeObject[Game.gameSettings.mainMenu.mainMenuImagePath] + ");");
             code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.mainMenuSoundPath] + "\");"); 
             code.AppendLine("(*game).setMainMenuPlayButtonSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.playButtonSoundPath] + "\");");
@@ -629,7 +635,7 @@ namespace GUI_Test2
                 return;
             }
             
-            /*
+            
            ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
 
             cmd.Arguments = @"/c cd " + directory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
@@ -641,10 +647,7 @@ namespace GUI_Test2
            
 
             
-            StreamWriter output = new StreamWriter(mainPath);
-            string s = GUI_Test2.Properties.Resources.cookieCutterGame; 
-            output.WriteLine(s);
-            output.Close();
+            
             cmd.Arguments = @"/c cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
                             
             compiler = Process.Start(cmd);
@@ -655,15 +658,15 @@ namespace GUI_Test2
 
             foreach (FileInfo f in directory.GetFiles())
             {
-                if (f.Extension == ".obj" || f.Name == "main.cpp" || (f.Extension == ".exe" && f.Name != "main.exe"))
-                    f.Delete();
+               // if (f.Extension == ".obj" || f.Name == "main.cpp" || (f.Extension == ".exe" && f.Name != "main.exe"))
+                  //  f.Delete();
             }
 
             ProcessStartInfo game = new ProcessStartInfo(directory + "\\main.exe");
             game.WorkingDirectory = directory.ToString();
             Process gameProc = Process.Start(game);
             gameProc.WaitForExit();
-            */
+            
 
         }
     }

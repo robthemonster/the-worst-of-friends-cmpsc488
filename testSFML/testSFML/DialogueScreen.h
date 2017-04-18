@@ -12,7 +12,7 @@ private:
 	sf::Vector2f textOrigin;
 	sf::Font font;
 	sf::RectangleShape imageRect, dialoguePaneRect;
-	Navigable ** destination;
+	Navigable ** destination = NULL;
 	Game * game;
 
 	const float SCREEN_WIDTH = 1920.0;
