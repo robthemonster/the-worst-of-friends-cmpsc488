@@ -84,6 +84,7 @@ namespace GUI_Test2
 
             defaultTargetNavigable = p.defaultTargetNavigable;
 
+            updateListBoxes();
             updateButtonListBox();
         }
             
@@ -121,8 +122,6 @@ namespace GUI_Test2
             System.Windows.Forms.ToolTip defaultTargetNavToolTip = new System.Windows.Forms.ToolTip();
             string defaultTargetNavMsg = "The default destination of a path \nif no buttons are given to it.";
             defaultTargetNavToolTip.SetToolTip(this.useDefaultTargetNavigableCheckBox, defaultTargetNavMsg);
-
-            updateListBoxes();
         }
 
         private void selectDefaultPathImageButton_Click(object sender, EventArgs e)
