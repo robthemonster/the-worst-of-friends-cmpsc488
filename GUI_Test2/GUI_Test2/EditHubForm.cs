@@ -187,47 +187,8 @@ namespace GUI_Test2
 
             }
         }
-
-        private void useButtonSizeDefaults_CheckedChanged(object sender, EventArgs e)
-        {
-            if (useButtonSizeDefaults.Checked)
-            {
-                label12.Enabled = false;
-                label13.Enabled = false;
-                label14.Enabled = false;
-                buttonHeightTextBox.Enabled = false;
-                buttonWidthTextBox.Enabled = false;
-            }
-            else
-            {
-                label12.Enabled = true;
-                label13.Enabled = true;
-                label14.Enabled = true;
-                buttonHeightTextBox.Enabled = true;
-                buttonWidthTextBox.Enabled = true;
-            }
-        }
-
-        private void useButtonLocationDefaults_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useButtonLocationDefaults.Checked)
-            {
-                label9.Enabled = true;
-                label10.Enabled = true;
-                label11.Enabled = true;
-                buttonXLocTextBox.Enabled = true;
-                buttonYLocTextBox.Enabled = true;
-            }
-            else
-            {
-                label9.Enabled = false;
-                label10.Enabled = false;
-                label11.Enabled = false;
-                buttonXLocTextBox.Enabled = false;
-                buttonYLocTextBox.Enabled = false;
-            }
-        }
-
+        
+        
         private void createButtonButton_Click(object sender, EventArgs e)
         {
             string text, pic1path, pic2path, next;
@@ -236,106 +197,23 @@ namespace GUI_Test2
             
                 text = buttonTextTextBox.Text;
             
-
-            //If the button isn't selected, button size is required
-            if (!useButton1Image.Checked  && !useButtonSizeDefaults.Checked && (buttonWidthTextBox.Text.Equals("") ||buttonHeightTextBox.Text.Equals("")))
-            {
-                MessageBox.Show("Button Size Required if No Picture is Used.");
-                return;
-            }
-
-            if (useButtonSizeDefaults.Checked)
-            {
-                //1920,1080 screen size
-                //-200,300 posL
-                //200, 300 posR
-                //300,100 size
-                //CHANGE These are placeholder values
-                sizeX = 300;
-                sizeY = 100;
-            }
-            else
-            {
-                //max width is 1920
-                try
-                {
-                    sizeX = Int32.Parse(buttonWidthTextBox.Text);
-                    sizeY = Int32.Parse(buttonHeightTextBox.Text);
-                }
-                catch (FormatException ex)
-                {
-                    Console.Out.WriteLine(ex.StackTrace);
-                    MessageBox.Show("Width must be a positive number, less than 1920 \nHeight must be a positive number less than 1080");
-                    buttonWidthTextBox.Text = "";
-                    buttonHeightTextBox.Text = "";
-                    return;
-                }
-                if (sizeX > 1920 || sizeX <= 0)
-                {
-                    MessageBox.Show("Size width needs positive number less than 1920.");
-                    buttonWidthTextBox.Text = "";
-                    return;
-                }
-
-                //sizeY check 0<Y<1080
-
-                if (sizeY > 1080 || sizeY <= 0)
-                {
-                    MessageBox.Show("Size height needs positive number less than 1080.");
-                    buttonHeightTextBox.Text = "";
-                    return;
-                }
-            }
-
-            if (useButtonLocationDefaults.Checked)
-            {
-                if (buttonNameList.Count == 0)
-                {
-                    posX = -200;
-                    posY = 300;
-                }
-                else if (buttonNameList.Count == 1)
-                {
-                    posX = 200;
-                    posY = 300;
-                }
-                else
-                {
-                    MessageBox.Show("Default positions not available for more than two buttons.");
-                    return;
-                }
-            }
-            else
-            {
-                try
-                {
-                    posX = Int32.Parse(buttonXLocTextBox.Text);
-                    posY = Int32.Parse(buttonYLocTextBox.Text);
-                }
-                catch (FormatException ex)
-                {
-                    Console.Out.WriteLine(ex.StackTrace);
-                    MessageBox.Show("X and Y must be positive numbers.\n" +
-                        "X must be less than 960.\n" +
-                        "Y must be less than 540.");
-                    buttonXLocTextBox.Text = "";
-                    buttonYLocTextBox.Text = "";
-                    return;
-                }
-
-                if (Math.Abs(posX) > 960)
-                {
-                    MessageBox.Show("X coordinate must be between -960 and 960.");
-                    buttonXLocTextBox.Text = "";
-                    return;
-                }
-                if (Math.Abs(posY) > 540)
-                {
-                    MessageBox.Show("Y coordinate must be between -540 and 540.");
-                    buttonYLocTextBox.Text = "";
-                    return;
-                }
-            }
+            
+            
+            
+            //max width is 1920
+           
+            sizeX = (int)buttonWidthNumericUpDown.Value;
+            sizeY = (int)buttonHeightNumericUpDown.Value;
+            
+            
+            
+            
+            
+            
+            posX = (int)buttonXLocNumericUpDown.Value;
+            posY = (int)buttonYLocNumericUpDown.Value;
+            
+            
 
             if (useButton1Image.Checked)
             {
@@ -602,28 +480,12 @@ namespace GUI_Test2
                 navComboBox.SelectedIndex = navComboBox.FindStringExact(b.next);
 
                 //Size
-                if (b.sizeX == 300 && b.sizeY == 100)
-                {
-                    useButtonSizeDefaults.Checked = true;
-                }
-                else
-                {
-                    useButtonSizeDefaults.Checked = false;
-                    buttonWidthTextBox.Text = b.sizeX.ToString();
-                    buttonHeightTextBox.Text = b.sizeY.ToString();
-                }
+                buttonWidthNumericUpDown.Value = b.sizeX;
+                buttonHeightNumericUpDown.Value = b.sizeY;
 
                 //Position
-                if (buttonNameList.Count <= 2 && (b.posX == -200 || b.posX == 200) && b.posY == 300)
-                {
-                    useButtonLocationDefaults.Checked = true;
-                }
-                else
-                {
-                    useButtonLocationDefaults.Checked = false;
-                    buttonXLocTextBox.Text = b.posX.ToString();
-                    buttonYLocTextBox.Text = b.posY.ToString();
-                }
+                buttonXLocNumericUpDown.Value = b.posX;
+                buttonYLocNumericUpDown.Value = b.posY;
 
                 //Picture 1
                 if (b.pic1path == "")
@@ -669,10 +531,8 @@ namespace GUI_Test2
             else
             {
                 buttonTextTextBox.Text = "";
-                useButtonSizeDefaults.Checked = true;
-                useButtonLocationDefaults.Checked = true;
-                buttonXLocTextBox.Text = "";
-                buttonYLocTextBox.Text = "";
+                buttonXLocNumericUpDown.Value = 0;
+                buttonYLocNumericUpDown.Value = 0;
                 useButton1Image.Checked = false;
                 useButton2Image.Checked = false;
                 buttonImagePath1 = "";
