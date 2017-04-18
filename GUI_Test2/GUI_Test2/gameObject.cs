@@ -678,7 +678,7 @@ namespace GUI_Test2
                 return;
             }
 
-            return;
+         
             
            ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
 

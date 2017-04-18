@@ -7,7 +7,7 @@
 
 void EndingGenerator::setTiers(int tiers)
 {
-	for (int i = 0; i < tiers; i++) {
+	for (int i = 0; i <= tiers; i++) {
 		this->endings.push_back(std::vector<std::tuple<Path*, Requirements* > >());
 	}
 }
