@@ -42,7 +42,6 @@
             this.hubRadioButton = new System.Windows.Forms.RadioButton();
             this.playerRadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.valueTextBox = new System.Windows.Forms.TextBox();
             this.attributeComboBox = new System.Windows.Forms.ComboBox();
             this.comparitorComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,10 +58,12 @@
             this.addPathsButton = new System.Windows.Forms.Button();
             this.removePathsButton = new System.Windows.Forms.Button();
             this.pathsGroupedByTier = new System.Windows.Forms.ListView();
+            this.valueNumeric = new System.Windows.Forms.NumericUpDown();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // TierLabel
@@ -220,8 +221,8 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableLayoutPanel2.Controls.Add(this.valueNumeric, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
@@ -236,16 +237,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(295, 59);
             this.tableLayoutPanel2.TabIndex = 35;
             // 
-            // valueTextBox
-            // 
-            this.valueTextBox.Location = new System.Drawing.Point(203, 26);
-            this.valueTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.valueTextBox.Name = "valueTextBox";
-            this.valueTextBox.Size = new System.Drawing.Size(61, 22);
-            this.valueTextBox.TabIndex = 33;
-            this.valueTextBox.Text = "0";
-            this.valueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // attributeComboBox
             // 
             this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -253,14 +244,14 @@
             this.attributeComboBox.Location = new System.Drawing.Point(4, 26);
             this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(107, 24);
+            this.attributeComboBox.Size = new System.Drawing.Size(106, 24);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(119, 26);
+            this.comparitorComboBox.Location = new System.Drawing.Point(118, 26);
             this.comparitorComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(76, 24);
@@ -269,7 +260,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(119, 0);
+            this.label5.Location = new System.Drawing.Point(118, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 22);
@@ -289,7 +280,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(203, 0);
+            this.label8.Location = new System.Drawing.Point(202, 0);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 17);
@@ -418,6 +409,23 @@
             this.pathsGroupedByTier.UseCompatibleStateImageBehavior = false;
             this.pathsGroupedByTier.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.pathsGroupedByTier_ItemSelectionChanged);
             // 
+            // valueNumeric
+            // 
+            this.valueNumeric.Location = new System.Drawing.Point(201, 25);
+            this.valueNumeric.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.valueNumeric.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.valueNumeric.Name = "valueNumeric";
+            this.valueNumeric.Size = new System.Drawing.Size(91, 22);
+            this.valueNumeric.TabIndex = 46;
+            // 
             // EndingGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -450,6 +458,7 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valueNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,7 +478,6 @@
         private System.Windows.Forms.RadioButton hubRadioButton;
         private System.Windows.Forms.RadioButton playerRadioButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TextBox valueTextBox;
         private System.Windows.Forms.ComboBox attributeComboBox;
         private System.Windows.Forms.ComboBox comparitorComboBox;
         private System.Windows.Forms.Label label5;
@@ -486,5 +494,6 @@
         private System.Windows.Forms.Button buttonListRightButton;
         private System.Windows.Forms.Button buttonListLeftButton;
         private System.Windows.Forms.ListView pathsGroupedByTier;
+        private System.Windows.Forms.NumericUpDown valueNumeric;
     }
 }

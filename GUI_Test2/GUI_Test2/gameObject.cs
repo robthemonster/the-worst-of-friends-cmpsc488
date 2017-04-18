@@ -118,23 +118,7 @@ namespace GUI_Test2
 
 
 
-            //This is for testing purposes. TODO: remove 
-
-            string workingDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\codegen_test";
-            workingDir = workingDir.Replace("\\", "//");
-           
-          
-
-       /*     Game.gameSettings = new GameSettings( Game.gameSettings.gameOverRequirements, workingDir +"//fonts//regular.otf",
-                 Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
-                 "dialogue scroll sound", "dialogue end sound", workingDir + "//img//dialoguePane.png", "dialogue flashing texture"
-                 , 1,-750, 200,0, 0, 0, 0,
-                 new MainMenu(workingDir +"//img//absolver.jpg",
-                 workingDir + "//music//waterfall.ogg",
-                 workingDir + "//music//letsgo.wav",
-                 workingDir + "//fonts//arial.ttf"),
-                 new List<string>(),new List<string>());
-         */ 
+            
 
 
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
@@ -177,6 +161,10 @@ namespace GUI_Test2
             string addDialogueCode = getAddDialogueCode();
 
             code.AppendLine(addDialogueCode);
+
+            string endingGenCode = getEndingGenCode();
+
+            code.AppendLine(endingGenCode);
             
      
 
@@ -188,6 +176,61 @@ namespace GUI_Test2
             outputStream.Close();
 
             return true;
+        }
+
+        private static string getEndingGenCode()
+        {
+            StringBuilder code = new StringBuilder();
+            if (Game.endingGen.pathsInGroup.Count == 0)
+                return code.ToString();
+            int numTiers = Game.endingGen.tierofEachPath.Max();
+            code.AppendLine("(*game).setEndingTiers(" + numTiers + ");");
+            int endingCtr = 0;
+            foreach (string ending in Game.endingGen.pathsInGroup)
+            {
+                List<Requirement> reqs = Game.endingGen.reqsofEachPath[endingCtr];
+                if (reqs.Count == 0)
+                {
+                    code.AppendLine("(*game).addEnding(" + Game.endingGen.tierofEachPath[endingCtr] + ", nav" + Game.navNameToCodeIndex[ending] + ", &noReq");
+                }
+                else
+                {
+                    code.AppendLine("Requirements endingReq" + endingCtr + "(*(*game).getAttributeMapPointer());");
+                    foreach (Requirement r in reqs)
+                    {
+                        
+                         string op = "";
+                        switch (r.comp)
+                        {
+                            case ">":
+                                op = "Requirements::GT";
+                                break;
+                            case ">=":
+                                op = "Requirements::GEQ";
+                                break;
+                            case "<":
+                                op = "Requirements::LT";
+                                break;
+                            case "<=":
+                                op = "Requirements::LEQ";
+                                break;
+                            case "==":
+                                op = "Requirements::EQ";
+                                break;
+                        }
+                        if (r.scope == Requirement.GLOBAL)
+                            code.AppendLine("endingReq" + endingCtr + ".addRequirement((Attributable**)game, \"" + r.name + "\", " + op + ", " + r.value + ");");
+                        if (r.scope == Requirement.PLAYER)
+                            code.AppendLine("endingReq" + endingCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
+                        if (r.scope == Requirement.HUB)
+                            code.AppendLine("endingReq" + endingCtr + ".addRequirement((Attributable**) nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
+                    }
+                    code.AppendLine("(*game).addEnding(" + Game.endingGen.tierofEachPath[endingCtr] + ", nav" + Game.navNameToCodeIndex[ending] + ", &endingReq" + endingCtr + ");");
+                    endingCtr++;
+                }
+                
+            }
+            return code.ToString();
         }
 
         private static string getSetFontandCharSizeCode()
@@ -634,7 +677,8 @@ namespace GUI_Test2
             if (!Game.generateCode(mainPath)){
                 return;
             }
-            
+
+            return;
             
            ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
 
@@ -648,7 +692,7 @@ namespace GUI_Test2
 
             
             
-            cmd.Arguments = @"/k cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
+            cmd.Arguments = @"/c cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
                             
             compiler = Process.Start(cmd);
             

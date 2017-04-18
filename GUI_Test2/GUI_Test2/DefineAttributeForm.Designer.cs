@@ -56,7 +56,7 @@
             // addAttributeButton
             // 
             this.addAttributeButton.Location = new System.Drawing.Point(304, 257);
-            this.addAttributeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addAttributeButton.Margin = new System.Windows.Forms.Padding(4);
             this.addAttributeButton.Name = "addAttributeButton";
             this.addAttributeButton.Size = new System.Drawing.Size(77, 28);
             this.addAttributeButton.TabIndex = 17;
@@ -67,7 +67,7 @@
             // deleteButton
             // 
             this.deleteButton.Location = new System.Drawing.Point(389, 257);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(123, 28);
             this.deleteButton.TabIndex = 16;
@@ -79,7 +79,7 @@
             // 
             this.oKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.oKButton.Location = new System.Drawing.Point(412, 294);
-            this.oKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.oKButton.Margin = new System.Windows.Forms.Padding(4);
             this.oKButton.Name = "oKButton";
             this.oKButton.Size = new System.Drawing.Size(100, 28);
             this.oKButton.TabIndex = 14;
@@ -102,7 +102,7 @@
             this.scopeAttributesListBox.FormattingEnabled = true;
             this.scopeAttributesListBox.ItemHeight = 16;
             this.scopeAttributesListBox.Location = new System.Drawing.Point(16, 62);
-            this.scopeAttributesListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scopeAttributesListBox.Margin = new System.Windows.Forms.Padding(4);
             this.scopeAttributesListBox.Name = "scopeAttributesListBox";
             this.scopeAttributesListBox.Size = new System.Drawing.Size(133, 260);
             this.scopeAttributesListBox.TabIndex = 11;
@@ -116,9 +116,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.nameTextBox);
             this.groupBox1.Location = new System.Drawing.Point(171, 146);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(341, 103);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
@@ -137,7 +137,17 @@
             // initialValueNumericUpDown
             // 
             this.initialValueNumericUpDown.Location = new System.Drawing.Point(204, 42);
-            this.initialValueNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.initialValueNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
+            this.initialValueNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.initialValueNumericUpDown.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.initialValueNumericUpDown.Name = "initialValueNumericUpDown";
             this.initialValueNumericUpDown.Size = new System.Drawing.Size(111, 22);
             this.initialValueNumericUpDown.TabIndex = 19;
@@ -147,7 +157,7 @@
             this.allHubCheckBox.AutoSize = true;
             this.allHubCheckBox.Enabled = false;
             this.allHubCheckBox.Location = new System.Drawing.Point(8, 75);
-            this.allHubCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.allHubCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.allHubCheckBox.Name = "allHubCheckBox";
             this.allHubCheckBox.Size = new System.Drawing.Size(136, 21);
             this.allHubCheckBox.TabIndex = 24;
@@ -167,7 +177,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(8, 41);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(187, 22);
             this.nameTextBox.TabIndex = 19;
@@ -176,7 +186,7 @@
             // 
             this.globalRadioButton.AutoSize = true;
             this.globalRadioButton.Location = new System.Drawing.Point(4, 4);
-            this.globalRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.globalRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.globalRadioButton.Name = "globalRadioButton";
             this.globalRadioButton.Size = new System.Drawing.Size(70, 18);
             this.globalRadioButton.TabIndex = 1;
@@ -188,7 +198,7 @@
             // 
             this.playerRadioButton.AutoSize = true;
             this.playerRadioButton.Location = new System.Drawing.Point(4, 56);
-            this.playerRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.playerRadioButton.Name = "playerRadioButton";
             this.playerRadioButton.Size = new System.Drawing.Size(69, 20);
             this.playerRadioButton.TabIndex = 0;
@@ -200,7 +210,7 @@
             // 
             this.hubRadioButton.AutoSize = true;
             this.hubRadioButton.Location = new System.Drawing.Point(4, 30);
-            this.hubRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.hubRadioButton.Name = "hubRadioButton";
             this.hubRadioButton.Size = new System.Drawing.Size(55, 18);
             this.hubRadioButton.TabIndex = 23;
@@ -218,7 +228,7 @@
             this.tableLayoutPanel1.Controls.Add(this.playerRadioButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.hubSelectionComboBox, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(11, 23);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -233,7 +243,7 @@
             this.hubSelectionComboBox.Enabled = false;
             this.hubSelectionComboBox.FormattingEnabled = true;
             this.hubSelectionComboBox.Location = new System.Drawing.Point(150, 30);
-            this.hubSelectionComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubSelectionComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.hubSelectionComboBox.Name = "hubSelectionComboBox";
             this.hubSelectionComboBox.Size = new System.Drawing.Size(165, 24);
             this.hubSelectionComboBox.TabIndex = 26;
@@ -242,7 +252,7 @@
             // scopeTextBox
             // 
             this.scopeTextBox.Location = new System.Drawing.Point(16, 30);
-            this.scopeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scopeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.scopeTextBox.Name = "scopeTextBox";
             this.scopeTextBox.ReadOnly = true;
             this.scopeTextBox.Size = new System.Drawing.Size(133, 22);
@@ -253,9 +263,9 @@
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Location = new System.Drawing.Point(171, 26);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(341, 113);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
@@ -277,7 +287,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.scopeAttributesListBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DefineAttributeForm";
             this.Text = "Define Attribute Form";
             this.Load += new System.EventHandler(this.DefineAttributeForm_Load);
