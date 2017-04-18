@@ -171,6 +171,7 @@ namespace GUI_Test2
         public string pic2path;
         public int highlight; //2 picture, 1 text, 0 neither
         public string next;
+        public bool useDefaultLoc;
         //img,sound
 
         public const int HIGHLIGHT_PICTURE = 2, HIGHLIGHT_TEXT = 1, DO_NOTHING = 0;
@@ -186,10 +187,11 @@ namespace GUI_Test2
             pic2path = "";
             highlight = 0;
             next = "";
+            useDefaultLoc = false;
         }
 
         public Button(string text, int sizeX, int sizeY, int posX, int posY, string pic1path,
-            string pic2path, int highlight, string next)
+            string pic2path, int highlight, string next, bool useDefaultLoc=false)
         {
             this.text = text;
             this.sizeX = sizeX;
@@ -200,6 +202,7 @@ namespace GUI_Test2
             this.pic2path = pic2path;
             this.highlight = highlight;
             this.next = next;
+            this.useDefaultLoc = useDefaultLoc;
         }
     }
 

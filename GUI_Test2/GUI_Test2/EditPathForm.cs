@@ -403,26 +403,7 @@ namespace GUI_Test2
                 buttonYLocTextBox.Enabled = false;
             }
         }
-
-        private void useButtonSizeDefaults_CheckedChanged(object sender, EventArgs e)
-        {
-            if (useButtonSizeDefaults.Checked) {
-                label12.Enabled = false;
-                label13.Enabled = false;
-                label14.Enabled = false;
-                buttonHeightTextBox.Enabled = false;
-                buttonWidthTextBox.Enabled = false;
-            }
-            else
-            {
-                label12.Enabled = true;
-                label13.Enabled = true;
-                label14.Enabled = true;
-                buttonHeightTextBox.Enabled = true;
-                buttonWidthTextBox.Enabled = true;
-
-            }
-        }
+        
 
         private void Buttons_Click(object sender, EventArgs e)
         {
@@ -682,55 +663,20 @@ namespace GUI_Test2
             text = buttonTextTextBox.Text;
 
 
-            //If the button isn't selected, button size is required
-            if (!useButton1Image.Checked && !useButtonSizeDefaults.Checked && (buttonWidthTextBox.Text.Equals("") || buttonHeightTextBox.Text.Equals("")))
-            {
-                MessageBox.Show("Button Size Required if No Picture is Used.");
-                return;
-            }
 
-            if (useButtonSizeDefaults.Checked)
-            {
-                //1920,1080 screen size
-                //-200,300 posL
-                //200, 300 posR
-                //300,100 size
-                //CHANGE These are placeholder values
-                sizeX = 300;
-                sizeY = 100;
-            }
-            else
-            {
-                //max width is 1920
-                try
-                {
-                    sizeX = Int32.Parse(buttonWidthTextBox.Text);
-                    sizeY = Int32.Parse(buttonHeightTextBox.Text);
-                }
-                catch (FormatException ex)
-                {
-                    Console.Out.WriteLine(ex.StackTrace);
-                    MessageBox.Show("Width must be a positive number, less than 1920 \nHeight must be a positive number less than 1080");
-                    buttonWidthTextBox.Text = "";
-                    buttonHeightTextBox.Text = "";
-                    return;
-                }
-                if (sizeX > 1920 || sizeX <= 0)
-                {
-                    MessageBox.Show("Size width needs positive number less than 1920.");
-                    buttonWidthTextBox.Text = "";
-                    return;
-                }
+            //1920,1080 screen size
+            //-200,300 posL
+            //200, 300 posR
+            //300,100 size
 
-                //sizeY check 0<Y<1080
+            //max width is 1920
 
-                if (sizeY > 1080 || sizeY <= 0)
-                {
-                    MessageBox.Show("Size height needs positive number less than 1080.");
-                    buttonHeightTextBox.Text = "";
-                    return;
-                }
-            }
+
+            sizeX = (int)buttonWidthNumericUpDown.Value;
+            sizeY = (int)buttonHeightNumericUpDown.Value;
+            
+                
+            
 
             if (useButtonLocationDefaults.Checked)
             {
@@ -886,16 +832,9 @@ namespace GUI_Test2
                 navComboBox.SelectedIndex = navComboBox.FindStringExact(b.next);
 
                 //Size
-                if (buttonNameList.Count <= 2 && b.sizeX == 300 && b.sizeY == 100)
-                {
-                    useButtonSizeDefaults.Checked = true;
-                }
-                else
-                {
-                    useButtonSizeDefaults.Checked = false;
-                    buttonWidthTextBox.Text = b.sizeX.ToString();
-                    buttonHeightTextBox.Text = b.sizeY.ToString();
-                }
+
+                buttonWidthNumericUpDown.Value = b.sizeX;
+                buttonHeightNumericUpDown.Value = b.sizeY;
 
                 //Position
                 if (buttonNameList.Count <= 2 && (b.posX == -200 || b.posX == 200) && b.posY == 300)
@@ -949,15 +888,10 @@ namespace GUI_Test2
             else
             {
                 buttonTextTextBox.Text = "";
-                useButtonSizeDefaults.Checked = true;
-                useButtonLocationDefaults.Checked = true;
-                buttonXLocTextBox.Text = "";
-                buttonYLocTextBox.Text = "";
                 useButton1Image.Checked = false;
                 useButton2Image.Checked = false;
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
-                
             }
         }
 
