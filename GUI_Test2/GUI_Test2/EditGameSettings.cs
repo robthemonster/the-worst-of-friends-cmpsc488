@@ -233,13 +233,13 @@ namespace GUI_Test2
                 Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSound;
             }
             
-            if (this.roundStartNavComboBox.SelectedIndex != -1)
+            if (this.roundEndNavComboBox.SelectedIndex != -1)
             {
-                Game.gameSettings.endOfRoundNav = (string)this.roundStartNavComboBox.SelectedItem;
+                Game.gameSettings.endOfRoundNav = (string)this.roundEndNavComboBox.SelectedItem;
             }
             else
             {
-                MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+                MessageBox.Show("Please Select a Navigable to End Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
                 return;
             }
 
@@ -250,7 +250,7 @@ namespace GUI_Test2
             }
             else
             {
-                MessageBox.Show("You Must Make a Path or Hub before you can run the project.","Cannot Save Settings",MessageBoxButtons.OK);
+                MessageBox.Show("Please Select a Navigable to Begin Each Round of the Game.","Cannot Save Settings",MessageBoxButtons.OK);
                 return;
             }
 
@@ -262,7 +262,8 @@ namespace GUI_Test2
             }
             else
             {
-                MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+                MessageBox.Show("Please Select a Navigable for the Start of a Player's Turn.", "Cannot Save Settings", MessageBoxButtons.OK);
+                return;
             }
 
             if (gameOverReq.Count > 0)
@@ -272,6 +273,7 @@ namespace GUI_Test2
             else
             {
                 MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
+                return;
             }
 
             Game.gameSettings.defaultFontPath = defaultFontPath;
