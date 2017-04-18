@@ -453,7 +453,7 @@ namespace GUI_Test2
         private void chooseScrollSoundButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Audio files (*.ogg) | *.ogg";
+            of.Filter = "Audio files (*.ogg, *.wav, *.flac, *.aiff) | *.ogg; *.wav; *.flac; *.aiff";
 
             try
             {
@@ -559,7 +559,7 @@ namespace GUI_Test2
         private void chooseDialogueEndSoundButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Audio files (*.ogg) | *.ogg";
+            of.Filter = "Audio files (*.ogg, *.wav, *.flac, *.aiff) | *.ogg; *.wav; *.flac; *.aiff";
 
             try
             {
@@ -616,7 +616,7 @@ namespace GUI_Test2
                 if (!mainMenuSoundLoading)
                 {
                     OpenFileDialog of = new OpenFileDialog();
-                    of.Filter = "Audio files (*.ogg) | *.ogg";
+                    of.Filter = "Audio files (*.ogg, *.wav, *.flac, *.aiff) | *.ogg; *.wav; *.flac; *.aiff";
 
                     try
                     {
@@ -654,7 +654,7 @@ namespace GUI_Test2
                 if (!playButtonSoundLoading)
                 {
                     OpenFileDialog of = new OpenFileDialog();
-                    of.Filter = "Audio files (*.ogg) | *.ogg";
+                    of.Filter = "Audio files (*.ogg, *.wav, *.flac, *.aiff) | *.ogg; *.wav; *.flac; *.aiff";
 
                     try
                     {
