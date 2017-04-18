@@ -261,7 +261,8 @@ namespace GUI_Test2
             }
             else
             {
-                MessageBox.Show("You Must Make a Path or Hub before you can run the project.", "Cannot Save Settings", MessageBoxButtons.OK);
+                MessageBox.Show("Please Select a Navigable for the Start of a Player's Turn.", "Cannot Save Settings", MessageBoxButtons.OK);
+                return;
             }
 
             if (gameOverReq.Count > 0)
@@ -271,6 +272,7 @@ namespace GUI_Test2
             else
             {
                 MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
+                return;
             }
 
             Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
