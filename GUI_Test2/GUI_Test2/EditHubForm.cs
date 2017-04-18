@@ -567,7 +567,7 @@ namespace GUI_Test2
         private void chooseMusicButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Audio files (*.ogg) | *.ogg";
+            of.Filter = "Audio files (*.ogg, *.wav, *.flac, *.aiff) | *.ogg; *.wav; *.flac; *.aiff";
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
