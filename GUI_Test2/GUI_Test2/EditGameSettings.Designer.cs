@@ -47,8 +47,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.valueUpDown = new System.Windows.Forms.NumericUpDown();
             this.addRequirementButton = new System.Windows.Forms.Button();
-            this.Savebutton = new System.Windows.Forms.Button();
-            this.Cancelbutton = new System.Windows.Forms.Button();
+            this.attributesTabSaveButton = new System.Windows.Forms.Button();
+            this.attributesTabCancelButton = new System.Windows.Forms.Button();
             this.playerAttributesComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -77,13 +77,18 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.NPCXLocTextBox = new System.Windows.Forms.TextBox();
             this.enterTextureXLocTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.enterTextureYLocTextBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.NPCYLocTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.chooseEnterKeyTextureButton = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.chooseDialogueEndSoundButton = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.maxPlayerCountTextBox = new System.Windows.Forms.TextBox();
@@ -95,8 +100,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.chooseFontImageButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.mainMenuTabCancelButton = new System.Windows.Forms.Button();
+            this.mainMenuTabSaveButton = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.mainMenuImagePictureBox = new System.Windows.Forms.PictureBox();
             this.selectMainMenuImageButton = new System.Windows.Forms.Button();
@@ -104,16 +109,11 @@
             this.usePlayButtonSoundCheckBox = new System.Windows.Forms.CheckBox();
             this.useBackgroundSoundCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.dialogueTabCancelButton = new System.Windows.Forms.Button();
+            this.dialogueTabSaveButton = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.NPCXLocTextBox = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.NPCYLocTextBox = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.gameOverTabCancelButton = new System.Windows.Forms.Button();
+            this.gameOverTabSaveButton = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -158,9 +158,9 @@
             // 
             // removeRequirementButton
             // 
-            this.removeRequirementButton.Location = new System.Drawing.Point(212, 174);
+            this.removeRequirementButton.Location = new System.Drawing.Point(174, 171);
             this.removeRequirementButton.Name = "removeRequirementButton";
-            this.removeRequirementButton.Size = new System.Drawing.Size(101, 23);
+            this.removeRequirementButton.Size = new System.Drawing.Size(101, 25);
             this.removeRequirementButton.TabIndex = 37;
             this.removeRequirementButton.Text = "Remove Condition";
             this.removeRequirementButton.UseVisualStyleBackColor = true;
@@ -256,7 +256,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
@@ -277,14 +277,14 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(84, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(83, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(93, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(92, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(59, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -292,7 +292,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(93, 0);
+            this.label5.Location = new System.Drawing.Point(92, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 34;
@@ -310,7 +310,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(158, 0);
+            this.label8.Location = new System.Drawing.Point(157, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
@@ -318,14 +318,14 @@
             // 
             // valueUpDown
             // 
-            this.valueUpDown.Location = new System.Drawing.Point(158, 21);
+            this.valueUpDown.Location = new System.Drawing.Point(157, 21);
             this.valueUpDown.Name = "valueUpDown";
             this.valueUpDown.Size = new System.Drawing.Size(56, 20);
             this.valueUpDown.TabIndex = 37;
             // 
             // addRequirementButton
             // 
-            this.addRequirementButton.Location = new System.Drawing.Point(101, 172);
+            this.addRequirementButton.Location = new System.Drawing.Point(67, 171);
             this.addRequirementButton.Name = "addRequirementButton";
             this.addRequirementButton.Size = new System.Drawing.Size(101, 25);
             this.addRequirementButton.TabIndex = 24;
@@ -333,25 +333,25 @@
             this.addRequirementButton.UseVisualStyleBackColor = true;
             this.addRequirementButton.Click += new System.EventHandler(this.addRequirementButton_Click);
             // 
-            // Savebutton
+            // attributesTabSaveButton
             // 
-            this.Savebutton.Location = new System.Drawing.Point(6, 290);
-            this.Savebutton.Name = "Savebutton";
-            this.Savebutton.Size = new System.Drawing.Size(75, 23);
-            this.Savebutton.TabIndex = 16;
-            this.Savebutton.Text = "Save";
-            this.Savebutton.UseVisualStyleBackColor = true;
-            this.Savebutton.Click += new System.EventHandler(this.Savebutton_Click);
+            this.attributesTabSaveButton.Location = new System.Drawing.Point(100, 290);
+            this.attributesTabSaveButton.Name = "attributesTabSaveButton";
+            this.attributesTabSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.attributesTabSaveButton.TabIndex = 16;
+            this.attributesTabSaveButton.Text = "Save";
+            this.attributesTabSaveButton.UseVisualStyleBackColor = true;
+            this.attributesTabSaveButton.Click += new System.EventHandler(this.Savebutton_Click);
             // 
-            // Cancelbutton
+            // attributesTabCancelButton
             // 
-            this.Cancelbutton.Location = new System.Drawing.Point(87, 290);
-            this.Cancelbutton.Name = "Cancelbutton";
-            this.Cancelbutton.Size = new System.Drawing.Size(75, 23);
-            this.Cancelbutton.TabIndex = 15;
-            this.Cancelbutton.Text = "Cancel";
-            this.Cancelbutton.UseVisualStyleBackColor = true;
-            this.Cancelbutton.Click += new System.EventHandler(this.Cancelbutton_Click);
+            this.attributesTabCancelButton.Location = new System.Drawing.Point(180, 290);
+            this.attributesTabCancelButton.Name = "attributesTabCancelButton";
+            this.attributesTabCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.attributesTabCancelButton.TabIndex = 15;
+            this.attributesTabCancelButton.Text = "Cancel";
+            this.attributesTabCancelButton.UseVisualStyleBackColor = true;
+            this.attributesTabCancelButton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
             // playerAttributesComboBox
             // 
@@ -478,7 +478,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(205, 61);
+            this.label11.Location = new System.Drawing.Point(208, 90);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(133, 13);
             this.label11.TabIndex = 1;
@@ -488,7 +488,7 @@
             // 
             this.roundStartNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roundStartNavComboBox.FormattingEnabled = true;
-            this.roundStartNavComboBox.Location = new System.Drawing.Point(207, 77);
+            this.roundStartNavComboBox.Location = new System.Drawing.Point(210, 106);
             this.roundStartNavComboBox.Name = "roundStartNavComboBox";
             this.roundStartNavComboBox.Size = new System.Drawing.Size(121, 21);
             this.roundStartNavComboBox.TabIndex = 0;
@@ -496,7 +496,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(205, 104);
+            this.label12.Location = new System.Drawing.Point(208, 133);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(130, 13);
             this.label12.TabIndex = 1;
@@ -506,7 +506,7 @@
             // 
             this.roundEndNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roundEndNavComboBox.FormattingEnabled = true;
-            this.roundEndNavComboBox.Location = new System.Drawing.Point(207, 120);
+            this.roundEndNavComboBox.Location = new System.Drawing.Point(210, 149);
             this.roundEndNavComboBox.Name = "roundEndNavComboBox";
             this.roundEndNavComboBox.Size = new System.Drawing.Size(121, 21);
             this.roundEndNavComboBox.TabIndex = 0;
@@ -514,7 +514,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 53);
+            this.label1.Location = new System.Drawing.Point(54, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 44;
@@ -522,19 +522,19 @@
             // 
             // defaultFontButton
             // 
-            this.defaultFontButton.Location = new System.Drawing.Point(29, 66);
+            this.defaultFontButton.Location = new System.Drawing.Point(6, 66);
             this.defaultFontButton.Name = "defaultFontButton";
-            this.defaultFontButton.Size = new System.Drawing.Size(77, 23);
+            this.defaultFontButton.Size = new System.Drawing.Size(128, 23);
             this.defaultFontButton.TabIndex = 50;
-            this.defaultFontButton.Text = "Choose Font";
+            this.defaultFontButton.Text = "Choose Dialogue Font";
             this.defaultFontButton.UseVisualStyleBackColor = true;
             this.defaultFontButton.Click += new System.EventHandler(this.defaultFontButton_Click);
             // 
             // defaultDialoguePaneTextureButton
             // 
-            this.defaultDialoguePaneTextureButton.Location = new System.Drawing.Point(6, 108);
+            this.defaultDialoguePaneTextureButton.Location = new System.Drawing.Point(6, 107);
             this.defaultDialoguePaneTextureButton.Name = "defaultDialoguePaneTextureButton";
-            this.defaultDialoguePaneTextureButton.Size = new System.Drawing.Size(119, 23);
+            this.defaultDialoguePaneTextureButton.Size = new System.Drawing.Size(128, 23);
             this.defaultDialoguePaneTextureButton.TabIndex = 52;
             this.defaultDialoguePaneTextureButton.Text = "Choose Pane Texture";
             this.defaultDialoguePaneTextureButton.UseVisualStyleBackColor = true;
@@ -543,7 +543,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 92);
+            this.label2.Location = new System.Drawing.Point(32, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 51;
@@ -553,7 +553,7 @@
             // 
             this.chooseScrollSoundButton.Location = new System.Drawing.Point(6, 30);
             this.chooseScrollSoundButton.Name = "chooseScrollSoundButton";
-            this.chooseScrollSoundButton.Size = new System.Drawing.Size(114, 23);
+            this.chooseScrollSoundButton.Size = new System.Drawing.Size(128, 23);
             this.chooseScrollSoundButton.TabIndex = 54;
             this.chooseScrollSoundButton.Text = "Choose Scroll Sound";
             this.chooseScrollSoundButton.UseVisualStyleBackColor = true;
@@ -562,7 +562,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 15);
+            this.label3.Location = new System.Drawing.Point(13, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 53;
@@ -570,14 +570,14 @@
             // 
             // paneXLocTextBox
             // 
-            this.paneXLocTextBox.Location = new System.Drawing.Point(204, 49);
+            this.paneXLocTextBox.Location = new System.Drawing.Point(204, 32);
             this.paneXLocTextBox.Name = "paneXLocTextBox";
             this.paneXLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.paneXLocTextBox.TabIndex = 58;
             // 
             // paneYLocTextBox
             // 
-            this.paneYLocTextBox.Location = new System.Drawing.Point(204, 71);
+            this.paneYLocTextBox.Location = new System.Drawing.Point(204, 54);
             this.paneYLocTextBox.Name = "paneYLocTextBox";
             this.paneYLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.paneYLocTextBox.TabIndex = 59;
@@ -585,7 +585,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(192, 33);
+            this.label7.Location = new System.Drawing.Point(185, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 55;
@@ -594,7 +594,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(182, 52);
+            this.label10.Location = new System.Drawing.Point(182, 35);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 13);
             this.label10.TabIndex = 56;
@@ -603,7 +603,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(182, 78);
+            this.label13.Location = new System.Drawing.Point(182, 61);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(17, 13);
             this.label13.TabIndex = 57;
@@ -643,9 +643,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Default Dialogue Pane Options";
             // 
+            // NPCXLocTextBox
+            // 
+            this.NPCXLocTextBox.Location = new System.Drawing.Point(204, 114);
+            this.NPCXLocTextBox.Name = "NPCXLocTextBox";
+            this.NPCXLocTextBox.Size = new System.Drawing.Size(50, 20);
+            this.NPCXLocTextBox.TabIndex = 72;
+            // 
             // enterTextureXLocTextBox
             // 
-            this.enterTextureXLocTextBox.Location = new System.Drawing.Point(204, 180);
+            this.enterTextureXLocTextBox.Location = new System.Drawing.Point(204, 194);
             this.enterTextureXLocTextBox.Name = "enterTextureXLocTextBox";
             this.enterTextureXLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.enterTextureXLocTextBox.TabIndex = 67;
@@ -653,15 +660,24 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(182, 209);
+            this.label18.Location = new System.Drawing.Point(182, 223);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(17, 13);
             this.label18.TabIndex = 66;
             this.label18.Text = "Y:";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(182, 143);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(17, 13);
+            this.label21.TabIndex = 71;
+            this.label21.Text = "Y:";
+            // 
             // enterTextureYLocTextBox
             // 
-            this.enterTextureYLocTextBox.Location = new System.Drawing.Point(204, 202);
+            this.enterTextureYLocTextBox.Location = new System.Drawing.Point(204, 216);
             this.enterTextureYLocTextBox.Name = "enterTextureYLocTextBox";
             this.enterTextureYLocTextBox.Size = new System.Drawing.Size(50, 20);
             this.enterTextureYLocTextBox.TabIndex = 68;
@@ -669,16 +685,23 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(182, 183);
+            this.label19.Location = new System.Drawing.Point(182, 197);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(17, 13);
             this.label19.TabIndex = 65;
             this.label19.Text = "X:";
             // 
+            // NPCYLocTextBox
+            // 
+            this.NPCYLocTextBox.Location = new System.Drawing.Point(204, 136);
+            this.NPCYLocTextBox.Name = "NPCYLocTextBox";
+            this.NPCYLocTextBox.Size = new System.Drawing.Size(50, 20);
+            this.NPCYLocTextBox.TabIndex = 73;
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(185, 165);
+            this.label20.Location = new System.Drawing.Point(182, 178);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(93, 13);
             this.label20.TabIndex = 64;
@@ -686,7 +709,7 @@
             // 
             // chooseEnterKeyTextureButton
             // 
-            this.chooseEnterKeyTextureButton.Location = new System.Drawing.Point(12, 201);
+            this.chooseEnterKeyTextureButton.Location = new System.Drawing.Point(6, 197);
             this.chooseEnterKeyTextureButton.Name = "chooseEnterKeyTextureButton";
             this.chooseEnterKeyTextureButton.Size = new System.Drawing.Size(128, 23);
             this.chooseEnterKeyTextureButton.TabIndex = 63;
@@ -694,20 +717,38 @@
             this.chooseEnterKeyTextureButton.UseVisualStyleBackColor = true;
             this.chooseEnterKeyTextureButton.Click += new System.EventHandler(this.chooseEnterKeyTextureButton_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(182, 117);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(17, 13);
+            this.label22.TabIndex = 70;
+            this.label22.Text = "X:";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(26, 184);
+            this.label17.Location = new System.Drawing.Point(20, 181);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(92, 13);
             this.label17.TabIndex = 62;
             this.label17.Text = "Enter Key Texture";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(185, 98);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(69, 13);
+            this.label23.TabIndex = 69;
+            this.label23.Text = "NPC Position";
+            // 
             // chooseDialogueEndSoundButton
             // 
-            this.chooseDialogueEndSoundButton.Location = new System.Drawing.Point(11, 152);
+            this.chooseDialogueEndSoundButton.Location = new System.Drawing.Point(6, 155);
             this.chooseDialogueEndSoundButton.Name = "chooseDialogueEndSoundButton";
-            this.chooseDialogueEndSoundButton.Size = new System.Drawing.Size(114, 23);
+            this.chooseDialogueEndSoundButton.Size = new System.Drawing.Size(128, 23);
             this.chooseDialogueEndSoundButton.TabIndex = 61;
             this.chooseDialogueEndSoundButton.Text = "Choose End Sound";
             this.chooseDialogueEndSoundButton.UseVisualStyleBackColor = true;
@@ -716,7 +757,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(11, 137);
+            this.label16.Location = new System.Drawing.Point(20, 136);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(105, 13);
             this.label16.TabIndex = 60;
@@ -724,7 +765,7 @@
             // 
             // maxPlayerCountTextBox
             // 
-            this.maxPlayerCountTextBox.Location = new System.Drawing.Point(232, 159);
+            this.maxPlayerCountTextBox.Location = new System.Drawing.Point(228, 189);
             this.maxPlayerCountTextBox.Name = "maxPlayerCountTextBox";
             this.maxPlayerCountTextBox.Size = new System.Drawing.Size(87, 20);
             this.maxPlayerCountTextBox.TabIndex = 62;
@@ -732,8 +773,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Enabled = false;
-            this.label14.Location = new System.Drawing.Point(229, 143);
+            this.label14.Location = new System.Drawing.Point(225, 173);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(90, 13);
             this.label14.TabIndex = 61;
@@ -742,7 +782,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(202, 24);
+            this.label15.Location = new System.Drawing.Point(208, 53);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(149, 13);
             this.label15.TabIndex = 64;
@@ -752,7 +792,7 @@
             // 
             this.startofPlayerTurnNavigableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.startofPlayerTurnNavigableComboBox.FormattingEnabled = true;
-            this.startofPlayerTurnNavigableComboBox.Location = new System.Drawing.Point(208, 40);
+            this.startofPlayerTurnNavigableComboBox.Location = new System.Drawing.Point(211, 69);
             this.startofPlayerTurnNavigableComboBox.Name = "startofPlayerTurnNavigableComboBox";
             this.startofPlayerTurnNavigableComboBox.Size = new System.Drawing.Size(120, 21);
             this.startofPlayerTurnNavigableComboBox.TabIndex = 63;
@@ -773,9 +813,9 @@
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.Cancelbutton);
+            this.tabPage1.Controls.Add(this.attributesTabCancelButton);
             this.tabPage1.Controls.Add(this.startofPlayerTurnNavigableComboBox);
-            this.tabPage1.Controls.Add(this.Savebutton);
+            this.tabPage1.Controls.Add(this.attributesTabSaveButton);
             this.tabPage1.Controls.Add(this.maxPlayerCountTextBox);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.label14);
@@ -794,8 +834,8 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox8);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.mainMenuTabCancelButton);
+            this.tabPage2.Controls.Add(this.mainMenuTabSaveButton);
             this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.groupBox7);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -809,7 +849,7 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.chooseFontImageButton);
-            this.groupBox8.Location = new System.Drawing.Point(158, 226);
+            this.groupBox8.Location = new System.Drawing.Point(206, 226);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(95, 50);
             this.groupBox8.TabIndex = 55;
@@ -826,31 +866,31 @@
             this.chooseFontImageButton.UseVisualStyleBackColor = true;
             this.chooseFontImageButton.Click += new System.EventHandler(this.chooseFontImageButton_Click);
             // 
-            // button1
+            // mainMenuTabCancelButton
             // 
-            this.button1.Location = new System.Drawing.Point(87, 290);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Cancelbutton_Click);
+            this.mainMenuTabCancelButton.Location = new System.Drawing.Point(180, 290);
+            this.mainMenuTabCancelButton.Name = "mainMenuTabCancelButton";
+            this.mainMenuTabCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.mainMenuTabCancelButton.TabIndex = 17;
+            this.mainMenuTabCancelButton.Text = "Cancel";
+            this.mainMenuTabCancelButton.UseVisualStyleBackColor = true;
+            this.mainMenuTabCancelButton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
-            // button2
+            // mainMenuTabSaveButton
             // 
-            this.button2.Location = new System.Drawing.Point(6, 290);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Savebutton_Click);
+            this.mainMenuTabSaveButton.Location = new System.Drawing.Point(100, 290);
+            this.mainMenuTabSaveButton.Name = "mainMenuTabSaveButton";
+            this.mainMenuTabSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.mainMenuTabSaveButton.TabIndex = 18;
+            this.mainMenuTabSaveButton.Text = "Save";
+            this.mainMenuTabSaveButton.UseVisualStyleBackColor = true;
+            this.mainMenuTabSaveButton.Click += new System.EventHandler(this.Savebutton_Click);
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.mainMenuImagePictureBox);
             this.groupBox6.Controls.Add(this.selectMainMenuImageButton);
-            this.groupBox6.Location = new System.Drawing.Point(6, 6);
+            this.groupBox6.Location = new System.Drawing.Point(54, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(242, 205);
             this.groupBox6.TabIndex = 13;
@@ -880,7 +920,7 @@
             // 
             this.groupBox7.Controls.Add(this.usePlayButtonSoundCheckBox);
             this.groupBox7.Controls.Add(this.useBackgroundSoundCheckBox);
-            this.groupBox7.Location = new System.Drawing.Point(6, 217);
+            this.groupBox7.Location = new System.Drawing.Point(52, 217);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(148, 69);
             this.groupBox7.TabIndex = 50;
@@ -911,8 +951,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.button4);
+            this.tabPage3.Controls.Add(this.dialogueTabCancelButton);
+            this.tabPage3.Controls.Add(this.dialogueTabSaveButton);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -922,30 +962,30 @@
             this.tabPage3.Text = "Dialogue";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // dialogueTabCancelButton
             // 
-            this.button3.Location = new System.Drawing.Point(87, 290);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 61;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Cancelbutton_Click);
+            this.dialogueTabCancelButton.Location = new System.Drawing.Point(180, 290);
+            this.dialogueTabCancelButton.Name = "dialogueTabCancelButton";
+            this.dialogueTabCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.dialogueTabCancelButton.TabIndex = 61;
+            this.dialogueTabCancelButton.Text = "Cancel";
+            this.dialogueTabCancelButton.UseVisualStyleBackColor = true;
+            this.dialogueTabCancelButton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
-            // button4
+            // dialogueTabSaveButton
             // 
-            this.button4.Location = new System.Drawing.Point(6, 290);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 62;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Savebutton_Click);
+            this.dialogueTabSaveButton.Location = new System.Drawing.Point(100, 290);
+            this.dialogueTabSaveButton.Name = "dialogueTabSaveButton";
+            this.dialogueTabSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.dialogueTabSaveButton.TabIndex = 62;
+            this.dialogueTabSaveButton.Text = "Save";
+            this.dialogueTabSaveButton.UseVisualStyleBackColor = true;
+            this.dialogueTabSaveButton.Click += new System.EventHandler(this.Savebutton_Click);
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.button5);
-            this.tabPage4.Controls.Add(this.button6);
+            this.tabPage4.Controls.Add(this.gameOverTabCancelButton);
+            this.tabPage4.Controls.Add(this.gameOverTabSaveButton);
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -955,66 +995,25 @@
             this.tabPage4.Text = "Game Over";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // gameOverTabCancelButton
             // 
-            this.button5.Location = new System.Drawing.Point(83, 290);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 34;
-            this.button5.Text = "Cancel";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Cancelbutton_Click);
+            this.gameOverTabCancelButton.Location = new System.Drawing.Point(180, 290);
+            this.gameOverTabCancelButton.Name = "gameOverTabCancelButton";
+            this.gameOverTabCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.gameOverTabCancelButton.TabIndex = 34;
+            this.gameOverTabCancelButton.Text = "Cancel";
+            this.gameOverTabCancelButton.UseVisualStyleBackColor = true;
+            this.gameOverTabCancelButton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
-            // button6
+            // gameOverTabSaveButton
             // 
-            this.button6.Location = new System.Drawing.Point(6, 290);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 35;
-            this.button6.Text = "Save";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.Savebutton_Click);
-            // 
-            // NPCXLocTextBox
-            // 
-            this.NPCXLocTextBox.Location = new System.Drawing.Point(204, 114);
-            this.NPCXLocTextBox.Name = "NPCXLocTextBox";
-            this.NPCXLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.NPCXLocTextBox.TabIndex = 72;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(182, 143);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(17, 13);
-            this.label21.TabIndex = 71;
-            this.label21.Text = "Y:";
-            // 
-            // NPCYLocTextBox
-            // 
-            this.NPCYLocTextBox.Location = new System.Drawing.Point(204, 136);
-            this.NPCYLocTextBox.Name = "NPCYLocTextBox";
-            this.NPCYLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.NPCYLocTextBox.TabIndex = 73;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(182, 117);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(17, 13);
-            this.label22.TabIndex = 70;
-            this.label22.Text = "X:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(195, 98);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(69, 13);
-            this.label23.TabIndex = 69;
-            this.label23.Text = "NPC Position";
+            this.gameOverTabSaveButton.Location = new System.Drawing.Point(100, 290);
+            this.gameOverTabSaveButton.Name = "gameOverTabSaveButton";
+            this.gameOverTabSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.gameOverTabSaveButton.TabIndex = 35;
+            this.gameOverTabSaveButton.Text = "Save";
+            this.gameOverTabSaveButton.UseVisualStyleBackColor = true;
+            this.gameOverTabSaveButton.Click += new System.EventHandler(this.Savebutton_Click);
             // 
             // EditGameSettings
             // 
@@ -1073,8 +1072,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button addRequirementButton;
-        private System.Windows.Forms.Button Savebutton;
-        private System.Windows.Forms.Button Cancelbutton;
+        private System.Windows.Forms.Button attributesTabSaveButton;
+        private System.Windows.Forms.Button attributesTabCancelButton;
         private System.Windows.Forms.ComboBox playerAttributesComboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1122,12 +1121,12 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button mainMenuTabCancelButton;
+        private System.Windows.Forms.Button mainMenuTabSaveButton;
+        private System.Windows.Forms.Button dialogueTabCancelButton;
+        private System.Windows.Forms.Button dialogueTabSaveButton;
+        private System.Windows.Forms.Button gameOverTabCancelButton;
+        private System.Windows.Forms.Button gameOverTabSaveButton;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button chooseFontImageButton;
         private System.Windows.Forms.GroupBox groupBox6;
