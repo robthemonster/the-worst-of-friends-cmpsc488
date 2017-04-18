@@ -48,6 +48,7 @@ namespace GUI_Test2
                 Game.paths = new List<String>();
                 Game.pathGroups = new List<String>();
                 Game.hubs = new List<String>();
+                Attributes.attribs = new List<Attrib>();
 
                 foreach (string i in Characters.getKeys())
                 {
