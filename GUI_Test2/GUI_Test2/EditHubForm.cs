@@ -79,6 +79,7 @@ namespace GUI_Test2
             }
             hubImagePictureBox.ImageLocation = hubImagePath;
             pathFromButtonRadio.Checked = true;
+            //navComboBox.SelectedItem =
         }
 
         private void buttonListUpButton_Click(object sender, EventArgs e)
