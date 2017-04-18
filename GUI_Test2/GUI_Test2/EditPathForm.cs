@@ -118,9 +118,16 @@ namespace GUI_Test2
             }
             else
                 useDefaultTargetNavigableCheckBox.Checked = false;
+            try
+            {
+                defaultPathImage.ImageLocation = pathImagePath;
+                defaultPathImage.Load();
 
-            defaultPathImage.Image = Image.FromFile(pathImagePath);
-
+            }
+            catch (InvalidOperationException  ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+            }
             updateListBoxes();
             updateButtonListBox();
 
