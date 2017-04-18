@@ -300,7 +300,9 @@ namespace GUI_Test2
 
 
             }
-            catch { }
+            catch(IndexOutOfRangeException ex) {
+                Console.Out.WriteLine(ex.StackTrace);
+            }
         }
 
         private void createNewDialogueButton_Click(object sender, EventArgs e)

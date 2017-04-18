@@ -30,7 +30,7 @@ namespace GUI_Test2
         public string pathImagePath = "";
         public string buttonFontPath = "";
         public int buttonFontCharSize, dialogueFontCharSize;
-        public string defaultTargetNavigable;
+        public string defaultTargetNavigable = "";
 
         public override string getButtonFont()
         {
@@ -119,7 +119,7 @@ namespace GUI_Test2
         public string hubImage;
         public string hubSound;
         public string buttonFont = "";
-        public int buttonFontCharSize;
+        public int buttonFontCharSize = -1;
 
         public override int getButtonCharSize()
         {
@@ -148,12 +148,14 @@ namespace GUI_Test2
 
         public Hub() { }
 
-        public Hub(string n, List<Button> b, string hI, string hS)
+        public Hub(string name, List<Button> buttons, string hubImage, string hubSound, string buttonFont, int buttonCharSize)
         {
-            name = n;
-            buttons = b;
-            hubImage = hI;
-            hubSound = hS;
+            this.name = name;
+            this.buttons = buttons;
+            this.hubImage = hubImage;
+            this.hubSound = hubSound;
+            this.buttonFont = buttonFont;
+            this.buttonFontCharSize = buttonCharSize;
         }
     }
 
@@ -342,8 +344,8 @@ namespace GUI_Test2
             dialogueEndSoundPath = "";
             dialoguePaneTexturePath = "";
             dialoguePaneFlashingTexturePath = "";
-            dialoguePanePosX = 300;
-            dialoguePanePosY = 300;
+            dialoguePanePosX = -850;
+            dialoguePanePosY = 200;
             maxPlayers = 1;
             mainMenu = new MainMenu("", "", "", "");
             flashingTextureXLoc=0;

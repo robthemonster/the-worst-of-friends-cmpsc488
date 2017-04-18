@@ -74,6 +74,7 @@ namespace GUI_Test2
             dialogueScrollSound = gS.dialogueScrollSoundPath;
             dialogueEndSound = gS.dialogueEndSoundPath;
             defaultFontPath = gS.defaultFontPath;
+            defaultDialoguePaneTexturePath = gS.dialoguePaneTexturePath;
             defaultDialoguePaneFlashingTexturePath = gS.dialoguePaneFlashingTexturePath;
             defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
             paneXLocTextBox.Text = gS.dialoguePanePosX.ToString() ;
@@ -273,6 +274,7 @@ namespace GUI_Test2
                 MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
             }
 
+            Game.gameSettings.defaultFontPath = defaultFontPath;
             Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
 
             this.Close();

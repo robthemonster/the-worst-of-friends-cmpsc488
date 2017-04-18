@@ -149,12 +149,16 @@ namespace GUI_Test2
         {
             if (Game.navIndex.ContainsKey(hubName))
             {
-                Game.navIndex[hubName] = new Hub(hubName, buttonList, hubImagePath, hubSoundPath);
+                string THIS_SHOULD_BE_BUTTON_FONT = "";
+                int THIS_SHOULD_BE_BUTTON_CHAR_SIZE = 30;
+                Game.navIndex[hubName] = new Hub(hubName, buttonList, hubImagePath, hubSoundPath,THIS_SHOULD_BE_BUTTON_FONT, THIS_SHOULD_BE_BUTTON_CHAR_SIZE );
             }
             else
             {
+                string THIS_SHOULD_BE_BUTTON_FONT = "";
+                int THIS_SHOULD_BE_BUTTON_CHAR_SIZE = 30;
                 Game.hubs.Add(hubName);
-                Game.navIndex.Add(hubName, new Hub(hubName, buttonList, hubImagePath, hubSoundPath));
+                Game.navIndex.Add(hubName, new Hub(hubName, buttonList, hubImagePath, hubSoundPath, THIS_SHOULD_BE_BUTTON_FONT, THIS_SHOULD_BE_BUTTON_CHAR_SIZE));
             }
             parentForm.updateListBoxes();
             Close();

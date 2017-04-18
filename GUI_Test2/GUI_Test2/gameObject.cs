@@ -125,7 +125,7 @@ namespace GUI_Test2
            
           
 
-            Game.gameSettings = new GameSettings( Game.gameSettings.gameOverRequirements, workingDir +"//fonts//regular.otf",
+       /*     Game.gameSettings = new GameSettings( Game.gameSettings.gameOverRequirements, workingDir +"//fonts//regular.otf",
                  Game.navIndex.Keys.First(), Game.navIndex.Keys.First(), Game.navIndex.Keys.First(),
                  "dialogue scroll sound", "dialogue end sound", workingDir + "//img//dialoguePane.png", "dialogue flashing texture"
                  , 1,-750, 200,0, 0, 0, 0,
@@ -134,7 +134,7 @@ namespace GUI_Test2
                  workingDir + "//music//letsgo.wav",
                  workingDir + "//fonts//arial.ttf"),
                  new List<string>(),new List<string>());
-          
+         */ 
 
 
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
@@ -158,6 +158,10 @@ namespace GUI_Test2
 
             code.AppendLine(setGameSettingsCode);
 
+            string setFontandCharSizeCode = getSetFontandCharSizeCode();
+
+            code.AppendLine(setFontandCharSizeCode);
+
             string setImageTexturesCode = getImageAndMusicSetCode();
 
             code.AppendLine(setImageTexturesCode);
@@ -169,11 +173,7 @@ namespace GUI_Test2
             string addDialogueCode = getAddDialogueCode();
 
             code.AppendLine(addDialogueCode);
-
-            string setFontandCharSizeCode = getSetFontandCharSizeCode();
-
-            code.AppendLine(setFontandCharSizeCode);
-
+            
             string addButtonsCode = getAddButtonsCode();
 
             code.AppendLine(addButtonsCode);
@@ -198,7 +198,10 @@ namespace GUI_Test2
                 {
                     case Navigable.HUB:
                     case Navigable.PATH:
-                        code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setFont(" + Game.oldPathToCodeObject[nav.getButtonFont()] + ");");
+                        string buttonFont = nav.getButtonFont();
+                        if (buttonFont == "")
+                            buttonFont = Game.gameSettings.defaultFontPath;
+                        code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setFont(" + Game.oldPathToCodeObject[buttonFont] + ");");
                         code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setFontCharSize(" + nav.getButtonCharSize() +");");
                         break;
                 }
@@ -234,6 +237,13 @@ namespace GUI_Test2
                             }
 
                             code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".addButton(sf::Vector2f(" + b.sizeX + ", " + b.sizeY + "),\"" + b.text + "\", &nav" + Game.navNameToCodeIndex[b.next] + ", " + "sf::Vector2f(" + b.posX + ", " + b.posY + "), " + b.highlight + ", " + button1Texture + ", " + button2Texture  +");");
+                        }
+                        if (nav.getNavType() == Navigable.PATH)
+                        {
+                            if (((Path)nav).defaultTargetNavigable != "")
+                            {
+                                code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setDestination((Navigable**)nav" + Game.navNameToCodeIndex[((Path)nav).defaultTargetNavigable] + ");");
+                            }
                         }
                         break;
                 }
@@ -586,11 +596,17 @@ namespace GUI_Test2
 
         private static void copyFileTo(string file, string destFile, string fileType)
         {
-            FileInfo f = new FileInfo(file);
-            if (f.Exists && !Game.oldPathToNewPath[fileType].ContainsKey(file))
+            try
             {
-                f.CopyTo(Game.directory + destFile + f.Extension, true);
-                Game.oldPathToNewPath[fileType][file] = (Game.directory + destFile + f.Extension).Replace("\\", "/");
+                FileInfo f = new FileInfo(file);
+                if (f.Exists && !Game.oldPathToNewPath[fileType].ContainsKey(file))
+                {
+                    f.CopyTo(Game.directory + destFile + f.Extension, true);
+                    Game.oldPathToNewPath[fileType][file] = (Game.directory + destFile + f.Extension).Replace("\\", "/");
+                }
+            }catch(ArgumentException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
