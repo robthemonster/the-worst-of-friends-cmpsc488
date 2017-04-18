@@ -203,8 +203,8 @@ namespace GUI_Test2
                         string buttonFont = nav.getButtonFont();
                         if (buttonFont == "")
                             buttonFont = Game.gameSettings.defaultFontPath;
-                        code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setFont(" + Game.oldPathToCodeObject[buttonFont] + ");");
-                        code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setFontCharSize(" + nav.getButtonCharSize() +");");
+                        code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setFont(" + Game.oldPathToCodeObject[buttonFont] + ");");
+                        code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setFontCharSize(" + nav.getButtonCharSize() +");");
                         break;
                 }
             }
@@ -238,13 +238,13 @@ namespace GUI_Test2
                                 }
                             }
 
-                            code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".addButton(sf::Vector2f(" + b.sizeX + ", " + b.sizeY + "),\"" + b.text + "\", &nav" + Game.navNameToCodeIndex[b.next] + ", " + "sf::Vector2f(" + b.posX + ", " + b.posY + "), " + b.highlight + ", " + button1Texture + ", " + button2Texture  +");");
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").addButton(sf::Vector2f(" + b.sizeX + ", " + b.sizeY + "),\"" + b.text + "\", nav" + Game.navNameToCodeIndex[b.next] + ", " + "sf::Vector2f(" + b.posX + ", " + b.posY + "), " + b.highlight + ", " + button1Texture + ", " + button2Texture  +");");
                         }
                         if (nav.getNavType() == Navigable.PATH)
                         {
                             if (((Path)nav).defaultTargetNavigable != "")
                             {
-                                code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setDestination((Navigable**)&nav" + Game.navNameToCodeIndex[((Path)nav).defaultTargetNavigable] + ");");
+                                code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setDestination((Navigable**)&nav" + Game.navNameToCodeIndex[((Path)nav).defaultTargetNavigable] + ");");
                             }
                         }
                         break;
@@ -260,7 +260,7 @@ namespace GUI_Test2
             {
                 if (nav.getNavType() == Navigable.PATH)
                 {
-                    code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setDialoguePaneTexture("+Game.oldPathToCodeObject[Game.gameSettings.dialoguePaneTexturePath] + ", sf::Vector2f(" + Game.gameSettings.dialoguePanePosX + ", " + Game.gameSettings.dialoguePanePosY + "));");
+                    code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setDialoguePaneTexture("+Game.oldPathToCodeObject[Game.gameSettings.dialoguePaneTexturePath] + ", sf::Vector2f(" + Game.gameSettings.dialoguePanePosX + ", " + Game.gameSettings.dialoguePanePosY + "));");
                 }
             }
             return code.ToString();
@@ -280,7 +280,7 @@ namespace GUI_Test2
                     {
                         if (p.dialogueImpactList[dialogueCtr].Count == 0)
                         {
-                            code.AppendLine("nav" + Game.navNameToCodeIndex[p.name] + ".addDialogueLine(\"" + dialogue + "\");");
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\");");
                         }
                         else
                         {
@@ -315,7 +315,7 @@ namespace GUI_Test2
                                 }
                                 code.AppendLine("impacts" + impactCtr + ".push_back(new Impact((*game).getAttributeMapPointer(), (Attributable**)" + target + ", \"" + impact.attribute + "\", Impact::" + op + ", " + impact.val + "));");
                             }
-                            code.AppendLine("nav" + Game.navNameToCodeIndex[p.name] + ".addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr +");");
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr +");");
                             impactCtr++;
                         }
                         dialogueCtr++;
@@ -332,9 +332,9 @@ namespace GUI_Test2
 
             StringBuilder code = new StringBuilder();
        
-            code.AppendLine("(*game).setStart(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
-            code.AppendLine("(*game).setStartOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
-            code.AppendLine("(*game).setEndOfRound(&nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
+            code.AppendLine("(*game).setStart(nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
+            code.AppendLine("(*game).setStartOfRound(nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
+            code.AppendLine("(*game).setEndOfRound(nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
 
             code.AppendLine("Requirements gameOver(*(*game).getAttributeMapPointer());");
             foreach (Requirement req in Game.gameSettings.gameOverRequirements)
@@ -349,7 +349,7 @@ namespace GUI_Test2
                         target = "(*game).getCurrentPlayerPointer()";
                         break;
                     case Requirement.HUB:
-                        target = "nav" + navNameToCodeIndex[req.hub];
+                        target = "(*nav" + navNameToCodeIndex[req.hub] + ")";
                         break;
                 }
                 string op = "Requirements::";
@@ -397,10 +397,10 @@ namespace GUI_Test2
                 {
                     case Navigable.HUB:
                     case Navigable.PATH:
-                        code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setImageTexture(" + Game.oldPathToCodeObject[nav.getImagePath()] + ");");
+                        code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setImageTexture(" + Game.oldPathToCodeObject[nav.getImagePath()] + ");");
                         if (nav.getSoundPath() != "")
                         {
-                            code.AppendLine("nav" + Game.navNameToCodeIndex[nav.getName()] + ".setMusic(music, " + Game.oldPathToNewPath[nav.getSoundPath()]);
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setMusic(music, " + Game.oldPathToNewPath[nav.getSoundPath()]);
                         }
                         
                         break;
@@ -418,13 +418,13 @@ namespace GUI_Test2
                 switch (nav.getNavType())
                 {
                     case Navigable.PATH:
-                        code.AppendLine("Path nav" + ctr + "(game);");
+                        code.AppendLine("Path * nav" + ctr + " = new Path(game);");
                         break;
                     case Navigable.HUB:
-                        code.AppendLine("Hub nav" + ctr + "(game);");
+                        code.AppendLine("Hub * nav" + ctr + "= new Hub(game);");
                         break;
                     case Navigable.PATHGROUP:
-                        code.AppendLine("PathGroup nav" + ctr + ";");
+                        code.AppendLine("PathGroup * nav" + ctr + "= new PathGroup;");
                         break;
                 }
                 Game.navNameToCodeIndex[nav.getName()] = ctr;
@@ -448,7 +448,7 @@ namespace GUI_Test2
                 if (nav.getNavType() == Navigable.PATHGROUP)
                 {
                     PathGroup pg = (PathGroup)nav; 
-                    code.AppendLine("nav" + Game.navNameToCodeIndex[pg.name] + ".setTiers(" + pg.tiersofEachPath.Max() + ");");
+                    code.AppendLine("(*nav" + Game.navNameToCodeIndex[pg.name] + ").setTiers(" + pg.tiersofEachPath.Max() + ");");
                     int pathsInPathGroupCtr = 0;
                     foreach (string p in pg.pathsInGroup)
                         {
@@ -483,15 +483,15 @@ namespace GUI_Test2
                                 if (r.scope == Requirement.PLAYER)
                                     code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
                                 if (r.scope == Requirement.HUB)
-                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**) &nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
+                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**) nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
 
                             }
-                            code.AppendLine("nav" + navNameToCodeIndex[pg.name] + ".addNavigable(" + pg.tiersofEachPath[pathsInPathGroupCtr] + ", &nav" + navNameToCodeIndex[pg.pathsInGroup[pathsInPathGroupCtr]] + ", " + pg.weightsofEachPath[pathsInPathGroupCtr] + ", " + "&req" + reqCtr + ");");
+                            code.AppendLine("(*nav" + navNameToCodeIndex[pg.name] + ").addNavigable(" + pg.tiersofEachPath[pathsInPathGroupCtr] + ", nav" + navNameToCodeIndex[pg.pathsInGroup[pathsInPathGroupCtr]] + ", " + pg.weightsofEachPath[pathsInPathGroupCtr] + ", " + "&req" + reqCtr + ");");
                             reqCtr++;
                         }
                         else
                         {
-                            code.AppendLine("nav" + navNameToCodeIndex[pg.name] + ".addNavigable(" + pg.tiersofEachPath[pathsInPathGroupCtr] + ", &nav" + navNameToCodeIndex[pg.pathsInGroup[pathsInPathGroupCtr]] + ", " + pg.weightsofEachPath[pathsInPathGroupCtr] + ", &noReq);");
+                            code.AppendLine("(*nav" + navNameToCodeIndex[pg.name] + ").addNavigable(" + pg.tiersofEachPath[pathsInPathGroupCtr] + ", nav" + navNameToCodeIndex[pg.pathsInGroup[pathsInPathGroupCtr]] + ", " + pg.weightsofEachPath[pathsInPathGroupCtr] + ", &noReq);");
                         }
 
                         pathsInPathGroupCtr++;
@@ -648,7 +648,7 @@ namespace GUI_Test2
 
             
             
-            cmd.Arguments = @"/c cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
+            cmd.Arguments = @"/k cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
                             
             compiler = Process.Start(cmd);
             
