@@ -49,6 +49,7 @@
             this.useOnceCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pathWeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pathRequirementsListBox = new System.Windows.Forms.ListBox();
             this.removeConditionButton = new System.Windows.Forms.Button();
@@ -66,14 +67,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pathWeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pathWeightNumericUpDown)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pathWeightNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // removePathsButton
@@ -287,6 +287,28 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 45);
             this.tableLayoutPanel1.TabIndex = 26;
             // 
+            // pathWeightNumericUpDown
+            // 
+            this.pathWeightNumericUpDown.Location = new System.Drawing.Point(3, 21);
+            this.pathWeightNumericUpDown.Maximum = new decimal(new int[] {
+            2000000,
+            0,
+            0,
+            0});
+            this.pathWeightNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.pathWeightNumericUpDown.Name = "pathWeightNumericUpDown";
+            this.pathWeightNumericUpDown.Size = new System.Drawing.Size(66, 20);
+            this.pathWeightNumericUpDown.TabIndex = 21;
+            this.pathWeightNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.pathRequirementsListBox);
@@ -414,7 +436,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -431,7 +453,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(162, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(161, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -444,14 +466,14 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(86, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(85, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(95, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(94, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(61, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -459,7 +481,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(95, 0);
+            this.label5.Location = new System.Drawing.Point(94, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 34;
@@ -477,23 +499,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(162, 0);
+            this.label8.Location = new System.Drawing.Point(161, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
             this.label8.Text = "Value";
-            // 
-            // pathWeightNumericUpDown
-            // 
-            this.pathWeightNumericUpDown.Location = new System.Drawing.Point(3, 21);
-            this.pathWeightNumericUpDown.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.pathWeightNumericUpDown.Name = "pathWeightNumericUpDown";
-            this.pathWeightNumericUpDown.Size = new System.Drawing.Size(66, 20);
-            this.pathWeightNumericUpDown.TabIndex = 21;
             // 
             // EditPathGroupForm
             // 
@@ -521,6 +531,7 @@
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pathWeightNumericUpDown)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -529,7 +540,6 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pathWeightNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
