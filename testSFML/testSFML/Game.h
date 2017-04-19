@@ -46,6 +46,7 @@ private:
 	void setEndOfRound(Navigable * endOfRound);
 	void setGameOverRequirements(Requirements * req);
 	void addVisiblePlayerAttribute(std::string key);
+	void addVisibleGlobalAttribute(std::string key);
 	void addGlobalAttribute(std::string key, int defaultValue);
 	void setEndingTiers(int tiers);
 	void addEnding(int tier, Path * end, Requirements * req);

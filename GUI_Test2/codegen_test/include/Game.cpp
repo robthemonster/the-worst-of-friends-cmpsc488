@@ -115,6 +115,11 @@ void Game::addVisiblePlayerAttribute(std::string key)
 	(*this->interfacePointer).addVisiblePlayerAttribute(key);
 }
 
+void Game::addVisibleGlobalAttribute(std::string key)
+{
+	(*this->interfacePointer).addVisibleGlobalAttributes(key);
+}
+
 void Game::addGlobalAttribute(std::string key, int defaultValue)
 {
 	(*this->attributeMap).addAttribute((Attributable*)this, key, defaultValue);
