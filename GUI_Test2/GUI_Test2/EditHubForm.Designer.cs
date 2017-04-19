@@ -42,6 +42,10 @@
             this.useMusic = new System.Windows.Forms.CheckBox();
             this.chooseHubImageButton = new System.Windows.Forms.Button();
             this.addButtonBox = new System.Windows.Forms.GroupBox();
+            this.buttonYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.buttonXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.buttonHeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.buttonWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.targetNavigableBox = new System.Windows.Forms.GroupBox();
             this.hubFromButtonRadio = new System.Windows.Forms.RadioButton();
             this.navComboBox = new System.Windows.Forms.ComboBox();
@@ -63,23 +67,19 @@
             this.useButton1Image = new System.Windows.Forms.CheckBox();
             this.button1PictureBox = new System.Windows.Forms.PictureBox();
             this.buttonImageGroupBox = new System.Windows.Forms.GroupBox();
-            this.buttonWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.buttonHeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.buttonXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.buttonYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
             this.musicBox.SuspendLayout();
             this.addButtonBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonYLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonXLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).BeginInit();
             this.targetNavigableBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             this.buttonImageGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonXLocNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonYLocNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonListDownButton
@@ -235,6 +235,104 @@
             this.addButtonBox.TabIndex = 46;
             this.addButtonBox.TabStop = false;
             this.addButtonBox.Text = "Add Button";
+            // 
+            // buttonYLocNumericUpDown
+            // 
+            this.buttonYLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.buttonYLocNumericUpDown.Location = new System.Drawing.Point(214, 176);
+            this.buttonYLocNumericUpDown.Maximum = new decimal(new int[] {
+            540,
+            0,
+            0,
+            0});
+            this.buttonYLocNumericUpDown.Minimum = new decimal(new int[] {
+            540,
+            0,
+            0,
+            -2147483648});
+            this.buttonYLocNumericUpDown.Name = "buttonYLocNumericUpDown";
+            this.buttonYLocNumericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.buttonYLocNumericUpDown.TabIndex = 61;
+            // 
+            // buttonXLocNumericUpDown
+            // 
+            this.buttonXLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.buttonXLocNumericUpDown.Location = new System.Drawing.Point(214, 154);
+            this.buttonXLocNumericUpDown.Maximum = new decimal(new int[] {
+            960,
+            0,
+            0,
+            0});
+            this.buttonXLocNumericUpDown.Minimum = new decimal(new int[] {
+            959,
+            0,
+            0,
+            -2147483648});
+            this.buttonXLocNumericUpDown.Name = "buttonXLocNumericUpDown";
+            this.buttonXLocNumericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.buttonXLocNumericUpDown.TabIndex = 60;
+            // 
+            // buttonHeightNumericUpDown
+            // 
+            this.buttonHeightNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.buttonHeightNumericUpDown.Location = new System.Drawing.Point(76, 181);
+            this.buttonHeightNumericUpDown.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.buttonHeightNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.buttonHeightNumericUpDown.Name = "buttonHeightNumericUpDown";
+            this.buttonHeightNumericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.buttonHeightNumericUpDown.TabIndex = 59;
+            this.buttonHeightNumericUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // buttonWidthNumericUpDown
+            // 
+            this.buttonWidthNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.buttonWidthNumericUpDown.Location = new System.Drawing.Point(76, 159);
+            this.buttonWidthNumericUpDown.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.buttonWidthNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.buttonWidthNumericUpDown.Name = "buttonWidthNumericUpDown";
+            this.buttonWidthNumericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.buttonWidthNumericUpDown.TabIndex = 58;
+            this.buttonWidthNumericUpDown.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             // 
             // targetNavigableBox
             // 
@@ -454,94 +552,6 @@
             this.buttonImageGroupBox.TabStop = false;
             this.buttonImageGroupBox.Text = "Button Images";
             // 
-            // buttonWidthNumericUpDown
-            // 
-            this.buttonWidthNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.buttonWidthNumericUpDown.Location = new System.Drawing.Point(76, 159);
-            this.buttonWidthNumericUpDown.Maximum = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            this.buttonWidthNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.buttonWidthNumericUpDown.Name = "buttonWidthNumericUpDown";
-            this.buttonWidthNumericUpDown.Size = new System.Drawing.Size(48, 20);
-            this.buttonWidthNumericUpDown.TabIndex = 58;
-            this.buttonWidthNumericUpDown.Value = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            // 
-            // buttonHeightNumericUpDown
-            // 
-            this.buttonHeightNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.buttonHeightNumericUpDown.Location = new System.Drawing.Point(76, 181);
-            this.buttonHeightNumericUpDown.Maximum = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            this.buttonHeightNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.buttonHeightNumericUpDown.Name = "buttonHeightNumericUpDown";
-            this.buttonHeightNumericUpDown.Size = new System.Drawing.Size(48, 20);
-            this.buttonHeightNumericUpDown.TabIndex = 59;
-            this.buttonHeightNumericUpDown.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // buttonXLocNumericUpDown
-            // 
-            this.buttonXLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.buttonXLocNumericUpDown.Location = new System.Drawing.Point(214, 154);
-            this.buttonXLocNumericUpDown.Maximum = new decimal(new int[] {
-            960,
-            0,
-            0,
-            0});
-            this.buttonXLocNumericUpDown.Name = "buttonXLocNumericUpDown";
-            this.buttonXLocNumericUpDown.Size = new System.Drawing.Size(48, 20);
-            this.buttonXLocNumericUpDown.TabIndex = 60;
-            // 
-            // buttonYLocNumericUpDown
-            // 
-            this.buttonYLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.buttonYLocNumericUpDown.Location = new System.Drawing.Point(214, 176);
-            this.buttonYLocNumericUpDown.Maximum = new decimal(new int[] {
-            540,
-            0,
-            0,
-            0});
-            this.buttonYLocNumericUpDown.Name = "buttonYLocNumericUpDown";
-            this.buttonYLocNumericUpDown.Size = new System.Drawing.Size(48, 20);
-            this.buttonYLocNumericUpDown.TabIndex = 61;
-            // 
             // EditHubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -570,16 +580,16 @@
             this.musicBox.PerformLayout();
             this.addButtonBox.ResumeLayout(false);
             this.addButtonBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonYLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonXLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).EndInit();
             this.targetNavigableBox.ResumeLayout(false);
             this.targetNavigableBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).EndInit();
             this.buttonImageGroupBox.ResumeLayout(false);
             this.buttonImageGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonXLocNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonYLocNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }

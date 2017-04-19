@@ -84,6 +84,8 @@
             this.buttonFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.buttonHeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.buttonWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
@@ -97,8 +99,6 @@
             this.createButtonButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.useButtonLocationDefaults = new System.Windows.Forms.CheckBox();
-            this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
-            this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.buttonTextTextBox = new System.Windows.Forms.TextBox();
@@ -114,11 +114,11 @@
             this.buttonListUpButton = new System.Windows.Forms.Button();
             this.cancelButtonTab3 = new System.Windows.Forms.Button();
             this.saveButtonTab3 = new System.Windows.Forms.Button();
+            this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
+            this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dialogueFontSizeNumeric)).BeginInit();
@@ -136,6 +136,8 @@
             this.defaultTargetNavigableGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonFontSizeNumeric)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -143,8 +145,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -808,6 +808,50 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Button Properties";
             // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Location = new System.Drawing.Point(192, 154);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            540,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            539,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
+            this.numericUpDown2.TabIndex = 23;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(192, 132);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            960,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            959,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(51, 20);
+            this.numericUpDown1.TabIndex = 22;
+            // 
             // buttonHeightNumericUpDown
             // 
             this.buttonHeightNumericUpDown.Increment = new decimal(new int[] {
@@ -983,22 +1027,6 @@
             this.useButtonLocationDefaults.UseVisualStyleBackColor = true;
             this.useButtonLocationDefaults.CheckedChanged += new System.EventHandler(this.useButtonLocationDefaults_CheckedChanged);
             // 
-            // buttonXLocTextBox
-            // 
-            this.buttonXLocTextBox.Enabled = false;
-            this.buttonXLocTextBox.Location = new System.Drawing.Point(457, 99);
-            this.buttonXLocTextBox.Name = "buttonXLocTextBox";
-            this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonXLocTextBox.TabIndex = 10;
-            // 
-            // buttonYLocTextBox
-            // 
-            this.buttonYLocTextBox.Enabled = false;
-            this.buttonYLocTextBox.Location = new System.Drawing.Point(457, 121);
-            this.buttonYLocTextBox.Name = "buttonYLocTextBox";
-            this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonYLocTextBox.TabIndex = 11;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -1155,6 +1183,22 @@
             this.saveButtonTab3.UseVisualStyleBackColor = true;
             this.saveButtonTab3.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // buttonXLocTextBox
+            // 
+            this.buttonXLocTextBox.Enabled = false;
+            this.buttonXLocTextBox.Location = new System.Drawing.Point(457, 99);
+            this.buttonXLocTextBox.Name = "buttonXLocTextBox";
+            this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
+            this.buttonXLocTextBox.TabIndex = 10;
+            // 
+            // buttonYLocTextBox
+            // 
+            this.buttonYLocTextBox.Enabled = false;
+            this.buttonYLocTextBox.Location = new System.Drawing.Point(457, 121);
+            this.buttonYLocTextBox.Name = "buttonYLocTextBox";
+            this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
+            this.buttonYLocTextBox.TabIndex = 11;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
@@ -1187,40 +1231,6 @@
             this.buttonListBox.Size = new System.Drawing.Size(91, 134);
             this.buttonListBox.TabIndex = 0;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Location = new System.Drawing.Point(192, 132);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            960,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 20);
-            this.numericUpDown1.TabIndex = 22;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Location = new System.Drawing.Point(192, 154);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            540,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
-            this.numericUpDown2.TabIndex = 23;
             // 
             // EditPathForm
             // 
@@ -1261,6 +1271,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonFontSizeNumeric)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -1271,8 +1283,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
