@@ -360,7 +360,7 @@ namespace GUI_Test2
                                 switch (impact.scope)
                                 {
                                     case Impact.GLOBAL:
-                                        target = "game";
+                                        target = "&game";
                                         break;
                                     case Impact.HUB:
                                         target = "&nav" + Game.navNameToCodeIndex[impact.hub];
