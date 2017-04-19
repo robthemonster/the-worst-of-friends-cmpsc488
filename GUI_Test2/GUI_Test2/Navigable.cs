@@ -287,6 +287,14 @@ namespace GUI_Test2
             this.comp = comp;
             this.value = value;
         }
+        public Requirement(Requirement r)
+        {
+            this.scope = r.scope;
+            this.hub = r.hub;
+            this.name = r.name;
+            this.comp = r.comp;
+            this.value = r.value;
+        }
     }
 
     [Serializable]

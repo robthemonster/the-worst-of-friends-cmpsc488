@@ -48,10 +48,31 @@ namespace GUI_Test2
             name = pg.name;
             parentForm = par;
             //pathPreReqs = pg.pathPreReqs;
-            reqsofEachPath = pg.pathRequirements;
-            pathsInGroup = pg.pathsInGroup;
-            weightofEachPath = pg.weightsofEachPath;
-            tierofEachPath = pg.tiersofEachPath;
+            reqsofEachPath = new List<List<Requirement>>();
+            foreach(List<Requirement> rl in pg.pathRequirements)
+            {
+                List<Requirement>rk = new List<Requirement>();
+                foreach(Requirement r in rl)
+                {
+                    rk.Add(r);
+                }
+                reqsofEachPath.Add(rk);
+            }
+            pathsInGroup = new List<string>();
+            foreach(string s in pg.pathsInGroup)
+            {
+                pathsInGroup.Add(s);
+            }
+            weightofEachPath = new List<int>();
+            foreach (int i in pg.weightsofEachPath)
+            {
+                weightofEachPath.Add(i);
+            }
+            tierofEachPath = new List<int>();
+            foreach (int i in pg.tiersofEachPath)
+            {
+                tierofEachPath.Add(i);
+            }
             useOnceList = pg.useOnce;
         }
 
