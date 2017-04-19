@@ -22,7 +22,6 @@ namespace GUI_Test2
         private string buttonImagePath2;
         private string hubImagePath;
         private string hubSoundPath;
-        private bool buttonLoading=false;
         private int buttonImageState = 0;
         private bool musicSelected = false;
         private bool musicLoading = false;
@@ -49,7 +48,11 @@ namespace GUI_Test2
             this.parentForm = par;
             this.hubName = that.name;
             this.hubImagePath = that.hubImage;
-            this.buttonList = new List<Button>(that.buttons);
+            this.buttonList = new List<Button>();
+            foreach(Button b in that.buttons)
+            {
+                buttonList.Add(new Button(b));
+            }
             buttonCount = buttonList.Count;
             buttonNameList = new List<string>();
             for (int i = 1; i <= buttonCount; i++)
@@ -447,7 +450,6 @@ namespace GUI_Test2
             //Load the selected button into the editor
             if (buttonListBox.SelectedIndex != -1)
             {
-                buttonLoading = true;
                 //Text
                 buttonTextTextBox.Text = buttonList[buttonListBox.SelectedIndex].text;
 
@@ -517,7 +519,6 @@ namespace GUI_Test2
                 buttonImageState = b.highlight;
 
                 //Music
-                buttonLoading = false;
 
                 //Target Navigable
                 if (Game.paths.Contains(b.next))

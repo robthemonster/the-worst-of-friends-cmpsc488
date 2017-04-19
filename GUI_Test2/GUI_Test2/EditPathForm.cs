@@ -13,13 +13,15 @@ namespace GUI_Test2
     public partial class EditPathForm : Form
     {
         private List <String> dialogueEntryList;
+        private List<List<Impact>> dialogueImpactList;
+        private List<Dialogue> dialogues;
+
         private List <Button> buttonList;
         private ProjectHomeForm parentForm;
         private String name;
         private String[] ops;
         private int scope;
         private string currHub;
-        private List<List<Impact>> dialogueImpactList;
         private List<string> buttonNameList;
         private int buttonCount;
         private int navType;
@@ -28,7 +30,6 @@ namespace GUI_Test2
         private string buttonImagePath2;
         private string pathSoundPath;
         private string pathImagePath;
-        private bool buttonLoading = false;
         private int buttonImageState = 0;
         private bool musicSelected = false;
         private bool musicLoading = false;
@@ -41,6 +42,7 @@ namespace GUI_Test2
            
             parentForm = par;
             name = n;
+            dialogues = new List<Dialogue>();
             this.Text = "Edit Path: "+name;
             dialogueEntryList = new List<String>();
             buttonList = new List<Button>();
@@ -62,13 +64,24 @@ namespace GUI_Test2
         {
             InitializeComponent();
             parentForm = par;
+            
             name = p.name;
             this.Text = "Edit Path: " + name;
-            dialogueEntryList = new List<string>(p.dialogueContents);
-            buttonList = new List<Button>(p.buttons);
-            dialogueImpactList = new List<List<Impact>>(p.dialogueImpactList);
-            buttonCount = buttonList.Count;
+            dialogues = new List<Dialogue>();
+            foreach(Dialogue d in p.dialogues)
+            {
+                dialogues.Add(new Dialogue(d));
+            }
+            dialogueEntryList = p.getDialogueContents();
+            buttonList = new List<Button>();
+            foreach(Button b in p.buttons)
+            {
+                buttonList.Add(new Button(b));
+            }
+            dialogueImpactList = new List<List<Impact>>();
+            dialogueImpactList = p.getDialogueImpacts();
             buttonNameList = new List<string>();
+            buttonCount = buttonList.Count;
             for (int i = 1; i <= buttonCount; i++)
             {
                 buttonNameList.Add("Button " + i);
@@ -83,9 +96,7 @@ namespace GUI_Test2
             buttonFontSizeNumeric.Value = p.buttonFontCharSize;
 
             defaultTargetNavigable = p.defaultTargetNavigable;
-
-            //updateListBoxes();
-            //updateButtonListBox();
+            
         }
             
 
@@ -199,6 +210,8 @@ namespace GUI_Test2
 
             String temp;
             List<Impact> tempI;
+            Dialogue tempD;
+            
             if(to>=0 && to< dialogueEntryList.Count)
             {
                 temp= dialogueEntryList[to];
@@ -209,8 +222,9 @@ namespace GUI_Test2
                 dialogueImpactList[to] = dialogueImpactList[from];
                 dialogueImpactList[from] = tempI;
 
-
-
+                tempD = dialogues[to];
+                dialogues[to] = dialogues[from];
+                dialogues[from] = tempD;
             }
          }
 
@@ -298,6 +312,7 @@ namespace GUI_Test2
             {
                 dialogueEntryList.RemoveAt(index);
                 dialogueImpactList.RemoveAt(index);
+                dialogues.RemoveAt(index);
                 if (index == dialogueEntryList.Count)
                     index = index - 1;
                 dialogueList.DataSource = null;
@@ -321,6 +336,9 @@ namespace GUI_Test2
             {
                 dialogueEntryList.Add(dialogueTextBox.Text);
                 dialogueImpactList.Add(new List<Impact>());
+                dialogues.Add(new Dialogue());
+                dialogues[dialogues.Count - 1].content = dialogueTextBox.Text;
+                MessageBox.Show(dialogues.Count - 1 + "");
                 dialogueTextBox.Text = "";
                 updateListBoxes();
 
@@ -350,8 +368,10 @@ namespace GUI_Test2
                 if (dialogueImpactList.Count> pathListBoxTab2.SelectedIndex && dialogueImpactList[pathListBoxTab2.SelectedIndex].Contains(i))
                 {
                     dialogueImpactList[pathListBoxTab2.SelectedIndex].Remove(i);
+                    dialogues[pathListBoxTab2.SelectedIndex].impacts.Remove(i);
                 }
                 dialogueImpactList[pathListBoxTab2.SelectedIndex].Add(i);
+                dialogues[pathListBoxTab2.SelectedIndex].impacts.Add(i);
                 updateImpactList();
                 
             }
@@ -371,12 +391,12 @@ namespace GUI_Test2
 
             if (Game.navIndex.ContainsKey(name))
             {
-                Game.navIndex[name] = new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable);
+                Game.navIndex[name] = new Path(name, buttonList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable,dialogues);
             }
             else
             {
                 Game.paths.Add(name);
-                Game.navIndex.Add(name, new Path(name, dialogueEntryList, buttonList, dialogueImpactList, pathImagePath,pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable));
+                Game.navIndex.Add(name, new Path(name, buttonList,  pathImagePath,pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable, dialogues));
             }
             parentForm.updateListBoxes();
             Close();
@@ -806,7 +826,6 @@ namespace GUI_Test2
         {
             if (buttonListBox.SelectedIndex != -1)
             {
-                buttonLoading = true;
                 //Text
                 buttonTextTextBox.Text = buttonList[buttonListBox.SelectedIndex].text;
 
@@ -878,7 +897,6 @@ namespace GUI_Test2
 
                
                 }
-                buttonLoading = false;
 
                 
 
@@ -1082,6 +1100,21 @@ namespace GUI_Test2
                 defaultNavType = 2;
                 setDefaultScope();
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)

@@ -58,9 +58,11 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view)
 				switch (evnt.mouseButton.button) {
 				case sf::Mouse::Left:
 					if ((*this->playGame).isHighlighted()) {
-						(*music).stop();
-						playGameSound.play();
-							return;
+						if (music != NULL)
+							(*music).stop();
+						if (playGameSoundFile != "")
+							playGameSound.play();
+						return;
 					}
 					else if ((*this->quit).isHighlighted())
 						window.close();

@@ -344,16 +344,16 @@ namespace GUI_Test2
                 {
                     int dialogueCtr = 0;
                     Path p = (Path)nav;
-                    foreach (string dialogue in p.dialogueContents)
+                    foreach (string dialogue in p.getDialogueContents())
                     {
-                        if (p.dialogueImpactList[dialogueCtr].Count == 0)
+                        if (p.getDialogueImpacts()[dialogueCtr].Count == 0)
                         {
                             code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\");");
                         }
                         else
                         {
                             code.AppendLine("std::vector<Impact *> impacts" + impactCtr + " = std::vector<Impact *>();");
-                            foreach (Impact impact in p.dialogueImpactList[dialogueCtr])
+                            foreach (Impact impact in p.getDialogueImpacts()[dialogueCtr])
                             {
                                 string target = "";
                                 string op = "Impact::";
