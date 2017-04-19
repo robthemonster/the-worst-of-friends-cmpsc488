@@ -112,7 +112,7 @@ namespace GUI_Test2
             navList.AddRange(Game.pathGroups);
             navList.AddRange(Game.paths);
             startofPlayerTurnNavigableComboBox.DataSource = navList;
-
+            startofPlayerTurnNavigableComboBox.SelectedValue = SOTNav;
             updateVisPlayerList();
             visiblePlayerAttributesListBox.SelectedIndex = -1;
 
@@ -664,6 +664,10 @@ namespace GUI_Test2
             {
             }
         }
-        
+
+        private void startofPlayerTurnNavigableComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

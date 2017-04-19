@@ -31,12 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPathForm));
             this.pathDialogueTab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.characterComboBox = new System.Windows.Forms.ComboBox();
-            this.characterImageComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.DeleteSelectedDialogueButton = new System.Windows.Forms.Button();
             this.dialogueFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
             this.editDialogueButton = new System.Windows.Forms.Button();
@@ -56,6 +50,12 @@
             this.defaultPathImage = new System.Windows.Forms.PictureBox();
             this.selectDefaultPathImageButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.characterComboBox = new System.Windows.Forms.ComboBox();
+            this.characterImageComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ScopeGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -88,8 +88,8 @@
             this.buttonFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.buttonYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.buttonXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.buttonHeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.buttonWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
@@ -118,18 +118,16 @@
             this.buttonListUpButton = new System.Windows.Forms.Button();
             this.cancelButtonTab3 = new System.Windows.Forms.Button();
             this.saveButtonTab3 = new System.Windows.Forms.Button();
-            this.buttonXLocTextBox = new System.Windows.Forms.TextBox();
-            this.buttonYLocTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dialogueFontSizeNumeric)).BeginInit();
             this.musicBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.ScopeGroup.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -139,8 +137,8 @@
             this.defaultTargetNavigableGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonFontSizeNumeric)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonYLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonXLocNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -188,69 +186,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.checkBox1);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.characterComboBox);
-            this.groupBox5.Controls.Add(this.characterImageComboBox);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Location = new System.Drawing.Point(11, 225);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(301, 112);
-            this.groupBox5.TabIndex = 54;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Character on Dialogue (Optional)";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 36);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(94, 17);
-            this.checkBox1.TabIndex = 58;
-            this.checkBox1.Text = "Use Character";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(101, 65);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(88, 13);
-            this.label17.TabIndex = 57;
-            this.label17.Text = "Character Image:";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
-            // 
-            // characterComboBox
-            // 
-            this.characterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.characterComboBox.FormattingEnabled = true;
-            this.characterComboBox.Location = new System.Drawing.Point(104, 36);
-            this.characterComboBox.Name = "characterComboBox";
-            this.characterComboBox.Size = new System.Drawing.Size(188, 21);
-            this.characterComboBox.TabIndex = 54;
-            // 
-            // characterImageComboBox
-            // 
-            this.characterImageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.characterImageComboBox.FormattingEnabled = true;
-            this.characterImageComboBox.Location = new System.Drawing.Point(104, 81);
-            this.characterImageComboBox.Name = "characterImageComboBox";
-            this.characterImageComboBox.Size = new System.Drawing.Size(188, 21);
-            this.characterImageComboBox.TabIndex = 55;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(101, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "Character:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // DeleteSelectedDialogueButton
             // 
@@ -456,6 +391,69 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impacts";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.checkBox1);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.characterComboBox);
+            this.groupBox5.Controls.Add(this.characterImageComboBox);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Location = new System.Drawing.Point(11, 225);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(301, 112);
+            this.groupBox5.TabIndex = 54;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Character on Dialogue (Optional)";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 36);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(94, 17);
+            this.checkBox1.TabIndex = 58;
+            this.checkBox1.Text = "Use Character";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(101, 65);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 13);
+            this.label17.TabIndex = 57;
+            this.label17.Text = "Character Image:";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
+            // 
+            // characterComboBox
+            // 
+            this.characterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.characterComboBox.FormattingEnabled = true;
+            this.characterComboBox.Location = new System.Drawing.Point(104, 36);
+            this.characterComboBox.Name = "characterComboBox";
+            this.characterComboBox.Size = new System.Drawing.Size(188, 21);
+            this.characterComboBox.TabIndex = 54;
+            // 
+            // characterImageComboBox
+            // 
+            this.characterImageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.characterImageComboBox.FormattingEnabled = true;
+            this.characterImageComboBox.Location = new System.Drawing.Point(104, 81);
+            this.characterImageComboBox.Name = "characterImageComboBox";
+            this.characterImageComboBox.Size = new System.Drawing.Size(188, 21);
+            this.characterImageComboBox.TabIndex = 55;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(101, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Character:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox4
             // 
@@ -713,8 +711,6 @@
             this.Buttons.Controls.Add(this.buttonListUpButton);
             this.Buttons.Controls.Add(this.cancelButtonTab3);
             this.Buttons.Controls.Add(this.saveButtonTab3);
-            this.Buttons.Controls.Add(this.buttonXLocTextBox);
-            this.Buttons.Controls.Add(this.buttonYLocTextBox);
             this.Buttons.Controls.Add(this.tableLayoutPanel4);
             this.Buttons.Location = new System.Drawing.Point(4, 22);
             this.Buttons.Name = "Buttons";
@@ -820,8 +816,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.numericUpDown2);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Controls.Add(this.buttonYLocNumericUpDown);
+            this.groupBox3.Controls.Add(this.buttonXLocNumericUpDown);
             this.groupBox3.Controls.Add(this.buttonHeightNumericUpDown);
             this.groupBox3.Controls.Add(this.buttonWidthNumericUpDown);
             this.groupBox3.Controls.Add(this.label14);
@@ -843,49 +839,49 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Button Properties";
             // 
-            // numericUpDown2
+            // buttonYLocNumericUpDown
             // 
-            this.numericUpDown2.Increment = new decimal(new int[] {
+            this.buttonYLocNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(192, 154);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.buttonYLocNumericUpDown.Location = new System.Drawing.Point(192, 154);
+            this.buttonYLocNumericUpDown.Maximum = new decimal(new int[] {
             540,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.buttonYLocNumericUpDown.Minimum = new decimal(new int[] {
             539,
             0,
             0,
             -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
-            this.numericUpDown2.TabIndex = 23;
+            this.buttonYLocNumericUpDown.Name = "buttonYLocNumericUpDown";
+            this.buttonYLocNumericUpDown.Size = new System.Drawing.Size(51, 20);
+            this.buttonYLocNumericUpDown.TabIndex = 23;
             // 
-            // numericUpDown1
+            // buttonXLocNumericUpDown
             // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.buttonXLocNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(192, 132);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.buttonXLocNumericUpDown.Location = new System.Drawing.Point(192, 132);
+            this.buttonXLocNumericUpDown.Maximum = new decimal(new int[] {
             960,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.buttonXLocNumericUpDown.Minimum = new decimal(new int[] {
             959,
             0,
             0,
             -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 20);
-            this.numericUpDown1.TabIndex = 22;
+            this.buttonXLocNumericUpDown.Name = "buttonXLocNumericUpDown";
+            this.buttonXLocNumericUpDown.Size = new System.Drawing.Size(51, 20);
+            this.buttonXLocNumericUpDown.TabIndex = 22;
             // 
             // buttonHeightNumericUpDown
             // 
@@ -1218,22 +1214,6 @@
             this.saveButtonTab3.UseVisualStyleBackColor = true;
             this.saveButtonTab3.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // buttonXLocTextBox
-            // 
-            this.buttonXLocTextBox.Enabled = false;
-            this.buttonXLocTextBox.Location = new System.Drawing.Point(457, 99);
-            this.buttonXLocTextBox.Name = "buttonXLocTextBox";
-            this.buttonXLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonXLocTextBox.TabIndex = 10;
-            // 
-            // buttonYLocTextBox
-            // 
-            this.buttonYLocTextBox.Enabled = false;
-            this.buttonYLocTextBox.Location = new System.Drawing.Point(457, 121);
-            this.buttonYLocTextBox.Name = "buttonYLocTextBox";
-            this.buttonYLocTextBox.Size = new System.Drawing.Size(50, 20);
-            this.buttonYLocTextBox.TabIndex = 11;
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
@@ -1283,13 +1263,13 @@
             this.pathDialogueTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dialogueFontSizeNumeric)).EndInit();
             this.musicBox.ResumeLayout(false);
             this.musicBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ScopeGroup.ResumeLayout(false);
@@ -1305,8 +1285,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonFontSizeNumeric)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonYLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonXLocNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonHeightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonWidthNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -1356,8 +1336,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox buttonYLocTextBox;
-        private System.Windows.Forms.TextBox buttonXLocTextBox;
         private System.Windows.Forms.CheckBox useButtonLocationDefaults;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -1409,8 +1387,8 @@
         private System.Windows.Forms.RadioButton defaultTargetPathRadioButton;
         private System.Windows.Forms.NumericUpDown buttonHeightNumericUpDown;
         private System.Windows.Forms.NumericUpDown buttonWidthNumericUpDown;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown buttonYLocNumericUpDown;
+        private System.Windows.Forms.NumericUpDown buttonXLocNumericUpDown;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label17;
