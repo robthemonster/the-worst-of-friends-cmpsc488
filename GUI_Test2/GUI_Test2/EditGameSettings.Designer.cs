@@ -75,6 +75,12 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.enterTextureYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.enterTextureXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.NPCYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.NPCXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.paneYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.paneXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -90,6 +96,7 @@
             this.startofPlayerTurnNavigableComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.maxPlayerNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.chooseFontImageButton = new System.Windows.Forms.Button();
@@ -107,13 +114,6 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.gameOverTabCancelButton = new System.Windows.Forms.Button();
             this.gameOverTabSaveButton = new System.Windows.Forms.Button();
-            this.maxPlayerNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.paneXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.paneYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.NPCXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.NPCYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.enterTextureXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.enterTextureYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -122,8 +122,15 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enterTextureYLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enterTextureXLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPCYLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPCXLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paneYLocNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paneXLocNumericUpDown)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxPlayerNumericUpDown)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -131,13 +138,6 @@
             this.groupBox7.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maxPlayerNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paneXLocNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paneYLocNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPCXLocNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPCYLocNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.enterTextureXLocNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.enterTextureYLocNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -263,7 +263,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
@@ -284,14 +284,14 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(82, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(81, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(91, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(90, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(58, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -299,7 +299,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(91, 0);
+            this.label5.Location = new System.Drawing.Point(90, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 34;
@@ -317,7 +317,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(155, 0);
+            this.label8.Location = new System.Drawing.Point(154, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
@@ -325,7 +325,7 @@
             // 
             // valueUpDown
             // 
-            this.valueUpDown.Location = new System.Drawing.Point(155, 21);
+            this.valueUpDown.Location = new System.Drawing.Point(154, 21);
             this.valueUpDown.Maximum = new decimal(new int[] {
             2000000000,
             0,
@@ -646,6 +646,138 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Default Dialogue Pane Options";
             // 
+            // enterTextureYLocNumericUpDown
+            // 
+            this.enterTextureYLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.enterTextureYLocNumericUpDown.Location = new System.Drawing.Point(207, 219);
+            this.enterTextureYLocNumericUpDown.Maximum = new decimal(new int[] {
+            540,
+            0,
+            0,
+            0});
+            this.enterTextureYLocNumericUpDown.Minimum = new decimal(new int[] {
+            539,
+            0,
+            0,
+            -2147483648});
+            this.enterTextureYLocNumericUpDown.Name = "enterTextureYLocNumericUpDown";
+            this.enterTextureYLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
+            this.enterTextureYLocNumericUpDown.TabIndex = 77;
+            // 
+            // enterTextureXLocNumericUpDown
+            // 
+            this.enterTextureXLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.enterTextureXLocNumericUpDown.Location = new System.Drawing.Point(207, 194);
+            this.enterTextureXLocNumericUpDown.Maximum = new decimal(new int[] {
+            959,
+            0,
+            0,
+            0});
+            this.enterTextureXLocNumericUpDown.Minimum = new decimal(new int[] {
+            959,
+            0,
+            0,
+            -2147483648});
+            this.enterTextureXLocNumericUpDown.Name = "enterTextureXLocNumericUpDown";
+            this.enterTextureXLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
+            this.enterTextureXLocNumericUpDown.TabIndex = 76;
+            // 
+            // NPCYLocNumericUpDown
+            // 
+            this.NPCYLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NPCYLocNumericUpDown.Location = new System.Drawing.Point(207, 134);
+            this.NPCYLocNumericUpDown.Maximum = new decimal(new int[] {
+            540,
+            0,
+            0,
+            0});
+            this.NPCYLocNumericUpDown.Minimum = new decimal(new int[] {
+            539,
+            0,
+            0,
+            -2147483648});
+            this.NPCYLocNumericUpDown.Name = "NPCYLocNumericUpDown";
+            this.NPCYLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
+            this.NPCYLocNumericUpDown.TabIndex = 75;
+            // 
+            // NPCXLocNumericUpDown
+            // 
+            this.NPCXLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NPCXLocNumericUpDown.Location = new System.Drawing.Point(207, 110);
+            this.NPCXLocNumericUpDown.Maximum = new decimal(new int[] {
+            960,
+            0,
+            0,
+            0});
+            this.NPCXLocNumericUpDown.Minimum = new decimal(new int[] {
+            959,
+            0,
+            0,
+            -2147483648});
+            this.NPCXLocNumericUpDown.Name = "NPCXLocNumericUpDown";
+            this.NPCXLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
+            this.NPCXLocNumericUpDown.TabIndex = 74;
+            // 
+            // paneYLocNumericUpDown
+            // 
+            this.paneYLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.paneYLocNumericUpDown.Location = new System.Drawing.Point(207, 59);
+            this.paneYLocNumericUpDown.Maximum = new decimal(new int[] {
+            540,
+            0,
+            0,
+            0});
+            this.paneYLocNumericUpDown.Minimum = new decimal(new int[] {
+            539,
+            0,
+            0,
+            -2147483648});
+            this.paneYLocNumericUpDown.Name = "paneYLocNumericUpDown";
+            this.paneYLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
+            this.paneYLocNumericUpDown.TabIndex = 73;
+            // 
+            // paneXLocNumericUpDown
+            // 
+            this.paneXLocNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.paneXLocNumericUpDown.Location = new System.Drawing.Point(207, 36);
+            this.paneXLocNumericUpDown.Maximum = new decimal(new int[] {
+            960,
+            0,
+            0,
+            0});
+            this.paneXLocNumericUpDown.Minimum = new decimal(new int[] {
+            959,
+            0,
+            0,
+            -2147483648});
+            this.paneXLocNumericUpDown.Name = "paneXLocNumericUpDown";
+            this.paneXLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
+            this.paneXLocNumericUpDown.TabIndex = 72;
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -793,11 +925,33 @@
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(357, 319);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // maxPlayerNumericUpDown
+            // 
+            this.maxPlayerNumericUpDown.Location = new System.Drawing.Point(228, 195);
+            this.maxPlayerNumericUpDown.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.maxPlayerNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.maxPlayerNumericUpDown.Name = "maxPlayerNumericUpDown";
+            this.maxPlayerNumericUpDown.Size = new System.Drawing.Size(86, 20);
+            this.maxPlayerNumericUpDown.TabIndex = 65;
+            this.maxPlayerNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tabPage2
             // 
@@ -808,7 +962,7 @@
             this.tabPage2.Controls.Add(this.groupBox7);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(357, 319);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Main Menu";
@@ -876,7 +1030,7 @@
             // selectMainMenuImageButton
             // 
             this.selectMainMenuImageButton.Location = new System.Drawing.Point(48, 177);
-            this.selectMainMenuImageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectMainMenuImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectMainMenuImageButton.Name = "selectMainMenuImageButton";
             this.selectMainMenuImageButton.Size = new System.Drawing.Size(136, 21);
             this.selectMainMenuImageButton.TabIndex = 12;
@@ -924,7 +1078,7 @@
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(357, 319);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Dialogue";
@@ -957,7 +1111,7 @@
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(357, 319);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Game Over";
@@ -983,160 +1137,6 @@
             this.gameOverTabSaveButton.UseVisualStyleBackColor = true;
             this.gameOverTabSaveButton.Click += new System.EventHandler(this.Savebutton_Click);
             // 
-            // maxPlayerNumericUpDown
-            // 
-            this.maxPlayerNumericUpDown.Location = new System.Drawing.Point(228, 195);
-            this.maxPlayerNumericUpDown.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.maxPlayerNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.maxPlayerNumericUpDown.Name = "maxPlayerNumericUpDown";
-            this.maxPlayerNumericUpDown.Size = new System.Drawing.Size(86, 20);
-            this.maxPlayerNumericUpDown.TabIndex = 65;
-            this.maxPlayerNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // paneXLocNumericUpDown
-            // 
-            this.paneXLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.paneXLocNumericUpDown.Location = new System.Drawing.Point(207, 36);
-            this.paneXLocNumericUpDown.Maximum = new decimal(new int[] {
-            960,
-            0,
-            0,
-            0});
-            this.paneXLocNumericUpDown.Minimum = new decimal(new int[] {
-            959,
-            0,
-            0,
-            -2147483648});
-            this.paneXLocNumericUpDown.Name = "paneXLocNumericUpDown";
-            this.paneXLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
-            this.paneXLocNumericUpDown.TabIndex = 72;
-            // 
-            // paneYLocNumericUpDown
-            // 
-            this.paneYLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.paneYLocNumericUpDown.Location = new System.Drawing.Point(207, 59);
-            this.paneYLocNumericUpDown.Maximum = new decimal(new int[] {
-            540,
-            0,
-            0,
-            0});
-            this.paneYLocNumericUpDown.Minimum = new decimal(new int[] {
-            539,
-            0,
-            0,
-            -2147483648});
-            this.paneYLocNumericUpDown.Name = "paneYLocNumericUpDown";
-            this.paneYLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
-            this.paneYLocNumericUpDown.TabIndex = 73;
-            // 
-            // NPCXLocNumericUpDown
-            // 
-            this.NPCXLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.NPCXLocNumericUpDown.Location = new System.Drawing.Point(207, 110);
-            this.NPCXLocNumericUpDown.Maximum = new decimal(new int[] {
-            960,
-            0,
-            0,
-            0});
-            this.NPCXLocNumericUpDown.Minimum = new decimal(new int[] {
-            959,
-            0,
-            0,
-            -2147483648});
-            this.NPCXLocNumericUpDown.Name = "NPCXLocNumericUpDown";
-            this.NPCXLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
-            this.NPCXLocNumericUpDown.TabIndex = 74;
-            // 
-            // NPCYLocNumericUpDown
-            // 
-            this.NPCYLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.NPCYLocNumericUpDown.Location = new System.Drawing.Point(207, 134);
-            this.NPCYLocNumericUpDown.Maximum = new decimal(new int[] {
-            540,
-            0,
-            0,
-            0});
-            this.NPCYLocNumericUpDown.Minimum = new decimal(new int[] {
-            539,
-            0,
-            0,
-            -2147483648});
-            this.NPCYLocNumericUpDown.Name = "NPCYLocNumericUpDown";
-            this.NPCYLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
-            this.NPCYLocNumericUpDown.TabIndex = 75;
-            // 
-            // enterTextureXLocNumericUpDown
-            // 
-            this.enterTextureXLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.enterTextureXLocNumericUpDown.Location = new System.Drawing.Point(207, 194);
-            this.enterTextureXLocNumericUpDown.Maximum = new decimal(new int[] {
-            959,
-            0,
-            0,
-            0});
-            this.enterTextureXLocNumericUpDown.Minimum = new decimal(new int[] {
-            959,
-            0,
-            0,
-            -2147483648});
-            this.enterTextureXLocNumericUpDown.Name = "enterTextureXLocNumericUpDown";
-            this.enterTextureXLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
-            this.enterTextureXLocNumericUpDown.TabIndex = 76;
-            // 
-            // enterTextureYLocNumericUpDown
-            // 
-            this.enterTextureYLocNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.enterTextureYLocNumericUpDown.Location = new System.Drawing.Point(207, 219);
-            this.enterTextureYLocNumericUpDown.Maximum = new decimal(new int[] {
-            540,
-            0,
-            0,
-            0});
-            this.enterTextureYLocNumericUpDown.Minimum = new decimal(new int[] {
-            539,
-            0,
-            0,
-            -2147483648});
-            this.enterTextureYLocNumericUpDown.Name = "enterTextureYLocNumericUpDown";
-            this.enterTextureYLocNumericUpDown.Size = new System.Drawing.Size(49, 20);
-            this.enterTextureYLocNumericUpDown.TabIndex = 77;
-            // 
             // EditGameSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1161,9 +1161,16 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enterTextureYLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enterTextureXLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPCYLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPCXLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paneYLocNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paneXLocNumericUpDown)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxPlayerNumericUpDown)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1172,13 +1179,6 @@
             this.groupBox7.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.maxPlayerNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paneXLocNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paneYLocNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPCXLocNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPCYLocNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.enterTextureXLocNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.enterTextureYLocNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
