@@ -40,9 +40,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.defaultPathImage = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dialogueList = new System.Windows.Forms.ListBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.editDialogueButton = new System.Windows.Forms.Button();
             this.DeleteSelectedDialogueButton = new System.Windows.Forms.Button();
             this.createNewDialogueButton = new System.Windows.Forms.Button();
@@ -119,13 +117,17 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dialogueFontSizeNumeric)).BeginInit();
             this.musicBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.ScopeGroup.SuspendLayout();
@@ -145,6 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.button1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathDialogueTab
@@ -161,15 +164,23 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox5);
+            this.tabPage1.Controls.Add(this.DeleteSelectedDialogueButton);
             this.tabPage1.Controls.Add(this.dialogueFontSizeNumeric);
+            this.tabPage1.Controls.Add(this.editDialogueButton);
+            this.tabPage1.Controls.Add(this.createNewDialogueButton);
             this.tabPage1.Controls.Add(this.selectedFontPath);
             this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.dialogueList);
+            this.tabPage1.Controls.Add(this.dialogueTextBox);
             this.tabPage1.Controls.Add(this.chooseFontButton);
+            this.tabPage1.Controls.Add(this.DialogueContentLabel);
+            this.tabPage1.Controls.Add(this.ShiftDialogueDownButton);
             this.tabPage1.Controls.Add(this.musicBox);
             this.tabPage1.Controls.Add(this.saveButton);
+            this.tabPage1.Controls.Add(this.ShiftDialogueUpButton);
             this.tabPage1.Controls.Add(this.cancelButton);
             this.tabPage1.Controls.Add(this.defaultPathImage);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Controls.Add(this.selectDefaultPathImageButton);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -223,9 +234,9 @@
             // musicBox
             // 
             this.musicBox.Controls.Add(this.useMusic);
-            this.musicBox.Location = new System.Drawing.Point(370, 218);
+            this.musicBox.Location = new System.Drawing.Point(390, 218);
             this.musicBox.Name = "musicBox";
-            this.musicBox.Size = new System.Drawing.Size(212, 79);
+            this.musicBox.Size = new System.Drawing.Size(167, 44);
             this.musicBox.TabIndex = 48;
             this.musicBox.TabStop = false;
             this.musicBox.Text = "Background Music (Optional)";
@@ -233,7 +244,7 @@
             // useMusic
             // 
             this.useMusic.AutoSize = true;
-            this.useMusic.Location = new System.Drawing.Point(28, 19);
+            this.useMusic.Location = new System.Drawing.Point(6, 19);
             this.useMusic.Name = "useMusic";
             this.useMusic.Size = new System.Drawing.Size(137, 17);
             this.useMusic.TabIndex = 1;
@@ -264,68 +275,30 @@
             // defaultPathImage
             // 
             this.defaultPathImage.Image = global::GUI_Test2.Properties.Resources.defaultPath;
-            this.defaultPathImage.Location = new System.Drawing.Point(364, 52);
+            this.defaultPathImage.Location = new System.Drawing.Point(358, 52);
             this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2);
             this.defaultPathImage.Name = "defaultPathImage";
-            this.defaultPathImage.Size = new System.Drawing.Size(218, 126);
+            this.defaultPathImage.Size = new System.Drawing.Size(199, 126);
             this.defaultPathImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.defaultPathImage.TabIndex = 12;
             this.defaultPathImage.TabStop = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.4375F));
-            this.tableLayoutPanel1.Controls.Add(this.dialogueList, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 65);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 283);
-            this.tableLayoutPanel1.TabIndex = 10;
             // 
             // dialogueList
             // 
             this.dialogueList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dialogueList.FormattingEnabled = true;
             this.dialogueList.HorizontalScrollbar = true;
-            this.dialogueList.Location = new System.Drawing.Point(3, 3);
+            this.dialogueList.Location = new System.Drawing.Point(9, 71);
             this.dialogueList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.dialogueList.Name = "dialogueList";
             this.dialogueList.Size = new System.Drawing.Size(104, 277);
             this.dialogueList.TabIndex = 3;
             this.dialogueList.SelectedIndexChanged += new System.EventHandler(this.dialogueList_SelectedIndexChanged);
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
-            this.tableLayoutPanel2.Controls.Add(this.editDialogueButton, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.DeleteSelectedDialogueButton, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.createNewDialogueButton, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.DialogueContentLabel, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ShiftDialogueDownButton, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.ShiftDialogueUpButton, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.dialogueTextBox, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(113, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 276);
-            this.tableLayoutPanel2.TabIndex = 4;
-            // 
             // editDialogueButton
             // 
             this.editDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.editDialogueButton.Location = new System.Drawing.Point(87, 227);
+            this.editDialogueButton.Location = new System.Drawing.Point(197, 156);
             this.editDialogueButton.Name = "editDialogueButton";
             this.editDialogueButton.Size = new System.Drawing.Size(46, 20);
             this.editDialogueButton.TabIndex = 19;
@@ -336,9 +309,9 @@
             // DeleteSelectedDialogueButton
             // 
             this.DeleteSelectedDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(139, 253);
+            this.DeleteSelectedDialogueButton.Location = new System.Drawing.Point(250, 183);
             this.DeleteSelectedDialogueButton.Name = "DeleteSelectedDialogueButton";
-            this.DeleteSelectedDialogueButton.Size = new System.Drawing.Size(102, 20);
+            this.DeleteSelectedDialogueButton.Size = new System.Drawing.Size(104, 20);
             this.DeleteSelectedDialogueButton.TabIndex = 3;
             this.DeleteSelectedDialogueButton.Text = "Delete Selected";
             this.DeleteSelectedDialogueButton.UseVisualStyleBackColor = true;
@@ -347,7 +320,7 @@
             // createNewDialogueButton
             // 
             this.createNewDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.createNewDialogueButton.Location = new System.Drawing.Point(138, 226);
+            this.createNewDialogueButton.Location = new System.Drawing.Point(250, 156);
             this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewDialogueButton.Name = "createNewDialogueButton";
             this.createNewDialogueButton.Size = new System.Drawing.Size(104, 22);
@@ -360,7 +333,7 @@
             // 
             this.DialogueContentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DialogueContentLabel.AutoSize = true;
-            this.DialogueContentLabel.Location = new System.Drawing.Point(4, 8);
+            this.DialogueContentLabel.Location = new System.Drawing.Point(116, 72);
             this.DialogueContentLabel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.DialogueContentLabel.Name = "DialogueContentLabel";
             this.DialogueContentLabel.Size = new System.Drawing.Size(76, 13);
@@ -369,7 +342,7 @@
             // 
             // ShiftDialogueDownButton
             // 
-            this.ShiftDialogueDownButton.Location = new System.Drawing.Point(3, 253);
+            this.ShiftDialogueDownButton.Location = new System.Drawing.Point(119, 328);
             this.ShiftDialogueDownButton.Name = "ShiftDialogueDownButton";
             this.ShiftDialogueDownButton.Size = new System.Drawing.Size(24, 20);
             this.ShiftDialogueDownButton.TabIndex = 9;
@@ -379,7 +352,7 @@
             // 
             // ShiftDialogueUpButton
             // 
-            this.ShiftDialogueUpButton.Location = new System.Drawing.Point(3, 227);
+            this.ShiftDialogueUpButton.Location = new System.Drawing.Point(119, 303);
             this.ShiftDialogueUpButton.Name = "ShiftDialogueUpButton";
             this.ShiftDialogueUpButton.Size = new System.Drawing.Size(24, 19);
             this.ShiftDialogueUpButton.TabIndex = 8;
@@ -389,12 +362,11 @@
             // 
             // dialogueTextBox
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.dialogueTextBox, 2);
-            this.dialogueTextBox.Location = new System.Drawing.Point(85, 2);
+            this.dialogueTextBox.Location = new System.Drawing.Point(197, 72);
             this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dialogueTextBox.Multiline = true;
             this.dialogueTextBox.Name = "dialogueTextBox";
-            this.dialogueTextBox.Size = new System.Drawing.Size(157, 207);
+            this.dialogueTextBox.Size = new System.Drawing.Size(157, 79);
             this.dialogueTextBox.TabIndex = 2;
             // 
             // selectDefaultPathImageButton
@@ -1232,11 +1204,71 @@
             this.buttonListBox.TabIndex = 0;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 58);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(188, 21);
+            this.comboBox1.TabIndex = 54;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(6, 103);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(188, 21);
+            this.comboBox2.TabIndex = 55;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Character:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 87);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 13);
+            this.label17.TabIndex = 57;
+            this.label17.Text = "Character Image:";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.checkBox1);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Controls.Add(this.comboBox2);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Location = new System.Drawing.Point(154, 206);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(200, 138);
+            this.groupBox5.TabIndex = 54;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Character on Dialogue (Optional)";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(137, 17);
+            this.checkBox1.TabIndex = 58;
+            this.checkBox1.Text = "Use Background Music";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 395);
+            this.ClientSize = new System.Drawing.Size(753, 520);
             this.Controls.Add(this.pathDialogueTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1252,9 +1284,6 @@
             this.musicBox.ResumeLayout(false);
             this.musicBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.defaultPathImage)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -1283,6 +1312,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.button2PictureBox)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1292,9 +1323,7 @@
         private System.Windows.Forms.TabControl pathDialogueTab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox defaultPathImage;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListBox dialogueList;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox dialogueTextBox;
         private System.Windows.Forms.Button DeleteSelectedDialogueButton;
         private System.Windows.Forms.Button createNewDialogueButton;
@@ -1379,5 +1408,11 @@
         private System.Windows.Forms.NumericUpDown buttonWidthNumericUpDown;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
