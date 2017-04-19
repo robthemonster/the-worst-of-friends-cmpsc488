@@ -411,7 +411,7 @@ namespace GUI_Test2
                 switch (req.scope)
                 {
                     case Requirement.GLOBAL:
-                        target = "game";
+                        target = "&game";
                         break;
                     case Requirement.PLAYER:
                         target = "(*game).getCurrentPlayerPointer()";
@@ -548,7 +548,7 @@ namespace GUI_Test2
                                         break;
                                 }
                                 if (r.scope == Requirement.GLOBAL)
-                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)game, \"" + r.name + "\", " + op + ", " + r.value + ");");
+                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)&game, \"" + r.name + "\", " + op + ", " + r.value + ");");
                                 if (r.scope == Requirement.PLAYER)
                                     code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
                                 if (r.scope == Requirement.HUB)
