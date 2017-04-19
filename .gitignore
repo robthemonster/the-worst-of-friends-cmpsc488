@@ -13,3 +13,5 @@ GUI_Test2/codegen_test/main.exe
 GUI_Test2/codegen_test/*.obj
 testSFML/SFML-2.4.2
 testSFML/testSFML/main.cpp
+*.vcproj
+*.vc
