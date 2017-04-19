@@ -47,6 +47,11 @@ void ButtonScreen::addButton(FButton * button) {
 	this->buttons.push_back(button);
 }
 
+void ButtonScreen::setShowGlobalPane(bool set)
+{
+	this->showGlobalPane = set;
+}
+
 
 void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 	
@@ -136,6 +141,9 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 		if (currPlayer != NULL)
 			(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
 			
+		if (this->game != NULL)
+			(*(*this->game).getInterfacePointer()).drawGlobalAttributes(window, view, this->game, sf::Color(255, 255, 255, 130));
+
 		window.display();
 		
 		

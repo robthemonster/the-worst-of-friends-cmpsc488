@@ -6,6 +6,7 @@
 void Hub::addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode, sf::Texture * buttonTexture, sf::Texture * highlightTexture)
 {
 	(*this->buttonScreen).addButton(new FButton(buttonSize, target, position, highlightMode, buttonText, this->buttonFont, this->buttonFontCharSize, buttonTexture, highlightTexture));
+	
 }
 
 
@@ -45,6 +46,7 @@ Hub::Hub(Game * game)
 {
 	this->game = game;
 	this->buttonScreen = new ButtonScreen(game);
+	(*this->buttonScreen).setShowGlobalPane(true);
 }
 
 

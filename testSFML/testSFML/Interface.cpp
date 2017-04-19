@@ -40,6 +40,11 @@ void Interface::addVisiblePlayerAttribute(std::string key)
 	this->visiblePlayerAttributes.push_back(key);
 }
 
+void Interface::addVisibleGlobalAttributes(std::string key)
+{
+	this->visibleGlobalAttributes.push_back(key);
+}
+
 void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
 {
 	if (paused) {
@@ -84,6 +89,38 @@ void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view,
 
 	
 
+}
+
+void Interface::drawGlobalAttributes(sf::RenderWindow & window, sf::View & view, Game * game, sf::Color globalColor)
+{
+	sf::Vector2f pos(view.getSize().x * -0.45, view.getSize().y * -0.45);
+	sf::Vector2f currPos(pos);
+
+	sf::RectangleShape globalPane;
+	std::vector<sf::Text> stats;
+
+	float maxSizeX = 0;
+	for (int i = 0; i < this->visibleGlobalAttributes.size(); i++) {
+		std::string attribute = this->visibleGlobalAttributes[i] + ": " + std::to_string((*this->attributeMap).getAttribute((Attributable *)game, this->visibleGlobalAttributes[i]));
+		sf::Text currText(sf::String(attribute), font, 30);
+		currText.setOutlineColor(sf::Color::Black);
+		currText.setOutlineThickness(1);
+		currText.setPosition(currPos);
+		stats.push_back(currText);
+		currPos.y += font.getLineSpacing(20);
+
+		if (currText.getLocalBounds().width > maxSizeX)
+			maxSizeX = currText.getLocalBounds().width;
+	}
+
+	globalPane.setOrigin(sf::Vector2f(5, 0));
+	globalPane.setPosition(pos);
+	globalPane.setSize(sf::Vector2f(maxSizeX*1.1, currPos.y - pos.y + font.getLineSpacing(30)));
+	globalPane.setFillColor(globalColor);
+	window.draw(globalPane);
+	for (int i = 0; i < stats.size(); i++) {
+		window.draw(stats[i]);
+	}
 }
 
 Interface::Interface(AttributeMap * attributeMap)

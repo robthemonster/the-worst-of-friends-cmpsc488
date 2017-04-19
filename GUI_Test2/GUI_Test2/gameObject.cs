@@ -187,13 +187,15 @@ namespace GUI_Test2
                 {
                     case Attributes.GLOBAL:
                         code.AppendLine("(*game).addGlobalAttribute(\"" + attribute.name + "\", " + attribute.value + ");");
-                        
+                        if (Game.gameSettings.visGlobalAtts.Contains(attribute.name))
+                            code.AppendLine("(*game).addVisibleGlobalAttribute(\"" + attribute.name + "\");");
                         break;
                     case Attributes.HUB:
                         break;
                     case Attributes.PLAYER:
                         code.AppendLine("(*game).addPlayerAttribute(\"" + attribute.name + "\", " + attribute.value + ");");
-                        code.AppendLine("(*game).addVisiblePlayerAttribute(\"" + attribute.name + "\");");
+                        if (Game.gameSettings.visPlayerAtts.Contains(attribute.name))
+                            code.AppendLine("(*game).addVisiblePlayerAttribute(\"" + attribute.name + "\");");
                         break;
                 }
 

@@ -17,6 +17,7 @@ private:
 	const float SCREEN_WIDTH = 1920.0;
 	const float SCREEN_HEIGHT = 1080.0;
 	Game * game;
+	bool showGlobalPane = false;
 public:
 	ButtonScreen(Game * game);
 	void setImageTexture(sf::Texture & texture);
@@ -25,6 +26,7 @@ public:
 	ButtonScreen(const ButtonScreen&);
 	~ButtonScreen();
 	void addButton(FButton * button);
+	void setShowGlobalPane(bool set);
 
 	virtual void display(sf::RenderWindow & window, sf::View & view) ;
 	
