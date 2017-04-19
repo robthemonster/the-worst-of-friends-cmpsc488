@@ -16,6 +16,7 @@ namespace GUI_Test2
         List<String> dispScope;
         String currHub;
         bool scopeChange = false;
+        const int GLOBAL = 0, HUB = 1, PLAYER = 2;
 
 
         public DefineAttributeForm()
@@ -42,7 +43,7 @@ namespace GUI_Test2
 
         private void globalRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            scope = 0;
+            scope = DefineAttributeForm.GLOBAL;
             currHub = "";
             allHubCheckBox.Enabled = false;
             allHubCheckBox.Checked = false;
@@ -59,14 +60,14 @@ namespace GUI_Test2
             {
                 currHub = (String)hubSelectionComboBox.SelectedItem;
             }
-            scope = 1;
+            scope = DefineAttributeForm.HUB;
             scopeChange = true;
             updateScope();
 
         }
         private void playerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            scope = 2;
+            scope = DefineAttributeForm.PLAYER;
             allHubCheckBox.Enabled = false;
             allHubCheckBox.Checked = false;
             hubSelectionComboBox.Enabled = false;

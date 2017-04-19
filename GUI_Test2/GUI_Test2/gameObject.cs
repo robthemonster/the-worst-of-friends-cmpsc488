@@ -114,13 +114,7 @@ namespace GUI_Test2
 
         private static bool generateCode(string filePath)
         {
-
-
-
-
             
-
-
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
 
             code.AppendLine("Game * game = new Game(" + gameSettings.maxPlayers + ");");
@@ -141,6 +135,10 @@ namespace GUI_Test2
             string setGameSettingsCode = getSetGameSettingsCode();
 
             code.AppendLine(setGameSettingsCode);
+
+            string addAttributesCode = getAddAttributesCode();
+
+            code.AppendLine(addAttributesCode);
 
             string setFontandCharSizeCode = getSetFontandCharSizeCode();
 
@@ -176,6 +174,31 @@ namespace GUI_Test2
             outputStream.Close();
 
             return true;
+        }
+
+        private static string getAddAttributesCode()
+        {
+            StringBuilder code = new StringBuilder();
+
+            foreach (Attrib attribute in Attributes.attribs)
+            {
+
+                switch (attribute.scope)
+                {
+                    case Attributes.GLOBAL:
+                        code.AppendLine("(*game).addGlobalAttribute(\"" + attribute.name + "\", " + attribute.value + ");");
+                        
+                        break;
+                    case Attributes.HUB:
+                        break;
+                    case Attributes.PLAYER:
+                        code.AppendLine("(*game).addPlayerAttribute(\"" + attribute.name + "\", " + attribute.value + ");");
+                        code.AppendLine("(*game).addVisiblePlayerAttribute(\"" + attribute.name + "\");");
+                        break;
+                }
+
+            }
+            return code.ToString();
         }
 
         private static string getEndingGenCode()
@@ -427,6 +450,7 @@ namespace GUI_Test2
             code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.mainMenuSoundPath] + "\");"); 
             code.AppendLine("(*game).setMainMenuPlayButtonSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.playButtonSoundPath] + "\");");
 
+        
             return code.ToString();
         }
 
