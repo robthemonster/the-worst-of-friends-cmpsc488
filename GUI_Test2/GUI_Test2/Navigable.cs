@@ -426,7 +426,7 @@ namespace GUI_Test2
             dialogueEndSoundPath = "";
             dialoguePaneTexturePath = "";
             dialoguePaneFlashingTexturePath = "";
-            dialoguePanePosX = -850;
+            dialoguePanePosX = -750;
             dialoguePanePosY = 200;
             maxPlayers = 1;
             mainMenu = new MainMenu("", "", "", "");
@@ -468,6 +468,21 @@ namespace GUI_Test2
             this.visGlobalAtts = visGlobalAtts;
 
 
+        }
+
+        public Tuple<bool, string> validateSettings()
+        {
+            StringBuilder errors = new StringBuilder();
+            if (this.mainMenu.mainMenuImagePath == "")
+                errors.AppendLine("No menu image selected.");
+            if (this.startNavigable == "")
+                errors.AppendLine("No start navigable selected.");
+            if (this.mainMenu.fontImagePath == "")
+                errors.AppendLine("No font selected for main menu.");
+
+
+
+            return new Tuple<bool, string>(errors.Length == 0, errors.ToString());
         }
     }
 

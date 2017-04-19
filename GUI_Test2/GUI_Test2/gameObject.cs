@@ -399,10 +399,12 @@ namespace GUI_Test2
 
 
             StringBuilder code = new StringBuilder();
-       
-            code.AppendLine("(*game).setStart(nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
-            code.AppendLine("(*game).setStartOfRound(nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
-            code.AppendLine("(*game).setEndOfRound(nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
+
+              code.AppendLine("(*game).setStart(nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
+            if (Game.gameSettings.startNavigable != "")
+                code.AppendLine("(*game).setStartOfRound(nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
+            if (Game.gameSettings.endOfRoundNav != "")
+                code.AppendLine("(*game).setEndOfRound(nav" + Game.navNameToCodeIndex[Game.gameSettings.endOfRoundNav] + ");");
 
             code.AppendLine("Requirements gameOver(*(*game).getAttributeMapPointer());");
             foreach (Requirement req in Game.gameSettings.gameOverRequirements)
@@ -449,7 +451,9 @@ namespace GUI_Test2
 
             code.AppendLine("(*game).setMenuFont(" + Game.oldPathToCodeObject[font] + ");");
             code.AppendLine("(*game).setMainMenuImageTexture(" + Game.oldPathToCodeObject[Game.gameSettings.mainMenu.mainMenuImagePath] + ");");
-            code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.mainMenuSoundPath] + "\");"); 
+            if (Game.gameSettings.mainMenu.mainMenuSoundPath != "")
+                code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.mainMenuSoundPath] + "\");");
+            if (Game.gameSettings.mainMenu.playButtonSoundPath != "")
             code.AppendLine("(*game).setMainMenuPlayButtonSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.playButtonSoundPath] + "\");");
 
         
@@ -602,7 +606,7 @@ namespace GUI_Test2
             }
 
             code.AppendLine("sf::Texture menuImage;");
-            code.AppendLine("if (!menuImage.loadFromFile(\"" + Game.oldPathToNewPath["image"][Game.gameSettings.mainMenu.mainMenuImagePath] + "\"))");
+           code.AppendLine("if (!menuImage.loadFromFile(\"" + Game.oldPathToNewPath["image"][Game.gameSettings.mainMenu.mainMenuImagePath] + "\"))");
             code.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
 
             return code.ToString();

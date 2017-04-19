@@ -81,9 +81,7 @@ namespace GUI_Test2
             }
             hubImagePictureBox.ImageLocation = hubImagePath;
 
-            
             pathFromButtonRadio.Checked = true;
-            //navComboBox.SelectedItem =
         }
 
         private void buttonListUpButton_Click(object sender, EventArgs e)
@@ -308,11 +306,7 @@ namespace GUI_Test2
         private void chooseHubImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            //Devam Mehta
-            //97163
-            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-           
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";           
 
             try
             {
@@ -383,10 +377,6 @@ namespace GUI_Test2
         {
             OpenFileDialog of = new OpenFileDialog();
             of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            //Devam Mehta
-            //97163
-            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            //of.ShowDialog();
 
             try
             {
@@ -500,7 +490,7 @@ namespace GUI_Test2
                     useButton1Image.Checked = true;
                     useButton1Image.CheckedChanged += useButton1Image_CheckedChanged;
                     buttonImagePath1 = b.pic1path;
-                    button1PictureBox.Image = Image.FromFile(buttonImagePath1);
+                    button1PictureBox.ImageLocation = buttonImagePath1;
                     button1PictureBox.Visible = true;
                     useButton2Image.Enabled = true;
 
@@ -515,18 +505,26 @@ namespace GUI_Test2
                         useButton2Image.Checked = true;
                         useButton2Image.CheckedChanged += useButton2Image_CheckedChanged;
                         buttonImagePath2 = b.pic2path;
-                        button2PictureBox.Image = Image.FromFile(buttonImagePath2);
+                        button2PictureBox.ImageLocation = buttonImagePath2;
                         button2PictureBox.Visible = true;
                     }
                 }
 
-                
+                //Highlight
+                if (b.highlight == 1)
+                    HighlightTextButton.Checked = true;
 
                 //Music
 
                 //Target Navigable
-                //if ()
-                //{ }
+                if (Game.paths.Contains(b.next))
+                    pathFromButtonRadio.Checked = true;
+                else if (Game.pathGroups.Contains(b.next))
+                    pathGroupFromButtonRadio.Checked = true;
+                else
+                    hubFromButtonRadio.Checked = true;
+
+                navComboBox.SelectedItem = b.next;
 
             }
             else
@@ -568,7 +566,7 @@ namespace GUI_Test2
         private void chooseMusicButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Audio files (*.ogg, *.wav, *.flac, *.aiff) | *.ogg; *.wav; *.flac; *.aiff";
+            of.Filter = "Audio files (*.ogg) | *.ogg";
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
