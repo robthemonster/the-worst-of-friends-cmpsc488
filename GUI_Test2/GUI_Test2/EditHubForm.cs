@@ -513,6 +513,10 @@ namespace GUI_Test2
                 //Highlight
                 if (b.highlight == 1)
                     HighlightTextButton.Checked = true;
+                else
+                    HighlightTextButton.Checked = false;
+
+                buttonImageState = b.highlight;
 
                 //Music
 
@@ -534,9 +538,10 @@ namespace GUI_Test2
                 buttonYLocNumericUpDown.Value = 0;
                 useButton1Image.Checked = false;
                 useButton2Image.Checked = false;
+                HighlightTextButton.Checked = false;
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
-
+                buttonImageState = 0;
             }
         }
 
