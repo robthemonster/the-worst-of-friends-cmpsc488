@@ -121,8 +121,6 @@ namespace GUI_Test2
             try
             {
                 defaultPathImage.ImageLocation = pathImagePath;
-                defaultPathImage.Load();
-
             }
             catch (InvalidOperationException  ex)
             {
