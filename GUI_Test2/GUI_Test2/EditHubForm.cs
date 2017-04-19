@@ -78,9 +78,7 @@ namespace GUI_Test2
             }
             hubImagePictureBox.ImageLocation = hubImagePath;
 
-            
             pathFromButtonRadio.Checked = true;
-            //navComboBox.SelectedItem =
         }
 
         private void buttonListUpButton_Click(object sender, EventArgs e)
@@ -305,11 +303,7 @@ namespace GUI_Test2
         private void chooseHubImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            //Devam Mehta
-            //97163
-            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-           
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";           
 
             try
             {
@@ -380,10 +374,6 @@ namespace GUI_Test2
         {
             OpenFileDialog of = new OpenFileDialog();
             of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            //Devam Mehta
-            //97163
-            //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-            //of.ShowDialog();
 
             try
             {
@@ -518,14 +508,22 @@ namespace GUI_Test2
                     }
                 }
 
-                
+                //Highlight
+                if (b.highlight == 1)
+                    HighlightTextButton.Checked = true;
 
                 //Music
                 buttonLoading = false;
 
                 //Target Navigable
-                //if ()
-                //{ }
+                if (Game.paths.Contains(b.next))
+                    pathFromButtonRadio.Checked = true;
+                else if (Game.pathGroups.Contains(b.next))
+                    pathGroupFromButtonRadio.Checked = true;
+                else
+                    hubFromButtonRadio.Checked = true;
+
+                navComboBox.SelectedItem = b.next;
 
             }
             else
