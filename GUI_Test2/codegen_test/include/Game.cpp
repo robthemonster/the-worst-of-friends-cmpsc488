@@ -33,8 +33,9 @@ void Game::play(sf::RenderWindow & window, sf::View & view)
 				this->currPlayer = &players[i];
 				(*this->ending).display(window, view);
 			
-			(*this->attributeMap).resetAttributes();
+			
 		}
+			(*this->attributeMap).resetAttributes();
 	}
 }
 

@@ -103,7 +103,7 @@ namespace GUI_Test2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sf::RenderWindow window(sf::VideoMode(1600, 900), &quot;Game Window&quot;, sf::Style::Close | sf::Style::Resize);
+        ///   Looks up a localized string similar to sf::RenderWindow window(sf::VideoMode(1600, 900), &quot;Game Window&quot;, sf::Style::Close | sf::Style::Resize | sf::Style::Fullscreen);
         ///        sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_WIDTH, VIEW_HEIGHT));
         ///        window.setView(view);
         ///        window.setFramerateLimit(60);

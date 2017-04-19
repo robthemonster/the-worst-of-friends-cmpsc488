@@ -596,6 +596,7 @@ namespace GUI_Test2
             else
             {
                 mainMenuSoundSelected = false;
+                mainMenuSoundPath = "";
             }
         }
 
@@ -634,6 +635,7 @@ namespace GUI_Test2
             else
             {
                 playButtonSoundSelected = false;
+                playButtonSoundPath = "";
             }
         }
 
