@@ -66,9 +66,12 @@ namespace GUI_Test2
             parentForm = par;
 
             dialogues = new List<Dialogue>();
+            foreach(Dialogue d in p.dialogues)
+            {
+                dialogues.Add(new Dialogue (d));
+            }
             name = p.name;
             this.Text = "Edit Path: " + name;
-            dialogues = new List<Dialogue>();
             dialogueEntryList = new List<string>();
             dialogueEntryList = p.getDialogueContents();
             buttonList = new List<Button>();
