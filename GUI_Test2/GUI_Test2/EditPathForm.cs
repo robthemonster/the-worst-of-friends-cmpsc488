@@ -64,11 +64,28 @@ namespace GUI_Test2
             parentForm = par;
             name = p.name;
             this.Text = "Edit Path: " + name;
-            dialogueEntryList = new List<string>(p.dialogueContents);
-            buttonList = new List<Button>(p.buttons);
-            dialogueImpactList = new List<List<Impact>>(p.dialogueImpactList);
-            buttonCount = buttonList.Count;
+            dialogueEntryList = new List<string>();
+            foreach (string s in p.dialogueContents)
+            {
+                dialogueEntryList.Add(s);
+            }
+            buttonList = new List<Button>();
+            foreach(Button b in p.buttons)
+            {
+                buttonList.Add(new Button(b));
+            }
+            dialogueImpactList = new List<List<Impact>>();
+            foreach(List<Impact> Il in p.dialogueImpactList)
+            {
+                List<Impact> Ik = new List<Impact>();
+                foreach(Impact i in Il)
+                {
+                    Ik.Add(i);
+                }
+                dialogueImpactList.Add(Ik);
+            }
             buttonNameList = new List<string>();
+            buttonCount = buttonList.Count;
             for (int i = 1; i <= buttonCount; i++)
             {
                 buttonNameList.Add("Button " + i);
@@ -83,9 +100,7 @@ namespace GUI_Test2
             buttonFontSizeNumeric.Value = p.buttonFontCharSize;
 
             defaultTargetNavigable = p.defaultTargetNavigable;
-
-            //updateListBoxes();
-            //updateButtonListBox();
+            
         }
             
 

@@ -110,6 +110,15 @@ namespace GUI_Test2
             this.op = op;
             this.val = val;
         }
+        public Impact(Impact i)
+        {
+
+            this.scope = i.scope;
+            this.attribute = i.attribute;
+            this.hub = i.hub;
+            this.op = i.op;
+            this.val = i.val;
+        }
     }
 
     [Serializable]
@@ -203,6 +212,20 @@ namespace GUI_Test2
             this.highlight = highlight;
             this.next = next;
             this.useDefaultLoc = useDefaultLoc;
+        }
+        public Button(Button b)
+        {
+
+            this.text = b.text;
+            this.sizeX = b.sizeX;
+            this.sizeY = b.sizeY;
+            this.posX = b.posX;
+            this.posY = b.posY;
+            this.pic1path = b.pic1path;
+            this.pic2path = b.pic2path;
+            this.highlight = b.highlight;
+            this.next = b.next;
+            this.useDefaultLoc = b.useDefaultLoc;
         }
     }
 
