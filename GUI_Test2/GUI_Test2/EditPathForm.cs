@@ -64,12 +64,14 @@ namespace GUI_Test2
         {
             InitializeComponent();
             parentForm = par;
-
-            dialogues = new List<Dialogue>();
+            
             name = p.name;
             this.Text = "Edit Path: " + name;
             dialogues = new List<Dialogue>();
-            dialogueEntryList = new List<string>();
+            foreach(Dialogue d in p.dialogues)
+            {
+                dialogues.Add(new Dialogue(d));
+            }
             dialogueEntryList = p.getDialogueContents();
             buttonList = new List<Button>();
             foreach(Button b in p.buttons)
