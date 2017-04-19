@@ -23,8 +23,7 @@ namespace GUI_Test2
     [Serializable]
     public class Path : Navigable {
         public string name;
-        public List<String> dialogueContents;
-        public List<List<Impact>> dialogueImpactList;
+        public List<Dialogue> dialogues;
         public List<Button> buttons;
         public string pathSoundPath = "";
         public string pathImagePath = "";
@@ -32,37 +31,16 @@ namespace GUI_Test2
         public int buttonFontCharSize, dialogueFontCharSize;
         public string defaultTargetNavigable = "";
 
-        public override string getButtonFont()
-        {
-            return buttonFontPath;
-        }
-
-        public override int getButtonCharSize()
-        {
-            return buttonFontCharSize;
-        }
-
-
-        override public int  getNavType()
-        {
-            return Navigable.PATH;
-        }
-
-       override public string  getImagePath()
-        {
-            return pathImagePath;
-        }
-        override public string getSoundPath()
-        {
-            return pathSoundPath;
-        }
+        public override string getButtonFont(){return buttonFontPath;}
+        public override int getButtonCharSize(){return buttonFontCharSize;}
+        override public int  getNavType(){return Navigable.PATH;}
+        override public string  getImagePath(){return pathImagePath;}
+        override public string getSoundPath(){return pathSoundPath;}
 
         public Path() {}
 
-        public Path(String n,  List<String> contents,List<Button> btns, List<List<Impact>> dIL, string pathImagePath, string pS, string buttonFontPath, int buttonFontCharSize, int dialogueFontCharSize, string dTN) {
+        public Path(String n,  List<Button> btns,  string pathImagePath, string pS, string buttonFontPath, int buttonFontCharSize, int dialogueFontCharSize, string dTN, List<Dialogue> ds) {
             name = n;
-            dialogueContents = contents;
-            dialogueImpactList=dIL;
             buttons = btns;
             pathSoundPath = pS;
             this.pathImagePath = pathImagePath;
@@ -70,17 +48,87 @@ namespace GUI_Test2
             this.buttonFontCharSize = buttonFontCharSize;
             this.dialogueFontCharSize = dialogueFontCharSize;
             defaultTargetNavigable = dTN;
+            this.dialogues = ds;
+        }
+        
+        public Path(Path p)
+        {
+            name = p.name;
+            buttons = p.buttons;
+            pathSoundPath = p.pathSoundPath;
+            this.pathImagePath = p.pathImagePath;
+            this.buttonFontPath = p.buttonFontPath;
+            this.buttonFontCharSize = p.buttonFontCharSize;
+            this.dialogueFontCharSize = p.dialogueFontCharSize;
+            defaultTargetNavigable = p.defaultTargetNavigable;
+            this.dialogues = new List<Dialogue>();
+            foreach(Dialogue d in p.dialogues)
+            {
+                this.dialogues.Add(new Dialogue(d));
+            }
+        }
+        public List<string> getDialogueContents()
+        {
+            List<string> contents = new List<String>();
+            foreach(Dialogue d in dialogues)
+            {
+                contents.Add(d.content);
+            }
+            return contents;
+        }
+        public List<List<Impact>> getDialogueImpacts()
+        {
+            List<List<Impact>> impacts = new List<List<Impact>>();
+
+            foreach (Dialogue d in dialogues)
+            {
+                List<Impact> iL = new List<Impact>();
+                foreach(Impact i in d.impacts)
+                {
+                    iL.Add(new Impact(i));
+                }
+                impacts.Add(iL);
+            }
+            return impacts;
         }
 
-       override public String getName() { return name; }
+        override public String getName() { return name; }
 
     }
 
     [Serializable]
     public class Dialogue {
-        public string name;
+
         public string content;
         public List<Impact> impacts;
+        public string character;
+        public string characterImage;
+
+        public Dialogue()
+        {
+            content = "";
+            impacts = new List<Impact>();
+            character = "";
+            characterImage = "";
+        }
+        public Dialogue(string con, List<Impact> imps, string c, string cI)
+        {
+            this.content = con;
+            this.impacts = new List<Impact>();
+            foreach(Impact i in imps)
+            {
+                this.impacts.Add(i);
+            }
+            this.character = c;
+            this.characterImage = cI;
+        }
+        public Dialogue(Dialogue d)
+        {
+            this.content = d.content;
+            this.impacts = new List<Impact>(d.impacts);
+            this.character = d.character;
+            this.characterImage = d.characterImage;
+        }
     }
 
     [Serializable]
