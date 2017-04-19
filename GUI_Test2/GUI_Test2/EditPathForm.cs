@@ -772,7 +772,7 @@ namespace GUI_Test2
                 next = "";
             }
 
-            if (useButton2Image.Checked && HighlightTextButton.Checked)
+            if (useButton2Image.Checked && highlightTextCheckBox.Checked)
             {
                 MessageBox.Show("Please Select Either to Highlight the Button, \nthe Button Text, or Neither. Please Do Not Select Both.");
                 return;
@@ -787,7 +787,7 @@ namespace GUI_Test2
             if (useButton2Image.Checked)
                 highlight = Button.HIGHLIGHT_PICTURE;
 
-            else if (HighlightTextButton.Checked)
+            else if (highlightTextCheckBox.Checked)
                 highlight = Button.HIGHLIGHT_TEXT;
 
             else
@@ -849,6 +849,9 @@ namespace GUI_Test2
                     buttonYLocNumericUpDown.Value = b.posY;
                 }
 
+                //Highlight Text
+                highlightTextCheckBox.Checked = b.highlight == Button.HIGHLIGHT_TEXT;
+
                 //Picture 1
                 if (b.pic1path == "")
                 {
@@ -890,6 +893,7 @@ namespace GUI_Test2
                 buttonTextTextBox.Text = "";
                 useButton1Image.Checked = false;
                 useButton2Image.Checked = false;
+                highlightTextCheckBox.Checked = false;
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
             }
