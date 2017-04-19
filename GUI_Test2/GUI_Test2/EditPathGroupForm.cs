@@ -92,6 +92,7 @@ namespace GUI_Test2
             updatePathGroupLists();
             onLoad = false;
             tierPathsListBox.SelectedIndex = -1;
+            pathRequirementsListBox.DataSource = null;
         }
         
         private void updatePathGroupLists()
