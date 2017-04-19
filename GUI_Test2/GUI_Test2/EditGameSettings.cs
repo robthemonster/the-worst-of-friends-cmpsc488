@@ -50,7 +50,7 @@ namespace GUI_Test2
             defaultFontPath = "";
             defaultDialoguePaneFlashingTexturePath = "";
             defaultDialogueEndSoundPath = "";
-            maxPlayerCountTextBox.Text = "1";
+            maxPlayerNumericUpDown.Value = 1;
             SORPathGroupName = "";
             EORPathGroupName = "";
             SOTNav = "";
@@ -68,8 +68,8 @@ namespace GUI_Test2
             InitializeComponent();
 
             gameOverReq = new List<Requirement>(gS.gameOverRequirements);
-            enterTextureXLocTextBox.Text = gS.flashingTextureXLoc.ToString();
-            enterTextureYLocTextBox.Text = gS.flashingTextureYLoc.ToString();
+            enterTextureXLocNumericUpDown.Value = gS.flashingTextureXLoc;
+            enterTextureYLocNumericUpDown.Value = gS.flashingTextureYLoc;
 
             dialogueScrollSound = gS.dialogueScrollSoundPath;
             dialogueEndSound = gS.dialogueEndSoundPath;
@@ -77,14 +77,14 @@ namespace GUI_Test2
             defaultDialoguePaneTexturePath = gS.dialoguePaneTexturePath;
             defaultDialoguePaneFlashingTexturePath = gS.dialoguePaneFlashingTexturePath;
             defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
-            paneXLocTextBox.Text = gS.dialoguePanePosX.ToString() ;
-            paneYLocTextBox.Text = gS.dialoguePanePosY.ToString();
-            NPCXLocTextBox.Text = gS.NPCXLoc.ToString();
-            NPCYLocTextBox.Text = gS.NPCYLoc.ToString();
+            paneXLocNumericUpDown.Value = gS.dialoguePanePosX;
+            paneYLocNumericUpDown.Value = gS.dialoguePanePosY;
+            NPCXLocNumericUpDown.Value = gS.NPCXLoc;
+            NPCYLocNumericUpDown.Value = gS.NPCYLoc;
             SORPathGroupName = gS.startOfRoundNav;
             EORPathGroupName = gS.endOfRoundNav;
             SOTNav = gS.startNavigable;
-            maxPlayerCountTextBox.Text = gS.maxPlayers.ToString();
+            maxPlayerNumericUpDown.Value = gS.maxPlayers;
 
             visPlayerAts = gS.visPlayerAtts;
             visGlobalAts = gS.visGlobalAtts;
@@ -188,57 +188,18 @@ namespace GUI_Test2
             Game.gameSettings.visGlobalAtts = visGlobalAts;
             Game.gameSettings.dialoguePaneTexturePath = defaultDialoguePaneTexturePath;
             Game.gameSettings.dialoguePaneFlashingTexturePath = defaultDialoguePaneFlashingTexturePath;
+            
 
-            int maxPlayers;
-            try {
-                maxPlayers = Int32.Parse(maxPlayerCountTextBox.Text);
-                if (maxPlayers < 1)
-                {
-                    maxPlayers = 1;
-                }
-                Game.gameSettings.maxPlayers = maxPlayers;
-            }
-            catch (FormatException ex) {
-                Console.Out.WriteLine(ex.StackTrace);
-            }
-            int x, y, x1, y1,x2,y2;
-            try {
-                x = Int32.Parse(this.paneXLocTextBox.Text);
-                y = Int32.Parse(this.paneYLocTextBox.Text);
-                x1 = Int32.Parse(this.enterTextureXLocTextBox.Text);
-                y1 = Int32.Parse(this.enterTextureYLocTextBox.Text);
-                x2 = Int32.Parse(this.NPCXLocTextBox.Text);
-                y2 = Int32.Parse(this.NPCYLocTextBox.Text);
-                Game.gameSettings.dialoguePanePosX = x;
-                Game.gameSettings.dialoguePanePosY = y;
-                Game.gameSettings.flashingTextureXLoc = x1;
-                Game.gameSettings.flashingTextureYLoc = y1;
-                Game.gameSettings.NPCXLoc = x2;
-                Game.gameSettings.NPCYLoc = y2;
-            }
-            catch (FormatException ex)
-            {
-                Console.Out.WriteLine(ex.StackTrace);
-                MessageBox.Show("X and Y must be positive numbers.\n" +
-                    "X must be less than 960.\n" +
-                    "Y must be less than 540.");
-                paneXLocTextBox.Text = "";
-                paneYLocTextBox.Text = "";
-                return;
-            }
+            Game.gameSettings.maxPlayers = (int)maxPlayerNumericUpDown.Value;
+            
+            Game.gameSettings.dialoguePanePosX = (int)paneXLocNumericUpDown.Value;
+            Game.gameSettings.dialoguePanePosY = (int)this.paneYLocNumericUpDown.Value;
+            Game.gameSettings.flashingTextureXLoc = (int)this.enterTextureXLocNumericUpDown.Value;
+            Game.gameSettings.flashingTextureYLoc = (int)this.enterTextureYLocNumericUpDown.Value;
+            Game.gameSettings.NPCXLoc = (int)this.NPCXLocNumericUpDown.Value;
+            Game.gameSettings.NPCYLoc = (int)this.NPCYLocNumericUpDown.Value;
+            
 
-            if (Math.Abs(x) > 960)
-            {
-                MessageBox.Show("X coordinate must be between -960 and 960.");
-                paneXLocTextBox.Text = "";
-                return;
-            }
-            if (Math.Abs(y) > 540)
-            {
-                MessageBox.Show("Y coordinate must be between -540 and 540.");
-                paneYLocTextBox.Text = "";
-                return;
-            }
             if (dialogueEndSound != "")
             {
                 Game.gameSettings.dialogueEndSoundPath = dialogueEndSound;

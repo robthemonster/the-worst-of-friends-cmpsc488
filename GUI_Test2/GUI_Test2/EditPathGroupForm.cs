@@ -153,35 +153,24 @@ namespace GUI_Test2
         private void addPathsButton_Click(object sender, EventArgs e)
         {
             int index;
-            try
+            int weight = (int)pathWeightNumericUpDown.Value;
+            index = pathsInGroup.Count - 1;
+            foreach (int i in pathsNotInPathGroupListBox.SelectedIndices)
             {
-                int weight = Int32.Parse(pathWeightTextBox.Text);
-                if ( weight<= 0)
-                {
-                    throw new FormatException();
-                }
-                index = pathsInGroup.Count - 1;
-                foreach (int i in pathsNotInPathGroupListBox.SelectedIndices)
-                {
-                    pathsInGroup.Add(navsNotInPG[i]);
-                    tierofEachPath.Add(tierComboBox.SelectedIndex);
-                    weightofEachPath.Add(Int32.Parse(pathWeightTextBox.Text));
-                    useOnceList.Add(useOnceCheckBox.Checked);
-                    reqsofEachPath.Add(new List<Requirement>());
-                }
-                if (pathsNotInPathGroupListBox.SelectedIndices.Count > 0)
-                {
-                    ++index;
-                }
+                pathsInGroup.Add(navsNotInPG[i]);
+                tierofEachPath.Add(tierComboBox.SelectedIndex);
+                weightofEachPath.Add(weight);
+                useOnceList.Add(useOnceCheckBox.Checked);
+                reqsofEachPath.Add(new List<Requirement>());
+            }
+            if (pathsNotInPathGroupListBox.SelectedIndices.Count > 0)
+            {
+                ++index;
+            }
                 
-                updatePathGroupLists();
-                tierComboBox_SelectedIndexChanged(sender, e);
-                pathsInPathGroupListBox.SelectedIndex = index;
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Weight must be a positive integer.");
-            }
+            updatePathGroupLists();
+            tierComboBox_SelectedIndexChanged(sender, e);
+            pathsInPathGroupListBox.SelectedIndex = index;
         }
         
 
@@ -209,26 +198,15 @@ namespace GUI_Test2
         {
             if (tierPathsListBox.SelectedIndex != -1) {
                 int weight;
-                try
-                {
-                    weight = Int32.Parse(pathWeightTextBox.Text);
-                    int indexofPath = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
-                    if (weight <= 0)
-                    {
-                        throw new FormatException();
-                    }
-                    weightofEachPath[indexofPath] = weight;
-                    useOnceCheckBox.Checked = useOnceList[indexofPath];
+                weight = (int)pathWeightNumericUpDown.Value;
+                int indexofPath = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
+                weightofEachPath[indexofPath] = weight;
+                useOnceCheckBox.Checked = useOnceList[indexofPath];
 
-                    int index = tierPathsListBox.SelectedIndex;
-                    tierPathsListBox.DataSource = null;
-                    tierPathsListBox.DataSource = getTierPathsNames();
-                    tierPathsListBox.SelectedIndex = index;
-                }
-                catch(FormatException)
-                {
-                    MessageBox.Show("Weight must be a positive integer.");
-                }
+                int index = tierPathsListBox.SelectedIndex;
+                tierPathsListBox.DataSource = null;
+                tierPathsListBox.DataSource = getTierPathsNames();
+                tierPathsListBox.SelectedIndex = index;
             }
         }
 
@@ -276,7 +254,7 @@ namespace GUI_Test2
             if (tierPathsListBox.SelectedIndex != -1)
             {
                 int pIGindex = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
-                pathWeightTextBox.Text = weightofEachPath[pIGindex].ToString();
+                pathWeightNumericUpDown.Value = weightofEachPath[pIGindex];
                 useOnceCheckBox.Checked = useOnceList[pIGindex];
                 if (!onLoad&&(pathsInPathGroupListBox.SelectedIndex == -1 || !pathsInPathGroupListBox.SelectedValue.ToString().Equals(tierPathsListBox.SelectedValue.ToString())))
                 { 

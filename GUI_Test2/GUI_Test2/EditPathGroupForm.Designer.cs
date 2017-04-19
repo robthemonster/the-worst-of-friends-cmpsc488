@@ -43,7 +43,6 @@
             this.TierLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.pathWeightTextBox = new System.Windows.Forms.TextBox();
             this.tierPathsListBox = new System.Windows.Forms.ListBox();
             this.editTierPathButton = new System.Windows.Forms.Button();
             this.addConditionButton = new System.Windows.Forms.Button();
@@ -67,12 +66,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pathWeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pathWeightNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // removePathsButton
@@ -218,14 +219,6 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Tier Weight";
             // 
-            // pathWeightTextBox
-            // 
-            this.pathWeightTextBox.Location = new System.Drawing.Point(3, 21);
-            this.pathWeightTextBox.Name = "pathWeightTextBox";
-            this.pathWeightTextBox.Size = new System.Drawing.Size(60, 20);
-            this.pathWeightTextBox.TabIndex = 21;
-            this.pathWeightTextBox.Text = "1";
-            // 
             // tierPathsListBox
             // 
             this.tierPathsListBox.FormattingEnabled = true;
@@ -285,7 +278,7 @@
             this.tableLayoutPanel1.Controls.Add(this.weightLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tierWeightTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pathWeightTextBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pathWeightNumericUpDown, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 16);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -421,7 +414,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -438,7 +431,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(163, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(162, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -460,7 +453,7 @@
             this.comparitorComboBox.FormattingEnabled = true;
             this.comparitorComboBox.Location = new System.Drawing.Point(95, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
-            this.comparitorComboBox.Size = new System.Drawing.Size(62, 21);
+            this.comparitorComboBox.Size = new System.Drawing.Size(61, 21);
             this.comparitorComboBox.TabIndex = 23;
             // 
             // label5
@@ -468,7 +461,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(95, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 34;
             this.label5.Text = "Comparison";
             // 
@@ -484,11 +477,23 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(163, 0);
+            this.label8.Location = new System.Drawing.Point(162, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
             this.label8.Text = "Value";
+            // 
+            // pathWeightNumericUpDown
+            // 
+            this.pathWeightNumericUpDown.Location = new System.Drawing.Point(3, 21);
+            this.pathWeightNumericUpDown.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.pathWeightNumericUpDown.Name = "pathWeightNumericUpDown";
+            this.pathWeightNumericUpDown.Size = new System.Drawing.Size(66, 20);
+            this.pathWeightNumericUpDown.TabIndex = 21;
             // 
             // EditPathGroupForm
             // 
@@ -524,6 +529,7 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pathWeightNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,7 +551,6 @@
         private System.Windows.Forms.Label TierLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox pathWeightTextBox;
         private System.Windows.Forms.ListBox tierPathsListBox;
         private System.Windows.Forms.Button editTierPathButton;
         private System.Windows.Forms.Button addConditionButton;
@@ -569,5 +574,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown pathWeightNumericUpDown;
     }
 }
