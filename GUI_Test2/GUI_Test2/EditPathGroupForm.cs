@@ -94,11 +94,6 @@ namespace GUI_Test2
             tierPathsListBox.SelectedIndex = -1;
         }
         
-
-        private void pathsNotInPathGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void updatePathGroupLists()
         {
 
@@ -222,7 +217,7 @@ namespace GUI_Test2
                 weight = (int)pathWeightNumericUpDown.Value;
                 int indexofPath = pathsInGroup.IndexOf((String)tierPathsListBox.SelectedItem);
                 weightofEachPath[indexofPath] = weight;
-                useOnceCheckBox.Checked = useOnceList[indexofPath];
+                useOnceList[indexofPath] = useOnceCheckBox.Checked;
 
                 int index = tierPathsListBox.SelectedIndex;
                 tierPathsListBox.DataSource = null;
@@ -245,6 +240,8 @@ namespace GUI_Test2
                     tierPathsListBox.SelectedIndex = ((List<String>)tierPathsListBox.DataSource).IndexOf(pathsInGroup[index]);
                 }
             }
+            else
+                useOnceCheckBox.Checked = false;
         }
 
         private void tierComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -285,7 +282,7 @@ namespace GUI_Test2
             }
         }
 
-        private void pathsNotInPathGroupListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void pathsNotInPathGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(pathsNotInPathGroupListBox.SelectedIndex!=-1)
                 pathsInPathGroupListBox.SelectedIndex = -1;

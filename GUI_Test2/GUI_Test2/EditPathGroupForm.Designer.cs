@@ -150,6 +150,7 @@
             this.pathsNotInPathGroupListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.pathsNotInPathGroupListBox.Size = new System.Drawing.Size(94, 186);
             this.pathsNotInPathGroupListBox.TabIndex = 12;
+            this.pathsNotInPathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathsNotInPathGroupListBox_SelectedIndexChanged);
             // 
             // pathsInPathGroupListBox
             // 
@@ -436,7 +437,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -453,7 +454,7 @@
             // 
             // valueTextBox
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(161, 21);
+            this.valueTextBox.Location = new System.Drawing.Point(160, 21);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(47, 20);
             this.valueTextBox.TabIndex = 33;
@@ -475,7 +476,7 @@
             this.comparitorComboBox.FormattingEnabled = true;
             this.comparitorComboBox.Location = new System.Drawing.Point(94, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
-            this.comparitorComboBox.Size = new System.Drawing.Size(61, 21);
+            this.comparitorComboBox.Size = new System.Drawing.Size(60, 21);
             this.comparitorComboBox.TabIndex = 23;
             // 
             // label5
@@ -499,7 +500,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(161, 0);
+            this.label8.Location = new System.Drawing.Point(160, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;

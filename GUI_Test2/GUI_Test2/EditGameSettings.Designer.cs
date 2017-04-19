@@ -977,7 +977,7 @@
             this.groupBox8.Size = new System.Drawing.Size(95, 50);
             this.groupBox8.TabIndex = 55;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Font";
+            this.groupBox8.Text = "Font (Required)";
             // 
             // chooseFontImageButton
             // 
@@ -1048,7 +1048,7 @@
             this.groupBox7.Size = new System.Drawing.Size(148, 69);
             this.groupBox7.TabIndex = 50;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Sounds (Optional)";
+            this.groupBox7.Text = "Sounds (Required)";
             // 
             // usePlayButtonSoundCheckBox
             // 
