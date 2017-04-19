@@ -110,6 +110,7 @@ namespace GUI_Test2
             List<string> navList = new List<string>();
             navList.AddRange(Game.hubs);
             navList.AddRange(Game.pathGroups);
+            navList.AddRange(Game.paths);
             startofPlayerTurnNavigableComboBox.DataSource = navList;
 
             updateVisPlayerList();

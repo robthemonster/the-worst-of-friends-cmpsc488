@@ -336,6 +336,7 @@ namespace GUI_Test2
                 dialogueImpactList.Add(new List<Impact>());
                 dialogues.Add(new Dialogue());
                 dialogues[dialogues.Count - 1].content = dialogueTextBox.Text;
+                MessageBox.Show(dialogues.Count - 1 + "");
                 dialogueTextBox.Text = "";
                 updateListBoxes();
 
