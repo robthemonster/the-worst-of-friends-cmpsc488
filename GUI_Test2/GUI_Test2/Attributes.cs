@@ -27,7 +27,7 @@ namespace GUI_Test2
     static class Attributes
     {
         public static List<Attrib> attribs = new List<Attrib>();
-
+        public const int GLOBAL = 0, HUB = 1, PLAYER = 2;
         
 
         public static bool Add(int scope, String name, int value,string hub="") {
