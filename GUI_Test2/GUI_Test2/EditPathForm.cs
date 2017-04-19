@@ -877,7 +877,7 @@ namespace GUI_Test2
                     useButton1Image.Checked = true;
                     useButton1Image.CheckedChanged += useButton1Image_CheckedChanged;
                     buttonImagePath1 = b.pic1path;
-                    button1PictureBox.Image = Image.FromFile(buttonImagePath1);
+                    button1PictureBox.ImageLocation = buttonImagePath1;
                     button1PictureBox.Visible = true;
                     //Picture 2
                     if (b.pic2path == "")
