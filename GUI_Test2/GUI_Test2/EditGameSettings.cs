@@ -112,7 +112,6 @@ namespace GUI_Test2
             navList.AddRange(Game.pathGroups);
             navList.AddRange(Game.paths);
             startofPlayerTurnNavigableComboBox.DataSource = navList;
-
             updateVisPlayerList();
             visiblePlayerAttributesListBox.SelectedIndex = -1;
 
@@ -129,18 +128,9 @@ namespace GUI_Test2
             //Causing them to select the same path
             roundStartNavComboBox.DataSource = new List<string>(Game.pathGroups);
             roundEndNavComboBox.DataSource = new List<string>(Game.pathGroups);
-            if (Game.hubs.Contains(SOTNav) || Game.pathGroups.Contains(SOTNav))
-            {
-                startofPlayerTurnNavigableComboBox.SelectedItem = SOTNav;
-            }
-            if (Game.pathGroups.Contains(SORPathGroupName))
-            {
-                roundStartNavComboBox.SelectedItem = SORPathGroupName;
-            }
-            if (Game.pathGroups.Contains(EORPathGroupName))
-            {
-                roundEndNavComboBox.SelectedItem = EORPathGroupName;
-            }
+            startofPlayerTurnNavigableComboBox.SelectedItem = SOTNav;
+            roundStartNavComboBox.SelectedItem = SORPathGroupName;
+            roundEndNavComboBox.SelectedItem = EORPathGroupName;
 
 
             GOGlobalRadioButton.Checked = true;
@@ -663,6 +653,11 @@ namespace GUI_Test2
             catch (IndexOutOfRangeException)
             {
             }
+        }
+
+        private void startofPlayerTurnNavigableComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -64,14 +64,15 @@ namespace GUI_Test2
         {
             InitializeComponent();
             parentForm = par;
-            
-            name = p.name;
-            this.Text = "Edit Path: " + name;
+
             dialogues = new List<Dialogue>();
             foreach(Dialogue d in p.dialogues)
             {
-                dialogues.Add(new Dialogue(d));
+                dialogues.Add(new Dialogue (d));
             }
+            name = p.name;
+            this.Text = "Edit Path: " + name;
+            dialogueEntryList = new List<string>();
             dialogueEntryList = p.getDialogueContents();
             buttonList = new List<Button>();
             foreach(Button b in p.buttons)
@@ -338,7 +339,6 @@ namespace GUI_Test2
                 dialogueImpactList.Add(new List<Impact>());
                 dialogues.Add(new Dialogue());
                 dialogues[dialogues.Count - 1].content = dialogueTextBox.Text;
-                MessageBox.Show(dialogues.Count - 1 + "");
                 dialogueTextBox.Text = "";
                 updateListBoxes();
 
@@ -368,10 +368,10 @@ namespace GUI_Test2
                 if (dialogueImpactList.Count> pathListBoxTab2.SelectedIndex && dialogueImpactList[pathListBoxTab2.SelectedIndex].Contains(i))
                 {
                     dialogueImpactList[pathListBoxTab2.SelectedIndex].Remove(i);
-                    dialogues[pathListBoxTab2.SelectedIndex].impacts.Remove(i);
+                    dialogues[pathListBoxTab2.SelectedIndex].impacts.Remove(new Impact (i));
                 }
                 dialogueImpactList[pathListBoxTab2.SelectedIndex].Add(i);
-                dialogues[pathListBoxTab2.SelectedIndex].impacts.Add(i);
+                dialogues[pathListBoxTab2.SelectedIndex].impacts.Add(new Impact(i));
                 updateImpactList();
                 
             }
@@ -409,16 +409,12 @@ namespace GUI_Test2
                 label9.Enabled = true;
                 label10.Enabled = true;
                 label11.Enabled = true;
-                buttonXLocTextBox.Enabled = true;
-                buttonYLocTextBox.Enabled = true;
             }
             else
             {
                 label9.Enabled = false;
                 label10.Enabled = false;
                 label11.Enabled = false;
-                buttonXLocTextBox.Enabled = false;
-                buttonYLocTextBox.Enabled = false;
             }
         }
         
@@ -718,8 +714,8 @@ namespace GUI_Test2
             {
                 try
                 {
-                    posX = Int32.Parse(buttonXLocTextBox.Text);
-                    posY = Int32.Parse(buttonYLocTextBox.Text);
+                    posX = (int)buttonXLocNumericUpDown.Value;
+                    posY = (int)buttonYLocNumericUpDown.Value;
                 }
                 catch (FormatException ex)
                 {
@@ -727,23 +723,11 @@ namespace GUI_Test2
                     MessageBox.Show("X and Y must be positive numbers.\n" +
                         "X must be less than 960.\n" +
                         "Y must be less than 540.");
-                    buttonXLocTextBox.Text = "";
-                    buttonYLocTextBox.Text = "";
+                    buttonXLocNumericUpDown.Value = 0;
+                    buttonYLocNumericUpDown.Value = 0;
                     return;
                 }
-
-                if (Math.Abs(posX) > 960)
-                {
-                    MessageBox.Show("X coordinate must be between -960 and 960.");
-                    buttonXLocTextBox.Text = "";
-                    return;
-                }
-                if (Math.Abs(posY) > 540)
-                {
-                    MessageBox.Show("Y coordinate must be between -540 and 540.");
-                    buttonYLocTextBox.Text = "";
-                    return;
-                }
+                
             }
 
             if (useButton1Image.Checked)
@@ -861,8 +845,8 @@ namespace GUI_Test2
                 else
                 {
                     useButtonLocationDefaults.Checked = false;
-                    buttonXLocTextBox.Text = b.posX.ToString();
-                    buttonYLocTextBox.Text = b.posY.ToString();
+                    buttonXLocNumericUpDown.Value = b.posX;
+                    buttonYLocNumericUpDown.Value = b.posY;
                 }
 
                 //Picture 1
