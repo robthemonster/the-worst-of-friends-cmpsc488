@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GUI_Test2
 {
@@ -15,14 +16,13 @@ namespace GUI_Test2
         private int gameOverScope;
         private string currHub;
         private List<Requirement> gameOverReq;
-        private string dialogueScrollSound;
-        private string dialogueEndSound;
+        private string dialogueScrollSoundPath;
+        private string dialogueEndSoundPath;
         private bool musicSelected;
         private bool musicLoading;
         private string defaultFontPath;
-        private string defaultDialoguePaneTexturePath;
-        private string defaultDialoguePaneFlashingTexturePath;
-        private string defaultDialogueEndSoundPath;
+        private string dialoguePaneTexturePath;
+        private string dialoguePaneFlasingTexturePath;
         private string SORPathGroupName;
         private string EORPathGroupName;
         private List<string> visPlayerAts;
@@ -44,12 +44,11 @@ namespace GUI_Test2
 
             gameOverReq = new List<Requirement>();
             
-        dialogueScrollSound="";
-            dialogueEndSound="";
+        dialogueScrollSoundPath="";
+            dialogueEndSoundPath="";
 
             defaultFontPath = "";
-            defaultDialoguePaneFlashingTexturePath = "";
-            defaultDialogueEndSoundPath = "";
+            dialoguePaneFlasingTexturePath = "";
             maxPlayerNumericUpDown.Value = 1;
             SORPathGroupName = "";
             EORPathGroupName = "";
@@ -71,12 +70,33 @@ namespace GUI_Test2
             enterTextureXLocNumericUpDown.Value = gS.flashingTextureXLoc;
             enterTextureYLocNumericUpDown.Value = gS.flashingTextureYLoc;
 
-            dialogueScrollSound = gS.dialogueScrollSoundPath;
-            dialogueEndSound = gS.dialogueEndSoundPath;
-            defaultFontPath = gS.defaultFontPath;
-            defaultDialoguePaneTexturePath = gS.dialoguePaneTexturePath;
-            defaultDialoguePaneFlashingTexturePath = gS.dialoguePaneFlashingTexturePath;
-            defaultDialogueEndSoundPath = gS.dialogueEndSoundPath;
+            if (File.Exists(gS.dialogueScrollSoundPath)) {
+                dialogueScrollSoundPath = gS.dialogueScrollSoundPath; }
+            else { dialogueScrollSoundPath = ""; }
+
+            if (File.Exists(gS.dialogueEndSoundPath))
+            {
+                dialogueEndSoundPath = gS.dialogueEndSoundPath;
+            }
+            else { dialogueEndSoundPath = ""; }
+
+            if (File.Exists(gS.defaultFontPath))
+            {
+                defaultFontPath = gS.defaultFontPath;
+            }
+            else { defaultFontPath = ""; }
+
+            if (File.Exists(gS.dialoguePaneTexturePath))
+            {
+                dialoguePaneTexturePath = gS.dialoguePaneTexturePath;
+            }
+            else { dialoguePaneTexturePath = ""; }
+
+            if (File.Exists(gS.dialoguePaneFlashingTexturePath))
+            {
+                dialoguePaneFlasingTexturePath = gS.dialoguePaneFlashingTexturePath;
+            }
+            else {dialoguePaneFlasingTexturePath = ""; }
             paneXLocNumericUpDown.Value = gS.dialoguePanePosX;
             paneYLocNumericUpDown.Value = gS.dialoguePanePosY;
             NPCXLocNumericUpDown.Value = gS.NPCXLoc;
@@ -177,8 +197,8 @@ namespace GUI_Test2
             */
             Game.gameSettings.visPlayerAtts = visPlayerAts;
             Game.gameSettings.visGlobalAtts = visGlobalAts;
-            Game.gameSettings.dialoguePaneTexturePath = defaultDialoguePaneTexturePath;
-            Game.gameSettings.dialoguePaneFlashingTexturePath = defaultDialoguePaneFlashingTexturePath;
+            Game.gameSettings.dialoguePaneTexturePath = dialoguePaneTexturePath;
+            Game.gameSettings.dialoguePaneFlashingTexturePath = dialoguePaneFlasingTexturePath;
             
 
             Game.gameSettings.maxPlayers = (int)maxPlayerNumericUpDown.Value;
@@ -191,12 +211,12 @@ namespace GUI_Test2
             Game.gameSettings.NPCYLoc = (int)this.NPCYLocNumericUpDown.Value;
             
 
-            if (dialogueEndSound != "")
+            if (dialogueEndSoundPath != "")
             {
-                Game.gameSettings.dialogueEndSoundPath = dialogueEndSound;
+                Game.gameSettings.dialogueEndSoundPath = dialogueEndSoundPath;
             }
-            if (dialogueScrollSound != "") {
-                Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSound;
+            if (dialogueScrollSoundPath != "") {
+                Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSoundPath;
             }
             
             if (this.roundEndNavComboBox.SelectedIndex != -1)
@@ -411,7 +431,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    dialogueScrollSound = of.FileName;
+                    dialogueScrollSoundPath = of.FileName;
                 }
             }
             catch (IndexOutOfRangeException)
@@ -430,7 +450,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    defaultDialoguePaneTexturePath = of.FileName;
+                    dialoguePaneTexturePath = of.FileName;
                 }
 
             }
@@ -517,7 +537,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    dialogueEndSound = of.FileName;
+                    dialogueEndSoundPath = of.FileName;
                 }
             }
             catch (IndexOutOfRangeException)
@@ -535,7 +555,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                   defaultDialoguePaneFlashingTexturePath  = of.FileName;
+                   dialoguePaneFlasingTexturePath  = of.FileName;
                 }
 
             }
