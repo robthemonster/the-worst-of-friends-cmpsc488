@@ -17,9 +17,6 @@ namespace GUI_Test2
 
         static void Main()
         {
-
-            
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ProjectHomeForm());

@@ -70,16 +70,19 @@ namespace GUI_Test2
             Game.endingGen = project.endingGen;
             Game.gameSettings = project.gameSettings;
             Attributes.attribs= project.attribs;
+
+            Game.navNameToCodeIndex = new Dictionary<string, int>();
+            Game.oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
+            Game.oldPathToCodeObject = new Dictionary<string, string>();
+            Game.characterNameToCodeObject = new Dictionary<string, string>();
         }
         
         private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
-        private static Dictionary<String, int> navNameToImageIndex = new Dictionary<string, int>();
-        private static Dictionary<String, int> navNameToSoundIndex = new Dictionary<string, int>();
         private static Dictionary<string, int> navNameToCodeIndex = new Dictionary<string, int>();
         private static Dictionary<string, Dictionary<string,  string>> oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
         private static Dictionary<string, string> oldPathToCodeObject = new Dictionary<string, string>();
-
-
+        private static Dictionary<string, string> characterNameToCodeObject = new Dictionary<string, string>();
+      
 
         private static bool generateCode(string filePath)
         {
@@ -125,6 +128,10 @@ namespace GUI_Test2
 
             code.AppendLine(setDialoguePanes);
 
+            string initializeCharactersCode = getInitializeCharactersCode();
+
+            code.AppendLine(initializeCharactersCode);
+
             string addDialogueCode = getAddDialogueCode();
 
             code.AppendLine(addDialogueCode);
@@ -143,6 +150,26 @@ namespace GUI_Test2
             outputStream.Close();
 
             return true;
+        }
+
+        private static string getInitializeCharactersCode()
+        {
+            StringBuilder code = new StringBuilder();
+            int characterCtr = 0;
+            foreach (NPC character in Game.characters.Values)
+            {
+                code.AppendLine("Character * character" + characterCtr + " = new Character;");
+                Game.characterNameToCodeObject[character.name] = "character" + characterCtr;
+
+                int characterImageCtr = 0;
+                foreach (string key in character.imageNames)
+                {
+                    code.AppendLine("(*character" + characterCtr + ").addCharacterImage(\"" + key + "\",\"" + Game.oldPathToNewPath["characterImage"][character.imagePaths[characterImageCtr]] + "\");");
+                    characterImageCtr++;
+                }
+                characterCtr++;
+            }
+            return code.ToString();
         }
 
         private static string getAddAttributesCode()
@@ -353,11 +380,13 @@ namespace GUI_Test2
                                 code.AppendLine("impacts" + impactCtr + ".push_back(new Impact((*game).getAttributeMapPointer(), (Attributable**)" + target + ", \"" + impact.attribute + "\", Impact::" + op + ", " + impact.val + "));");
                             }
                             string characterArgs = "";
-                            if (p.dialogues[dialogueCtr].character != "")
+                            if (p.dialogues[dialogueCtr].character != "" && p.dialogues[dialogueCtr].characterImage != "")
                             {
-                                //TODO: generate character code
+                                //TODO: TEST once interface works.
+                                characterArgs =  ", " + Game.characterNameToCodeObject[p.dialogues[dialogueCtr].character] + ", \"" + p.dialogues[dialogueCtr].characterImage + "\", sf::Vector2f(" + Game.gameSettings.NPCXLoc + ", " + Game.gameSettings.NPCYLoc +")";
+
                             }
-                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr +");");
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr + characterArgs +");");
                             impactCtr++;
                         }
                         dialogueCtr++;
@@ -592,6 +621,7 @@ namespace GUI_Test2
             Game.oldPathToNewPath["font"] = new Dictionary<string, string>();
             Game.oldPathToNewPath["image"] = new Dictionary<string, string>();
             Game.oldPathToNewPath["sound"] = new Dictionary<string, string>();
+            Game.oldPathToNewPath["characterImage"] = new Dictionary<string, string>();
             
             Console.Out.WriteLine("Copying assets to dir..");
             System.IO.Directory.CreateDirectory(Game.directory+ "\\assets\\img");
@@ -634,6 +664,16 @@ namespace GUI_Test2
                         }
                         break;
 
+                }
+            }
+
+            int characterImageCtr = 0;
+            foreach(NPC character in Game.characters.Values)
+            {
+                foreach(string image in character.imagePaths)
+                {
+                    copyFileTo(image, "\\assets\\img\\character" + characterImageCtr, "characterImage");
+                    characterImageCtr++;
                 }
             }
             
