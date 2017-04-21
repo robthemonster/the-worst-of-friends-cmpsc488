@@ -43,18 +43,17 @@ namespace GUI_Test2
 
             if (alert == DialogResult.Yes)
             {
-                Game.navIndex = new Dictionary<String, Navigable>();
+                Project project = new Project();
+                Game.loadFromProject(project);
+                /*Game.navIndex = new Dictionary<String, Navigable>();
                 //attributes = new Attribs();
                 Game.paths = new List<String>();
                 Game.pathGroups = new List<String>();
                 Game.hubs = new List<String>();
                 Attributes.attribs = new List<Attrib>();
 
-                foreach (string i in Characters.getKeys())
-                {
-                    Characters.Remove(i);
-                }
-
+                Game.characters = new List<NPC>();
+                */
                 fileLocation = "";
                 setWindowTitle(fileLocation);
                 updateListBoxes();
@@ -114,7 +113,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Characters.characters, Game.endingGen,Game.gameSettings);
+                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Game.characters, Game.endingGen,Game.gameSettings);
                 saveToFile(proj, fileLocation);
             }
             else
@@ -244,15 +243,17 @@ namespace GUI_Test2
                stream.Close();
 
                 //Load the GameObject
-                Game.pathGroups = (List<String>)proj.pathGroups;
+                Game.loadFromProject(proj);
+
+               /* Game.pathGroups = (List<String>)proj.pathGroups;
                 Game.hubs = (List<String>)proj.hubs;
                 Game.navIndex = (Dictionary<String, Navigable>)proj.navIndex;
                 
                 Game.paths = (List<String>)proj.paths;
                 Attributes.attribs = (List<Attrib>)proj.attribs;
-                Characters.characters = (proj.characters);
+                Game.characters = (proj.characters);
                 Game.gameSettings = proj.gameSettings;
-                Game.endingGen = proj.endingGen;
+                Game.endingGen = proj.endingGen;*/
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
 
                 updateListBoxes();

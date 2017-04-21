@@ -21,7 +21,7 @@ namespace GUI_Test2
             InitializeComponent();
             parentForm = par;
             imagePath = "";
-            nameList = Characters.getKeys();
+            nameList = Game.characters.Keys.ToList();
             updateCharacterList();
         }
 
@@ -61,9 +61,11 @@ namespace GUI_Test2
                 if (!nameList.Contains(characterName))
                 {
                     nameList.Add(characterName);
-                    new NPC(characterName);
+                    Game.characters.Add(characterName, new NPC(characterName));
                     updateCharacterList();
-                    characterList.SelectedIndex = Characters.characters.Count - 1;
+                    characterList.SelectedIndex = Game.characters.Count - 1;
+                    
+                   
                 }
 
                 else
@@ -79,7 +81,7 @@ namespace GUI_Test2
         {
             if (characterList.SelectedIndex != -1)
             {
-                Characters.Remove(nameList[characterList.SelectedIndex]);
+                Game.characters.Remove(nameList[characterList.SelectedIndex]);
                 updateCharacterList();
             }
         }
@@ -87,15 +89,15 @@ namespace GUI_Test2
         private void updateCharacterList()
         {
             characterList.DataSource = null;
-            characterList.DataSource = Characters.characters.Keys.ToList();
+            characterList.DataSource = Game.characters.Keys.ToList();
         }
 
         private void deleteImageButton_Click(object sender, EventArgs e)
         {
             if (characterImageList.SelectedIndex != -1 && characterList.SelectedIndex!=-1)
             {
-                Characters.characters[(string)characterList.SelectedValue].removeImage(characterImageList.SelectedIndex);
-                if (characterImageList.SelectedIndex == Characters.characters[characterList.Text].imageNames.Count)
+                Game.characters[characterList.Text].removeImage(characterImageList.SelectedIndex);
+                if (characterImageList.SelectedIndex == Game.characters[characterList.Text].imageNames.Count)
                 {
                     --characterImageList.SelectedIndex;
                 }
@@ -106,10 +108,10 @@ namespace GUI_Test2
 
         private void addImageToCharacterButton_Click(object sender, EventArgs e)
         {
-            if (imageNameTextBox.Text != "" && characterList.SelectedIndex!=-1 && !imagePath.Equals("")&& !Characters.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text))
+            if (imageNameTextBox.Text != "" && characterList.SelectedIndex!=-1 && !imagePath.Equals("")&& !Game.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text))
             {
                 string imageName = imageNameTextBox.Text;
-                Characters.characters[characterList.Text].addImage(imageNameTextBox.Text, imagePath);
+                Game.characters[characterList.Text].addImage(imageNameTextBox.Text, imagePath);
                 updateImageList();
                 characterImageList.SelectedIndex = characterImageList.FindString(imageName);
                 this.ActiveControl = imageNameTextBox;
@@ -120,8 +122,13 @@ namespace GUI_Test2
         {
             if (characterList.SelectedIndex != -1)
             {
+                characterImageList.SelectedIndexChanged -= characterImageList_SelectedIndexChanged;
                 characterImageList.DataSource = null;
-                characterImageList.DataSource = Characters.characters[characterList.Text].imageNames;
+                characterImageList.DataSource = Game.characters[characterList.Text].imageNames;
+                characterImageList.ClearSelected();
+                characterImageList.SelectedIndexChanged += characterImageList_SelectedIndexChanged;
+                imageNameTextBox.Text = "";
+                characterImage.Image = GUI_Test2.Properties.Resources.defaultCharacter;
             }
         }
 
@@ -130,11 +137,11 @@ namespace GUI_Test2
             if (characterImageList.SelectedIndex != -1 && characterList.SelectedIndex != -1)
             {
                 imageNameTextBox.Text = characterImageList.Text;
-                imagePath = Characters.characters[characterList.Text].imagePaths[characterImageList.SelectedIndex];
+                imagePath = Game.characters[characterList.Text].imagePaths[characterImageList.SelectedIndex];
                 characterImage.ImageLocation = imagePath;
             }
             else {
-                characterImage.Image = GUI_Test2.Properties.Resources.character;
+                characterImage.Image = GUI_Test2.Properties.Resources.defaultCharacter;
                 imageNameTextBox.Text = "";
             }
         }

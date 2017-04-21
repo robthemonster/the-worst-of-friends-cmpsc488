@@ -18,7 +18,7 @@ namespace GUI_Test2
         public String navigableName;
         public List<String> paths;
         public List<Attrib> attribs;
-        public Dictionary<string, NPC> characters;
+        public Dictionary <string, NPC> characters;
         public EndingGen endingGen;
         public GameSettings gameSettings;
 
@@ -35,16 +35,16 @@ namespace GUI_Test2
             gameSettings = new GameSettings();
         }
 
-        public Project(List<String> pg, List<String> h, Dictionary<String, Navigable> nI, List<String> p,List<Attrib> attribs, Dictionary<string, NPC> c, EndingGen eG, GameSettings gS)
+        public Project(List<String> pathGroups, List<String> hubs, Dictionary<String, Navigable> navIndex, List<String> paths,List<Attrib> attribs, Dictionary <string, NPC> characters, EndingGen endingGen, GameSettings gameSettings)
         {
-            pathGroups = pg;
-            hubs = h;
-            navIndex = nI;
-            paths = p;
+            this.pathGroups = pathGroups;
+            this.hubs = hubs;
+            this.navIndex = navIndex;
+            this.paths = paths;
             this.attribs = attribs;
-            characters = c;
-            endingGen = eG;
-            gameSettings = gS;
+            this.characters = characters;
+            this.endingGen = endingGen;
+            this.gameSettings = gameSettings;
         }
     }
 
@@ -56,60 +56,29 @@ namespace GUI_Test2
         public static List<String> hubs = new List<string>();
         public static Dictionary<String, Navigable> navIndex = new Dictionary<String, Navigable>();
         public static List<String> paths = new List<String>();
+        public static Dictionary<string, NPC> characters = new Dictionary<string, NPC>();
         public static EndingGen endingGen = new EndingGen();
         public static GameSettings gameSettings = new GameSettings();
 
+        public static void loadFromProject(Project project)
+        {
+            Game.pathGroups = project.pathGroups;
+            Game.hubs = project.hubs;
+            Game.navIndex = project.navIndex;
+            Game.paths = project.paths;
+            Game.characters = project.characters;
+            Game.endingGen = project.endingGen;
+            Game.gameSettings = project.gameSettings;
+            Attributes.attribs= project.attribs;
+        }
         
         private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
-
         private static Dictionary<String, int> navNameToImageIndex = new Dictionary<string, int>();
         private static Dictionary<String, int> navNameToSoundIndex = new Dictionary<string, int>();
         private static Dictionary<string, int> navNameToCodeIndex = new Dictionary<string, int>();
         private static Dictionary<string, Dictionary<string,  string>> oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
         private static Dictionary<string, string> oldPathToCodeObject = new Dictionary<string, string>();
 
-
-
-        public static void init(List<String> pg, List<String> h, Dictionary<String, Navigable> nI,  List<String> p, EndingGen eG, GameSettings gS)
-        {
-            pathGroups = pg;
-            hubs = h;
-            navIndex = nI;
-           
-            paths = p;
-            endingGen = eG;
-            gameSettings = gS;
-        }
-
-        public static void setPathGroup(List<String> pg)
-        {
-            pathGroups = pg;
-        }
-
-        public static void setHubs(List<String> h)
-        {
-            hubs = h;
-        }
-
-        public static void setNavIndex(Dictionary<String, Navigable> nI)
-        {
-            navIndex = nI;
-        }
-
-        public static void setPaths(List<String> p)
-        {
-            paths = p;
-        }
-
-        public static void setEndingGenerator(EndingGen eg)
-        {
-            endingGen = eg;
-        }
-
-        public static void setGameSettings(GameSettings gS)
-        {
-            gameSettings = gS;
-        }
 
 
         private static bool generateCode(string filePath)
@@ -382,6 +351,11 @@ namespace GUI_Test2
                                         break;
                                 }
                                 code.AppendLine("impacts" + impactCtr + ".push_back(new Impact((*game).getAttributeMapPointer(), (Attributable**)" + target + ", \"" + impact.attribute + "\", Impact::" + op + ", " + impact.val + "));");
+                            }
+                            string characterArgs = "";
+                            if (p.dialogues[dialogueCtr].character != "")
+                            {
+                                //TODO: generate character code
                             }
                             code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr +");");
                             impactCtr++;
@@ -699,8 +673,8 @@ namespace GUI_Test2
             FileInfo[] files = directory.GetFiles();
             foreach (FileInfo f in files)
             {
-                if (f.Name == "main.exe" || f.Name == "main.cpp")
-                    f.Delete();
+               // if (f.Name == "main.exe" || f.Name == "main.cpp")
+                  //  f.Delete();
             }
 
 

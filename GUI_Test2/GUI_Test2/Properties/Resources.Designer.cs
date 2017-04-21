@@ -61,16 +61,6 @@ namespace GUI_Test2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap character {
-            get {
-                object obj = ResourceManager.GetObject("character", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to #include &lt;SFML\Graphics.hpp&gt;
         ///#include &lt;iostream&gt;
         ///
@@ -99,6 +89,16 @@ namespace GUI_Test2.Properties {
         internal static string cookieCutterGame {
             get {
                 return ResourceManager.GetString("cookieCutterGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap defaultCharacter {
+            get {
+                object obj = ResourceManager.GetObject("defaultCharacter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

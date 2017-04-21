@@ -8,6 +8,7 @@ class Interface;
 class Game;
 class Impact;
 class Attributable;
+class Character;
 class Path : public Navigable 
 {
 private:
@@ -27,7 +28,8 @@ public:
 	void setImageTexture(sf::Texture &);
 	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position);
 	void addDialogueLine(std::string);
-	void addDialogueLine(std::string, std::vector<Impact *>);
+	void addDialogueLine(std::string, std::vector<Impact *>,
+		Character * character = NULL, std::string key = "" , sf::Vector2f charPos = sf::Vector2f());
 	void addDialogueLine(std::string, Attributable ** target, std::string key, int op, int val);
 	
 	void setFontCharSize(int size);

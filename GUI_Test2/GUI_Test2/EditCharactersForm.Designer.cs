@@ -62,7 +62,7 @@
             // 
             // characterImage
             // 
-            this.characterImage.Image = global::GUI_Test2.Properties.Resources.character;
+            this.characterImage.Image = global::GUI_Test2.Properties.Resources.defaultCharacter;
             this.characterImage.Location = new System.Drawing.Point(3, 21);
             this.characterImage.Margin = new System.Windows.Forms.Padding(2);
             this.characterImage.Name = "characterImage";

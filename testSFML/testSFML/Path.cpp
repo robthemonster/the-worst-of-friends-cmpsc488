@@ -80,10 +80,10 @@ void Path::addDialogueLine(std::string dialogueLine)
 }
 
 
-void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impacts)
+void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impacts, Character * character, std::string key, sf::Vector2f charPos)
 {
 	if (this->dialogueScreen != NULL) {
-		DialogueLine line(dialogueLine);
+		DialogueLine line(dialogueLine, character, key, charPos);
 
 		for (int i = 0; i < impacts.size(); i++) {
 			line.addImpact(impacts[i]);
