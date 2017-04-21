@@ -51,7 +51,7 @@
             this.selectDefaultPathImageButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.useCharacterCheckBox = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.characterComboBox = new System.Windows.Forms.ComboBox();
             this.characterImageComboBox = new System.Windows.Forms.ComboBox();
@@ -121,6 +121,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
+            this.addCharacterButton = new System.Windows.Forms.Button();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dialogueFontSizeNumeric)).BeginInit();
@@ -181,7 +182,7 @@
             this.tabPage1.Controls.Add(this.selectDefaultPathImageButton);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(566, 356);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
@@ -201,7 +202,7 @@
             // dialogueFontSizeNumeric
             // 
             this.dialogueFontSizeNumeric.Location = new System.Drawing.Point(113, 42);
-            this.dialogueFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dialogueFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2);
             this.dialogueFontSizeNumeric.Name = "dialogueFontSizeNumeric";
             this.dialogueFontSizeNumeric.Size = new System.Drawing.Size(90, 20);
             this.dialogueFontSizeNumeric.TabIndex = 53;
@@ -226,7 +227,7 @@
             // 
             this.createNewDialogueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.createNewDialogueButton.Location = new System.Drawing.Point(250, 300);
-            this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createNewDialogueButton.Margin = new System.Windows.Forms.Padding(2);
             this.createNewDialogueButton.Name = "createNewDialogueButton";
             this.createNewDialogueButton.Size = new System.Drawing.Size(104, 22);
             this.createNewDialogueButton.TabIndex = 2;
@@ -267,7 +268,7 @@
             // dialogueTextBox
             // 
             this.dialogueTextBox.Location = new System.Drawing.Point(197, 72);
-            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dialogueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dialogueTextBox.Multiline = true;
             this.dialogueTextBox.Name = "dialogueTextBox";
             this.dialogueTextBox.Size = new System.Drawing.Size(157, 222);
@@ -359,7 +360,7 @@
             // 
             this.defaultPathImage.Image = global::GUI_Test2.Properties.Resources.defaultPath;
             this.defaultPathImage.Location = new System.Drawing.Point(358, 52);
-            this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.defaultPathImage.Margin = new System.Windows.Forms.Padding(2);
             this.defaultPathImage.Name = "defaultPathImage";
             this.defaultPathImage.Size = new System.Drawing.Size(199, 126);
             this.defaultPathImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -369,7 +370,7 @@
             // selectDefaultPathImageButton
             // 
             this.selectDefaultPathImageButton.Location = new System.Drawing.Point(363, 183);
-            this.selectDefaultPathImageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectDefaultPathImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectDefaultPathImageButton.Name = "selectDefaultPathImageButton";
             this.selectDefaultPathImageButton.Size = new System.Drawing.Size(141, 19);
             this.selectDefaultPathImageButton.TabIndex = 11;
@@ -386,7 +387,7 @@
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(566, 356);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impacts";
@@ -394,7 +395,8 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.checkBox1);
+            this.groupBox5.Controls.Add(this.addCharacterButton);
+            this.groupBox5.Controls.Add(this.useCharacterCheckBox);
             this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.characterComboBox);
             this.groupBox5.Controls.Add(this.characterImageComboBox);
@@ -406,16 +408,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Character on Dialogue (Optional)";
             // 
-            // checkBox1
+            // useCharacterCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 36);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(94, 17);
-            this.checkBox1.TabIndex = 58;
-            this.checkBox1.Text = "Use Character";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.useCharacterCheckBox.AutoSize = true;
+            this.useCharacterCheckBox.Location = new System.Drawing.Point(6, 38);
+            this.useCharacterCheckBox.Name = "useCharacterCheckBox";
+            this.useCharacterCheckBox.Size = new System.Drawing.Size(94, 17);
+            this.useCharacterCheckBox.TabIndex = 58;
+            this.useCharacterCheckBox.Text = "Use Character";
+            this.useCharacterCheckBox.UseVisualStyleBackColor = true;
+            this.useCharacterCheckBox.CheckedChanged += new System.EventHandler(this.useCharacterCheckBox_CheckedChanged);
             // 
             // label17
             // 
@@ -425,7 +427,6 @@
             this.label17.Size = new System.Drawing.Size(88, 13);
             this.label17.TabIndex = 57;
             this.label17.Text = "Character Image:";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // characterComboBox
             // 
@@ -435,6 +436,7 @@
             this.characterComboBox.Name = "characterComboBox";
             this.characterComboBox.Size = new System.Drawing.Size(188, 21);
             this.characterComboBox.TabIndex = 54;
+            this.characterComboBox.SelectedIndexChanged += new System.EventHandler(this.characterComboBox_SelectedIndexChanged);
             // 
             // characterImageComboBox
             // 
@@ -453,7 +455,6 @@
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 56;
             this.label2.Text = "Character:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox4
             // 
@@ -714,7 +715,7 @@
             this.Buttons.Controls.Add(this.tableLayoutPanel4);
             this.Buttons.Location = new System.Drawing.Point(4, 22);
             this.Buttons.Name = "Buttons";
-            this.Buttons.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Buttons.Padding = new System.Windows.Forms.Padding(3);
             this.Buttons.Size = new System.Drawing.Size(566, 356);
             this.Buttons.TabIndex = 2;
             this.Buttons.Text = "Buttons";
@@ -795,7 +796,7 @@
             // buttonFontSizeNumeric
             // 
             this.buttonFontSizeNumeric.Location = new System.Drawing.Point(472, 33);
-            this.buttonFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2);
             this.buttonFontSizeNumeric.Name = "buttonFontSizeNumeric";
             this.buttonFontSizeNumeric.Size = new System.Drawing.Size(57, 20);
             this.buttonFontSizeNumeric.TabIndex = 54;
@@ -1243,6 +1244,15 @@
             this.buttonListBox.TabIndex = 0;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
             // 
+            // addCharacterButton
+            // 
+            this.addCharacterButton.Location = new System.Drawing.Point(6, 79);
+            this.addCharacterButton.Name = "addCharacterButton";
+            this.addCharacterButton.Size = new System.Drawing.Size(92, 23);
+            this.addCharacterButton.TabIndex = 59;
+            this.addCharacterButton.Text = "Add Character";
+            this.addCharacterButton.UseVisualStyleBackColor = true;
+            // 
             // EditPathForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1251,7 +1261,7 @@
             this.Controls.Add(this.pathDialogueTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "EditPathForm";
             this.Text = "Edit Path: ";
@@ -1386,10 +1396,11 @@
         private System.Windows.Forms.NumericUpDown buttonYLocNumericUpDown;
         private System.Windows.Forms.NumericUpDown buttonXLocNumericUpDown;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox useCharacterCheckBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox characterComboBox;
         private System.Windows.Forms.ComboBox characterImageComboBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button addCharacterButton;
     }
 }

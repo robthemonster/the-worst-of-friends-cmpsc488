@@ -111,10 +111,20 @@ namespace GUI_Test2
 
             navComboBox.DataSource = new List<string>(Game.paths);
             defaultTargetNavComboBox.DataSource = new List<string>();
+            characterComboBox.DataSource = new List<string>(Game.characters.Keys);
 
             hubSelectionComboBox.DataSource = Game.hubs;
             pathFromButtonRadio.Checked = true;
             globalRadioButton.Checked = true;
+
+            label2.Enabled = false;
+            label17.Enabled = false;
+            characterComboBox.Enabled = false;
+            characterComboBox.SelectedIndex = -1;
+            characterImageComboBox.Enabled = false;
+            characterImageComboBox.SelectedIndex = -1;
+            addCharacterButton.Enabled = false;
+
 
             if (defaultTargetNavigable != "")
             {
@@ -1090,19 +1100,35 @@ namespace GUI_Test2
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void useCharacterCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (useCharacterCheckBox.Checked)
+            {
+                label2.Enabled = true;
+                characterComboBox.SelectedIndex = -1;
+                characterComboBox.Enabled = true;
+                label17.Enabled = true;
+                characterImageComboBox.Enabled = true;
+            }
+            else
+            {
+                label2.Enabled = false;
+                characterComboBox.SelectedIndex = -1;
+                characterComboBox.Enabled = false;
+                label17.Enabled = false;
+                characterImageComboBox.Enabled = false;
+            }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void characterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            characterImageComboBox.DataSource = null;
 
-        }
+            if (characterComboBox.SelectedIndex == -1)
+                characterImageComboBox.DataSource = new List<string>();
 
-        private void label17_Click(object sender, EventArgs e)
-        {
-
+            else
+                characterImageComboBox.DataSource = new List<string>(Game.characters[characterComboBox.SelectedItem.ToString()].imageNames);
         }
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
