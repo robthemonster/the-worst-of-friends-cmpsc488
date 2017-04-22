@@ -10,8 +10,10 @@ GUI_Test2/.vs/GUI_Test2/v14/.suo
 GUI_Test2/codegen_test/VC
 GUI_Test2/codegen_test/SFML-2.4.2
 GUI_Test2/codegen_test/main.exe
+GUI_Test2/codegen_test/main.cpp
 GUI_Test2/codegen_test/*.obj
+GUI_Test2/codegen_text/assets/
 testSFML/SFML-2.4.2
 testSFML/testSFML/main.cpp
-*.vcproj
-*.vc
+*.vcxproj
+*.vcxproj.filters
