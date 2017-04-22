@@ -24,7 +24,7 @@ private:
 public:
 	static const int BUTTON_HIGHLIGHT_IMAGE = 2, BUTTON_HIGHLIGHT_TEXT = 1, BUTTON_DO_NOTHING = 0;
 
-	void display(sf::RenderWindow & window, sf::View & view);
+	void display(sf::RenderWindow & window, sf::View & view, bool fadeIn);
 	void setImageTexture(sf::Texture &);
 	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position);
 	void addDialogueLine(std::string);

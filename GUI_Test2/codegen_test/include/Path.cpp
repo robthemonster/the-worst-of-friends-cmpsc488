@@ -9,7 +9,7 @@
 
 #include "Path.h"
 
-void Path::display(sf::RenderWindow & window, sf::View & view)
+void Path::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 {
 	if (this->hasMusic) {
 		(*this->music).openFromFile(this->musicFile);
@@ -20,10 +20,10 @@ void Path::display(sf::RenderWindow & window, sf::View & view)
 	
 
 	if (this->dialogueScreen != NULL) {
-		(*this->dialogueScreen).display(window, view);
+		(*this->dialogueScreen).display(window, view, fadeIn);
 	}
 	else if (this->buttonScreen != NULL) {
-		(*this->buttonScreen).display(window, view);
+		(*this->buttonScreen).display(window, view, fadeIn);
 	}
 	else {
 		std::cout << "Path has no dialogue screen or button screen" << std::endl;

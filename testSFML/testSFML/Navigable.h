@@ -6,7 +6,7 @@ class Navigable
 private:
 
 public:
-	virtual void display(sf::RenderWindow &window, sf::View &view) = 0;
+	virtual void display(sf::RenderWindow &window, sf::View &view, bool fadeIn) = 0;
 	 ~Navigable();
 };
 

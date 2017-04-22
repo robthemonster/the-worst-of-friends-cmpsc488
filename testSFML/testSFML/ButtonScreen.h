@@ -28,7 +28,7 @@ public:
 	void addButton(FButton * button);
 	void setShowGlobalPane(bool set);
 
-	virtual void display(sf::RenderWindow & window, sf::View & view) ;
+	virtual void display(sf::RenderWindow & window, sf::View & view, bool fadeIn) ;
 	
 
 	void resizeView(sf::RenderWindow &, sf::View&);

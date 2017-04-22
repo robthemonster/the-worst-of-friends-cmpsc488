@@ -17,7 +17,7 @@ void EndingGenerator::addEnding(int tier, Path * path, Requirements * req)
 	this->endings[tier].push_back(std::make_tuple(path, req));
 }
 
-void EndingGenerator::display(sf::RenderWindow & window, sf::View & view)
+void EndingGenerator::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 {
 	Path * first = NULL, *curr = NULL, *last = NULL;
 	Requirements * currReq;
@@ -38,7 +38,7 @@ void EndingGenerator::display(sf::RenderWindow & window, sf::View & view)
 		}
 	}
 	if (first != NULL)
-		(*first).display(window, view);
+		(*first).display(window, view, fadeIn);
 }
 
 EndingGenerator::EndingGenerator()

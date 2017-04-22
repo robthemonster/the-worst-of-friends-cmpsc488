@@ -53,8 +53,20 @@ void ButtonScreen::setShowGlobalPane(bool set)
 }
 
 
-void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
+void ButtonScreen::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)  {
 	
+
+	if (fadeIn) {
+		sf::Clock fadeIn;
+		imageRect.setPosition(view.getSize().x * -0.5, view.getSize().y * -0.5);
+		imageRect.setSize(view.getSize());
+		while (window.isOpen() && fadeIn.getElapsedTime().asMilliseconds() <= 1000) {
+			window.clear();
+			window.draw(imageRect);
+			(*(*this->game).getInterfacePointer()).drawFade(window, view, fadeIn.getElapsedTime().asMilliseconds(), false);
+			window.display();
+		}
+	}
 	std::vector<FButton* >::iterator it;
 
 	Player * currPlayer = *(*this->game).getCurrentPlayerPointer();
@@ -88,7 +100,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view)  {
 							it = this->buttons.begin();
 							while (it != this->buttons.end()) {
 								if ((**it).mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
-									(*(**it).getTarget()).display(window, view);
+									(*(**it).getTarget()).display(window, view, false);
 									return;
 
 								}

@@ -1,5 +1,8 @@
 #include "FButton.h"
+#include "Game.h"
+#include "Interface.h"
 #include "MainMenu.h"
+
 
 
 
@@ -12,7 +15,7 @@ void MainMenu::setFont(sf::Font font)
 
 
 
-	this->playGame = new FButton(buttonSize, NULL, playGamePos, FButton::HIGHLIGHT_TEXT, "Play Game", font, 40);
+	this->playGame = new FButton(buttonSize, NULL, playGamePos, FButton::HIGHLIGHT_TEXT, "Play", font, 40);
 	this->quit = new FButton(buttonSize, NULL, quitGamePos, FButton::HIGHLIGHT_TEXT, "Quit", font, 40);
 }
 
@@ -32,9 +35,10 @@ void MainMenu::setPlayGameSound(std::string file)
 	this->playGameSoundFile = file;
 }
 
-void MainMenu::display(sf::RenderWindow & window, sf::View & view)
+void MainMenu::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 {
-
+	bool pressedPlay = false;
+	sf::Clock fade;
 
 	if (this->music != NULL) {
 		(*this->music).openFromFile(this->musicFile);
@@ -62,7 +66,8 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view)
 							(*music).stop();
 						if (playGameSoundFile != "")
 							playGameSound.play();
-						return;
+						fade.restart();
+						pressedPlay = true;
 					}
 					else if ((*this->quit).isHighlighted())
 						window.close();
@@ -79,15 +84,21 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view)
 		(*this->playGame).draw(window, view);
 		(*this->quit).draw(window, view);
 
+		if (pressedPlay) {
+			(*(*this->game).getInterfacePointer()).drawFade(window, view, fade.getElapsedTime().asMilliseconds(), true);
+			if (fade.getElapsedTime().asMilliseconds() >= 1000)
+				return;
+		}
+
 		window.display();
 	}
 }
 
 
 
-MainMenu::MainMenu()
+MainMenu::MainMenu(Game * game)
 {
-	
+	this->game = game;
 }
 
 

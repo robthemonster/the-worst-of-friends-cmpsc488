@@ -24,7 +24,7 @@ void PathGroup::addNavigable(int tier, Navigable * path, int weight, Requirement
 	this->paths.at(tier).push_back(std::make_tuple(path, weight, req));
 }
 
-void PathGroup::display(sf::RenderWindow & window, sf::View & view)
+void PathGroup::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 {
 	srand(time(NULL));
 
@@ -60,7 +60,7 @@ void PathGroup::display(sf::RenderWindow & window, sf::View & view)
 			if ((*currReq).meetsAllRequirements()) {
 				runningTotal += std::get<1>(paths[selectedTier][i]);
 				if (randomIndex < runningTotal) {
-					(*currPath).display(window, view);
+					(*currPath).display(window, view, fadeIn);
 					return;
 				}
 

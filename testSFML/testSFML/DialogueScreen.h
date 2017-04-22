@@ -24,7 +24,7 @@ public:
 	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position);
 	void setFont(sf::Font font);
 
-	virtual void display(sf::RenderWindow& window, sf::View & view);
+	virtual void display(sf::RenderWindow& window, sf::View & view, bool fadeIn);
 
 	void addDialogueLine(DialogueLine line);
 	void resizeView(sf::RenderWindow& window, sf::View& view);

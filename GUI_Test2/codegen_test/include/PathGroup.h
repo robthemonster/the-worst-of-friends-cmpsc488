@@ -14,6 +14,6 @@ public:
 	~PathGroup();
 	void setTiers(int tiers);
 	void addNavigable(int tier, Navigable * path, int weight, Requirements * req);
-	void display(sf::RenderWindow & window, sf::View & view);
+	void display(sf::RenderWindow & window, sf::View & view, bool fadeIn);
 };
 

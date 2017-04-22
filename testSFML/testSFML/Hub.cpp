@@ -15,14 +15,14 @@ void Hub::setImageTexture(sf::Texture & texture)
 	(*this->buttonScreen).setImageTexture(texture);
 }
 
-void Hub::display(sf::RenderWindow & window, sf::View & view)
+void Hub::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 {
 	if (this->hasMusic) {
 		(*this->music).openFromFile(this->musicFile);
 		(*this->music).setLoop(true);
 		(*this->music).play();
 	}
-	(*this->buttonScreen).display(window, view);
+	(*this->buttonScreen).display(window, view, fadeIn);
 }
 
 void Hub::setMusic(sf::Music & music, std::string fileName)

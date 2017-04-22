@@ -11,6 +11,7 @@ class Interface
 	AttributeMap * attributeMap;
 	sf::Font font;
 	sf::RectangleShape pauseMenuRect;
+	sf::RectangleShape fadeRect;
 	bool paused = false;
 	std::vector<std::string> visiblePlayerAttributes;
 	std::vector <std::string> visibleGlobalAttributes;
@@ -25,6 +26,8 @@ public:
 	void drawPauseMenu(sf::RenderWindow & window, sf::View & view);
 	void drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player, sf::Color playerColor);
 	void drawGlobalAttributes(sf::RenderWindow & window, sf::View & view,Game * game, sf::Color globalColor);
+	void displayPlayerTurnStart(sf::RenderWindow & window, sf::View & view, std::string playerName, sf::Color fill);
+	void drawFade(sf::RenderWindow & window, sf::View & view,int millisecElapsed, bool increasing);
 
 	Interface(AttributeMap * attributeMap);
 	~Interface();

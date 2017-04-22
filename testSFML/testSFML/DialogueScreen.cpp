@@ -44,11 +44,23 @@ void DialogueScreen::resizeView(sf::RenderWindow& window, sf::View& view) {
 	view.setSize(this->SCREEN_WIDTH, this->SCREEN_WIDTH * aspectRatio);
 }
 
-void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
+void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fadeIn) {
 
 	int charSize = 40;
 	int charDelay = 20;
 	int width = 1300;
+
+	if (fadeIn) {
+		sf::Clock fadeIn;
+		imageRect.setPosition(view.getSize().x * -0.5, view.getSize().y * -0.5);
+		imageRect.setSize(view.getSize());
+		while (window.isOpen() && fadeIn.getElapsedTime().asMilliseconds() <= 1000) {
+			window.clear();
+			window.draw(imageRect);
+			(*(*this->game).getInterfacePointer()).drawFade(window, view, fadeIn.getElapsedTime().asMilliseconds(), false);
+			window.display();
+		}
+	}
 
 	Player * currPlayer = *(*this->game).getCurrentPlayerPointer();
 
@@ -80,6 +92,9 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 	sf::Clock enterSymbolClock;
 	sf::Clock dialogueClock;
 
+	sf::Clock fade;
+	bool fadingOut = false;
+
 	while (window.isOpen()) {
 		sf::Event evnt;
 		while (window.pollEvent(evnt)) {
@@ -96,8 +111,12 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 							dialogueClock.restart();
 							if (it == this->dialogue.end()) {
 								if (*this->destination != nullptr)
-									(**this->destination).display(window, view);
-								return;
+									(**this->destination).display(window, view, false);
+								else {
+									fadingOut = true;
+									fade.restart();
+								}
+							
 							}
 						}
 						else {
@@ -131,56 +150,63 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view) {
 
 
 		window.clear();
-
-		if ((*it).hasCharacter()) {
-			window.draw(imageRect, blurStates);
+		if (fadingOut) {
+			window.draw(this->imageRect);
+			(*(*this->game).getInterfacePointer()).drawFade(window, view, fade.getElapsedTime().asMilliseconds(), true);
+			if (fade.getElapsedTime().asMilliseconds() > 1000)
+				return;
 		}
 		else {
-			window.draw(imageRect);
-		}
-		if (it != this->dialogue.end())
-			(*it).drawCharacter(window);
-
-		window.draw(dialoguePaneRect);
-
-		if (it != this->dialogue.end()) {
-			if ((*it).isDone()) {
-				//textSound.stop();
-
-				if (increasing) {
-
-					enterSymbolOpacity = (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds()/* % 1000*/) / 1000.0));
-					if (enterSymbolOpacity >= 254) {
-						enterSymbolClock.restart();
-						enterSymbolOpacity = 254;
-						increasing = false;
-					}
-				}
-				else {
-					enterSymbolOpacity = 255 - (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds() /*% 1000*/) / 1000.0));
-					if (enterSymbolOpacity <= 1) {
-						enterSymbolClock.restart();
-						enterSymbolOpacity = 1;
-						increasing = true;
-					}
-				}
-
-
-				enterSymbolRect.setFillColor(sf::Color(255, 255, 255, enterSymbolOpacity));
-				window.draw(enterSymbolRect);
+			if ((*it).hasCharacter()) {
+				window.draw(imageRect, blurStates);
 			}
 			else {
-				//textSound.play();
+				window.draw(imageRect);
+			}
+			if (it != this->dialogue.end())
+				(*it).drawCharacter(window);
+
+			window.draw(dialoguePaneRect);
+
+			if (it != this->dialogue.end()) {
+				if ((*it).isDone()) {
+					//textSound.stop();
+
+					if (increasing) {
+
+						enterSymbolOpacity = (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds()/* % 1000*/) / 1000.0));
+						if (enterSymbolOpacity >= 254) {
+							enterSymbolClock.restart();
+							enterSymbolOpacity = 254;
+							increasing = false;
+						}
+					}
+					else {
+						enterSymbolOpacity = 255 - (255 * ((enterSymbolClock.getElapsedTime().asMilliseconds() /*% 1000*/) / 1000.0));
+						if (enterSymbolOpacity <= 1) {
+							enterSymbolClock.restart();
+							enterSymbolOpacity = 1;
+							increasing = true;
+						}
+					}
+
+
+					enterSymbolRect.setFillColor(sf::Color(255, 255, 255, enterSymbolOpacity));
+					window.draw(enterSymbolRect);
+				}
+				else {
+					//textSound.play();
+				}
+
+				(*it).drawWords(font, charSize, textOrigin, width, window, charDelay, dialogueClock.getElapsedTime().asMilliseconds());
+
 			}
 
-			(*it).drawWords(font, charSize, textOrigin, width, window, charDelay, dialogueClock.getElapsedTime().asMilliseconds());
+			if (currPlayer != NULL)
+				(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
 
+			(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
 		}
-
-		if (currPlayer != NULL)
-			(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
-		
-		(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
 		window.display();
 
 	}

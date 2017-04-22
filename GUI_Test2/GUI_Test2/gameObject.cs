@@ -523,8 +523,11 @@ namespace GUI_Test2
                
                 if (nav.getNavType() == Navigable.PATHGROUP)
                 {
-                    PathGroup pg = (PathGroup)nav; 
-                    code.AppendLine("(*nav" + Game.navNameToCodeIndex[pg.name] + ").setTiers(" + pg.tiersofEachPath.Max() + ");");
+                    PathGroup pg = (PathGroup)nav;
+                    int tiers = -1;
+                    if (pg.pathsInGroup.Count > 0)
+                        tiers = pg.tiersofEachPath.Max();
+                    code.AppendLine("(*nav" + Game.navNameToCodeIndex[pg.name] + ").setTiers(" + tiers + ");");
                     int pathsInPathGroupCtr = 0;
                     foreach (string p in pg.pathsInGroup)
                         {

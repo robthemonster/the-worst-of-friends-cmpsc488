@@ -11,27 +11,29 @@
 void Game::play(sf::RenderWindow & window, sf::View & view)
 {
 	while (window.isOpen()) {
-		(*this->mainMenu).display(window, view);
+		(*this->mainMenu).display(window, view, false);
 
 		while (window.isOpen() && !(*this->gameOverRequirements).meetsAllRequirements()) {
 			//start of round
 			this->currPlayer = NULL;
 			if (startOfRound != NULL)
-				(*startOfRound).display(window, view);
+				(*startOfRound).display(window, view, true);
 
 			for (int i = 0; i < this->numPlayers; i++) {
 				this->currPlayer = &players[i];
-				(*this->start).display(window, view);
+				if (this->numPlayers > 1)
+					(*this->interfacePointer).displayPlayerTurnStart(window, view, "Player " + std::to_string(i + 1), (*currPlayer).getPlayerColor());
+				(*this->start).display(window, view, true);
 			}
 			this->currPlayer = NULL;
 			//end of round
 			if (endOfRound != NULL)
-				(*endOfRound).display(window, view);
+				(*endOfRound).display(window, view, true);
 		}
 		
 			for (int i = 0; i < this->numPlayers; i++) {
 				this->currPlayer = &players[i];
-				(*this->ending).display(window, view);
+				(*this->ending).display(window, view, true);
 			
 			
 		}
@@ -63,12 +65,11 @@ Game::Game(int numberOfPlayers)
 	this->interfacePointer = new Interface(attributeMap);
 	this->players = new Player[numPlayers];
 	this->ending = new EndingGenerator;
-	this->mainMenu = new MainMenu;
+	this->mainMenu = new MainMenu(this);
 	this->numPlayers = numberOfPlayers;
 	this->gameOverRequirements = gameOverRequirements;
 
 	for (int i = 0; i < numberOfPlayers; i++) {
-		(*this->attributeMap).addAttribute((Attributable*)&this->players[i], "pnum", i + 1);
 		this->players[i] =  Player(colors[i]);
 	}
 
