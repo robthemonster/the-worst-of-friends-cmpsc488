@@ -123,8 +123,6 @@ namespace GUI_Test2
             characterComboBox.SelectedIndex = -1;
             characterImageComboBox.Enabled = false;
             characterImageComboBox.SelectedIndex = -1;
-            addCharacterButton.Enabled = false;
-
 
             if (defaultTargetNavigable != "")
             {
@@ -641,6 +639,19 @@ namespace GUI_Test2
         }
         private void pathListBoxTab2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+
+            if (dialogueListBox.SelectedIndex != -1
+                && dialogues[dialogueListBox.SelectedIndex].character != ""
+                && dialogues[dialogueListBox.SelectedIndex].characterImage != "")
+            {
+                useCharacterCheckBox.Checked = true;
+                characterComboBox.SelectedItem = dialogues[dialogueListBox.SelectedIndex].character;
+                characterImageComboBox.SelectedItem = dialogues[dialogueListBox.SelectedIndex].characterImage;
+            }
+            else
+                useCharacterCheckBox.Checked = false;
+
             updateImpactList();
         }
         private void updateImpactList()
@@ -1120,21 +1131,48 @@ namespace GUI_Test2
                 characterComboBox.Enabled = false;
                 label17.Enabled = false;
                 characterImageComboBox.Enabled = false;
+
+                try
+                {
+                    dialogues[dialogueListBox.SelectedIndex].character = "";
+                    dialogues[dialogueListBox.SelectedIndex].characterImage = "";
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                }
             }
         }
 
         private void characterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            characterImageComboBox.SelectedIndexChanged -= characterImageComboBox_SelectedIndexChanged;
             characterImageComboBox.DataSource = null;
 
             if (characterComboBox.SelectedIndex == -1)
                 characterImageComboBox.DataSource = new List<string>();
 
             else
+            {
                 characterImageComboBox.DataSource = new List<string>(Game.characters[characterComboBox.SelectedItem.ToString()].imageNames);
+                characterImageComboBox.SelectedIndex = -1;
+            }
+
+            characterImageComboBox.SelectedIndexChanged += characterImageComboBox_SelectedIndexChanged;
         }
 
-     
+        private void characterImageComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (characterImageComboBox.SelectedIndex != -1 
+                && dialogueListBox.SelectedIndex != -1
+                && useCharacterCheckBox.Checked)
+            {
+                string character = characterComboBox.SelectedItem.ToString();
+                string characterImage = characterImageComboBox.SelectedItem.ToString();
+
+                dialogues[dialogueListBox.SelectedIndex].character = character;
+                dialogues[dialogueListBox.SelectedIndex].characterImage = characterImage;
+            }
+        }
 
         private void useMusic_CheckedChanged(object sender, EventArgs e)
         {
