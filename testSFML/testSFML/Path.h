@@ -20,6 +20,8 @@ private:
 	std::string musicFile = "";
 	bool hasMusic = false;
 	sf::Music * music = NULL;
+	std::string dialogueScrollSound = "", dialogueEndSound = "";
+
 	Game * game;
 public:
 	static const int BUTTON_HIGHLIGHT_IMAGE = 2, BUTTON_HIGHLIGHT_TEXT = 1, BUTTON_DO_NOTHING = 0;
@@ -27,10 +29,12 @@ public:
 	void display(sf::RenderWindow & window, sf::View & view, bool fadeIn);
 	void setImageTexture(sf::Texture &);
 	void setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position);
+	void setEnterSymbolTexture(sf::Texture & texture);
+	void setDialogueScrollSound(std::string);
+	void setDialogueEndSound(std::string);
 	void addDialogueLine(std::string);
 	void addDialogueLine(std::string, std::vector<Impact *>,
 		Character * character = NULL, std::string key = "" , sf::Vector2f charPos = sf::Vector2f());
-	void addDialogueLine(std::string, Attributable ** target, std::string key, int op, int val);
 	
 	void setFontCharSize(int size);
 	void addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode,  sf::Texture * buttonTexture = NULL, sf::Texture * highlightTexture = NULL);

@@ -18,7 +18,7 @@ namespace GUI_Test2
         public String navigableName;
         public List<String> paths;
         public List<Attrib> attribs;
-        public Dictionary <string, NPC> characters;
+        public Dictionary<string, NPC> characters;
         public EndingGen endingGen;
         public GameSettings gameSettings;
 
@@ -35,7 +35,7 @@ namespace GUI_Test2
             gameSettings = new GameSettings();
         }
 
-        public Project(List<String> pathGroups, List<String> hubs, Dictionary<String, Navigable> navIndex, List<String> paths,List<Attrib> attribs, Dictionary <string, NPC> characters, EndingGen endingGen, GameSettings gameSettings)
+        public Project(List<String> pathGroups, List<String> hubs, Dictionary<String, Navigable> navIndex, List<String> paths, List<Attrib> attribs, Dictionary<string, NPC> characters, EndingGen endingGen, GameSettings gameSettings)
         {
             this.pathGroups = pathGroups;
             this.hubs = hubs;
@@ -69,31 +69,31 @@ namespace GUI_Test2
             Game.characters = project.characters;
             Game.endingGen = project.endingGen;
             Game.gameSettings = project.gameSettings;
-            Attributes.attribs= project.attribs;
+            Attributes.attribs = project.attribs;
 
             Game.navNameToCodeIndex = new Dictionary<string, int>();
             Game.oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
             Game.oldPathToCodeObject = new Dictionary<string, string>();
             Game.characterNameToCodeObject = new Dictionary<string, string>();
         }
-        
+
         private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
         private static Dictionary<string, int> navNameToCodeIndex = new Dictionary<string, int>();
-        private static Dictionary<string, Dictionary<string,  string>> oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
+        private static Dictionary<string, Dictionary<string, string>> oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
         private static Dictionary<string, string> oldPathToCodeObject = new Dictionary<string, string>();
         private static Dictionary<string, string> characterNameToCodeObject = new Dictionary<string, string>();
-      
+
 
         private static bool generateCode(string filePath)
         {
-            
+
             StringBuilder code = new StringBuilder(GUI_Test2.Properties.Resources.defaultHeader);
 
             code.AppendLine("Game * game = new Game(" + gameSettings.maxPlayers + ");");
             code.AppendLine("sf::Music music;");
-            
-           string loadTextureCode = getLoadTexturesCode();
-          
+
+            string loadTextureCode = getLoadTexturesCode();
+
             code.AppendLine(loadTextureCode);
 
             string instantiateNavigablesCode = getInstantiateNavigablesCode();
@@ -128,6 +128,10 @@ namespace GUI_Test2
 
             code.AppendLine(setDialoguePanes);
 
+            string setDialogueSoundsCode = getSetDialogueSoundsCode();
+
+            code.AppendLine(setDialogueSoundsCode);
+
             string initializeCharactersCode = getInitializeCharactersCode();
 
             code.AppendLine(initializeCharactersCode);
@@ -139,8 +143,8 @@ namespace GUI_Test2
             string endingGenCode = getEndingGenCode();
 
             code.AppendLine(endingGenCode);
-            
-     
+
+
 
             code.AppendLine(GUI_Test2.Properties.Resources.defaultFooter);
             StreamWriter outputStream = new StreamWriter(filePath);
@@ -150,6 +154,24 @@ namespace GUI_Test2
             outputStream.Close();
 
             return true;
+        }
+
+        private static string getSetDialogueSoundsCode()
+        {
+            StringBuilder code = new StringBuilder();
+            int navCtr = 0;
+            foreach (Navigable nav in Game.navIndex.Values)
+            {
+                switch (nav.getNavType())
+                {
+                    case Navigable.PATH:
+                        code.AppendLine("(*nav" + navCtr + ").setDialogueScrollSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.dialogueScrollSoundPath] + "\");");
+                        code.AppendLine("(*nav" + navCtr + ").setDialogueEndSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.dialogueEndSoundPath] + "\");");
+                        break;
+                }
+                navCtr++;
+            }
+            return code.ToString();
         }
 
         private static string getInitializeCharactersCode()
@@ -219,8 +241,8 @@ namespace GUI_Test2
                     code.AppendLine("Requirements endingReq" + endingCtr + "(*(*game).getAttributeMapPointer());");
                     foreach (Requirement r in reqs)
                     {
-                        
-                         string op = "";
+
+                        string op = "";
                         switch (r.comp)
                         {
                             case ">":
@@ -249,7 +271,7 @@ namespace GUI_Test2
                     code.AppendLine("(*game).addEnding(" + Game.endingGen.tierofEachPath[endingCtr] + ", nav" + Game.navNameToCodeIndex[ending] + ", &endingReq" + endingCtr + ");");
                     endingCtr++;
                 }
-                
+
             }
             return code.ToString();
         }
@@ -268,7 +290,7 @@ namespace GUI_Test2
                         if (buttonFont == "")
                             buttonFont = Game.gameSettings.defaultFontPath;
                         code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setFont(" + Game.oldPathToCodeObject[buttonFont] + ");");
-                        code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setFontCharSize(" + nav.getButtonCharSize() +");");
+                        code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setFontCharSize(" + nav.getButtonCharSize() + ");");
                         break;
                 }
             }
@@ -279,7 +301,8 @@ namespace GUI_Test2
         {
             StringBuilder code = new StringBuilder();
 
-            foreach (Navigable nav in navIndex.Values) {
+            foreach (Navigable nav in navIndex.Values)
+            {
                 switch (nav.getNavType())
                 {
                     case Navigable.HUB:
@@ -291,18 +314,18 @@ namespace GUI_Test2
                             buttons = ((Hub)nav).buttons;
                         foreach (Button b in buttons)
                         {
-                            
+
                             string button1Texture = "NULL", button2Texture = "NULL";
                             if (b.pic1path != "")
                             {
-                                button1Texture = "&" +Game.oldPathToCodeObject[b.pic1path];
+                                button1Texture = "&" + Game.oldPathToCodeObject[b.pic1path];
                                 if (b.pic2path != "")
                                 {
                                     button2Texture = "&" + Game.oldPathToCodeObject[b.pic2path];
                                 }
                             }
 
-                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").addButton(sf::Vector2f(" + b.sizeX + ", " + b.sizeY + "),\"" + b.text + "\", nav" + Game.navNameToCodeIndex[b.next] + ", " + "sf::Vector2f(" + b.posX + ", " + b.posY + "), " + b.highlight + ", " + button1Texture + ", " + button2Texture  +");");
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").addButton(sf::Vector2f(" + b.sizeX + ", " + b.sizeY + "),\"" + b.text + "\", nav" + Game.navNameToCodeIndex[b.next] + ", " + "sf::Vector2f(" + b.posX + ", " + b.posY + "), " + b.highlight + ", " + button1Texture + ", " + button2Texture + ");");
                         }
                         if (nav.getNavType() == Navigable.PATH)
                         {
@@ -324,7 +347,8 @@ namespace GUI_Test2
             {
                 if (nav.getNavType() == Navigable.PATH)
                 {
-                    code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setDialoguePaneTexture("+Game.oldPathToCodeObject[Game.gameSettings.dialoguePaneTexturePath] + ", sf::Vector2f(" + Game.gameSettings.dialoguePanePosX + ", " + Game.gameSettings.dialoguePanePosY + "));");
+                    code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setDialoguePaneTexture(" + Game.oldPathToCodeObject[Game.gameSettings.dialoguePaneTexturePath] + ", sf::Vector2f(" + Game.gameSettings.dialoguePanePosX + ", " + Game.gameSettings.dialoguePanePosY + "));");
+                    code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setEnterSymbolTexture(" + Game.oldPathToCodeObject[Game.gameSettings.dialoguePaneFlashingTexturePath] + ");");
                 }
             }
             return code.ToString();
@@ -383,10 +407,10 @@ namespace GUI_Test2
                             if (p.dialogues[dialogueCtr].character != "" && p.dialogues[dialogueCtr].characterImage != "")
                             {
                                 //TODO: TEST once interface works.
-                                characterArgs =  ", " + Game.characterNameToCodeObject[p.dialogues[dialogueCtr].character] + ", \"" + p.dialogues[dialogueCtr].characterImage + "\", sf::Vector2f(" + Game.gameSettings.NPCXLoc + ", " + Game.gameSettings.NPCYLoc +")";
+                                characterArgs = ", " + Game.characterNameToCodeObject[p.dialogues[dialogueCtr].character] + ", \"" + p.dialogues[dialogueCtr].characterImage + "\", sf::Vector2f(" + Game.gameSettings.NPCXLoc + ", " + Game.gameSettings.NPCYLoc + ")";
 
                             }
-                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr + characterArgs +");");
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr + characterArgs + ");");
                             impactCtr++;
                         }
                         dialogueCtr++;
@@ -398,12 +422,12 @@ namespace GUI_Test2
 
         private static string getSetGameSettingsCode()
         {
-            
+
 
 
             StringBuilder code = new StringBuilder();
 
-              code.AppendLine("(*game).setStart(nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
+            code.AppendLine("(*game).setStart(nav" + Game.navNameToCodeIndex[Game.gameSettings.startNavigable] + ");");
             if (Game.gameSettings.startNavigable != "")
                 code.AppendLine("(*game).setStartOfRound(nav" + Game.navNameToCodeIndex[Game.gameSettings.startOfRoundNav] + ");");
             if (Game.gameSettings.endOfRoundNav != "")
@@ -457,16 +481,16 @@ namespace GUI_Test2
             if (Game.gameSettings.mainMenu.mainMenuSoundPath != "")
                 code.AppendLine("(*game).setMainMenuMusic(music, \"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.mainMenuSoundPath] + "\");");
             if (Game.gameSettings.mainMenu.playButtonSoundPath != "")
-            code.AppendLine("(*game).setMainMenuPlayButtonSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.playButtonSoundPath] + "\");");
+                code.AppendLine("(*game).setMainMenuPlayButtonSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.mainMenu.playButtonSoundPath] + "\");");
 
-        
+
             return code.ToString();
         }
 
         private static string getImageAndMusicSetCode()
         {
-            
-            StringBuilder code = new StringBuilder(); 
+
+            StringBuilder code = new StringBuilder();
             foreach (Navigable nav in Game.navIndex.Values)
             {
                 switch (nav.getNavType())
@@ -478,10 +502,10 @@ namespace GUI_Test2
                         {
                             code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setMusic(music, " + Game.oldPathToNewPath[nav.getSoundPath()]);
                         }
-                        
+
                         break;
                 }
-           }
+            }
             return code.ToString();
         }
 
@@ -515,12 +539,12 @@ namespace GUI_Test2
 
             string attributeMap = "*(*game).getAttributeMapPointer()";
 
-            code.AppendLine("Requirements noReq("+attributeMap+");");
+            code.AppendLine("Requirements noReq(" + attributeMap + ");");
 
             int reqCtr = 0;
             foreach (Navigable nav in Game.navIndex.Values)
             {
-               
+
                 if (nav.getNavType() == Navigable.PATHGROUP)
                 {
                     PathGroup pg = (PathGroup)nav;
@@ -530,7 +554,7 @@ namespace GUI_Test2
                     code.AppendLine("(*nav" + Game.navNameToCodeIndex[pg.name] + ").setTiers(" + tiers + ");");
                     int pathsInPathGroupCtr = 0;
                     foreach (string p in pg.pathsInGroup)
-                        {
+                    {
                         if (pg.pathRequirements[pathsInPathGroupCtr].Count > 0)
                         {
 
@@ -574,11 +598,11 @@ namespace GUI_Test2
                         }
 
                         pathsInPathGroupCtr++;
-                        }
                     }
                 }
+            }
 
-            return code.ToString() ;
+            return code.ToString();
         }
 
         private static string getLoadTexturesCode()
@@ -596,7 +620,7 @@ namespace GUI_Test2
                 code.AppendLine("sf::Texture texture" + ctr + ";");
                 code.AppendLine(@"if (!texture" + ctr + ".loadFromFile(\"" + Game.oldPathToNewPath["image"][filePath].Replace("\\", "/") + "\"))");
                 code.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
-                Game.oldPathToCodeObject[filePath] = "texture" + ctr; 
+                Game.oldPathToCodeObject[filePath] = "texture" + ctr;
                 ctr++;
             }
 
@@ -611,10 +635,6 @@ namespace GUI_Test2
                 ctr++;
             }
 
-            code.AppendLine("sf::Texture menuImage;");
-           code.AppendLine("if (!menuImage.loadFromFile(\"" + Game.oldPathToNewPath["image"][Game.gameSettings.mainMenu.mainMenuImagePath] + "\"))");
-            code.AppendLine(@" std::cout<< ""Error loading image file"" << std::endl;");
-
             return code.ToString();
 
         }
@@ -625,9 +645,9 @@ namespace GUI_Test2
             Game.oldPathToNewPath["image"] = new Dictionary<string, string>();
             Game.oldPathToNewPath["sound"] = new Dictionary<string, string>();
             Game.oldPathToNewPath["characterImage"] = new Dictionary<string, string>();
-            
+
             Console.Out.WriteLine("Copying assets to dir..");
-            System.IO.Directory.CreateDirectory(Game.directory+ "\\assets\\img");
+            System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\img");
             System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\music");
             System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\fonts");
 
@@ -651,7 +671,7 @@ namespace GUI_Test2
                             buttons = ((Path)nav).buttons;
                         else if (nav.getNavType() == Navigable.HUB)
                             buttons = ((Hub)nav).buttons;
-                         
+
                         foreach (Button b in buttons)
                         {
                             if (b.pic1path != "")
@@ -671,22 +691,25 @@ namespace GUI_Test2
             }
 
             int characterImageCtr = 0;
-            foreach(NPC character in Game.characters.Values)
+            foreach (NPC character in Game.characters.Values)
             {
-                foreach(string image in character.imagePaths)
+                foreach (string image in character.imagePaths)
                 {
                     copyFileTo(image, "\\assets\\img\\character" + characterImageCtr, "characterImage");
                     characterImageCtr++;
                 }
             }
-            
+
             copyFileTo(Game.gameSettings.mainMenu.mainMenuImagePath, "\\assets\\img\\menuImage", "image");
             copyFileTo(Game.gameSettings.mainMenu.mainMenuSoundPath, "\\assets\\music\\menuMusic", "sound");
             copyFileTo(Game.gameSettings.mainMenu.playButtonSoundPath, "\\assets\\music\\menuPressPlay", "sound");
             copyFileTo(Game.gameSettings.mainMenu.fontImagePath, "\\assets\\fonts\\menuFont", "font");
             copyFileTo(Game.gameSettings.defaultFontPath, "\\assets\\fonts\\defaultFont", "font");
-            copyFileTo(Game.gameSettings.dialoguePaneTexturePath, "\\assets\\img\\defaultDialoguePane", "image");           
-            
+            copyFileTo(Game.gameSettings.dialoguePaneTexturePath, "\\assets\\img\\defaultDialoguePane", "image");
+            copyFileTo(Game.gameSettings.dialoguePaneFlashingTexturePath, "\\assets\\img\\flashingDialoguePrompt", "image");
+            copyFileTo(Game.gameSettings.dialogueScrollSoundPath, "\\assets\\music\\dialogueScroll", "sound");
+            copyFileTo(Game.gameSettings.dialogueEndSoundPath, "\\assets\\music\\dialogueEnd", "sound");
+
             return true;
         }
 
@@ -700,7 +723,8 @@ namespace GUI_Test2
                     f.CopyTo(Game.directory + destFile + f.Extension, true);
                     Game.oldPathToNewPath[fileType][file] = (Game.directory + destFile + f.Extension).Replace("\\", "/");
                 }
-            }catch(ArgumentException ex)
+            }
+            catch (ArgumentException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
@@ -716,48 +740,49 @@ namespace GUI_Test2
             FileInfo[] files = directory.GetFiles();
             foreach (FileInfo f in files)
             {
-               // if (f.Name == "main.exe" || f.Name == "main.cpp")
-                  //  f.Delete();
+                // if (f.Name == "main.exe" || f.Name == "main.cpp")
+                //  f.Delete();
             }
 
 
-            if (!Game.generateCode(mainPath)){
+            if (!Game.generateCode(mainPath))
+            {
                 return;
             }
 
-         
-            
-           ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
+
+
+            ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
 
             cmd.Arguments = @"/c cd " + directory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
 
-           
+
             Process compiler = Process.Start(cmd);
             compiler.WaitForExit();
 
-           
 
-            
-            
+
+
+
             cmd.Arguments = @"/c cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
-                            
+
             compiler = Process.Start(cmd);
-            
+
             compiler.WaitForExit();
 
-        
+
 
             foreach (FileInfo f in directory.GetFiles())
             {
-               // if (f.Extension == ".obj" || f.Name == "main.cpp" || (f.Extension == ".exe" && f.Name != "main.exe"))
-                  //  f.Delete();
+                // if (f.Extension == ".obj" || f.Name == "main.cpp" || (f.Extension == ".exe" && f.Name != "main.exe"))
+                //  f.Delete();
             }
 
             ProcessStartInfo game = new ProcessStartInfo(directory + "\\main.exe");
             game.WorkingDirectory = directory.ToString();
             Process gameProc = Process.Start(game);
             gameProc.WaitForExit();
-            
+
 
         }
     }

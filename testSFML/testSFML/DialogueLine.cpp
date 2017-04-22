@@ -5,14 +5,13 @@
 
 
 #include "DialogueLine.h"
-DialogueLine::DialogueLine(sf::String words, Character * character, std::string key, sf::Vector2f characterPosition) {
+DialogueLine::DialogueLine(sf::String words, std::string dialogueScrollSound, std::string dialogueEndSound, Character * character, std::string key, sf::Vector2f characterPosition) {
 	this->words = words;
 	this->character = character;
 	this->key = key;
 	this->characterPosition = characterPosition;
-
-	textBuffer.loadFromFile("music/lttpText.wav");
-	textDoneBuffer.loadFromFile("music/lttpTextDone.wav");
+	textBuffer.loadFromFile(dialogueScrollSound);
+	textDoneBuffer.loadFromFile(dialogueEndSound);
 	
 }
 

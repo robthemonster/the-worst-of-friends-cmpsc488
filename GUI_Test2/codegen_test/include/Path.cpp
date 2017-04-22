@@ -16,8 +16,8 @@ void Path::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 		(*this->music).setLoop(true);
 		(*this->music).play();
 	}
-	
-	
+
+
 
 	if (this->dialogueScreen != NULL) {
 		(*this->dialogueScreen).display(window, view, fadeIn);
@@ -49,7 +49,7 @@ void Path::setImageTexture(sf::Texture & texture)
 
 void Path::setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position)
 {
-	
+
 	if (this->buttonScreen != NULL) {
 		(*buttonScreen).setDialoguePaneTexture(texture, position);
 		this->dialoguePanePosition = position;
@@ -67,12 +67,32 @@ void Path::setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f position)
 	}
 }
 
+void Path::setEnterSymbolTexture(sf::Texture & texture)
+{
+	if (this->dialogueScreen != NULL) {
+		(*this->dialogueScreen).setEnterSymbolTexture(texture);
+	}
+	else {
+		std::cout << "Dialogue screen not set! Cannot set enter symbol" << std::endl;
+	}
+}
+
+void Path::setDialogueScrollSound(std::string dialogueScrollSound)
+{
+	this->dialogueScrollSound = dialogueScrollSound;
+}
+
+void Path::setDialogueEndSound(std::string dialogueEndSound)
+{
+	this->dialogueEndSound = dialogueEndSound;
+}
+
 
 
 void Path::addDialogueLine(std::string dialogueLine)
 {
 	if (this->dialogueScreen != NULL) {
-		(*this->dialogueScreen).addDialogueLine(DialogueLine(dialogueLine));
+		(*this->dialogueScreen).addDialogueLine(DialogueLine(dialogueLine, this->dialogueScrollSound, this->dialogueEndSound));
 	}
 	else {
 		std::cout << "Path has no dialogue screen! Cannot add dialogue" << std::endl;
@@ -83,7 +103,7 @@ void Path::addDialogueLine(std::string dialogueLine)
 void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impacts, Character * character, std::string key, sf::Vector2f charPos)
 {
 	if (this->dialogueScreen != NULL) {
-		DialogueLine line(dialogueLine, character, key, charPos);
+		DialogueLine line(dialogueLine, this->dialogueScrollSound, this->dialogueEndSound, character, key, charPos);
 
 		for (int i = 0; i < impacts.size(); i++) {
 			line.addImpact(impacts[i]);
@@ -94,17 +114,7 @@ void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impac
 		std::cout << "Path has no dialogue screen! Cannot add dialogue" << std::endl;
 	}
 }
-void Path::addDialogueLine(std::string dialogueLine, Attributable ** target, std::string key, int op, int val)
-{
-	if (this->dialogueScreen != NULL) {
-		DialogueLine line(dialogueLine);
-		line.addImpact(new Impact((*this->game).getAttributeMapPointer(), target, key, op, val));
-		(*this->dialogueScreen).addDialogueLine(line);
-	}
-	else {
-		std::cout << "Path has no dialogue screen! Cannot add dialogue" << std::endl;
-	}
-}
+
 
 
 
@@ -115,15 +125,15 @@ void Path::setFontCharSize(int size) {
 	this->buttonCharSize = size;
 }
 
-void Path::addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position,int highlightMode, sf::Texture * buttonTexture, sf::Texture * highlightTexture)
+void Path::addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode, sf::Texture * buttonTexture, sf::Texture * highlightTexture)
 {
 	if (this->buttonScreen == NULL) {
 		this->buttonScreen = new ButtonScreen(this->game);
-		
+
 	}
 	if (this->buttonScreen != NULL) {
 		FButton * button = new FButton(buttonSize, target, position, highlightMode, buttonText, this->font, this->buttonCharSize, buttonTexture, highlightTexture);
-		
+
 		(*this->buttonScreen).addButton(button);
 	}
 	else {

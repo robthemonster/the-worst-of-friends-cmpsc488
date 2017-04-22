@@ -24,6 +24,16 @@ void DialogueScreen::setDialoguePaneTexture(sf::Texture & texture, sf::Vector2f 
 	this->dialoguePaneRect.setSize(sf::Vector2f(texture.getSize().x, texture.getSize().y));
 }
 
+void DialogueScreen::setEnterSymbolTexture(sf::Texture & texture)
+{
+	this->enterSymbol.setTexture(&texture);
+	sf::Vector2f pos(this->dialoguePaneRect.getPosition());
+	pos.x += this->dialoguePaneRect.getSize().x - (texture.getSize().x * 1.05);
+	pos.y += this->dialoguePaneRect.getSize().y - (texture.getSize().y * 1.05);
+	this->enterSymbol.setPosition(pos);
+	this->enterSymbol.setSize(sf::Vector2f(texture.getSize()));
+}
+
 void DialogueScreen::setFont(sf::Font font)
 {
 	this->font = font;
@@ -67,8 +77,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 	std::vector<DialogueLine>::iterator it = this->dialogue.begin();
 	
 
-	sf::Texture enterSymbol;
-	sf::RectangleShape enterSymbolRect;
+	
 	int enterSymbolOpacity;
 	bool increasing = true;
 
@@ -79,12 +88,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 	blurShader.setUniform("blur_radius", 0.0025f);
 	sf::RenderStates blurStates(&blurShader);
 
-	if (!enterSymbol.loadFromFile("img/enter.png")) {
-		std::cout << "Cannot load from file" << std::endl;
-	};
-	enterSymbolRect.setTexture(&enterSymbol);
-	enterSymbolRect.setSize(sf::Vector2f(enterSymbolRect.getTextureRect().width * 0.40, enterSymbolRect.getTextureRect().height * 0.40));
-	enterSymbolRect.setPosition(500, 420);
+	
 	imageRect.setPosition(window.getView().getSize().x * -0.5, window.getView().getSize().y * -0.5);
 	imageRect.setSize(window.getView().getSize());
 	setTextOrigin(sf::Vector2f(dialoguePaneRect.getPosition().x + 50, dialoguePaneRect.getPosition().y + 50));
@@ -190,9 +194,12 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 						}
 					}
 
-
-					enterSymbolRect.setFillColor(sf::Color(255, 255, 255, enterSymbolOpacity));
-					window.draw(enterSymbolRect);
+					sf::Vector2f pos(this->dialoguePaneRect.getPosition());
+					pos.x += this->dialoguePaneRect.getSize().x - (this->enterSymbol.getSize().x * 1.1);
+					pos.y += this->dialoguePaneRect.getSize().y - (this->enterSymbol.getSize().y * 1.1);
+					this->enterSymbol.setPosition(pos);
+					this->enterSymbol.setFillColor(sf::Color(255, 255, 255, enterSymbolOpacity));
+					window.draw(enterSymbol);
 				}
 				else {
 					//textSound.play();
