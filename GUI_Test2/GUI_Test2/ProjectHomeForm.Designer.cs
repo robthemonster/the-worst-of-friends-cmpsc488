@@ -56,7 +56,6 @@
             this.pathGroupLabel = new System.Windows.Forms.Label();
             this.pathLabel = new System.Windows.Forms.Label();
             this.pathGroupListBox = new System.Windows.Forms.ListBox();
-            this.closeButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -72,8 +71,8 @@
             this.runPlaytestToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(576, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(768, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,53 +87,53 @@
             this.toolStripSeparator2,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.newToolStripMenuItem.Text = "New...";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(139, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeWindow);
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -144,34 +143,34 @@
             this.endingsToolStripMenuItem,
             this.gameSettingsToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // attributesToolStripMenuItem
             // 
             this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
-            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.attributesToolStripMenuItem.Text = "Attributes";
             this.attributesToolStripMenuItem.Click += new System.EventHandler(this.attributesToolStripMenuItem_Click);
             // 
             // charactersToolStripMenuItem
             // 
             this.charactersToolStripMenuItem.Name = "charactersToolStripMenuItem";
-            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.charactersToolStripMenuItem.Text = "Characters";
             this.charactersToolStripMenuItem.Click += new System.EventHandler(this.charactersToolStripMenuItem_Click);
             // 
             // endingsToolStripMenuItem
             // 
             this.endingsToolStripMenuItem.Name = "endingsToolStripMenuItem";
-            this.endingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.endingsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.endingsToolStripMenuItem.Text = "Endings";
             this.endingsToolStripMenuItem.Click += new System.EventHandler(this.endingsToolStripMenuItem_Click);
             // 
             // gameSettingsToolStripMenuItem
             // 
             this.gameSettingsToolStripMenuItem.Name = "gameSettingsToolStripMenuItem";
-            this.gameSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gameSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.gameSettingsToolStripMenuItem.Text = "Game Settings";
             this.gameSettingsToolStripMenuItem.Click += new System.EventHandler(this.gameSettingsToolStripMenuItem_Click);
             // 
@@ -183,70 +182,73 @@
             this.pathGroupToolStripMenuItem,
             this.mAKEPATHSToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.createToolStripMenuItem.Text = "Create...";
             // 
             // hubToolStripMenuItem
             // 
             this.hubToolStripMenuItem.Name = "hubToolStripMenuItem";
-            this.hubToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hubToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.hubToolStripMenuItem.Text = "Hub";
             this.hubToolStripMenuItem.Click += new System.EventHandler(this.hubToolStripMenuItem_Click);
             // 
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.pathToolStripMenuItem.Text = "Path";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
             // pathGroupToolStripMenuItem
             // 
             this.pathGroupToolStripMenuItem.Name = "pathGroupToolStripMenuItem";
-            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.pathGroupToolStripMenuItem.Text = "PathGroup";
             this.pathGroupToolStripMenuItem.Click += new System.EventHandler(this.pathGroupToolStripMenuItem_Click);
             // 
             // mAKEPATHSToolStripMenuItem
             // 
             this.mAKEPATHSToolStripMenuItem.Name = "mAKEPATHSToolStripMenuItem";
-            this.mAKEPATHSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mAKEPATHSToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.mAKEPATHSToolStripMenuItem.Text = "MAKE PATHS!";
             this.mAKEPATHSToolStripMenuItem.Click += new System.EventHandler(this.makeSamplePaths);
             // 
             // runPlaytestToolStripMenuItem1
             // 
             this.runPlaytestToolStripMenuItem1.Name = "runPlaytestToolStripMenuItem1";
-            this.runPlaytestToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
+            this.runPlaytestToolStripMenuItem1.Size = new System.Drawing.Size(101, 24);
             this.runPlaytestToolStripMenuItem1.Text = "Run Playtest";
             this.runPlaytestToolStripMenuItem1.Click += new System.EventHandler(this.runPlayTest_MenuItemClick);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
             this.tableLayoutPanel1.Controls.Add(this.hubListBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.pathListBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.hubLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupListBox, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 43);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 53);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(453, 398);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(604, 490);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // hubListBox
             // 
             this.hubListBox.FormattingEnabled = true;
-            this.hubListBox.Location = new System.Drawing.Point(3, 36);
+            this.hubListBox.ItemHeight = 16;
+            this.hubListBox.Location = new System.Drawing.Point(4, 45);
+            this.hubListBox.Margin = new System.Windows.Forms.Padding(4);
             this.hubListBox.Name = "hubListBox";
-            this.hubListBox.Size = new System.Drawing.Size(142, 355);
+            this.hubListBox.Size = new System.Drawing.Size(188, 436);
             this.hubListBox.TabIndex = 0;
             this.hubListBox.SelectedIndexChanged += new System.EventHandler(this.hubListBox_SelectedIndexChanged);
             this.hubListBox.DoubleClick += new System.EventHandler(this.LoadHubFromListBox);
@@ -254,9 +256,11 @@
             // pathListBox
             // 
             this.pathListBox.FormattingEnabled = true;
-            this.pathListBox.Location = new System.Drawing.Point(303, 36);
+            this.pathListBox.ItemHeight = 16;
+            this.pathListBox.Location = new System.Drawing.Point(404, 45);
+            this.pathListBox.Margin = new System.Windows.Forms.Padding(4);
             this.pathListBox.Name = "pathListBox";
-            this.pathListBox.Size = new System.Drawing.Size(144, 355);
+            this.pathListBox.Size = new System.Drawing.Size(191, 436);
             this.pathListBox.TabIndex = 2;
             this.pathListBox.SelectedIndexChanged += new System.EventHandler(this.pathListBox_SelectedIndexChanged_1);
             this.pathListBox.DoubleClick += new System.EventHandler(this.LoadPathFromPathListBox);
@@ -264,57 +268,51 @@
             // hubLabel
             // 
             this.hubLabel.AutoSize = true;
-            this.hubLabel.Location = new System.Drawing.Point(3, 0);
+            this.hubLabel.Location = new System.Drawing.Point(4, 0);
+            this.hubLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.hubLabel.Name = "hubLabel";
-            this.hubLabel.Size = new System.Drawing.Size(32, 13);
+            this.hubLabel.Size = new System.Drawing.Size(41, 17);
             this.hubLabel.TabIndex = 4;
             this.hubLabel.Text = "Hubs";
             // 
             // pathGroupLabel
             // 
             this.pathGroupLabel.AutoSize = true;
-            this.pathGroupLabel.Location = new System.Drawing.Point(153, 0);
+            this.pathGroupLabel.Location = new System.Drawing.Point(204, 0);
+            this.pathGroupLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pathGroupLabel.Name = "pathGroupLabel";
-            this.pathGroupLabel.Size = new System.Drawing.Size(63, 13);
+            this.pathGroupLabel.Size = new System.Drawing.Size(84, 17);
             this.pathGroupLabel.TabIndex = 5;
             this.pathGroupLabel.Text = "PathGroups";
             // 
             // pathLabel
             // 
             this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(303, 0);
+            this.pathLabel.Location = new System.Drawing.Point(404, 0);
+            this.pathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(34, 13);
+            this.pathLabel.Size = new System.Drawing.Size(44, 17);
             this.pathLabel.TabIndex = 3;
             this.pathLabel.Text = "Paths";
             // 
             // pathGroupListBox
             // 
             this.pathGroupListBox.FormattingEnabled = true;
-            this.pathGroupListBox.Location = new System.Drawing.Point(153, 36);
+            this.pathGroupListBox.ItemHeight = 16;
+            this.pathGroupListBox.Location = new System.Drawing.Point(204, 45);
+            this.pathGroupListBox.Margin = new System.Windows.Forms.Padding(4);
             this.pathGroupListBox.Name = "pathGroupListBox";
-            this.pathGroupListBox.Size = new System.Drawing.Size(143, 355);
+            this.pathGroupListBox.Size = new System.Drawing.Size(189, 436);
             this.pathGroupListBox.TabIndex = 1;
             this.pathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathGroupListBox_SelectedIndexChanged);
             this.pathGroupListBox.DoubleClick += new System.EventHandler(this.LoadPathGroupFromPathListBox);
             // 
-            // closeButton
-            // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.Location = new System.Drawing.Point(491, 406);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(74, 35);
-            this.closeButton.TabIndex = 6;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeWindow);
-            // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(491, 366);
+            this.deleteButton.Location = new System.Drawing.Point(655, 495);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(74, 34);
+            this.deleteButton.Size = new System.Drawing.Size(99, 42);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -322,20 +320,20 @@
             // 
             // ProjectHomeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(576, 457);
+            this.ClientSize = new System.Drawing.Size(768, 562);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.closeButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(591, 493);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(782, 596);
             this.Name = "ProjectHomeForm";
             this.Text = "Project Home";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.closeButton_Click);
             this.Load += new System.EventHandler(this.ProjectHub_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -371,7 +369,6 @@
         private System.Windows.Forms.Label hubLabel;
         private System.Windows.Forms.Label pathGroupLabel;
         private System.Windows.Forms.Label pathLabel;
-        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.ToolStripMenuItem attributesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mAKEPATHSToolStripMenuItem;
         private System.Windows.Forms.Button deleteButton;

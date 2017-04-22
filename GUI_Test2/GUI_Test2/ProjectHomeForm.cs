@@ -150,7 +150,7 @@ namespace GUI_Test2
 
             createNavigable();
         }
-        private void closeWindow(object sender, EventArgs e) {
+        private void closeButton_Click(object sender, EventArgs e) {
             DialogResult result = MessageBox.Show("Save before exit?", "Exiting FireSide", MessageBoxButtons.YesNoCancel);
             if (result == DialogResult.Cancel)
             {
@@ -159,11 +159,11 @@ namespace GUI_Test2
             else if (result == DialogResult.Yes)
             {
                 saveToolStripMenuItem_Click(sender, e);
-                Close();
+                return;
             }
             else if (result == DialogResult.No)
             {
-                Close();
+                return;
             }
         }
         
@@ -419,5 +419,10 @@ namespace GUI_Test2
             EditGameSettings gs = new EditGameSettings(Game.gameSettings);
             gs.ShowDialog();
         }
+
+     
+
+     
+
     }
 }

@@ -11,17 +11,18 @@ namespace GUI_Test2
     [Serializable]
     public abstract class Navigable
     {
-      public abstract String getName();
-       public abstract string getImagePath();
+        public abstract String getName();
+        public abstract string getImagePath();
         public abstract string getSoundPath();
         public abstract int getNavType();
         public abstract string getButtonFont();
         public abstract int getButtonCharSize();
         public const int PATH = 0, PATHGROUP = 1, HUB = 2;
-        
+
     }
     [Serializable]
-    public class Path : Navigable {
+    public class Path : Navigable
+    {
         public string name;
         public List<Dialogue> dialogues;
         public List<Button> buttons;
@@ -31,26 +32,31 @@ namespace GUI_Test2
         public int buttonFontCharSize, dialogueFontCharSize;
         public string defaultTargetNavigable = "";
 
-        public override string getButtonFont(){return buttonFontPath;}
-        public override int getButtonCharSize(){return buttonFontCharSize;}
-        override public int  getNavType(){return Navigable.PATH;}
-        override public string  getImagePath(){return pathImagePath;}
-        override public string getSoundPath(){return pathSoundPath;}
+        public override string getButtonFont() { return buttonFontPath; }
+        public override int getButtonCharSize() { return buttonFontCharSize; }
+        override public int getNavType() { return Navigable.PATH; }
+        override public string getImagePath() { return pathImagePath; }
+        override public string getSoundPath() { return pathSoundPath; }
 
-        public Path() {}
+        public Path() { }
 
-        public Path(String n,  List<Button> btns,  string pathImagePath, string pS, string buttonFontPath, int buttonFontCharSize, int dialogueFontCharSize, string dTN, List<Dialogue> ds) {
-            name = n;
-            buttons = btns;
-            pathSoundPath = pS;
+        public Path(String name, List<Button> buttons, string pathImagePath, string pathSoundPath, string buttonFontPath, int buttonFontCharSize, int dialogueFontCharSize, string defaultTargetNavigable, List<Dialogue> dialogues)
+        {
+            this.name = name;
+            this.buttons = buttons;
+            this.pathSoundPath = pathSoundPath;
             this.pathImagePath = pathImagePath;
             this.buttonFontPath = buttonFontPath;
             this.buttonFontCharSize = buttonFontCharSize;
             this.dialogueFontCharSize = dialogueFontCharSize;
-            defaultTargetNavigable = dTN;
-            this.dialogues = ds;
+            this.defaultTargetNavigable = defaultTargetNavigable;
+            this.dialogues = new List<Dialogue>();
+            foreach (Dialogue d in dialogues)
+            {
+                this.dialogues.Add(new Dialogue(d));
+            }
         }
-        
+
         public Path(Path p)
         {
             name = p.name;
@@ -62,7 +68,7 @@ namespace GUI_Test2
             this.dialogueFontCharSize = p.dialogueFontCharSize;
             defaultTargetNavigable = p.defaultTargetNavigable;
             this.dialogues = new List<Dialogue>();
-            foreach(Dialogue d in p.dialogues)
+            foreach (Dialogue d in p.dialogues)
             {
                 this.dialogues.Add(new Dialogue(d));
             }
@@ -70,7 +76,7 @@ namespace GUI_Test2
         public List<string> getDialogueContents()
         {
             List<string> contents = new List<String>();
-            foreach(Dialogue d in dialogues)
+            foreach (Dialogue d in dialogues)
             {
                 contents.Add(d.content);
             }
@@ -83,7 +89,7 @@ namespace GUI_Test2
             foreach (Dialogue d in dialogues)
             {
                 List<Impact> iL = new List<Impact>();
-                foreach(Impact i in d.impacts)
+                foreach (Impact i in d.impacts)
                 {
                     iL.Add(new Impact(i));
                 }
@@ -97,7 +103,8 @@ namespace GUI_Test2
     }
 
     [Serializable]
-    public class Dialogue {
+    public class Dialogue
+    {
 
         public string content;
         public List<Impact> impacts;
@@ -115,7 +122,7 @@ namespace GUI_Test2
         {
             this.content = con;
             this.impacts = new List<Impact>();
-            foreach(Impact i in imps)
+            foreach (Impact i in imps)
             {
                 this.impacts.Add(i);
             }
@@ -132,7 +139,8 @@ namespace GUI_Test2
     }
 
     [Serializable]
-    public class Impact {
+    public class Impact
+    {
         public int scope;
         public string attribute;
         public string hub;
@@ -145,10 +153,7 @@ namespace GUI_Test2
             if (that == null || GetType() != that.GetType())
                 return false;
             Impact that2 = (Impact)that;
-            if (this.attribute.Equals(that2.attribute) && this.hub.Equals(that2.hub))
-
-                return true;
-            return false;
+            return (this.attribute.Equals(that2.attribute) && this.hub.Equals(that2.hub));
         }
         public Impact(int scope, string attribute, string hub, int op, int val)
         {
@@ -170,7 +175,8 @@ namespace GUI_Test2
     }
 
     [Serializable]
-    public class Hub : Navigable {
+    public class Hub : Navigable
+    {
         public string name;
         public List<Button> buttons;
         public string hubImage;
@@ -189,16 +195,16 @@ namespace GUI_Test2
         }
 
         override public String getName() { return name; }
-        
-       override public int getNavType()
+
+        override public int getNavType()
         {
             return Navigable.HUB;
         }
-      override  public string getImagePath()
+        override public string getImagePath()
         {
             return hubImage;
         }
-       override  public string getSoundPath()
+        override public string getSoundPath()
         {
             return hubSound;
         }
@@ -217,7 +223,8 @@ namespace GUI_Test2
     }
 
     [Serializable]
-    public class Button {
+    public class Button
+    {
         //text,X,Y, NavRef ,Picname
         public string text;
         public int sizeX;
@@ -248,7 +255,7 @@ namespace GUI_Test2
         }
 
         public Button(string text, int sizeX, int sizeY, int posX, int posY, string pic1path,
-            string pic2path, int highlight, string next, bool useDefaultLoc=false)
+            string pic2path, int highlight, string next, bool useDefaultLoc = false)
         {
             this.text = text;
             this.sizeX = sizeX;
@@ -278,7 +285,8 @@ namespace GUI_Test2
     }
 
     [Serializable]
-    public class PathGroup : Navigable {
+    public class PathGroup : Navigable
+    {
         public String name;
         public List<List<String>> pathPreReqs;
         public List<List<Requirement>> pathRequirements;
@@ -303,20 +311,21 @@ namespace GUI_Test2
             return Navigable.PATHGROUP;
         }
 
-       override public string getImagePath()
+        override public string getImagePath()
         {
             return "";
         }
-       override public string getSoundPath()
+        override public string getSoundPath()
         {
             return "";
         }
-        override public String getName() {
+        override public String getName()
+        {
             return name;
         }
 
         public PathGroup() { }
-        public PathGroup(String n, List<String> pathsInGroup, List<int>weightsofEachPath, List<int> tiersofEachPath,List<List<Requirement>>pathRequirements, List<Boolean> useOnce)
+        public PathGroup(String n, List<String> pathsInGroup, List<int> weightsofEachPath, List<int> tiersofEachPath, List<List<Requirement>> pathRequirements, List<Boolean> useOnce)
 
         {
             name = n;
@@ -326,20 +335,22 @@ namespace GUI_Test2
             this.pathRequirements = pathRequirements;
             this.useOnce = useOnce;
         }
-       
-    
+
+
     }
 
     //Attributes is its own class
 
 
     [Serializable]
-    public class PathRequirements {
+    public class PathRequirements
+    {
         public List<Requirement> requirement;
     }
 
     [Serializable]
-    public class Requirement {
+    public class Requirement
+    {
         public int value;
         public string name;
         public int scope;
@@ -350,7 +361,7 @@ namespace GUI_Test2
 
 
         public Requirement() { }
-        public Requirement(int scope, string hub, string name, string comp,int value)
+        public Requirement(int scope, string hub, string name, string comp, int value)
         {
             this.scope = scope;
             this.hub = hub;
@@ -395,7 +406,7 @@ namespace GUI_Test2
     public class GameSettings
     {
         public List<Requirement> gameOverRequirements;
-        
+
         public string defaultFontPath;
         public string startNavigable;
         public string startOfRoundNav;
@@ -430,8 +441,8 @@ namespace GUI_Test2
             dialoguePanePosY = 200;
             maxPlayers = 1;
             mainMenu = new MainMenu("", "", "", "");
-            flashingTextureXLoc=0;
-            flashingTextureYLoc=0;
+            flashingTextureXLoc = 0;
+            flashingTextureYLoc = 0;
             NPCXLoc = 0;
             NPCYLoc = 0;
 
@@ -440,10 +451,10 @@ namespace GUI_Test2
             gameOverRequirements = new List<Requirement>();
         }
 
-        public GameSettings(List<Requirement> gameOverRequirements, string defaultFontPath,string startNavigable, string startOfRoundNav, string endOfRoundNav,
+        public GameSettings(List<Requirement> gameOverRequirements, string defaultFontPath, string startNavigable, string startOfRoundNav, string endOfRoundNav,
             string dialogueScrollSoundPath, string dialogueEndSoundPath, string dialoguePaneTexturePath, string dialoguePaneFlashingTexturePath,
             int maxPlayers, int dialoguePanePosX, int dialoguePanePosY, int NPCXLoc, int NPCYLoc,
-            int flashingTextureXLoc, int flashingTextureYLoc, MainMenu mM, List<string> visPlayerAtts, List<string>visGlobalAtts)
+            int flashingTextureXLoc, int flashingTextureYLoc, MainMenu mM, List<string> visPlayerAtts, List<string> visGlobalAtts)
         {
             this.gameOverRequirements = gameOverRequirements;
             this.defaultFontPath = defaultFontPath;
