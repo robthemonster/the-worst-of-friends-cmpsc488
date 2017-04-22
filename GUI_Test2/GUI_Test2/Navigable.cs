@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -484,14 +485,59 @@ namespace GUI_Test2
         public Tuple<bool, string> validateSettings()
         {
             StringBuilder errors = new StringBuilder();
-            if (this.mainMenu.mainMenuImagePath == "")
-                errors.AppendLine("No menu image selected.");
-            if (this.startNavigable == "")
-                errors.AppendLine("No start navigable selected.");
-            if (this.mainMenu.fontImagePath == "")
-                errors.AppendLine("No font selected for main menu.");
-
-
+            FileInfo file;
+            try
+            {
+                file = new FileInfo(this.mainMenu.mainMenuImagePath);
+                if (!file.Exists)
+                    errors.AppendLine("Main menu image not found");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+                errors.AppendLine("No main menu image selected");
+            }
+            try
+            {
+                file = new FileInfo(this.mainMenu.fontImagePath);
+                if (!file.Exists)
+                    errors.AppendLine("Main menu font not found");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+                errors.AppendLine("No font selected for main menu");
+            }
+            try
+            {
+                file = new FileInfo(this.dialoguePaneFlashingTexturePath);
+                if (!file.Exists)
+                    errors.AppendLine("Flashing dialogue pane texture not found.");
+            }catch(ArgumentException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+                errors.AppendLine("No flashing dialogue pane texture selected");
+            }
+            try
+            {
+                file = new FileInfo(this.dialoguePaneTexturePath);
+                if (!file.Exists)
+                    errors.AppendLine("Dialogue pane texture not found");
+            }catch(ArgumentException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+                errors.AppendLine("No dialogue pane texture selected.");
+            }
+            try
+            {
+                file = new FileInfo(this.defaultFontPath);
+                if (!file.Exists)
+                    errors.AppendLine("Default dialogue font not found");
+            }catch(ArgumentException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+                errors.AppendLine("No default dialogue font selected.");
+            }
 
             return new Tuple<bool, string>(errors.Length == 0, errors.ToString());
         }

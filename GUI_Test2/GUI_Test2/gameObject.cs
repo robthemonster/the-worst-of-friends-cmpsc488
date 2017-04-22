@@ -732,6 +732,12 @@ namespace GUI_Test2
 
         public static void compileAndRun()
         {
+            Tuple<bool, string> error = Game.gameSettings.validateSettings();
+            if (!error.Item1) //settings are not valid
+            {
+                System.Windows.Forms.MessageBox.Show(error.Item2 + "\nCannot Run Playtest");
+                return;
+            }
 
             String vsCommandPath = System.Environment.GetEnvironmentVariable("windir") + "\\System32\\cmd.exe";
             String mainPath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\main.cpp";
