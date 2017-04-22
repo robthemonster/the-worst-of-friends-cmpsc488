@@ -50,8 +50,8 @@ void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
 	if (paused) {
 		this->pauseMenuRect.setPosition(0, 0);
 		window.draw(pauseMenuRect);
-		(*this->continueGame).draw(window, view);
-		(*this->quit).draw(window, view);
+		(*this->continueGame).draw(window, view, false);
+		(*this->quit).draw(window, view, false);
 	}
 }
 

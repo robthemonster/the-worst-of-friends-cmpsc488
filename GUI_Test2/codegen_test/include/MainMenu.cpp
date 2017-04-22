@@ -81,8 +81,8 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 		
 		window.clear();
 		window.draw(this->image);
-		(*this->playGame).draw(window, view);
-		(*this->quit).draw(window, view);
+		(*this->playGame).draw(window, view, false);
+		(*this->quit).draw(window, view, false);
 
 		if (pressedPlay) {
 			(*(*this->game).getInterfacePointer()).drawFade(window, view, fade.getElapsedTime().asMilliseconds(), true);

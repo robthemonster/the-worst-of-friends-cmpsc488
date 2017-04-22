@@ -144,7 +144,7 @@ void ButtonScreen::display(sf::RenderWindow & window, sf::View & view, bool fade
 		window.draw(promptText);
 		 it = this->buttons.begin();
 		while (it != this->buttons.end()) {
-			(**it).draw(window, view);
+			(**it).draw(window, view, (*(*this->game).getInterfacePointer()).getPaused());
 			it++;
 		}
 

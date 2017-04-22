@@ -23,7 +23,7 @@ public:
 	~FButton();
 	FButton(sf::Vector2f & size,  Navigable * target,  sf::Vector2f &position, int highlightMode, std::string buttonText = "", sf::Font font = sf::Font(), int charSize = 0,
 		sf::Texture * buttonTexture = NULL, sf::Texture * highlightedButtonTexture = NULL);
-	void draw(sf::RenderWindow&, sf::View&);
+	void draw(sf::RenderWindow&, sf::View&, bool paused);
 	bool mouseOver(sf::Vector2f mouseLocation);
 	void setHighlighted(bool highlighted);
 	void setPosition(float x, float y);
