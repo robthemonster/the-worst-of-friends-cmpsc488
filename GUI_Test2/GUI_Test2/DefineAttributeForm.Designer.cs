@@ -286,8 +286,10 @@
             this.Controls.Add(this.oKButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.scopeAttributesListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "DefineAttributeForm";
             this.Text = "Define Attribute Form";
             this.Load += new System.EventHandler(this.DefineAttributeForm_Load);

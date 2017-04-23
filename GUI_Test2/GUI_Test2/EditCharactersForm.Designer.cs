@@ -53,20 +53,20 @@
             // 
             // characterNameBox
             // 
-            this.characterNameBox.Location = new System.Drawing.Point(103, 21);
-            this.characterNameBox.Margin = new System.Windows.Forms.Padding(2);
+            this.characterNameBox.Location = new System.Drawing.Point(137, 26);
+            this.characterNameBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.characterNameBox.Name = "characterNameBox";
-            this.characterNameBox.Size = new System.Drawing.Size(95, 20);
+            this.characterNameBox.Size = new System.Drawing.Size(125, 22);
             this.characterNameBox.TabIndex = 0;
             this.characterNameBox.TextChanged += new System.EventHandler(this.characterNameBox_TextChanged);
             // 
             // characterImage
             // 
             this.characterImage.Image = global::GUI_Test2.Properties.Resources.defaultCharacter;
-            this.characterImage.Location = new System.Drawing.Point(3, 21);
-            this.characterImage.Margin = new System.Windows.Forms.Padding(2);
+            this.characterImage.Location = new System.Drawing.Point(4, 26);
+            this.characterImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.characterImage.Name = "characterImage";
-            this.characterImage.Size = new System.Drawing.Size(89, 75);
+            this.characterImage.Size = new System.Drawing.Size(119, 92);
             this.characterImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.characterImage.TabIndex = 0;
             this.characterImage.TabStop = false;
@@ -74,10 +74,10 @@
             // 
             // chooseImageButton
             // 
-            this.chooseImageButton.Location = new System.Drawing.Point(103, 45);
-            this.chooseImageButton.Margin = new System.Windows.Forms.Padding(2);
+            this.chooseImageButton.Location = new System.Drawing.Point(137, 55);
+            this.chooseImageButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chooseImageButton.Name = "chooseImageButton";
-            this.chooseImageButton.Size = new System.Drawing.Size(105, 23);
+            this.chooseImageButton.Size = new System.Drawing.Size(140, 28);
             this.chooseImageButton.TabIndex = 4;
             this.chooseImageButton.Text = "Choose Image...";
             this.chooseImageButton.UseVisualStyleBackColor = true;
@@ -86,43 +86,50 @@
             // imageNamelabel
             // 
             this.imageNamelabel.AutoSize = true;
-            this.imageNamelabel.Location = new System.Drawing.Point(107, 22);
+            this.imageNamelabel.Location = new System.Drawing.Point(143, 27);
+            this.imageNamelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.imageNamelabel.Name = "imageNamelabel";
-            this.imageNamelabel.Size = new System.Drawing.Size(70, 13);
+            this.imageNamelabel.Size = new System.Drawing.Size(91, 17);
             this.imageNamelabel.TabIndex = 6;
             this.imageNamelabel.Text = "Image Name:";
             // 
             // imageNameTextBox
             // 
-            this.imageNameTextBox.Location = new System.Drawing.Point(183, 19);
+            this.imageNameTextBox.Location = new System.Drawing.Point(244, 23);
+            this.imageNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.imageNameTextBox.Name = "imageNameTextBox";
-            this.imageNameTextBox.Size = new System.Drawing.Size(117, 20);
+            this.imageNameTextBox.Size = new System.Drawing.Size(155, 22);
             this.imageNameTextBox.TabIndex = 3;
             this.imageNameTextBox.TextChanged += new System.EventHandler(this.imageNameTextBox_TextChanged);
             // 
             // characterImageList
             // 
             this.characterImageList.FormattingEnabled = true;
-            this.characterImageList.Location = new System.Drawing.Point(331, 25);
+            this.characterImageList.ItemHeight = 16;
+            this.characterImageList.Location = new System.Drawing.Point(441, 31);
+            this.characterImageList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.characterImageList.Name = "characterImageList";
-            this.characterImageList.Size = new System.Drawing.Size(98, 173);
+            this.characterImageList.Size = new System.Drawing.Size(129, 212);
             this.characterImageList.TabIndex = 9;
             this.characterImageList.SelectedIndexChanged += new System.EventHandler(this.characterImageList_SelectedIndexChanged);
             // 
             // characterList
             // 
             this.characterList.FormattingEnabled = true;
-            this.characterList.Location = new System.Drawing.Point(227, 25);
+            this.characterList.ItemHeight = 16;
+            this.characterList.Location = new System.Drawing.Point(303, 31);
+            this.characterList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.characterList.Name = "characterList";
-            this.characterList.Size = new System.Drawing.Size(98, 69);
+            this.characterList.Size = new System.Drawing.Size(129, 84);
             this.characterList.TabIndex = 7;
             this.characterList.SelectedIndexChanged += new System.EventHandler(this.characterList_SelectedIndexChanged);
             // 
             // deleteSelectedCharacterButton
             // 
-            this.deleteSelectedCharacterButton.Location = new System.Drawing.Point(6, 46);
+            this.deleteSelectedCharacterButton.Location = new System.Drawing.Point(8, 57);
+            this.deleteSelectedCharacterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.deleteSelectedCharacterButton.Name = "deleteSelectedCharacterButton";
-            this.deleteSelectedCharacterButton.Size = new System.Drawing.Size(98, 19);
+            this.deleteSelectedCharacterButton.Size = new System.Drawing.Size(131, 23);
             this.deleteSelectedCharacterButton.TabIndex = 8;
             this.deleteSelectedCharacterButton.TabStop = false;
             this.deleteSelectedCharacterButton.Text = "Delete Character";
@@ -131,10 +138,10 @@
             // 
             // createNewCharacterButton
             // 
-            this.createNewCharacterButton.Location = new System.Drawing.Point(109, 46);
-            this.createNewCharacterButton.Margin = new System.Windows.Forms.Padding(2);
+            this.createNewCharacterButton.Location = new System.Drawing.Point(145, 57);
+            this.createNewCharacterButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.createNewCharacterButton.Name = "createNewCharacterButton";
-            this.createNewCharacterButton.Size = new System.Drawing.Size(89, 19);
+            this.createNewCharacterButton.Size = new System.Drawing.Size(119, 23);
             this.createNewCharacterButton.TabIndex = 2;
             this.createNewCharacterButton.Text = "Create New Character";
             this.createNewCharacterButton.UseVisualStyleBackColor = true;
@@ -143,9 +150,10 @@
             // characterNameLabel
             // 
             this.characterNameLabel.AutoSize = true;
-            this.characterNameLabel.Location = new System.Drawing.Point(11, 24);
+            this.characterNameLabel.Location = new System.Drawing.Point(15, 30);
+            this.characterNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.characterNameLabel.Name = "characterNameLabel";
-            this.characterNameLabel.Size = new System.Drawing.Size(87, 13);
+            this.characterNameLabel.Size = new System.Drawing.Size(115, 17);
             this.characterNameLabel.TabIndex = 12;
             this.characterNameLabel.Text = "Character Name:";
             // 
@@ -155,9 +163,11 @@
             this.groupBox1.Controls.Add(this.createNewCharacterButton);
             this.groupBox1.Controls.Add(this.deleteSelectedCharacterButton);
             this.groupBox1.Controls.Add(this.characterNameBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(208, 76);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(277, 94);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create Character";
@@ -171,18 +181,21 @@
             this.groupBox2.Controls.Add(this.chooseImageButton);
             this.groupBox2.Controls.Add(this.imageNamelabel);
             this.groupBox2.Controls.Add(this.imageNameTextBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 94);
+            this.groupBox2.Location = new System.Drawing.Point(16, 116);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(312, 106);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(416, 130);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Images";
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(227, 74);
+            this.closeButton.Location = new System.Drawing.Point(303, 91);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(79, 23);
+            this.closeButton.Size = new System.Drawing.Size(105, 28);
             this.closeButton.TabIndex = 6;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
@@ -190,9 +203,10 @@
             // 
             // deleteImageButton
             // 
-            this.deleteImageButton.Location = new System.Drawing.Point(227, 45);
+            this.deleteImageButton.Location = new System.Drawing.Point(303, 55);
+            this.deleteImageButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.deleteImageButton.Name = "deleteImageButton";
-            this.deleteImageButton.Size = new System.Drawing.Size(79, 23);
+            this.deleteImageButton.Size = new System.Drawing.Size(105, 28);
             this.deleteImageButton.TabIndex = 10;
             this.deleteImageButton.TabStop = false;
             this.deleteImageButton.Text = "Delete Image";
@@ -201,9 +215,10 @@
             // 
             // addImageToCharacterButton
             // 
-            this.addImageToCharacterButton.Location = new System.Drawing.Point(103, 73);
+            this.addImageToCharacterButton.Location = new System.Drawing.Point(137, 90);
+            this.addImageToCharacterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addImageToCharacterButton.Name = "addImageToCharacterButton";
-            this.addImageToCharacterButton.Size = new System.Drawing.Size(121, 23);
+            this.addImageToCharacterButton.Size = new System.Drawing.Size(161, 28);
             this.addImageToCharacterButton.TabIndex = 5;
             this.addImageToCharacterButton.Text = "Add Character Image";
             this.addImageToCharacterButton.UseVisualStyleBackColor = true;
@@ -212,27 +227,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(226, 9);
+            this.label1.Location = new System.Drawing.Point(301, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.Size = new System.Drawing.Size(122, 17);
             this.label1.TabIndex = 15;
             this.label1.Text = "Character Names:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(332, 9);
+            this.label2.Location = new System.Drawing.Point(443, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(123, 17);
             this.label2.TabIndex = 16;
             this.label2.Text = "Character Images:";
             // 
             // EditCharactersForm
             // 
             this.AcceptButton = this.createNewCharacterButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 193);
+            this.ClientSize = new System.Drawing.Size(569, 238);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
@@ -241,7 +258,7 @@
             this.Controls.Add(this.characterImageList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "EditCharactersForm";
             this.Text = "Edit Characters";

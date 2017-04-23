@@ -42,6 +42,7 @@
             this.hubRadioButton = new System.Windows.Forms.RadioButton();
             this.playerRadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.valueNumeric = new System.Windows.Forms.NumericUpDown();
             this.attributeComboBox = new System.Windows.Forms.ComboBox();
             this.comparitorComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.addPathsButton = new System.Windows.Forms.Button();
             this.removePathsButton = new System.Windows.Forms.Button();
             this.pathsGroupedByTier = new System.Windows.Forms.ListView();
-            this.valueNumeric = new System.Windows.Forms.NumericUpDown();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -221,7 +221,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel2.Controls.Add(this.valueNumeric, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
@@ -236,6 +236,23 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.90476F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(295, 59);
             this.tableLayoutPanel2.TabIndex = 35;
+            // 
+            // valueNumeric
+            // 
+            this.valueNumeric.Location = new System.Drawing.Point(200, 25);
+            this.valueNumeric.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.valueNumeric.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.valueNumeric.Name = "valueNumeric";
+            this.valueNumeric.Size = new System.Drawing.Size(91, 22);
+            this.valueNumeric.TabIndex = 46;
             // 
             // attributeComboBox
             // 
@@ -254,7 +271,7 @@
             this.comparitorComboBox.Location = new System.Drawing.Point(118, 26);
             this.comparitorComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.comparitorComboBox.Name = "comparitorComboBox";
-            this.comparitorComboBox.Size = new System.Drawing.Size(76, 24);
+            this.comparitorComboBox.Size = new System.Drawing.Size(75, 24);
             this.comparitorComboBox.TabIndex = 23;
             // 
             // label5
@@ -280,7 +297,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(202, 0);
+            this.label8.Location = new System.Drawing.Point(201, 0);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 17);
@@ -409,23 +426,6 @@
             this.pathsGroupedByTier.UseCompatibleStateImageBehavior = false;
             this.pathsGroupedByTier.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.pathsGroupedByTier_ItemSelectionChanged);
             // 
-            // valueNumeric
-            // 
-            this.valueNumeric.Location = new System.Drawing.Point(201, 25);
-            this.valueNumeric.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.valueNumeric.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.valueNumeric.Name = "valueNumeric";
-            this.valueNumeric.Size = new System.Drawing.Size(91, 22);
-            this.valueNumeric.TabIndex = 46;
-            // 
             // EndingGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -444,9 +444,10 @@
             this.Controls.Add(this.Savebutton);
             this.Controls.Add(this.TierLabel);
             this.Controls.Add(this.tierComboBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "EndingGenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "EndingGenerator";

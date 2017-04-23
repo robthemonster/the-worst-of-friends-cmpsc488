@@ -332,26 +332,26 @@
             // 
             // navInfo
             // 
-            this.navInfo.AutoSize = true;
             this.navInfo.Location = new System.Drawing.Point(632, 175);
             this.navInfo.Name = "navInfo";
-            this.navInfo.Size = new System.Drawing.Size(0, 17);
+            this.navInfo.Size = new System.Drawing.Size(122, 77);
             this.navInfo.TabIndex = 4;
             // 
             // ProjectHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(768, 562);
             this.Controls.Add(this.navInfo);
             this.Controls.Add(this.selectedNavImage);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(782, 596);
             this.Name = "ProjectHomeForm";
             this.Text = "Project Home";
