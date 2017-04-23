@@ -218,6 +218,7 @@ namespace GUI_Test2
                 }
 
             }
+           
             return code.ToString();
         }
 
@@ -500,7 +501,7 @@ namespace GUI_Test2
                         code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setImageTexture(" + Game.oldPathToCodeObject[nav.getImagePath()] + ");");
                         if (nav.getSoundPath() != "")
                         {
-                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setMusic(music, " + Game.oldPathToNewPath[nav.getSoundPath()]);
+                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[nav.getName()] + ").setMusic(music, \"" + Game.oldPathToNewPath["sound"][nav.getSoundPath()] + "\");");
                         }
 
                         break;
