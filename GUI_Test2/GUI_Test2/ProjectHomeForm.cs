@@ -331,6 +331,12 @@ namespace GUI_Test2
             {
                 hubListBox.SelectedIndex = -1;
                 pathListBox.SelectedIndex = -1;
+                selectedNavImage.ImageLocation = null;
+                PathGroup selected = (PathGroup)Game.navIndex[Game.pathGroups[pathGroupListBox.SelectedIndex]];
+
+                navInfo.Text = selected.name + "\n";
+                navInfo.Text += selected.pathsInGroup.Count + " Navigables in group \n";
+
             }
         }
 
@@ -352,6 +358,10 @@ namespace GUI_Test2
             {
                 pathGroupListBox.SelectedIndex = -1;
                 pathListBox.SelectedIndex = -1;
+                selectedNavImage.ImageLocation = Game.navIndex[Game.hubs[hubListBox.SelectedIndex]].getImagePath();
+                Hub selected = (Hub)Game.navIndex[Game.hubs[hubListBox.SelectedIndex]];
+                navInfo.Text = selected.name + "\n";
+                navInfo.Text += selected.buttons.Count + " Buttons \n";
             }
         }
 
@@ -361,6 +371,12 @@ namespace GUI_Test2
             {
                 hubListBox.SelectedIndex = -1;
                 pathGroupListBox.SelectedIndex = -1;
+                selectedNavImage.ImageLocation = Game.navIndex[Game.paths[pathListBox.SelectedIndex]].getImagePath();
+                Path selected = (Path)Game.navIndex[Game.paths[pathListBox.SelectedIndex]];
+                navInfo.Text = selected.name + "\n";
+                navInfo.Text += selected.buttons.Count + " Buttons \n";
+                if (selected.defaultTargetNavigable != "")
+                    navInfo.Text += "Default Target: " + selected.defaultTargetNavigable + "\n";
             }
         }
 

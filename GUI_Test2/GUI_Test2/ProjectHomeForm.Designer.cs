@@ -57,8 +57,11 @@
             this.pathLabel = new System.Windows.Forms.Label();
             this.pathGroupListBox = new System.Windows.Forms.ListBox();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.selectedNavImage = new System.Windows.Forms.PictureBox();
+            this.navInfo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selectedNavImage)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -318,12 +321,31 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // selectedNavImage
+            // 
+            this.selectedNavImage.Location = new System.Drawing.Point(632, 98);
+            this.selectedNavImage.Name = "selectedNavImage";
+            this.selectedNavImage.Size = new System.Drawing.Size(124, 70);
+            this.selectedNavImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.selectedNavImage.TabIndex = 3;
+            this.selectedNavImage.TabStop = false;
+            // 
+            // navInfo
+            // 
+            this.navInfo.AutoSize = true;
+            this.navInfo.Location = new System.Drawing.Point(632, 175);
+            this.navInfo.Name = "navInfo";
+            this.navInfo.Size = new System.Drawing.Size(0, 17);
+            this.navInfo.TabIndex = 4;
+            // 
             // ProjectHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(768, 562);
+            this.Controls.Add(this.navInfo);
+            this.Controls.Add(this.selectedNavImage);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
@@ -339,6 +361,7 @@
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selectedNavImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,5 +397,7 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.ToolStripMenuItem endingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameSettingsToolStripMenuItem;
+        private System.Windows.Forms.PictureBox selectedNavImage;
+        private System.Windows.Forms.Label navInfo;
     }
 }
