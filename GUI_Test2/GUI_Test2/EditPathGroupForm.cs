@@ -366,8 +366,9 @@ namespace GUI_Test2
                     updateReqList();
                     pathRequirementsListBox.SelectedIndex = reqsofEachPath[i].Count-1;
                 }
-                catch (FormatException)
+                catch (FormatException ex)
                 {
+                    Console.Out.WriteLine(ex.StackTrace);
                     MessageBox.Show("Value must be an Integer.");
                     valueTextBox.Text = "";
                 }

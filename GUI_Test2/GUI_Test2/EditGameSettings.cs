@@ -407,9 +407,9 @@ namespace GUI_Test2
                 }
 
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -437,9 +437,9 @@ namespace GUI_Test2
                     dialogueScrollSoundPath = of.FileName;
                 }
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
 
         }
@@ -457,9 +457,9 @@ namespace GUI_Test2
                 }
 
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -544,9 +544,9 @@ namespace GUI_Test2
                     dialogueEndSoundPath = of.FileName;
                 }
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -563,9 +563,9 @@ namespace GUI_Test2
                 }
 
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -580,8 +580,9 @@ namespace GUI_Test2
                 mainMenuImagePictureBox.Image = Image.FromStream(of.OpenFile());
                 mainMenuImagePath = of.FileName;
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -606,8 +607,9 @@ namespace GUI_Test2
                             mainMenuSoundSelected = false;
                         }
                     }
-                    catch (IndexOutOfRangeException)
+                    catch (IndexOutOfRangeException ex)
                     {
+                        Console.Out.WriteLine(ex.StackTrace);
                     }
                     if (!mainMenuSoundSelected)
                     {
@@ -645,8 +647,9 @@ namespace GUI_Test2
                             playButtonSoundSelected = false;
                         }
                     }
-                    catch (IndexOutOfRangeException)
+                    catch (IndexOutOfRangeException ex)
                     {
+                        Console.Out.WriteLine(ex.StackTrace);
                     }
                     if (!playButtonSoundSelected)
                     {
@@ -676,8 +679,9 @@ namespace GUI_Test2
                 }
 
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 

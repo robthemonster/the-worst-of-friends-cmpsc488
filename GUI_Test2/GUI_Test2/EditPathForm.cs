@@ -168,9 +168,9 @@ namespace GUI_Test2
                 pathImagePath = of.FileName;
                 
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
 
             }
         }
@@ -473,7 +473,9 @@ namespace GUI_Test2
                 buttonListBox.SelectedIndex = index;
 
             }
-            catch { }
+            catch (ArgumentOutOfRangeException ex){
+                Console.Out.WriteLine(ex.StackTrace);
+            }
         }
 
      
@@ -986,9 +988,9 @@ namespace GUI_Test2
                 }
 
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -1011,9 +1013,9 @@ namespace GUI_Test2
                 }
 ;
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
@@ -1137,8 +1139,9 @@ namespace GUI_Test2
                     dialogues[dialogueListBox.SelectedIndex].character = "";
                     dialogues[dialogueListBox.SelectedIndex].characterImage = "";
                 }
-                catch (ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException ex)
                 {
+                    Console.Out.WriteLine(ex.StackTrace);
                 }
             }
         }
@@ -1216,9 +1219,9 @@ namespace GUI_Test2
                     musicSelected = false;
                 }
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
     }

@@ -40,8 +40,8 @@ namespace GUI_Test2
                 imagePath = of.FileName;
                 this.AcceptButton = addImageToCharacterButton;
             }
-            catch (IndexOutOfRangeException) {        
-            
+            catch (IndexOutOfRangeException ex) {
+                Console.Out.WriteLine(ex.StackTrace);
             }
             
 

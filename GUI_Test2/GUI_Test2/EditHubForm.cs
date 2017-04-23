@@ -300,7 +300,9 @@ namespace GUI_Test2
                 buttonListBox.SelectedIndex = index;
 
             }
-            catch { }
+            catch(ArgumentOutOfRangeException ex) {
+                Console.Out.WriteLine(ex.StackTrace);
+            }
         }
 
         private void chooseHubImageButton_Click(object sender, EventArgs e)
@@ -589,9 +591,9 @@ namespace GUI_Test2
                     musicSelected = false;
                 }
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
-
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
     }
