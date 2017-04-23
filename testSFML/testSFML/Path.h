@@ -35,6 +35,8 @@ public:
 	void addDialogueLine(std::string);
 	void addDialogueLine(std::string, std::vector<Impact *>,
 		Character * character = NULL, std::string key = "" , sf::Vector2f charPos = sf::Vector2f());
+
+
 	
 	void setFontCharSize(int size);
 	void addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable * target, sf::Vector2f position, int highlightMode,  sf::Texture * buttonTexture = NULL, sf::Texture * highlightTexture = NULL);

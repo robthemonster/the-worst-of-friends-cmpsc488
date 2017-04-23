@@ -118,6 +118,8 @@ void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impac
 
 
 
+
+
 void Path::setFontCharSize(int size) {
 
 	//if (this->buttonScreen == NULL)
@@ -129,7 +131,7 @@ void Path::addButton(sf::Vector2f buttonSize, std::string buttonText, Navigable 
 {
 	if (this->buttonScreen == NULL) {
 		this->buttonScreen = new ButtonScreen(this->game);
-
+		(*this->buttonScreen).setShowGlobalPane(false);
 	}
 	if (this->buttonScreen != NULL) {
 		FButton * button = new FButton(buttonSize, target, position, highlightMode, buttonText, this->font, this->buttonCharSize, buttonTexture, highlightTexture);

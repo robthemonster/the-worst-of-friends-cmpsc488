@@ -4,8 +4,9 @@
 
 
 
-void FButton::draw(sf::RenderWindow& window, sf::View& view, bool disabled) {
-	setHighlighted(this->mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && !disabled);
+void FButton::draw(sf::RenderWindow& window, sf::View& view, bool mouseMode, bool disabled) {
+	if (mouseMode)
+		setHighlighted(this->mouseOver(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && !disabled);
 
 		window.draw(this->buttonRect);
 		window.draw(this->buttonText);

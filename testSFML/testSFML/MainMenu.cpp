@@ -52,12 +52,51 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 	this->image.setPosition(window.getView().getSize().x * -0.5, window.getView().getSize().y * -0.5);
 	this->image.setSize(window.getView().getSize());
 
+	sf::Vector2f lastMousePos;
+	bool mouseMode = true;
 	while (window.isOpen()) {
 
 		
 		sf::Event evnt;
 		while (window.pollEvent(evnt)) {
 			switch (evnt.type) {
+			case sf::Event::MouseMoved:
+				if (window.mapPixelToCoords(sf::Mouse::getPosition(window)) != lastMousePos) {
+					mouseMode = true;
+					lastMousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+				}
+				break;
+			case sf::Event::KeyPressed:
+				switch (evnt.key.code) {
+				case sf::Keyboard::Up:
+				case::sf::Keyboard::Left:
+				case::sf::Keyboard::Right:
+				case::sf::Keyboard::Down:
+					if (mouseMode) {
+						(*playGame).setHighlighted(true);
+						(*quit).setHighlighted(false);
+						mouseMode = false;
+					}
+					else {
+						(*playGame).setHighlighted(!(*playGame).isHighlighted());
+						(*quit).setHighlighted(!(*quit).isHighlighted());
+					}
+					break;
+				case::sf::Keyboard::Return:
+					if (!mouseMode) {
+						if ((*this->playGame).isHighlighted()) {
+							if (music != NULL)
+								(*music).stop();
+							if (playGameSoundFile != "")
+								playGameSound.play();
+							fade.restart();
+							pressedPlay = true;
+						}
+						else if ((*this->quit).isHighlighted())
+							window.close();
+					}
+				}
+				break;
 			case sf::Event::MouseButtonReleased:
 				switch (evnt.mouseButton.button) {
 				case sf::Mouse::Left:
@@ -74,6 +113,7 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 					break;
 				}
 				break;
+			
 			}
 		}
 		(*this->playGame).setPosition(0, window.getView().getSize().y * 0.15);
@@ -81,8 +121,8 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 		
 		window.clear();
 		window.draw(this->image);
-		(*this->playGame).draw(window, view, false);
-		(*this->quit).draw(window, view, false);
+		(*this->playGame).draw(window, view,mouseMode, false);
+		(*this->quit).draw(window, view, mouseMode, false);
 
 		if (pressedPlay) {
 			(*(*this->game).getInterfacePointer()).drawFade(window, view, fade.getElapsedTime().asMilliseconds(), true);

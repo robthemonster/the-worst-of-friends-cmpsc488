@@ -23,6 +23,7 @@ void Hub::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 		(*this->music).play();
 	}
 	(*this->buttonScreen).display(window, view, fadeIn);
+	return;
 }
 
 void Hub::setMusic(sf::Music & music, std::string fileName)

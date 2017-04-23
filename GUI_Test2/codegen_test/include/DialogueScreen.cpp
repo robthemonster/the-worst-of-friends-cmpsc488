@@ -75,9 +75,9 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 	Player * currPlayer = *(*this->game).getCurrentPlayerPointer();
 
 	std::vector<DialogueLine>::iterator it = this->dialogue.begin();
-	
 
-	
+
+
 	int enterSymbolOpacity;
 	bool increasing = true;
 
@@ -88,7 +88,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 	blurShader.setUniform("blur_radius", 0.0025f);
 	sf::RenderStates blurStates(&blurShader);
 
-	
+
 	imageRect.setPosition(window.getView().getSize().x * -0.5, window.getView().getSize().y * -0.5);
 	imageRect.setSize(window.getView().getSize());
 	setTextOrigin(sf::Vector2f(dialoguePaneRect.getPosition().x + 50, dialoguePaneRect.getPosition().y + 50));
@@ -99,37 +99,81 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 	sf::Clock fade;
 	bool fadingOut = false;
 
+	bool mouseMode = true;
+	sf::Vector2f lastMousePos;
+
 	while (window.isOpen()) {
 		sf::Event evnt;
 		while (window.pollEvent(evnt)) {
 			switch (evnt.type) {
 			case sf::Event::Closed:
 				window.close();
+				return;
+				break;
+			case sf::Event::MouseMoved:
+				if (window.mapPixelToCoords(sf::Mouse::getPosition(window)) != lastMousePos) {
+					mouseMode = true;
+					lastMousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+				}
+				break;
 			case sf::Event::KeyPressed:
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !(*(*this->game).getInterfacePointer()).getPaused()) {
-					//enter pressed
-					if (it != this->dialogue.end()) {// if this is the not the last dialogue line
-						if ((*it).isDone()) { // if the current line is finished printing
-							(*it).setDone(false);
-							it++;
-							dialogueClock.restart();
-							if (it == this->dialogue.end()) {
-								if (*this->destination != nullptr)
-									(**this->destination).display(window, view, false);
-								else {
-									fadingOut = true;
-									fade.restart();
+				switch (evnt.key.code) {
+				case sf::Keyboard::Return:
+					if (!(*(*this->game).getInterfacePointer()).getPaused()) {
+						if (it != this->dialogue.end()) {// if this is the not the last dialogue line
+							if ((*it).isDone()) { // if the current line is finished printing
+								(*it).setDone(false);
+								it++;
+								dialogueClock.restart();
+								if (it == this->dialogue.end()) {
+									if (*this->destination != nullptr) {
+										(**this->destination).display(window, view, false);
+										return;
+									}
+									else {
+										fadingOut = true;
+										fade.restart();
+									}
 								}
-							
+							}else {
+								(*it).setDone(true);
 							}
 						}
-						else {
-							(*it).setDone(true);
+					}
+					else {
+						if (!mouseMode) {
+							if ((*(*this->game).getInterfacePointer()).continueHighlighted()) {
+								(*(*this->game).getInterfacePointer()).setPaused(false);
+								mouseMode = true;
+							}
+							else if ((*(*this->game).getInterfacePointer()).quitHighlighted()) {
+								window.close();
+								return;
+							}
 						}
 					}
-				}
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+					break;
+				case sf::Keyboard::Escape:
 					(*(*this->game).getInterfacePointer()).setPaused(!(*(*this->game).getInterfacePointer()).getPaused());
+					mouseMode = true;
+					break;
+				case sf::Keyboard::Left:
+				case sf::Keyboard::Right:
+				case sf::Keyboard::Up:
+				case sf::Keyboard::Down:
+					if ((*(*this->game).getInterfacePointer()).getPaused()) {
+						if (mouseMode) {
+							(*(*this->game).getInterfacePointer()).setContinueHightlight(true);
+							(*(*this->game).getInterfacePointer()).setQuitHighlight(false);
+							mouseMode = false;
+						}
+						else {
+							(*(*this->game).getInterfacePointer()).setContinueHightlight(!(*(*this->game).getInterfacePointer()).continueHighlighted());
+							(*(*this->game).getInterfacePointer()).setQuitHighlight(!(*(*this->game).getInterfacePointer()).quitHighlighted());
+
+						}
+					}
+					break;
 				}
 				break;
 			case sf::Event::Resized:
@@ -138,6 +182,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 			case sf::Event::MouseButtonReleased:
 				switch (evnt.mouseButton.button) {
 				case sf::Mouse::Left:
+				if (mouseMode){
 					if ((*(*this->game).getInterfacePointer()).getPaused()) {
 						if ((*(*this->game).getInterfacePointer()).continueHighlighted()) {
 							(*(*this->game).getInterfacePointer()).setPaused(false);
@@ -146,6 +191,28 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 							window.close();
 						}
 					}
+					else if (it != this->dialogue.end()) {// if this is the not the last dialogue line
+						if ((*it).isDone()) { // if the current line is finished printing
+							(*it).setDone(false);
+							it++;
+							dialogueClock.restart();
+							if (it == this->dialogue.end()) {
+								if (*this->destination != nullptr) {
+									(**this->destination).display(window, view, false);
+									return;
+								}
+								else {
+									fadingOut = true;
+									fade.restart();
+								}
+
+							}
+						}
+						else {
+							(*it).setDone(true);
+						}
+					}
+				}
 					break;
 				}
 				break;
@@ -212,7 +279,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 			if (currPlayer != NULL)
 				(*(*this->game).getInterfacePointer()).drawPlayerAttributes(window, view, currPlayer, (*currPlayer).getPlayerColor());
 
-			(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view);
+			(*(*this->game).getInterfacePointer()).drawPauseMenu(window, view, mouseMode);
 		}
 		window.display();
 

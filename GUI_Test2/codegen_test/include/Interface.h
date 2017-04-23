@@ -19,11 +19,13 @@ public:
 	bool getPaused();
 	void setFont(sf::Font font);
 	void setPaused(bool paused);
+	void setContinueHightlight(bool set);
+	void setQuitHighlight(bool set);
 	bool quitHighlighted();
 	bool continueHighlighted();
 	void addVisiblePlayerAttribute(std::string key);
 	void addVisibleGlobalAttributes(std::string key);
-	void drawPauseMenu(sf::RenderWindow & window, sf::View & view);
+	void drawPauseMenu(sf::RenderWindow & window, sf::View & view, bool mouseMode);
 	void drawPlayerAttributes(sf::RenderWindow & window, sf::View & view, Player * player, sf::Color playerColor);
 	void drawGlobalAttributes(sf::RenderWindow & window, sf::View & view,Game * game, sf::Color globalColor);
 	void displayPlayerTurnStart(sf::RenderWindow & window, sf::View & view, std::string playerName, sf::Color fill);

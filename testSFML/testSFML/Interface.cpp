@@ -15,14 +15,24 @@ void Interface::setFont(sf::Font font)
 	sf::Vector2f quitButtonPosition(pauseMenuRect.getPosition().x - 40, pauseMenuRect.getPosition().y + 150);
 
 	this->font = font;
-	this->continueGame = new FButton(buttonSize, NULL, continueButtonPosition, FButton::HIGHLIGHT_TEXT, "continue", this->font, 40);
+	this->continueGame = new FButton(buttonSize, NULL, continueButtonPosition, FButton::HIGHLIGHT_TEXT, "Continue", this->font, 40);
 
-	this->quit = new FButton(buttonSize, NULL, quitButtonPosition, FButton::HIGHLIGHT_TEXT, "quit", this->font, 40);
+	this->quit = new FButton(buttonSize, NULL, quitButtonPosition, FButton::HIGHLIGHT_TEXT, "Quit", this->font, 40);
 }
 
 void Interface::setPaused(bool paused)
 {
 	this->paused = paused;
+}
+
+void Interface::setContinueHightlight(bool set)
+{
+	(*this->continueGame).setHighlighted(set);
+}
+
+void Interface::setQuitHighlight(bool set)
+{
+	(*this->quit).setHighlighted(set);
 }
 
 bool Interface::quitHighlighted()
@@ -45,13 +55,13 @@ void Interface::addVisibleGlobalAttributes(std::string key)
 	this->visibleGlobalAttributes.push_back(key);
 }
 
-void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view)
+void Interface::drawPauseMenu(sf::RenderWindow & window, sf::View & view, bool mouseMode)
 {
 	if (paused) {
 		this->pauseMenuRect.setPosition(0, 0);
 		window.draw(pauseMenuRect);
-		(*this->continueGame).draw(window, view, false);
-		(*this->quit).draw(window, view, false);
+		(*this->continueGame).draw(window, view, mouseMode, false);
+		(*this->quit).draw(window, view, mouseMode, false);
 	}
 }
 
