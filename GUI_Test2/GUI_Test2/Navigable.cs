@@ -513,7 +513,8 @@ namespace GUI_Test2
                 file = new FileInfo(this.dialoguePaneFlashingTexturePath);
                 if (!file.Exists)
                     errors.AppendLine("Flashing dialogue pane texture not found.");
-            }catch(ArgumentException ex)
+            }
+            catch (ArgumentException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
                 errors.AppendLine("No flashing dialogue pane texture selected");
@@ -523,7 +524,8 @@ namespace GUI_Test2
                 file = new FileInfo(this.dialoguePaneTexturePath);
                 if (!file.Exists)
                     errors.AppendLine("Dialogue pane texture not found");
-            }catch(ArgumentException ex)
+            }
+            catch (ArgumentException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
                 errors.AppendLine("No dialogue pane texture selected.");
@@ -533,7 +535,8 @@ namespace GUI_Test2
                 file = new FileInfo(this.defaultFontPath);
                 if (!file.Exists)
                     errors.AppendLine("Default dialogue font not found");
-            }catch(ArgumentException ex)
+            }
+            catch (ArgumentException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
                 errors.AppendLine("No default dialogue font selected.");

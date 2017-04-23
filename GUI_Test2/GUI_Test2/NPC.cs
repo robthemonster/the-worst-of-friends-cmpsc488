@@ -21,22 +21,23 @@ namespace GUI_Test2
             name = n;
             imageNames = new List<string>();
             imagePaths = new List<string>();
-           
+
 
         }
-        public void addImage(string iname, string ipath) {
+        public void addImage(string iname, string ipath)
+        {
             imageNames.Add(iname);
             imagePaths.Add(ipath);
-           
+
         }
         public void removeImage(int i)
         {
             imageNames.RemoveAt(i);
             imagePaths.RemoveAt(i);
-           
+
         }
-       
+
     }
 
-  
+
 }

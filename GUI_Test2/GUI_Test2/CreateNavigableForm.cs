@@ -117,7 +117,7 @@ namespace GUI_Test2
                 }
             }
 
-            
+
         }
 
         private void CreateNavigableForm_Load(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace GUI_Test2
             if (!validClose)
             {
                 parent.screenID = 0;
-            }  
+            }
         }
     }
 }

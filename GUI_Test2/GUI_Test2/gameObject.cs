@@ -218,7 +218,7 @@ namespace GUI_Test2
                 }
 
             }
-           
+
             return code.ToString();
         }
 
@@ -270,7 +270,7 @@ namespace GUI_Test2
                             code.AppendLine("endingReq" + endingCtr + ".addRequirement((Attributable**) nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
                     }
                     code.AppendLine("(*game).addEnding(" + Game.endingGen.tierofEachPath[endingCtr] + ", nav" + Game.navNameToCodeIndex[ending] + ", &endingReq" + endingCtr + ");");
-                    
+
                 }
                 endingCtr++;
             }

@@ -17,7 +17,7 @@ namespace GUI_Test2
     public partial class ProjectHomeForm : Form
     {
 
-        
+
 
         public int screenID;
         //1 = Path, 2 = Path Group, 3 = Hub
@@ -70,10 +70,10 @@ namespace GUI_Test2
                 else
                 {
                     char[] name = System.IO.Path.GetFileNameWithoutExtension(fileLocation).ToCharArray();
-                    name[0] = char.ToUpper(name[0]); 
-                    this.Text =  new String(name) + " - FireSide Toolkit";
+                    name[0] = char.ToUpper(name[0]);
+                    this.Text = new String(name) + " - FireSide Toolkit";
                 }
-            } 
+            }
         }
 
         //deserialize
@@ -81,12 +81,12 @@ namespace GUI_Test2
         {
             OpenFileDialog fd = new OpenFileDialog();
             fd.Filter = "FireSide Project (*.fsp)| *.fsp";
-                if (fd.ShowDialog() == DialogResult.OK)
-                {
-                        fileLocation = fd.FileName;
-                        openFile(fileLocation);
-                        setWindowTitle(fileLocation);
-                }
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                fileLocation = fd.FileName;
+                openFile(fileLocation);
+                setWindowTitle(fileLocation);
+            }
 
 
         }
@@ -105,7 +105,7 @@ namespace GUI_Test2
             }
 
 
-            
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
-                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Game.characters, Game.endingGen,Game.gameSettings);
+                Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Game.characters, Game.endingGen, Game.gameSettings);
                 saveToFile(proj, fileLocation);
             }
             else
@@ -135,7 +135,7 @@ namespace GUI_Test2
 
             createNavigable();
         }
-        
+
 
         private void pathGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -150,7 +150,8 @@ namespace GUI_Test2
 
             createNavigable();
         }
-        private void closeButton_Click(object sender, EventArgs e) {
+        private void closeButton_Click(object sender, EventArgs e)
+        {
             DialogResult result = MessageBox.Show("Save before exit?", "Exiting FireSide", MessageBoxButtons.YesNoCancel);
             if (result == DialogResult.Cancel)
             {
@@ -166,12 +167,13 @@ namespace GUI_Test2
                 return;
             }
         }
-        
+
         private void updateListBoxes(object sender, EventArgs e)
         {
             updateListBoxes();
         }
-        public void updateListBoxes() {
+        public void updateListBoxes()
+        {
             pathListBox.DataSource = null;
             pathListBox.DataSource = Game.paths;
             pathListBox.SelectedIndex = -1;
@@ -184,7 +186,8 @@ namespace GUI_Test2
             hubListBox.DataSource = Game.hubs;
             hubListBox.SelectedIndex = -1;
         }
-        public void LoadPathFromPathListBox(object sender, EventArgs e) {
+        public void LoadPathFromPathListBox(object sender, EventArgs e)
+        {
             if (pathListBox.SelectedIndex != -1)
             {
                 string sampString = (string)pathListBox.SelectedValue;
@@ -218,13 +221,13 @@ namespace GUI_Test2
 
             IFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, proj);
-     
+
             stream.Flush();
             stream.Close();
 
         }
 
-        
+
         public void openFile(string fileName)
         {
             if (fileName != "")
@@ -233,27 +236,27 @@ namespace GUI_Test2
                 //Deserialization
 
 
-               Project proj;
-               IFormatter formatter = new BinaryFormatter();
-               var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+                Project proj;
+                IFormatter formatter = new BinaryFormatter();
+                var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-               proj = (Project)formatter.Deserialize(stream);
+                proj = (Project)formatter.Deserialize(stream);
 
 
-               stream.Close();
+                stream.Close();
 
                 //Load the GameObject
                 Game.loadFromProject(proj);
 
-               /* Game.pathGroups = (List<String>)proj.pathGroups;
-                Game.hubs = (List<String>)proj.hubs;
-                Game.navIndex = (Dictionary<String, Navigable>)proj.navIndex;
-                
-                Game.paths = (List<String>)proj.paths;
-                Attributes.attribs = (List<Attrib>)proj.attribs;
-                Game.characters = (proj.characters);
-                Game.gameSettings = proj.gameSettings;
-                Game.endingGen = proj.endingGen;*/
+                /* Game.pathGroups = (List<String>)proj.pathGroups;
+                 Game.hubs = (List<String>)proj.hubs;
+                 Game.navIndex = (Dictionary<String, Navigable>)proj.navIndex;
+
+                 Game.paths = (List<String>)proj.paths;
+                 Attributes.attribs = (List<Attrib>)proj.attribs;
+                 Game.characters = (proj.characters);
+                 Game.gameSettings = proj.gameSettings;
+                 Game.endingGen = proj.endingGen;*/
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
 
                 updateListBoxes();
@@ -287,7 +290,8 @@ namespace GUI_Test2
 
 
         }
-        public void makeSamplePaths(object sender, EventArgs e) {
+        public void makeSamplePaths(object sender, EventArgs e)
+        {
             String[] sillyString = { "asdf", "asdf2", "asdf3", "asdf4", "asdf5", "asdf6", "asdf7", "asdf8", "asdf9", "asdf10", "asdf11" };
             try
             {
@@ -309,10 +313,11 @@ namespace GUI_Test2
                 Attributes.Add(2, "p1", 0, "");
                 updateListBoxes();
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 Console.Out.WriteLine(ex.StackTrace);
             }
-            
+
         }
 
         private void pathListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -363,7 +368,7 @@ namespace GUI_Test2
         {
             int index = -1;
             string n = "";
-            if(hubListBox.SelectedIndex != -1)
+            if (hubListBox.SelectedIndex != -1)
             {
                 index = hubListBox.SelectedIndex;
                 n = Game.hubs[index];
@@ -420,9 +425,9 @@ namespace GUI_Test2
             gs.ShowDialog();
         }
 
-     
 
-     
+
+
 
     }
 }

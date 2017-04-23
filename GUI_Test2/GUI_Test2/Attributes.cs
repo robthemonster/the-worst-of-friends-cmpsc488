@@ -13,7 +13,7 @@ namespace GUI_Test2
         public String hub;
         public int scope;
         public int value;
-        public Attrib(String name, int scope, int value, string hub= "")
+        public Attrib(String name, int scope, int value, string hub = "")
         {
             this.name = name;
             this.scope = scope;
@@ -28,9 +28,10 @@ namespace GUI_Test2
     {
         public static List<Attrib> attribs = new List<Attrib>();
         public const int GLOBAL = 0, HUB = 1, PLAYER = 2;
-        
 
-        public static bool Add(int scope, String name, int value,string hub="") {
+
+        public static bool Add(int scope, String name, int value, string hub = "")
+        {
 
             foreach (Attrib a in attribs)
             {
@@ -47,9 +48,9 @@ namespace GUI_Test2
             else
             {
                 bool inserted = false;
-                for (int i=0; i<Attributes.attribs.Count;++i)
+                for (int i = 0; i < Attributes.attribs.Count; ++i)
                 {
-                    if (name.CompareTo(Attributes.attribs[i].name) < 0&&!inserted)
+                    if (name.CompareTo(Attributes.attribs[i].name) < 0 && !inserted)
                     {
                         Attributes.attribs.Insert(i, new Attrib(name, scope, value, hub));
                         inserted = true;
@@ -81,7 +82,7 @@ namespace GUI_Test2
         public static List<String> getScope(int scope, String hub = "")
         {
             List<String> resultList = new List<string>();
-            
+
             foreach (Attrib a in Attributes.attribs)
             {
                 if (a.scope == scope && a.hub.Equals(""))
@@ -89,8 +90,8 @@ namespace GUI_Test2
                     resultList.Add(a.name);
                 }
             }
-            
-            if (scope==1 && !hub.Equals(""))
+
+            if (scope == 1 && !hub.Equals(""))
             {
                 foreach (Attrib a in Attributes.attribs)
                 {
@@ -105,7 +106,7 @@ namespace GUI_Test2
 
         public static Attrib get(string name)
         {
-            foreach(Attrib a in Attributes.attribs)
+            foreach (Attrib a in Attributes.attribs)
             {
                 if (a.name.Equals(name))
                 {

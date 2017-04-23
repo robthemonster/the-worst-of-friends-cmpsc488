@@ -32,7 +32,7 @@ namespace GUI_Test2
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-  	 	    of.ShowDialog();
+            of.ShowDialog();
 
             try
             {
@@ -40,10 +40,11 @@ namespace GUI_Test2
                 imagePath = of.FileName;
                 this.AcceptButton = addImageToCharacterButton;
             }
-            catch (IndexOutOfRangeException ex) {
+            catch (IndexOutOfRangeException ex)
+            {
                 Console.Out.WriteLine(ex.StackTrace);
             }
-            
+
 
         }
 
@@ -64,8 +65,8 @@ namespace GUI_Test2
                     Game.characters.Add(characterName, new NPC(characterName));
                     updateCharacterList();
                     characterList.SelectedIndex = Game.characters.Count - 1;
-                    
-                   
+
+
                 }
 
                 else
@@ -94,7 +95,7 @@ namespace GUI_Test2
 
         private void deleteImageButton_Click(object sender, EventArgs e)
         {
-            if (characterImageList.SelectedIndex != -1 && characterList.SelectedIndex!=-1)
+            if (characterImageList.SelectedIndex != -1 && characterList.SelectedIndex != -1)
             {
                 Game.characters[characterList.Text].removeImage(characterImageList.SelectedIndex);
                 if (characterImageList.SelectedIndex == Game.characters[characterList.Text].imageNames.Count)
@@ -108,7 +109,7 @@ namespace GUI_Test2
 
         private void addImageToCharacterButton_Click(object sender, EventArgs e)
         {
-            if (imageNameTextBox.Text != "" && characterList.SelectedIndex!=-1 && !imagePath.Equals("")&& !Game.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text))
+            if (imageNameTextBox.Text != "" && characterList.SelectedIndex != -1 && !imagePath.Equals("") && !Game.characters[characterList.Text].imageNames.Contains(imageNameTextBox.Text))
             {
                 string imageName = imageNameTextBox.Text;
                 Game.characters[characterList.Text].addImage(imageNameTextBox.Text, imagePath);
@@ -140,7 +141,8 @@ namespace GUI_Test2
                 imagePath = Game.characters[characterList.Text].imagePaths[characterImageList.SelectedIndex];
                 characterImage.ImageLocation = imagePath;
             }
-            else {
+            else
+            {
                 characterImage.Image = GUI_Test2.Properties.Resources.defaultCharacter;
                 imageNameTextBox.Text = "";
             }
@@ -149,7 +151,7 @@ namespace GUI_Test2
         {
             int i = characterList.SelectedIndex;
             characterList.SelectedIndex = -1;
-            if(i!=-1)
+            if (i != -1)
                 characterList.SelectedIndex = i;
         }
 

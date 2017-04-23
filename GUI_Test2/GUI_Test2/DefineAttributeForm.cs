@@ -32,7 +32,7 @@ namespace GUI_Test2
             {
                 hubRadioButton.Enabled = false;
             }
-            
+
         }
 
         private void DefineAttributeForm_Load(object sender, EventArgs e)
@@ -114,7 +114,7 @@ namespace GUI_Test2
 
                 if (allHubCheckBox.Enabled && !allHubCheckBox.Checked)
                 {
-                    Attributes.Add(scope, nameTextBox.Text, (int)initialValueNumericUpDown.Value,currHub);
+                    Attributes.Add(scope, nameTextBox.Text, (int)initialValueNumericUpDown.Value, currHub);
                 }
                 else
                 {
@@ -138,7 +138,8 @@ namespace GUI_Test2
             }
         }
 
-        private void clearFields() {
+        private void clearFields()
+        {
             nameTextBox.Text = "";
             initialValueNumericUpDown.Value = 0;
             allHubCheckBox.Checked = false;
@@ -146,7 +147,7 @@ namespace GUI_Test2
 
         private void scopeAttributesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (scopeAttributesListBox.SelectedIndex != -1&& !scopeChange)
+            if (scopeAttributesListBox.SelectedIndex != -1 && !scopeChange)
             {
                 Attrib a = Attributes.get((string)scopeAttributesListBox.SelectedItem);
                 nameTextBox.Text = a.name;

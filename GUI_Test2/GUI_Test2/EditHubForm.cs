@@ -49,7 +49,7 @@ namespace GUI_Test2
             this.hubName = that.name;
             this.hubImagePath = that.hubImage;
             this.buttonList = new List<Button>();
-            foreach(Button b in that.buttons)
+            foreach (Button b in that.buttons)
             {
                 buttonList.Add(new Button(b));
             }
@@ -68,7 +68,7 @@ namespace GUI_Test2
             }
 
             updateListBox();
-           
+
         }
 
         private void EditHubForm_Load(object sender, EventArgs e)
@@ -154,7 +154,7 @@ namespace GUI_Test2
             {
                 string THIS_SHOULD_BE_BUTTON_FONT = "";
                 int THIS_SHOULD_BE_BUTTON_CHAR_SIZE = 30;
-                Game.navIndex[hubName] = new Hub(hubName, buttonList, hubImagePath, hubSoundPath,THIS_SHOULD_BE_BUTTON_FONT, THIS_SHOULD_BE_BUTTON_CHAR_SIZE );
+                Game.navIndex[hubName] = new Hub(hubName, buttonList, hubImagePath, hubSoundPath, THIS_SHOULD_BE_BUTTON_FONT, THIS_SHOULD_BE_BUTTON_CHAR_SIZE);
             }
             else
             {
@@ -188,33 +188,33 @@ namespace GUI_Test2
 
             }
         }
-        
-        
+
+
         private void createButtonButton_Click(object sender, EventArgs e)
         {
             string text, pic1path, pic2path, next;
             int sizeX, sizeY, posX, posY, highlight;
 
-            
-                text = buttonTextTextBox.Text;
-            
-            
-            
-            
+
+            text = buttonTextTextBox.Text;
+
+
+
+
             //max width is 1920
-           
+
             sizeX = (int)buttonWidthNumericUpDown.Value;
             sizeY = (int)buttonHeightNumericUpDown.Value;
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
             posX = (int)buttonXLocNumericUpDown.Value;
             posY = (int)buttonYLocNumericUpDown.Value;
-            
-            
+
+
 
             if (useButton1Image.Checked)
             {
@@ -266,25 +266,25 @@ namespace GUI_Test2
                 return;
             }
 
-            if (useButton2Image.Checked )
+            if (useButton2Image.Checked)
                 highlight = Button.HIGHLIGHT_PICTURE;
 
-            else if (HighlightTextButton.Checked )
+            else if (HighlightTextButton.Checked)
                 highlight = Button.HIGHLIGHT_TEXT;
 
             else
                 highlight = Button.DO_NOTHING;
 
 
-           
-                buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
-                buttonCount++;
-                buttonNameList.Add("Button " + buttonCount);
-            
-           
+
+            buttonList.Add(new Button(text, sizeX, sizeY, posX, posY, pic1path, pic2path, highlight, next));
+            buttonCount++;
+            buttonNameList.Add("Button " + buttonCount);
+
+
 
             updateListBox();
-    }
+        }
 
         private void deleteButtonButton_Click(object sender, EventArgs e)
         {
@@ -300,7 +300,8 @@ namespace GUI_Test2
                 buttonListBox.SelectedIndex = index;
 
             }
-            catch(ArgumentOutOfRangeException ex) {
+            catch (ArgumentOutOfRangeException ex)
+            {
                 Console.Out.WriteLine(ex.StackTrace);
             }
         }
@@ -308,7 +309,7 @@ namespace GUI_Test2
         private void chooseHubImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";           
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 
             try
             {
@@ -328,19 +329,20 @@ namespace GUI_Test2
         {
             if (useButton1Image.Checked)
             {
-                
-                  
-                    setButton1ImageButton_Click(sender, e);
-                    if (buttonImageState == EditHubForm.ONE_IMAGE_SELECTED)
-                    {
-                        button1PictureBox.Visible = true;
-                        useButton2Image.Enabled = true;
-                    }else
-                    {
-                        useButton1Image.Checked = false;
-                    }
-                 
-                
+
+
+                setButton1ImageButton_Click(sender, e);
+                if (buttonImageState == EditHubForm.ONE_IMAGE_SELECTED)
+                {
+                    button1PictureBox.Visible = true;
+                    useButton2Image.Enabled = true;
+                }
+                else
+                {
+                    useButton1Image.Checked = false;
+                }
+
+
             }
             else
             {
@@ -356,17 +358,18 @@ namespace GUI_Test2
         {
             if (useButton2Image.Checked)
             {
-                    
-                    setButton2ImageButton_Click(sender, e);
-                    if (buttonImageState == EditHubForm.TWO_IMAGES_SELECTED)
-                    {
-                        button2PictureBox.Visible = true;
-                    }else
-                    {
-                        useButton2Image.Checked = false;
-                    }
-                 
-                
+
+                setButton2ImageButton_Click(sender, e);
+                if (buttonImageState == EditHubForm.TWO_IMAGES_SELECTED)
+                {
+                    button2PictureBox.Visible = true;
+                }
+                else
+                {
+                    useButton2Image.Checked = false;
+                }
+
+
             }
             else
             {
@@ -388,12 +391,13 @@ namespace GUI_Test2
                     buttonImagePath1 = of.FileName;
                     buttonImageState = EditHubForm.ONE_IMAGE_SELECTED;
                 }
-            }catch(IndexOutOfRangeException ex)
+            }
+            catch (IndexOutOfRangeException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
 ;
-         
+
         }
 
         private void setButton2ImageButton_Click(object sender, EventArgs e)
@@ -403,8 +407,8 @@ namespace GUI_Test2
             //Devam Mehta
             //97163
             //http://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
-                
-                
+
+
             try
             {
                 if (of.ShowDialog() == DialogResult.OK)
@@ -413,10 +417,11 @@ namespace GUI_Test2
                     buttonImagePath2 = of.FileName;
                     buttonImageState = EditHubForm.TWO_IMAGES_SELECTED;
                 }
-            }catch(IndexOutOfRangeException ex)
+            }
+            catch (IndexOutOfRangeException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
-            }       
+            }
         }
 
         private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
@@ -448,7 +453,7 @@ namespace GUI_Test2
 
         private void buttonListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             //Load the selected button into the editor
             if (buttonListBox.SelectedIndex != -1)
             {

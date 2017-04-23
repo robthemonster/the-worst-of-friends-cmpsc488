@@ -12,11 +12,11 @@ namespace GUI_Test2
 {
     public partial class EditPathForm : Form
     {
-        private List <String> dialogueEntryList;
+        private List<String> dialogueEntryList;
         private List<List<Impact>> dialogueImpactList;
         private List<Dialogue> dialogues;
 
-        private List <Button> buttonList;
+        private List<Button> buttonList;
         private ProjectHomeForm parentForm;
         private String name;
         private String[] ops;
@@ -36,14 +36,14 @@ namespace GUI_Test2
         private const int NO_IMAGES_SELECTED = 0, ONE_IMAGE_SELECTED = 1, TWO_IMAGES_SELECTED = 2;
         private string defaultTargetNavigable;
 
-        public EditPathForm( ProjectHomeForm par, String n)
+        public EditPathForm(ProjectHomeForm par, String n)
         {
             InitializeComponent();
-           
+
             parentForm = par;
             name = n;
             dialogues = new List<Dialogue>();
-            this.Text = "Edit Path: "+name;
+            this.Text = "Edit Path: " + name;
             dialogueEntryList = new List<String>();
             buttonList = new List<Button>();
             buttonNameList = new List<string>();
@@ -66,16 +66,16 @@ namespace GUI_Test2
             parentForm = par;
 
             dialogues = new List<Dialogue>();
-            foreach(Dialogue d in p.dialogues)
+            foreach (Dialogue d in p.dialogues)
             {
-                dialogues.Add(new Dialogue (d));
+                dialogues.Add(new Dialogue(d));
             }
             name = p.name;
             this.Text = "Edit Path: " + name;
             dialogueEntryList = new List<string>();
             dialogueEntryList = p.getDialogueContents();
             buttonList = new List<Button>();
-            foreach(Button b in p.buttons)
+            foreach (Button b in p.buttons)
             {
                 buttonList.Add(new Button(b));
             }
@@ -97,9 +97,9 @@ namespace GUI_Test2
             buttonFontSizeNumeric.Value = p.buttonFontCharSize;
 
             defaultTargetNavigable = p.defaultTargetNavigable;
-            
+
         }
-            
+
 
         private void EditPath_Load(object sender, EventArgs e)
         {
@@ -142,7 +142,7 @@ namespace GUI_Test2
             {
                 defaultPathImage.ImageLocation = pathImagePath;
             }
-            catch (InvalidOperationException  ex)
+            catch (InvalidOperationException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
@@ -159,14 +159,14 @@ namespace GUI_Test2
         {
             OpenFileDialog of = new OpenFileDialog();
 
-            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";            
+            of.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             of.ShowDialog();
 
             try
             {
                 defaultPathImage.Image = Image.FromStream(of.OpenFile());
                 pathImagePath = of.FileName;
-                
+
             }
             catch (IndexOutOfRangeException ex)
             {
@@ -175,8 +175,8 @@ namespace GUI_Test2
             }
         }
 
-        
-        
+
+
 
         private void dialogueList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -189,12 +189,12 @@ namespace GUI_Test2
                 dialogueTextBox.Text = null;
             }
         }
-        
+
 
         private void ShiftDialogueUpButton_Click(object sender, EventArgs e)
         {
             int index = dialogueList.SelectedIndex;
-            if (index != -1 && index!=0)
+            if (index != -1 && index != 0)
             {
                 swapImpact(index, index - 1);
                 updateListBoxes();
@@ -207,7 +207,7 @@ namespace GUI_Test2
         {
 
             int index = dialogueList.SelectedIndex;
-            if (index != -1 && index < dialogueEntryList.Count-1 )
+            if (index != -1 && index < dialogueEntryList.Count - 1)
             {
                 swapImpact(dialogueList.SelectedIndex, dialogueList.SelectedIndex + 1);
                 updateListBoxes();
@@ -215,15 +215,16 @@ namespace GUI_Test2
 
             }
         }
-        private void swapImpact(int from, int to) {
+        private void swapImpact(int from, int to)
+        {
 
             String temp;
             List<Impact> tempI;
             Dialogue tempD;
-            
-            if(to>=0 && to< dialogueEntryList.Count)
+
+            if (to >= 0 && to < dialogueEntryList.Count)
             {
-                temp= dialogueEntryList[to];
+                temp = dialogueEntryList[to];
                 dialogueEntryList[to] = dialogueEntryList[from];
                 dialogueEntryList[from] = temp;
 
@@ -235,7 +236,7 @@ namespace GUI_Test2
                 dialogues[to] = dialogues[from];
                 dialogues[from] = tempD;
             }
-         }
+        }
 
         private void swapButton(int from, int to)
         {
@@ -327,14 +328,15 @@ namespace GUI_Test2
                 dialogueList.DataSource = null;
                 dialogueList.DataSource = dialogueEntryList;
                 dialogueList.SelectedIndex = index;
-                
+
                 dialogueListBox.DataSource = null;
                 dialogueListBox.DataSource = dialogueEntryList;
                 dialogueListBox.SelectedIndex = index;
 
 
             }
-            catch(IndexOutOfRangeException ex) {
+            catch (IndexOutOfRangeException ex)
+            {
                 Console.Out.WriteLine(ex.StackTrace);
             }
         }
@@ -352,29 +354,31 @@ namespace GUI_Test2
 
             }
         }
-        private void updateListBoxes() {
+        private void updateListBoxes()
+        {
             dialogueList.DataSource = null;
             dialogueList.DataSource = dialogueEntryList;
             dialogueList.SelectedIndex = -1;
 
             dialogueListBox.DataSource = null;
             dialogueListBox.DataSource = dialogueEntryList;
-            
+
         }
-        private void EditCreateImpact_Click(object sender, EventArgs e) {
-            if (dialogueListBox.SelectedIndex!=-1
-                && attributeComboBox.SelectedIndex != -1 
-                && opComboBox.SelectedIndex != -1 
-                && (hubSelectionComboBox.SelectedIndex!=-1||!hubRadioButton.Checked)
-                &&(hubRadioButton.Checked||globalRadioButton.Checked||playerRadioButton.Checked))
+        private void EditCreateImpact_Click(object sender, EventArgs e)
+        {
+            if (dialogueListBox.SelectedIndex != -1
+                && attributeComboBox.SelectedIndex != -1
+                && opComboBox.SelectedIndex != -1
+                && (hubSelectionComboBox.SelectedIndex != -1 || !hubRadioButton.Checked)
+                && (hubRadioButton.Checked || globalRadioButton.Checked || playerRadioButton.Checked))
             {
-                
+
                 string name = (string)attributeComboBox.SelectedValue;
                 int op = opComboBox.SelectedIndex;
                 int val = (int)valueNumericUpDown.Value;
                 Impact i = new Impact(scope, name, currHub, op, val);
                 int index = dialogueImpactList.Count - 1;
-                if (dialogueImpactList.Count> dialogueListBox.SelectedIndex && dialogueImpactList[dialogueListBox.SelectedIndex].Contains(i))
+                if (dialogueImpactList.Count > dialogueListBox.SelectedIndex && dialogueImpactList[dialogueListBox.SelectedIndex].Contains(i))
                 {
                     dialogueImpactList[dialogueListBox.SelectedIndex].Remove(i);
                     dialogues[dialogueListBox.SelectedIndex].impacts.Remove(i);
@@ -383,7 +387,7 @@ namespace GUI_Test2
                 dialogues[dialogueListBox.SelectedIndex].impacts.Add(new Impact(i));
                 updateImpactList();
                 impactAttributeListBox.SelectedIndex = impactAttributeListBox.Items.Count - 1;
-                
+
             }
 
         }
@@ -401,17 +405,17 @@ namespace GUI_Test2
 
             if (Game.navIndex.ContainsKey(name))
             {
-                Game.navIndex[name] = new Path(name, buttonList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable,dialogues);
+                Game.navIndex[name] = new Path(name, buttonList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable, dialogues);
             }
             else
             {
                 Game.paths.Add(name);
-                Game.navIndex.Add(name, new Path(name, buttonList,  pathImagePath,pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable, dialogues));
+                Game.navIndex.Add(name, new Path(name, buttonList, pathImagePath, pathSoundPath, selectedFontPath.Text, (int)buttonFontSizeNumeric.Value, (int)dialogueFontSizeNumeric.Value, defaultTargetNavigable, dialogues));
             }
             parentForm.updateListBoxes();
             Close();
         }
-        
+
         private void useButtonLocationDefaults_CheckedChanged(object sender, EventArgs e)
         {
             if (!useButtonLocationDefaults.Checked)
@@ -427,7 +431,7 @@ namespace GUI_Test2
                 label11.Enabled = false;
             }
         }
-        
+
 
         private void Buttons_Click(object sender, EventArgs e)
         {
@@ -473,14 +477,15 @@ namespace GUI_Test2
                 buttonListBox.SelectedIndex = index;
 
             }
-            catch (ArgumentOutOfRangeException ex){
+            catch (ArgumentOutOfRangeException ex)
+            {
                 Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
-     
 
-       
+
+
 
         private void editDialogueButton_Click(object sender, EventArgs e)
         {
@@ -601,9 +606,9 @@ namespace GUI_Test2
         private List<String> getImpacts(int index)
         {
             List<String> impacts = new List<String>();
-            if (index > -1 && dialogueImpactList.Count>0)
+            if (index > -1 && dialogueImpactList.Count > 0)
             {
-                foreach(Impact i in dialogueImpactList[index])
+                foreach (Impact i in dialogueImpactList[index])
                 {
                     impacts.Add(i.attribute);
                 }
@@ -611,13 +616,13 @@ namespace GUI_Test2
             return impacts;
         }
 
-     
+
 
         private void hubSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        { 
+        {
             if (hubSelectionComboBox.SelectedIndex != -1)
             {
-                currHub = (String) hubSelectionComboBox.SelectedItem;
+                currHub = (String)hubSelectionComboBox.SelectedItem;
             }
             else
             {
@@ -629,7 +634,7 @@ namespace GUI_Test2
 
         private void createImpactButton_Click(object sender, EventArgs e)
         {
-            if(opComboBox.SelectedIndex!=-1 && attributeComboBox.SelectedIndex != -1)
+            if (opComboBox.SelectedIndex != -1 && attributeComboBox.SelectedIndex != -1)
             {
 
             }
@@ -641,7 +646,7 @@ namespace GUI_Test2
         }
         private void pathListBoxTab2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
 
             if (dialogueListBox.SelectedIndex != -1
                 && dialogues[dialogueListBox.SelectedIndex].character != ""
@@ -672,7 +677,7 @@ namespace GUI_Test2
 
         private void impactAttributeListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (impactAttributeListBox.SelectedIndex != -1&&dialogueListBox.SelectedIndex!=-1)
+            if (impactAttributeListBox.SelectedIndex != -1 && dialogueListBox.SelectedIndex != -1)
             {
                 Impact i = dialogueImpactList[dialogueListBox.SelectedIndex][impactAttributeListBox.SelectedIndex];
                 scope = i.scope;
@@ -714,9 +719,9 @@ namespace GUI_Test2
 
             sizeX = (int)buttonWidthNumericUpDown.Value;
             sizeY = (int)buttonHeightNumericUpDown.Value;
-            
-                
-            
+
+
+
 
             if (useButtonLocationDefaults.Checked)
             {
@@ -753,7 +758,7 @@ namespace GUI_Test2
                     buttonYLocNumericUpDown.Value = 0;
                     return;
                 }
-                
+
             }
 
             if (useButton1Image.Checked)
@@ -785,7 +790,7 @@ namespace GUI_Test2
             }
 
             if (navComboBox.SelectedItem != null)
-            { 
+            {
                 //Passes a string
                 if (pathFromButtonRadio.Checked)
                     next = Game.paths[navComboBox.SelectedIndex];
@@ -793,7 +798,8 @@ namespace GUI_Test2
                     next = Game.pathGroups[navComboBox.SelectedIndex];
                 else
                     next = Game.hubs[navComboBox.SelectedIndex];
-            }else
+            }
+            else
             {
                 next = "";
             }
@@ -819,7 +825,7 @@ namespace GUI_Test2
             else
                 highlight = Button.DO_NOTHING;
 
-           
+
 
 
 
@@ -841,7 +847,7 @@ namespace GUI_Test2
 
                 //Type
                 Button b = buttonList[buttonListBox.SelectedIndex];
-               
+
                 if (b.next == "" || Game.navIndex[b.next].getNavType() == Navigable.PATH)
                 {
                     pathFromButtonRadio.Checked = true;
@@ -908,10 +914,10 @@ namespace GUI_Test2
                         button2PictureBox.Visible = true;
                     }
 
-               
+
                 }
 
-                
+
 
             }
             else
@@ -929,7 +935,7 @@ namespace GUI_Test2
         {
             if (useButton1Image.Checked)
             {
-                
+
 
                 chooseButton1ImageButton_Click(sender, e);
                 if (buttonImageState == EditPathForm.ONE_IMAGE_SELECTED)
@@ -1019,7 +1025,7 @@ namespace GUI_Test2
             }
         }
 
- 
+
         private void pathFromButtonRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (pathFromButtonRadio.Checked)
@@ -1060,10 +1066,10 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                   string font  = of.FileName;
+                    string font = of.FileName;
                     selectedFontPath.Text = of.FileName;
-                       
-                }                
+
+                }
             }
             catch (IndexOutOfRangeException ex)
             {
@@ -1165,7 +1171,7 @@ namespace GUI_Test2
 
         private void characterImageComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (characterImageComboBox.SelectedIndex != -1 
+            if (characterImageComboBox.SelectedIndex != -1
                 && dialogueListBox.SelectedIndex != -1
                 && useCharacterCheckBox.Checked)
             {
@@ -1225,5 +1231,5 @@ namespace GUI_Test2
             }
         }
     }
-    
+
 }
