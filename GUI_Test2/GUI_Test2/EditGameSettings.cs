@@ -43,9 +43,9 @@ namespace GUI_Test2
             InitializeComponent();
 
             gameOverReq = new List<Requirement>();
-            
-        dialogueScrollSoundPath="";
-            dialogueEndSoundPath="";
+
+            dialogueScrollSoundPath = "";
+            dialogueEndSoundPath = "";
 
             defaultFontPath = "";
             dialoguePaneFlasingTexturePath = "";
@@ -54,7 +54,7 @@ namespace GUI_Test2
             EORPathGroupName = "";
             SOTNav = "";
 
-            
+
             mainMenuImagePath = "";
             mainMenuSoundPath = "";
             playButtonSoundPath = "";
@@ -70,8 +70,10 @@ namespace GUI_Test2
             enterTextureXLocNumericUpDown.Value = gS.flashingTextureXLoc;
             enterTextureYLocNumericUpDown.Value = gS.flashingTextureYLoc;
 
-            if (File.Exists(gS.dialogueScrollSoundPath)) {
-                dialogueScrollSoundPath = gS.dialogueScrollSoundPath; }
+            if (File.Exists(gS.dialogueScrollSoundPath))
+            {
+                dialogueScrollSoundPath = gS.dialogueScrollSoundPath;
+            }
             else { dialogueScrollSoundPath = ""; }
 
             if (File.Exists(gS.dialogueEndSoundPath))
@@ -96,7 +98,7 @@ namespace GUI_Test2
             {
                 dialoguePaneFlasingTexturePath = gS.dialoguePaneFlashingTexturePath;
             }
-            else {dialoguePaneFlasingTexturePath = ""; }
+            else { dialoguePaneFlasingTexturePath = ""; }
             paneXLocNumericUpDown.Value = gS.dialoguePanePosX;
             paneYLocNumericUpDown.Value = gS.dialoguePanePosY;
             NPCXLocNumericUpDown.Value = gS.NPCXLoc;
@@ -123,10 +125,10 @@ namespace GUI_Test2
             musicLoading = false;
 
 
-            
+
             playerAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(2, currHub);
             globalAttributesComboBox.DataSource = GUI_Test2.Attributes.getScope(0, currHub);
-            
+
             List<string> navList = new List<string>();
             navList.AddRange(Game.hubs);
             navList.AddRange(Game.pathGroups);
@@ -199,26 +201,27 @@ namespace GUI_Test2
             Game.gameSettings.visGlobalAtts = visGlobalAts;
             Game.gameSettings.dialoguePaneTexturePath = dialoguePaneTexturePath;
             Game.gameSettings.dialoguePaneFlashingTexturePath = dialoguePaneFlasingTexturePath;
-            
+
 
             Game.gameSettings.maxPlayers = (int)maxPlayerNumericUpDown.Value;
-            
+
             Game.gameSettings.dialoguePanePosX = (int)paneXLocNumericUpDown.Value;
             Game.gameSettings.dialoguePanePosY = (int)this.paneYLocNumericUpDown.Value;
             Game.gameSettings.flashingTextureXLoc = (int)this.enterTextureXLocNumericUpDown.Value;
             Game.gameSettings.flashingTextureYLoc = (int)this.enterTextureYLocNumericUpDown.Value;
             Game.gameSettings.NPCXLoc = (int)this.NPCXLocNumericUpDown.Value;
             Game.gameSettings.NPCYLoc = (int)this.NPCYLocNumericUpDown.Value;
-            
+
 
             if (dialogueEndSoundPath != "")
             {
                 Game.gameSettings.dialogueEndSoundPath = dialogueEndSoundPath;
             }
-            if (dialogueScrollSoundPath != "") {
+            if (dialogueScrollSoundPath != "")
+            {
                 Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSoundPath;
             }
-            
+
             if (this.roundEndNavComboBox.SelectedIndex != -1)
             {
                 Game.gameSettings.endOfRoundNav = (string)this.roundEndNavComboBox.SelectedItem;
@@ -229,14 +232,14 @@ namespace GUI_Test2
                 return;
             }
 
-            
+
             if (this.roundStartNavComboBox.SelectedIndex != -1)
             {
                 Game.gameSettings.startOfRoundNav = (string)this.roundStartNavComboBox.SelectedItem;
             }
             else
             {
-                MessageBox.Show("Please Select a Navigable to Begin Each Round of the Game.","Cannot Save Settings",MessageBoxButtons.OK);
+                MessageBox.Show("Please Select a Navigable to Begin Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
                 return;
             }
 
@@ -312,7 +315,7 @@ namespace GUI_Test2
                 setAttributeComboBox();
             }
         }
-        
+
 
         private void GameOverReqsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -343,12 +346,12 @@ namespace GUI_Test2
                     valueUpDown.Value = r.value;
                 }
             }
-            
+
         }
         private void updateGameOver()
         {
             List<string> GORs = new List<string>();
-            foreach(Requirement r in gameOverReq)
+            foreach (Requirement r in gameOverReq)
             {
                 GORs.Add(r.name);
             }
@@ -361,7 +364,7 @@ namespace GUI_Test2
         {
             if (attributeComboBox.SelectedIndex != -1 && ((gameOverScope == 0 || gameOverScope == 2) || hubComboBox.SelectedIndex != -1))
             {
-               
+
                 int value = (int)valueUpDown.Value;
                 if (gameOverScope == 0 || gameOverScope == 2)
                 {
@@ -410,7 +413,7 @@ namespace GUI_Test2
             }
         }
 
-        
+
 
         private void hubComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -482,7 +485,7 @@ namespace GUI_Test2
 
         private void addPlayerAttributeVisibleButton_Click(object sender, EventArgs e)
         {
-            if (!visPlayerAts.Contains((string)playerAttributesComboBox.SelectedItem)) 
+            if (!visPlayerAts.Contains((string)playerAttributesComboBox.SelectedItem))
             {
                 visPlayerAts.Add((string)playerAttributesComboBox.SelectedItem);
                 updateVisPlayerList();
@@ -492,7 +495,8 @@ namespace GUI_Test2
 
         private void removePlayerAttributeVisibleButton_Click(object sender, EventArgs e)
         {
-            if (visiblePlayerAttributesListBox.SelectedIndex!=-1){
+            if (visiblePlayerAttributesListBox.SelectedIndex != -1)
+            {
                 int index = visiblePlayerAttributesListBox.SelectedIndex;
                 visPlayerAts.RemoveAt(index);
                 if (index == visPlayerAts.Count)
@@ -555,7 +559,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                   dialoguePaneFlasingTexturePath  = of.FileName;
+                    dialoguePaneFlasingTexturePath = of.FileName;
                 }
 
             }

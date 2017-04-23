@@ -33,6 +33,8 @@ void Game::play(sf::RenderWindow & window, sf::View & view)
 		
 			for (int i = 0; i < this->numPlayers; i++) {
 				this->currPlayer = &players[i];
+				if (this->numPlayers > 1)
+					(*this->interfacePointer).displayPlayerTurnStart(window, view, "Player " + std::to_string(i + 1), (*currPlayer).getPlayerColor());
 				(*this->ending).display(window, view, true);
 			
 			

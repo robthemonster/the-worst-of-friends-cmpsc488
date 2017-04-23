@@ -26,13 +26,15 @@ void EndingGenerator::display(sf::RenderWindow & window, sf::View & view, bool f
 			currReq = std::get<1>(this->endings[i][j]);
 			if ((*currReq).meetsAllRequirements()) {
 				curr = std::get<0>(this->endings[i][j]);
-				if (first == NULL)
+				if (first == NULL) {
 					first = curr;
+					last = curr;
+				}
 				break;
 			}
 		}
 
-		if (last != NULL && curr != NULL) {
+		if (last != NULL && curr != NULL && last != curr) {
 			(*last).setDestination((Navigable**)&curr);
 			last = curr;
 		}

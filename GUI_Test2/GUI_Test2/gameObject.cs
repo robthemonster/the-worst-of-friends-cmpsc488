@@ -235,7 +235,7 @@ namespace GUI_Test2
                 List<Requirement> reqs = Game.endingGen.reqsofEachPath[endingCtr];
                 if (reqs.Count == 0)
                 {
-                    code.AppendLine("(*game).addEnding(" + Game.endingGen.tierofEachPath[endingCtr] + ", nav" + Game.navNameToCodeIndex[ending] + ", &noReq");
+                    code.AppendLine("(*game).addEnding(" + Game.endingGen.tierofEachPath[endingCtr] + ", nav" + Game.navNameToCodeIndex[ending] + ", &noReq);");
                 }
                 else
                 {
@@ -270,9 +270,9 @@ namespace GUI_Test2
                             code.AppendLine("endingReq" + endingCtr + ".addRequirement((Attributable**) nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
                     }
                     code.AppendLine("(*game).addEnding(" + Game.endingGen.tierofEachPath[endingCtr] + ", nav" + Game.navNameToCodeIndex[ending] + ", &endingReq" + endingCtr + ");");
-                    endingCtr++;
+                    
                 }
-
+                endingCtr++;
             }
             return code.ToString();
         }
