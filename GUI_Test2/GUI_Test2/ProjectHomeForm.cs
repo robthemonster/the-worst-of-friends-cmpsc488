@@ -338,6 +338,11 @@ namespace GUI_Test2
                 navInfo.Text += selected.pathsInGroup.Count + " Navigables in group \n";
 
             }
+            else if (pathListBox.SelectedIndex == -1 && hubListBox.SelectedIndex == -1)
+            {
+                selectedNavImage.ImageLocation = null;
+                navInfo.Text = "";
+            }
         }
 
         private void attributesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -363,6 +368,11 @@ namespace GUI_Test2
                 navInfo.Text = selected.name + "\n";
                 navInfo.Text += selected.buttons.Count + " Buttons \n";
             }
+            else if (pathGroupListBox.SelectedIndex == -1 && pathListBox.SelectedIndex == -1)
+            {
+                selectedNavImage.ImageLocation = null;
+                navInfo.Text = "";
+            }
         }
 
         private void pathListBox_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -377,6 +387,10 @@ namespace GUI_Test2
                 navInfo.Text += selected.buttons.Count + " Buttons \n";
                 if (selected.defaultTargetNavigable != "")
                     navInfo.Text += "Default Target: " + selected.defaultTargetNavigable + "\n";
+            }else if (pathGroupListBox.SelectedIndex == -1 && hubListBox.SelectedIndex == -1)
+            {
+                selectedNavImage.ImageLocation = null;
+                navInfo.Text = "";
             }
         }
 
