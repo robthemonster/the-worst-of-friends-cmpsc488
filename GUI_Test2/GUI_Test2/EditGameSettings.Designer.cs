@@ -75,6 +75,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chooseEnterTextureVerify = new System.Windows.Forms.PictureBox();
+            this.chooseDialogueEndSoundVerify = new System.Windows.Forms.PictureBox();
+            this.chooseDialoguePaneVerify = new System.Windows.Forms.PictureBox();
+            this.chooseDialogueFontVerify = new System.Windows.Forms.PictureBox();
+            this.chooseScrollSoundVerify = new System.Windows.Forms.PictureBox();
             this.enterTextureYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.enterTextureXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NPCYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -122,6 +127,11 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseEnterTextureVerify)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseDialogueEndSoundVerify)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseDialoguePaneVerify)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseDialogueFontVerify)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseScrollSoundVerify)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enterTextureYLocNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enterTextureXLocNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPCYLocNumericUpDown)).BeginInit();
@@ -148,9 +158,9 @@
             this.groupBox4.Controls.Add(this.tableLayoutPanel2);
             this.groupBox4.Controls.Add(this.addRequirementButton);
             this.groupBox4.Location = new System.Drawing.Point(8, 7);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(563, 261);
             this.groupBox4.TabIndex = 33;
             this.groupBox4.TabStop = false;
@@ -161,7 +171,7 @@
             this.GameOverReqsListBox.FormattingEnabled = true;
             this.GameOverReqsListBox.ItemHeight = 16;
             this.GameOverReqsListBox.Location = new System.Drawing.Point(313, 23);
-            this.GameOverReqsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GameOverReqsListBox.Margin = new System.Windows.Forms.Padding(4);
             this.GameOverReqsListBox.Name = "GameOverReqsListBox";
             this.GameOverReqsListBox.Size = new System.Drawing.Size(103, 164);
             this.GameOverReqsListBox.TabIndex = 38;
@@ -170,7 +180,7 @@
             // removeRequirementButton
             // 
             this.removeRequirementButton.Location = new System.Drawing.Point(232, 210);
-            this.removeRequirementButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removeRequirementButton.Margin = new System.Windows.Forms.Padding(4);
             this.removeRequirementButton.Name = "removeRequirementButton";
             this.removeRequirementButton.Size = new System.Drawing.Size(135, 31);
             this.removeRequirementButton.TabIndex = 37;
@@ -184,9 +194,9 @@
             this.groupBox5.Controls.Add(this.hubLabel);
             this.groupBox5.Controls.Add(this.tableLayoutPanel3);
             this.groupBox5.Location = new System.Drawing.Point(11, 23);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(280, 102);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
@@ -198,7 +208,7 @@
             this.hubComboBox.Enabled = false;
             this.hubComboBox.FormattingEnabled = true;
             this.hubComboBox.Location = new System.Drawing.Point(151, 47);
-            this.hubComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.hubComboBox.Name = "hubComboBox";
             this.hubComboBox.Size = new System.Drawing.Size(120, 24);
             this.hubComboBox.TabIndex = 2;
@@ -223,7 +233,7 @@
             this.tableLayoutPanel3.Controls.Add(this.GOHubRadioButton, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.GOPlayerRadioButton, 0, 2);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(8, 17);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
@@ -236,7 +246,7 @@
             // 
             this.GOGlobalRadioButton.AutoSize = true;
             this.GOGlobalRadioButton.Location = new System.Drawing.Point(4, 4);
-            this.GOGlobalRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GOGlobalRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.GOGlobalRadioButton.Name = "GOGlobalRadioButton";
             this.GOGlobalRadioButton.Size = new System.Drawing.Size(70, 18);
             this.GOGlobalRadioButton.TabIndex = 0;
@@ -249,7 +259,7 @@
             // 
             this.GOHubRadioButton.AutoSize = true;
             this.GOHubRadioButton.Location = new System.Drawing.Point(4, 30);
-            this.GOHubRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GOHubRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.GOHubRadioButton.Name = "GOHubRadioButton";
             this.GOHubRadioButton.Size = new System.Drawing.Size(55, 18);
             this.GOHubRadioButton.TabIndex = 1;
@@ -262,7 +272,7 @@
             // 
             this.GOPlayerRadioButton.AutoSize = true;
             this.GOPlayerRadioButton.Location = new System.Drawing.Point(4, 56);
-            this.GOPlayerRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GOPlayerRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.GOPlayerRadioButton.Name = "GOPlayerRadioButton";
             this.GOPlayerRadioButton.Size = new System.Drawing.Size(69, 21);
             this.GOPlayerRadioButton.TabIndex = 2;
@@ -276,7 +286,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
@@ -284,7 +294,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.valueUpDown, 2, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(11, 133);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
@@ -297,17 +307,17 @@
             this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(4, 26);
-            this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(107, 24);
+            this.attributeComboBox.Size = new System.Drawing.Size(106, 24);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(119, 26);
-            this.comparitorComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comparitorComboBox.Location = new System.Drawing.Point(118, 26);
+            this.comparitorComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(75, 24);
             this.comparitorComboBox.TabIndex = 23;
@@ -315,7 +325,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(119, 0);
+            this.label5.Location = new System.Drawing.Point(118, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 22);
@@ -335,7 +345,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(203, 0);
+            this.label8.Location = new System.Drawing.Point(201, 0);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 17);
@@ -344,8 +354,8 @@
             // 
             // valueUpDown
             // 
-            this.valueUpDown.Location = new System.Drawing.Point(203, 26);
-            this.valueUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.valueUpDown.Location = new System.Drawing.Point(201, 26);
+            this.valueUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.valueUpDown.Maximum = new decimal(new int[] {
             2000000000,
             0,
@@ -363,7 +373,7 @@
             // addRequirementButton
             // 
             this.addRequirementButton.Location = new System.Drawing.Point(89, 210);
-            this.addRequirementButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addRequirementButton.Margin = new System.Windows.Forms.Padding(4);
             this.addRequirementButton.Name = "addRequirementButton";
             this.addRequirementButton.Size = new System.Drawing.Size(135, 31);
             this.addRequirementButton.TabIndex = 24;
@@ -374,7 +384,7 @@
             // attributesTabSaveButton
             // 
             this.attributesTabSaveButton.Location = new System.Drawing.Point(133, 357);
-            this.attributesTabSaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.attributesTabSaveButton.Margin = new System.Windows.Forms.Padding(4);
             this.attributesTabSaveButton.Name = "attributesTabSaveButton";
             this.attributesTabSaveButton.Size = new System.Drawing.Size(100, 28);
             this.attributesTabSaveButton.TabIndex = 16;
@@ -385,7 +395,7 @@
             // attributesTabCancelButton
             // 
             this.attributesTabCancelButton.Location = new System.Drawing.Point(240, 357);
-            this.attributesTabCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.attributesTabCancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.attributesTabCancelButton.Name = "attributesTabCancelButton";
             this.attributesTabCancelButton.Size = new System.Drawing.Size(100, 28);
             this.attributesTabCancelButton.TabIndex = 15;
@@ -398,7 +408,7 @@
             this.playerAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.playerAttributesComboBox.FormattingEnabled = true;
             this.playerAttributesComboBox.Location = new System.Drawing.Point(8, 43);
-            this.playerAttributesComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerAttributesComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.playerAttributesComboBox.Name = "playerAttributesComboBox";
             this.playerAttributesComboBox.Size = new System.Drawing.Size(116, 24);
             this.playerAttributesComboBox.TabIndex = 34;
@@ -421,9 +431,9 @@
             this.groupBox1.Controls.Add(this.playerAttributesComboBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(8, 7);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(253, 149);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
@@ -433,7 +443,7 @@
             // removePlayerAttributeVisibleButton
             // 
             this.removePlayerAttributeVisibleButton.Location = new System.Drawing.Point(8, 107);
-            this.removePlayerAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removePlayerAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4);
             this.removePlayerAttributeVisibleButton.Name = "removePlayerAttributeVisibleButton";
             this.removePlayerAttributeVisibleButton.Size = new System.Drawing.Size(121, 27);
             this.removePlayerAttributeVisibleButton.TabIndex = 41;
@@ -444,7 +454,7 @@
             // addPlayerAttributeVisibleButton
             // 
             this.addPlayerAttributeVisibleButton.Location = new System.Drawing.Point(8, 75);
-            this.addPlayerAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addPlayerAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4);
             this.addPlayerAttributeVisibleButton.Name = "addPlayerAttributeVisibleButton";
             this.addPlayerAttributeVisibleButton.Size = new System.Drawing.Size(121, 27);
             this.addPlayerAttributeVisibleButton.TabIndex = 40;
@@ -457,7 +467,7 @@
             this.visiblePlayerAttributesListBox.FormattingEnabled = true;
             this.visiblePlayerAttributesListBox.ItemHeight = 16;
             this.visiblePlayerAttributesListBox.Location = new System.Drawing.Point(137, 22);
-            this.visiblePlayerAttributesListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.visiblePlayerAttributesListBox.Margin = new System.Windows.Forms.Padding(4);
             this.visiblePlayerAttributesListBox.Name = "visiblePlayerAttributesListBox";
             this.visiblePlayerAttributesListBox.Size = new System.Drawing.Size(103, 116);
             this.visiblePlayerAttributesListBox.TabIndex = 39;
@@ -470,9 +480,9 @@
             this.groupBox2.Controls.Add(this.globalAttributesComboBox);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Location = new System.Drawing.Point(8, 164);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(253, 149);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
@@ -482,7 +492,7 @@
             // removeGlobalAttributeVisibleButton
             // 
             this.removeGlobalAttributeVisibleButton.Location = new System.Drawing.Point(8, 107);
-            this.removeGlobalAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removeGlobalAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4);
             this.removeGlobalAttributeVisibleButton.Name = "removeGlobalAttributeVisibleButton";
             this.removeGlobalAttributeVisibleButton.Size = new System.Drawing.Size(121, 27);
             this.removeGlobalAttributeVisibleButton.TabIndex = 41;
@@ -493,7 +503,7 @@
             // addGlobalAttributeVisibleButton
             // 
             this.addGlobalAttributeVisibleButton.Location = new System.Drawing.Point(8, 75);
-            this.addGlobalAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addGlobalAttributeVisibleButton.Margin = new System.Windows.Forms.Padding(4);
             this.addGlobalAttributeVisibleButton.Name = "addGlobalAttributeVisibleButton";
             this.addGlobalAttributeVisibleButton.Size = new System.Drawing.Size(121, 27);
             this.addGlobalAttributeVisibleButton.TabIndex = 40;
@@ -506,7 +516,7 @@
             this.visibleGlobalAttributesListBox.FormattingEnabled = true;
             this.visibleGlobalAttributesListBox.ItemHeight = 16;
             this.visibleGlobalAttributesListBox.Location = new System.Drawing.Point(137, 22);
-            this.visibleGlobalAttributesListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.visibleGlobalAttributesListBox.Margin = new System.Windows.Forms.Padding(4);
             this.visibleGlobalAttributesListBox.Name = "visibleGlobalAttributesListBox";
             this.visibleGlobalAttributesListBox.Size = new System.Drawing.Size(103, 116);
             this.visibleGlobalAttributesListBox.TabIndex = 39;
@@ -516,7 +526,7 @@
             this.globalAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.globalAttributesComboBox.FormattingEnabled = true;
             this.globalAttributesComboBox.Location = new System.Drawing.Point(8, 43);
-            this.globalAttributesComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.globalAttributesComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.globalAttributesComboBox.Name = "globalAttributesComboBox";
             this.globalAttributesComboBox.Size = new System.Drawing.Size(116, 24);
             this.globalAttributesComboBox.TabIndex = 34;
@@ -546,7 +556,7 @@
             this.roundStartNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roundStartNavComboBox.FormattingEnabled = true;
             this.roundStartNavComboBox.Location = new System.Drawing.Point(280, 130);
-            this.roundStartNavComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roundStartNavComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.roundStartNavComboBox.Name = "roundStartNavComboBox";
             this.roundStartNavComboBox.Size = new System.Drawing.Size(160, 24);
             this.roundStartNavComboBox.TabIndex = 0;
@@ -566,7 +576,7 @@
             this.roundEndNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roundEndNavComboBox.FormattingEnabled = true;
             this.roundEndNavComboBox.Location = new System.Drawing.Point(280, 183);
-            this.roundEndNavComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roundEndNavComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.roundEndNavComboBox.Name = "roundEndNavComboBox";
             this.roundEndNavComboBox.Size = new System.Drawing.Size(160, 24);
             this.roundEndNavComboBox.TabIndex = 0;
@@ -584,7 +594,7 @@
             // defaultFontButton
             // 
             this.defaultFontButton.Location = new System.Drawing.Point(8, 81);
-            this.defaultFontButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.defaultFontButton.Margin = new System.Windows.Forms.Padding(4);
             this.defaultFontButton.Name = "defaultFontButton";
             this.defaultFontButton.Size = new System.Drawing.Size(171, 28);
             this.defaultFontButton.TabIndex = 50;
@@ -595,7 +605,7 @@
             // defaultDialoguePaneTextureButton
             // 
             this.defaultDialoguePaneTextureButton.Location = new System.Drawing.Point(8, 132);
-            this.defaultDialoguePaneTextureButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.defaultDialoguePaneTextureButton.Margin = new System.Windows.Forms.Padding(4);
             this.defaultDialoguePaneTextureButton.Name = "defaultDialoguePaneTextureButton";
             this.defaultDialoguePaneTextureButton.Size = new System.Drawing.Size(171, 28);
             this.defaultDialoguePaneTextureButton.TabIndex = 52;
@@ -616,7 +626,7 @@
             // chooseScrollSoundButton
             // 
             this.chooseScrollSoundButton.Location = new System.Drawing.Point(8, 37);
-            this.chooseScrollSoundButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chooseScrollSoundButton.Margin = new System.Windows.Forms.Padding(4);
             this.chooseScrollSoundButton.Name = "chooseScrollSoundButton";
             this.chooseScrollSoundButton.Size = new System.Drawing.Size(171, 28);
             this.chooseScrollSoundButton.TabIndex = 54;
@@ -666,6 +676,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chooseEnterTextureVerify);
+            this.groupBox3.Controls.Add(this.chooseDialogueEndSoundVerify);
+            this.groupBox3.Controls.Add(this.chooseDialoguePaneVerify);
+            this.groupBox3.Controls.Add(this.chooseDialogueFontVerify);
+            this.groupBox3.Controls.Add(this.chooseScrollSoundVerify);
             this.groupBox3.Controls.Add(this.enterTextureYLocNumericUpDown);
             this.groupBox3.Controls.Add(this.enterTextureXLocNumericUpDown);
             this.groupBox3.Controls.Add(this.NPCYLocNumericUpDown);
@@ -692,13 +707,58 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(27, 23);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(391, 310);
             this.groupBox3.TabIndex = 60;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Default Dialogue Pane Options";
+            // 
+            // chooseEnterTextureVerify
+            // 
+            this.chooseEnterTextureVerify.Location = new System.Drawing.Point(186, 242);
+            this.chooseEnterTextureVerify.Name = "chooseEnterTextureVerify";
+            this.chooseEnterTextureVerify.Size = new System.Drawing.Size(28, 28);
+            this.chooseEnterTextureVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.chooseEnterTextureVerify.TabIndex = 82;
+            this.chooseEnterTextureVerify.TabStop = false;
+            // 
+            // chooseDialogueEndSoundVerify
+            // 
+            this.chooseDialogueEndSoundVerify.Location = new System.Drawing.Point(186, 191);
+            this.chooseDialogueEndSoundVerify.Name = "chooseDialogueEndSoundVerify";
+            this.chooseDialogueEndSoundVerify.Size = new System.Drawing.Size(28, 28);
+            this.chooseDialogueEndSoundVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.chooseDialogueEndSoundVerify.TabIndex = 81;
+            this.chooseDialogueEndSoundVerify.TabStop = false;
+            // 
+            // chooseDialoguePaneVerify
+            // 
+            this.chooseDialoguePaneVerify.Location = new System.Drawing.Point(186, 132);
+            this.chooseDialoguePaneVerify.Name = "chooseDialoguePaneVerify";
+            this.chooseDialoguePaneVerify.Size = new System.Drawing.Size(28, 28);
+            this.chooseDialoguePaneVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.chooseDialoguePaneVerify.TabIndex = 80;
+            this.chooseDialoguePaneVerify.TabStop = false;
+            // 
+            // chooseDialogueFontVerify
+            // 
+            this.chooseDialogueFontVerify.Location = new System.Drawing.Point(186, 81);
+            this.chooseDialogueFontVerify.Name = "chooseDialogueFontVerify";
+            this.chooseDialogueFontVerify.Size = new System.Drawing.Size(28, 28);
+            this.chooseDialogueFontVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.chooseDialogueFontVerify.TabIndex = 79;
+            this.chooseDialogueFontVerify.TabStop = false;
+            // 
+            // chooseScrollSoundVerify
+            // 
+            this.chooseScrollSoundVerify.Location = new System.Drawing.Point(186, 37);
+            this.chooseScrollSoundVerify.Name = "chooseScrollSoundVerify";
+            this.chooseScrollSoundVerify.Size = new System.Drawing.Size(28, 28);
+            this.chooseScrollSoundVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.chooseScrollSoundVerify.TabIndex = 78;
+            this.chooseScrollSoundVerify.TabStop = false;
             // 
             // enterTextureYLocNumericUpDown
             // 
@@ -708,7 +768,7 @@
             0,
             0});
             this.enterTextureYLocNumericUpDown.Location = new System.Drawing.Point(276, 270);
-            this.enterTextureYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.enterTextureYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.enterTextureYLocNumericUpDown.Maximum = new decimal(new int[] {
             540,
             0,
@@ -731,7 +791,7 @@
             0,
             0});
             this.enterTextureXLocNumericUpDown.Location = new System.Drawing.Point(276, 239);
-            this.enterTextureXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.enterTextureXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.enterTextureXLocNumericUpDown.Maximum = new decimal(new int[] {
             959,
             0,
@@ -754,7 +814,7 @@
             0,
             0});
             this.NPCYLocNumericUpDown.Location = new System.Drawing.Point(276, 165);
-            this.NPCYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NPCYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.NPCYLocNumericUpDown.Maximum = new decimal(new int[] {
             540,
             0,
@@ -777,7 +837,7 @@
             0,
             0});
             this.NPCXLocNumericUpDown.Location = new System.Drawing.Point(276, 135);
-            this.NPCXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NPCXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.NPCXLocNumericUpDown.Maximum = new decimal(new int[] {
             960,
             0,
@@ -800,7 +860,7 @@
             0,
             0});
             this.paneYLocNumericUpDown.Location = new System.Drawing.Point(276, 73);
-            this.paneYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.paneYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.paneYLocNumericUpDown.Maximum = new decimal(new int[] {
             540,
             0,
@@ -823,7 +883,7 @@
             0,
             0});
             this.paneXLocNumericUpDown.Location = new System.Drawing.Point(276, 44);
-            this.paneXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.paneXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.paneXLocNumericUpDown.Maximum = new decimal(new int[] {
             960,
             0,
@@ -881,7 +941,7 @@
             // chooseEnterKeyTextureButton
             // 
             this.chooseEnterKeyTextureButton.Location = new System.Drawing.Point(8, 242);
-            this.chooseEnterKeyTextureButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chooseEnterKeyTextureButton.Margin = new System.Windows.Forms.Padding(4);
             this.chooseEnterKeyTextureButton.Name = "chooseEnterKeyTextureButton";
             this.chooseEnterKeyTextureButton.Size = new System.Drawing.Size(171, 28);
             this.chooseEnterKeyTextureButton.TabIndex = 63;
@@ -922,7 +982,7 @@
             // chooseDialogueEndSoundButton
             // 
             this.chooseDialogueEndSoundButton.Location = new System.Drawing.Point(8, 191);
-            this.chooseDialogueEndSoundButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chooseDialogueEndSoundButton.Margin = new System.Windows.Forms.Padding(4);
             this.chooseDialogueEndSoundButton.Name = "chooseDialogueEndSoundButton";
             this.chooseDialogueEndSoundButton.Size = new System.Drawing.Size(171, 28);
             this.chooseDialogueEndSoundButton.TabIndex = 61;
@@ -965,7 +1025,7 @@
             this.startofPlayerTurnNavigableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.startofPlayerTurnNavigableComboBox.FormattingEnabled = true;
             this.startofPlayerTurnNavigableComboBox.Location = new System.Drawing.Point(281, 85);
-            this.startofPlayerTurnNavigableComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startofPlayerTurnNavigableComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.startofPlayerTurnNavigableComboBox.Name = "startofPlayerTurnNavigableComboBox";
             this.startofPlayerTurnNavigableComboBox.Size = new System.Drawing.Size(159, 24);
             this.startofPlayerTurnNavigableComboBox.TabIndex = 63;
@@ -978,7 +1038,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(16, 15);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(487, 425);
@@ -999,9 +1059,9 @@
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(479, 396);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
@@ -1010,7 +1070,7 @@
             // maxPlayerNumericUpDown
             // 
             this.maxPlayerNumericUpDown.Location = new System.Drawing.Point(304, 240);
-            this.maxPlayerNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maxPlayerNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.maxPlayerNumericUpDown.Maximum = new decimal(new int[] {
             12,
             0,
@@ -1038,9 +1098,9 @@
             this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.groupBox7);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(479, 396);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Main Menu";
@@ -1050,9 +1110,9 @@
             // 
             this.groupBox8.Controls.Add(this.chooseFontImageButton);
             this.groupBox8.Location = new System.Drawing.Point(275, 278);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox8.Size = new System.Drawing.Size(127, 62);
             this.groupBox8.TabIndex = 55;
             this.groupBox8.TabStop = false;
@@ -1061,7 +1121,7 @@
             // chooseFontImageButton
             // 
             this.chooseFontImageButton.Location = new System.Drawing.Point(9, 23);
-            this.chooseFontImageButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chooseFontImageButton.Margin = new System.Windows.Forms.Padding(4);
             this.chooseFontImageButton.Name = "chooseFontImageButton";
             this.chooseFontImageButton.Size = new System.Drawing.Size(111, 25);
             this.chooseFontImageButton.TabIndex = 52;
@@ -1072,7 +1132,7 @@
             // mainMenuTabCancelButton
             // 
             this.mainMenuTabCancelButton.Location = new System.Drawing.Point(240, 357);
-            this.mainMenuTabCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainMenuTabCancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.mainMenuTabCancelButton.Name = "mainMenuTabCancelButton";
             this.mainMenuTabCancelButton.Size = new System.Drawing.Size(100, 28);
             this.mainMenuTabCancelButton.TabIndex = 17;
@@ -1083,7 +1143,7 @@
             // mainMenuTabSaveButton
             // 
             this.mainMenuTabSaveButton.Location = new System.Drawing.Point(133, 357);
-            this.mainMenuTabSaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainMenuTabSaveButton.Margin = new System.Windows.Forms.Padding(4);
             this.mainMenuTabSaveButton.Name = "mainMenuTabSaveButton";
             this.mainMenuTabSaveButton.Size = new System.Drawing.Size(100, 28);
             this.mainMenuTabSaveButton.TabIndex = 18;
@@ -1096,9 +1156,9 @@
             this.groupBox6.Controls.Add(this.mainMenuImagePictureBox);
             this.groupBox6.Controls.Add(this.selectMainMenuImageButton);
             this.groupBox6.Location = new System.Drawing.Point(72, 7);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox6.Size = new System.Drawing.Size(323, 252);
             this.groupBox6.TabIndex = 13;
             this.groupBox6.TabStop = false;
@@ -1107,7 +1167,7 @@
             // mainMenuImagePictureBox
             // 
             this.mainMenuImagePictureBox.Location = new System.Drawing.Point(8, 29);
-            this.mainMenuImagePictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainMenuImagePictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.mainMenuImagePictureBox.Name = "mainMenuImagePictureBox";
             this.mainMenuImagePictureBox.Size = new System.Drawing.Size(307, 172);
             this.mainMenuImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1130,9 +1190,9 @@
             this.groupBox7.Controls.Add(this.usePlayButtonSoundCheckBox);
             this.groupBox7.Controls.Add(this.useBackgroundSoundCheckBox);
             this.groupBox7.Location = new System.Drawing.Point(69, 267);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox7.Size = new System.Drawing.Size(197, 85);
             this.groupBox7.TabIndex = 50;
             this.groupBox7.TabStop = false;
@@ -1142,7 +1202,7 @@
             // 
             this.usePlayButtonSoundCheckBox.AutoSize = true;
             this.usePlayButtonSoundCheckBox.Location = new System.Drawing.Point(8, 52);
-            this.usePlayButtonSoundCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.usePlayButtonSoundCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.usePlayButtonSoundCheckBox.Name = "usePlayButtonSoundCheckBox";
             this.usePlayButtonSoundCheckBox.Size = new System.Drawing.Size(176, 21);
             this.usePlayButtonSoundCheckBox.TabIndex = 1;
@@ -1154,7 +1214,7 @@
             // 
             this.useBackgroundSoundCheckBox.AutoSize = true;
             this.useBackgroundSoundCheckBox.Location = new System.Drawing.Point(8, 23);
-            this.useBackgroundSoundCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.useBackgroundSoundCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.useBackgroundSoundCheckBox.Name = "useBackgroundSoundCheckBox";
             this.useBackgroundSoundCheckBox.Size = new System.Drawing.Size(180, 21);
             this.useBackgroundSoundCheckBox.TabIndex = 1;
@@ -1168,9 +1228,9 @@
             this.tabPage3.Controls.Add(this.dialogueTabSaveButton);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage3.Size = new System.Drawing.Size(479, 396);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Dialogue";
@@ -1179,7 +1239,7 @@
             // dialogueTabCancelButton
             // 
             this.dialogueTabCancelButton.Location = new System.Drawing.Point(240, 357);
-            this.dialogueTabCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dialogueTabCancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.dialogueTabCancelButton.Name = "dialogueTabCancelButton";
             this.dialogueTabCancelButton.Size = new System.Drawing.Size(100, 28);
             this.dialogueTabCancelButton.TabIndex = 61;
@@ -1190,7 +1250,7 @@
             // dialogueTabSaveButton
             // 
             this.dialogueTabSaveButton.Location = new System.Drawing.Point(133, 357);
-            this.dialogueTabSaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dialogueTabSaveButton.Margin = new System.Windows.Forms.Padding(4);
             this.dialogueTabSaveButton.Name = "dialogueTabSaveButton";
             this.dialogueTabSaveButton.Size = new System.Drawing.Size(100, 28);
             this.dialogueTabSaveButton.TabIndex = 62;
@@ -1204,9 +1264,9 @@
             this.tabPage4.Controls.Add(this.gameOverTabSaveButton);
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(479, 396);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Game Over";
@@ -1215,7 +1275,7 @@
             // gameOverTabCancelButton
             // 
             this.gameOverTabCancelButton.Location = new System.Drawing.Point(240, 357);
-            this.gameOverTabCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gameOverTabCancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.gameOverTabCancelButton.Name = "gameOverTabCancelButton";
             this.gameOverTabCancelButton.Size = new System.Drawing.Size(100, 28);
             this.gameOverTabCancelButton.TabIndex = 34;
@@ -1226,7 +1286,7 @@
             // gameOverTabSaveButton
             // 
             this.gameOverTabSaveButton.Location = new System.Drawing.Point(133, 357);
-            this.gameOverTabSaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gameOverTabSaveButton.Margin = new System.Windows.Forms.Padding(4);
             this.gameOverTabSaveButton.Name = "gameOverTabSaveButton";
             this.gameOverTabSaveButton.Size = new System.Drawing.Size(100, 28);
             this.gameOverTabSaveButton.TabIndex = 35;
@@ -1242,7 +1302,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "EditGameSettings";
             this.Text = "Game Settings";
@@ -1261,6 +1321,11 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseEnterTextureVerify)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseDialogueEndSoundVerify)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseDialoguePaneVerify)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseDialogueFontVerify)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chooseScrollSoundVerify)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enterTextureYLocNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enterTextureXLocNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPCYLocNumericUpDown)).EndInit();
@@ -1369,5 +1434,10 @@
         private System.Windows.Forms.NumericUpDown NPCXLocNumericUpDown;
         private System.Windows.Forms.NumericUpDown paneYLocNumericUpDown;
         private System.Windows.Forms.NumericUpDown paneXLocNumericUpDown;
+        private System.Windows.Forms.PictureBox chooseEnterTextureVerify;
+        private System.Windows.Forms.PictureBox chooseDialogueEndSoundVerify;
+        private System.Windows.Forms.PictureBox chooseDialoguePaneVerify;
+        private System.Windows.Forms.PictureBox chooseDialogueFontVerify;
+        private System.Windows.Forms.PictureBox chooseScrollSoundVerify;
     }
 }

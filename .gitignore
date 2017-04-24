@@ -16,5 +16,5 @@ GUI_Test2/codegen_test/assets/
 GUI_Test2/codegen_test/music/
 testSFML/SFML-2.4.2
 testSFML/testSFML/main.cpp
-testSFML/testSFML/testSFML.vcxproj
+*.vcxproj
 *.vcxproj.filters

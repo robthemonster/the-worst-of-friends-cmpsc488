@@ -73,8 +73,11 @@ namespace GUI_Test2
             if (File.Exists(gS.dialogueScrollSoundPath))
             {
                 dialogueScrollSoundPath = gS.dialogueScrollSoundPath;
+                chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.check;
             }
-            else { dialogueScrollSoundPath = ""; }
+            else { dialogueScrollSoundPath = "";
+                chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.redx;
+            }
 
             if (File.Exists(gS.dialogueEndSoundPath))
             {
@@ -177,7 +180,8 @@ namespace GUI_Test2
 
             }
 
-            mainMenuImagePictureBox.Image = Image.FromFile(mainMenuImagePath);
+            updateCheckMarks();
+            mainMenuImagePictureBox.ImageLocation = mainMenuImagePath;
         }
 
         private void setAttributeComboBox()
@@ -411,6 +415,7 @@ namespace GUI_Test2
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
+            updateCheckMarks();
         }
 
 
@@ -440,7 +445,9 @@ namespace GUI_Test2
             catch (IndexOutOfRangeException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
+                
             }
+            updateCheckMarks();
 
         }
 
@@ -461,6 +468,7 @@ namespace GUI_Test2
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
+            updateCheckMarks();
         }
 
         private void updateVisPlayerList()
@@ -548,6 +556,7 @@ namespace GUI_Test2
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
+            updateCheckMarks();
         }
 
         private void chooseEnterKeyTextureButton_Click(object sender, EventArgs e)
@@ -567,6 +576,7 @@ namespace GUI_Test2
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
+            updateCheckMarks();
         }
 
         private void selectMainMenuImageButton_Click(object sender, EventArgs e)
@@ -682,6 +692,50 @@ namespace GUI_Test2
             catch (IndexOutOfRangeException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
+            }
+
+        }
+
+        private void updateCheckMarks()
+        {
+            if (File.Exists(dialogueScrollSoundPath))
+            {
+                chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.check;
+            }else
+            {
+                chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.redx;
+            }
+            if (File.Exists(dialogueEndSoundPath))
+            {
+                chooseDialogueEndSoundVerify.Image = GUI_Test2.Properties.Resources.check;
+            }
+            else
+            {
+                chooseDialogueEndSoundVerify.Image = GUI_Test2.Properties.Resources.redx;
+            }
+            if (File.Exists(dialoguePaneTexturePath))
+            {
+                chooseDialoguePaneVerify.Image = GUI_Test2.Properties.Resources.check;
+            }
+            else
+            {
+                chooseDialoguePaneVerify.Image = GUI_Test2.Properties.Resources.redx;
+            }
+            if (File.Exists(dialoguePaneFlasingTexturePath))
+            {
+                chooseEnterTextureVerify.Image = GUI_Test2.Properties.Resources.check;
+            }
+            else
+            {
+                chooseEnterTextureVerify.Image = GUI_Test2.Properties.Resources.redx;
+            }
+            if (File.Exists(defaultFontPath))
+            {
+                chooseDialogueFontVerify.Image = GUI_Test2.Properties.Resources.check;
+            }
+            else
+            {
+                chooseDialogueFontVerify.Image = GUI_Test2.Properties.Resources.redx;
             }
         }
 

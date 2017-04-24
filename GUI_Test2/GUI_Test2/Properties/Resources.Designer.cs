@@ -61,6 +61,16 @@ namespace GUI_Test2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check {
+            get {
+                object obj = ResourceManager.GetObject("check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to #include &lt;SFML\Graphics.hpp&gt;
         ///#include &lt;iostream&gt;
         ///
@@ -176,6 +186,16 @@ namespace GUI_Test2.Properties {
         internal static System.Drawing.Bitmap graphic2 {
             get {
                 object obj = ResourceManager.GetObject("graphic2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap redx {
+            get {
+                object obj = ResourceManager.GetObject("redx", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
