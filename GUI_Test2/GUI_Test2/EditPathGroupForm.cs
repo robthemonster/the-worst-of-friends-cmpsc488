@@ -79,7 +79,7 @@ namespace GUI_Test2
 
         private void EditPathGroupForm_Load(object sender, EventArgs e)
         {
-            this.Text = "Edit PathGroup: " + name;
+            this.Text = "Edit Path Group: " + name;
             onLoad = true;
             tier = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             tierComboBox.DataSource = tier;
