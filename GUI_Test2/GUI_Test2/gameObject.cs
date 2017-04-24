@@ -367,12 +367,7 @@ namespace GUI_Test2
                     Path p = (Path)nav;
                     foreach (string dialogue in p.getDialogueContents())
                     {
-                        if (p.getDialogueImpacts()[dialogueCtr].Count == 0)
-                        {
-                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\");");
-                        }
-                        else
-                        {
+                       
                             code.AppendLine("std::vector<Impact *> impacts" + impactCtr + " = std::vector<Impact *>();");
                             foreach (Impact impact in p.getDialogueImpacts()[dialogueCtr])
                             {
@@ -413,7 +408,7 @@ namespace GUI_Test2
                             }
                             code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr + characterArgs + ");");
                             impactCtr++;
-                        }
+                        
                         dialogueCtr++;
                     }
                 }
