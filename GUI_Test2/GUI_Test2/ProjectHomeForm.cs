@@ -33,6 +33,7 @@ namespace GUI_Test2
         private void ProjectHub_Load(object sender, EventArgs e)
         {
             this.Text = "(Unsaved Project) - FireSide Toolkit";
+            selectedNavImage.Image = GUI_Test2.Properties.Resources.NoNavigableSelected;
         }
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -331,7 +332,7 @@ namespace GUI_Test2
             {
                 hubListBox.SelectedIndex = -1;
                 pathListBox.SelectedIndex = -1;
-                selectedNavImage.ImageLocation = null;
+                selectedNavImage.Image = GUI_Test2.Properties.Resources.PathGroup;
                 PathGroup selected = (PathGroup)Game.navIndex[Game.pathGroups[pathGroupListBox.SelectedIndex]];
 
                 navInfo.Text = selected.name + "\n";
@@ -341,6 +342,7 @@ namespace GUI_Test2
             else if (pathListBox.SelectedIndex == -1 && hubListBox.SelectedIndex == -1)
             {
                 selectedNavImage.ImageLocation = null;
+                selectedNavImage.Image = GUI_Test2.Properties.Resources.NoNavigableSelected;
                 navInfo.Text = "";
             }
         }
@@ -364,6 +366,8 @@ namespace GUI_Test2
                 pathGroupListBox.SelectedIndex = -1;
                 pathListBox.SelectedIndex = -1;
                 selectedNavImage.ImageLocation = Game.navIndex[Game.hubs[hubListBox.SelectedIndex]].getImagePath();
+                if (selectedNavImage.ImageLocation == "")
+                    selectedNavImage.Image = GUI_Test2.Properties.Resources.defaultHub;
                 Hub selected = (Hub)Game.navIndex[Game.hubs[hubListBox.SelectedIndex]];
                 navInfo.Text = selected.name + "\n";
                 int buttonsCtr = 1;
@@ -376,6 +380,7 @@ namespace GUI_Test2
             else if (pathGroupListBox.SelectedIndex == -1 && pathListBox.SelectedIndex == -1)
             {
                 selectedNavImage.ImageLocation = null;
+                selectedNavImage.Image = GUI_Test2.Properties.Resources.NoNavigableSelected;
                 navInfo.Text = "";
             }
         }
@@ -387,6 +392,8 @@ namespace GUI_Test2
                 hubListBox.SelectedIndex = -1;
                 pathGroupListBox.SelectedIndex = -1;
                 selectedNavImage.ImageLocation = Game.navIndex[Game.paths[pathListBox.SelectedIndex]].getImagePath();
+                if (selectedNavImage.ImageLocation == "")
+                    selectedNavImage.Image = GUI_Test2.Properties.Resources.defaultPath;
                 Path selected = (Path)Game.navIndex[Game.paths[pathListBox.SelectedIndex]];
                 navInfo.Text = selected.name + "\n";
 
@@ -402,6 +409,7 @@ namespace GUI_Test2
             }else if (pathGroupListBox.SelectedIndex == -1 && hubListBox.SelectedIndex == -1)
             {
                 selectedNavImage.ImageLocation = null;
+                selectedNavImage.Image = GUI_Test2.Properties.Resources.NoNavigableSelected;
                 navInfo.Text = "";
             }
         }

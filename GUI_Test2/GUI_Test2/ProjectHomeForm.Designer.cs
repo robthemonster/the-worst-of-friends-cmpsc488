@@ -59,9 +59,11 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.selectedNavImage = new System.Windows.Forms.PictureBox();
             this.navInfo = new System.Windows.Forms.Label();
+            this.navInfoPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedNavImage)).BeginInit();
+            this.navInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -75,7 +77,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(872, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(649, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -228,30 +230,30 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 382F));
             this.tableLayoutPanel1.Controls.Add(this.hubListBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.pathListBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.hubLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.pathGroupListBox, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 53);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(21, 221);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(604, 490);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 322);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // hubListBox
             // 
             this.hubListBox.FormattingEnabled = true;
             this.hubListBox.ItemHeight = 16;
-            this.hubListBox.Location = new System.Drawing.Point(4, 45);
-            this.hubListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.hubListBox.Location = new System.Drawing.Point(5, 45);
+            this.hubListBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.hubListBox.Name = "hubListBox";
-            this.hubListBox.Size = new System.Drawing.Size(188, 436);
+            this.hubListBox.Size = new System.Drawing.Size(188, 260);
             this.hubListBox.TabIndex = 0;
             this.hubListBox.SelectedIndexChanged += new System.EventHandler(this.hubListBox_SelectedIndexChanged);
             this.hubListBox.DoubleClick += new System.EventHandler(this.LoadHubFromListBox);
@@ -260,10 +262,10 @@
             // 
             this.pathListBox.FormattingEnabled = true;
             this.pathListBox.ItemHeight = 16;
-            this.pathListBox.Location = new System.Drawing.Point(404, 45);
-            this.pathListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.pathListBox.Location = new System.Drawing.Point(405, 45);
+            this.pathListBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pathListBox.Name = "pathListBox";
-            this.pathListBox.Size = new System.Drawing.Size(191, 436);
+            this.pathListBox.Size = new System.Drawing.Size(191, 260);
             this.pathListBox.TabIndex = 2;
             this.pathListBox.SelectedIndexChanged += new System.EventHandler(this.pathListBox_SelectedIndexChanged_1);
             this.pathListBox.DoubleClick += new System.EventHandler(this.LoadPathFromPathListBox);
@@ -271,8 +273,8 @@
             // hubLabel
             // 
             this.hubLabel.AutoSize = true;
-            this.hubLabel.Location = new System.Drawing.Point(4, 0);
-            this.hubLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.hubLabel.Location = new System.Drawing.Point(5, 0);
+            this.hubLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.hubLabel.Name = "hubLabel";
             this.hubLabel.Size = new System.Drawing.Size(41, 17);
             this.hubLabel.TabIndex = 4;
@@ -281,8 +283,8 @@
             // pathGroupLabel
             // 
             this.pathGroupLabel.AutoSize = true;
-            this.pathGroupLabel.Location = new System.Drawing.Point(204, 0);
-            this.pathGroupLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.pathGroupLabel.Location = new System.Drawing.Point(205, 0);
+            this.pathGroupLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.pathGroupLabel.Name = "pathGroupLabel";
             this.pathGroupLabel.Size = new System.Drawing.Size(84, 17);
             this.pathGroupLabel.TabIndex = 5;
@@ -291,8 +293,8 @@
             // pathLabel
             // 
             this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(404, 0);
-            this.pathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.pathLabel.Location = new System.Drawing.Point(405, 0);
+            this.pathLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.pathLabel.Name = "pathLabel";
             this.pathLabel.Size = new System.Drawing.Size(44, 17);
             this.pathLabel.TabIndex = 3;
@@ -302,20 +304,20 @@
             // 
             this.pathGroupListBox.FormattingEnabled = true;
             this.pathGroupListBox.ItemHeight = 16;
-            this.pathGroupListBox.Location = new System.Drawing.Point(204, 45);
-            this.pathGroupListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.pathGroupListBox.Location = new System.Drawing.Point(205, 45);
+            this.pathGroupListBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pathGroupListBox.Name = "pathGroupListBox";
-            this.pathGroupListBox.Size = new System.Drawing.Size(189, 436);
+            this.pathGroupListBox.Size = new System.Drawing.Size(189, 260);
             this.pathGroupListBox.TabIndex = 1;
             this.pathGroupListBox.SelectedIndexChanged += new System.EventHandler(this.pathGroupListBox_SelectedIndexChanged);
             this.pathGroupListBox.DoubleClick += new System.EventHandler(this.LoadPathGroupFromPathListBox);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(688, 492);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteButton.Location = new System.Drawing.Point(322, 171);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(99, 42);
+            this.deleteButton.Size = new System.Drawing.Size(148, 42);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -323,26 +325,38 @@
             // 
             // selectedNavImage
             // 
-            this.selectedNavImage.Location = new System.Drawing.Point(631, 98);
+            this.selectedNavImage.Location = new System.Drawing.Point(12, 42);
             this.selectedNavImage.Name = "selectedNavImage";
-            this.selectedNavImage.Size = new System.Drawing.Size(221, 145);
+            this.selectedNavImage.Size = new System.Drawing.Size(301, 171);
             this.selectedNavImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.selectedNavImage.TabIndex = 3;
             this.selectedNavImage.TabStop = false;
             // 
             // navInfo
             // 
-            this.navInfo.Location = new System.Drawing.Point(631, 255);
+            this.navInfo.AutoSize = true;
+            this.navInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.navInfo.Location = new System.Drawing.Point(1, 5);
+            this.navInfo.MaximumSize = new System.Drawing.Size(300, 0);
             this.navInfo.Name = "navInfo";
-            this.navInfo.Size = new System.Drawing.Size(221, 233);
+            this.navInfo.Size = new System.Drawing.Size(0, 17);
             this.navInfo.TabIndex = 4;
+            // 
+            // navInfoPanel
+            // 
+            this.navInfoPanel.AutoScroll = true;
+            this.navInfoPanel.Controls.Add(this.navInfo);
+            this.navInfoPanel.Location = new System.Drawing.Point(322, 42);
+            this.navInfoPanel.Name = "navInfoPanel";
+            this.navInfoPanel.Size = new System.Drawing.Size(302, 122);
+            this.navInfoPanel.TabIndex = 5;
             // 
             // ProjectHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 562);
-            this.Controls.Add(this.navInfo);
+            this.ClientSize = new System.Drawing.Size(649, 562);
+            this.Controls.Add(this.navInfoPanel);
             this.Controls.Add(this.selectedNavImage);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -352,7 +366,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(782, 596);
             this.Name = "ProjectHomeForm";
             this.Text = "Project Home";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.closeButton_Click);
@@ -362,6 +375,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedNavImage)).EndInit();
+            this.navInfoPanel.ResumeLayout(false);
+            this.navInfoPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,5 +414,6 @@
         private System.Windows.Forms.ToolStripMenuItem gameSettingsToolStripMenuItem;
         private System.Windows.Forms.PictureBox selectedNavImage;
         private System.Windows.Forms.Label navInfo;
+        private System.Windows.Forms.Panel navInfoPanel;
     }
 }

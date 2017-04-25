@@ -193,6 +193,26 @@ namespace GUI_Test2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NoNavigableSelected {
+            get {
+                object obj = ResourceManager.GetObject("NoNavigableSelected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PathGroup {
+            get {
+                object obj = ResourceManager.GetObject("PathGroup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap redx {
             get {
                 object obj = ResourceManager.GetObject("redx", resourceCulture);
