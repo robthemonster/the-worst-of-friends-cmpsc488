@@ -75,7 +75,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(768, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(872, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -312,7 +312,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(655, 495);
+            this.deleteButton.Location = new System.Drawing.Point(688, 492);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(99, 42);
@@ -323,25 +323,25 @@
             // 
             // selectedNavImage
             // 
-            this.selectedNavImage.Location = new System.Drawing.Point(632, 98);
+            this.selectedNavImage.Location = new System.Drawing.Point(631, 98);
             this.selectedNavImage.Name = "selectedNavImage";
-            this.selectedNavImage.Size = new System.Drawing.Size(124, 70);
+            this.selectedNavImage.Size = new System.Drawing.Size(221, 145);
             this.selectedNavImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.selectedNavImage.TabIndex = 3;
             this.selectedNavImage.TabStop = false;
             // 
             // navInfo
             // 
-            this.navInfo.Location = new System.Drawing.Point(632, 175);
+            this.navInfo.Location = new System.Drawing.Point(631, 255);
             this.navInfo.Name = "navInfo";
-            this.navInfo.Size = new System.Drawing.Size(122, 77);
+            this.navInfo.Size = new System.Drawing.Size(221, 233);
             this.navInfo.TabIndex = 4;
             // 
             // ProjectHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 562);
+            this.ClientSize = new System.Drawing.Size(872, 562);
             this.Controls.Add(this.navInfo);
             this.Controls.Add(this.selectedNavImage);
             this.Controls.Add(this.deleteButton);

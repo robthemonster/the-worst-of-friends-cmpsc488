@@ -366,7 +366,12 @@ namespace GUI_Test2
                 selectedNavImage.ImageLocation = Game.navIndex[Game.hubs[hubListBox.SelectedIndex]].getImagePath();
                 Hub selected = (Hub)Game.navIndex[Game.hubs[hubListBox.SelectedIndex]];
                 navInfo.Text = selected.name + "\n";
-                navInfo.Text += selected.buttons.Count + " Buttons \n";
+                int buttonsCtr = 1;
+                foreach (Button button in selected.buttons)
+                {
+                    navInfo.Text += "Button " + buttonsCtr + " -> " + button.next;
+                    buttonsCtr++;  
+                }
             }
             else if (pathGroupListBox.SelectedIndex == -1 && pathListBox.SelectedIndex == -1)
             {
@@ -384,9 +389,16 @@ namespace GUI_Test2
                 selectedNavImage.ImageLocation = Game.navIndex[Game.paths[pathListBox.SelectedIndex]].getImagePath();
                 Path selected = (Path)Game.navIndex[Game.paths[pathListBox.SelectedIndex]];
                 navInfo.Text = selected.name + "\n";
-                navInfo.Text += selected.buttons.Count + " Buttons \n";
+
+                navInfo.Text += selected.dialogues.Count + " dialogues" + '\n';
+                int buttonsCtr = 1;
+                foreach (Button button in selected.buttons)
+                {
+                    navInfo.Text += "Button " + buttonsCtr + " -> " + button.next + '\n';
+                    buttonsCtr++;
+                }
                 if (selected.defaultTargetNavigable != "")
-                    navInfo.Text += "Default Target: " + selected.defaultTargetNavigable + "\n";
+                    navInfo.Text += "Default Target -> " + selected.defaultTargetNavigable + "\n";
             }else if (pathGroupListBox.SelectedIndex == -1 && hubListBox.SelectedIndex == -1)
             {
                 selectedNavImage.ImageLocation = null;
