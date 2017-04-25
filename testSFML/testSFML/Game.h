@@ -35,7 +35,6 @@ private:
 	public:
 	void play(sf::RenderWindow & window, sf::View & view); 
 	Player ** getCurrentPlayerPointer();
-	void addPlayerAttribute(std::string key, int defaultValue);
 	Game(int numberOfPlayers);
 	Interface * getInterfacePointer();
 	AttributeMap * getAttributeMapPointer();
@@ -47,7 +46,11 @@ private:
 	void setGameOverRequirements(Requirements * req);
 	void addVisiblePlayerAttribute(std::string key);
 	void addVisibleGlobalAttribute(std::string key);
+
+
+	void addPlayerAttribute(std::string key, int defaultValue);
 	void addGlobalAttribute(std::string key, int defaultValue);
+	void addHubAttribute(Attributable * hub, std::string key, int defaultValue);
 	void setEndingTiers(int tiers);
 	void addEnding(int tier, Path * end, Requirements * req);
 

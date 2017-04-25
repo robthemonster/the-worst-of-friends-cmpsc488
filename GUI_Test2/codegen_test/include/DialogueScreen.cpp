@@ -81,14 +81,6 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 	int enterSymbolOpacity;
 	bool increasing = true;
 
-	sf::Shader blurShader;
-	if (!blurShader.loadFromFile("shaders/blur.glsl", sf::Shader::Type::Fragment))
-		std::cout << "Shader failed to load" << std::endl;
-	blurShader.setUniform("texture", *imageRect.getTexture());
-	blurShader.setUniform("blur_radius", 0.0025f);
-	sf::RenderStates blurStates(&blurShader);
-
-
 	imageRect.setPosition(window.getView().getSize().x * -0.5, window.getView().getSize().y * -0.5);
 	imageRect.setSize(window.getView().getSize());
 	setTextOrigin(sf::Vector2f(dialoguePaneRect.getPosition().x + 50, dialoguePaneRect.getPosition().y + 50));
@@ -229,7 +221,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 		}
 		else {
 			if ((*it).hasCharacter()) {
-				window.draw(imageRect, blurStates);
+				window.draw(imageRect);
 			}
 			else {
 				window.draw(imageRect);

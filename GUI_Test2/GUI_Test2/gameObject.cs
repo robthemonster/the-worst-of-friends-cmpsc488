@@ -209,6 +209,7 @@ namespace GUI_Test2
                             code.AppendLine("(*game).addVisibleGlobalAttribute(\"" + attribute.name + "\");");
                         break;
                     case Attributes.HUB:
+                        code.AppendLine("(*game).addHubAttribute(nav" + Game.navNameToCodeIndex[attribute.hub] + ", \"" + attribute.name + "\", " + attribute.value + ");");
                         break;
                     case Attributes.PLAYER:
                         code.AppendLine("(*game).addPlayerAttribute(\"" + attribute.name + "\", " + attribute.value + ");");
@@ -442,7 +443,7 @@ namespace GUI_Test2
                         target = "(*game).getCurrentPlayerPointer()";
                         break;
                     case Requirement.HUB:
-                        target = "(*nav" + navNameToCodeIndex[req.hub] + ")";
+                        target = "&nav" + navNameToCodeIndex[req.hub];
                         break;
                 }
                 string op = "Requirements::";
@@ -582,7 +583,7 @@ namespace GUI_Test2
                                 if (r.scope == Requirement.PLAYER)
                                     code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**)(*game).getCurrentPlayerPointer(), \"" + r.name + "\", " + op + ", " + r.value + ");");
                                 if (r.scope == Requirement.HUB)
-                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**) nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
+                                    code.AppendLine("req" + reqCtr + ".addRequirement((Attributable**) &nav" + navNameToCodeIndex[r.hub] + ", \"" + r.name + "\", " + op + "," + r.value + ");");
 
                             }
                             code.AppendLine("(*nav" + navNameToCodeIndex[pg.name] + ").addNavigable(" + pg.tiersofEachPath[pathsInPathGroupCtr] + ", nav" + navNameToCodeIndex[pg.pathsInGroup[pathsInPathGroupCtr]] + ", " + pg.weightsofEachPath[pathsInPathGroupCtr] + ", " + "&req" + reqCtr + ");");

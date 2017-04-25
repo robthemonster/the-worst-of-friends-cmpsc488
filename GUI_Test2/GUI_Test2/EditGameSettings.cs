@@ -345,8 +345,14 @@ namespace GUI_Test2
                     }
                     if (r.hub != "")
                     {
-                        hubComboBox.SelectedIndex = Game.hubs.IndexOf(r.hub);
-                    }
+                        try
+                        {
+                            hubComboBox.SelectedIndex = Game.hubs.IndexOf(r.hub);
+                        }catch(ArgumentOutOfRangeException ex)
+                        {
+                            Console.Out.WriteLine(ex.StackTrace);
+                        }
+                        }
                     attributeComboBox.SelectedIndex = attributeComboBox.FindStringExact(r.name);
                     comparitorComboBox.SelectedIndex = comparitorComboBox.FindStringExact(r.comp);
                     valueUpDown.Value = r.value;

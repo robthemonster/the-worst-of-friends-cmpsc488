@@ -129,6 +129,11 @@ void Game::addGlobalAttribute(std::string key, int defaultValue)
 	(*this->attributeMap).addAttribute((Attributable*)this, key, defaultValue);
 }
 
+void Game::addHubAttribute(Attributable * hub, std::string key, int defaultValue)
+{
+	(*this->attributeMap).addAttribute(hub, key, defaultValue);
+}
+
 void Game::setEndingTiers(int tiers)
 {
 	(*this->ending).setTiers(tiers);
