@@ -31,7 +31,7 @@ namespace GUI_Test2
         private string mainMenuImagePath;
         private string mainMenuSoundPath;
         private string playButtonSoundPath;
-        private string fontImagePath;
+        private string menuFontPath;
 
         public bool mainMenuSoundLoading;
         public bool mainMenuSoundSelected;
@@ -58,7 +58,7 @@ namespace GUI_Test2
             mainMenuImagePath = "";
             mainMenuSoundPath = "";
             playButtonSoundPath = "";
-            fontImagePath = "";
+            menuFontPath = "";
 
         }
 
@@ -117,7 +117,7 @@ namespace GUI_Test2
             mainMenuImagePath = gS.mainMenu.mainMenuImagePath;
             mainMenuSoundPath = gS.mainMenu.mainMenuSoundPath;
             playButtonSoundPath = gS.mainMenu.playButtonSoundPath;
-            fontImagePath = gS.mainMenu.fontImagePath;
+            menuFontPath = gS.mainMenu.fontImagePath;
         }
 
         private void EditGameSettings_Load(object sender, EventArgs e)
@@ -179,6 +179,8 @@ namespace GUI_Test2
                 usePlayButtonSoundCheckBox.CheckedChanged += usePlayButtonSoundCheckBox_CheckedChanged;
 
             }
+
+            
 
             updateCheckMarks();
             mainMenuImagePictureBox.ImageLocation = mainMenuImagePath;
@@ -270,7 +272,7 @@ namespace GUI_Test2
             }
 
             Game.gameSettings.defaultFontPath = defaultFontPath;
-            Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, fontImagePath);
+            Game.gameSettings.mainMenu = new MainMenu(mainMenuImagePath, mainMenuSoundPath, playButtonSoundPath, menuFontPath);
 
             this.Close();
         }
@@ -685,7 +687,7 @@ namespace GUI_Test2
             {
                 if (DialogResult.OK == of.ShowDialog())
                 {
-                    fontImagePath = of.FileName;
+                    menuFontPath = of.FileName;
                 }
 
             }
@@ -736,6 +738,13 @@ namespace GUI_Test2
             else
             {
                 chooseDialogueFontVerify.Image = GUI_Test2.Properties.Resources.redx;
+            }
+            if (File.Exists(menuFontPath))
+            {
+                mainMenuFontVerify.Image = GUI_Test2.Properties.Resources.check;
+            }else
+            {
+                mainMenuFontVerify.Image = GUI_Test2.Properties.Resources.redx;
             }
         }
 
