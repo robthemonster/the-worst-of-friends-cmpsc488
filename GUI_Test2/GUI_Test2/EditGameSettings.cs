@@ -167,9 +167,9 @@ namespace GUI_Test2
 
             if (mainMenuSoundPath != "")
             {
-                useBackgroundSoundCheckBox.CheckedChanged -= useBackgroundSoundCheckBox_CheckedChanged;
-                useBackgroundSoundCheckBox.Checked = true;
-                useBackgroundSoundCheckBox.CheckedChanged += useBackgroundSoundCheckBox_CheckedChanged;
+                useMenuMusicCheckBox.CheckedChanged -= useBackgroundSoundCheckBox_CheckedChanged;
+                useMenuMusicCheckBox.Checked = true;
+                useMenuMusicCheckBox.CheckedChanged += useBackgroundSoundCheckBox_CheckedChanged;
             }
 
             if (playButtonSoundPath != "")
@@ -600,7 +600,7 @@ namespace GUI_Test2
 
         private void useBackgroundSoundCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (useBackgroundSoundCheckBox.Checked)
+            if (useMenuMusicCheckBox.Checked)
             {
                 if (!mainMenuSoundLoading)
                 {
@@ -626,7 +626,7 @@ namespace GUI_Test2
                     if (!mainMenuSoundSelected)
                     {
                         mainMenuSoundLoading = true;
-                        useBackgroundSoundCheckBox.Checked = false;
+                        useMenuMusicCheckBox.Checked = false;
                         mainMenuSoundLoading = false;
                     }
                 }

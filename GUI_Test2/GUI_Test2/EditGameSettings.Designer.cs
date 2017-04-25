@@ -113,7 +113,7 @@
             this.selectMainMenuImageButton = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.usePlayButtonSoundCheckBox = new System.Windows.Forms.CheckBox();
-            this.useBackgroundSoundCheckBox = new System.Windows.Forms.CheckBox();
+            this.useMenuMusicCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dialogueTabCancelButton = new System.Windows.Forms.Button();
             this.dialogueTabSaveButton = new System.Windows.Forms.Button();
@@ -288,7 +288,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
@@ -347,7 +347,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(197, 0);
+            this.label8.Location = new System.Drawing.Point(196, 0);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 17);
@@ -356,7 +356,7 @@
             // 
             // valueUpDown
             // 
-            this.valueUpDown.Location = new System.Drawing.Point(197, 26);
+            this.valueUpDown.Location = new System.Drawing.Point(196, 26);
             this.valueUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.valueUpDown.Maximum = new decimal(new int[] {
             2000000000,
@@ -1205,7 +1205,7 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.usePlayButtonSoundCheckBox);
-            this.groupBox7.Controls.Add(this.useBackgroundSoundCheckBox);
+            this.groupBox7.Controls.Add(this.useMenuMusicCheckBox);
             this.groupBox7.Location = new System.Drawing.Point(69, 267);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
@@ -1227,17 +1227,17 @@
             this.usePlayButtonSoundCheckBox.UseVisualStyleBackColor = true;
             this.usePlayButtonSoundCheckBox.CheckedChanged += new System.EventHandler(this.usePlayButtonSoundCheckBox_CheckedChanged);
             // 
-            // useBackgroundSoundCheckBox
+            // useMenuMusicCheckBox
             // 
-            this.useBackgroundSoundCheckBox.AutoSize = true;
-            this.useBackgroundSoundCheckBox.Location = new System.Drawing.Point(8, 23);
-            this.useBackgroundSoundCheckBox.Margin = new System.Windows.Forms.Padding(4);
-            this.useBackgroundSoundCheckBox.Name = "useBackgroundSoundCheckBox";
-            this.useBackgroundSoundCheckBox.Size = new System.Drawing.Size(180, 21);
-            this.useBackgroundSoundCheckBox.TabIndex = 1;
-            this.useBackgroundSoundCheckBox.Text = "Use Background Sound";
-            this.useBackgroundSoundCheckBox.UseVisualStyleBackColor = true;
-            this.useBackgroundSoundCheckBox.CheckedChanged += new System.EventHandler(this.useBackgroundSoundCheckBox_CheckedChanged);
+            this.useMenuMusicCheckBox.AutoSize = true;
+            this.useMenuMusicCheckBox.Location = new System.Drawing.Point(8, 23);
+            this.useMenuMusicCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.useMenuMusicCheckBox.Name = "useMenuMusicCheckBox";
+            this.useMenuMusicCheckBox.Size = new System.Drawing.Size(134, 21);
+            this.useMenuMusicCheckBox.TabIndex = 1;
+            this.useMenuMusicCheckBox.Text = "Use Menu Music";
+            this.useMenuMusicCheckBox.UseVisualStyleBackColor = true;
+            this.useMenuMusicCheckBox.CheckedChanged += new System.EventHandler(this.useBackgroundSoundCheckBox_CheckedChanged);
             // 
             // tabPage3
             // 
@@ -1441,7 +1441,7 @@
         private System.Windows.Forms.Button selectMainMenuImageButton;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox usePlayButtonSoundCheckBox;
-        private System.Windows.Forms.CheckBox useBackgroundSoundCheckBox;
+        private System.Windows.Forms.CheckBox useMenuMusicCheckBox;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
