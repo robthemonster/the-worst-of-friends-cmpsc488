@@ -536,6 +536,7 @@ namespace GUI_Test2
                     hubFromButtonRadio.Checked = true;
 
                 navComboBox.SelectedItem = b.next;
+                updateButton.Enabled = true;
 
             }
             else
@@ -549,6 +550,108 @@ namespace GUI_Test2
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
                 buttonImageState = 0;
+                updateButton.Enabled = false;
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            if (buttonListBox.SelectedIndex != -1)
+            {
+                int index = buttonListBox.SelectedIndex;
+                string text, pic1path, pic2path, next;
+                int sizeX, sizeY, posX, posY, highlight;
+
+
+                text = buttonTextTextBox.Text;
+
+
+
+
+                //max width is 1920
+
+                sizeX = (int)buttonWidthNumericUpDown.Value;
+                sizeY = (int)buttonHeightNumericUpDown.Value;
+
+
+
+
+
+
+                posX = (int)buttonXLocNumericUpDown.Value;
+                posY = (int)buttonYLocNumericUpDown.Value;
+
+
+
+                if (useButton1Image.Checked)
+                {
+                    if (buttonImagePath1 == "")
+                    {
+                        MessageBox.Show("Please Select the Desired Button Image.");
+                        return;
+                    }
+                    pic1path = buttonImagePath1;
+                }
+                else
+                {
+                    pic1path = "";
+                }
+
+                if (useButton2Image.Checked)
+                {
+                    if (buttonImagePath2 == "")
+                    {
+                        MessageBox.Show("Please Select the Desired Highlight Image.");
+                        return;
+                    }
+                    pic2path = buttonImagePath2;
+                }
+                else
+                {
+                    pic2path = "";
+                }
+
+                if (navComboBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Please Select a Target Navigable \nfor the Button to lead to.");
+                    return;
+                }
+                else
+                {
+                    //Passes a string
+                    if (pathFromButtonRadio.Checked)
+                        next = Game.paths[navComboBox.SelectedIndex];
+                    else if (pathGroupFromButtonRadio.Checked)
+                        next = Game.pathGroups[navComboBox.SelectedIndex];
+                    else
+                        next = Game.hubs[navComboBox.SelectedIndex];
+                }
+
+                if (useButton2Image.Checked && HighlightTextButton.Checked)
+                {
+                    MessageBox.Show("Please Select Either to Highlight the Button, \nthe Button Text, or Neither. Please Do Not Select Both.");
+                    return;
+                }
+
+                if (useButton2Image.Checked)
+                    highlight = Button.HIGHLIGHT_PICTURE;
+
+                else if (HighlightTextButton.Checked)
+                    highlight = Button.HIGHLIGHT_TEXT;
+
+                else
+                    highlight = Button.DO_NOTHING;
+
+                buttonList[index].highlight = highlight;
+                buttonList[index].next = next;
+                buttonList[index].pic1path = pic1path;
+                buttonList[index].pic2path = pic2path;
+                buttonList[index].posX = posX;
+                buttonList[index].posY = posY;
+                buttonList[index].sizeX = sizeX;
+                buttonList[index].sizeY = sizeY;
+                buttonList[index].text = text;
+                
             }
         }
 

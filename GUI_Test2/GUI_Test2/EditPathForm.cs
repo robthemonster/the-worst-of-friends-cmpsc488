@@ -416,21 +416,7 @@ namespace GUI_Test2
             Close();
         }
 
-        private void useButtonLocationDefaults_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useButtonLocationDefaults.Checked)
-            {
-                label9.Enabled = true;
-                label10.Enabled = true;
-                label11.Enabled = true;
-            }
-            else
-            {
-                label9.Enabled = false;
-                label10.Enabled = false;
-                label11.Enabled = false;
-            }
-        }
+       
 
 
         private void Buttons_Click(object sender, EventArgs e)
@@ -723,26 +709,7 @@ namespace GUI_Test2
 
 
 
-            if (useButtonLocationDefaults.Checked)
-            {
-                if (buttonNameList.Count == 0)
-                {
-                    posX = -200;
-                    posY = 300;
-                }
-                else if (buttonNameList.Count == 1)
-                {
-                    posX = 200;
-                    posY = 300;
-                }
-                else
-                {
-                    MessageBox.Show("Default positions not available for more than two buttons.");
-                    return;
-                }
-            }
-            else
-            {
+           
                 try
                 {
                     posX = (int)buttonXLocNumericUpDown.Value;
@@ -759,7 +726,6 @@ namespace GUI_Test2
                     return;
                 }
 
-            }
 
             if (useButton1Image.Checked)
             {
@@ -870,16 +836,10 @@ namespace GUI_Test2
                 buttonHeightNumericUpDown.Value = b.sizeY;
 
                 //Position
-                if (buttonNameList.Count <= 2 && (b.posX == -200 || b.posX == 200) && b.posY == 300)
-                {
-                    useButtonLocationDefaults.Checked = true;
-                }
-                else
-                {
-                    useButtonLocationDefaults.Checked = false;
+              
                     buttonXLocNumericUpDown.Value = b.posX;
                     buttonYLocNumericUpDown.Value = b.posY;
-                }
+                
 
                 //Highlight Text
                 highlightTextCheckBox.Checked = b.highlight == Button.HIGHLIGHT_TEXT;
@@ -917,7 +877,7 @@ namespace GUI_Test2
 
                 }
 
-
+                updateButton.Enabled = true;
 
             }
             else
@@ -928,6 +888,7 @@ namespace GUI_Test2
                 highlightTextCheckBox.Checked = false;
                 buttonImagePath1 = "";
                 buttonImagePath2 = "";
+                updateButton.Enabled = false;
             }
         }
 
@@ -1180,6 +1141,129 @@ namespace GUI_Test2
 
                 dialogues[dialogueListBox.SelectedIndex].character = character;
                 dialogues[dialogueListBox.SelectedIndex].characterImage = characterImage;
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            if (buttonListBox.SelectedIndex != -1)
+            {
+                int index = buttonListBox.SelectedIndex;
+                string text, pic1path, pic2path, next;
+                int sizeX, sizeY, posX, posY, highlight;
+
+
+                text = buttonTextTextBox.Text;
+
+
+
+                //1920,1080 screen size
+                //-200,300 posL
+                //200, 300 posR
+                //300,100 size
+
+                //max width is 1920
+
+
+                sizeX = (int)buttonWidthNumericUpDown.Value;
+                sizeY = (int)buttonHeightNumericUpDown.Value;
+
+
+
+
+               
+                    try
+                    {
+                        posX = (int)buttonXLocNumericUpDown.Value;
+                        posY = (int)buttonYLocNumericUpDown.Value;
+                    }
+                    catch (FormatException ex)
+                    {
+                        Console.Out.WriteLine(ex.StackTrace);
+                        MessageBox.Show("X and Y must be positive numbers.\n" +
+                            "X must be less than 960.\n" +
+                            "Y must be less than 540.");
+                        buttonXLocNumericUpDown.Value = 0;
+                        buttonYLocNumericUpDown.Value = 0;
+                        return;
+                    }
+
+              
+
+                if (useButton1Image.Checked)
+                {
+                    if (buttonImagePath1 == "")
+                    {
+                        MessageBox.Show("Please Select the Desired Button Image.");
+                        return;
+                    }
+                    pic1path = buttonImagePath1;
+                }
+                else
+                {
+                    pic1path = "";
+                }
+
+                if (useButton2Image.Checked)
+                {
+                    if (buttonImagePath2 == "")
+                    {
+                        MessageBox.Show("Please Select the Desired Highlight Image.");
+                        return;
+                    }
+                    pic2path = buttonImagePath2;
+                }
+                else
+                {
+                    pic2path = "";
+                }
+
+                if (navComboBox.SelectedItem != null)
+                {
+                    //Passes a string
+                    if (pathFromButtonRadio.Checked)
+                        next = Game.paths[navComboBox.SelectedIndex];
+                    else if (pathGroupFromButtonRadio.Checked)
+                        next = Game.pathGroups[navComboBox.SelectedIndex];
+                    else
+                        next = Game.hubs[navComboBox.SelectedIndex];
+                }
+                else
+                {
+                    next = "";
+                }
+
+                if (useButton2Image.Checked && highlightTextCheckBox.Checked)
+                {
+                    MessageBox.Show("Please Select Either to Highlight the Button, \nthe Button Text, or Neither. Please Do Not Select Both.");
+                    return;
+                }
+
+                if (next == "")
+                {
+                    MessageBox.Show("Cannot create a button with no Navigable target. Try creating some Navigables.");
+                    return;
+                }
+
+                if (useButton2Image.Checked)
+                    highlight = Button.HIGHLIGHT_PICTURE;
+
+                else if (highlightTextCheckBox.Checked)
+                    highlight = Button.HIGHLIGHT_TEXT;
+
+                else
+                    highlight = Button.DO_NOTHING;
+
+                buttonList[index].highlight = highlight;
+                buttonList[index].next = next;
+                buttonList[index].pic1path = pic1path;
+                buttonList[index].pic2path = pic2path;
+                buttonList[index].posX = posX;
+                buttonList[index].posY = posY;
+                buttonList[index].sizeX = sizeX;
+                buttonList[index].sizeY = sizeY;
+                buttonList[index].text = text;
+
             }
         }
 

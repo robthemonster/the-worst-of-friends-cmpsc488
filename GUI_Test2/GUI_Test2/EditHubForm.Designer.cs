@@ -67,6 +67,7 @@
             this.useButton1Image = new System.Windows.Forms.CheckBox();
             this.button1PictureBox = new System.Windows.Forms.PictureBox();
             this.buttonImageGroupBox = new System.Windows.Forms.GroupBox();
+            this.updateButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
@@ -85,7 +86,7 @@
             // buttonListDownButton
             // 
             this.buttonListDownButton.Location = new System.Drawing.Point(81, 450);
-            this.buttonListDownButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonListDownButton.Margin = new System.Windows.Forms.Padding(4);
             this.buttonListDownButton.Name = "buttonListDownButton";
             this.buttonListDownButton.Size = new System.Drawing.Size(56, 28);
             this.buttonListDownButton.TabIndex = 43;
@@ -96,7 +97,7 @@
             // buttonListUpButton
             // 
             this.buttonListUpButton.Location = new System.Drawing.Point(16, 450);
-            this.buttonListUpButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonListUpButton.Margin = new System.Windows.Forms.Padding(4);
             this.buttonListUpButton.Name = "buttonListUpButton";
             this.buttonListUpButton.Size = new System.Drawing.Size(56, 28);
             this.buttonListUpButton.TabIndex = 42;
@@ -107,7 +108,7 @@
             // cancelButton
             // 
             this.cancelButton.Location = new System.Drawing.Point(617, 450);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 28);
             this.cancelButton.TabIndex = 39;
@@ -118,7 +119,7 @@
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(509, 450);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 28);
             this.saveButton.TabIndex = 38;
@@ -133,7 +134,7 @@
             this.tableLayoutPanel4.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.buttonListBox, 0, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(12, 196);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
@@ -157,7 +158,7 @@
             this.buttonListBox.FormattingEnabled = true;
             this.buttonListBox.ItemHeight = 16;
             this.buttonListBox.Location = new System.Drawing.Point(4, 35);
-            this.buttonListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonListBox.Margin = new System.Windows.Forms.Padding(4);
             this.buttonListBox.Name = "buttonListBox";
             this.buttonListBox.Size = new System.Drawing.Size(120, 212);
             this.buttonListBox.TabIndex = 1;
@@ -169,9 +170,9 @@
             this.hubImageBox.Controls.Add(this.musicBox);
             this.hubImageBox.Controls.Add(this.chooseHubImageButton);
             this.hubImageBox.Location = new System.Drawing.Point(12, 15);
-            this.hubImageBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubImageBox.Margin = new System.Windows.Forms.Padding(4);
             this.hubImageBox.Name = "hubImageBox";
-            this.hubImageBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubImageBox.Padding = new System.Windows.Forms.Padding(4);
             this.hubImageBox.Size = new System.Drawing.Size(428, 174);
             this.hubImageBox.TabIndex = 45;
             this.hubImageBox.TabStop = false;
@@ -194,9 +195,9 @@
             // 
             this.musicBox.Controls.Add(this.useMusic);
             this.musicBox.Location = new System.Drawing.Point(265, 85);
-            this.musicBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.musicBox.Margin = new System.Windows.Forms.Padding(4);
             this.musicBox.Name = "musicBox";
-            this.musicBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.musicBox.Padding = new System.Windows.Forms.Padding(4);
             this.musicBox.Size = new System.Drawing.Size(147, 63);
             this.musicBox.TabIndex = 47;
             this.musicBox.TabStop = false;
@@ -206,7 +207,7 @@
             // 
             this.useMusic.AutoSize = true;
             this.useMusic.Location = new System.Drawing.Point(19, 23);
-            this.useMusic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.useMusic.Margin = new System.Windows.Forms.Padding(4);
             this.useMusic.Name = "useMusic";
             this.useMusic.Size = new System.Drawing.Size(95, 21);
             this.useMusic.TabIndex = 1;
@@ -227,6 +228,7 @@
             // 
             // addButtonBox
             // 
+            this.addButtonBox.Controls.Add(this.updateButton);
             this.addButtonBox.Controls.Add(this.buttonYLocNumericUpDown);
             this.addButtonBox.Controls.Add(this.buttonXLocNumericUpDown);
             this.addButtonBox.Controls.Add(this.buttonHeightNumericUpDown);
@@ -243,9 +245,9 @@
             this.addButtonBox.Controls.Add(this.label10);
             this.addButtonBox.Controls.Add(this.label9);
             this.addButtonBox.Location = new System.Drawing.Point(157, 188);
-            this.addButtonBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButtonBox.Margin = new System.Windows.Forms.Padding(4);
             this.addButtonBox.Name = "addButtonBox";
-            this.addButtonBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButtonBox.Padding = new System.Windows.Forms.Padding(4);
             this.addButtonBox.Size = new System.Drawing.Size(568, 255);
             this.addButtonBox.TabIndex = 46;
             this.addButtonBox.TabStop = false;
@@ -259,7 +261,7 @@
             0,
             0});
             this.buttonYLocNumericUpDown.Location = new System.Drawing.Point(285, 217);
-            this.buttonYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonYLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.buttonYLocNumericUpDown.Maximum = new decimal(new int[] {
             540,
             0,
@@ -282,7 +284,7 @@
             0,
             0});
             this.buttonXLocNumericUpDown.Location = new System.Drawing.Point(285, 190);
-            this.buttonXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXLocNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXLocNumericUpDown.Maximum = new decimal(new int[] {
             960,
             0,
@@ -305,7 +307,7 @@
             0,
             0});
             this.buttonHeightNumericUpDown.Location = new System.Drawing.Point(101, 223);
-            this.buttonHeightNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonHeightNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.buttonHeightNumericUpDown.Maximum = new decimal(new int[] {
             1080,
             0,
@@ -333,7 +335,7 @@
             0,
             0});
             this.buttonWidthNumericUpDown.Location = new System.Drawing.Point(101, 196);
-            this.buttonWidthNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonWidthNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.buttonWidthNumericUpDown.Maximum = new decimal(new int[] {
             1920,
             0,
@@ -360,9 +362,9 @@
             this.targetNavigableBox.Controls.Add(this.pathGroupFromButtonRadio);
             this.targetNavigableBox.Controls.Add(this.pathFromButtonRadio);
             this.targetNavigableBox.Location = new System.Drawing.Point(239, 23);
-            this.targetNavigableBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.targetNavigableBox.Margin = new System.Windows.Forms.Padding(4);
             this.targetNavigableBox.Name = "targetNavigableBox";
-            this.targetNavigableBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.targetNavigableBox.Padding = new System.Windows.Forms.Padding(4);
             this.targetNavigableBox.Size = new System.Drawing.Size(321, 116);
             this.targetNavigableBox.TabIndex = 54;
             this.targetNavigableBox.TabStop = false;
@@ -372,7 +374,7 @@
             // 
             this.hubFromButtonRadio.AutoSize = true;
             this.hubFromButtonRadio.Location = new System.Drawing.Point(8, 79);
-            this.hubFromButtonRadio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubFromButtonRadio.Margin = new System.Windows.Forms.Padding(4);
             this.hubFromButtonRadio.Name = "hubFromButtonRadio";
             this.hubFromButtonRadio.Size = new System.Drawing.Size(55, 21);
             this.hubFromButtonRadio.TabIndex = 3;
@@ -386,7 +388,7 @@
             this.navComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.navComboBox.FormattingEnabled = true;
             this.navComboBox.Location = new System.Drawing.Point(125, 18);
-            this.navComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.navComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.navComboBox.Name = "navComboBox";
             this.navComboBox.Size = new System.Drawing.Size(160, 24);
             this.navComboBox.TabIndex = 4;
@@ -395,7 +397,7 @@
             // 
             this.pathGroupFromButtonRadio.AutoSize = true;
             this.pathGroupFromButtonRadio.Location = new System.Drawing.Point(8, 50);
-            this.pathGroupFromButtonRadio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pathGroupFromButtonRadio.Margin = new System.Windows.Forms.Padding(4);
             this.pathGroupFromButtonRadio.Name = "pathGroupFromButtonRadio";
             this.pathGroupFromButtonRadio.Size = new System.Drawing.Size(102, 21);
             this.pathGroupFromButtonRadio.TabIndex = 2;
@@ -408,7 +410,7 @@
             // 
             this.pathFromButtonRadio.AutoSize = true;
             this.pathFromButtonRadio.Location = new System.Drawing.Point(8, 23);
-            this.pathFromButtonRadio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pathFromButtonRadio.Margin = new System.Windows.Forms.Padding(4);
             this.pathFromButtonRadio.Name = "pathFromButtonRadio";
             this.pathFromButtonRadio.Size = new System.Drawing.Size(58, 21);
             this.pathFromButtonRadio.TabIndex = 1;
@@ -420,7 +422,7 @@
             // deleteButtonButton
             // 
             this.deleteButtonButton.Location = new System.Drawing.Point(412, 217);
-            this.deleteButtonButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteButtonButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteButtonButton.Name = "deleteButtonButton";
             this.deleteButtonButton.Size = new System.Drawing.Size(148, 28);
             this.deleteButtonButton.TabIndex = 57;
@@ -441,7 +443,7 @@
             // buttonTextTextBox
             // 
             this.buttonTextTextBox.Location = new System.Drawing.Point(9, 44);
-            this.buttonTextTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTextTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTextTextBox.Multiline = true;
             this.buttonTextTextBox.Name = "buttonTextTextBox";
             this.buttonTextTextBox.Size = new System.Drawing.Size(209, 89);
@@ -450,7 +452,7 @@
             // createButtonButton
             // 
             this.createButtonButton.Location = new System.Drawing.Point(412, 181);
-            this.createButtonButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createButtonButton.Margin = new System.Windows.Forms.Padding(4);
             this.createButtonButton.Name = "createButtonButton";
             this.createButtonButton.Size = new System.Drawing.Size(148, 28);
             this.createButtonButton.TabIndex = 55;
@@ -522,7 +524,7 @@
             // 
             this.HighlightTextButton.AutoSize = true;
             this.HighlightTextButton.Location = new System.Drawing.Point(20, 78);
-            this.HighlightTextButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HighlightTextButton.Margin = new System.Windows.Forms.Padding(4);
             this.HighlightTextButton.Name = "HighlightTextButton";
             this.HighlightTextButton.Size = new System.Drawing.Size(116, 21);
             this.HighlightTextButton.TabIndex = 61;
@@ -534,7 +536,7 @@
             this.useButton2Image.AutoSize = true;
             this.useButton2Image.Enabled = false;
             this.useButton2Image.Location = new System.Drawing.Point(20, 49);
-            this.useButton2Image.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.useButton2Image.Margin = new System.Windows.Forms.Padding(4);
             this.useButton2Image.Name = "useButton2Image";
             this.useButton2Image.Size = new System.Drawing.Size(176, 21);
             this.useButton2Image.TabIndex = 59;
@@ -547,7 +549,7 @@
             this.button2PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2PictureBox.InitialImage = null;
             this.button2PictureBox.Location = new System.Drawing.Point(132, 106);
-            this.button2PictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2PictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.button2PictureBox.Name = "button2PictureBox";
             this.button2PictureBox.Size = new System.Drawing.Size(105, 59);
             this.button2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -558,7 +560,7 @@
             // 
             this.useButton1Image.AutoSize = true;
             this.useButton1Image.Location = new System.Drawing.Point(19, 21);
-            this.useButton1Image.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.useButton1Image.Margin = new System.Windows.Forms.Padding(4);
             this.useButton1Image.Name = "useButton1Image";
             this.useButton1Image.Size = new System.Drawing.Size(146, 21);
             this.useButton1Image.TabIndex = 48;
@@ -571,7 +573,7 @@
             this.button1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1PictureBox.InitialImage = null;
             this.button1PictureBox.Location = new System.Drawing.Point(17, 106);
-            this.button1PictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1PictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.button1PictureBox.Name = "button1PictureBox";
             this.button1PictureBox.Size = new System.Drawing.Size(105, 59);
             this.button1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -586,13 +588,24 @@
             this.buttonImageGroupBox.Controls.Add(this.useButton1Image);
             this.buttonImageGroupBox.Controls.Add(this.useButton2Image);
             this.buttonImageGroupBox.Location = new System.Drawing.Point(459, 15);
-            this.buttonImageGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonImageGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.buttonImageGroupBox.Name = "buttonImageGroupBox";
-            this.buttonImageGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonImageGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.buttonImageGroupBox.Size = new System.Drawing.Size(267, 174);
             this.buttonImageGroupBox.TabIndex = 48;
             this.buttonImageGroupBox.TabStop = false;
             this.buttonImageGroupBox.Text = "Button Images";
+            // 
+            // updateButton
+            // 
+            this.updateButton.Enabled = false;
+            this.updateButton.Location = new System.Drawing.Point(412, 151);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(148, 23);
+            this.updateButton.TabIndex = 62;
+            this.updateButton.Text = "Update Button";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // EditHubForm
             // 
@@ -675,5 +688,6 @@
         private System.Windows.Forms.NumericUpDown buttonWidthNumericUpDown;
         private System.Windows.Forms.NumericUpDown buttonYLocNumericUpDown;
         private System.Windows.Forms.NumericUpDown buttonXLocNumericUpDown;
+        private System.Windows.Forms.Button updateButton;
     }
 }
