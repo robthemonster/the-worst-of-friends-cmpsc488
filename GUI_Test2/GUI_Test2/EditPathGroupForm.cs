@@ -86,7 +86,7 @@ namespace GUI_Test2
             tierComboBox.SelectedIndex = 0;
             hubComboBox.DataSource = Game.hubs;//", "
             comparitorComboBox.DataSource = new string[] { "<", "<=", "==", ">=", ">" };
-            valueTextBox.Text = "0";
+            valueNumeric.Value = 0;
             currHub = "";
             globalRadioButton.Checked = true;
             attributes = new List<string>();
@@ -364,7 +364,7 @@ namespace GUI_Test2
 
                 try
                 {
-                    int value = Int32.Parse(valueTextBox.Text);
+                    int value = (int)valueNumeric.Value;
                     int i = pathsInPathGroupListBox.SelectedIndex;
                     reqsofEachPath[i].Add(new Requirement(scope, currHub, attributeComboBox.SelectedValue.ToString(), comparitorComboBox.SelectedValue.ToString(), value));
                     updateReqList();
@@ -374,7 +374,7 @@ namespace GUI_Test2
                 {
                     Console.Out.WriteLine(ex.StackTrace);
                     MessageBox.Show("Value must be an Integer.");
-                    valueTextBox.Text = "";
+                    valueNumeric.Value = 0;
                 }
             }
         }
@@ -420,7 +420,7 @@ namespace GUI_Test2
                     }
                     attributeComboBox.SelectedIndex = attributeComboBox.FindStringExact(r.name);
                     comparitorComboBox.SelectedIndex = comparitorComboBox.FindStringExact(r.comp);
-                    valueTextBox.Text = r.value.ToString();
+                    valueNumeric.Value = r.value;
                 }
             }
 
