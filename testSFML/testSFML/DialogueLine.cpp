@@ -75,7 +75,7 @@ void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, i
 		textDoneSound.play();
 		textDoneSoundPlayed = true;
 	}
-	if (done) {
+	if (done && soundEffectPlayed) {
 		soundEffect.stop();
 	}
 }
@@ -91,6 +91,8 @@ void DialogueLine::setDone(bool set) {
 	this->done = set;
 	if (textDoneSoundPlayed && !set) //text-done sound played, but dialogue is being reset, so reset text-done sound played flag
 		textDoneSoundPlayed = set;
+	if (soundEffectPlayed && !set)
+		soundEffectPlayed = set;
 	
 		
 }

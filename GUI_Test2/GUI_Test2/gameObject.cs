@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI_Test2
 {
@@ -780,21 +781,29 @@ namespace GUI_Test2
             }
 
 
+            foreach (FileInfo f in Game.codeGenDirectory.GetFiles())
+            {
+                if (f.Extension == ".obj")
+                    f.Delete();
+            }
 
             ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
             
-            cmd.Arguments = @"/c /q cd " + Game.codeGenDirectory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
-           
+            cmd.Arguments = @"/c cd " + Game.codeGenDirectory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
 
 
-            Process compiler; //= Process.Start(cmd);
-            //compiler.WaitForExit();
+            cmd.RedirectStandardOutput = true;
+            cmd.UseShellExecute = false;
+            cmd.CreateNoWindow = true;
+            Cursor.Current = Cursors.WaitCursor;
+            Process compiler  = Process.Start(cmd);
+            compiler.WaitForExit();
 
 
 
 
 
-            cmd.Arguments = @"/k cd " + Game.codeGenDirectory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /Fe""" + exePath + @""" main.cpp   /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
+            cmd.Arguments = @"/c cd " + Game.codeGenDirectory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /Fe""" + exePath + @""" main.cpp   /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj ";
           
             
             compiler = Process.Start(cmd);
@@ -803,7 +812,7 @@ namespace GUI_Test2
 
 
 
-          
+            Cursor.Current = Cursors.Arrow;
 
             ProcessStartInfo game = new ProcessStartInfo(Game.compileTo + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath)+".exe");
             game.WorkingDirectory = Game.compileTo.ToString();
