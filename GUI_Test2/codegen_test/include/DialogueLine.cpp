@@ -75,9 +75,7 @@ void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, i
 		textDoneSound.play();
 		textDoneSoundPlayed = true;
 	}
-	if (done && soundEffectPlayed) {
-		soundEffect.stop();
-	}
+	
 }
 
 
