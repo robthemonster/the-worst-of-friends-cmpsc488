@@ -111,6 +111,7 @@ namespace GUI_Test2
         public List<Impact> impacts;
         public string character;
         public string characterImage;
+        public string soundPath;
 
         public Dialogue()
         {
@@ -118,17 +119,19 @@ namespace GUI_Test2
             impacts = new List<Impact>();
             character = "";
             characterImage = "";
+            soundPath = "";
         }
-        public Dialogue(string con, List<Impact> imps, string c, string cI)
+        public Dialogue(string content, List<Impact> impacts, string character, string characterImage, string soundPath)
         {
-            this.content = con;
+            this.content = content;
             this.impacts = new List<Impact>();
-            foreach (Impact i in imps)
+            foreach (Impact i in impacts)
             {
                 this.impacts.Add(i);
             }
-            this.character = c;
-            this.characterImage = cI;
+            this.character = character;
+            this.characterImage = characterImage;
+            this.soundPath = soundPath;
         }
         public Dialogue(Dialogue d)
         {
@@ -136,6 +139,7 @@ namespace GUI_Test2
             this.impacts = new List<Impact>(d.impacts);
             this.character = d.character;
             this.characterImage = d.characterImage;
+            this.soundPath = d.soundPath;
         }
     }
 

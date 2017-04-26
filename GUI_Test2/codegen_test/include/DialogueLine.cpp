@@ -5,13 +5,14 @@
 
 
 #include "DialogueLine.h"
-DialogueLine::DialogueLine(sf::String words, std::string dialogueScrollSound, std::string dialogueEndSound, Character * character, std::string key, sf::Vector2f characterPosition) {
+DialogueLine::DialogueLine(sf::String words, std::string dialogueScrollSound, std::string dialogueEndSound, std::string soundEffectPath, Character * character, std::string key, sf::Vector2f characterPosition) {
 	this->words = words;
 	this->character = character;
 	this->key = key;
 	this->characterPosition = characterPosition;
 	textBuffer.loadFromFile(dialogueScrollSound);
 	textDoneBuffer.loadFromFile(dialogueEndSound);
+	soundEffectBuffer.loadFromFile(soundEffectPath);
 	
 }
 
@@ -24,6 +25,13 @@ void DialogueLine::drawCharacter(sf::RenderWindow& window) {
 
 void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, int width, sf::RenderWindow & window, int charDelayMs, int millisecElapsed)
 {
+	if (soundEffect.getStatus() != sf::Sound::Status::Playing && !soundEffectPlayed) {
+		soundEffect.setBuffer(soundEffectBuffer);
+		soundEffect.setLoop(false);
+		soundEffect.play();
+		soundEffectPlayed = true;
+	}
+
 	if (textSound.getStatus() != sf::Sound::Status::Playing && !textDoneSoundPlayed) { //if the textSound isnt playing, and textDoneSound hasnt been played
 		textDoneSound.setBuffer(textDoneBuffer);
 		textSound.setBuffer(textBuffer);
@@ -66,6 +74,9 @@ void DialogueLine::drawWords(sf::Font font, int charSize, sf::Vector2f origin, i
 		textSound.stop();
 		textDoneSound.play();
 		textDoneSoundPlayed = true;
+	}
+	if (done) {
+		soundEffect.stop();
 	}
 }
 

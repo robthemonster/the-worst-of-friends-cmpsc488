@@ -32,8 +32,7 @@ public:
 	void setEnterSymbolTexture(sf::Texture & texture);
 	void setDialogueScrollSound(std::string);
 	void setDialogueEndSound(std::string);
-	void addDialogueLine(std::string);
-	void addDialogueLine(std::string, std::vector<Impact *>,
+	void addDialogueLine(std::string, std::vector<Impact *>, std::string soundPath,
 		Character * character = NULL, std::string key = "" , sf::Vector2f charPos = sf::Vector2f());
 
 

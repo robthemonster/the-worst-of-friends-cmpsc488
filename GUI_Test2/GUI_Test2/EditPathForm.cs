@@ -35,6 +35,7 @@ namespace GUI_Test2
         private bool musicLoading = false;
         private const int NO_IMAGES_SELECTED = 0, ONE_IMAGE_SELECTED = 1, TWO_IMAGES_SELECTED = 2;
         private string defaultTargetNavigable;
+        private string selectedDialoguePlaySound = "";
 
         public EditPathForm(ProjectHomeForm par, String n)
         {
@@ -183,10 +184,25 @@ namespace GUI_Test2
             if (dialogueList.SelectedIndex != -1)
             {
                 dialogueTextBox.Text = dialogueEntryList[dialogueList.SelectedIndex];
+                if (System.IO.File.Exists(dialogues[dialogueList.SelectedIndex].soundPath))
+                {
+                    playSoundCheckBox.CheckedChanged -= playSoundCheckBox_CheckedChanged;
+                    playSoundCheckBox.Checked = true;
+                    soundEffectLabel.Text = "Sound Effect: " +System.IO.Path.GetFileName(dialogues[dialogueList.SelectedIndex].soundPath);
+                    playSoundCheckBox.CheckedChanged += playSoundCheckBox_CheckedChanged;
+                }
+                else
+                {
+                    playSoundCheckBox.Checked = false;
+                    soundEffectLabel.Text = "Sound Effect:";
+                }
+                editDialogueButton.Enabled = true;
             }
             else
             {
+                editDialogueButton.Enabled = false;
                 dialogueTextBox.Text = null;
+                playSoundCheckBox.Checked = false;
             }
         }
 
@@ -349,6 +365,7 @@ namespace GUI_Test2
                 dialogueImpactList.Add(new List<Impact>());
                 dialogues.Add(new Dialogue());
                 dialogues[dialogues.Count - 1].content = dialogueTextBox.Text;
+                dialogues[dialogues.Count - 1].soundPath = selectedDialoguePlaySound;
                 dialogueTextBox.Text = "";
                 updateListBoxes();
 
@@ -416,7 +433,7 @@ namespace GUI_Test2
             Close();
         }
 
-       
+
 
 
         private void Buttons_Click(object sender, EventArgs e)
@@ -488,6 +505,7 @@ namespace GUI_Test2
             {
                 dialogueEntryList[dialogueList.SelectedIndex] = dialogueTextBox.Text;
                 dialogueTextBox.Text = "";
+                dialogues[dialogueList.SelectedIndex].soundPath = selectedDialoguePlaySound;
                 updateListBoxes();
             }
         }
@@ -709,22 +727,22 @@ namespace GUI_Test2
 
 
 
-           
-                try
-                {
-                    posX = (int)buttonXLocNumericUpDown.Value;
-                    posY = (int)buttonYLocNumericUpDown.Value;
-                }
-                catch (FormatException ex)
-                {
-                    Console.Out.WriteLine(ex.StackTrace);
-                    MessageBox.Show("X and Y must be positive numbers.\n" +
-                        "X must be less than 960.\n" +
-                        "Y must be less than 540.");
-                    buttonXLocNumericUpDown.Value = 0;
-                    buttonYLocNumericUpDown.Value = 0;
-                    return;
-                }
+
+            try
+            {
+                posX = (int)buttonXLocNumericUpDown.Value;
+                posY = (int)buttonYLocNumericUpDown.Value;
+            }
+            catch (FormatException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
+                MessageBox.Show("X and Y must be positive numbers.\n" +
+                    "X must be less than 960.\n" +
+                    "Y must be less than 540.");
+                buttonXLocNumericUpDown.Value = 0;
+                buttonYLocNumericUpDown.Value = 0;
+                return;
+            }
 
 
             if (useButton1Image.Checked)
@@ -836,10 +854,10 @@ namespace GUI_Test2
                 buttonHeightNumericUpDown.Value = b.sizeY;
 
                 //Position
-              
-                    buttonXLocNumericUpDown.Value = b.posX;
-                    buttonYLocNumericUpDown.Value = b.posY;
-                
+
+                buttonXLocNumericUpDown.Value = b.posX;
+                buttonYLocNumericUpDown.Value = b.posY;
+
 
                 //Highlight Text
                 highlightTextCheckBox.Checked = b.highlight == Button.HIGHLIGHT_TEXT;
@@ -1171,24 +1189,24 @@ namespace GUI_Test2
 
 
 
-               
-                    try
-                    {
-                        posX = (int)buttonXLocNumericUpDown.Value;
-                        posY = (int)buttonYLocNumericUpDown.Value;
-                    }
-                    catch (FormatException ex)
-                    {
-                        Console.Out.WriteLine(ex.StackTrace);
-                        MessageBox.Show("X and Y must be positive numbers.\n" +
-                            "X must be less than 960.\n" +
-                            "Y must be less than 540.");
-                        buttonXLocNumericUpDown.Value = 0;
-                        buttonYLocNumericUpDown.Value = 0;
-                        return;
-                    }
 
-              
+                try
+                {
+                    posX = (int)buttonXLocNumericUpDown.Value;
+                    posY = (int)buttonYLocNumericUpDown.Value;
+                }
+                catch (FormatException ex)
+                {
+                    Console.Out.WriteLine(ex.StackTrace);
+                    MessageBox.Show("X and Y must be positive numbers.\n" +
+                        "X must be less than 960.\n" +
+                        "Y must be less than 540.");
+                    buttonXLocNumericUpDown.Value = 0;
+                    buttonYLocNumericUpDown.Value = 0;
+                    return;
+                }
+
+
 
                 if (useButton1Image.Checked)
                 {
@@ -1264,6 +1282,37 @@ namespace GUI_Test2
                 buttonList[index].sizeY = sizeY;
                 buttonList[index].text = text;
 
+            }
+        }
+
+        private void playSoundCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (playSoundCheckBox.Checked)
+            {
+                OpenFileDialog of = new OpenFileDialog();
+                of.Filter = "Audio files (*.ogg, *.wav, *.flac, *.aiff) | *.ogg; *.wav; *.flac; *.aiff";
+
+                try
+                {
+                    if (DialogResult.OK == of.ShowDialog())
+                    {
+                        selectedDialoguePlaySound = of.FileName;
+                        soundEffectLabel.Text = "Sound Effect: " + System.IO.Path.GetFileName(of.FileName);
+                    }
+                    else
+                    {
+                        selectedDialoguePlaySound = "";
+                        soundEffectLabel.Text = "Sound Effect: ";
+                    }
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.Out.WriteLine(ex.StackTrace);
+                }
+            }else
+            {
+                selectedDialoguePlaySound = "";
+                soundEffectLabel.Text = "Sound Effect: ";
             }
         }
 

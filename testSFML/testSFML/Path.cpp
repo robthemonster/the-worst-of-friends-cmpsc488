@@ -89,21 +89,13 @@ void Path::setDialogueEndSound(std::string dialogueEndSound)
 
 
 
-void Path::addDialogueLine(std::string dialogueLine)
-{
-	if (this->dialogueScreen != NULL) {
-		(*this->dialogueScreen).addDialogueLine(DialogueLine(dialogueLine, this->dialogueScrollSound, this->dialogueEndSound));
-	}
-	else {
-		std::cout << "Path has no dialogue screen! Cannot add dialogue" << std::endl;
-	}
-}
 
 
-void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impacts, Character * character, std::string key, sf::Vector2f charPos)
+
+void Path::addDialogueLine(std::string dialogueLine, std::vector<Impact *> impacts, std::string soundPath, Character * character, std::string key, sf::Vector2f charPos)
 {
 	if (this->dialogueScreen != NULL) {
-		DialogueLine line(dialogueLine, this->dialogueScrollSound, this->dialogueEndSound, character, key, charPos);
+		DialogueLine line(dialogueLine, this->dialogueScrollSound, this->dialogueEndSound, soundPath, character, key, charPos);
 
 		for (int i = 0; i < impacts.size(); i++) {
 			line.addImpact(impacts[i]);

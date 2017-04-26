@@ -209,7 +209,7 @@ namespace GUI_Test2
                             code.AppendLine("(*game).addVisibleGlobalAttribute(\"" + attribute.name + "\");");
                         break;
                     case Attributes.HUB:
-                        code.AppendLine("(*game).addHubAttribute(nav" + Game.navNameToCodeIndex[attribute.hub] + ", \"" + attribute.name + "\", " + attribute.value + ");");
+                        code.AppendLine("(*game).addHubAttribute(*(Attributable **)&nav" + Game.navNameToCodeIndex[attribute.hub] + ", \"" + attribute.name + "\", " + attribute.value + ");");
                         break;
                     case Attributes.PLAYER:
                         code.AppendLine("(*game).addPlayerAttribute(\"" + attribute.name + "\", " + attribute.value + ");");
@@ -368,48 +368,48 @@ namespace GUI_Test2
                     Path p = (Path)nav;
                     foreach (string dialogue in p.getDialogueContents())
                     {
-                       
-                            code.AppendLine("std::vector<Impact *> impacts" + impactCtr + " = std::vector<Impact *>();");
-                            foreach (Impact impact in p.getDialogueImpacts()[dialogueCtr])
-                            {
-                                string target = "";
-                                string op = "Impact::";
-                                switch (impact.scope)
-                                {
-                                    case Impact.GLOBAL:
-                                        target = "&game";
-                                        break;
-                                    case Impact.HUB:
-                                        target = "&nav" + Game.navNameToCodeIndex[impact.hub];
-                                        break;
-                                    case Impact.PLAYER:
-                                        target = "(*game).getCurrentPlayerPointer()";
-                                        break;
-                                }
-                                switch (impact.op)
-                                {
-                                    case Impact.SET:
-                                        op = "SET";
-                                        break;
-                                    case Impact.INCREASE:
-                                        op = "INCREASE";
-                                        break;
-                                    case Impact.DECREASE:
-                                        op = "DECREASE";
-                                        break;
-                                }
-                                code.AppendLine("impacts" + impactCtr + ".push_back(new Impact((*game).getAttributeMapPointer(), (Attributable**)" + target + ", \"" + impact.attribute + "\", Impact::" + op + ", " + impact.val + "));");
-                            }
-                            string characterArgs = "";
-                            if (p.dialogues[dialogueCtr].character != "" && p.dialogues[dialogueCtr].characterImage != "")
-                            {
-                                //TODO: TEST once interface works.
-                                characterArgs = ", " + Game.characterNameToCodeObject[p.dialogues[dialogueCtr].character] + ", \"" + p.dialogues[dialogueCtr].characterImage + "\", sf::Vector2f(" + Game.gameSettings.NPCXLoc + ", " + Game.gameSettings.NPCYLoc + ")";
 
+                        code.AppendLine("std::vector<Impact *> impacts" + impactCtr + " = std::vector<Impact *>();");
+                        foreach (Impact impact in p.getDialogueImpacts()[dialogueCtr])
+                        {
+                            string target = "";
+                            string op = "Impact::";
+                            switch (impact.scope)
+                            {
+                                case Impact.GLOBAL:
+                                    target = "&game";
+                                    break;
+                                case Impact.HUB:
+                                    target = "&nav" + Game.navNameToCodeIndex[impact.hub];
+                                    break;
+                                case Impact.PLAYER:
+                                    target = "(*game).getCurrentPlayerPointer()";
+                                    break;
                             }
-                            code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr + characterArgs + ");");
-                            impactCtr++;
-                        
+                            switch (impact.op)
+                            {
+                                case Impact.SET:
+                                    op = "SET";
+                                    break;
+                                case Impact.INCREASE:
+                                    op = "INCREASE";
+                                    break;
+                                case Impact.DECREASE:
+                                    op = "DECREASE";
+                                    break;
+                            }
+                            code.AppendLine("impacts" + impactCtr + ".push_back(new Impact((*game).getAttributeMapPointer(), (Attributable**)" + target + ", \"" + impact.attribute + "\", Impact::" + op + ", " + impact.val + "));");
+                        }
+                        string characterArgs = "";
+                        if (p.dialogues[dialogueCtr].character != "" && p.dialogues[dialogueCtr].characterImage != "")
+                        {
+                            //TODO: TEST once interface works.
+                            characterArgs = ", " + Game.characterNameToCodeObject[p.dialogues[dialogueCtr].character] + ", \"" + p.dialogues[dialogueCtr].characterImage + "\", sf::Vector2f(" + Game.gameSettings.NPCXLoc + ", " + Game.gameSettings.NPCYLoc + ")";
+
+                        }
+                        code.AppendLine("(*nav" + Game.navNameToCodeIndex[p.name] + ").addDialogueLine(\"" + dialogue + "\", impacts" + impactCtr + ", \"" + Game.oldPathToNewPath["sound"][p.dialogues[dialogueCtr].soundPath] + "\"" + characterArgs + ");");
+                        impactCtr++;
+
                         dialogueCtr++;
                     }
                 }
@@ -643,12 +643,15 @@ namespace GUI_Test2
             Game.oldPathToNewPath["sound"] = new Dictionary<string, string>();
             Game.oldPathToNewPath["characterImage"] = new Dictionary<string, string>();
 
+            Game.oldPathToNewPath["sound"][""] = "";
+            Game.oldPathToNewPath["image"][""] = "";
+
             Console.Out.WriteLine("Copying assets to dir..");
             System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\img");
             System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\music");
             System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\fonts");
 
-            int imgctr = 0, musicctr = 0;
+            int imgctr = 0, musicctr = 0, fontCtr = 0;
             foreach (Navigable nav in Game.navIndex.Values)
             {
                 switch (nav.getNavType())
@@ -662,6 +665,9 @@ namespace GUI_Test2
                             copyFileTo(nav.getSoundPath(), "\\assets\\music\\sound" + musicctr, "sound");
                             musicctr++;
                         }
+                        if (nav.getButtonFont() != "")
+                            copyFileTo(nav.getButtonFont(), "\\assets\\fonts\\pathFont" + fontCtr, "font");
+                        fontCtr++;
 
                         List<Button> buttons = new List<Button>();
                         if (nav.getNavType() == Navigable.PATH)
@@ -679,6 +685,18 @@ namespace GUI_Test2
                                 {
                                     copyFileTo(b.pic2path, "\\assets\\img\\img" + imgctr, "image");
                                     imgctr++;
+                                }
+                            }
+                        }
+                        if (nav.getNavType() == Navigable.PATH)
+                        {
+                            int dialogueSoundCtr = 0;
+                            foreach (Dialogue d in ((Path)nav).dialogues)
+                            {
+                                if (d.soundPath != "")
+                                {
+                                    copyFileTo(d.soundPath, "\\assets\\music\\dialougeSound" + dialogueSoundCtr, "sound");
+                                    dialogueSoundCtr++;
                                 }
                             }
                         }
