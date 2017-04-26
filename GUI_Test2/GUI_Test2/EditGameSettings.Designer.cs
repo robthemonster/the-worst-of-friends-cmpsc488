@@ -275,7 +275,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
@@ -296,14 +296,14 @@
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(3, 21);
             this.attributeComboBox.Name = "attributeComboBox";
-            this.attributeComboBox.Size = new System.Drawing.Size(77, 21);
+            this.attributeComboBox.Size = new System.Drawing.Size(76, 21);
             this.attributeComboBox.TabIndex = 24;
             // 
             // comparitorComboBox
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(86, 21);
+            this.comparitorComboBox.Location = new System.Drawing.Point(85, 21);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(54, 21);
             this.comparitorComboBox.TabIndex = 23;
@@ -311,7 +311,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(86, 0);
+            this.label5.Location = new System.Drawing.Point(85, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 18);
             this.label5.TabIndex = 34;
@@ -329,7 +329,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(146, 0);
+            this.label8.Location = new System.Drawing.Point(145, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 36;
@@ -337,7 +337,7 @@
             // 
             // valueUpDown
             // 
-            this.valueUpDown.Location = new System.Drawing.Point(146, 21);
+            this.valueUpDown.Location = new System.Drawing.Point(145, 21);
             this.valueUpDown.Maximum = new decimal(new int[] {
             2000000000,
             0,
@@ -666,7 +666,7 @@
             // chooseEnterTextureVerify
             // 
             this.chooseEnterTextureVerify.Location = new System.Drawing.Point(140, 197);
-            this.chooseEnterTextureVerify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chooseEnterTextureVerify.Margin = new System.Windows.Forms.Padding(2);
             this.chooseEnterTextureVerify.Name = "chooseEnterTextureVerify";
             this.chooseEnterTextureVerify.Size = new System.Drawing.Size(21, 23);
             this.chooseEnterTextureVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -676,7 +676,7 @@
             // chooseDialogueEndSoundVerify
             // 
             this.chooseDialogueEndSoundVerify.Location = new System.Drawing.Point(140, 155);
-            this.chooseDialogueEndSoundVerify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chooseDialogueEndSoundVerify.Margin = new System.Windows.Forms.Padding(2);
             this.chooseDialogueEndSoundVerify.Name = "chooseDialogueEndSoundVerify";
             this.chooseDialogueEndSoundVerify.Size = new System.Drawing.Size(21, 23);
             this.chooseDialogueEndSoundVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -686,7 +686,7 @@
             // chooseDialoguePaneVerify
             // 
             this.chooseDialoguePaneVerify.Location = new System.Drawing.Point(140, 107);
-            this.chooseDialoguePaneVerify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chooseDialoguePaneVerify.Margin = new System.Windows.Forms.Padding(2);
             this.chooseDialoguePaneVerify.Name = "chooseDialoguePaneVerify";
             this.chooseDialoguePaneVerify.Size = new System.Drawing.Size(21, 23);
             this.chooseDialoguePaneVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -696,7 +696,7 @@
             // chooseDialogueFontVerify
             // 
             this.chooseDialogueFontVerify.Location = new System.Drawing.Point(140, 66);
-            this.chooseDialogueFontVerify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chooseDialogueFontVerify.Margin = new System.Windows.Forms.Padding(2);
             this.chooseDialogueFontVerify.Name = "chooseDialogueFontVerify";
             this.chooseDialogueFontVerify.Size = new System.Drawing.Size(21, 23);
             this.chooseDialogueFontVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -706,7 +706,7 @@
             // chooseScrollSoundVerify
             // 
             this.chooseScrollSoundVerify.Location = new System.Drawing.Point(140, 30);
-            this.chooseScrollSoundVerify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chooseScrollSoundVerify.Margin = new System.Windows.Forms.Padding(2);
             this.chooseScrollSoundVerify.Name = "chooseScrollSoundVerify";
             this.chooseScrollSoundVerify.Size = new System.Drawing.Size(21, 23);
             this.chooseScrollSoundVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -914,9 +914,9 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(182, 94);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(76, 13);
+            this.label23.Size = new System.Drawing.Size(93, 13);
             this.label23.TabIndex = 69;
-            this.label23.Text = "Player Position";
+            this.label23.Text = "Character Position";
             // 
             // chooseDialogueEndSoundButton
             // 
@@ -993,7 +993,7 @@
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(357, 319);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
@@ -1031,7 +1031,7 @@
             this.tabPage2.Controls.Add(this.groupBox7);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(357, 319);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Main Menu";
@@ -1040,7 +1040,7 @@
             // mainMenuFontVerify
             // 
             this.mainMenuFontVerify.Location = new System.Drawing.Point(307, 245);
-            this.mainMenuFontVerify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mainMenuFontVerify.Margin = new System.Windows.Forms.Padding(2);
             this.mainMenuFontVerify.Name = "mainMenuFontVerify";
             this.mainMenuFontVerify.Size = new System.Drawing.Size(21, 23);
             this.mainMenuFontVerify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1110,7 +1110,7 @@
             // selectMainMenuImageButton
             // 
             this.selectMainMenuImageButton.Location = new System.Drawing.Point(48, 177);
-            this.selectMainMenuImageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectMainMenuImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectMainMenuImageButton.Name = "selectMainMenuImageButton";
             this.selectMainMenuImageButton.Size = new System.Drawing.Size(136, 21);
             this.selectMainMenuImageButton.TabIndex = 12;
@@ -1158,7 +1158,7 @@
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(357, 319);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Dialogue";
@@ -1191,7 +1191,7 @@
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(357, 319);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Game Over";
