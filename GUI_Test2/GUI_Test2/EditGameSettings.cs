@@ -694,6 +694,7 @@ namespace GUI_Test2
                 if (DialogResult.OK == of.ShowDialog())
                 {
                     menuFontPath = of.FileName;
+                    
                 }
 
             }
@@ -701,6 +702,7 @@ namespace GUI_Test2
             {
                 Console.Out.WriteLine(ex.StackTrace);
             }
+            updateCheckMarks();
 
         }
 
