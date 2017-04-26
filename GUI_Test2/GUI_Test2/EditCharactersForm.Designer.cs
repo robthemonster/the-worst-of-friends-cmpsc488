@@ -67,7 +67,7 @@
             this.characterImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.characterImage.Name = "characterImage";
             this.characterImage.Size = new System.Drawing.Size(119, 92);
-            this.characterImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.characterImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.characterImage.TabIndex = 0;
             this.characterImage.TabStop = false;
             this.characterImage.Click += new System.EventHandler(this.characterImage_Click);
@@ -96,7 +96,7 @@
             // imageNameTextBox
             // 
             this.imageNameTextBox.Location = new System.Drawing.Point(244, 23);
-            this.imageNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.imageNameTextBox.Name = "imageNameTextBox";
             this.imageNameTextBox.Size = new System.Drawing.Size(155, 22);
             this.imageNameTextBox.TabIndex = 3;
@@ -107,7 +107,7 @@
             this.characterImageList.FormattingEnabled = true;
             this.characterImageList.ItemHeight = 16;
             this.characterImageList.Location = new System.Drawing.Point(441, 31);
-            this.characterImageList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.characterImageList.Margin = new System.Windows.Forms.Padding(4);
             this.characterImageList.Name = "characterImageList";
             this.characterImageList.Size = new System.Drawing.Size(129, 212);
             this.characterImageList.TabIndex = 9;
@@ -118,7 +118,7 @@
             this.characterList.FormattingEnabled = true;
             this.characterList.ItemHeight = 16;
             this.characterList.Location = new System.Drawing.Point(303, 31);
-            this.characterList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.characterList.Margin = new System.Windows.Forms.Padding(4);
             this.characterList.Name = "characterList";
             this.characterList.Size = new System.Drawing.Size(129, 84);
             this.characterList.TabIndex = 7;
@@ -127,7 +127,7 @@
             // deleteSelectedCharacterButton
             // 
             this.deleteSelectedCharacterButton.Location = new System.Drawing.Point(8, 57);
-            this.deleteSelectedCharacterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteSelectedCharacterButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteSelectedCharacterButton.Name = "deleteSelectedCharacterButton";
             this.deleteSelectedCharacterButton.Size = new System.Drawing.Size(131, 23);
             this.deleteSelectedCharacterButton.TabIndex = 8;
@@ -164,9 +164,9 @@
             this.groupBox1.Controls.Add(this.deleteSelectedCharacterButton);
             this.groupBox1.Controls.Add(this.characterNameBox);
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(277, 94);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
@@ -182,9 +182,9 @@
             this.groupBox2.Controls.Add(this.imageNamelabel);
             this.groupBox2.Controls.Add(this.imageNameTextBox);
             this.groupBox2.Location = new System.Drawing.Point(16, 116);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(416, 130);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
@@ -193,7 +193,7 @@
             // closeButton
             // 
             this.closeButton.Location = new System.Drawing.Point(303, 91);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(105, 28);
             this.closeButton.TabIndex = 6;
@@ -204,7 +204,7 @@
             // deleteImageButton
             // 
             this.deleteImageButton.Location = new System.Drawing.Point(303, 55);
-            this.deleteImageButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteImageButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteImageButton.Name = "deleteImageButton";
             this.deleteImageButton.Size = new System.Drawing.Size(105, 28);
             this.deleteImageButton.TabIndex = 10;
@@ -216,7 +216,7 @@
             // addImageToCharacterButton
             // 
             this.addImageToCharacterButton.Location = new System.Drawing.Point(137, 90);
-            this.addImageToCharacterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addImageToCharacterButton.Margin = new System.Windows.Forms.Padding(4);
             this.addImageToCharacterButton.Name = "addImageToCharacterButton";
             this.addImageToCharacterButton.Size = new System.Drawing.Size(161, 28);
             this.addImageToCharacterButton.TabIndex = 5;
@@ -249,9 +249,7 @@
             this.AcceptButton = this.createNewCharacterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
             this.ClientSize = new System.Drawing.Size(569, 238);
-
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);

@@ -59,7 +59,8 @@ namespace GUI_Test2
         public static Dictionary<string, NPC> characters = new Dictionary<string, NPC>();
         public static EndingGen endingGen = new EndingGen();
         public static GameSettings gameSettings = new GameSettings();
-
+        public static string savePath = "";
+        public static string compileTo = "";
         public static void loadFromProject(Project project)
         {
             Game.pathGroups = project.pathGroups;
@@ -71,13 +72,15 @@ namespace GUI_Test2
             Game.gameSettings = project.gameSettings;
             Attributes.attribs = project.attribs;
 
+            Game.compileTo = Directory.GetParent(Game.savePath).FullName + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath);
             Game.navNameToCodeIndex = new Dictionary<string, int>();
             Game.oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
             Game.oldPathToCodeObject = new Dictionary<string, string>();
             Game.characterNameToCodeObject = new Dictionary<string, string>();
+
         }
 
-        private static DirectoryInfo directory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
+        private static DirectoryInfo codeGenDirectory = Directory.GetParent(Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\");
         private static Dictionary<string, int> navNameToCodeIndex = new Dictionary<string, int>();
         private static Dictionary<string, Dictionary<string, string>> oldPathToNewPath = new Dictionary<string, Dictionary<string, string>>();
         private static Dictionary<string, string> oldPathToCodeObject = new Dictionary<string, string>();
@@ -642,14 +645,24 @@ namespace GUI_Test2
             Game.oldPathToNewPath["image"] = new Dictionary<string, string>();
             Game.oldPathToNewPath["sound"] = new Dictionary<string, string>();
             Game.oldPathToNewPath["characterImage"] = new Dictionary<string, string>();
+            Game.oldPathToNewPath["library"] = new Dictionary<string, string>();
 
             Game.oldPathToNewPath["sound"][""] = "";
             Game.oldPathToNewPath["image"][""] = "";
 
+            
+
             Console.Out.WriteLine("Copying assets to dir..");
-            System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\img");
-            System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\music");
-            System.IO.Directory.CreateDirectory(Game.directory + "\\assets\\fonts");
+            System.IO.Directory.CreateDirectory(Game.compileTo + "\\assets\\img");
+            System.IO.Directory.CreateDirectory(Game.compileTo + "\\assets\\music");
+            System.IO.Directory.CreateDirectory(Game.compileTo + "\\assets\\fonts");
+
+            foreach (FileInfo f in Game.codeGenDirectory.GetFiles())
+            {
+                
+                if (f.Extension == ".dll")
+                    copyFileTo(f.FullName, "\\" + System.IO.Path.GetFileNameWithoutExtension(f.FullName), "library");
+            }
 
             int imgctr = 0, musicctr = 0, fontCtr = 0;
             foreach (Navigable nav in Game.navIndex.Values)
@@ -735,8 +748,8 @@ namespace GUI_Test2
                 FileInfo f = new FileInfo(file);
                 if (f.Exists && !Game.oldPathToNewPath[fileType].ContainsKey(file))
                 {
-                    f.CopyTo(Game.directory + destFile + f.Extension, true);
-                    Game.oldPathToNewPath[fileType][file] = (Game.directory + destFile + f.Extension).Replace("\\", "/");
+                    f.CopyTo(Game.compileTo + destFile + f.Extension, true);
+                    Game.oldPathToNewPath[fileType][file] = (Game.compileTo + destFile + f.Extension).Replace("\\", "/");
                 }
             }
             catch (ArgumentException ex)
@@ -748,25 +761,20 @@ namespace GUI_Test2
         public static void compileAndRun()
         {
             Tuple<bool, string> error = Game.gameSettings.validateSettings();
-            if (!error.Item1) //settings are not valid
+            if (!error.Item1 || Game.savePath == "") //settings are not valid
             {
                 System.Windows.Forms.MessageBox.Show(error.Item2 + "\nCannot Run Playtest");
                 return;
             }
 
             String vsCommandPath = System.Environment.GetEnvironmentVariable("windir") + "\\System32\\cmd.exe";
-            String mainPath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\codegen_test\\main.cpp";
-            DirectoryInfo directory = Directory.GetParent(mainPath);
-
-            FileInfo[] files = directory.GetFiles();
-            foreach (FileInfo f in files)
-            {
-                // if (f.Name == "main.exe" || f.Name == "main.cpp")
-                //  f.Delete();
-            }
+            String exePath = Directory.GetParent(Game.savePath).FullName + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath) + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath); 
+           
+          
 
 
-            if (!Game.generateCode(mainPath))
+
+            if (!Game.generateCode(Game.codeGenDirectory + "\\main.cpp"))
             {
                 return;
             }
@@ -774,33 +782,31 @@ namespace GUI_Test2
 
 
             ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
-
-            cmd.Arguments = @"/c cd " + directory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
-
-
-            Process compiler = Process.Start(cmd);
-            compiler.WaitForExit();
+            
+            cmd.Arguments = @"/c /q cd " + Game.codeGenDirectory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
+           
 
 
+            Process compiler; //= Process.Start(cmd);
+            //compiler.WaitForExit();
 
 
 
-            cmd.Arguments = @"/c cd " + directory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include main.cpp /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
 
+
+            cmd.Arguments = @"/k cd " + Game.codeGenDirectory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /Fe""" + exePath + @""" main.cpp   /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj";
+          
+            
             compiler = Process.Start(cmd);
 
             compiler.WaitForExit();
 
 
 
-            foreach (FileInfo f in directory.GetFiles())
-            {
-                // if (f.Extension == ".obj" || f.Name == "main.cpp" || (f.Extension == ".exe" && f.Name != "main.exe"))
-                //  f.Delete();
-            }
+          
 
-            ProcessStartInfo game = new ProcessStartInfo(directory + "\\main.exe");
-            game.WorkingDirectory = directory.ToString();
+            ProcessStartInfo game = new ProcessStartInfo(Game.compileTo + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath)+".exe");
+            game.WorkingDirectory = Game.compileTo.ToString();
             Process gameProc = Process.Start(game);
             gameProc.WaitForExit();
 

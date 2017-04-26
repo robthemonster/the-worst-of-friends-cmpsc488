@@ -46,6 +46,8 @@ namespace GUI_Test2
             {
                 Project project = new Project();
                 Game.loadFromProject(project);
+                Game.savePath = "";
+                Game.compileTo = "";
                 /*Game.navIndex = new Dictionary<String, Navigable>();
                 //attributes = new Attribs();
                 Game.paths = new List<String>();
@@ -100,6 +102,7 @@ namespace GUI_Test2
             sd.AddExtension = true;
             if (sd.ShowDialog() == DialogResult.OK)
             {
+
                 fileLocation = sd.FileName;
                 saveToolStripMenuItem_Click(sender, e);
                 setWindowTitle(fileLocation);
@@ -114,6 +117,8 @@ namespace GUI_Test2
             if (fileLocation != "")
             {
                 //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+                Game.savePath = fileLocation;
+                Game.compileTo = Directory.GetParent(fileLocation).FullName + "\\" + System.IO.Path.GetFileNameWithoutExtension(fileLocation);
                 Project proj = new Project(Game.pathGroups, Game.hubs, Game.navIndex, Game.paths, Attributes.attribs, Game.characters, Game.endingGen, Game.gameSettings);
                 saveToFile(proj, fileLocation);
             }
@@ -247,7 +252,9 @@ namespace GUI_Test2
                 stream.Close();
 
                 //Load the GameObject
+                Game.savePath = fileName;
                 Game.loadFromProject(proj);
+                
 
                 /* Game.pathGroups = (List<String>)proj.pathGroups;
                  Game.hubs = (List<String>)proj.hubs;
@@ -460,6 +467,7 @@ namespace GUI_Test2
 
         private void runPlayTest_MenuItemClick(object sender, EventArgs e)
         {
+            saveToolStripMenuItem.PerformClick();
             Game.compileAndRun();
         }
 
