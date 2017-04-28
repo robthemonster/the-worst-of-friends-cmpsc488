@@ -128,7 +128,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 									}
 								}
 							}else {
-								(*it).setDone(true);
+								//(*it).setDone(true);
 							}
 						}
 					}
@@ -201,7 +201,7 @@ void DialogueScreen::display(sf::RenderWindow & window, sf::View & view, bool fa
 							}
 						}
 						else {
-							(*it).setDone(true);
+							//(*it).setDone(true);
 						}
 					}
 				}

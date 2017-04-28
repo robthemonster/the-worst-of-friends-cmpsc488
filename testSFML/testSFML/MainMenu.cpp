@@ -83,7 +83,7 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 					}
 					break;
 				case::sf::Keyboard::Return:
-					if (!mouseMode) {
+					if (!mouseMode && !pressedPlay) {
 						if ((*this->playGame).isHighlighted()) {
 							if (music != NULL)
 								(*music).stop();
@@ -100,7 +100,7 @@ void MainMenu::display(sf::RenderWindow & window, sf::View & view, bool fadeIn)
 			case sf::Event::MouseButtonReleased:
 				switch (evnt.mouseButton.button) {
 				case sf::Mouse::Left:
-					if ((*this->playGame).isHighlighted()) {
+					if ((*this->playGame).isHighlighted() && !pressedPlay) {
 						if (music != NULL)
 							(*music).stop();
 						if (playGameSoundFile != "")
