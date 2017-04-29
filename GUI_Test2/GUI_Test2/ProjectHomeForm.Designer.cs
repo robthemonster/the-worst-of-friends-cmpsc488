@@ -47,7 +47,6 @@
             this.hubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pathGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mAKEPATHSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runPlaytestToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.hubListBox = new System.Windows.Forms.ListBox();
@@ -184,8 +183,7 @@
             this.createToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hubToolStripMenuItem,
             this.pathToolStripMenuItem,
-            this.pathGroupToolStripMenuItem,
-            this.mAKEPATHSToolStripMenuItem});
+            this.pathGroupToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
             this.createToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.createToolStripMenuItem.Text = "Create...";
@@ -193,30 +191,23 @@
             // hubToolStripMenuItem
             // 
             this.hubToolStripMenuItem.Name = "hubToolStripMenuItem";
-            this.hubToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.hubToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.hubToolStripMenuItem.Text = "Hub";
             this.hubToolStripMenuItem.Click += new System.EventHandler(this.hubToolStripMenuItem_Click);
             // 
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.pathToolStripMenuItem.Text = "Path";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
             // pathGroupToolStripMenuItem
             // 
             this.pathGroupToolStripMenuItem.Name = "pathGroupToolStripMenuItem";
-            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.pathGroupToolStripMenuItem.Text = "PathGroup";
             this.pathGroupToolStripMenuItem.Click += new System.EventHandler(this.pathGroupToolStripMenuItem_Click);
-            // 
-            // mAKEPATHSToolStripMenuItem
-            // 
-            this.mAKEPATHSToolStripMenuItem.Name = "mAKEPATHSToolStripMenuItem";
-            this.mAKEPATHSToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
-            this.mAKEPATHSToolStripMenuItem.Text = "MAKE PATHS!";
-            this.mAKEPATHSToolStripMenuItem.Click += new System.EventHandler(this.makeSamplePaths);
             // 
             // runPlaytestToolStripMenuItem1
             // 
@@ -408,7 +399,6 @@
         private System.Windows.Forms.Label pathGroupLabel;
         private System.Windows.Forms.Label pathLabel;
         private System.Windows.Forms.ToolStripMenuItem attributesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mAKEPATHSToolStripMenuItem;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.ToolStripMenuItem endingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameSettingsToolStripMenuItem;

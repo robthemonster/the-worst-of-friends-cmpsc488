@@ -298,35 +298,7 @@ namespace GUI_Test2
 
 
         }
-        public void makeSamplePaths(object sender, EventArgs e)
-        {
-            String[] sillyString = { "asdf", "asdf2", "asdf3", "asdf4", "asdf5", "asdf6", "asdf7", "asdf8", "asdf9", "asdf10", "asdf11" };
-            try
-            {
-                foreach (String p in sillyString)
-                {
-                    Game.paths.Add(p);
-                    Game.navIndex.Add(p, new Path());
-                }
-                sillyString = new string[] { "hub1", "hub2", "hub3", "hub4", "hub5", "hub6" };
-                foreach (String p in sillyString)
-                {
-                    Game.hubs.Add(p);
-                    Game.navIndex.Add(p, new Hub());
-                }
-                Attributes.Add(0, "g1", 0, "");
-                Attributes.Add(1, "allHub1", 0, "");
-                Attributes.Add(1, "hub1One", 0, "hub1");
-                Attributes.Add(1, "hub2", 0, "hub2");
-                Attributes.Add(2, "p1", 0, "");
-                updateListBoxes();
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.StackTrace);
-            }
-
-        }
+       
 
         private void pathListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
