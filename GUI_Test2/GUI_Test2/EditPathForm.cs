@@ -506,6 +506,7 @@ namespace GUI_Test2
                 dialogueEntryList[dialogueList.SelectedIndex] = dialogueTextBox.Text;
                 dialogueTextBox.Text = "";
                 dialogues[dialogueList.SelectedIndex].soundPath = selectedDialoguePlaySound;
+                dialogues[dialogueList.SelectedIndex].content = dialogueEntryList[dialogueList.SelectedIndex];
                 updateListBoxes();
             }
         }
