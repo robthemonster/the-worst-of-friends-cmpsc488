@@ -442,7 +442,7 @@ namespace GUI_Test2
 
         private void runPlayTest_MenuItemClick(object sender, EventArgs e)
         {
-            saveToolStripMenuItem.PerformClick();
+            //saveToolStripMenuItem.PerformClick();
             Game.compileAndRun();
         }
 
@@ -489,8 +489,39 @@ namespace GUI_Test2
                             {
                                 if (a.scope != aG.scope || a.hub != aG.hub)
                                 {
+                                    string scopeFrom, scopeTo;
+                                    switch (a.scope)
+                                    {
+                                        case 0:
+                                            scopeFrom = "GLOBAL";
+                                            break;
+                                        case 1:
+                                            scopeFrom = "HUB";
+                                            break;
+                                        case 2:
+                                            scopeFrom = "PLAYER";
+                                            break;
+                                        default:
+                                            scopeFrom = "INVALID SCOPE";
+                                            break;
+                                    }
+                                    switch (aG.scope)
+                                    {
+                                        case 0:
+                                            scopeTo = "GLOBAL";
+                                            break;
+                                        case 1:
+                                            scopeTo = "HUB";
+                                            break;
+                                        case 2:
+                                            scopeTo = "PLAYER";
+                                            break;
+                                        default:
+                                            scopeTo = "INVALID SCOPE";
+                                            break;
+                                    }
                                     Console.Out.WriteLine("Attribute Merge scope/hub mismatch for \"" + a.name + "\":");
-                                    Console.Out.WriteLine("(" + a.scope + ", " + a.hub + ") != (" + aG.scope + ", " + aG.hub + ")");
+                                    Console.Out.WriteLine("(" + scopeFrom + ", " + a.hub + ") != (" + aG.scope + ", " + aG.hub + ")");
                                     errorFound = true;
                                 }
                                 else
