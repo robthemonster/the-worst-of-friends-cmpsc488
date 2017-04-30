@@ -219,14 +219,11 @@ namespace GUI_Test2
             Game.gameSettings.NPCYLoc = (int)this.NPCYLocNumericUpDown.Value;
 
 
-            if (dialogueEndSoundPath != "")
-            {
+          
                 Game.gameSettings.dialogueEndSoundPath = dialogueEndSoundPath;
-            }
-            if (dialogueScrollSoundPath != "")
-            {
+          
                 Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSoundPath;
-            }
+           
 
             if (this.roundEndNavComboBox.SelectedIndex != -1)
             {
@@ -714,6 +711,7 @@ namespace GUI_Test2
             }else
             {
                 chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.redx;
+                dialogueScrollSoundPath = "";
             }
             if (File.Exists(dialogueEndSoundPath))
             {
@@ -722,6 +720,7 @@ namespace GUI_Test2
             else
             {
                 chooseDialogueEndSoundVerify.Image = GUI_Test2.Properties.Resources.redx;
+                dialogueEndSoundPath = "";
             }
             if (File.Exists(dialoguePaneTexturePath))
             {

@@ -169,8 +169,10 @@ namespace GUI_Test2
                 switch (nav.getNavType())
                 {
                     case Navigable.PATH:
-                        code.AppendLine("(*nav" + navCtr + ").setDialogueScrollSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.dialogueScrollSoundPath] + "\");");
-                        code.AppendLine("(*nav" + navCtr + ").setDialogueEndSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.dialogueEndSoundPath] + "\");");
+                        if (Game.gameSettings.dialogueScrollSoundPath != "")
+                            code.AppendLine("(*nav" + navCtr + ").setDialogueScrollSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.dialogueScrollSoundPath] + "\");");
+                        if (Game.gameSettings.dialogueEndSoundPath != "")
+                            code.AppendLine("(*nav" + navCtr + ").setDialogueEndSound(\"" + Game.oldPathToNewPath["sound"][Game.gameSettings.dialogueEndSoundPath] + "\");");
                         break;
                 }
                 navCtr++;
@@ -651,7 +653,7 @@ namespace GUI_Test2
             Game.oldPathToNewPath["sound"][""] = "";
             Game.oldPathToNewPath["image"][""] = "";
 
-            
+
 
             Console.Out.WriteLine("Copying assets to dir..");
             System.IO.Directory.CreateDirectory(Game.compileTo + "\\assets\\img");
@@ -660,7 +662,7 @@ namespace GUI_Test2
 
             foreach (FileInfo f in Game.codeGenDirectory.GetFiles())
             {
-                
+
                 if (f.Extension == ".dll")
                     copyFileTo(f.FullName, "\\" + System.IO.Path.GetFileNameWithoutExtension(f.FullName), "library");
             }
@@ -769,9 +771,9 @@ namespace GUI_Test2
             }
 
             String vsCommandPath = System.Environment.GetEnvironmentVariable("windir") + "\\System32\\cmd.exe";
-            String exePath = Directory.GetParent(Game.savePath).FullName + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath) + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath); 
-           
-          
+            String exePath = Directory.GetParent(Game.savePath).FullName + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath) + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath);
+
+
 
 
 
@@ -788,7 +790,7 @@ namespace GUI_Test2
             }
 
             ProcessStartInfo cmd = new ProcessStartInfo(vsCommandPath);
-            
+
             cmd.Arguments = @"/c cd " + Game.codeGenDirectory + @"&& VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /I .VC\include .\include\*.cpp  /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib ";
 
 
@@ -796,7 +798,7 @@ namespace GUI_Test2
             cmd.UseShellExecute = false;
             cmd.CreateNoWindow = true;
             Cursor.Current = Cursors.WaitCursor;
-            Process compiler  = Process.Start(cmd);
+            Process compiler = Process.Start(cmd);
             compiler.WaitForExit();
 
 
@@ -804,8 +806,8 @@ namespace GUI_Test2
 
 
             cmd.Arguments = @"/c cd " + Game.codeGenDirectory + @" && VC\bin\vcvars32 && VC\bin\cl /EHsc /I .\include /I .\SFML-2.4.2\include /Fe""" + exePath + @""" main.cpp   /link /LIBPATH:.\SFML-2.4.2\lib sfml-system.lib sfml-window.lib sfml-graphics.lib sfml-audio.lib sfml-network.lib /LIBPATH:.\ *.obj ";
-          
-            
+
+
             compiler = Process.Start(cmd);
 
             compiler.WaitForExit();
@@ -814,7 +816,7 @@ namespace GUI_Test2
 
             Cursor.Current = Cursors.Arrow;
 
-            ProcessStartInfo game = new ProcessStartInfo(Game.compileTo + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath)+".exe");
+            ProcessStartInfo game = new ProcessStartInfo(Game.compileTo + "\\" + System.IO.Path.GetFileNameWithoutExtension(Game.savePath) + ".exe");
             game.WorkingDirectory = Game.compileTo.ToString();
             Process gameProc = Process.Start(game);
             gameProc.WaitForExit();
