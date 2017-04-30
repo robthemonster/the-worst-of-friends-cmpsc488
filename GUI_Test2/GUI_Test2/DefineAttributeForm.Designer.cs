@@ -100,6 +100,7 @@
             // scopeAttributesListBox
             // 
             this.scopeAttributesListBox.FormattingEnabled = true;
+            this.scopeAttributesListBox.HorizontalScrollbar = true;
             this.scopeAttributesListBox.ItemHeight = 16;
             this.scopeAttributesListBox.Location = new System.Drawing.Point(16, 62);
             this.scopeAttributesListBox.Margin = new System.Windows.Forms.Padding(4);

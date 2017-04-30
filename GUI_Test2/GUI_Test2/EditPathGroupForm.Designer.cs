@@ -142,6 +142,7 @@
             // 
             this.pathsNotInPathGroupListBox.AllowDrop = true;
             this.pathsNotInPathGroupListBox.FormattingEnabled = true;
+            this.pathsNotInPathGroupListBox.HorizontalScrollbar = true;
             this.pathsNotInPathGroupListBox.ItemHeight = 16;
             this.pathsNotInPathGroupListBox.Location = new System.Drawing.Point(16, 32);
             this.pathsNotInPathGroupListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -155,6 +156,7 @@
             // 
             this.pathsInPathGroupListBox.AllowDrop = true;
             this.pathsInPathGroupListBox.FormattingEnabled = true;
+            this.pathsInPathGroupListBox.HorizontalScrollbar = true;
             this.pathsInPathGroupListBox.ItemHeight = 16;
             this.pathsInPathGroupListBox.Location = new System.Drawing.Point(263, 32);
             this.pathsInPathGroupListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -166,7 +168,7 @@
             // Cancelbutton
             // 
             this.Cancelbutton.Location = new System.Drawing.Point(576, 160);
-            this.Cancelbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cancelbutton.Margin = new System.Windows.Forms.Padding(4);
             this.Cancelbutton.Name = "Cancelbutton";
             this.Cancelbutton.Size = new System.Drawing.Size(100, 28);
             this.Cancelbutton.TabIndex = 15;
@@ -177,7 +179,7 @@
             // Savebutton
             // 
             this.Savebutton.Location = new System.Drawing.Point(464, 160);
-            this.Savebutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Savebutton.Margin = new System.Windows.Forms.Padding(4);
             this.Savebutton.Name = "Savebutton";
             this.Savebutton.Size = new System.Drawing.Size(100, 28);
             this.Savebutton.TabIndex = 16;
@@ -190,7 +192,7 @@
             this.tierComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tierComboBox.FormattingEnabled = true;
             this.tierComboBox.Location = new System.Drawing.Point(155, 87);
-            this.tierComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tierComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.tierComboBox.Name = "tierComboBox";
             this.tierComboBox.Size = new System.Drawing.Size(84, 24);
             this.tierComboBox.TabIndex = 17;
@@ -229,9 +231,10 @@
             // tierPathsListBox
             // 
             this.tierPathsListBox.FormattingEnabled = true;
+            this.tierPathsListBox.HorizontalScrollbar = true;
             this.tierPathsListBox.ItemHeight = 16;
             this.tierPathsListBox.Location = new System.Drawing.Point(8, 47);
-            this.tierPathsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tierPathsListBox.Margin = new System.Windows.Forms.Padding(4);
             this.tierPathsListBox.Name = "tierPathsListBox";
             this.tierPathsListBox.Size = new System.Drawing.Size(121, 148);
             this.tierPathsListBox.TabIndex = 22;
@@ -240,7 +243,7 @@
             // editTierPathButton
             // 
             this.editTierPathButton.Location = new System.Drawing.Point(124, 75);
-            this.editTierPathButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editTierPathButton.Margin = new System.Windows.Forms.Padding(4);
             this.editTierPathButton.Name = "editTierPathButton";
             this.editTierPathButton.Size = new System.Drawing.Size(77, 28);
             this.editTierPathButton.TabIndex = 23;
@@ -251,7 +254,7 @@
             // addConditionButton
             // 
             this.addConditionButton.Location = new System.Drawing.Point(436, 33);
-            this.addConditionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addConditionButton.Margin = new System.Windows.Forms.Padding(4);
             this.addConditionButton.Name = "addConditionButton";
             this.addConditionButton.Size = new System.Drawing.Size(121, 31);
             this.addConditionButton.TabIndex = 24;
@@ -263,7 +266,7 @@
             // 
             this.useOnceCheckBox.AutoSize = true;
             this.useOnceCheckBox.Location = new System.Drawing.Point(16, 82);
-            this.useOnceCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.useOnceCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.useOnceCheckBox.Name = "useOnceCheckBox";
             this.useOnceCheckBox.Size = new System.Drawing.Size(97, 21);
             this.useOnceCheckBox.TabIndex = 25;
@@ -276,9 +279,9 @@
             this.groupBox1.Controls.Add(this.useOnceCheckBox);
             this.groupBox1.Controls.Add(this.editTierPathButton);
             this.groupBox1.Location = new System.Drawing.Point(444, 68);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(221, 114);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
@@ -294,7 +297,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tierWeightTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.pathWeightNumericUpDown, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -305,7 +308,7 @@
             // pathWeightNumericUpDown
             // 
             this.pathWeightNumericUpDown.Location = new System.Drawing.Point(4, 26);
-            this.pathWeightNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pathWeightNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.pathWeightNumericUpDown.Maximum = new decimal(new int[] {
             2000000,
             0,
@@ -337,9 +340,9 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.addConditionButton);
             this.groupBox4.Location = new System.Drawing.Point(8, 273);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(684, 204);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
@@ -348,9 +351,10 @@
             // pathRequirementsListBox
             // 
             this.pathRequirementsListBox.FormattingEnabled = true;
+            this.pathRequirementsListBox.HorizontalScrollbar = true;
             this.pathRequirementsListBox.ItemHeight = 16;
             this.pathRequirementsListBox.Location = new System.Drawing.Point(572, 25);
-            this.pathRequirementsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pathRequirementsListBox.Margin = new System.Windows.Forms.Padding(4);
             this.pathRequirementsListBox.Name = "pathRequirementsListBox";
             this.pathRequirementsListBox.Size = new System.Drawing.Size(103, 116);
             this.pathRequirementsListBox.TabIndex = 38;
@@ -359,7 +363,7 @@
             // removeConditionButton
             // 
             this.removeConditionButton.Location = new System.Drawing.Point(436, 66);
-            this.removeConditionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removeConditionButton.Margin = new System.Windows.Forms.Padding(4);
             this.removeConditionButton.Name = "removeConditionButton";
             this.removeConditionButton.Size = new System.Drawing.Size(121, 27);
             this.removeConditionButton.TabIndex = 37;
@@ -373,9 +377,9 @@
             this.groupBox5.Controls.Add(this.hubLabel);
             this.groupBox5.Controls.Add(this.tableLayoutPanel3);
             this.groupBox5.Location = new System.Drawing.Point(148, 20);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(280, 102);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
@@ -387,7 +391,7 @@
             this.hubComboBox.Enabled = false;
             this.hubComboBox.FormattingEnabled = true;
             this.hubComboBox.Location = new System.Drawing.Point(151, 47);
-            this.hubComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.hubComboBox.Name = "hubComboBox";
             this.hubComboBox.Size = new System.Drawing.Size(120, 24);
             this.hubComboBox.TabIndex = 2;
@@ -412,7 +416,7 @@
             this.tableLayoutPanel3.Controls.Add(this.hubRadioButton, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.playerRadioButton, 0, 2);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(8, 17);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
@@ -425,7 +429,7 @@
             // 
             this.globalRadioButton.AutoSize = true;
             this.globalRadioButton.Location = new System.Drawing.Point(4, 4);
-            this.globalRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.globalRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.globalRadioButton.Name = "globalRadioButton";
             this.globalRadioButton.Size = new System.Drawing.Size(70, 18);
             this.globalRadioButton.TabIndex = 0;
@@ -438,7 +442,7 @@
             // 
             this.hubRadioButton.AutoSize = true;
             this.hubRadioButton.Location = new System.Drawing.Point(4, 30);
-            this.hubRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hubRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.hubRadioButton.Name = "hubRadioButton";
             this.hubRadioButton.Size = new System.Drawing.Size(55, 18);
             this.hubRadioButton.TabIndex = 1;
@@ -451,7 +455,7 @@
             // 
             this.playerRadioButton.AutoSize = true;
             this.playerRadioButton.Location = new System.Drawing.Point(4, 56);
-            this.playerRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.playerRadioButton.Name = "playerRadioButton";
             this.playerRadioButton.Size = new System.Drawing.Size(69, 21);
             this.playerRadioButton.TabIndex = 2;
@@ -465,7 +469,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.72727F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.27273F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tableLayoutPanel2.Controls.Add(this.attributeComboBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.comparitorComboBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 0);
@@ -473,7 +477,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.valueNumeric, 2, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(148, 129);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
@@ -486,7 +490,7 @@
             this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(4, 26);
-            this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.attributeComboBox.Name = "attributeComboBox";
             this.attributeComboBox.Size = new System.Drawing.Size(111, 24);
             this.attributeComboBox.TabIndex = 24;
@@ -495,8 +499,8 @@
             // 
             this.comparitorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comparitorComboBox.FormattingEnabled = true;
-            this.comparitorComboBox.Location = new System.Drawing.Point(124, 26);
-            this.comparitorComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comparitorComboBox.Location = new System.Drawing.Point(123, 26);
+            this.comparitorComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.comparitorComboBox.Name = "comparitorComboBox";
             this.comparitorComboBox.Size = new System.Drawing.Size(79, 24);
             this.comparitorComboBox.TabIndex = 23;
@@ -504,7 +508,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(124, 0);
+            this.label5.Location = new System.Drawing.Point(123, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 22);
@@ -524,7 +528,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(211, 0);
+            this.label8.Location = new System.Drawing.Point(210, 0);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 17);
@@ -533,7 +537,7 @@
             // 
             // valueNumeric
             // 
-            this.valueNumeric.Location = new System.Drawing.Point(210, 25);
+            this.valueNumeric.Location = new System.Drawing.Point(209, 25);
             this.valueNumeric.Maximum = new decimal(new int[] {
             1000000,
             0,

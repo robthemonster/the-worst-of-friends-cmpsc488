@@ -191,21 +191,21 @@
             // hubToolStripMenuItem
             // 
             this.hubToolStripMenuItem.Name = "hubToolStripMenuItem";
-            this.hubToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.hubToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.hubToolStripMenuItem.Text = "Hub";
             this.hubToolStripMenuItem.Click += new System.EventHandler(this.hubToolStripMenuItem_Click);
             // 
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.pathToolStripMenuItem.Text = "Path";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
             // pathGroupToolStripMenuItem
             // 
             this.pathGroupToolStripMenuItem.Name = "pathGroupToolStripMenuItem";
-            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.pathGroupToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.pathGroupToolStripMenuItem.Text = "PathGroup";
             this.pathGroupToolStripMenuItem.Click += new System.EventHandler(this.pathGroupToolStripMenuItem_Click);
             // 
@@ -240,6 +240,7 @@
             // hubListBox
             // 
             this.hubListBox.FormattingEnabled = true;
+            this.hubListBox.HorizontalScrollbar = true;
             this.hubListBox.ItemHeight = 16;
             this.hubListBox.Location = new System.Drawing.Point(5, 45);
             this.hubListBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -252,6 +253,7 @@
             // pathListBox
             // 
             this.pathListBox.FormattingEnabled = true;
+            this.pathListBox.HorizontalScrollbar = true;
             this.pathListBox.ItemHeight = 16;
             this.pathListBox.Location = new System.Drawing.Point(405, 45);
             this.pathListBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -294,6 +296,7 @@
             // pathGroupListBox
             // 
             this.pathGroupListBox.FormattingEnabled = true;
+            this.pathGroupListBox.HorizontalScrollbar = true;
             this.pathGroupListBox.ItemHeight = 16;
             this.pathGroupListBox.Location = new System.Drawing.Point(205, 45);
             this.pathGroupListBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -359,7 +362,7 @@
             this.MaximizeBox = false;
             this.Name = "ProjectHomeForm";
             this.Text = "Project Home";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.closeButton_Click);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closeButton_Click);
             this.Load += new System.EventHandler(this.ProjectHub_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

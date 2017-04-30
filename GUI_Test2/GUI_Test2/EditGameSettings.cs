@@ -234,8 +234,8 @@ namespace GUI_Test2
             }
             else
             {
-                MessageBox.Show("Please Select a Navigable to End Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
-                return;
+             //   MessageBox.Show("Please Select a Navigable to End Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
+               // return;
             }
 
 
@@ -245,8 +245,8 @@ namespace GUI_Test2
             }
             else
             {
-                MessageBox.Show("Please Select a Navigable to Begin Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
-                return;
+           //     MessageBox.Show("Please Select a Navigable to Begin Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
+              //  return;
             }
 
             string turnStartNav;
@@ -257,8 +257,8 @@ namespace GUI_Test2
             }
             else
             {
-                MessageBox.Show("Please Select a Navigable for the Start of a Player's Turn.", "Cannot Save Settings", MessageBoxButtons.OK);
-                return;
+            //    MessageBox.Show("Please Select a Navigable for the Start of a Player's Turn.", "Cannot Save Settings", MessageBoxButtons.OK);
+             //   return;
             }
 
             if (gameOverReq.Count > 0)
@@ -267,8 +267,8 @@ namespace GUI_Test2
             }
             else
             {
-                MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
-                return;
+             //   MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
+             //   return;
             }
 
             Game.gameSettings.defaultFontPath = defaultFontPath;

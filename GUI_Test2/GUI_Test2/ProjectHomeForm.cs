@@ -161,6 +161,8 @@ namespace GUI_Test2
             DialogResult result = MessageBox.Show("Save before exit?", "Exiting FireSide", MessageBoxButtons.YesNoCancel);
             if (result == DialogResult.Cancel)
             {
+                if (e.GetType() == typeof(FormClosingEventArgs))
+                    ((FormClosingEventArgs)e).Cancel = true;
                 return;
             }
             else if (result == DialogResult.Yes)
@@ -170,6 +172,7 @@ namespace GUI_Test2
             }
             else if (result == DialogResult.No)
             {
+                
                 return;
             }
         }
@@ -455,9 +458,8 @@ namespace GUI_Test2
             gs.ShowDialog();
         }
 
+       
 
-
-
-
+      
     }
 }

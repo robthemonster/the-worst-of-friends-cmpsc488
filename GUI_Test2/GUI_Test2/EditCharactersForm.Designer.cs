@@ -105,6 +105,7 @@
             // characterImageList
             // 
             this.characterImageList.FormattingEnabled = true;
+            this.characterImageList.HorizontalScrollbar = true;
             this.characterImageList.ItemHeight = 16;
             this.characterImageList.Location = new System.Drawing.Point(441, 31);
             this.characterImageList.Margin = new System.Windows.Forms.Padding(4);
@@ -116,6 +117,7 @@
             // characterList
             // 
             this.characterList.FormattingEnabled = true;
+            this.characterList.HorizontalScrollbar = true;
             this.characterList.ItemHeight = 16;
             this.characterList.Location = new System.Drawing.Point(303, 31);
             this.characterList.Margin = new System.Windows.Forms.Padding(4);

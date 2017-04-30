@@ -243,24 +243,30 @@ namespace GUI_Test2
 
         private void addConditionButton_Click(object sender, EventArgs e)
         {
-            if (attributeComboBox.SelectedIndex != -1 && pathsGroupedByTier.SelectedIndices[0] != -1)
+            try
             {
+                if (attributeComboBox.SelectedIndex != -1 && pathsGroupedByTier.SelectedIndices[0] != -1)
+                {
 
 
-                try
-                {
-                    int value = (int)valueNumeric.Value;
-                    int i = pathsGroupedByTier.SelectedIndices[0];
-                    reqsofEachPath[i].Add(new Requirement(scope, currHub, attributeComboBox.SelectedValue.ToString(), comparitorComboBox.SelectedValue.ToString(), value));
-                    updateReqList();
-                    pathRequirementsListBox.SelectedIndex = reqsofEachPath[i].Count - 1;
+                    try
+                    {
+                        int value = (int)valueNumeric.Value;
+                        int i = pathsGroupedByTier.SelectedIndices[0];
+                        reqsofEachPath[i].Add(new Requirement(scope, currHub, attributeComboBox.SelectedValue.ToString(), comparitorComboBox.SelectedValue.ToString(), value));
+                        updateReqList();
+                        pathRequirementsListBox.SelectedIndex = reqsofEachPath[i].Count - 1;
+                    }
+                    catch (InvalidCastException ex)
+                    {
+                        Console.Out.WriteLine(ex.StackTrace);
+                        MessageBox.Show("Value must be an Integer.");
+                        valueNumeric.Value = 0;
+                    }
                 }
-                catch (InvalidCastException ex)
-                {
-                    Console.Out.WriteLine(ex.StackTrace);
-                    MessageBox.Show("Value must be an Integer.");
-                    valueNumeric.Value = 0;
-                }
+            }catch(ArgumentOutOfRangeException ex)
+            {
+                Console.Out.WriteLine(ex.StackTrace);
             }
         }
 
