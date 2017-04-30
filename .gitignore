@@ -16,6 +16,7 @@ GUI_Test2/codegen_test/assets/
 GUI_Test2/codegen_test/music/
 GUI_Test2/codegen_test/img/mystuff/
 GUI_Test2/codegen_test/fonts/new fonts/
+GUI_Test2/example game/exampleGame/
 testSFML/SFML-2.4.2
 testSFML/testSFML/main.cpp
 *.vcxproj
