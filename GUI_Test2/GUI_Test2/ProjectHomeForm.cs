@@ -458,8 +458,110 @@ namespace GUI_Test2
             gs.ShowDialog();
         }
 
-       
+        private void mergeFromToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Title = "Merge From File";
+            fd.Filter = "FireSide Project (*.fsp)| *.fsp";
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = fd.FileName;
+                if (fileName != "")
+                {
+                    //Deserialization
 
-      
+
+                    Project proj;
+                    IFormatter formatter = new BinaryFormatter();
+                    var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+                    proj = (Project)formatter.Deserialize(stream);
+
+
+                    stream.Close();
+                    List<Attrib> commonAttribs = new List<Attrib>();
+                    bool errorFound = false;
+                    foreach (Attrib a in proj.attribs)
+                    {
+                        foreach (Attrib aG in Attributes.attribs)
+                        {
+                            if (a.name == aG.name)
+                            {
+                                if (a.scope != aG.scope || a.hub != aG.hub)
+                                {
+                                    Console.Out.WriteLine("Attribute Merge scope/hub mismatch for \"" + a.name + "\":");
+                                    Console.Out.WriteLine("(" + a.scope + ", " + a.hub + ") != (" + aG.scope + ", " + aG.hub + ")");
+                                    errorFound = true;
+                                }
+                                else
+                                {
+                                    commonAttribs.Add(a);
+                                }
+                            }
+                        }
+                    }
+                    if (errorFound)
+                    {
+                        Console.Out.WriteLine("Aborting Merge from "+System.IO.Path.GetFileName(fileName));
+                        return;
+                    }
+                    foreach (Attrib a in proj.attribs)
+                    {
+                        if (!commonAttribs.Contains(a))
+                        {
+                            Attributes.attribs.Add(a);
+                        }
+                    }
+
+                    foreach (String h in proj.hubs)
+                    {
+                        if (!Game.navIndex.Keys.Contains(h))
+                        {
+                            Game.navIndex.Add(h, proj.navIndex[h]);
+                            Game.hubs.Add(h);
+                        }
+                    }
+                    foreach (String pg in proj.pathGroups)
+                    {
+                        if (!Game.navIndex.Keys.Contains(pg))
+                        {
+                            Game.navIndex.Add(pg, proj.navIndex[pg]);
+                            Game.pathGroups.Add(pg);
+                        }
+                    }
+                    foreach (String p in proj.paths)
+                    {
+                        if (!Game.navIndex.Keys.Contains(p))
+                        {
+                            Game.navIndex.Add(p, proj.navIndex[p]);
+                            Game.paths.Add(p);
+                        }
+                    }
+
+
+
+                    /* Game.pathGroups = (List<String>)proj.pathGroups;
+                     Game.hubs = (List<String>)proj.hubs;
+                     Game.navIndex = (Dictionary<String, Navigable>)proj.navIndex;
+
+                     Game.paths = (List<String>)proj.paths;
+                     Attributes.attribs = (List<Attrib>)proj.attribs;
+                     Game.characters = (proj.characters);
+                     Game.gameSettings = proj.gameSettings;
+                     Game.endingGen = proj.endingGen;
+                     */
+                    //Game.init(pathGroups, hubs, navIndex, navigableName, paths);
+
+                    updateListBoxes();
+                }
+
+
+            }
+
+        }
+
+        private void mergeFromFile(string fileName) {
+            
+        }
     }
 }
