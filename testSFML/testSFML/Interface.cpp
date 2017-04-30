@@ -69,7 +69,7 @@ void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view,
 {
 	
 
-	sf::Vector2f startPos(800, -300);
+	sf::Vector2f startPos(0, 0);
 	sf::Vector2f currPos(startPos);
 
 	sf::RectangleShape statPane;
@@ -78,7 +78,7 @@ void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view,
 	float maxSizeX = 0;
 	for (int i = 0; i < this->visiblePlayerAttributes.size(); i++) {
 		std::string attribute = this->visiblePlayerAttributes[i] + ": " + std::to_string((*this->attributeMap).getAttribute((Attributable *)player, this->visiblePlayerAttributes[i]));
-		sf::Text currText(sf::String(attribute), font, 30);
+		sf::Text currText(sf::String(attribute + " "), font, 30);
 		currText.setOutlineColor(sf::Color::Black);
 		currText.setOutlineThickness(1);
 		currText.setPosition(currPos);
@@ -88,12 +88,16 @@ void Interface::drawPlayerAttributes(sf::RenderWindow & window, sf::View & view,
 		if (currText.getLocalBounds().width > maxSizeX)
 			maxSizeX = currText.getLocalBounds().width;
 	}
+	statPane.setPosition(view.getSize().x * 0.5 - maxSizeX, view.getSize().y * -0.25);
 	statPane.setOrigin(sf::Vector2f(5, 0));
-	statPane.setPosition(startPos);
+
 	statPane.setSize(sf::Vector2f(maxSizeX*1.1, currPos.y - startPos.y + font.getLineSpacing(30)));
 	statPane.setFillColor(playerColor);
 	window.draw(statPane);
+	float yPos = view.getSize().y * -0.25;
 	for (int i = 0; i < stats.size(); i++) {
+		stats[i].setPosition(view.getSize().x * 0.5 - maxSizeX, yPos);
+		yPos += font.getLineSpacing(20);
 		window.draw(stats[i]);
 	}
 
