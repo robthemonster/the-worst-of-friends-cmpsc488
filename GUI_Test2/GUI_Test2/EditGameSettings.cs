@@ -75,7 +75,9 @@ namespace GUI_Test2
                 dialogueScrollSoundPath = gS.dialogueScrollSoundPath;
                 chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.check;
             }
-            else { dialogueScrollSoundPath = "";
+            else
+            {
+                dialogueScrollSoundPath = "";
                 chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.redx;
             }
 
@@ -180,7 +182,7 @@ namespace GUI_Test2
 
             }
 
-            
+
 
             updateCheckMarks();
             mainMenuImagePictureBox.ImageLocation = mainMenuImagePath;
@@ -219,11 +221,11 @@ namespace GUI_Test2
             Game.gameSettings.NPCYLoc = (int)this.NPCYLocNumericUpDown.Value;
 
 
-          
-                Game.gameSettings.dialogueEndSoundPath = dialogueEndSoundPath;
-          
-                Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSoundPath;
-           
+
+            Game.gameSettings.dialogueEndSoundPath = dialogueEndSoundPath;
+
+            Game.gameSettings.dialogueScrollSoundPath = dialogueScrollSoundPath;
+
 
             if (this.roundEndNavComboBox.SelectedIndex != -1)
             {
@@ -231,8 +233,8 @@ namespace GUI_Test2
             }
             else
             {
-             //   MessageBox.Show("Please Select a Navigable to End Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
-               // return;
+                //   MessageBox.Show("Please Select a Navigable to End Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
+                // return;
             }
 
 
@@ -242,8 +244,8 @@ namespace GUI_Test2
             }
             else
             {
-           //     MessageBox.Show("Please Select a Navigable to Begin Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
-              //  return;
+                //     MessageBox.Show("Please Select a Navigable to Begin Each Round of the Game.", "Cannot Save Settings", MessageBoxButtons.OK);
+                //  return;
             }
 
             string turnStartNav;
@@ -254,8 +256,8 @@ namespace GUI_Test2
             }
             else
             {
-            //    MessageBox.Show("Please Select a Navigable for the Start of a Player's Turn.", "Cannot Save Settings", MessageBoxButtons.OK);
-             //   return;
+                //    MessageBox.Show("Please Select a Navigable for the Start of a Player's Turn.", "Cannot Save Settings", MessageBoxButtons.OK);
+                //   return;
             }
 
             if (gameOverReq.Count > 0)
@@ -264,8 +266,8 @@ namespace GUI_Test2
             }
             else
             {
-             //   MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
-             //   return;
+                //   MessageBox.Show("You must set Game Over requirements.", "Cannot Save Settings", MessageBoxButtons.OK);
+                //   return;
             }
 
             Game.gameSettings.defaultFontPath = defaultFontPath;
@@ -345,11 +347,12 @@ namespace GUI_Test2
                         try
                         {
                             hubComboBox.SelectedIndex = Game.hubs.IndexOf(r.hub);
-                        }catch(ArgumentOutOfRangeException ex)
+                        }
+                        catch (ArgumentOutOfRangeException ex)
                         {
                             Console.Out.WriteLine(ex.StackTrace);
                         }
-                        }
+                    }
                     attributeComboBox.SelectedIndex = attributeComboBox.FindStringExact(r.name);
                     comparitorComboBox.SelectedIndex = comparitorComboBox.FindStringExact(r.comp);
                     valueUpDown.Value = r.value;
@@ -450,7 +453,7 @@ namespace GUI_Test2
             catch (IndexOutOfRangeException ex)
             {
                 Console.Out.WriteLine(ex.StackTrace);
-                
+
             }
             updateCheckMarks();
 
@@ -691,7 +694,7 @@ namespace GUI_Test2
                 if (DialogResult.OK == of.ShowDialog())
                 {
                     menuFontPath = of.FileName;
-                    
+
                 }
 
             }
@@ -708,7 +711,8 @@ namespace GUI_Test2
             if (File.Exists(dialogueScrollSoundPath))
             {
                 chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.check;
-            }else
+            }
+            else
             {
                 chooseScrollSoundVerify.Image = GUI_Test2.Properties.Resources.redx;
                 dialogueScrollSoundPath = "";
@@ -749,7 +753,8 @@ namespace GUI_Test2
             if (File.Exists(menuFontPath))
             {
                 mainMenuFontVerify.Image = GUI_Test2.Properties.Resources.check;
-            }else
+            }
+            else
             {
                 mainMenuFontVerify.Image = GUI_Test2.Properties.Resources.redx;
             }

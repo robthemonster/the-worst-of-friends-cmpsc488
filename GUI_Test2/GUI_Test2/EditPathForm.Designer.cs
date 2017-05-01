@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPathForm));
             this.pathDialogueTab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.soundEffectLabel = new System.Windows.Forms.Label();
+            this.playSoundCheckBox = new System.Windows.Forms.CheckBox();
             this.DeleteSelectedDialogueButton = new System.Windows.Forms.Button();
             this.dialogueFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
             this.editDialogueButton = new System.Windows.Forms.Button();
@@ -121,8 +123,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonListBox = new System.Windows.Forms.ListBox();
-            this.playSoundCheckBox = new System.Windows.Forms.CheckBox();
-            this.soundEffectLabel = new System.Windows.Forms.Label();
             this.pathDialogueTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dialogueFontSizeNumeric)).BeginInit();
@@ -192,6 +192,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dialogues";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // soundEffectLabel
+            // 
+            this.soundEffectLabel.AutoSize = true;
+            this.soundEffectLabel.Location = new System.Drawing.Point(222, 342);
+            this.soundEffectLabel.Name = "soundEffectLabel";
+            this.soundEffectLabel.Size = new System.Drawing.Size(93, 17);
+            this.soundEffectLabel.TabIndex = 55;
+            this.soundEffectLabel.Text = "Sound Effect:";
+            // 
+            // playSoundCheckBox
+            // 
+            this.playSoundCheckBox.AutoSize = true;
+            this.playSoundCheckBox.Location = new System.Drawing.Point(222, 375);
+            this.playSoundCheckBox.Name = "playSoundCheckBox";
+            this.playSoundCheckBox.Size = new System.Drawing.Size(102, 21);
+            this.playSoundCheckBox.TabIndex = 54;
+            this.playSoundCheckBox.Text = "Play Sound";
+            this.playSoundCheckBox.UseVisualStyleBackColor = true;
+            this.playSoundCheckBox.CheckedChanged += new System.EventHandler(this.playSoundCheckBox_CheckedChanged);
             // 
             // DeleteSelectedDialogueButton
             // 
@@ -569,6 +589,7 @@
             // hubSelectionComboBox
             // 
             this.hubSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.hubSelectionComboBox.DropDownWidth = 400;
             this.hubSelectionComboBox.Enabled = false;
             this.hubSelectionComboBox.FormattingEnabled = true;
             this.hubSelectionComboBox.Location = new System.Drawing.Point(217, 52);
@@ -630,6 +651,7 @@
             // attributeComboBox
             // 
             this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.attributeComboBox.DropDownWidth = 300;
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(19, 164);
             this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -818,6 +840,7 @@
             // defaultTargetNavComboBox
             // 
             this.defaultTargetNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.defaultTargetNavComboBox.DropDownWidth = 400;
             this.defaultTargetNavComboBox.FormattingEnabled = true;
             this.defaultTargetNavComboBox.Location = new System.Drawing.Point(116, 18);
             this.defaultTargetNavComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -1055,6 +1078,7 @@
             // navComboBox
             // 
             this.navComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.navComboBox.DropDownWidth = 400;
             this.navComboBox.FormattingEnabled = true;
             this.navComboBox.Location = new System.Drawing.Point(116, 18);
             this.navComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -1337,26 +1361,6 @@
             this.buttonListBox.Size = new System.Drawing.Size(120, 164);
             this.buttonListBox.TabIndex = 0;
             this.buttonListBox.SelectedIndexChanged += new System.EventHandler(this.buttonListBox_SelectedIndexChanged);
-            // 
-            // playSoundCheckBox
-            // 
-            this.playSoundCheckBox.AutoSize = true;
-            this.playSoundCheckBox.Location = new System.Drawing.Point(222, 375);
-            this.playSoundCheckBox.Name = "playSoundCheckBox";
-            this.playSoundCheckBox.Size = new System.Drawing.Size(102, 21);
-            this.playSoundCheckBox.TabIndex = 54;
-            this.playSoundCheckBox.Text = "Play Sound";
-            this.playSoundCheckBox.UseVisualStyleBackColor = true;
-            this.playSoundCheckBox.CheckedChanged += new System.EventHandler(this.playSoundCheckBox_CheckedChanged);
-            // 
-            // soundEffectLabel
-            // 
-            this.soundEffectLabel.AutoSize = true;
-            this.soundEffectLabel.Location = new System.Drawing.Point(222, 342);
-            this.soundEffectLabel.Name = "soundEffectLabel";
-            this.soundEffectLabel.Size = new System.Drawing.Size(93, 17);
-            this.soundEffectLabel.TabIndex = 55;
-            this.soundEffectLabel.Text = "Sound Effect:";
             // 
             // EditPathForm
             // 

@@ -488,6 +488,7 @@
             // attributeComboBox
             // 
             this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.attributeComboBox.DropDownWidth = 300;
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(4, 26);
             this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4);

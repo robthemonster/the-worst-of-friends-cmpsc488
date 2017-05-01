@@ -208,6 +208,7 @@
             // hubComboBox
             // 
             this.hubComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.hubComboBox.DropDownWidth = 400;
             this.hubComboBox.Enabled = false;
             this.hubComboBox.FormattingEnabled = true;
             this.hubComboBox.Location = new System.Drawing.Point(151, 47);
@@ -308,6 +309,7 @@
             // attributeComboBox
             // 
             this.attributeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.attributeComboBox.DropDownWidth = 300;
             this.attributeComboBox.FormattingEnabled = true;
             this.attributeComboBox.Location = new System.Drawing.Point(4, 26);
             this.attributeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -409,6 +411,7 @@
             // playerAttributesComboBox
             // 
             this.playerAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerAttributesComboBox.DropDownWidth = 300;
             this.playerAttributesComboBox.FormattingEnabled = true;
             this.playerAttributesComboBox.Location = new System.Drawing.Point(8, 43);
             this.playerAttributesComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -529,6 +532,7 @@
             // globalAttributesComboBox
             // 
             this.globalAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.globalAttributesComboBox.DropDownWidth = 300;
             this.globalAttributesComboBox.FormattingEnabled = true;
             this.globalAttributesComboBox.Location = new System.Drawing.Point(8, 43);
             this.globalAttributesComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -559,6 +563,7 @@
             // roundStartNavComboBox
             // 
             this.roundStartNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.roundStartNavComboBox.DropDownWidth = 400;
             this.roundStartNavComboBox.FormattingEnabled = true;
             this.roundStartNavComboBox.Location = new System.Drawing.Point(280, 130);
             this.roundStartNavComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -579,6 +584,7 @@
             // roundEndNavComboBox
             // 
             this.roundEndNavComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.roundEndNavComboBox.DropDownWidth = 400;
             this.roundEndNavComboBox.FormattingEnabled = true;
             this.roundEndNavComboBox.Location = new System.Drawing.Point(280, 183);
             this.roundEndNavComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -1033,6 +1039,7 @@
             // startofPlayerTurnNavigableComboBox
             // 
             this.startofPlayerTurnNavigableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.startofPlayerTurnNavigableComboBox.DropDownWidth = 400;
             this.startofPlayerTurnNavigableComboBox.FormattingEnabled = true;
             this.startofPlayerTurnNavigableComboBox.Location = new System.Drawing.Point(281, 85);
             this.startofPlayerTurnNavigableComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);

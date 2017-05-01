@@ -42,6 +42,7 @@
             this.useMusic = new System.Windows.Forms.CheckBox();
             this.chooseHubImageButton = new System.Windows.Forms.Button();
             this.addButtonBox = new System.Windows.Forms.GroupBox();
+            this.updateButton = new System.Windows.Forms.Button();
             this.buttonYLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.buttonXLocNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.buttonHeightNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -67,7 +68,6 @@
             this.useButton1Image = new System.Windows.Forms.CheckBox();
             this.button1PictureBox = new System.Windows.Forms.PictureBox();
             this.buttonImageGroupBox = new System.Windows.Forms.GroupBox();
-            this.updateButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel4.SuspendLayout();
             this.hubImageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hubImagePictureBox)).BeginInit();
@@ -253,6 +253,17 @@
             this.addButtonBox.TabStop = false;
             this.addButtonBox.Text = "Add Button";
             // 
+            // updateButton
+            // 
+            this.updateButton.Enabled = false;
+            this.updateButton.Location = new System.Drawing.Point(412, 146);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(148, 28);
+            this.updateButton.TabIndex = 62;
+            this.updateButton.Text = "Update Button";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // buttonYLocNumericUpDown
             // 
             this.buttonYLocNumericUpDown.Increment = new decimal(new int[] {
@@ -386,6 +397,7 @@
             // navComboBox
             // 
             this.navComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.navComboBox.DropDownWidth = 400;
             this.navComboBox.FormattingEnabled = true;
             this.navComboBox.Location = new System.Drawing.Point(125, 18);
             this.navComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -595,17 +607,6 @@
             this.buttonImageGroupBox.TabIndex = 48;
             this.buttonImageGroupBox.TabStop = false;
             this.buttonImageGroupBox.Text = "Button Images";
-            // 
-            // updateButton
-            // 
-            this.updateButton.Enabled = false;
-            this.updateButton.Location = new System.Drawing.Point(412, 146);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(148, 28);
-            this.updateButton.TabIndex = 62;
-            this.updateButton.Text = "Update Button";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // EditHubForm
             // 
