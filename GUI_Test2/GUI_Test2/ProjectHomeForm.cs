@@ -442,8 +442,13 @@ namespace GUI_Test2
 
         private void runPlayTest_MenuItemClick(object sender, EventArgs e)
         {
-            saveToolStripMenuItem.PerformClick();
-            Game.compileAndRun();
+            if (MessageBox.Show("Save and Run Playtest?","PlayTesting",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+
+                saveToolStripMenuItem.PerformClick();
+                Game.compileAndRun();
+            }
+
         }
 
         private void endingsToolStripMenuItem_Click(object sender, EventArgs e)
