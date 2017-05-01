@@ -442,7 +442,7 @@ namespace GUI_Test2
 
         private void runPlayTest_MenuItemClick(object sender, EventArgs e)
         {
-            //saveToolStripMenuItem.PerformClick();
+            saveToolStripMenuItem.PerformClick();
             Game.compileAndRun();
         }
 
