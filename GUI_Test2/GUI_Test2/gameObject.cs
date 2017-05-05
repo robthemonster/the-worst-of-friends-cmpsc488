@@ -668,6 +668,7 @@ namespace GUI_Test2
             }
 
             int imgctr = 0, musicctr = 0, fontCtr = 0;
+            int dialogueSoundCtr = 0;
             foreach (Navigable nav in Game.navIndex.Values)
             {
                 switch (nav.getNavType())
@@ -706,7 +707,7 @@ namespace GUI_Test2
                         }
                         if (nav.getNavType() == Navigable.PATH)
                         {
-                            int dialogueSoundCtr = 0;
+                            
                             foreach (Dialogue d in ((Path)nav).dialogues)
                             {
                                 if (d.soundPath != "")
